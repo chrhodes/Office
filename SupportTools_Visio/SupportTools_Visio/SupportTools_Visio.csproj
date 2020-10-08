@@ -1,0 +1,1542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+    This section defines project-level properties.
+
+    AssemblyName
+      Name of the output assembly.
+    Configuration
+      Specifies a default value for debug.
+    OutputType
+      Must be "Library" for VSTO.
+    Platform
+      Specifies what CPU the output of this project can run on.
+    NoStandardLibraries
+      Set to "false" for VSTO.
+    RootNamespace
+      In C#, this specifies the namespace given to new files. In VB, all objects are
+      wrapped in this namespace at runtime.
+  -->
+  <Import Project="..\packages\Microsoft.CodeAnalysis.Analyzers.3.3.0\build\Microsoft.CodeAnalysis.Analyzers.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.Analyzers.3.3.0\build\Microsoft.CodeAnalysis.Analyzers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <ProjectTypeGuids>{BAA0C2D2-18E2-41B9-852F-F413020CAA33};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3C3897DE-F23C-435B-ACB2-242D72A1E74F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <RootNamespace>SupportTools_Visio</RootNamespace>
+    <AssemblyName>SupportTools_Visio</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <DefineConstants>VSTO40</DefineConstants>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <VSTO_TrustAssembliesLocation>true</VSTO_TrustAssembliesLocation>
+    <IsWebBootstrapper>False</IsWebBootstrapper>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <PublishUrl>B:\Publish\SupportTools_Visio\</PublishUrl>
+    <InstallUrl />
+    <TargetCulture>en</TargetCulture>
+    <ApplicationVersion>1.0.0.42</ApplicationVersion>
+    <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>days</UpdateIntervalUnits>
+    <ProductName>SupportTools_Visio</ProductName>
+    <PublisherName>VNC</PublisherName>
+    <SupportUrl />
+    <FriendlyName>SupportTools_Visio</FriendlyName>
+    <OfficeApplicationDescription />
+    <LoadBehavior>3</LoadBehavior>
+  </PropertyGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.VSTORuntime.4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Visual Studio 2010 Tools for Office Runtime %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <PropertyGroup>
+    <!--
+      OfficeApplication
+        Add-in host application
+    -->
+    <OfficeApplication>Visio</OfficeApplication>
+  </PropertyGroup>
+  <!--
+    This section defines properties that are set when the "Debug" configuration is selected.
+
+    DebugSymbols
+      If "true", create symbols (.pdb). If "false", do not create symbols.
+    DefineConstants
+      Constants defined for the preprocessor.
+    EnableUnmanagedDebugging
+      If "true", starting the debugger will attach both managed and unmanaged debuggers.
+    Optimize
+      If "true", optimize the build output. If "false", do not optimize.
+    OutputPath
+      Output path of project relative to the project file.
+    WarningLevel
+      Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <!--
+    This section defines properties that are set when the "Release" configuration is selected.
+
+    DebugSymbols
+      If "true", create symbols (.pdb). If "false", do not create symbols.
+    DefineConstants
+      Constants defined for the preprocessor.
+    EnableUnmanagedDebugging
+      If "true", starting the debugger will attach both managed and unmanaged debuggers.
+    Optimize
+      If "true", optimize the build output. If "false", do not optimize.
+    OutputPath
+      Output path of project relative to the project file.
+    WarningLevel
+      Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <!--
+    This section enables pre- and post-build steps. However, in VSTO use
+    MSBuild tasks instead of these properties.       
+  -->
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!--
+    This section specifies references for the project.
+  -->
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="CalcBinding, Version=2.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CalcBinding.2.5.2\lib\net45\CalcBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator, Version=2.0.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.5\lib\net47\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Mvvm.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v19.2.Export, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.CodeView.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Core.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Docking.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Layout.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.LayoutControl.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Printing.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Ribbon.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Themes.MetropolisDark.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Themes.MetropolisLight.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DynamicExpresso.Core, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicExpresso.Core.2.3.1\lib\net461\DynamicExpresso.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.3.6.0\lib\net45\ExcelDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="Humanizer, Version=2.8.0.0, Culture=neutral, PublicKeyToken=979442b78dfc278e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Humanizer.Core.2.8.26\lib\netstandard2.0\Humanizer.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqToExcel, Version=1.11.0.0, Culture=neutral, PublicKeyToken=9c8ea65a58f03f1f, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.11.0\lib\LinqToExcel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis, Version=3.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Common.3.7.0\lib\netstandard2.0\Microsoft.CodeAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=3.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.3.7.0\lib\netstandard2.0\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp.Workspaces, Version=3.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.Workspaces.3.7.0\lib\netstandard2.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.VisualBasic, Version=3.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.VisualBasic.3.7.0\lib\netstandard2.0\Microsoft.CodeAnalysis.VisualBasic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.VisualBasic.Workspaces, Version=3.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.VisualBasic.Workspaces.3.7.0\lib\netstandard2.0\Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.Workspaces, Version=3.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Workspaces.Common.3.7.0\lib\netstandard2.0\Microsoft.CodeAnalysis.Workspaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Visio, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Tools.Applications.Runtime, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Prism, Version=7.2.0.1422, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.7.2.0.1422\lib\net45\Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Unity.Wpf, Version=7.2.0.1422, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Unity.7.2.0.1422\lib\net45\Prism.Unity.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Wpf, Version=7.2.0.1422, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Wpf.7.2.0.1422\lib\net45\Prism.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.11.0\lib\Remotion.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.11.0\lib\Remotion.Data.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Interfaces, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.11.0\lib\Remotion.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_v2, Version=2.0.4.976, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_green.2.0.4\lib\net461\SQLitePCLRaw.batteries_v2.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.core, Version=2.0.4.976, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.core.2.0.4\lib\netstandard2.0\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.nativelibrary, Version=2.0.4.976, Culture=neutral, PublicKeyToken=502ed628492ab262, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_green.2.0.4\lib\net461\SQLitePCLRaw.nativelibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.provider.dynamic_cdecl, Version=2.0.4.976, Culture=neutral, PublicKeyToken=b68184102cba0b3b, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.provider.dynamic_cdecl.2.0.4\lib\netstandard2.0\SQLitePCLRaw.provider.dynamic_cdecl.dll</HintPath>
+    </Reference>
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.7.1\lib\net461\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Composition.AttributedModel, Version=1.0.35.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Composition.AttributedModel.1.4.1\lib\net461\System.Composition.AttributedModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.Convention, Version=1.0.35.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Composition.Convention.1.4.1\lib\net461\System.Composition.Convention.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.Hosting, Version=1.0.35.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Composition.Hosting.1.4.1\lib\net461\System.Composition.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.Runtime, Version=1.0.35.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Composition.Runtime.1.4.1\lib\net461\System.Composition.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.TypedParts, Version=1.0.35.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Composition.TypedParts.1.4.1\lib\net461\System.Composition.TypedParts.dll</HintPath>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Reflection.Metadata, Version=1.4.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.Metadata.1.8.1\lib\net461\System.Reflection.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Extensions.4.3.1\lib\net462\System.Runtime.Extensions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.4.7.1\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Wpf.7.2.0.1422\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="UIAutomationProvider">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="UIAutomationTypes">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.Abstractions, Version=5.11.6.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Abstractions.5.11.6\lib\net47\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.8.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Container.5.11.8\lib\net47\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="VNC.AssemblyHelper">
+      <HintPath>..\..\..\Common\VNC.AssemblyHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="VNC.CodeAnalysis, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Common\VNC.CodeAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="VNC.Helper">
+      <HintPath>..\..\..\Common\VNC.Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="VNC.XamlHelper">
+      <HintPath>..\..\..\Common\VNC.XamlHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Tools.v4.0.Framework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Tools.Common.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <!--
+    This section defines the user source files that are part of the project.
+     
+    A "Compile" element specifies a source file to compile.
+    An "EmbeddedResource" element specifies an .resx file for embedded resources.
+    A "None" element specifies a file that is not to be passed to the compiler (for instance, 
+    a text file or XML file).
+    The "AppDesigner" element specifies the directory where the application properties files
+    can be found.
+  -->
+  <ItemGroup>
+    <Compile Include="Actions\FileInfoShape.cs" />
+    <Compile Include="Actions\MethodInfoShape.cs" />
+    <Compile Include="Actions\ClassInfoShape.cs" />
+    <Compile Include="Actions\RoslynActions.cs" />
+    <Compile Include="Actions\Visio_Application.cs" />
+    <Compile Include="Actions\Visio_Document.cs" />
+    <Compile Include="Actions\Visio_Page.cs" />
+    <Compile Include="Actions\Visio_Shape.cs" />
+    <Compile Include="Actions\Visio_Stencil.cs" />
+    <Compile Include="Actions\Visio_Window.cs" />
+    <Compile Include="Application\Bootstrapper.cs" />
+    <Compile Include="Application\PrismApp.cs" />
+    <Compile Include="Domain\ShapeSheet\DocumentProperties.cs" />
+    <Compile Include="Domain\ShapeSheet\FillFormat.cs" />
+    <Compile Include="Domain\ShapeSheet\FillGradientStopRow.cs" />
+    <Compile Include="Domain\ShapeSheet\GeometryRow.cs" />
+    <Compile Include="Domain\ShapeSheet\GradientProperties.cs" />
+    <Compile Include="Domain\ShapeSheet\GlueInfo.cs" />
+    <Compile Include="Domain\ShapeSheet\GroupProperties.cs" />
+    <Compile Include="Domain\ShapeSheet\HyperlinkRow.cs" />
+    <Compile Include="Domain\ShapeSheet\ImageProperties.cs" />
+    <Compile Include="Domain\ShapeSheet\LayerRow.cs" />
+    <Compile Include="Domain\ShapeSheet\LayerMembership.cs" />
+    <Compile Include="Domain\ShapeSheet\LineFormat.cs" />
+    <Compile Include="Domain\ShapeSheet\LineGradientStopRow.cs" />
+    <Compile Include="Domain\ShapeSheet\Miscellaneous.cs" />
+    <Compile Include="Domain\ShapeSheet\PageLayout.cs" />
+    <Compile Include="Domain\ShapeSheet\PrintProperties.cs" />
+    <Compile Include="Domain\ShapeSheet\Protection.cs" />
+    <Compile Include="Domain\ShapeSheet\QuickStyle.cs" />
+    <Compile Include="Domain\ShapeSheet\RulerAndGrid.cs" />
+    <Compile Include="Domain\ShapeSheet\ScratchRow.cs" />
+    <Compile Include="Domain\ShapeSheet\ShapeDataRow.cs" />
+    <Compile Include="Domain\ShapeSheet\ShapeLayout.cs" />
+    <Compile Include="Domain\ShapeSheet\StyleProperties.cs" />
+    <Compile Include="Domain\ShapeSheet\TabRow.cs" />
+    <Compile Include="Domain\ShapeSheet\TextFieldRow.cs" />
+    <Compile Include="Domain\ShapeSheet\ThemeProperties.cs" />
+    <Compile Include="Domain\ShapeSheet\ShapeTransform.cs" />
+    <Compile Include="Domain\ShapeSheet\OneDEndPoints.cs" />
+    <Compile Include="Domain\ShapeSheet\UserDefinedCellRow.cs" />
+    <Compile Include="Domain\ShapeSheet\ThreeDRotationProperties.cs" />
+    <Compile Include="Domain\ShapeSheet\ActionTagRow.cs" />
+    <Compile Include="Domain\ShapeSheet\ActionRow.cs" />
+    <Compile Include="Domain\ShapeSheet\AdditionalEffectProperties.cs" />
+    <Compile Include="Domain\ShapeSheet\BevelProperties.cs" />
+    <Compile Include="Domain\ShapeSheet\CharacterRow.cs" />
+    <Compile Include="Domain\ShapeSheet\ChangeShapeBehavior.cs" />
+    <Compile Include="Domain\ShapeSheet\Events.cs" />
+    <Compile Include="Domain\ShapeSheet\ConnectionPointRow.cs" />
+    <Compile Include="Data\ApplicationDS.cs">
+      <DependentUpon>ApplicationDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ApplicationDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApplicationDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Config.cs" />
+    <Compile Include="Domain\ShapeSheet\ControlsRow.cs" />
+    <Compile Include="Domain\ShapeSheet\ParagraphRow.cs" />
+    <Compile Include="Domain\ShapeSheet\TextBlockFormat.cs" />
+    <Compile Include="Domain\ShapeSheet\TextTransform.cs" />
+    <Compile Include="ErrorNumbers.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="IAddStuffViewModel.cs" />
+    <Compile Include="Modules\EditTextModule.cs" />
+    <Compile Include="Domain\Cat.cs" />
+    <Compile Include="Domain\ShapeSheet\NewButton.cs" />
+    <Compile Include="Presentation\Converters\SelectedItemsConverter.cs" />
+    <Compile Include="Presentation\Views\Cat.xaml.cs">
+      <DependentUpon>Cat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ViewModels\ShapeSheet\CatViewModel.cs" />
+    <Compile Include="Presentation\ModelWrappers\CatWrapper.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ICatViewModel.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\ActionRowWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\ActionTagRowWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\AdditionalEffectPropertiesWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\BevelPropertiesWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\ChangeShapeBehaviorWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\CharacterRowWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\ConnectionPointRowWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\ControlsRowWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\DocumentPropertiesWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\EventsWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\FillFormatWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\FillGradientStopRowWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\GeometryRowWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\GlueInfoWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\GradientPropertiesWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\GroupPropertiesWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\HyperlinkRowWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\ImagePropertiesWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\LayerMembershipWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\LayerRowWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\LineFormatWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\LineGradientStopRowWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\MiscellaneousWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\OneDEndPointsWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\PageLayoutWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\ParagraphWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\PrintPropertiesWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\ProtectionWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\QuickStyleWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\RulerAndGridWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\ScratchRowWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\ShapeDataRowWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\ShapeLayoutWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\ShapeTransformWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\StylePropertiesWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\TabRowWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\TextBlockFormatWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\TextFieldRowWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\TextTransformWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\ThemePropertiesWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\ThreeDRotationPropertiesWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\UserDefinedCellRowWrapper.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\ActionsViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\BevelPropertiesViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\ChangeShapeBehaviorViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\CharacterRowViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\ConnectionPointsViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\ControlsViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\DocumentPropertiesViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\EditControlRowsViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\EditParagraphViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\EditTextViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\EventsViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\FillGradientStopRowViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\GeometryRowViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\GlueInfoViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\GradientPropertiesViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\GroupPropertiesViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\HyperlinksViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\ImagePropertiesViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IActionRowViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IActionTagRowViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IBevelPropertiesViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IChangeShapeBehaviorViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\ICharacterRowViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IConnectionPointRowViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IControlsRowViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IDocumentPropertiesViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\IEditTextViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IEventsViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IFillFormatViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IFillGradientStopRowWrapperViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IGeometryRowViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IGlueInfoViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IGradientPropertiesViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IGroupPropertiesViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IHyperlinkRowViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IImagePropertiesViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\ILayerMembershipViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\ILayerRowViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\ILineFormatViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\ILineGradientStopRowViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IMiscellaneousViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IOneDEndPointsViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IPageLayoutViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IPrintPropertiesViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IProtectionViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IQuickStyleViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IRulerAndGridViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\LayerMembershipViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\LayerRowViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\LineFormatViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\LineGradientStopRowViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\MiscellaneousViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\OneDEndPointsViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\PageLayoutViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\PrintPropertiesViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\ProtectionViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\QuickStyleViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\RowsViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\RulerAndGridViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\ShapeSheetSectionBase.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\ActionTags_Shape.cs">
+      <DependentUpon>ActionTags_Shape.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\Actions_Shape.cs">
+      <DependentUpon>Actions_Shape.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\DuplicatePage.cs" />
+    <Compile Include="Presentation\Views\DuplicatePage.xaml.cs">
+      <DependentUpon>DuplicatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ViewModels\DuplicatePageViewModel.cs" />
+    <Compile Include="Presentation\ModelWrappers\DuplicatePageWrapper.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\Hyperlinks.cs">
+      <DependentUpon>Hyperlinks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\ConnectionPoints.cs">
+      <DependentUpon>ConnectionPoints.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\Controls.cs">
+      <DependentUpon>Controls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ViewModels\Interfaces\IDuplicatePageViewModel.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\ShapeData.cs">
+      <DependentUpon>ShapeData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\ShapeSheetSection.xaml.cs">
+      <DependentUpon>ShapeSheetSection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\TextTransformContent.cs">
+      <DependentUpon>TextTransformContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\BevelProperties.cs">
+      <DependentUpon>BevelProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\ActionRow.cs">
+      <DependentUpon>ActionRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\ActionTagRow.cs">
+      <DependentUpon>ActionTagRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ViewModels\ShapeSheet\ActionTagsViewModel.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\AdditionalEffectProperties.cs">
+      <DependentUpon>AdditionalEffectProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ViewModels\ShapeSheet\AdditionalEffectPropertiesViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IAdditionalEffectPropertiesViewModel.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\ChangeShapeBehavior.cs">
+      <DependentUpon>ChangeShapeBehavior.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\CharacterRow.cs">
+      <DependentUpon>CharacterRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\ConnectionPointRow.cs">
+      <DependentUpon>ConnectionPointRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\ControlsRow.cs">
+      <DependentUpon>ControlsRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\DocumentProperties.cs">
+      <DependentUpon>DocumentProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\EditControlRows.cs">
+      <DependentUpon>EditControlRows.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\EditParagraph.cs">
+      <DependentUpon>EditParagraph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\EditText.cs">
+      <DependentUpon>EditText.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\Events.cs">
+      <DependentUpon>Events.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\FillFormat.cs">
+      <DependentUpon>FillFormat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ViewModels\ShapeSheet\FillFormatViewModel.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\GeometryRow.cs">
+      <DependentUpon>GeometryRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\GlueInfo.cs">
+      <DependentUpon>GlueInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\GradientProperties.cs">
+      <DependentUpon>GradientProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\GroupProperties.cs">
+      <DependentUpon>GroupProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\HyperlinkRow.cs">
+      <DependentUpon>HyperlinkRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\ImageProperties.cs">
+      <DependentUpon>ImageProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IScratchRowViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IShapeDataRowViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IShapeLayoutViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IShapeTransformViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IStylePropertiesViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\ITabRowViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\ITextBlockFormatViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\ITextFieldRowViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\ITextTransformViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IThemePropertiesViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IThreeDRotationPropertiesViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IUserDefinedCellRowViewModel.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\LayerMembership.cs">
+      <DependentUpon>LayerMembership.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\LayerRow.cs">
+      <DependentUpon>LayerRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\LineFormat.cs">
+      <DependentUpon>LineFormat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\LineGradientStopRow.cs">
+      <DependentUpon>LineGradientStopRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\Miscellaneous.cs">
+      <DependentUpon>Miscellaneous.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\OneDEndPoints.cs">
+      <DependentUpon>OneDEndPoints.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\PageLayout.cs">
+      <DependentUpon>PageLayout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\PrintProperties.cs">
+      <DependentUpon>PrintProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\PrismRegionTest.xaml.cs">
+      <DependentUpon>PrismRegionTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\EditControlPoints.cs">
+      <DependentUpon>EditControlPoints.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\Protection.cs">
+      <DependentUpon>Protection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\QuickStyle.cs">
+      <DependentUpon>QuickStyle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\RuleAndGrid.cs">
+      <DependentUpon>RulerAndGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\ScratchRow.cs">
+      <DependentUpon>ScratchRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ViewModels\ShapeSheet\ScratchViewModel.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\SelectedShapesInfo.xaml.cs">
+      <DependentUpon>SelectedShapesInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\ShapeDataRow.cs">
+      <DependentUpon>ShapeDataRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ViewModels\ShapeSheet\ShapeDataViewModel.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\ShapeLayout.cs">
+      <DependentUpon>ShapeLayout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ViewModels\ShapeSheet\ShapeLayoutViewModel.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\ShapeTransform.cs">
+      <DependentUpon>ShapeTransform.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ViewModels\ShapeSheet\ShapeTransformViewModel.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\StyleProperties.cs">
+      <DependentUpon>StyleProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ViewModels\ShapeSheet\StylePropertiesViewModel.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\TabRow.cs">
+      <DependentUpon>TabRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ViewModels\ShapeSheet\TabRowViewModel.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\TextBlockFormat.cs">
+      <DependentUpon>TextBlockFormat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ViewModels\ShapeSheet\TextBlockFormatViewModel.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\TextFieldRow.cs">
+      <DependentUpon>TextFieldRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ViewModels\ShapeSheet\TextFieldRowViewModel.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\TextTransform.cs">
+      <DependentUpon>TextTransform.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ViewModels\ShapeSheet\TextTransformViewModel.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\ThemeProperties.cs">
+      <DependentUpon>ThemeProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ViewModels\ShapeSheet\ThemePropertiesViewModel.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\ThreeDRotationProperties.cs">
+      <DependentUpon>ThreeDRotationProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ViewModels\ShapeSheet\ThreeDRotationPropertiesViewModel.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\UserDefinedCellRow.cs">
+      <DependentUpon>UserDefinedCellRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ViewModels\ShapeSheet\UserDefinedCellRowViewModel.cs" />
+    <Compile Include="ShapeSheetActions.cs" />
+    <Compile Include="Actions\Class1.cs" />
+    <Compile Include="Actions\Visio_PageFormatting.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="Events\VisioAppEvents.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="User Interface\CustomFormat.cs" />
+    <Compile Include="User Interface\DisplayOptions.cs" />
+    <Compile Include="User Interface\Forms\frmEditVisio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\Forms\frmEditVisio.Designer.cs">
+      <DependentUpon>frmEditVisio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\Forms\frmRelateShape.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\Forms\frmRelateShape.Designer.cs">
+      <DependentUpon>frmRelateShape.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\Forms\frmRelateShapes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\Forms\frmRelateShapes.Designer.cs">
+      <DependentUpon>frmRelateShapes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\Forms\frmMovePages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\Forms\frmMovePages.Designer.cs">
+      <DependentUpon>frmMovePages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\Forms\frmRetrieveShape.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\Forms\frmRetrieveShape.Designer.cs">
+      <DependentUpon>frmRetrieveShape.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\Forms\frmShapeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\Forms\frmShapeEditor.Designer.cs">
+      <DependentUpon>frmShapeEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\Forms\frmValidate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\Forms\frmValidate.Designer.cs">
+      <DependentUpon>frmValidate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\Forms\frmRenamePages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\Forms\frmRenamePages.Designer.cs">
+      <DependentUpon>frmRenamePages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\Forms\frmWPFUserInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\Forms\frmWPFUserInterface.Designer.cs">
+      <DependentUpon>frmWPFUserInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\Forms\frmXMLCommands.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\Forms\frmXMLCommands.Designer.cs">
+      <DependentUpon>frmXMLCommands.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\Help.cs" />
+    <Compile Include="User Interface\PreserveColumnOrderBehavior.cs" />
+    <Compile Include="User Interface\Ribbon\Ribbon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="User Interface\Ribbon\Ribbon.designer.cs">
+      <DependentUpon>Ribbon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\Task Panes\TaskPane_AppUtil.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Interface\Task Panes\TaskPane_AppUtil.designer.cs">
+      <DependentUpon>TaskPane_AppUtil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\IRefresh.cs" />
+    <Compile Include="User Interface\ToolBoxResources.cs" />
+    <Compile Include="User Interface\UnboundColumns.cs" />
+    <Compile Include="User Interface\User Controls\wucMovePages.cs">
+      <DependentUpon>wucMovePages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\User Controls\wucEditShape.cs">
+      <DependentUpon>wucEditShape.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\User Controls\RowDetailContainerControl.cs" />
+    <Compile Include="User Interface\User Controls\wucEditVisio.xaml.cs">
+      <DependentUpon>wucEditVisio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\User Controls\wucRelateShape.xaml.cs">
+      <DependentUpon>wucRelateShape.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\User Controls\wucRelateShapes.xaml.cs">
+      <DependentUpon>wucRelateShapes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\User Controls\wucRetrieveShape.xaml.cs">
+      <DependentUpon>wucRetrieveShape.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\User Controls\wucRenamePages.cs">
+      <DependentUpon>wucRenamePages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\User Controls\wucVisioCommand_Picker.xaml.cs">
+      <DependentUpon>wucVisioCommand_Picker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\User Controls\wucValidate.xaml.cs">
+      <DependentUpon>wucValidate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\User Controls\wucVisioCommands.cs">
+      <DependentUpon>wucVisioCommands.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="User Interface\Forms\frmEditVisio.resx">
+      <DependentUpon>frmEditVisio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\Forms\frmRelateShape.resx">
+      <DependentUpon>frmRelateShape.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\Forms\frmRelateShapes.resx">
+      <DependentUpon>frmRelateShapes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\Forms\frmRetrieveShape.resx">
+      <DependentUpon>frmRetrieveShape.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\Forms\frmShapeEditor.resx">
+      <DependentUpon>frmShapeEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\Forms\frmValidate.resx">
+      <DependentUpon>frmValidate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\Ribbon\Ribbon.resx">
+      <DependentUpon>Ribbon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\Task Panes\TaskPane_AppUtil.resx">
+      <DependentUpon>TaskPane_AppUtil.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Data\ApplicationDS.xsc">
+      <DependentUpon>ApplicationDS.xsd</DependentUpon>
+    </None>
+    <None Include="Data\ApplicationDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ApplicationDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Data\ApplicationDS.xss">
+      <DependentUpon>ApplicationDS.xsd</DependentUpon>
+    </None>
+    <None Include="Office2010Addin_Template_Visio_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ThisAddIn.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="Resources\Images\FilterEditor.max" />
+    <None Include="Resources\Images\IconLights.max" />
+    <None Include="Resources\Images\QuestionMark.max" />
+    <None Include="SupportTools_Visio_1_TemporaryKey.pfx" />
+    <None Include="SupportTools_Visio_2_TemporaryKey.pfx" />
+    <None Include="SupportTools_Visio_3_TemporaryKey.pfx" />
+    <None Include="SupportTools_Visio_4_TemporaryKey.pfx" />
+    <None Include="SupportTools_Visio_5_TemporaryKey.pfx" />
+    <None Include="SupportTools_Visio_6_TemporaryKey.pfx" />
+    <None Include="SupportTools_Visio_7_TemporaryKey.pfx" />
+    <None Include="SupportTools_Visio_TemporaryKey.pfx" />
+    <None Include="ThisAddIn.Designer.xml">
+      <DependentUpon>ThisAddIn.cs</DependentUpon>
+    </None>
+    <Compile Include="ThisAddIn.Designer.cs">
+      <DependentUpon>ThisAddIn.Designer.xml</DependentUpon>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TODO.txt" />
+    <None Include="Resources\Images\Application Info 64x64.gif" />
+    <None Include="Resources\Images\Auto-Debug-System_icon.gif" />
+    <None Include="Resources\Images\Document Info 64x64.gif" />
+    <None Include="Resources\Images\Navigation Links 32x32.gif" />
+    <None Include="Resources\Images\Update Name Shapes 32x32.gif" />
+    <None Include="Data\SupportTools_Config.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\Images\Update Name Shapes64x64.gif" />
+    <None Include="Resources\Images\Navigation Links 64x64.gif" />
+    <None Include="Resources\Images\Page Info 64x64.gif" />
+    <None Include="Resources\Images\Shape Info 64x64.gif" />
+    <None Include="Resources\Images\Stencil Info 64x64.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Presentation\Views\Cat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\ActionTags_Shape.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\Actions_Shape.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\DuplicatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\Hyperlinks.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\ConnectionPoints.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\Controls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\ShapeData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\ShapeSheetSection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\TextTransformContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\BevelProperties.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\ActionRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\ActionTagRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\AdditionalEffectProperties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\ChangeShapeBehavior.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\CharacterRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\ConnectionPointRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\ControlsRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\DocumentProperties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\EditControlRows.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\EditParagraph.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\EditText.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\Events.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\FillFormat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\GeometryRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\GlueInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\GradientProperties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\GroupProperties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\HyperlinkRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\ImageProperties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\LayerMembership.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\LayerRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\LineFormat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\LineGradientStopRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\Miscellaneous.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\OneDEndPoints.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\PageLayout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\PrintProperties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\PrismRegionTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\EditControlPoints.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\Protection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\QuickStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\RulerAndGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\ScratchRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\SelectedShapesInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\ShapeDataRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\ShapeLayout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\ShapeTransform.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\StyleProperties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\TabRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\TextBlockFormat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\TextFieldRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\TextTransform.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\ThemeProperties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\ThreeDRotationProperties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\UserDefinedCellRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Xaml\Application.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Xaml\AutoHideGroup_Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Xaml\BrandingVisuals.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Xaml\Brushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Xaml\ButtonStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Xaml\Button_Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Xaml\ColumnHeader_Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Xaml\DatabaseListStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Xaml\Display_StylesAndTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Xaml\InstanceListStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Xaml\Layout_Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Xaml\MasterListStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Xaml\ServerListStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Xaml\StoryboardAnimation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Xaml\ToolBoxResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="User Interface\User Controls\wucMovePages.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="User Interface\User Controls\wucEditShape.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="User Interface\User Controls\wucRenamePages.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="User Interface\User Controls\wucVisioCommands.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Interface\User Controls\wucEditVisio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Interface\User Controls\wucRelateShape.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Interface\User Controls\wucRelateShapes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Interface\User Controls\wucRetrieveShape.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Interface\User Controls\wucVisioCommand_Picker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Interface\User Controls\wucValidate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Fakes\" />
+    <Folder Include="User Interface\Windows\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\cut-16x16.png" />
+    <Resource Include="Resources\Icons\cut-32x32.png" />
+    <Resource Include="Resources\Icons\EyeOnLife.bmp" />
+    <Resource Include="Resources\Icons\EyeOnLife.ico" />
+    <Resource Include="Resources\Icons\EyeOnLife.png" />
+    <Resource Include="Resources\Icons\save-16x16.png" />
+    <Resource Include="Resources\Icons\save-32x32.png" />
+    <Resource Include="Resources\Icons\save-as-16x16.png" />
+    <Resource Include="Resources\Icons\save-as-32x32.png" />
+    <Resource Include="Resources\Icons\SupportTools_Visio.ico" />
+    <Resource Include="Resources\Icons\VNCDeveloperMotivation.ico" />
+    <Resource Include="Resources\Images\300px-IBM_Blue_Gene_P_supercomputer.jpg" />
+    <Resource Include="Resources\Images\Data-Transfer-Rate.jpg" />
+    <Resource Include="Resources\Images\databasetop.png" />
+    <Resource Include="Resources\Images\DB_Instance-icon.png" />
+    <Resource Include="Resources\Images\DB_Instance.png" />
+    <Resource Include="Resources\Images\edata_128.png" />
+    <Resource Include="Resources\Images\EyeOnLife.png" />
+    <Resource Include="Resources\Images\FilterEditor.png" />
+    <Resource Include="Resources\Images\GreenBall.png" />
+    <Resource Include="Resources\Images\GroupByPanel.png" />
+    <Resource Include="Resources\Images\Images_QuestionMark.png" />
+    <Resource Include="Resources\Images\Instance Hierarchy.png" />
+    <Resource Include="Resources\Images\Media_PatientProtal.png" />
+    <Resource Include="Resources\Images\Media_UltrasoundPortal.png" />
+    <Resource Include="Resources\Images\multi-server-icon.png" />
+    <Resource Include="Resources\Images\OrangeBall.png" />
+    <Resource Include="Resources\Images\QuestionMark.png" />
+    <Resource Include="Resources\Images\RedBall.png" />
+    <Resource Include="Resources\Images\RowDetails.png" />
+    <Resource Include="Resources\Images\Server Hierarchy.png" />
+    <Resource Include="Resources\Images\server-icon.png" />
+    <Resource Include="Resources\Images\server-room.jpg" />
+    <Resource Include="Resources\Images\SnapShotCamera.png" />
+    <Resource Include="Resources\Images\ToolBox.png" />
+    <Resource Include="Resources\Images\VNCDeveloper.bmp" />
+    <Resource Include="Resources\Images\VNCDeveloperMotivation.jpg" />
+    <Resource Include="Resources\Images\VNCDeveloperMotivation.png" />
+    <Resource Include="Resources\Images\WatchWindow.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\VNC.Core\VNC.Core.csproj">
+      <Project>{c4e954d3-2a7a-48d2-b212-8b9a96bfeb4f}</Project>
+      <Name>VNC.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\VNC.Logging\VNC.Logging.csproj">
+      <Project>{0a14cb8d-94e2-4bd4-bab3-1dc242d49f03}</Project>
+      <Name>VNC.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\VNC.WPF.Presentation.Dx\VNC.WPF.Presentation.Dx.csproj">
+      <Project>{4D03FB82-471E-41B3-BEF7-6788215D89A2}</Project>
+      <Name>VNC.WPF.Presentation.Dx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\VNC.WPF.Presentation\VNC.WPF.Presentation.csproj">
+      <Project>{d26cc080-8055-49dc-a176-8a6d4134ac58}</Project>
+      <Name>VNC.WPF.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VNC.AddinHelper\VNC.AddinHelper.csproj">
+      <Project>{dcd47414-b5df-490a-a72b-cd66c68c9973}</Project>
+      <Name>VNC.AddinHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\ModuleA\ModuleA.csproj">
+      <Project>{3d9a8549-a7a8-4df9-829e-aeae7ecacaca}</Project>
+      <Name>ModuleA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SupportTools_Visio.Infrastructure\SupportTools_Visio.Infrastructure.csproj">
+      <Project>{bb1193ec-4836-4850-a4c4-0cd639ec39f5}</Project>
+      <Name>SupportTools_Visio.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.3.3.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.3.3.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <!-- <ItemGroup> -->
+  <!-- <PackageReference Include="EnterpriseLibrary.Logging"> -->
+  <!-- <Version>6.0.1304</Version> -->
+  <!-- </PackageReference> -->
+  <!-- <PackageReference Include="ExcelDataReader"> -->
+  <!-- <Version>3.6.0</Version> -->
+  <!-- </PackageReference> -->
+  <!-- <PackageReference Include="LinqToExcel_x64"> -->
+  <!-- <Version>1.10.1</Version> -->
+  <!-- </PackageReference> -->
+  <!-- <PackageReference Include="log4net"> -->
+  <!-- <Version>2.0.8</Version> -->
+  <!-- </PackageReference> -->
+  <!-- <PackageReference Include="ManagedEsent"> -->
+  <!-- <Version>1.9.4</Version> -->
+  <!-- </PackageReference> -->
+  <!-- <PackageReference Include="Microsoft.CodeAnalysis"> -->
+  <!-- <Version>3.1.0</Version> -->
+  <!-- </PackageReference> -->
+  <!-- <PackageReference Include="Microsoft.CodeAnalysis.Analyzers"> -->
+  <!-- <Version>2.9.3</Version> -->
+  <!-- <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets> -->
+  <!-- <PrivateAssets>all</PrivateAssets> -->
+  <!-- </PackageReference> -->
+  <!-- <PackageReference Include="SharpZipLib"> -->
+  <!-- <Version>1.1.0</Version> -->
+  <!-- </PackageReference> -->
+  <!-- <PackageReference Include="SQLitePCLRaw.bundle_green"> -->
+  <!-- <Version>1.1.14</Version> -->
+  <!-- </PackageReference> -->
+  <!-- <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3.linux"> -->
+  <!-- <Version>1.1.14</Version> -->
+  <!-- </PackageReference> -->
+  <!-- <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3.osx"> -->
+  <!-- <Version>1.1.14</Version> -->
+  <!-- </PackageReference> -->
+  <!-- <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3.v110_xp"> -->
+  <!-- <Version>1.1.14</Version> -->
+  <!-- </PackageReference> -->
+  <!-- <PackageReference Include="System.Composition"> -->
+  <!-- <Version>1.2.0</Version> -->
+  <!-- </PackageReference> -->
+  <!-- <PackageReference Include="System.Console"> -->
+  <!-- <Version>4.3.1</Version> -->
+  <!-- </PackageReference> -->
+  <!-- <PackageReference Include="System.Security.Cryptography.Algorithms"> -->
+  <!-- <Version>4.3.1</Version> -->
+  <!-- </PackageReference> -->
+  <!-- <PackageReference Include="System.Security.Cryptography.X509Certificates"> -->
+  <!-- <Version>4.3.2</Version> -->
+  <!-- </PackageReference> -->
+  <!-- <PackageReference Include="System.Text.Encoding.CodePages"> -->
+  <!-- <Version>4.5.1</Version> -->
+  <!-- </PackageReference> -->
+  <!-- <PackageReference Include="System.ValueTuple"> -->
+  <!-- <Version>4.5.0</Version> -->
+  <!-- </PackageReference> -->
+  <!-- <PackageReference Include="System.Windows.Interactivity.WPF"> -->
+  <!-- <Version>2.0.20525</Version> -->
+  <!-- </PackageReference> -->
+  <!-- <PackageReference Include="System.Xml.ReaderWriter"> -->
+  <!-- <Version>4.3.1</Version> -->
+  <!-- </PackageReference> -->
+  <!-- </ItemGroup> -->
+  <!-- Include the build rules for a C# project. -->
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>VSTO40;DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>VSTO40;TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>VSTO40;DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>VSTO40;TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>16C68CAA76F58C97E3AE0B923C8D623BC866AA32</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>SupportTools_Visio_7_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- Include additional build rules for an Office application add-in. -->
+  <Import Project="$(VSToolsPath)\OfficeTools\Microsoft.VisualStudio.Tools.Office.targets" Condition="'$(VSToolsPath)' != ''" />
+  <!-- This section defines VSTO properties that describe the host-changeable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
+        <ProjectProperties HostName="Visio" HostPackage="{29A7B9D7-A7F1-4328-8EF0-6B2D1A56B2C1}" OfficeVersion="15.0" VstxVersion="4.0" ApplicationType="Visio" Language="cs" TemplatesPath="VSTOTemplates" DebugInfoExeName="#Software\Microsoft\Office\16.0\Visio\InstallRoot\Path#visio.exe" AddItemTemplatesGuid="{51063C3A-E220-4D12-8922-BDA915ACD783}" />
+        <Host Name="Visio" GeneratedCodeNamespace="Office2010Addin_Template_Visio" PublishedHash="69C324AB27932AA2FBF2B7EA72250886FF164DE6" IconIndex="0">
+          <HostItem Name="ThisAddIn" Code="ThisAddIn.cs" CanonicalName="AddIn" PublishedHash="FB585D7B9F127020DF6F19BEDEC5A16E99B67ED2" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.cs" />
+        </Host>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets'))" />
+    <Error Condition="!Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.osx.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.osx.targets'))" />
+    <Error Condition="!Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.Analyzers.3.3.0\build\Microsoft.CodeAnalysis.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.Analyzers.3.3.0\build\Microsoft.CodeAnalysis.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.Analyzers.3.3.0\build\Microsoft.CodeAnalysis.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.Analyzers.3.3.0\build\Microsoft.CodeAnalysis.Analyzers.targets'))" />
+    <Error Condition="!Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets'))" />
+  </Target>
+  <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets')" />
+  <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.osx.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.osx.targets')" />
+  <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets')" />
+  <Import Project="..\packages\Microsoft.CodeAnalysis.Analyzers.3.3.0\build\Microsoft.CodeAnalysis.Analyzers.targets" Condition="Exists('..\packages\Microsoft.CodeAnalysis.Analyzers.3.3.0\build\Microsoft.CodeAnalysis.Analyzers.targets')" />
+  <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" />
+</Project>

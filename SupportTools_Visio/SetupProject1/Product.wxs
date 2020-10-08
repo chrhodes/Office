@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="4E22729A-C0E3-4342-B17A-3266673C6AAF" Name="SupportTools_Visio" Language="1033" Version="1.0.0.0" Manufacturer="VNC" UpgradeCode="58866e70-1227-4205-8414-adb0712cd661">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<!--<MediaTemplate />-->
+    
+    <!--<Property Id="VSTORUNTIMEREDIST">
+      <RegistrySearch
+        Id="VSTORuntimeRedist"
+        Root="HKLM"
+        Key="SOFTWARE\Microsoft\VSTO Runtime Setup\v4R"
+        Name="Version"
+        Type="raw" />
+    </Property>
+    <Condition
+      Message="The Visual Studio 2010 Tools for Office Runtime is not installed. 
+  Please download and install from http://www.microsoft.com/en-us/download/details.aspx?id=20479.">
+      <![CDATA[Installed OR VSTORUNTIMEREDIST>="10.0.30319"]]>
+    </Condition>
+    
+    <PropertyRef Id="NETFRAMEWORK40FULL"/>
+    <Condition Message="This application requires .NET Framework 4.0.">
+      <![CDATA[Installed OR NETFRAMEWORK40FULL]]>
+    </Condition>-->
+        
+    <Media Id="1" Cabinet="SupportTools_Visio.cab" EmbedCab="yes"/>
+
+		<Feature Id="ProductFeature" Title="SupportTools_Visio Add-in" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+      <ComponentRef Id="Registry_FriendlyName" />
+      <ComponentRef Id="Registry_Description" />
+      <ComponentRef Id="Registry_Manifest" />
+      <ComponentRef Id="Registry_LoadBehavior" />
+		</Feature>
+    
+    <UIRef Id="WixUI_Minimal" />   
+    <WixVariable Id="WixUILicenseRtf" Value="EULA.rtf" />
+  
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="SupportTools_Visio" />
+          <Component Id="Registry_FriendlyName">
+            <RegistryValue Id="RegKey_FriendlyName" Root="HKCU"
+                           Key="Software\Microsoft\Office\Visio\AddIns\SupportTools_Visio"
+                           Name="FriendlyName"
+                           Value="SupportTools_Visio Add-In"
+                           Type="string" KeyPath="yes" />
+          </Component>        
+          <Component Id="Registry_Description">
+            <RegistryValue Id="RegKey_Description" Root="HKCU"
+                           Key="Software\Microsoft\Office\Visio\AddIns\SupportTools_Visio"
+                           Name="Description"
+                           Value="SupportTools_Visio Add-In description"
+                           Type="string" KeyPath="yes" />
+          </Component>
+          <Component Id="Registry_Manifest">
+            <RegistryValue Id="RegKey_Manifest" Root="HKCU"
+                           Key="Software\Microsoft\Office\Visio\AddIns\SupportTools_Visio"
+                           Name="Manifest" Value="[INSTALLFOLDER]SupportTools_Visio.vsto|vstolocal"
+                           Type="string" KeyPath="yes" />
+          </Component>
+          <Component Id="Registry_LoadBehavior">
+            <RegistryValue Id="RegKey_LoadBehavior" Root="HKCU"
+                           Key="Software\Microsoft\Office\Excel\AddIns\ExcelAddIn1"
+                           Name="LoadBehavior" Value="3"
+                           Type="integer" KeyPath="yes" />
+          </Component>
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+      <!-- TODO: Insert files, registry keys, and other resources here. -->
+      
+			<Component Id="SupportTools_Visio_vsto_Component">
+        <File Id="SupportTools_Visio_vsto" KeyPath="yes"
+              Name="SupportTools_Visio.vsto" Source="$(var.AddinFiles)" />
+			</Component>
+      
+      <Component Id="SupportTools_Visio_dll_manifest_Component">
+        <File Id="SupportTools_Visio_dll_manifest" KeyPath="yes"
+              Name="SupportTools_Visio.dll.manifest" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="CalcBinding_dll_Component">
+        <File Id="CalcBinding_dll" KeyPath="yes"
+              Name="CalcBinding.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="CommonServiceLocator_dll_Component">
+        <File Id="CommonServiceLocator_dll" KeyPath="yes"
+              Name="CommonServiceLocator.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="DevExpress_CodeParser_v19_2_dll_Component">
+         <File Id="DevExpress_CodeParser_v19_2_dll" KeyPath="yes"
+               Name="DevExpress.CodeParser.v19.2.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="DevExpress_Data_v19_2_dll_Component">
+         <File Id="DevExpress_Data_v19_2_dll" KeyPath="yes"
+               Name="DevExpress.Data.v19.2.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      <Component Id="DevExpress_Images_v19_2_dll_Component">
+         <File Id="DevExpress_Images_v19_2_dll" KeyPath="yes"
+               Name="DevExpress.Images.v19.2.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="DevExpress_Mvvm_v19_2_dll_Component">
+         <File Id="DevExpress_Mvvm_v19_2_dll" KeyPath="yes"
+               Name="DevExpress.Mvvm.v19.2.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="DevExpress_Office_v19_2_Core_dll_Component">
+         <File Id="DevExpress_Office_v19_2_Core_dll" KeyPath="yes"
+               Name="DevExpress.Office.v19.2.Core.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="DevExpress_Pdf_v19_2_Core_dll_Component">
+         <File Id="DevExpress_Pdf_v19_2_Core_dll" KeyPath="yes"
+               Name="DevExpress.Pdf.v19.2.Core.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="DevExpress_Printing_v19_2_Core_dll_Component">
+         <File Id="DevExpress_Printing_v19_2_Core_dll" KeyPath="yes"
+               Name="DevExpress.Printing.v19.2.Core.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="DevExpress_RichEdit_v19_2_Core_dll_Component">
+         <File Id="DevExpress_RichEdit_v19_2_Core_dll" KeyPath="yes"
+               Name="DevExpress.RichEdit.v19.2.Core.dll" Source="$(var.AddinFiles)" />
+      </Component>
+        
+      <Component Id="DevExpress_RichEdit_v19_2_Export_dll_Component">
+         <File Id="DevExpress_RichEdit_v19_2_Export_dll" KeyPath="yes"
+               Name="DevExpress.RichEdit.v19.2.Export.dll" Source="$(var.AddinFiles)" />
+      </Component>      
+      <Component Id="DevExpress_Sparkline_v19_2_Core_dll_Component">
+         <File Id="DevExpress_Sparkline_v19_2_Core_dll" KeyPath="yes"
+               Name="DevExpress.Sparkline.v19.2.Core.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      <Component Id="DevExpress_Utils_v19_2_dll_Component">
+         <File Id="DevExpress_Utils_v19_2_dll" KeyPath="yes"
+               Name="DevExpress.Utils.v19.2.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="DevExpress_Xpf_CodeView_v19_2_dll_Component">
+         <File Id="DevExpress_Xpf_CodeView_v19_2_dll" KeyPath="yes"
+               Name="DevExpress.Xpf.CodeView.v19.2.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="DevExpress_Xpf_Core_v19_2_dll_Component">
+         <File Id="DevExpress_Xpf_Core_v19_2_dll" KeyPath="yes"
+               Name="DevExpress.Xpf.Core.v19.2.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="DevExpress_Xpf_Docking_v19_2_dll_Component">
+         <File Id="DevExpress_Xpf_Docking_v19_2_dll" KeyPath="yes"
+               Name="DevExpress.Xpf.Docking.v19.2.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="DevExpress_Xpf_DocumentViewer_v19_2_Core_dll_Component">
+         <File Id="DevExpress_Xpf_DocumentViewer_v19_2_Core_dll" KeyPath="yes"
+               Name="DevExpress.Xpf.DocumentViewer.v19.2.Core.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="DevExpress_Xpf_Grid_v19_2_Core_dll_Component">
+         <File Id="DevExpress_Xpf_Grid_v19_2_Core_dll" KeyPath="yes"
+               Name="DevExpress.Xpf.Grid.v19.2.Core.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+          <Component Id="DevExpress_Xpf_Grid_v19_2_dll_Component">
+         <File Id="DevExpress_Xpf_Grid_v19_2_dll" KeyPath="yes"
+               Name="DevExpress.Xpf.Grid.v19.2.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="DevExpress_Xpf_Layout_v19_2_Core_dll_Component">
+         <File Id="DevExpress_Layout_v19_2_Core_dll" KeyPath="yes"
+               Name="DevExpress.Xpf.Layout.v19.2.Core.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="DevExpress_LayoutControl_v19_2_dll_Component">
+         <File Id="DevExpress_LayoutControl_v19_2_dll" KeyPath="yes"
+               Name="DevExpress.Xpf.LayoutControl.v19.2.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="DevExpress_Xpf_Printing_v19_2_dll_Component">
+         <File Id="DevExpress_Xpf_Printing_v19_2_dll" KeyPath="yes"
+               Name="DevExpress.Xpf.Printing.v19.2.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="DevExpress_Xpf_Ribbon_v19_2_dll_Component">
+         <File Id="DevExpress_Xpf_Ribbon_v19_2_dll" KeyPath="yes"
+               Name="DevExpress.Xpf.Ribbon.v19.2.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="DevExpress_Xpf_Themes_MetropolisDark_v19_2_dll_Component">
+         <File Id="DevExpress_Xpf_Themes_MetroploisDark_v19_2_dll" KeyPath="yes"
+               Name="DevExpress.Xpf.Themes.MetropolisDark.v19.2.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="DevExpress_Xpf_Themes_MetropolisLight_v19_2_dll_Component">
+         <File Id="DevExpress_Xpf_Themes_MetroploisLight_v19_2_dll" KeyPath="yes"
+               Name="DevExpress.Xpf.Themes.MetropolisLight.v19.2.dll" Source="$(var.AddinFiles)" />
+      </Component>   
+      
+      <Component Id="DevExpress_XtraEditors_v19_2_dll_Component">
+         <File Id="DevExpress_XtraEditors_v19_2_dll" KeyPath="yes"
+               Name="DevExpress.XtraEditors.v19.2.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      <Component Id="DynamicExpresso_Core_dll_Component">
+         <File Id="DynamicExpresso_Core_dll" KeyPath="yes"
+               Name="DynamicExpresso.Core.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="EntityFramework_dll_Component">
+         <File Id="EntityFramework_dll" KeyPath="yes"
+               Name="EntityFramework.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="ExcelDataReader_DataSet_dll_Component">
+         <File Id="ExcelDataReader_DataSet_dll" KeyPath="yes"
+               Name="ExcelDataReader.DataSet.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="ExcelDataReader_dll_Component">
+         <File Id="ExcelDataReader_dll" KeyPath="yes"
+               Name="ExcelDataReader.dll" Source="$(var.AddinFiles)" />
+      </Component>
+  
+      <Component Id="ICSharpCode_SharpZipLib_dll_Component">
+         <File Id="ICSharpCode_SharpZipLib_dll" KeyPath="yes"
+               Name="ICSharpCode.SharpZipLib.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="LinqToExcel_dll_Component">
+         <File Id="LinqToExcel_dll" KeyPath="yes"
+               Name="LinqToExcel.dll" Source="$(var.AddinFiles)" />
+      </Component>
+               
+      <Component Id="Microsoft_AspNet_SignalR_Client_dll_Component">
+         <File Id="Microsoft_AspNet_SignalR_Client_dll" KeyPath="yes"
+               Name="Microsoft.AspNet.SignalR.Client.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="Microsoft_AspNet_SignalR_Core_dll_Component">
+         <File Id="Microsoft_AspNet_SignalR_Core_dll" KeyPath="yes"
+               Name="Microsoft.AspNet.SignalR.Core.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="Microsoft_CodeAnalysis_CSharp_dll_Component">
+         <File Id="Microsoft_CodeAnalysis_CSharp_dll" KeyPath="yes"
+               Name="Microsoft.CodeAnalysis.CSharp.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="Microsoft_CodeAnalysis_CSharp_Workspaces_dll_Component">
+         <File Id="Microsoft_CodeAnalysis_CSharp_Workspaces_dll" KeyPath="yes"
+               Name="Microsoft.CodeAnalysis.CSharp.Workspaces.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="Microsoft_CodeAnalysis_dll_Component">
+         <File Id="Microsoft_CodeAnalysis_dll" KeyPath="yes"
+               Name="Microsoft.CodeAnalysis.dll" Source="$(var.AddinFiles)" />
+      </Component>
+               
+      <Component Id="Microsoft_CodeAnalysis_VisualBasic_dll_Component">
+         <File Id="Microsoft_CodeAnalysis_VisualBasic_dll" KeyPath="yes"
+               Name="Microsoft.CodeAnalysis.VisualBasic.dll" Source="$(var.AddinFiles)" />
+      </Component>
+
+      <Component Id="Microsoft_CodeAnalysis_VisualBasic_Workspaces_dll_Component">
+         <File Id="Microsoft_CodeAnalysis_VisualBasic_Workspaces_dll" KeyPath="yes"
+               Name="Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="Microsoft_CodeAnalysis_Workspaces_dll_Component">
+         <File Id="Microsoft_CodeAnalysis_Workspaces_dll" KeyPath="yes"
+               Name="Microsoft.CodeAnalysis.Workspaces.dll" Source="$(var.AddinFiles)" />
+      </Component>   
+               
+      <Component Id="Microsoft_Expression_Interactions_dll_Component">
+         <File Id="Microsoft_Expression_Interactions_dll" KeyPath="yes"
+               Name="Microsoft.Expression.Interactions.dll" Source="$(var.AddinFiles)" />
+      </Component>                  
+               
+      <Component Id="Microsoft_Office_Tools_Common_v40_Utilities_dll_Component">
+         <File Id="Microsoft_Office_Tools_Common_v40_Utilities_dll" KeyPath="yes"
+               Name="Microsoft.Office.Tools.Common.v4.0.Utilities.dll" Source="$(var.AddinFiles)" />
+      </Component>
+
+      <Component Id="Microsoft_Office_Tools_v40_Framework_dll_Component">
+         <File Id="Microsoft_Office_Tools_v40_Framework_dll" KeyPath="yes"
+               Name="Microsoft.Office.Tools.v4.0.Framework.dll" Source="$(var.AddinFiles)" />
+      </Component>
+               
+      <Component Id="Microsoft_Owin_Cors_dll_Component">
+         <File Id="Microsfot_Owin_Cors_dll" KeyPath="yes"
+               Name="Microsoft.Owin.Cors.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="Microsoft_Owin_dll_Component">
+         <File Id="Microsfot_Owin_dll" KeyPath="yes"
+               Name="Microsoft.Owin.dll" Source="$(var.AddinFiles)" />
+      </Component>
+               
+      <Component Id="Microsoft_Practices_EnterpriseLibrary_Common_dll_Component">
+         <File Id="Microsoft_Practices_EnterpriseLibrary_Common_dll" KeyPath="yes"
+               Name="Microsoft.Practices.EnterpriseLibrary.Common.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="Microsoft_Practices_EnterpriseLibrary_Logging_dll_Component">
+         <File Id="Microsoft_Practices_EnterpriseLibrary_Logging_dll" KeyPath="yes"
+               Name="Microsoft.Practices.EnterpriseLibrary.Logging.dll" Source="$(var.AddinFiles)" />
+      </Component>      
+               
+      <Component Id="Microsoft_VisualStudio_Tools_Applications_Runtime_dll_Component">
+         <File Id="Microsoft_VisualStudio_Tools_Applications_Runtime_dll" KeyPath="yes"
+               Name="Microsoft.VisualStudio.Tools.Applications.Runtime.dll" Source="$(var.AddinFiles)" />
+      </Component>               
+    
+      <Component Id="ModuleA_dll_Component">
+         <File Id="ModuleA_dll" KeyPath="yes"
+               Name="ModuleA.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+       <Component Id="Newtonsoft_Json_dll_Component">
+         <File Id="Newtonsoft_Json_dll" KeyPath="yes"
+               Name="Newtonsoft.Json.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="Owin_dll_Component">
+         <File Id="Owin_dll" KeyPath="yes"
+               Name="Owin.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="Prism_dll_Component">
+         <File Id="Prism_dll" KeyPath="yes"
+               Name="Prism.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="Prism_Unity_Wpf_dll_Component">
+         <File Id="Prism_Unity_Wpf_dll" KeyPath="yes"
+               Name="Prism.Unity.Wpf.dll" Source="$(var.AddinFiles)" />
+      </Component>      
+     
+      <Component Id="Remotion_Interfaces_dll_Component">
+         <File Id="Remotion_Interfaces_dll" KeyPath="yes"
+               Name="Remotion.Interfaces.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="SupportTools_Visio_dll_Component">
+<<<<<<< HEAD
+        <File Id="SupportTools_Visio_dll" KeyPath="yes"
+              Name="SupportTools_Visio.dll" Source="$(var.AddinFiles)" />
+      </Component>
+
+      <Component Id="SupportTools_Visio_dll_config_Component">
+        <File Id="SupportTools_Visio_dll_config" KeyPath="yes"
+              Name="SupportTools_Visio.dll.config" Source="$(var.AddinFiles)" />
+=======
+         <File Id="SupportTools_Visio_dll" KeyPath="yes"
+               Name="SupportTools_Visio.dll" Source="$(var.AddinFiles)" />
+      </Component>
+               
+      <Component Id="SupportTools_Visio_dll_config_Component">
+         <File Id="SupportTools_Visio_dll_config" KeyPath="yes"
+               Name="SupportTools_Visio.dll.config" Source="$(var.AddinFiles)" />
+>>>>>>> 612a851416ddd4beb0203b5eba6fdbe820a68f91
+      </Component>
+      
+      <Component Id="SupportTools_Visio_Infrastructure_dll_Component">
+         <File Id="SupportTools_Visio_Infrastructure_dll" KeyPath="yes"
+               Name="SupportTools_Visio.Infrastructure.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="System_Collections_Immutable_dll_Component">
+         <File Id="VSystem_Collections_Immutable_dll" KeyPath="yes"
+               Name="System.Collections.Immutable.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="System_Runtime_CompilerServices_Unsafe_dll_Component">
+         <File Id="System_Runtime_CompilerServices_Unsafe_dll" KeyPath="yes"
+               Name="System.Runtime.CompilerServices.Unsafe.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="System_Windows_Interactivity_dll_Component">
+         <File Id="System_Windows_Interactivity_dll" KeyPath="yes"
+               Name="System.Windows.Interactivity.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="Unity_Abstractions_dll_Component">
+         <File Id="Unity_Abstractions_dll" KeyPath="yes"
+               Name="Unity.Abstractions.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="Unity_Container_dll_Component">
+         <File Id="Unity_Container_dll" KeyPath="yes"
+               Name="Unity.Container.dll" Source="$(var.AddinFiles)" />
+      </Component>
+      
+      <Component Id="VNC_AddinHelper_dll_Component">
+         <File Id="VNC_AddinHelper_dll" KeyPath="yes"
+               Name="VNC.AddinHelper.dll" Source="$(var.AddinFiles)" />
+      </Component>
+        
+      <Component Id="VNC_AssemblyHelper_dll_Component">
+         <File Id="VNC_AssemblyHelper_dll" KeyPath="yes"
+               Name="VNC.AssemblyHelper.dll" Source="$(var.AddinFiles)" />
+      </Component>
+        
+      <Component Id="VNC_CodeAnalysis_dll_Component">
+         <File Id="VNC_CodeAnalysis_dll" KeyPath="yes"
+               Name="VNC.CodeAnalysis.dll" Source="$(var.AddinFiles)" />
+      </Component>   
+  
+      <Component Id="VNC_Code_dll_Component">
+         <File Id="VNC_Core_dll" KeyPath="yes"
+               Name="VNC.Core.dll" Source="$(var.AddinFiles)" />
+      </Component>   
+   
+      <Component Id="VNC_Helper_dll_Component">
+         <File Id="VNC_Helper_dll" KeyPath="yes"
+               Name="VNC.Helper.dll" Source="$(var.AddinFiles)" />
+      </Component>   
+
+        <Component Id="VNC_Logging_dll_Component">
+         <File Id="VNC_Logging_dll" KeyPath="yes"
+               Name="VNC.Logging.dll" Source="$(var.AddinFiles)" />
+      </Component>   
+ 
+        <Component Id="VNC_WPF_Presentation_dll_Component">
+         <File Id="VNC_WPF_Presentation_dll" KeyPath="yes"
+               Name="VNC.WPF.Presentation.dll" Source="$(var.AddinFiles)" />
+      </Component>
+    
+      <Component Id="VNC_WPF_Presentation_Dx_dll_Component">
+         <File Id="VNC_WPF_Presentation_Dx_dll" KeyPath="yes"
+               Name="VNC.WPF.Presentation.Dx.dll" Source="$(var.AddinFiles)" />
+      </Component>
+
+      <Component Id="VNC_XamlHelper_dll_Component">
+         <File Id="VNC_XamlHelper_dll" KeyPath="yes"
+               Name="VNC.XamlHelper.dll" Source="$(var.AddinFiles)" />
+      </Component>  
+		</ComponentGroup>
+  
+	</Fragment>
+
+</Wix>

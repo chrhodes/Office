@@ -1,0 +1,322 @@
+﻿<UserControl x:Class="SupportTools_Excel.User_Interface.User_Controls.wucTaskPane_SMO"
+    xmlns:User_Controls="clr-namespace:SupportTools_Excel.User_Interface.User_Controls"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:uiuc="clr-namespace:SupportTools_Excel.User_Interface.User_Controls"
+    xmlns:vncWPF="clr-namespace:VNC.WPF.Presentation.Views;assembly=VNC.WPF.Presentation"           
+    mc:Ignorable="d" Loaded="UserControl_Loaded"
+    d:DesignHeight="900" d:DesignWidth="400">
+
+    <dxlc:LayoutControl x:Name="layoutItems" Orientation="Vertical" Background="#FFFFFF">
+
+        <dxlc:LayoutGroup>
+            <dxlc:LayoutItem MinWidth="30" VerticalAlignment="Top" >
+                <vncWPF:CylonEyeBall />
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+        
+        <dxlc:LayoutItem
+            Label="SQL Management Objects (SMO) Explorer"
+            LabelPosition="Top">
+            <User_Controls:wucSQLInstance_Picker x:Name="wucSQLInstance_Picker1" />
+        </dxlc:LayoutItem>
+
+        <dxlc:LayoutGroup  Header="Authenticate" Background="Yellow"
+            View="GroupBox" Orientation="Horizontal"
+            VerticalAlignment="Top"
+            IsCollapsible="True" IsCollapsed="False">
+
+            <dxlc:LayoutGroup
+                View="Group"
+                MinWidth="75"
+                Orientation="Vertical" VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                IsCollapsible="True"  IsCollapsed="False">
+
+                <dxlc:LayoutItem>
+                    <Button x:Name="btnLogon"
+				        Content="Logon"
+                        Click="btnLogon_Click"
+                    ToolTip="Logon ToolTip" />
+                </dxlc:LayoutItem>
+
+                <dxlc:LayoutItem>
+                    <Button x:Name="btnLogoff"
+				        Content="Logoff"
+                        Click="btnLogoff_Click"
+                        ToolTip="Logoff ToolTip" />
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+
+            <dxlc:LayoutGroup
+                View="Group"
+                Orientation="Vertical" VerticalAlignment="Center"
+                IsCollapsible="True"  IsCollapsed="False" Margin="5,0,0,0">
+
+                <dxlc:LayoutItem>
+                    <dxe:CheckEdit x:Name="ceIntegratedSecurity"
+                    Content="Use Integrated Security"
+                    IsChecked="True" />
+                </dxlc:LayoutItem>
+
+                <dxlc:LayoutItem Label="UserName">
+                    <dxe:TextEdit x:Name="teUserName"
+                              ToolTip="UserName Tooltip." />
+                </dxlc:LayoutItem>
+
+                <dxlc:LayoutItem Label="Password">
+                    <dxe:TextEdit x:Name="tePassword"
+                              ToolTip="Password Tooltip." />
+                </dxlc:LayoutItem>
+
+                <dxlc:LayoutItem Label="Password">
+                    <dxe:PasswordBoxEdit x:Name="pbePassword"
+                              ToolTip="Password Tooltip." />
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+        </dxlc:LayoutGroup>
+
+        <dxlc:LayoutGroup Header="Instance Operations"
+            View="GroupBox"
+            Orientation="Vertical" VerticalAlignment="Top"
+            IsCollapsible="True"  IsCollapsed="False">
+
+            <dxlc:LayoutGroup Orientation="Vertical">
+
+                <dxlc:LayoutItem>
+                    <Button x:Name="btnCreateInstanceInfo_WorkSheet"
+				        Content="Instance Info Worksheet"
+                        ToolTip="Instance Info ToolTip"
+                        Click="btnCreateInstanceInfoWorkSheet_Click" />
+                </dxlc:LayoutItem>
+
+                <dxlc:LayoutItem HorizontalAlignment="Left">
+                    <dxe:CheckEdit x:Name="ceListInstanceDetails"
+                        Content="List Instance Details"
+                        IsChecked="True" />
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+
+            <dxlc:LayoutGroup
+                Header="Database Operations"
+                View="GroupBox" Orientation="Vertical"
+                HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                IsCollapsible="True"  IsCollapsed="False">
+
+                <!--<dxlc:LayoutItem>
+                    <Button x:Name="btnCreateDatabaseInfo_WorkSheets"
+				        Content="Database Info Worksheets"
+                        ToolTip="Databsaes Info ToolTip"
+                        Click="btnCreateDatabaseInfoWorkSheets_Click" Background="#FF03FFEB" />
+                </dxlc:LayoutItem>-->
+
+                <dxlc:LayoutGroup>
+
+                    <dxlc:LayoutGroup Orientation="Vertical">
+
+                        <dxlc:LayoutItem>
+                            <dxe:ComboBoxEdit x:Name="cbeDatabases"
+                                              SelectedIndexChanged="cbeDatabases_SelectedIndexChanged">
+                                <dxe:ComboBoxEdit.StyleSettings>
+                                    <dxe:CheckedComboBoxStyleSettings />
+                                </dxe:ComboBoxEdit.StyleSettings>
+                            </dxe:ComboBoxEdit>
+                        </dxlc:LayoutItem>
+
+                        <dxlc:LayoutItem>
+                            <Button x:Name="btnCreateDatabaseInfo_WorkSheet"
+				                Content="Database Info WS"
+                                ToolTip="Database Info ToolTip"
+                                Click="btnCreateDatabaseInfoWorkSheet_Click" />
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+                </dxlc:LayoutGroup>
+
+                <dxlc:LayoutGroup
+                    Header="Database Content Operations"
+                    View="GroupBox" Orientation="Vertical"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                    IsCollapsible="True"  IsCollapsed="False">
+
+                    <dxlc:LayoutGroup Orientation="Horizontal"
+                                      HorizontalAlignment="Center">
+
+                        <dxlc:LayoutItem>
+                            <dxe:CheckEdit x:Name="ceIncludeDBTables"
+                            Content="Tables"
+                            IsChecked="False" />
+                        </dxlc:LayoutItem>
+
+                        <dxlc:LayoutItem>
+                            <dxe:CheckEdit x:Name="ceIncludeDBViews"
+                            Content="Views"
+                            IsChecked="False" />
+                        </dxlc:LayoutItem>
+
+                        <dxlc:LayoutItem>
+                            <dxe:CheckEdit x:Name="ceIncludeDBStoredProcedures"
+                            Content="Stored Procs"
+                            IsChecked="False" />
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+
+                    <dxlc:LayoutItem>
+                        <Button x:Name="btnLoadDatabaseContentComboBoxes"
+				                Content="Load Database Content ComboBoxes"
+                                ToolTip="Database Info ToolTip"
+                                Click="btnLoadDatabaseContentComboBoxes_Click" />
+                    </dxlc:LayoutItem>
+
+                    <dxlc:LayoutGroup
+                        Header="Table Operations"
+                        View="GroupBox" Orientation="Vertical"
+                        HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                        IsCollapsible="True"  IsCollapsed="False">
+
+                        <!--<dxlc:LayoutItem>
+                        <Button x:Name="btnCreateTableInfo_WorkSheets"
+				        Content="Table Info Worksheets"
+                        ToolTip="Tables Info ToolTip"
+                        Click="btnCreateTableInfoWorkSheets_Click" Background="#FF00FFEB" />
+                    </dxlc:LayoutItem>-->
+
+                        <dxlc:LayoutGroup Orientation="Vertical">
+
+                            <dxlc:LayoutItem>
+                                <dxe:ComboBoxEdit x:Name="cbeTables">
+                                    <dxe:ComboBoxEdit.StyleSettings>
+                                        <dxe:CheckedComboBoxStyleSettings />
+                                    </dxe:ComboBoxEdit.StyleSettings>
+                                </dxe:ComboBoxEdit>
+                            </dxlc:LayoutItem>
+
+                            <dxlc:LayoutItem>
+                                <Button x:Name="btnCreateTableInfo_WorkSheet"
+				                    Content="Table Info Worksheet"
+                                    ToolTip="Table Info ToolTip"
+                                    Click="btnCreateTableInfoWorkSheet_Click" />
+                            </dxlc:LayoutItem>
+
+                            <dxlc:LayoutItem>
+                                <Button x:Name="btnCreateTableMasterInfo_WorkSheet"
+				                    Content="Table Info Master WS"
+                                    ToolTip="Table Info ToolTip"
+                                    Click="btnCreateTableInfoMasterWorkSheet_Click" Background="#FF85F585" />
+                            </dxlc:LayoutItem>
+
+                            <dxlc:LayoutItem HorizontalAlignment="Left">
+                                <dxe:CheckEdit x:Name="ceIncludeSystemTables"
+                                    Content="Include System Tables"
+                                    IsChecked="True" />
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                    </dxlc:LayoutGroup>
+
+                    <dxlc:LayoutGroup
+                        Header="View Operations"
+                        View="GroupBox" Orientation="Vertical"
+                        HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                        IsCollapsible="True"  IsCollapsed="False">
+
+                        <!--<dxlc:LayoutItem>
+                        <Button x:Name="btnCreateViewInfo_WorkSheets"
+				        Content="View Info Worksheets"
+                        ToolTip="Views Info ToolTip"
+                        Click="btnCreateTableInfoWorkSheets_Click" Background="#FF00FFEB" />
+                    </dxlc:LayoutItem>-->
+
+                        <dxlc:LayoutGroup Orientation="Vertical">
+
+                            <dxlc:LayoutItem>
+                                <dxe:ComboBoxEdit x:Name="cbeViews">
+                                    <dxe:ComboBoxEdit.StyleSettings>
+                                        <dxe:CheckedComboBoxStyleSettings />
+                                    </dxe:ComboBoxEdit.StyleSettings>
+                                </dxe:ComboBoxEdit>
+                            </dxlc:LayoutItem>
+
+                            <dxlc:LayoutGroup Orientation="Vertical">
+
+                                <dxlc:LayoutItem>
+                                    <Button x:Name="btnCreateViewInfo_WorkSheet"
+				                    Content="View Info Worksheet"
+                                    ToolTip="View Info ToolTip"
+                                    Click="btnCreateViewInfoWorkSheet_Click" />
+                                </dxlc:LayoutItem>
+
+                                <dxlc:LayoutItem HorizontalAlignment="Left">
+                                    <dxe:CheckEdit x:Name="ceIncludeSystemViews"
+                                    Content="Include System Views"
+                                    IsChecked="True" />
+                                </dxlc:LayoutItem>
+                            </dxlc:LayoutGroup>
+                        </dxlc:LayoutGroup>
+                    </dxlc:LayoutGroup>
+
+                    <dxlc:LayoutGroup
+                        Header="Stored Procedure Operations"
+                        View="GroupBox" Orientation="Vertical"
+                        HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                        IsCollapsible="True"  IsCollapsed="False">
+
+                        <!--<dxlc:LayoutItem>
+                        <Button x:Name="btnCreateStoredProcedureInfo_WorkSheets"
+				            Content="StoredProcedure Info Worksheets"
+                            ToolTip="StoredProcedures Info ToolTip"
+                            Click="btnCreateStoredProcedureInfoWorkSheets_Click" />
+                    </dxlc:LayoutItem>-->
+
+                        <dxlc:LayoutGroup Orientation="Vertical">
+
+                            <dxlc:LayoutItem>
+                                <dxe:ComboBoxEdit x:Name="cbeStoredProcedures">
+                                    <dxe:ComboBoxEdit.StyleSettings>
+                                        <dxe:CheckedComboBoxStyleSettings />
+                                    </dxe:ComboBoxEdit.StyleSettings>
+                                </dxe:ComboBoxEdit>
+                            </dxlc:LayoutItem>
+
+                            <dxlc:LayoutGroup Orientation="Vertical">
+
+                                <dxlc:LayoutItem>
+                                    <Button x:Name="btnCreateStoredProcedureInfo_WorkSheet"
+				                    Content="Stored Procedure Info Worksheet"
+                                    ToolTip="Stored Procedure Info ToolTip"
+                                    Click="btnCreateStoredProcedureInfoWorkSheet_Click" />
+                                </dxlc:LayoutItem>
+
+                                <dxlc:LayoutItem HorizontalAlignment="Left">
+                                    <dxe:CheckEdit x:Name="ceIncludeSystemStoredProcedures"
+                                    Content="Include System Stored Procedures"
+                                    IsChecked="True" />
+                                </dxlc:LayoutItem>
+                            </dxlc:LayoutGroup>
+                        </dxlc:LayoutGroup>
+                    </dxlc:LayoutGroup>
+                </dxlc:LayoutGroup>
+            </dxlc:LayoutGroup>
+        </dxlc:LayoutGroup>
+
+        <dxlc:LayoutGroup Header="Server Operations"
+            View="GroupBox" Orientation="Vertical"
+            VerticalAlignment="Top" HorizontalAlignment="Stretch"
+            IsCollapsible="True"  IsCollapsed="True">
+        </dxlc:LayoutGroup>
+
+        <dxlc:LayoutGroup Header="Configuration"
+            View="GroupBox" Orientation="Vertical"
+            VerticalAlignment="Top" HorizontalAlignment="Stretch"
+            IsCollapsible="True"  IsCollapsed="True">
+
+            <dxlc:LayoutItem HorizontalAlignment="Left">
+                <dxe:CheckEdit x:Name="ceOrientOutputVertically"
+                    Content="Orient Output Vertically"
+                    IsChecked="True" />
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
+</UserControl>

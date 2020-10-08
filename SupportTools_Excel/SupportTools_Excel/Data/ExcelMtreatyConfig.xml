@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ExcelMTreatyAdmin>
+	<EnvironmentList>
+		<Environment Name="Production"	Path="\\LifeNas115\DataServices\Production\M_Treaty_Reporting" />
+		<Environment Name="Staging"		Path="\\LifeNas215\DataServices\QA_Staging\M_Treaty_Reporting" />
+		<Environment Name="Test"		Path="\\LifeNas215\DataServices\ITEST\M_Treaty_Reporting" />
+		<Environment Name="Dev"			Path="\\LifeNas215\DataServices\IDEV\M_Treaty_Reporting" />
+	</EnvironmentList>
+	<FileTypeList>
+		<FileType Name="FundServiceFees" 			Frequency="Weekly"		RelativePath="CorporateFinance_FundServiceFees" />  
+		<FileType Name="FundAdvisoryFees" 			Frequency="Monthly"		RelativePath="CorporateFinance_FundAdvisoryFees" />		
+		<FileType Name="CashManagementFees" 		Frequency="Monthly"		RelativePath="LifeFinancialReporting_CashManagementFees" />  
+		<FileType Name="VITsFees" 					Frequency="Quarterly"	RelativePath="LifeReinsurance_VITSFees" /> 
+		<FileType Name="ExcludedPolicies" 			Frequency="Yearly"		RelativePath="LifeReinsurance_ExcludedPolicies" />  		
+		<FileType Name="PolicyValueAdjustments" 	Frequency=""			RelativePath="LifeReinsurance_ManualPolicyValueAdjustments" />  
+		<FileType Name="SettlementFinancialValues" 	Frequency=""			RelativePath="LifeReinsurance_SettlementFinancialValues" /> 		
+	</FileTypeList>
+</ExcelMTreatyAdmin>

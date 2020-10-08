@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupportTools_PowerPoint", "SupportTools_PowerPoint\SupportTools_PowerPoint.csproj", "{A0D095A6-85C7-4E21-8C92-7705712F3B30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VNC.AddinHelper", "..\AddinHelper\AddinHelper\VNC.AddinHelper.csproj", "{DCD47414-B5DF-490A-A72B-CD66C68C9973}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		All|Any CPU = All|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0D095A6-85C7-4E21-8C92-7705712F3B30}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{A0D095A6-85C7-4E21-8C92-7705712F3B30}.All|Any CPU.Build.0 = Release|Any CPU
+		{A0D095A6-85C7-4E21-8C92-7705712F3B30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0D095A6-85C7-4E21-8C92-7705712F3B30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0D095A6-85C7-4E21-8C92-7705712F3B30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0D095A6-85C7-4E21-8C92-7705712F3B30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCD47414-B5DF-490A-A72B-CD66C68C9973}.All|Any CPU.ActiveCfg = All|Any CPU
+		{DCD47414-B5DF-490A-A72B-CD66C68C9973}.All|Any CPU.Build.0 = All|Any CPU
+		{DCD47414-B5DF-490A-A72B-CD66C68C9973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCD47414-B5DF-490A-A72B-CD66C68C9973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCD47414-B5DF-490A-A72B-CD66C68C9973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCD47414-B5DF-490A-A72B-CD66C68C9973}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://vncdev.visualstudio.com/
+		SccProjectUniqueName0 = SupportTools_PowerPoint\\SupportTools_PowerPoint.csproj
+		SccProjectName0 = SupportTools_PowerPoint
+		SccAuxPath0 = https://vncdev.visualstudio.com
+		SccLocalPath0 = SupportTools_PowerPoint
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName1 = ..\\AddinHelper\\AddinHelper\\VNC.AddinHelper.csproj
+		SccProjectName1 = ../AddinHelper/AddinHelper
+		SccAuxPath1 = https://vncdev.visualstudio.com
+		SccLocalPath1 = ..\\AddinHelper\\AddinHelper
+		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+EndGlobal

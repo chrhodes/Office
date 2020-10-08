@@ -1,0 +1,63 @@
+﻿<UserControl
+    x:Class="SupportTools_Visio.Presentation.Views.ImageProperties"    
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+    xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"    
+    mc:Ignorable="d" 
+>
+
+    <dxlc:LayoutGroup 
+                	View="Group" Orientation="Horizontal" >
+
+        <dxlc:LayoutGroup 
+                	    View="Group" Orientation="Vertical" >
+
+            <dxlc:LayoutItem Label="Contrast">
+                <dxe:TextEdit Text="{Binding ImageProperties.Contrast}"
+    	                          ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="Gamma">
+                <dxe:TextEdit Text="{Binding ImageProperties.Gamma}"
+    	                          ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="Sharpen">
+                <dxe:TextEdit Text="{Binding ImageProperties.Sharpen}"
+    	                          ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="Brightness">
+                <dxe:TextEdit Text="{Binding ImageProperties.Brightness}"
+    	                          ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+        </dxlc:LayoutGroup>
+
+        <dxlc:LayoutGroup 
+                    	View="Group" Orientation="Vertical" >
+
+            <dxlc:LayoutItem Label="Blur">
+                <dxe:TextEdit Text="{Binding ImageProperties.Blur}"
+    	                          ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="Denoise">
+                <dxe:TextEdit Text="{Binding ImageProperties.Denoise}"
+    	                          ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="Transparency">
+                <dxe:TextEdit Text="{Binding ImageProperties.Transparency}"
+    	                          ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+
+        </dxlc:LayoutGroup>
+
+    </dxlc:LayoutGroup>
+</UserControl>

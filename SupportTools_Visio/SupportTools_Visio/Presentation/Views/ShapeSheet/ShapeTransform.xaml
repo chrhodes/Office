@@ -1,0 +1,78 @@
+﻿<UserControl
+    x:Class="SupportTools_Visio.Presentation.Views.ShapeTransform"    
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+    xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"    
+    mc:Ignorable="d" 
+>
+
+    <dxlc:LayoutGroup 
+        View="Group" Orientation="Horizontal" >
+                
+
+        <dxlc:LayoutGroup 
+                View="Group" Orientation="Vertical" >
+                    
+            <dxlc:LayoutItem Label="Width">
+                <dxe:TextEdit Text="{Binding ShapeTransform.Width}"
+    	                        ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="Height">
+                <dxe:TextEdit Text="{Binding ShapeTransform.Height}"
+    	                        ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="Angle">
+                <dxe:TextEdit Text="{Binding ShapeTransform.Angle}"
+    	                        ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+        </dxlc:LayoutGroup>
+
+        <dxlc:LayoutGroup 
+                View="Group" Orientation="Vertical" >
+                    
+            <dxlc:LayoutItem Label="PinX">
+                <dxe:TextEdit Text="{Binding ShapeTransform.PinX}"
+    	                        ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="PinY">
+                <dxe:TextEdit Text="{Binding ShapeTransform.PinY}"
+    	                        ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="LocPinX">
+                <dxe:TextEdit Text="{Binding ShapeTransform.LocPinX}"
+    	                        ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="LocPinY">
+                <dxe:TextEdit Text="{Binding ShapeTransform.LocPinY}"
+    	                        ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="FlipX">
+                <dxe:TextEdit Text="{Binding ShapeTransform.FlipX}"
+    	                        ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="FlipY">
+                <dxe:TextEdit Text="{Binding ShapeTransform.FlipY}"
+    	                        ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="ResizeMode">
+                <dxe:TextEdit Text="{Binding ShapeTransform.ResizeMode}"
+    	                        ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+
+        </dxlc:LayoutGroup>
+
+</UserControl>
