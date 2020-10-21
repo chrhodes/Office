@@ -138,11 +138,11 @@
     <Folder Include="Resources\Xaml\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\vnc\VNC.Core\VNC.Core.csproj">
+    <ProjectReference Include="..\..\..\..\vnc\VNC.Core\VNC.Core.csproj">
       <Project>{c4e954d3-2a7a-48d2-b212-8b9a96bfeb4f}</Project>
       <Name>VNC.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\vnc\VNC.Logging\VNC.Logging.csproj">
+    <ProjectReference Include="..\..\..\..\vnc\VNC.Logging\VNC.Logging.csproj">
       <Project>{0a14cb8d-94e2-4bd4-bab3-1dc242d49f03}</Project>
       <Name>VNC.Logging</Name>
     </ProjectReference>

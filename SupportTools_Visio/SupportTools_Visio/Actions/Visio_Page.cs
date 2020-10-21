@@ -7,6 +7,7 @@ using Visio = Microsoft.Office.Interop.Visio;
 using VisioHelper = VNC.AddinHelper.Visio;
 using AIH = VNC.AddinHelper;
 using VNC;
+using VNC.Core;
 using System.Text.RegularExpressions;
 using DevExpress.XtraRichEdit.Unicode.TextAnalyzer;
 using Microsoft.Office.Interop.Visio;

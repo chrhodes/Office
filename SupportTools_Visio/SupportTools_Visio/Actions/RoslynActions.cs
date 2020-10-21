@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
-using Microsoft.CodeAnalysis;
+using VNC.Core;
+
 using Visio = Microsoft.Office.Interop.Visio;
 using VisioHelper = VNC.AddinHelper.Visio;
-using VNC;
-using System.IO;
 
 namespace SupportTools_Visio.Actions
 {

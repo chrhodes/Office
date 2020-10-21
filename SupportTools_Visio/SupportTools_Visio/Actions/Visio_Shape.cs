@@ -8,6 +8,7 @@ using Visio = Microsoft.Office.Interop.Visio;
 using VisioHelper = VNC.AddinHelper.Visio;
 //using static VNC.Helper;
 using VNC;
+using VNC.Core;
 
 using System.Drawing;
 using DevExpress.XtraRichEdit.Model;

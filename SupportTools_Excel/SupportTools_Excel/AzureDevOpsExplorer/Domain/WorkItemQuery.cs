@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
+
+using DevExpress.Mvvm.Native;
 
 using VNC;
 using VNC.Core;
@@ -59,34 +62,65 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Domain
 
         private string GetWorkItemTypesFilter(Options_AZDO_TFS options)
         {
-            string filter;
+            StringBuilder filter = new StringBuilder();
 
             if (options.WorkItemTypes.Count == 1)
             {
-                filter = " AND [System.WorkItemType] == " + $"{ options.WorkItemTypes[0].WrapInSngQuotes() }";
+                filter.Append(" AND [System.WorkItemType] == " + $"{ options.WorkItemTypes[0].WrapInSngQuotes() }");
             }
             else
             {
-                filter = " AND ([System.WorkItemType] in (" + String.Join(",", options.WorkItemTypes) + ")";
+                filter.Append(" AND [System.WorkItemType] in (");
+
+                if (options.WorkItemTypes.Count >= 1)
+                {
+                    filter.Append('\'').Append(options.WorkItemTypes[0]).Append('\'');
+                }
+
+                if (options.WorkItemTypes.Count > 1)
+                {
+                    for (int i = 1; i < options.WorkItemTypes.Count; i++)
+                    {
+                        filter.Append(", '").Append(options.WorkItemTypes[i]).Append('\'');
+                    }
+                }
+
+                filter.Append(')');
             }
 
-            return filter;
+            return filter.ToString();
         }
 
         private string GetTeamProjectsFilter(Options_AZDO_TFS options)
         {
-            string filter;
+            StringBuilder filter = new StringBuilder();
 
             if (options.TeamProjects.Count == 1)
             {
-                filter = " AND [System.TeamProject] == " + $"{ options.TeamProjects[0].WrapInSngQuotes() }";
+                filter.Append( " AND [System.TeamProject] == " + $"{ options.TeamProjects[0].WrapInSngQuotes() })");
             }
             else
             {
-                filter = " AND ([System.TeamProject] in (" + String.Join(",", options.TeamProjects) + ")";
+                filter.Append( " AND [System.TeamProject] in (");
+
+                if (options.TeamProjects.Count >= 1)
+                {
+                    filter.Append('\'').Append(options.TeamProjects[0]).Append('\'');
+                }
+
+                if (options.TeamProjects.Count > 1)
+                {
+                    for (int i = 1; i < options.TeamProjects.Count; i++)
+                    {
+                        //filter.Append($", '{options.TeamProjects[i]}'");
+                        filter.Append(", '").Append(options.TeamProjects[i]).Append('\'');
+                    }
+                }
+
+                filter.Append(')');
             }
 
-            return filter;
+            return filter.ToString();
         }
 
         #endregion

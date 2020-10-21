@@ -1670,41 +1670,45 @@
     <WCFMetadataStorage Include="Service References\SalesforceSR\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\vnc\VNC.ActiveDirectoryHelper\VNC.ActiveDirectoryHelper.csproj">
+    <ProjectReference Include="..\..\..\vnc\VNC.ActiveDirectoryHelper\VNC.ActiveDirectoryHelper.csproj">
       <Project>{1032ce4c-4274-476a-8aef-7147241d4b4a}</Project>
       <Name>VNC.ActiveDirectoryHelper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\vnc\VNC.AssemblyHelper\VNC.AssemblyHelper.csproj">
+    <ProjectReference Include="..\..\..\vnc\VNC.AssemblyHelper\VNC.AssemblyHelper.csproj">
       <Project>{92da2719-d048-4cce-86c8-b18b7e6a06f0}</Project>
       <Name>VNC.AssemblyHelper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\vnc\VNC.Core\VNC.Core.csproj">
+    <ProjectReference Include="..\..\..\vnc\VNC.Core\VNC.Core.csproj">
       <Project>{c4e954d3-2a7a-48d2-b212-8b9a96bfeb4f}</Project>
       <Name>VNC.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\vnc\VNC.Logging\VNC.Logging.csproj">
+    <ProjectReference Include="..\..\..\vnc\VNC.Logging\VNC.Logging.csproj">
       <Project>{0a14cb8d-94e2-4bd4-bab3-1dc242d49f03}</Project>
       <Name>VNC.Logging</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\vnc\VNC.SMOHelper\VNC.SMOHelper.csproj">
+    <ProjectReference Include="..\..\..\vnc\VNC.SMOHelper\VNC.SMOHelper.csproj">
       <Project>{e572dfb9-4a2f-4d14-887d-0e5eb1d36b2f}</Project>
       <Name>VNC.SMOHelper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\vnc\VNC.SPHelper\VNC.SPHelper.csproj">
+    <ProjectReference Include="..\..\..\vnc\VNC.SPHelper\VNC.SPHelper.csproj">
       <Project>{f86a373b-1aa5-4559-bbc4-da22e31bf17d}</Project>
       <Name>VNC.SPHelper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\vnc\VNC.TFSHelper\VNC.TFSHelper.csproj">
+    <ProjectReference Include="..\..\..\vnc\VNC.TFSHelper\VNC.TFSHelper.csproj">
       <Project>{b80909b9-9929-4796-b8e9-b07433a98f62}</Project>
       <Name>VNC.TFSHelper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\vnc\VNC.WPF.Presentation.Dx\VNC.WPF.Presentation.Dx.csproj">
+    <ProjectReference Include="..\..\..\vnc\VNC.WPF.Presentation.Dx\VNC.WPF.Presentation.Dx.csproj">
       <Project>{ef9950a0-bf0e-4046-827c-f4186d15e286}</Project>
       <Name>VNC.WPF.Presentation.Dx</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\vnc\VNC.WPF.Presentation\VNC.WPF.Presentation.csproj">
+    <ProjectReference Include="..\..\..\vnc\VNC.WPF.Presentation\VNC.WPF.Presentation.csproj">
       <Project>{21e368be-7c86-42cf-aab7-123070fdc5ad}</Project>
       <Name>VNC.WPF.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\vnc\VNC.XamlHelper\VNC.XamlHelper.csproj">
+      <Project>{d7a74541-04c0-4172-8f17-c30c06290274}</Project>
+      <Name>VNC.XamlHelper</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\VNC.AddinHelper\VNC.AddinHelper.csproj">
       <Project>{dcd47414-b5df-490a-a72b-cd66c68c9973}</Project>

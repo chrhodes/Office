@@ -110,7 +110,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\vnc\VNC.Core\VNC.Core.csproj">
+    <ProjectReference Include="..\..\..\vnc\VNC.Core\VNC.Core.csproj">
       <Project>{c4e954d3-2a7a-48d2-b212-8b9a96bfeb4f}</Project>
       <Name>VNC.Core</Name>
     </ProjectReference>

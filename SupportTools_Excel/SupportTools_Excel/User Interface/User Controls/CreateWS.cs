@@ -1042,28 +1042,47 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
                 try
                 {
-                    TeamProject teamProject = VNCTFS.Helper.Get_TeamProject(AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer, teamProjectName.Trim());
-                    ProjectInfo projectInfo = AzureDevOpsExplorer.Presentation.Views.Server.CommonStructureService.GetProjectFromName(teamProject.Name);
+                    TeamProject teamProject = null;
+                    ProjectInfo projectInfo = null;
 
-                    insertAt = Section_TeamProject.AddSections(insertAt, teamProject, request.TPSections);
+                    if (request.TPSections.Count > 0 || request.VCSSections.Count > 0 || request.BSSections.Count > 0)
+                    {
+                        teamProject = VNCTFS.Helper.Get_TeamProject(AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer, teamProjectName.Trim());
+                        projectInfo = AzureDevOpsExplorer.Presentation.Views.Server.CommonStructureService.GetProjectFromName(teamProject.Name);
+                    }
 
-                    insertAt.IncrementRows();
 
-                    insertAt = Section_VersionControlServer.AddSections(insertAt, 
-                        options, 
-                        AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer, 
-                        teamProject, projectInfo, 
-                        request.VCSSections);
+                    if (request.TPSections.Count > 0)
+                    {
+                        insertAt = Section_TeamProject.AddSections(insertAt, teamProject, request.TPSections);
 
-                    insertAt.IncrementRows();
+                        insertAt.IncrementRows();
+                    }
 
-                    insertAt = Section_BuildServer.AddSections(insertAt, 
-                        options, 
-                        AzureDevOpsExplorer.Presentation.Views.Server.BuildServer, 
-                        teamProject, 
-                        request.BSSections);
+                    if (request.VCSSections.Count > 0)
+                    {
 
-                    insertAt.IncrementRows();
+                        insertAt = Section_VersionControlServer.AddSections(insertAt,
+                            options,
+                            AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer,
+                            teamProject, 
+                            projectInfo,
+                            request.VCSSections);
+
+                        insertAt.IncrementRows();
+                    }
+
+                    if (request.BSSections.Count > 0)
+                    {
+                        insertAt = Section_BuildServer.AddSections(insertAt,
+                            options,
+                            AzureDevOpsExplorer.Presentation.Views.Server.BuildServer,
+                            teamProject,
+                            request.BSSections);
+
+                        insertAt.IncrementRows();
+                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -1072,22 +1091,29 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                     insertAt = new XlHlp.XlLocation(insertAt.workSheet, row: 18, column: 1, options.OrientOutputVertically);
                 }
 
-                Project project = AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore.Projects[teamProjectName];
+                if (request.WISSections.Count > 0)
+                {
+                    Project project = AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore.Projects[teamProjectName];
 
-                insertAt = Section_WorkItemStore.AddSections(insertAt, options,
-                    AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore, 
-                    AzureDevOpsExplorer.Presentation.Views.Server.CommonStructureService,
-                    project, 
-                    request.WISSections);
+                    insertAt = Section_WorkItemStore.AddSections(insertAt, options,
+                        AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore,
+                        AzureDevOpsExplorer.Presentation.Views.Server.CommonStructureService,
+                        project,
+                        request.WISSections);
 
-                insertAt.IncrementRows();
+                    insertAt.IncrementRows();
+                }
 
-                ITestManagementTeamProject testManagementTeamProject = AzureDevOpsExplorer.Presentation.Views.Server.TestManagementService.GetTeamProject(project);
+                if (request.TMSections.Count > 0)
+                {
+                    Project project = AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore.Projects[teamProjectName];
+                    ITestManagementTeamProject testManagementTeamProject = AzureDevOpsExplorer.Presentation.Views.Server.TestManagementService.GetTeamProject(project);
 
-                insertAt = Section_TestManager.AddSections_TM(insertAt, 
-                    options,
-                    testManagementTeamProject,
-                    request.TMSections);
+                    insertAt = Section_TestManager.AddSections_TM(insertAt,
+                        options,
+                        testManagementTeamProject,
+                        request.TMSections);
+                }
 
                 XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
             }

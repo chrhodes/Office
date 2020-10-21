@@ -256,6 +256,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
                     itemCol.Add(teamProjectCollection.Uri);
                     //itemCol.Add(GetTeamProjectCollectionName(teamProjectCollection));
                     ((ServerViewModel)ViewModel).TeamProjectCollections.Add($"{teamProjectCollection.Uri}");
+                    Log.Trace($"Added: {teamProjectCollection.Uri}", Common.PROJECT_NAME, startTicks);
                 }
 
                 cbeTeamProjectCollections.SelectedIndex = -1;

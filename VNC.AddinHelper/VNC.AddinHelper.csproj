@@ -175,9 +175,6 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
-    <Reference Include="VNC.AssemblyHelper">
-      <HintPath>..\..\..\vnc\Common\VNC.AssemblyHelper.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -273,7 +270,11 @@
     <None Include="Diagrams\ExcelTypes.cd" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\vnc\VNC.Logging\VNC.Logging.csproj">
+    <ProjectReference Include="..\..\vnc\VNC.AssemblyHelper\VNC.AssemblyHelper.csproj">
+      <Project>{92da2719-d048-4cce-86c8-b18b7e6a06f0}</Project>
+      <Name>VNC.AssemblyHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\vnc\VNC.Logging\VNC.Logging.csproj">
       <Project>{0a14cb8d-94e2-4bd4-bab3-1dc242d49f03}</Project>
       <Name>VNC.Logging</Name>
     </ProjectReference>
