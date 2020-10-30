@@ -75,88 +75,6 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
         }
 
-        //private void CreateWS_All_TPC_Releases(Options_AZDO_TFS options)
-        //{
-        //    long startTicks = XlHlp.DisplayInWatchWindow("Begin");
-
-        //    try
-        //    {
-        //        XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "Releases"),
-        //            options);
-
-        //        XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Releases All Team Projects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
-
-        //        insertAt.MarkStart(XlHlp.MarkType.GroupTable);
-
-        //        Header_WorkItemStore.Add_TP_WorkItemDetails(insertAt);
-
-        //        foreach (var teamProjectName in options.TeamProjects)
-        //        {
-        //            long loopTicks = XlHlp.DisplayInWatchWindow($"Processing    {teamProjectName}");
-
-        //            Globals.ThisAddIn.Application.StatusBar = $"Processing    {teamProjectName}";
-
-        //            Project project = AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore.Projects[teamProjectName];
-
-        //            Body_WorkItemStore.Add_TP_WorkItemDetails(insertAt,
-        //                options, project.Name, "Release");
-
-        //            // Save with each loop so we loose less when things crash ;(
-
-        //            Globals.ThisAddIn.Application.ActiveWorkbook.Save();
-
-        //            XlHlp.DisplayInWatchWindow($"EndProcessing {teamProjectName}", loopTicks);
-
-        //            AZDOHelper.ProcessLoopDelay(options);
-        //        }
-
-        //        insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
-
-        //        insertAt.Group(insertAt.OrientVertical, hide: true);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.ToString());
-        //    }
-
-        //    XlHlp.DisplayInWatchWindow("End", startTicks);
-        //}
-
-        //void CreateWS_All_TP_Areas(Options_AZDO_TFS options)
-        //{
-        //    XlHlp.DisplayInWatchWindow(string.Format("{0}", MethodBase.GetCurrentMethod().Name));
-
-        //    try
-        //    {
-        //        string sheetName = XlHlp.SafeSheetName(string.Format("{0}", "All_TP_Areas"));
-
-        //        Worksheet ws = XlHlp.NewWorksheet(sheetName, beforeSheetName: "FIRST");
-
-        //        XlHlp.XlLocation insertAt = new XlHlp.XlLocation(ws, row: 5, column: 1, orientVertical: orientVertical);
-
-        //        XlHlp.AddTitledInfo(insertAt.AddRow(), "Areas All Team Projects", Server.TfsTeamProjectCollection.Name);
-
-        //        insertAt.MarkStart(XlHlp.MarkType.GroupTable);
-
-        //        //Add_TP_Areas(insertAt);
-
-        //        foreach (Microsoft.TeamFoundation.WorkItemTracking.Client.Project project in Server.WorkItemStore.Projects)
-        //        {
-        //            Globals.ThisAddIn.Application.StatusBar = "Processing " + project.Name;
-
-        //            //Add_TP_Areas(insertAt, project, out maxLastCreatedDate, out maxLastChangedDate, out maxLastRevisedDate);
-        //        }
-
-        //        insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", ws.Name));
-
-        //        insertAt.Group(insertAt.OrientVertical, hide: true);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.ToString());
-        //    }
-        //}
-
         private void CreateWS_VCS_ChangeSetInfo(int changesetId,
             string sectionsToDisplay,
             Options_AZDO_TFS options,
@@ -1005,28 +923,6 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
         }
 
-        //private void CreateWS_ConfigurationServerNodesInfo(ReadOnlyCollection<CatalogNode> childNodes, bool param1)
-        //{
-        //    long startTicks = Common.WriteToDebugWindow("CreateWS_ConfigurationServerNodesInfo(Start)");
-
-        //    foreach (CatalogNode childNode in childNodes)
-        //    {
-        //        CreateWS_ConfigurationServerNodesInfo(childNodes, false);
-        //    }
-
-        //    string sheetName = ExcelHlp.SafeSheetName("CSN>" + childNode.N.Name);
-        //    Worksheet ws = ExcelHlp.NewWorksheet(sheetName, beforeSheetName: "FIRST");
-
-        //    // Output starts here.  Each display method returns the output end point.
-
-        //    int startingRow = 2;
-
-        //    startingRow += AddSection_ConfigurationServerInfo(ws, configurationServer, startingRow, showDetails);
-        //    startingRow++;
-
-        //    Common.WriteToDebugWindow("CreateWS_ConfigurationServerNodesInfo(End)", startTicks);
-        //}
-
         private void CreateWS_TP(string teamProjectName,
             TeamProjectActionRequest request,
             Options_AZDO_TFS options)
@@ -1125,28 +1021,6 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
         }
 
-        //public void CreateWS_Query(
-        //    WorkItemStore workItemStore,
-        //    Options_AZDO_TFS options)
-        //{
-        //    long startTicks = XlHlp.DisplayInWatchWindow("Begin");
-
-        //    try
-        //    {
-        //        XlHlp.XlLocation insertAt = CreateNewWorksheet($"TPQ_{options.Query.Name}", options);
-
-        //        options.Query.ReplaceQueryTokens(options);
-
-        //        insertAt = Section_WorkItemStore.Add_Query(insertAt, options, "tblTPCQuery");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.ToString());
-        //    }
-
-        //    XlHlp.DisplayInWatchWindow("End", startTicks);
-        //}
-
         private void CreateWS_TP_Queries(
             WorkItemStore workItemStore,
             Project project,
@@ -1161,7 +1035,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
                 // TODO(crhodes)
                 // We don't support multiple queries yet.
-                // HOpe I don't regret not passing in the query stuff.
+                // Hope I don't regret not passing in the query stuff.
                 //foreach (string queryName in queries.Keys)
                 //{
                 //    insertAt = Section_WorkItemStore.Add_TP_Query(insertAt, options, project, queries[queryName], queryName);
@@ -1175,26 +1049,6 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
         }
 
-        //private void CreateWS_TP_Query(
-        //    Options_AZDO_TFS options,
-        //    Project project)
-        //{
-        //    long startTicks = XlHlp.DisplayInWatchWindow("Begin");
-
-        //    try
-        //    {
-        //        XlHlp.XlLocation insertAt = CreateNewWorksheet($"TPQ_{project.Name}", options);
-
-        //        insertAt = Section_WorkItemStore.Add_TP_Query(insertAt, options, project);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.ToString());
-        //    }
-
-        //    XlHlp.DisplayInWatchWindow("End", startTicks);
-        //}
-
         void CreateWS_TP_TemplateType(Options_AZDO_TFS options)
         {
             long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
@@ -1203,8 +1057,6 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "TPC", "Templates"),
                     options);
-
-                //TfsConfigurationServer tfsConfigServer = VNCTFS.Helper.Get_ConfigurationServer(wucTFSProvider_Picker.Uri);
 
                 ReadOnlyCollection<CatalogNode> teamProjectCollectionNodes = VNCTFS.Helper.Get_TeamProjectCollectionNodes(AzureDevOpsExplorer.Presentation.Views.Server.ConfigurationServer);
 

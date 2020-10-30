@@ -31,7 +31,9 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             XlHlp.AddLabeledInfo(insertAt.AddRow(), "Name:", tpc.Name);
 
-            insertAt = Section_WorkItemStore.Add_Info(insertAt, options, null);
+            // HACK(crhodes)
+            // Not sure why this is being called.  Passing null is throwing exception.
+            //insertAt = Section_WorkItemStore.Add_Info(insertAt, options, null);
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
 

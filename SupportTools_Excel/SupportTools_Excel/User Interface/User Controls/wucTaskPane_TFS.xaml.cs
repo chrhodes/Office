@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -13,7 +12,6 @@ using DevExpress.Xpf.Core;
 
 using Microsoft.Office.Interop.Excel;
 using Microsoft.TeamFoundation.Client;
-using Microsoft.TeamFoundation.Framework.Client;
 using Microsoft.TeamFoundation.VersionControl.Client;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
 
@@ -25,7 +23,6 @@ using SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels;
 using VNC;
 using VNC.TFS.User_Interface.User_Controls;
 
-using VNCTFS = VNC.TFS;
 using XlHlp = VNC.AddinHelper.Excel;
 
 namespace SupportTools_Excel.User_Interface.User_Controls
@@ -923,11 +920,6 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             RequestHandlers.ProcessCreateWorkSheet(CreateWS_All_TPC_Areas, GetOptions());
         }
 
-        //private void Get_TPC_Releases()
-        //{
-        //    RequestHandlers.ProcessCreateWorkSheet(CreateWS_All_TPC_Releases, GetOptions());
-        //}
-
         private void Get_TPC_Info()
         {
             long startTicks = XlHlp.DisplayInWatchWindow("Begin");
@@ -938,19 +930,13 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 RequestHandlers.SpeedUpStart();
 
-                // Get the Team Project Collections
+                //// Get the Team Project Collections
 
-                ReadOnlyCollection<CatalogNode> projectCollectionNodes = VNCTFS.Helper.Get_TeamProjectCollectionNodes(AzureDevOpsExplorer.Presentation.Views.Server.ConfigurationServer);
+                //ReadOnlyCollection<CatalogNode> projectCollectionNodes = VNCTFS.Helper.Get_TeamProjectCollectionNodes(AzureDevOpsExplorer.Presentation.Views.Server.ConfigurationServer);
 
-                // TODO(crhodes)
-                // Fix this to use the cbeTeamProjectCollection for only one
+                var tpc = AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.CatalogNode;
 
-                foreach (CatalogNode teamProjectCollectionNode in projectCollectionNodes)
-                {
-                    TfsTeamProjectCollection teamProjectCollection = VNCTFS.Helper.Get_TeamProjectCollection(AzureDevOpsExplorer.Presentation.Views.Server.ConfigurationServer, teamProjectCollectionNode);
-
-                    CreateWS_TPC_Info(teamProjectCollectionNode, AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection, false, options);
-                }
+                CreateWS_TPC_Info(tpc, AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection, false, options);
             }
             catch (Exception ex)
             {

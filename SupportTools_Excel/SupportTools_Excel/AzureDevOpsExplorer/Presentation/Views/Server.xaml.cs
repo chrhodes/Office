@@ -160,6 +160,9 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
                 Uri tpcUri = new Uri(cbeTeamProjectCollections.SelectedItem.ToString());
 
+                // TODO(crhodes)
+                // This might be the place to handle authentication.
+
                 TfsTeamProjectCollection = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(tpcUri);
 
                 if (TfsTeamProjectCollection == null)
@@ -211,6 +214,9 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
                 {
                     ConfigurationServer.Dispose();
                 }
+
+                // TODO(crhodes)
+                // This might be the place to handle authentication.
 
                 ConfigurationServer = VNCTFS.Helper.Get_ConfigurationServer(serverProvider.Uri);
 
