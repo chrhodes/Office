@@ -116,41 +116,6 @@ namespace VNC.AddinHelper
             }
         }
 
-        //public static long WriteToWatchWindow(string outputLine, [CallerMemberName] string callingMember = "")
-        //{
-        //    AddinHelper.Common.WriteToWatchWindow(string.Format("{0}: {1}", callingMember, outputLine));
-        //    return Stopwatch.GetTimestamp();
-        //}
-
-        //public static long WriteToWatchWindow(string outputLine, long startTicks, [CallerMemberName] string callingMember = "")
-        //{
-        //    AddinHelper.Common.WriteToWatchWindow(string.Format("{0}: {1} ({2:0.0000})",
-        //        callingMember, outputLine,
-        //        ((double)(Stopwatch.GetTimestamp() - startTicks)) / ((double)Stopwatch.Frequency)));
-
-        //    return Stopwatch.GetTimestamp();
-        //}
-
-        //public static long WriteToWatchWindow(long startTicks, [CallerMemberName] string callingMember = "")
-        //{
-        //    AddinHelper.Common.WriteToWatchWindow(string.Format("{0}: ({1:0.0000})",
-        //        callingMember,
-        //        ((double)(Stopwatch.GetTimestamp() - startTicks)) / ((double)Stopwatch.Frequency)));
-
-        //    return Stopwatch.GetTimestamp();
-        //}
-
-        //public static long WriteToWatchWindow([CallerMemberName] string callingMember = "")
-        //{
-        //    return Common.WriteToWatchWindow(callingMember);
-        //    //if (DeveloperMode)
-        //    //{
-        //    //    WatchWindow.AddOutputLine(message);
-        //    //}
-
-        //    //return Stopwatch.GetTimestamp();
-        //}
-
         public static long WriteToWatchWindow(string message)
         {
             if (DeveloperMode)

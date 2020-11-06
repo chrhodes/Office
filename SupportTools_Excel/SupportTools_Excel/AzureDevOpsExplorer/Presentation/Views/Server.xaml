@@ -94,9 +94,9 @@
             
             </dxlc:LayoutItem>
 
-            <dxlc:LayoutItem 
+            <dxlc:LayoutItem x:Name="liTeamProjectCollection2"
                 Label="Select Team Project Collection2" LabelPosition="Top"
-                    Visibility="Visible">
+                Visibility="Visible">
 
                 <dxe:ComboBoxEdit ItemsSource="{Binding TeamProjectCollections}"
                         SelectedItem="{Binding SelectedItem}">

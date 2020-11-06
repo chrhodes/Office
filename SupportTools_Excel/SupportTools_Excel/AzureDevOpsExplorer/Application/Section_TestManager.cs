@@ -1,19 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
-using Microsoft.TeamFoundation.WorkItemTracking.Client;
+
+using Microsoft.Office.Interop.Excel;
+using Microsoft.TeamFoundation.TestManagement.Client;
+
+using SupportTools_Excel.AzureDevOpsExplorer.Domain;
 
 using VNC.AddinHelper;
-using Microsoft.Office.Interop.Excel;
 
 using XlHlp = VNC.AddinHelper.Excel;
-using SupportTools_Excel.Domain;
-using System.Linq;
-using System.Collections.Generic;
-using Microsoft.TeamFoundation.Server;
-using Microsoft.Office.Core;
-using VNC;
-using Microsoft.TeamFoundation.TestManagement.Client;
-using SupportTools_Excel.AzureDevOpsExplorer.Domain;
 
 namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 {

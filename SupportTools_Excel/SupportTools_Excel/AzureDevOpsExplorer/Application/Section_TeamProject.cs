@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 
@@ -8,9 +7,6 @@ using Microsoft.Office.Interop.Excel;
 using Microsoft.TeamFoundation.Framework.Client;
 using Microsoft.TeamFoundation.Framework.Common;
 using Microsoft.TeamFoundation.VersionControl.Client;
-using Microsoft.TeamFoundation.WorkItemTracking.Client;
-
-using SupportTools_Excel.AzureDevOpsExplorer.Domain;
 
 using XlHlp = VNC.AddinHelper.Excel;
 
@@ -57,6 +53,32 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 {
                     insertAt = Add_Members(insertAt, teamProject).IncrementPosition(insertAt.OrientVertical);
                 }
+            }
+
+            XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
+
+            return insertAt;
+        }
+
+        internal static XlHlp.XlLocation Add_Info(
+            XlHlp.XlLocation insertAt,
+            TeamProject teamProject)
+        {
+            long startTicks = XlHlp.DisplayInWatchWindow(insertAt);
+
+            insertAt.MarkStart();
+
+            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "TP Name", teamProject.Name);
+            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "AbsoluteUri", teamProject.ArtifactUri.AbsoluteUri);
+            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "ServerItem", teamProject.ServerItem);
+            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "VCS ServerGuid", teamProject.VersionControlServer.ServerGuid.ToString());
+
+            insertAt.MarkEnd();
+
+            if (!insertAt.OrientVertical)
+            {
+                // Skip past the info just added.
+                insertAt.SetLocation(insertAt.RowStart, insertAt.MarkEndColumn + 1);
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
@@ -112,7 +134,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 // NOTE(crhodes)
                 // Might need to ensure that _Global_Groups and _Global_Identities already populated.
-
 
                 if (Section_TeamProjectCollection._Global_Identities.Count == 0)
                 {
@@ -203,153 +224,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-            }
-
-            XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-
-            return insertAt;
-        }
-
-        internal static XlHlp.XlLocation AddSection_TeamProjects_Info(
-            XlHlp.XlLocation insertAt,
-            ReadOnlyCollection<CatalogNode> teamProjects)
-        {
-            long startTicks = XlHlp.DisplayInWatchWindow(insertAt);
-
-            XlHlp.AddLabeledInfo(insertAt.AddRow(), "Team Projects", teamProjects.Count().ToString());
-
-            Worksheet ws = insertAt.workSheet;
-
-            insertAt = DisplayListOf_TeamProjects(insertAt, teamProjects, displayDataOnly: false, string.Format("tblTP_{0}", ws.Name));
-
-            if (!insertAt.OrientVertical)
-            {
-                // Skip past the info just added.
-                insertAt.SetLocation(insertAt.RowStart, insertAt.TableEndColumn + 1);
-            }
-
-            return insertAt;
-        }
-
-        internal static XlHlp.XlLocation Add_Info(
-            XlHlp.XlLocation insertAt,
-            TeamProject teamProject)
-        {
-            long startTicks = XlHlp.DisplayInWatchWindow(insertAt);
-
-            insertAt.MarkStart();
-
-            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "TP Name", teamProject.Name);
-            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "AbsoluteUri", teamProject.ArtifactUri.AbsoluteUri);
-            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "ServerItem", teamProject.ServerItem);
-            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "VCS ServerGuid", teamProject.VersionControlServer.ServerGuid.ToString());
-
-            insertAt.MarkEnd();
-
-            if (!insertAt.OrientVertical)
-            {
-                // Skip past the info just added.
-                insertAt.SetLocation(insertAt.RowStart, insertAt.MarkEndColumn + 1);
-            }
-
-            XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-
-            return insertAt;
-        }
-
-        internal static XlHlp.XlLocation DisplayListOf_TeamProjects(XlHlp.XlLocation insertAt,
-            ReadOnlyCollection<CatalogNode> projectNodes, bool displayDataOnly, string tableSuffix)
-        {
-            long startTicks = XlHlp.DisplayInWatchWindow(insertAt);
-
-            if (!displayDataOnly)
-            {
-                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
-
-                //XlHlp.AddTitledInfo(insertAt.AddRow(), "Name", teamProjects.Count.ToString());
-                //XlHlp.AddContentToCell(insertAt.AddOffsetColumn(), Name, 12, XlHlp.MakeBold.Yes);
-                XlHlp.AddColumnHeaderToSheetX(insertAt.AddOffsetColumnX(), 25, "DisplayName");
-                XlHlp.AddColumnHeaderToSheetX(insertAt.AddOffsetColumnX(), 35, "Description");
-                XlHlp.AddColumnHeaderToSheetX(insertAt.AddOffsetColumnX(), 35, "Identifier");
-                XlHlp.AddColumnHeaderToSheetX(insertAt.AddOffsetColumnX(), 35, "ProjectId");
-                //XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 25, "ProjectName", 12);
-                XlHlp.AddColumnHeaderToSheetX(insertAt.AddOffsetColumnX(), 25, "ProjectState");
-                XlHlp.AddColumnHeaderToSheetX(insertAt.AddOffsetColumnX(), 62, "ProjectUri");
-                XlHlp.AddColumnHeaderToSheetX(insertAt.AddOffsetColumnX(), 25, "SCC");
-
-
-                //XlHlp.AddTitledInfo(insertAt.AddRow(2), "TP Name", teamProject.Name);
-                //XlHlp.AddTitledInfo(insertAt.AddRow(2), "AbsoluteUri", teamProject.ArtifactUri.AbsoluteUri);
-                //XlHlp.AddTitledInfo(insertAt.AddRow(2), "ServerItem", teamProject.ServerItem);
-                //XlHlp.AddTitledInfo(insertAt.AddRow(2), "VCS ServerQuid", teamProject.VersionControlServer.ServerGuid.ToString());
-
-                insertAt.IncrementRows();
-            }
-            // The columns in this method need to be kept in sync with CreateTeamProjectsInfo()
-
-            foreach (CatalogNode projectNode in projectNodes.OrderBy(tp => tp.Resource.DisplayName))
-            {
-                insertAt.ClearOffsets();
-
-                try
-                {
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), projectNode.Resource.DisplayName);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), projectNode.Resource.Description);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), projectNode.Resource.Identifier.ToString());
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), projectNode.Resource.Properties["ProjectId"]);
-                    //XlHlp.AddContentToCell(insertAt.AddOffsetColumn(), projectNode.Resource.Properties["ProjectName"]);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), projectNode.Resource.Properties["ProjectState"]);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), projectNode.Resource.Properties["ProjectUri"]);
-
-                    string sccType = "??";
-
-                    if (projectNode.Resource.Properties.Keys.Contains("SourceControlCapabilityFlags"))
-                    {
-                        switch (int.Parse(projectNode.Resource.Properties["SourceControlCapabilityFlags"]))
-                        {
-                            case 0:
-                                sccType = "NONE";
-                                break;
-
-                            case 1:
-                                sccType = "TFS";
-                                break;
-
-                            case 2:
-                                sccType = "GIT";
-                                break;
-
-                            case 3:
-                                sccType = "TFS/GIT";
-                                break;
-
-                            default:
-                                break;
-
-                        }
-                    }
-
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), sccType);
-                }
-                catch (Exception ex)
-                {
-
-                }
-
-
-                //projectNode.FullPath
-                //    projectNode.Resource.Description
-                //    projectNode.Resource.Identifier
-
-
-                insertAt.IncrementRows();
-            }
-
-            if (!displayDataOnly)
-            {
-                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tblTP_{0}", tableSuffix));
-
-                insertAt.Group(insertAt.OrientVertical, hide: true);
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");

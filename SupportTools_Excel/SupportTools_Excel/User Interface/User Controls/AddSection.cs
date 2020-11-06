@@ -2,16 +2,17 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-
+using Microsoft.TeamFoundation;
 using Microsoft.TeamFoundation.Client;
 using Microsoft.TeamFoundation.Framework.Client;
-
+using VNC;
 using XlHlp = VNC.AddinHelper.Excel;
 
 namespace SupportTools_Excel.User_Interface.User_Controls
 {
     public partial class wucTaskPane_TFS : UserControl
     {
+
         XlHlp.XlLocation AddSection_CatalogNode(
             XlHlp.XlLocation insertAt, 
             CatalogNode catalogNode)
@@ -32,7 +33,8 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
         XlHlp.XlLocation AddSection_ChildNodes(
             XlHlp.XlLocation insertAt, 
-            string NodeType, ReadOnlyCollection<CatalogNode> childNodes)
+            string NodeType, 
+            ReadOnlyCollection<CatalogNode> childNodes)
         {
             //XlHlp.DisplayInWatchWindow(insertAt);
 
@@ -57,38 +59,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             return insertAt;
         }
 
-        private XlHlp.XlLocation AddSection_ConfigurationServer_Info(
-            XlHlp.XlLocation insertAt,
-            TfsConfigurationServer configurationServer)
-        {
-            insertAt.MarkStart(XlHlp.MarkType.None);
 
-            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "Name:", configurationServer.Name);
-            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "Culture:", configurationServer.Culture.DisplayName);
-            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "InstanceId:", configurationServer.InstanceId.ToString());
-            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "ServerCapabilities:", configurationServer.ServerCapabilities.ToString());
-            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "SessionId:", configurationServer.SessionId.ToString());
-            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "TimeZone:", configurationServer.TimeZone.ToString());
-            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "UICulture", configurationServer.UICulture.ToString());
-            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "Uri", configurationServer.Uri.ToString());
-
-            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "AuthorizedIdentity:", configurationServer.AuthorizedIdentity.DisplayName);
-            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "CatalogNode:", configurationServer.CatalogNode.FullPath);
-            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "HasAuthenticated:", configurationServer.HasAuthenticated.ToString());
-            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "IsHostedServer:", configurationServer.IsHostedServer.ToString());
-            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "ClientCacheDirectoryForInstance:", configurationServer.ClientCacheDirectoryForInstance);
-            XlHlp.AddLabeledInfo(insertAt.AddRow(2), "ClientCacheDirectoryForUser:", configurationServer.ClientCacheDirectoryForUser);
-
-            insertAt.MarkEnd(XlHlp.MarkType.None);
-
-            if (!insertAt.OrientVertical)
-            {
-                // Skip past the info just added.
-                insertAt.SetLocation(insertAt.RowStart, insertAt.MarkEndColumn + 1);
-            }
-
-            return insertAt;
-        }
 
         //private XlHlp.XlLocation AddBranches(ItemIdentifier[] items, XlHlp.XlLocation insertAt, int currentColumn)
         //{

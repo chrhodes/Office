@@ -89,7 +89,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             Common.EventAggregator.GetEvent<GetTPCWorkItemDetailsEvent>().Subscribe(Get_TPC_WorkItemDetails);
             Common.EventAggregator.GetEvent<GetTPCWorkspacesEvent>().Subscribe(Get_TPC_Workspaces);
             Common.EventAggregator.GetEvent<GetTPCLastChangesetEvent>().Subscribe(Get_TPC_LastChangeset);
-            Common.EventAggregator.GetEvent<GetTPCLastWorkItemEvent>().Subscribe(Get_TPC_LastWorkItem);
+            Common.EventAggregator.GetEvent<GetTPCWorkItemActivityEvent>().Subscribe(Get_TPC_WorkItemActivity);
             Common.EventAggregator.GetEvent<GetTPCTestPlansEvent>().Subscribe(Get_TPC_TestPlans);
             Common.EventAggregator.GetEvent<GetTPCTestSuitesEvent>().Subscribe(Get_TPC_TestSuites);
             Common.EventAggregator.GetEvent<GetTPCTestCasesEvent>().Subscribe(Get_TPC_TestCases);
@@ -689,7 +689,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 RequestHandlers.SpeedUpStart();
 
-                CreateWS_ConfigurationServer_Info(GetOptions());
+                CreateWS_ConfigurationServer_Info(GetOptions(), AzureDevOpsExplorer.Presentation.Views.Server.ConfigurationServer);
             }
             catch (Exception ex)
             {
@@ -952,12 +952,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
         private void Get_TPC_LastChangeset()
         {
-            RequestHandlers.ProcessCreateWorkSheet((options) => CreateWS_All_TPC_LastChangeset(options, AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer), GetOptions());
+            RequestHandlers.ProcessCreateWorkSheet((options) => Worksheet_Output.CreateWS_All_TPC_LastChangeset(options, AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer), GetOptions());
         }
 
-        private void Get_TPC_LastWorkItem()
+        private void Get_TPC_WorkItemActivity()
         {
-            RequestHandlers.ProcessCreateWorkSheet(CreateWS_All_TPC_LastWorkItem, GetOptions());
+            RequestHandlers.ProcessCreateWorkSheet(CreateWS_All_TPC_WorkItemActivity, GetOptions());
         }
 
         private void Get_TPC_Members()

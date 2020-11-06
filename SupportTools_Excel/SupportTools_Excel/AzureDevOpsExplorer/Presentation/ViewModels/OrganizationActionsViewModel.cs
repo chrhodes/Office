@@ -59,7 +59,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
             GetTPCWorkItemDetailsCommand = new DelegateCommand(OnGetTPCWorkItemDetailsExecute, OnGetTPCWorkItemDetailsCanExecute);
             GetTPCWorkspacesCommand = new DelegateCommand(OnGetTPCWorkspacesExecute, OnGetTPCWorkspacesCanExecute);
             GetTPCLastChangesetCommand = new DelegateCommand(OnGetTPCLastChangesetExecute, OnGetTPCLastChangesetCanExecute);
-            GetTPCLastWorkItemCommand = new DelegateCommand(OnGetTPCLastWorkItemExecute, OnGetTPCLastWorkItemCanExecute);
+            GetTPCWorkItemActivityCommand = new DelegateCommand(OnGetTPCWorkItemActivityExecute, OnGetTPCWorkItemActivityCanExecute);
             GetTPCTestPlansCommand = new DelegateCommand(OnGetTPCTestPlansExecute, OnGetTPCTestPlansCanExecute);
             GetTPCTestSuitesCommand = new DelegateCommand(OnGetTPCTestSuitesExecute, OnGetTPCTestSuitesCanExecute);
             GetTPCTestCasesCommand = new DelegateCommand(OnGetTPCTestCasesExecute, OnGetTPCTestCasesCanExecute);
@@ -347,16 +347,16 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         #region GetTPCLastWorkItem Command
 
-        public DelegateCommand GetTPCLastWorkItemCommand { get; set; }
-        public string GetTPCLastWorkItemContent { get; set; } = (string)Common.XamlApplication.FindResource("AZDOOrganizationActions_GetTPCLastWorkItemContent");
-        public string GetTPCLastWorkItemToolTip { get; set; } = (string)Common.XamlApplication.FindResource("AZDOOrganizationActions_GetTPCLastWorkItemToolTip");
+        public DelegateCommand GetTPCWorkItemActivityCommand { get; set; }
+        public string GetTPCWorkItemActivityContent { get; set; } = "Get TPC WorkItemActivity";
+        public string GetTPCWorkItemActivityToolTip { get; set; } = "Get Count of WorkItems with Activity in Date Range";
 
-        public void OnGetTPCLastWorkItemExecute()
+        public void OnGetTPCWorkItemActivityExecute()
         {
-            Common.EventAggregator.GetEvent<GetTPCLastWorkItemEvent>().Publish();
+            Common.EventAggregator.GetEvent<GetTPCWorkItemActivityEvent>().Publish();
         }
 
-        public bool OnGetTPCLastWorkItemCanExecute()
+        public bool OnGetTPCWorkItemActivityCanExecute()
         {
             // TODO(crhodes)
             // Add any before button is enabled logic.

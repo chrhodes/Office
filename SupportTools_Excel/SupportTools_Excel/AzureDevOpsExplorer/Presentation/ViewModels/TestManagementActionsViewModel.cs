@@ -241,8 +241,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
         #region GetTestPlanInfo Command
 
         public DelegateCommand GetTestPlanInfoCommand { get; set; }
-        public string GetTestPlanInfoContent { get; set; }
-        public string GetTestPlanInfoToolTip { get; set; }
+        public string GetTestPlanInfoContent { get; set; } = "Get TestPlan Info";
+        public string GetTestPlanInfoToolTip { get; set; } = "Get TestPlan Info Tooltip";
 
         public void OnGetTestPlanInfoExecute()
         {
@@ -261,8 +261,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
         #region GetTestSuiteInfo Command
 
         public DelegateCommand GetTestSuiteInfoCommand { get; set; }
-        public string GetTestSuiteInfoContent { get; set; }
-        public string GetTestSuiteInfoToolTip { get; set; }
+        public string GetTestSuiteInfoContent { get; set; } = "Get TestSuite Info";
+        public string GetTestSuiteInfoToolTip { get; set; } = "Get TestSuite Info Tooltip";
 
         public void OnGetTestSuiteInfoExecute()
         {
@@ -281,8 +281,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
         #region GetTestCaseInfo Command
 
         public DelegateCommand GetTestCaseInfoCommand { get; set; }
-        public string GetTestCaseInfoContent { get; set; }
-        public string GetTestCaseInfoToolTip { get; set; }
+        public string GetTestCaseInfoContent { get; set; } = "Get TestCase Info";
+        public string GetTestCaseInfoToolTip { get; set; } = "Get TestCase Info Tooltip";
 
         public void OnGetTestCaseInfoExecute()
         {
@@ -301,8 +301,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
         #region AddPivotSummary Command
 
         public DelegateCommand AddPivotSummaryCommand { get; set; }
-        public string AddPivotSummaryContent { get; set; }
-        public string AddPivotSummaryToolTip { get; set; }
+        public string AddPivotSummaryContent { get; set; } = "Add Pivot Summary";
+        public string AddPivotSummaryToolTip { get; set; } = "Add Pivot Summary ToolTip";
 
         public void OnAddPivotSummaryExecute()
         {

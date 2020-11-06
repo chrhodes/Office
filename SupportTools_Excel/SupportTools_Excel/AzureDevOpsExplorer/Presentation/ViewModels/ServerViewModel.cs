@@ -121,6 +121,9 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
             }
             set
             {
+                // TODO(crhodes)
+                // Need to move code out of Server.cbeTeamProjectCollections_SelectedIndexChanged
+
                 _selectedItem = value;
                 OnPropertyChanged();
             }

@@ -76,7 +76,7 @@ namespace SupportTools_Excel
     public class GetTPCWorkItemDetailsEvent : PubSubEvent { }
     public class GetTPCWorkspacesEvent : PubSubEvent { }
     public class GetTPCLastChangesetEvent : PubSubEvent { }
-    public class GetTPCLastWorkItemEvent : PubSubEvent { }
+    public class GetTPCWorkItemActivityEvent : PubSubEvent { }
     public class GetTPCTestPlansEvent : PubSubEvent { }
     public class GetTPCTestSuitesEvent : PubSubEvent { }
     public class GetTPCTestCasesEvent : PubSubEvent { }

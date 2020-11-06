@@ -23,106 +23,76 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
     {
         #region Version Control Server (VCS)
 
-        internal static void Add_Changesets(
+        internal static void Add_TP_Changesets(
             XlHlp.XlLocation insertAt,
             Options_AZDO_TFS options,
-            VersionControlServer versionControlServer)
+            VersionControlServer versionControlServer,
+            TeamProject teamProject)
         {
-            foreach (TeamProject teamProject in versionControlServer.GetAllTeamProjects(refresh: true))
-            {
-                insertAt.ClearOffsets();
+            //TeamProject teamProject = VNC.TFS.Helper.Get_TeamProject(versionControlServer, teamProjectName);
 
-                long loopTicks = XlHlp.DisplayInWatchWindow($"Processing    {teamProject.Name}");
+            var path = teamProject.ServerItem;
 
-                Globals.ThisAddIn.Application.StatusBar = $"Processing    {teamProject.Name}";
+            //var queryHistory = Server.VersionControlServer.QueryHistory(
+            //    teamProject.ServerItem,
+            //    VersionSpec.Latest,
+            //    0,
+            //    RecursionType.Full,
+            //    null,
+            //    VersionSpec.Latest,
+            //    VersionSpec.Latest,
+            //    Int32.MaxValue,
+            //    true,
+            //    true,
+            //    false,
+            //    false);
 
-                var path = teamProject.ServerItem;
+            var queryHistory = versionControlServer.QueryHistory(
+                teamProject.ServerItem,
+                VersionSpec.Latest,
+                0,
+                RecursionType.Full,
+                null,
+                null,
+                null,
+                Int32.MaxValue,
+                true,
+                true,
+                false,
+                false);
 
-                //var queryHistory = Server.VersionControlServer.QueryHistory(
-                //    teamProject.ServerItem,
-                //    VersionSpec.Latest,
-                //    0,
-                //    RecursionType.Full,
-                //    null,
-                //    VersionSpec.Latest,
-                //    VersionSpec.Latest,
-                //    Int32.MaxValue,
-                //    true,
-                //    true,
-                //    false,
-                //    false);
+            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), teamProject.Name);
 
-                var queryHistory = versionControlServer.QueryHistory(
-                    teamProject.ServerItem,
-                    VersionSpec.Latest,
-                    0,
-                    RecursionType.Full,
-                    null,
-                    null,
-                    null,
-                    Int32.MaxValue,
-                    true,
-                    true,
-                    false,
-                    false);
-
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), teamProject.Name);
-
-                try
-                {
-                    Changeset lastestChangeset = queryHistory.Cast<Changeset>().First();
-
-                    string lastChangesetId = lastestChangeset.ChangesetId.ToString();
-                    string lastChangeSetCreationDate = lastestChangeset.CreationDate.ToString();
-
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), lastChangesetId);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), lastChangeSetCreationDate);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), teamProject.VersionControlServer.SupportedFeatures.ToString());
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), teamProject.VersionControlServer.WebServiceLevel.ToString());
-                }
-                catch (Exception ex)
-                {
-                    string msg = string.Format("{0} - {1}", teamProject.Name, ex.ToString());
-
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), msg);
-                    //MessageBox.Show(string.Format("{0} - {1}", teamProject.Name, ex.ToString()));
-                }
-
-                XlHlp.DisplayInWatchWindow($"EndProcessing {teamProject.Name}", loopTicks);
-
-                insertAt.IncrementRows();
-            }
-        }
-
-        internal static void Add_Shelvesets(
-            XlHlp.XlLocation insertAt,
-            Options_AZDO_TFS options,
-            Shelveset[] shelvesets)
-        {
             try
             {
-                foreach (Shelveset item in shelvesets)
+                Changeset lastestChangeset = queryHistory.Cast<Changeset>().First();
+
+                string lastChangesetId = lastestChangeset.ChangesetId.ToString();
+                string lastChangeSetCreationDate = lastestChangeset.CreationDate.ToString();
+
+                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), lastChangesetId);
+                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), lastChangeSetCreationDate);
+                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), teamProject.VersionControlServer.SupportedFeatures.ToString());
+                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), teamProject.VersionControlServer.WebServiceLevel.ToString());
+            }
+            catch (InvalidOperationException ioe)
+            {
+                if (ioe.Message.Equals("Sequence contains no elements"))
                 {
-                    insertAt.ClearOffsets();
-
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.OwnerDisplayName);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.OwnerName);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.Name);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.CreationDate.ToString());
-                    //ExcelHlp.AddContentToCell(insertAt.AddOffsetColumn(), item.DisplayName);
-                    //ExcelHlp.AddContentToCell(insertAt.AddOffsetColumn(), item.QualifiedName);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.CheckinNote.ToString());
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.Comment);
-
-                    insertAt.IncrementRows();
+                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "No Changesets");
                 }
+                else
+                {
+                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), ioe.ToString());
+                }
+
             }
             catch (Exception ex)
             {
-                string msg = string.Format("{0} - {1}", "TP", ex.ToString());
-
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), msg);
+                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), ex.ToString());
             }
+
+            insertAt.IncrementRows();
         }
 
         internal static void Add_TP_Changesets(
@@ -193,7 +163,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
         }
 
-
         internal static void Add_TP_Developers(
             XlHlp.XlLocation insertAt,
             Options_AZDO_TFS options,
@@ -213,6 +182,37 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), developersLatestDate[developer].ToString());
 
                 insertAt.IncrementRows();
+            }
+        }
+
+        internal static void Add_TP_Shelvesets(
+            XlHlp.XlLocation insertAt,
+            Options_AZDO_TFS options,
+            Shelveset[] shelvesets)
+        {
+            try
+            {
+                foreach (Shelveset item in shelvesets)
+                {
+                    insertAt.ClearOffsets();
+
+                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.OwnerDisplayName);
+                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.OwnerName);
+                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.Name);
+                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.CreationDate.ToString());
+                    //ExcelHlp.AddContentToCell(insertAt.AddOffsetColumn(), item.DisplayName);
+                    //ExcelHlp.AddContentToCell(insertAt.AddOffsetColumn(), item.QualifiedName);
+                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.CheckinNote.ToString());
+                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.Comment);
+
+                    insertAt.IncrementRows();
+                }
+            }
+            catch (Exception ex)
+            {
+                string msg = string.Format("{0} - {1}", "TP", ex.ToString());
+
+                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), msg);
             }
         }
 

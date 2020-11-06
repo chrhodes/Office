@@ -291,7 +291,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 Header_VersionControlServer.Add_Shelvesets(insertAt);
 
-                Body_VersionControlServer.Add_Shelvesets(insertAt, options, shelvesets);
+                Body_VersionControlServer.Add_TP_Shelvesets(insertAt, options, shelvesets);
 
                 insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tblShelveSets_{0}", ws.Name));
 
@@ -415,17 +415,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             return insertAt;
         }
-
-        //XlHlp.XlLocation Add_Branches(XlHlp.XlLocation insertAt, 
-        //    BranchObject[] rootBranches)
-        //{
-        //    foreach (BranchObject branch in rootBranches)
-        //    {
-        //        insertAt = Display_VCS_Branch(insertAt, branch);
-        //    }
-
-        //    return insertAt;
-        //}
 
         internal static XlHlp.XlLocation Add_TP_Changesets(XlHlp.XlLocation insertAt,
             Options_AZDO_TFS options,
