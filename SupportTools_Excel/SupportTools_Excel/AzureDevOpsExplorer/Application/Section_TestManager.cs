@@ -598,13 +598,13 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.MostRecentResultOutcome }");
                     XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.MostRecentResultState }");
                     XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.MostRecentRunId }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.Plan.Id }, cellFormat: redContent");
+                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.Plan.Id }", cellFormat: redContent);
                     XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.Revision }");
                     XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.State }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.SuiteId }, cellFormat: redContent");
+                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.SuiteId }", cellFormat: redContent);
                     XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.TestCaseExists }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.TestCaseId }, cellFormat: redContent");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.TestCaseWorkItem.Id }, cellFormat: redContent");
+                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.TestCaseId }", cellFormat: redContent);
+                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.TestCaseWorkItem.Id }", cellFormat: redContent);
                     XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.UserData }");
 
                     insertAt.IncrementRows();
