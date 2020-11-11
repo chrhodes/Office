@@ -56,7 +56,7 @@
                 <dxlc:LayoutItem Label="Select TestPlan Sections" LabelPosition="Top">
                     <dxe:ComboBoxEdit 
                             EditValue="{ Binding
-                                Path=TestSuiteRequest.TestSections,
+                                Path=TestPlanRequest.TestSections,
                                 Mode=TwoWay,
                                 UpdateSourceTrigger=PropertyChanged,
                                 Converter={StaticResource SelectedItemsConverter} }" >

@@ -699,6 +699,7 @@
     <Compile Include="AzureDevOpsExplorer\Application\Section_VersionControlServer.cs" />
     <Compile Include="AzureDevOpsExplorer\Application\Section_WorkItemStore.cs" />
     <Compile Include="Application\Bootstrapper.cs" />
+    <Compile Include="AzureDevOpsExplorer\Application\Worksheet_Output.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="Data\ApplicationDS.cs">
       <DependentUpon>ApplicationDS.xsd</DependentUpon>

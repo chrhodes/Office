@@ -10,7 +10,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
     {
         #region WorkItem Store (WIS)
 
-        public static void Add_TP_Areas(XlHlp.XlLocation insertAt)
+        internal static void Add_TP_Areas(XlHlp.XlLocation insertAt)
         {
             long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
 
@@ -26,7 +26,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
         }
 
 
-        public static void Add_TP_Iterations(XlHlp.XlLocation insertAt)
+        internal static void Add_TP_Iterations(XlHlp.XlLocation insertAt)
         {
             long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
 
@@ -92,6 +92,33 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 40, "FieldNameType");
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 60, "AllowedValues");
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 60, "ProhibitedValues");
+
+            insertAt.IncrementRows();
+
+            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        }
+
+        internal static void Add_TP_WorkItemActivity(XlHlp.XlLocation insertAt)
+        {
+            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+
+            XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Team Project");
+            XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Name");
+            XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Count");
+            //XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "FieldCount");
+            XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "LastCreateDate");
+            XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "LastChangedDate");
+            XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "LastRevisedDate");
+
+            // TODO(crhodes)
+            // Since we now can pass in a CellFormatSpecification, might be able to go back to just using insertAt.AddOffsetColumn
+            //insertAt.AddOffsetColumnX();
+
+            //CellFormatSpecification lucidia7 = insertAt.CreateCellFormat("lucidia7", fontSize: 7);
+            //lucidia7.Font.Name = "Lucida Sans Typewriter";
+
+            //XlHlp.AddColumnHeaderToSheetX(insertAt.workSheet, insertAt.RowCurrent, insertAt.ColumnOffset,
+            //    180, "Transitions", lucidia7);
 
             insertAt.IncrementRows();
 

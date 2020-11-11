@@ -28,6 +28,9 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
     public partial class Server : UserControl, IView
     {
 
+        // TODO(crhodes)
+        // Seems like these belong somewhere other than View (Server).
+        // Should they go in ViewModel or a Domain Object.
         public static TfsConfigurationServer ConfigurationServer { get; set; }
 
         // These are updated when the Team Project Collection Changes
@@ -51,10 +54,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
             long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
 
             InitializeComponent();
-
-            serverProvider.PopulateControlFromFile(Common.cCONFIG_FILE);
-            liTeamProjectCollection.Visibility = Visibility.Hidden;
-            btnLoad_TFS_Collections.Visibility = Visibility.Hidden;
 
             // TODO(crhodes)
             // Until we call the other constructor, go get a ViewModel
@@ -89,6 +88,13 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
             // TODO(crhodes)
             // Perform any initialization or configuration of View
+
+            serverProvider.PopulateControlFromFile(Common.cCONFIG_FILE);
+
+            liTeamProjectCollection.Visibility = Visibility.Hidden;
+            liTeamProjectCollection2.Visibility = Visibility.Hidden;
+
+            btnLoad_TFS_Collections.Visibility = Visibility.Hidden;
 
             //lgMain.IsCollapsed = true;
 
@@ -150,6 +156,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
                 var s4 = cbeTeamProjectCollections.SelectedItem;
                 var s5 = cbeTeamProjectCollections.SelectedText;
 
+                var s6 = ((ServerViewModel)ViewModel).SelectedItem;
                 // The Server may have been changed - which clears the TeamProjectCollections.
 
                 if (string.IsNullOrEmpty(cbeTeamProjectCollections.Text))
@@ -159,6 +166,9 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
                 }
 
                 Uri tpcUri = new Uri(cbeTeamProjectCollections.SelectedItem.ToString());
+
+                // TODO(crhodes)
+                // This might be the place to handle authentication.
 
                 TfsTeamProjectCollection = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(tpcUri);
 
@@ -197,6 +207,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
             PopulateTeamProjectCollections();
             liTeamProjectCollection.Visibility = Visibility.Visible;
+            liTeamProjectCollection2.Visibility = Visibility.Visible;
 
             Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
         }
@@ -212,11 +223,15 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
                     ConfigurationServer.Dispose();
                 }
 
+                // TODO(crhodes)
+                // This might be the place to handle authentication.
+
                 ConfigurationServer = VNCTFS.Helper.Get_ConfigurationServer(serverProvider.Uri);
 
                 btnLoad_TFS_Collections.Visibility = Visibility.Visible;
 
                 liTeamProjectCollection.Visibility = Visibility.Hidden;
+                liTeamProjectCollection2.Visibility = Visibility.Hidden;
 
                 Common.EventAggregator.GetEvent<EnableMainUIEvent>().Publish(Visibility.Hidden);
             }

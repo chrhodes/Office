@@ -6,7 +6,6 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
-using Microsoft.TeamFoundation;
 using Microsoft.TeamFoundation.Client;
 using Microsoft.TeamFoundation.Framework.Client;
 using Microsoft.TeamFoundation.Framework.Common;
@@ -29,759 +28,22 @@ namespace SupportTools_Excel.User_Interface.User_Controls
     {
         #region CreateWS_*
 
-        private void CreateWS_All_TPC_Areas(Options_AZDO_TFS options)
-        {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+        #region ConfigurationServer
 
-            try
-            {
-                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "Areas"),
-                    options);
 
-                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Areas All Team Projects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
-
-                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
-
-                Header_WorkItemStore.Add_TP_Areas(insertAt);
-
-                foreach (var teamProjectName in options.TeamProjects)
-                {
-                    long loopTicks = XlHlp.DisplayInWatchWindow($"Processing    {teamProjectName}");
-
-                    Globals.ThisAddIn.Application.StatusBar = $"Processing    {teamProjectName}";
-
-                    Project project = AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore.Projects[teamProjectName];
-
-                    insertAt = Body_WorkItemStore.Add_TP_Areas(insertAt, options, AzureDevOpsExplorer.Presentation.Views.Server.CommonStructureService, project);
-
-                    // Save with each loop so we loose less when things crash ;(
-
-                    Globals.ThisAddIn.Application.ActiveWorkbook.Save();
-
-                    XlHlp.DisplayInWatchWindow($"EndProcessing {teamProjectName}", loopTicks);
-
-                    AZDOHelper.ProcessLoopDelay(options);
-                }
-
-                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
-
-                insertAt.Group(insertAt.OrientVertical, hide: true);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
-        }
-
-        //private void CreateWS_All_TPC_Releases(Options_AZDO_TFS options)
-        //{
-        //    long startTicks = XlHlp.DisplayInWatchWindow("Begin");
-
-        //    try
-        //    {
-        //        XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "Releases"),
-        //            options);
-
-        //        XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Releases All Team Projects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
-
-        //        insertAt.MarkStart(XlHlp.MarkType.GroupTable);
-
-        //        Header_WorkItemStore.Add_TP_WorkItemDetails(insertAt);
-
-        //        foreach (var teamProjectName in options.TeamProjects)
-        //        {
-        //            long loopTicks = XlHlp.DisplayInWatchWindow($"Processing    {teamProjectName}");
-
-        //            Globals.ThisAddIn.Application.StatusBar = $"Processing    {teamProjectName}";
-
-        //            Project project = AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore.Projects[teamProjectName];
-
-        //            Body_WorkItemStore.Add_TP_WorkItemDetails(insertAt,
-        //                options, project.Name, "Release");
-
-        //            // Save with each loop so we loose less when things crash ;(
-
-        //            Globals.ThisAddIn.Application.ActiveWorkbook.Save();
-
-        //            XlHlp.DisplayInWatchWindow($"EndProcessing {teamProjectName}", loopTicks);
-
-        //            AZDOHelper.ProcessLoopDelay(options);
-        //        }
-
-        //        insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
-
-        //        insertAt.Group(insertAt.OrientVertical, hide: true);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.ToString());
-        //    }
-
-        //    XlHlp.DisplayInWatchWindow("End", startTicks);
-        //}
-
-        //void CreateWS_All_TP_Areas(Options_AZDO_TFS options)
-        //{
-        //    XlHlp.DisplayInWatchWindow(string.Format("{0}", MethodBase.GetCurrentMethod().Name));
-
-        //    try
-        //    {
-        //        string sheetName = XlHlp.SafeSheetName(string.Format("{0}", "All_TP_Areas"));
-
-        //        Worksheet ws = XlHlp.NewWorksheet(sheetName, beforeSheetName: "FIRST");
-
-        //        XlHlp.XlLocation insertAt = new XlHlp.XlLocation(ws, row: 5, column: 1, orientVertical: orientVertical);
-
-        //        XlHlp.AddTitledInfo(insertAt.AddRow(), "Areas All Team Projects", Server.TfsTeamProjectCollection.Name);
-
-        //        insertAt.MarkStart(XlHlp.MarkType.GroupTable);
-
-        //        //Add_TP_Areas(insertAt);
-
-        //        foreach (Microsoft.TeamFoundation.WorkItemTracking.Client.Project project in Server.WorkItemStore.Projects)
-        //        {
-        //            Globals.ThisAddIn.Application.StatusBar = "Processing " + project.Name;
-
-        //            //Add_TP_Areas(insertAt, project, out maxLastCreatedDate, out maxLastChangedDate, out maxLastRevisedDate);
-        //        }
-
-        //        insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", ws.Name));
-
-        //        insertAt.Group(insertAt.OrientVertical, hide: true);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.ToString());
-        //    }
-        //}
-
-        private void CreateWS_VCS_ChangeSetInfo(int changesetId,
-            string sectionsToDisplay,
+        private void CreateWS_ConfigurationServer_Info(
             Options_AZDO_TFS options,
-            ICommonStructureService commonStructureService)
+            TfsConfigurationServer configurationServer)
         {
             long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
 
-            try
-            {
-                Changeset changeSet = AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer.GetChangeset(changesetId);
+            XlHlp.XlLocation insertAt = CreateNewWorksheet($"CS_{configurationServer.Name}", options);
 
-                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("CS_{0}", changesetId),
-                    options);
+            XlHlp.AddLabeledInfoX(insertAt.AddRowX(2), "Configuration Server Info:", configurationServer.Name);
 
-                // TODO(crhodes)
-                // Change this to write to Sheet
-                //
-                // Use first thing to get code to add to Version Control Server (VCS) Information sheet
+            insertAt = Section_ConfigurationServer.AddSection_OperationalDatabaseNames(insertAt);
 
-                if (sectionsToDisplay.Contains("Info"))
-                {
-                    Section_VersionControlServer.Display_VCS_Changeset_Info(changeSet);
-                }
-
-                if (sectionsToDisplay.Contains("Changes"))
-                {
-                    Section_VersionControlServer.Display_VCS_ChangeSet_Changes(changeSet);
-                }
-
-                if (sectionsToDisplay.Contains("Associated WorkItems"))
-                {
-                    Section_VersionControlServer.Display_VCS_ChangeSet_AssociatedWorkItems(changeSet);
-                }
-
-                if (sectionsToDisplay.Contains("WorkItems"))
-                {
-                    Section_VersionControlServer.Display_VCS_Changeset_WorkItems(changeSet, AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore, commonStructureService);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
-        }
-
-        XlHlp.XlLocation AddSection_TFS_OperationalDatabaseNames(XlHlp.XlLocation insertAt)
-        {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
-
-            XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Operational Database Names:", "");
-
-            insertAt.MarkStart(XlHlp.MarkType.GroupTable);
-
-            XlHlp.AddLabeledInfoX(insertAt.AddRowX(2), "AnalysisCube:", $"{OperationalDatabaseNames.AnalysisCube}");
-            XlHlp.AddLabeledInfoX(insertAt.AddRowX(2), "CoreServices:", $"{OperationalDatabaseNames.CoreServices}");
-            XlHlp.AddLabeledInfoX(insertAt.AddRowX(2), "DeploymentRig:", $"{OperationalDatabaseNames.DeploymentRig}");
-            XlHlp.AddLabeledInfoX(insertAt.AddRowX(2), "LabExecution:", $"{ OperationalDatabaseNames.LabExecution}");
-            XlHlp.AddLabeledInfoX(insertAt.AddRowX(2), "TeamBuild:", $"{OperationalDatabaseNames.TeamBuild}");
-            XlHlp.AddLabeledInfoX(insertAt.AddRowX(2), "TestRig:", $"{ OperationalDatabaseNames.TestRig}");
-            XlHlp.AddLabeledInfoX(insertAt.AddRowX(2), "VersionControl:", $"{ OperationalDatabaseNames.VersionControl}");
-            XlHlp.AddLabeledInfoX(insertAt.AddRowX(2), "Warehouse:", $"{ OperationalDatabaseNames.Warehouse}");
-            XlHlp.AddLabeledInfoX(insertAt.AddRowX(2), "WorkItemTracking:", $"{OperationalDatabaseNames.WorkItemTracking}");
-            XlHlp.AddLabeledInfoX(insertAt.AddRowX(2), "WorkItemTrackingAttachments:", $"{OperationalDatabaseNames.WorkItemTrackingAttachments}");
-
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
-
-            return insertAt;
-        }
-
-        private void CreateWS_All_TPC_AreaCheck(string areasToCheck, Options_AZDO_TFS options)
-        {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
-
-            try
-            {
-                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_WIS", "AreaCheck"),
-                    options);
-
-                foreach (Microsoft.TeamFoundation.WorkItemTracking.Client.Project project in AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore.Projects)
-                {
-                    long loopTicks = XlHlp.DisplayInWatchWindow($"Processing    {project.Name}");
-
-                    Globals.ThisAddIn.Application.StatusBar = $"Processing    {project.Name}";
-
-                    insertAt = Section_WorkItemStore.Add_TP_AreaCheck(insertAt, project, areasToCheck);
-
-                    XlHlp.DisplayInWatchWindow($"EndProcessing {project.Name}", loopTicks);
-
-                    AZDOHelper.ProcessLoopDelay(options);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
-        }
-
-        void CreateWS_All_TPC_BuildDefinitions(Options_AZDO_TFS options)
-        {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
-
-            try
-            {
-                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "BuildDefinitions"),
-                    options);
-
-                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Build Definitions - All TeamProjects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
-
-                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
-
-                Header_BuildServer.Add_BuildDefinitions(insertAt);
-
-                foreach (TeamProject teamProject in AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer.GetAllTeamProjects(refresh: true))
-                {
-                    long loopTicks = XlHlp.DisplayInWatchWindow($"Processing    {teamProject.Name}");
-
-                    Globals.ThisAddIn.Application.StatusBar = $"Processing    {teamProject.Name}";
-
-                    Body_BuildServer.Add_BuildDefinitions(insertAt, options, AzureDevOpsExplorer.Presentation.Views.Server.BuildServer, teamProject);
-
-                    XlHlp.DisplayInWatchWindow($"EndProcessing {teamProject.Name}", loopTicks);
-
-                    AZDOHelper.ProcessLoopDelay(options);
-                }
-
-                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
-
-                insertAt.Group(insertAt.OrientVertical, hide: true);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
-        }
-
-        private void CreateWS_All_TPC_Developers(Options_AZDO_TFS options)
-        {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
-
-            try
-            {
-                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}({2})", "All_TPC", "Devs", options.GoBackDays),
-                    options);
-
-                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Developers - All TeamProjects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
-
-                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
-
-                XlHlp.AddColumnHeaderToSheetX(insertAt.AddOffsetColumnX(), 20, "TFS Team Project");
-                XlHlp.AddColumnHeaderToSheetX(insertAt.AddOffsetColumnX(), 20, "Developer");
-                XlHlp.AddColumnHeaderToSheetX(insertAt.AddOffsetColumnX(), 20, "Changeset Count");
-                XlHlp.AddColumnHeaderToSheetX(insertAt.AddOffsetColumnX(), 20, "Earliest Date");
-                XlHlp.AddColumnHeaderToSheetX(insertAt.AddOffsetColumnX(), 20, "Latest Date");
-
-                insertAt.IncrementRows();
-
-                //foreach (var teamProject in Server.VersionControlServer.GetAllTeamProjects(refresh: true))
-                foreach (var teamProjectName in options.TeamProjects)
-                {
-                    TeamProject teamProject = VNCTFS.Helper.Get_TeamProject(AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer, teamProjectName.Trim());
-
-                    long loopTicks = XlHlp.DisplayInWatchWindow($"Processing    {teamProject.Name}");
-
-                    Globals.ThisAddIn.Application.StatusBar = $"Processing    {teamProject.Name}";
-
-                    insertAt.ClearOffsets();
-
-                    XlHlp.AddContentToCell(insertAt.AddRowX(), teamProject.Name);
-
-                    insertAt = Section_VersionControlServer.Add_TP_Developers(insertAt, options, AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer, teamProject, true, teamProject.Name);
-
-                    XlHlp.DisplayInWatchWindow($"EndProcessing {teamProject.Name}", loopTicks);
-
-                    AZDOHelper.ProcessLoopDelay(options);
-                }
-
-                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
-
-                insertAt.Group(insertAt.OrientVertical, hide: true);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
-        }
-
-        void CreateWS_All_TPC_LastChangeset(Options_AZDO_TFS options,
-            VersionControlServer versionControlServer)
-        {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
-
-            try
-            {
-                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "LastChangeset"),
-                    options);
-
-                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Last Changeset All TeamProjects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
-
-                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
-
-                Header_VersionControlServer.Add_Changesets(insertAt);
-
-                Body_VersionControlServer.Add_Changesets(insertAt, options, versionControlServer);
-
-                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
-
-                insertAt.Group(insertAt.OrientVertical, hide: true);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
-        }
-
-        void CreateWS_All_TPC_LastWorkItem(Options_AZDO_TFS options)
-        {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
-
-            try
-            {
-                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "LastWorkItem"),
-                    options);
-
-                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Last WorkItem All TeamProjects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
-
-                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
-
-                Header_WorkItemStore.Add_TP_WorkItemDetails(insertAt);
-
-                Body_WorkItemStore.Add_WorkItemDetails(insertAt, options);
-                //Add_Changesets(insertAt);
-
-                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
-
-                insertAt.Group(insertAt.OrientVertical, hide: true);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
-        }
-
-        void CreateWS_All_TPC_Teams(Options_AZDO_TFS options)
-        {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
-
-            try
-            {
-                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "Teams"),
-                    options);
-
-                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Teams All Team Projects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
-
-                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
-
-                Header_VersionControlServer.Add_TP_Teams(insertAt);
-
-                //foreach (var teamProject in Server.VersionControlServer.GetAllTeamProjects(refresh: true))
-                foreach (var teamProjectName in options.TeamProjects)
-                {
-                    TeamProject teamProject = VNCTFS.Helper.Get_TeamProject(AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer, teamProjectName.Trim());
-                    long loopTicks = XlHlp.DisplayInWatchWindow($"Processing    {teamProject.Name}");
-
-                    Globals.ThisAddIn.Application.StatusBar = $"Processing    {teamProject.Name}";
-
-                    ProjectInfo teamProjectInfo = AzureDevOpsExplorer.Presentation.Views.Server.CommonStructureService.GetProjectFromName(teamProject.Name);
-                    var tpUri = teamProjectInfo.Uri;
-
-                    TfsTeamService teamService = new TfsTeamService();
-
-                    teamService.Initialize(teamProject.TeamProjectCollection);
-
-                    var defaultTeam = teamService.GetDefaultTeam(tpUri, new List<String>());
-
-                    IEnumerable<TeamFoundationTeam> allTeams = teamService.QueryTeams(tpUri);
-
-                    Body_VersionControlServer.Add_TP_Teams(insertAt, options, AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer, teamProject, allTeams, defaultTeam);
-
-                    XlHlp.DisplayInWatchWindow($"EndProcessing {teamProject.Name}", loopTicks);
-
-                    AZDOHelper.ProcessLoopDelay(options);
-                }
-
-                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
-
-                insertAt.Group(insertAt.OrientVertical, hide: true);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
-        }
-
-        void CreateWS_All_TPC_TestCases(Options_AZDO_TFS options)
-        {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
-
-            try
-            {
-                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "Test Cases"),
-                    options);
-
-                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Test Cases - All Team Projects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
-
-                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
-
-                Header_TestManager.Add_TestCases(insertAt);
-
-                //foreach (var teamProject in Server.VersionControlServer.GetAllTeamProjects(refresh: true))
-                foreach (var teamProjectName in options.TeamProjects)
-                {
-                    TeamProject teamProject = VNCTFS.Helper.Get_TeamProject(AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer, teamProjectName.Trim());
-
-                    long loopTicks = XlHlp.DisplayInWatchWindow($"Processing    {teamProject.Name}");
-
-                    Globals.ThisAddIn.Application.StatusBar = $"Processing    {teamProject.Name}";
-
-                    ITestManagementTeamProject testManagementTeamProject = AzureDevOpsExplorer.Presentation.Views.Server.TestManagementService.GetTeamProject(teamProject.Name);
-
-                    Body_TestManager.Add_TestCases(insertAt, options, testManagementTeamProject);
-
-                    XlHlp.DisplayInWatchWindow($"EndProcessing {teamProject.Name}", loopTicks);
-
-                    AZDOHelper.ProcessLoopDelay(options);
-                }
-
-                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
-
-                insertAt.Group(insertAt.OrientVertical, hide: true);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
-        }
-
-        void CreateWS_All_TPC_TestPlans(Options_AZDO_TFS options)
-        {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
-
-            try
-            {
-                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "Test Plans"),
-                    options);
-
-                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Test Plans - All Team Projects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
-
-                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
-
-                Header_TestManager.Add_TestPlans(insertAt);
-
-                //foreach (var teamProject in Server.VersionControlServer.GetAllTeamProjects(refresh: true))
-                foreach (var teamProjectName in options.TeamProjects)
-                {
-                    TeamProject teamProject = VNCTFS.Helper.Get_TeamProject(AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer, teamProjectName.Trim());
-
-                    long loopTicks = XlHlp.DisplayInWatchWindow($"Processing    {teamProject.Name}");
-
-                    Globals.ThisAddIn.Application.StatusBar = $"Processing    {teamProject.Name}";
-
-                    ITestManagementTeamProject testManagementTeamProject = AzureDevOpsExplorer.Presentation.Views.Server.TestManagementService.GetTeamProject(teamProject.Name);
-
-                    Body_TestManager.Add_TestPlans(insertAt, options, testManagementTeamProject);
-
-                    XlHlp.DisplayInWatchWindow($"EndProcessing {teamProject.Name}", loopTicks);
-
-                    AZDOHelper.ProcessLoopDelay(options);
-                }
-
-                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
-
-                insertAt.Group(insertAt.OrientVertical, hide: true);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
-        }
-
-        void CreateWS_All_TPC_TestSuites(Options_AZDO_TFS options)
-        {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
-
-            try
-            {
-                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "TestSuites"),
-                    options);
-
-                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Test Suites - All Team Projects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
-
-                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
-
-                Header_TestManager.Add_TestSuites(insertAt);
-
-                //foreach (var teamProject in Server.VersionControlServer.GetAllTeamProjects(refresh: true))
-                foreach (var teamProjectName in options.TeamProjects)
-                {
-                    TeamProject teamProject = VNCTFS.Helper.Get_TeamProject(AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer, teamProjectName.Trim());
-
-                    long loopTicks = XlHlp.DisplayInWatchWindow($"Processing    {teamProject.Name}");
-
-                    Globals.ThisAddIn.Application.StatusBar = $"Processing    {teamProject.Name}";
-
-                    ITestManagementTeamProject testManagementTeamProject = AzureDevOpsExplorer.Presentation.Views.Server.TestManagementService.GetTeamProject(teamProject.Name);
-
-                    Body_TestManager.Add_TestSuites(insertAt, options, testManagementTeamProject);
-
-                    XlHlp.DisplayInWatchWindow($"EndProcessing {teamProject.Name}", loopTicks);
-
-                    AZDOHelper.ProcessLoopDelay(options);
-                }
-
-                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
-
-                insertAt.Group(insertAt.OrientVertical, hide: true);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
-        }
-
-        void CreateWS_All_TPC_WorkItemDetails(Options_AZDO_TFS options)
-        {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
-
-            try
-            {
-                XlHlp.XlLocation insertAt = CreateNewWorksheet("All_TPC_WorkItemDetails", options);
-
-                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Work Item Details All Team Projects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
-
-                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
-
-                WorkItemCollection queryResults;
-
-                Header_WorkItemStore.Add_TP_WorkItemDetails(insertAt);
-
-                // HACK(crhodes)
-                // If the Query contains @PROJECT looping across makes sense.
-                // If the Query does not contain @PROJECT 
-                // then it may make sense to allow the Query.ReplaceQueryTokens method
-                // to add the IN (list of projects) clause to the WHERE condition.
-
-                if (options.WorkItemQuerySpec.QueryWithTokens.Contains("PROJECT"))
-                {
-                    foreach (var teamProjectName in options.TeamProjects.OrderBy(n => n))
-                    {
-                        Project project = AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore.Projects[teamProjectName];
-                        string projectName = project.Name;
-
-                        long loopTicks = XlHlp.DisplayInWatchWindow($"Processing {projectName}");
-
-                        Globals.ThisAddIn.Application.StatusBar = $"Processing {projectName}";
-
-                        //string parsedQuery = AZDOHelper.ParseQueryTokens(query, options, project);
-
-                        options.WorkItemQuerySpec.ReplaceQueryTokens(options, project.Name);
-
-                        queryResults = AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore.Query(options.WorkItemQuerySpec.Query);
-
-                        Body_WorkItemStore.Add_TP_WorkItemDetails(insertAt, options, queryResults);
-
-                        Globals.ThisAddIn.Application.ActiveWorkbook.Save();
-
-                        XlHlp.DisplayInWatchWindow($"EndProcessing {project.Name}", loopTicks);
-
-                        AZDOHelper.ProcessLoopDelay(options);
-                    }
-                }
-                else
-                {
-                    options.WorkItemQuerySpec.ReplaceQueryTokens(options);
-
-                    queryResults = AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore.Query(options.WorkItemQuerySpec.Query);
-
-                    Body_WorkItemStore.Add_TP_WorkItemDetails(insertAt, options, queryResults);
-
-                    Globals.ThisAddIn.Application.ActiveWorkbook.Save();
-
-                }
-
-                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
-
-                insertAt.Group(insertAt.OrientVertical, hide: true);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
-        }
-
-        void CreateWS_All_TPC_WorkItemFields(Options_AZDO_TFS options)
-        {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
-
-            try
-            {
-                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "WorkItemFields"),
-                    options);
-
-                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Work Item Fields - All Team Projects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
-
-                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
-
-                Header_WorkItemStore.Add_TP_WorkItemFields(insertAt);
-
-                foreach (var teamProjectName in options.TeamProjects)
-                {
-                    Project project = AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore.Projects[teamProjectName];
-
-                    long loopTicks = XlHlp.DisplayInWatchWindow($"Processing    {project.Name}");
-
-                    Globals.ThisAddIn.Application.StatusBar = $"Processing    {project.Name}";
-
-                    Body_WorkItemStore.Add_TP_WorkItemFields(insertAt, options, project);
-
-                    // Save with each loop so we loose less when things crash ;(
-
-                    Globals.ThisAddIn.Application.ActiveWorkbook.Save();
-
-                    XlHlp.DisplayInWatchWindow($"EndProcessing {project.Name}", loopTicks);
-
-                    AZDOHelper.ProcessLoopDelay(options);
-                }
-
-                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
-
-                insertAt.Group(insertAt.OrientVertical, hide: true);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
-        }
-
-        void CreateWS_All_TPC_WorkItemTypes(Options_AZDO_TFS options)
-        {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
-
-            try
-            {
-                XlHlp.XlLocation insertAt = CreateNewWorksheet("All_TPC_WorkItemTypes", options);
-
-                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Work Item Types All Team Projects", 
-                    AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
-
-                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
-
-                Header_WorkItemStore.Add_TP_WorkItemTypes(insertAt);
-
-                foreach (var teamProjectName in options.TeamProjects)
-                {
-                    Project project = AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore.Projects[teamProjectName];
-
-                    long loopTicks = XlHlp.DisplayInWatchWindow($"Processing    {project.Name}");
-
-                    Globals.ThisAddIn.Application.StatusBar = $"Processing    {project.Name}";
-
-                    DateTime maxLastCreatedDate = DateTime.MinValue;
-                    DateTime maxLastChangedDate = DateTime.MinValue;
-                    DateTime maxLastRevisedDate = DateTime.MinValue;
-
-                    Body_WorkItemStore.Add_TP_WorkItemTypes(insertAt, 
-                        options, AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore, 
-                        project, 
-                        out maxLastCreatedDate, out maxLastChangedDate, out maxLastRevisedDate);
-
-                    // Save with each loop so we loose less when things crash ;(
-
-                    Globals.ThisAddIn.Application.ActiveWorkbook.Save();
-
-                    XlHlp.DisplayInWatchWindow($"EndProcessing {project.Name}", loopTicks);
-
-                    AZDOHelper.ProcessLoopDelay(options);
-                }
-
-                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
-
-                insertAt.Group(insertAt.OrientVertical, hide: true);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
-        }
-
-        private void CreateWS_ConfigurationServer_Info(Options_AZDO_TFS options)
-        {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
-
-            XlHlp.XlLocation insertAt = CreateNewWorksheet("CS_" + AzureDevOpsExplorer.Presentation.Views.Server.ConfigurationServer.Name,
-                options);
-
-            XlHlp.AddLabeledInfoX(insertAt.AddRowX(2), "Configuration Server Info:", AzureDevOpsExplorer.Presentation.Views.Server.ConfigurationServer.Name);
-
-            insertAt = AddSection_TFS_OperationalDatabaseNames(insertAt);
-
-            insertAt = AddSection_ConfigurationServer_Info(insertAt, AzureDevOpsExplorer.Presentation.Views.Server.ConfigurationServer);
+            insertAt = Section_ConfigurationServer.AddSection_ConfigurationServer_Info(insertAt, AzureDevOpsExplorer.Presentation.Views.Server.ConfigurationServer);
 
             //startingRow++;
 
@@ -983,19 +245,31 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
         }
 
-        private void CreateWS_ShelveSets(string teamProjectCollectionName,
+        #endregion
+
+        #region All_TPC
+
+        private void CreateWS_TPC_Info(
+            CatalogNode teamProjectCollectionNode,
+            TfsTeamProjectCollection teamProjectCollection,
+            bool showDetails,
             Options_AZDO_TFS options)
         {
             long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
 
             try
             {
-                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TP", "ShelveSets"),
+                XlHlp.XlLocation insertAt = CreateNewWorksheet("TPC_Info-" + GetTeamProjectCollectionName(teamProjectCollection),
                     options);
 
-                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Name:", teamProjectCollectionName);
+                insertAt = Section_TeamProjectCollection.Add_Info(insertAt, options, teamProjectCollection, showDetails);
 
-                insertAt = Section_VersionControlServer.Add_Shelvesets(insertAt, options, AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer);
+                // Get a catalog of team projects for the collection
+
+                ReadOnlyCollection<CatalogNode> teamProjects = teamProjectCollectionNode.QueryChildren(
+                    new[] { CatalogResourceTypes.TeamProject }, false, CatalogQueryOptions.None);
+
+                insertAt = Section_TeamProjectCollection.AddSection_TeamProjects(insertAt, teamProjects);
             }
             catch (Exception ex)
             {
@@ -1005,27 +279,653 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
         }
 
-        //private void CreateWS_ConfigurationServerNodesInfo(ReadOnlyCollection<CatalogNode> childNodes, bool param1)
-        //{
-        //    long startTicks = Common.WriteToDebugWindow("CreateWS_ConfigurationServerNodesInfo(Start)");
+        private void CreateWS_All_TPC_Areas(Options_AZDO_TFS options)
+        {
+            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
 
-        //    foreach (CatalogNode childNode in childNodes)
+            try
+            {
+                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "Areas"),
+                    options);
+
+                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Areas All Team Projects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
+
+                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
+
+                Header_WorkItemStore.Add_TP_Areas(insertAt);
+
+                foreach (var teamProjectName in options.TeamProjects)
+                {
+                    long loopTicks = Log.Trace($"Processing {teamProjectName}", Common.PROJECT_NAME);
+
+                    Globals.ThisAddIn.Application.StatusBar = $"Processing {teamProjectName}";
+
+                    Project project = AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore.Projects[teamProjectName];
+
+                    insertAt = Body_WorkItemStore.Add_TP_Areas(insertAt, options, AzureDevOpsExplorer.Presentation.Views.Server.CommonStructureService, project);
+
+                    // Save with each loop so we loose less when things crash ;(
+
+                    Globals.ThisAddIn.Application.ActiveWorkbook.Save();
+
+                    Log.Trace($"EndProcessing {teamProjectName}", Common.PROJECT_NAME, loopTicks);
+
+                    AZDOHelper.ProcessLoopDelay(options);
+                }
+
+                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
+
+                insertAt.Group(insertAt.OrientVertical, hide: true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        }
+
+        private void CreateWS_All_TPC_AreaCheck(string areasToCheck, Options_AZDO_TFS options)
+        {
+            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+
+            try
+            {
+                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_WIS", "AreaCheck"),
+                    options);
+
+                foreach (Project project in AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore.Projects)
+                {
+                    long loopTicks = Log.Trace($"Processing {project.Name}", Common.PROJECT_NAME);
+
+                    Globals.ThisAddIn.Application.StatusBar = $"Processing {project.Name}";
+
+                    insertAt = Section_WorkItemStore.Add_TP_AreaCheck(insertAt, project, areasToCheck);
+
+                    Log.Trace($"EndProcessing {project.Name}", Common.PROJECT_NAME, loopTicks);
+
+                    AZDOHelper.ProcessLoopDelay(options);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        }
+
+        void CreateWS_All_TPC_BuildDefinitions(Options_AZDO_TFS options)
+        {
+            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+
+            try
+            {
+                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "BuildDefinitions"),
+                    options);
+
+                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Build Definitions - All TeamProjects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
+
+                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
+
+                Header_BuildServer.Add_BuildDefinitions(insertAt);
+
+                foreach (TeamProject teamProject in AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer.GetAllTeamProjects(refresh: true))
+                {
+                    long loopTicks = Log.Trace($"Processing {teamProject.Name}", Common.PROJECT_NAME);
+
+                    Globals.ThisAddIn.Application.StatusBar = $"Processing {teamProject.Name}";
+
+                    Body_BuildServer.Add_BuildDefinitions(insertAt, options, AzureDevOpsExplorer.Presentation.Views.Server.BuildServer, teamProject);
+
+                    Log.Trace($"EndProcessing {teamProject.Name}", Common.PROJECT_NAME, loopTicks);
+
+                    AZDOHelper.ProcessLoopDelay(options);
+                }
+
+                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
+
+                insertAt.Group(insertAt.OrientVertical, hide: true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        }
+
+        private void CreateWS_All_TPC_Developers(Options_AZDO_TFS options)
+        {
+            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+
+            try
+            {
+                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}({2})", "All_TPC", "Devs", options.GoBackDays),
+                    options);
+
+                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Developers - All TeamProjects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
+
+                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
+
+                Header_VersionControlServer.Add_TP_Developers(insertAt);
+
+                foreach (var teamProjectName in options.TeamProjects)
+                {
+                    TeamProject teamProject = VNCTFS.Helper.Get_TeamProject(AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer, teamProjectName.Trim());
+
+                    long loopTicks = Log.Trace($"Processing {teamProject.Name}", Common.PROJECT_NAME);
+
+                    Globals.ThisAddIn.Application.StatusBar = $"Processing {teamProject.Name}";
+
+                    insertAt.ClearOffsets();
+
+                    XlHlp.AddContentToCell(insertAt.AddRowX(), teamProject.Name);
+
+                    insertAt = Section_VersionControlServer.Add_TP_Developers(insertAt, options, AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer, teamProject, true, teamProject.Name);
+
+                    Log.Trace($"EndProcessing {teamProject.Name}", Common.PROJECT_NAME, loopTicks);
+
+                    AZDOHelper.ProcessLoopDelay(options);
+                }
+
+                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
+
+                insertAt.Group(insertAt.OrientVertical, hide: true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        }
+
+        //void CreateWS_All_TPC_LastChangeset(Options_AZDO_TFS options,
+        //    VersionControlServer versionControlServer)
+        //{
+        //    long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+
+        //    try
         //    {
-        //        CreateWS_ConfigurationServerNodesInfo(childNodes, false);
+        //        XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "LastChangeset"),
+        //            options);
+
+        //        XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Last Changeset All TeamProjects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
+
+        //        insertAt.MarkStart(XlHlp.MarkType.GroupTable);
+
+        //        Header_VersionControlServer.Add_Changesets(insertAt);
+
+        //        //Body_VersionControlServer.Add_Changesets(insertAt, options, versionControlServer);
+
+        //        foreach (var teamProjectName in options.TeamProjects)
+        //        {
+        //            TeamProject teamProject = VNCTFS.Helper.Get_TeamProject(versionControlServer, teamProjectName.Trim());
+
+        //            long loopTicks = Log.Trace($"Processing {teamProject.Name}", Common.PROJECT_NAME);
+
+        //            Globals.ThisAddIn.Application.StatusBar = $"Processing {teamProject.Name}";
+
+        //            insertAt.ClearOffsets();
+
+        //            XlHlp.AddContentToCell(insertAt.AddRowX(), teamProject.Name);
+
+        //            Body_VersionControlServer.Add_TP_Changesets(insertAt, options, 
+        //                AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer, teamProjectName);
+
+        //            Log.Trace($"EndProcessing {teamProject.Name}", Common.PROJECT_NAME, loopTicks);
+
+        //            AZDOHelper.ProcessLoopDelay(options);
+        //        }
+
+        //        insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
+
+        //        insertAt.Group(insertAt.OrientVertical, hide: true);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.ToString());
         //    }
 
-        //    string sheetName = ExcelHlp.SafeSheetName("CSN>" + childNode.N.Name);
-        //    Worksheet ws = ExcelHlp.NewWorksheet(sheetName, beforeSheetName: "FIRST");
-
-        //    // Output starts here.  Each display method returns the output end point.
-
-        //    int startingRow = 2;
-
-        //    startingRow += AddSection_ConfigurationServerInfo(ws, configurationServer, startingRow, showDetails);
-        //    startingRow++;
-
-        //    Common.WriteToDebugWindow("CreateWS_ConfigurationServerNodesInfo(End)", startTicks);
+        //    Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
         //}
+
+        void CreateWS_All_TPC_WorkItemActivity(Options_AZDO_TFS options)
+        {
+            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+
+            try
+            {
+                XlHlp.XlLocation insertAt = CreateNewWorksheet("All_TPC_WorkItemActivity", options);
+
+                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Work Item Activity All Team Projects",
+                    AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
+
+                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
+
+                Header_WorkItemStore.Add_TP_WorkItemActivity(insertAt);
+
+                foreach (var teamProjectName in options.TeamProjects)
+                {
+                    Project project = AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore.Projects[teamProjectName];
+
+                    long loopTicks = Log.Trace($"Processing    {project.Name}", Common.PROJECT_NAME);
+
+                    Globals.ThisAddIn.Application.StatusBar = $"Processing    {project.Name}";
+
+                    DateTime maxLastCreatedDate = DateTime.MinValue;
+                    DateTime maxLastChangedDate = DateTime.MinValue;
+                    DateTime maxLastRevisedDate = DateTime.MinValue;
+
+                    Body_WorkItemStore.Add_TP_WorkItemActivity(insertAt,
+                        options, AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore,
+                        project,
+                        out maxLastCreatedDate, out maxLastChangedDate, out maxLastRevisedDate);
+
+                    // Save with each loop so we loose less when things crash ;(
+
+                    Globals.ThisAddIn.Application.ActiveWorkbook.Save();
+
+                    Log.Trace($"EndProcessing {project.Name}", Common.PROJECT_NAME, loopTicks);
+
+                    AZDOHelper.ProcessLoopDelay(options);
+                }
+
+                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
+
+                insertAt.Group(insertAt.OrientVertical, hide: true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        }
+
+        void CreateWS_All_TPC_Teams(Options_AZDO_TFS options)
+        {
+            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+
+            try
+            {
+                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "Teams"),
+                    options);
+
+                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Teams All Team Projects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
+
+                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
+
+                Header_VersionControlServer.Add_TP_Teams(insertAt);
+
+                //foreach (var teamProject in Server.VersionControlServer.GetAllTeamProjects(refresh: true))
+                foreach (var teamProjectName in options.TeamProjects)
+                {
+                    TeamProject teamProject = VNCTFS.Helper.Get_TeamProject(AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer, teamProjectName.Trim());
+                    long loopTicks = Log.Trace($"Processing    {teamProject.Name}", Common.PROJECT_NAME);
+
+                    Globals.ThisAddIn.Application.StatusBar = $"Processing    {teamProject.Name}";
+
+                    ProjectInfo teamProjectInfo = AzureDevOpsExplorer.Presentation.Views.Server.CommonStructureService.GetProjectFromName(teamProject.Name);
+                    var tpUri = teamProjectInfo.Uri;
+
+                    TfsTeamService teamService = new TfsTeamService();
+
+                    teamService.Initialize(teamProject.TeamProjectCollection);
+
+                    var defaultTeam = teamService.GetDefaultTeam(tpUri, new List<String>());
+
+                    IEnumerable<TeamFoundationTeam> allTeams = teamService.QueryTeams(tpUri);
+
+                    Body_VersionControlServer.Add_TP_Teams(insertAt, options, AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer, teamProject, allTeams, defaultTeam);
+
+                    Log.Trace($"EndProcessing {teamProject.Name}", Common.PROJECT_NAME, loopTicks);
+
+                    AZDOHelper.ProcessLoopDelay(options);
+                }
+
+                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
+
+                insertAt.Group(insertAt.OrientVertical, hide: true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        }
+
+        void CreateWS_All_TPC_TestCases(Options_AZDO_TFS options)
+        {
+            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+
+            try
+            {
+                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "Test Cases"),
+                    options);
+
+                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Test Cases - All Team Projects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
+
+                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
+
+                Header_TestManager.Add_TestCases(insertAt);
+
+                //foreach (var teamProject in Server.VersionControlServer.GetAllTeamProjects(refresh: true))
+                foreach (var teamProjectName in options.TeamProjects)
+                {
+                    TeamProject teamProject = VNCTFS.Helper.Get_TeamProject(AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer, teamProjectName.Trim());
+
+                    long loopTicks = Log.Trace($"Processing    {teamProject.Name}", Common.PROJECT_NAME);
+
+                    Globals.ThisAddIn.Application.StatusBar = $"Processing    {teamProject.Name}";
+
+                    ITestManagementTeamProject testManagementTeamProject = AzureDevOpsExplorer.Presentation.Views.Server.TestManagementService.GetTeamProject(teamProject.Name);
+
+                    Body_TestManager.Add_TestCases(insertAt, options, testManagementTeamProject);
+
+                    Log.Trace($"EndProcessing {teamProject.Name}", Common.PROJECT_NAME, loopTicks);
+
+                    AZDOHelper.ProcessLoopDelay(options);
+                }
+
+                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
+
+                insertAt.Group(insertAt.OrientVertical, hide: true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        }
+
+        void CreateWS_All_TPC_TestPlans(Options_AZDO_TFS options)
+        {
+            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+
+            try
+            {
+                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "Test Plans"),
+                    options);
+
+                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Test Plans - All Team Projects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
+
+                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
+
+                Header_TestManager.Add_TestPlans(insertAt);
+
+                //foreach (var teamProject in Server.VersionControlServer.GetAllTeamProjects(refresh: true))
+                foreach (var teamProjectName in options.TeamProjects)
+                {
+                    TeamProject teamProject = VNCTFS.Helper.Get_TeamProject(AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer, teamProjectName.Trim());
+
+                    long loopTicks = Log.Trace($"Processing    {teamProject.Name}", Common.PROJECT_NAME);
+
+                    Globals.ThisAddIn.Application.StatusBar = $"Processing    {teamProject.Name}";
+
+                    ITestManagementTeamProject testManagementTeamProject = AzureDevOpsExplorer.Presentation.Views.Server.TestManagementService.GetTeamProject(teamProject.Name);
+
+                    Body_TestManager.Add_TestPlans(insertAt, options, testManagementTeamProject);
+
+                    Log.Trace($"EndProcessing {teamProject.Name}", Common.PROJECT_NAME, loopTicks);
+
+                    AZDOHelper.ProcessLoopDelay(options);
+                }
+
+                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
+
+                insertAt.Group(insertAt.OrientVertical, hide: true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        }
+
+        void CreateWS_All_TPC_TestSuites(Options_AZDO_TFS options)
+        {
+            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+
+            try
+            {
+                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "TestSuites"),
+                    options);
+
+                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Test Suites - All Team Projects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
+
+                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
+
+                Header_TestManager.Add_TestSuites(insertAt);
+
+                //foreach (var teamProject in Server.VersionControlServer.GetAllTeamProjects(refresh: true))
+                foreach (var teamProjectName in options.TeamProjects)
+                {
+                    TeamProject teamProject = VNCTFS.Helper.Get_TeamProject(AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer, teamProjectName.Trim());
+
+                    long loopTicks = Log.Trace($"Processing    {teamProject.Name}", Common.PROJECT_NAME);
+
+                    Globals.ThisAddIn.Application.StatusBar = $"Processing    {teamProject.Name}";
+
+                    ITestManagementTeamProject testManagementTeamProject = AzureDevOpsExplorer.Presentation.Views.Server.TestManagementService.GetTeamProject(teamProject.Name);
+
+                    Body_TestManager.Add_TestSuites(insertAt, options, testManagementTeamProject);
+
+                    Log.Trace($"EndProcessing {teamProject.Name}", Common.PROJECT_NAME, loopTicks);
+
+                    AZDOHelper.ProcessLoopDelay(options);
+                }
+
+                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
+
+                insertAt.Group(insertAt.OrientVertical, hide: true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        }
+
+        void CreateWS_All_TPC_WorkItemDetails(Options_AZDO_TFS options)
+        {
+            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+
+            try
+            {
+                XlHlp.XlLocation insertAt = CreateNewWorksheet("All_TPC_WorkItemDetails", options);
+
+                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Work Item Details All Team Projects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
+
+                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
+
+                WorkItemCollection queryResults;
+
+                Header_WorkItemStore.Add_TP_WorkItemDetails(insertAt);
+
+                // HACK(crhodes)
+                // If the Query contains @PROJECT looping across makes sense.
+                // If the Query does not contain @PROJECT 
+                // then it may make sense to allow the Query.ReplaceQueryTokens method
+                // to add the IN (list of projects) clause to the WHERE condition.
+
+                if (options.WorkItemQuerySpec.QueryWithTokens.Contains("PROJECT"))
+                {
+                    foreach (var teamProjectName in options.TeamProjects.OrderBy(n => n))
+                    {
+                        Project project = AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore.Projects[teamProjectName];
+                        string projectName = project.Name;
+
+                        long loopTicks = Log.Trace($"Processing {projectName}", Common.PROJECT_NAME);
+
+                        Globals.ThisAddIn.Application.StatusBar = $"Processing {projectName}";
+
+                        //string parsedQuery = AZDOHelper.ParseQueryTokens(query, options, project);
+
+                        options.WorkItemQuerySpec.ReplaceQueryTokens(options, project.Name);
+
+                        queryResults = AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore.Query(options.WorkItemQuerySpec.Query);
+
+                        Body_WorkItemStore.Add_TP_WorkItemDetails(insertAt, options, queryResults);
+
+                        Globals.ThisAddIn.Application.ActiveWorkbook.Save();
+
+                        Log.Trace($"EndProcessing {project.Name}", Common.PROJECT_NAME, loopTicks);
+
+                        AZDOHelper.ProcessLoopDelay(options);
+                    }
+                }
+                else
+                {
+                    options.WorkItemQuerySpec.ReplaceQueryTokens(options);
+
+                    queryResults = AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore.Query(options.WorkItemQuerySpec.Query);
+
+                    Body_WorkItemStore.Add_TP_WorkItemDetails(insertAt, options, queryResults);
+
+                    Globals.ThisAddIn.Application.ActiveWorkbook.Save();
+
+                }
+
+                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
+
+                insertAt.Group(insertAt.OrientVertical, hide: true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        }
+
+        void CreateWS_All_TPC_WorkItemFields(Options_AZDO_TFS options)
+        {
+            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+
+            try
+            {
+                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "WorkItemFields"),
+                    options);
+
+                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Work Item Fields - All Team Projects", AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
+
+                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
+
+                Header_WorkItemStore.Add_TP_WorkItemFields(insertAt);
+
+                foreach (var teamProjectName in options.TeamProjects)
+                {
+                    Project project = AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore.Projects[teamProjectName];
+
+                    long loopTicks = Log.Trace($"Processing    {project.Name}", Common.PROJECT_NAME);
+
+                    Globals.ThisAddIn.Application.StatusBar = $"Processing    {project.Name}";
+
+                    Body_WorkItemStore.Add_TP_WorkItemFields(insertAt, options, project);
+
+                    // Save with each loop so we loose less when things crash ;(
+
+                    Globals.ThisAddIn.Application.ActiveWorkbook.Save();
+
+                    Log.Trace($"EndProcessing {project.Name}", Common.PROJECT_NAME, loopTicks);
+
+                    AZDOHelper.ProcessLoopDelay(options);
+                }
+
+                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
+
+                insertAt.Group(insertAt.OrientVertical, hide: true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        }
+
+        void CreateWS_All_TPC_WorkItemTypes(Options_AZDO_TFS options)
+        {
+            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+
+            try
+            {
+                XlHlp.XlLocation insertAt = CreateNewWorksheet("All_TPC_WorkItemTypes", options);
+
+                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Work Item Types All Team Projects", 
+                    AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.Name);
+
+                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
+
+                Header_WorkItemStore.Add_TP_WorkItemTypes(insertAt);
+
+                foreach (var teamProjectName in options.TeamProjects)
+                {
+                    Project project = AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore.Projects[teamProjectName];
+
+                    long loopTicks = Log.Trace($"Processing    {project.Name}", Common.PROJECT_NAME);
+
+                    Globals.ThisAddIn.Application.StatusBar = $"Processing    {project.Name}";
+
+                    DateTime maxLastCreatedDate = DateTime.MinValue;
+                    DateTime maxLastChangedDate = DateTime.MinValue;
+                    DateTime maxLastRevisedDate = DateTime.MinValue;
+
+                    Body_WorkItemStore.Add_TP_WorkItemTypes(insertAt, 
+                        options, AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore, 
+                        project, 
+                        out maxLastCreatedDate, out maxLastChangedDate, out maxLastRevisedDate);
+
+                    // Save with each loop so we loose less when things crash ;(
+
+                    Globals.ThisAddIn.Application.ActiveWorkbook.Save();
+
+                    Log.Trace($"EndProcessing {project.Name}", Common.PROJECT_NAME, loopTicks);
+
+                    AZDOHelper.ProcessLoopDelay(options);
+                }
+
+                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tbl_{0}", insertAt.workSheet.Name));
+
+                insertAt.Group(insertAt.OrientVertical, hide: true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        }
+
+        private void CreateWS_TPC_Members(string teamProjectCollectionName,
+            Options_AZDO_TFS options)
+        {
+            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+
+            try
+            {
+                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "Members"),
+                    options);
+
+                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Name:", teamProjectCollectionName);
+
+                insertAt = Section_TeamProjectCollection.Add_Members(insertAt, options);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        }
+
+        #endregion
 
         private void CreateWS_TP(string teamProjectName,
             TeamProjectActionRequest request,
@@ -1125,28 +1025,6 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
         }
 
-        //public void CreateWS_Query(
-        //    WorkItemStore workItemStore,
-        //    Options_AZDO_TFS options)
-        //{
-        //    long startTicks = XlHlp.DisplayInWatchWindow("Begin");
-
-        //    try
-        //    {
-        //        XlHlp.XlLocation insertAt = CreateNewWorksheet($"TPQ_{options.Query.Name}", options);
-
-        //        options.Query.ReplaceQueryTokens(options);
-
-        //        insertAt = Section_WorkItemStore.Add_Query(insertAt, options, "tblTPCQuery");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.ToString());
-        //    }
-
-        //    XlHlp.DisplayInWatchWindow("End", startTicks);
-        //}
-
         private void CreateWS_TP_Queries(
             WorkItemStore workItemStore,
             Project project,
@@ -1161,7 +1039,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
                 // TODO(crhodes)
                 // We don't support multiple queries yet.
-                // HOpe I don't regret not passing in the query stuff.
+                // Hope I don't regret not passing in the query stuff.
                 //foreach (string queryName in queries.Keys)
                 //{
                 //    insertAt = Section_WorkItemStore.Add_TP_Query(insertAt, options, project, queries[queryName], queryName);
@@ -1175,26 +1053,6 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
         }
 
-        //private void CreateWS_TP_Query(
-        //    Options_AZDO_TFS options,
-        //    Project project)
-        //{
-        //    long startTicks = XlHlp.DisplayInWatchWindow("Begin");
-
-        //    try
-        //    {
-        //        XlHlp.XlLocation insertAt = CreateNewWorksheet($"TPQ_{project.Name}", options);
-
-        //        insertAt = Section_WorkItemStore.Add_TP_Query(insertAt, options, project);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.ToString());
-        //    }
-
-        //    XlHlp.DisplayInWatchWindow("End", startTicks);
-        //}
-
         void CreateWS_TP_TemplateType(Options_AZDO_TFS options)
         {
             long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
@@ -1203,8 +1061,6 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "TPC", "Templates"),
                     options);
-
-                //TfsConfigurationServer tfsConfigServer = VNCTFS.Helper.Get_ConfigurationServer(wucTFSProvider_Picker.Uri);
 
                 ReadOnlyCollection<CatalogNode> teamProjectCollectionNodes = VNCTFS.Helper.Get_TeamProjectCollectionNodes(AzureDevOpsExplorer.Presentation.Views.Server.ConfigurationServer);
 
@@ -1232,57 +1088,9 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
         }
 
-        private void CreateWS_TPC_Info(
-            CatalogNode teamProjectCollectionNode,
-            TfsTeamProjectCollection teamProjectCollection,
-            bool showDetails,
-            Options_AZDO_TFS options)
-        {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+        #endregion
 
-            try
-            {
-                XlHlp.XlLocation insertAt = CreateNewWorksheet("TPC_Info-" + GetTeamProjectCollectionName(teamProjectCollection),
-                    options);
-
-                insertAt = Section_TeamProjectCollection.Add_Info(insertAt, options, teamProjectCollection, showDetails);
-
-                // Get a catalog of team projects for the collection
-
-                ReadOnlyCollection<CatalogNode> teamProjects = teamProjectCollectionNode.QueryChildren(
-                    new[] { CatalogResourceTypes.TeamProject }, false, CatalogQueryOptions.None);
-
-                insertAt = Section_TeamProject.AddSection_TeamProjects_Info(insertAt, teamProjects);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
-        }
-
-        private void CreateWS_TPC_Members(string teamProjectCollectionName,
-            Options_AZDO_TFS options)
-        {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
-
-            try
-            {
-                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TPC", "Members"),
-                    options);
-
-                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Name:", teamProjectCollectionName);
-
-                insertAt = Section_TeamProjectCollection.Add_Members(insertAt, options);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
-        }
+        #region VersionControlServer (VCS)
 
         void CreateWS_VCS_Branches(string teamProjectCollectionName,
             Options_AZDO_TFS options)
@@ -1305,6 +1113,100 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
         }
+
+        private void CreateWS_VCS_ChangeSetInfo(int changesetId,
+            string sectionsToDisplay,
+            Options_AZDO_TFS options,
+            ICommonStructureService commonStructureService)
+        {
+            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+
+            try
+            {
+                Changeset changeSet = AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer.GetChangeset(changesetId);
+
+                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("CS_{0}", changesetId),
+                    options);
+
+                // TODO(crhodes)
+                // Change this to write to Sheet
+                //
+                // Use first thing to get code to add to Version Control Server (VCS) Information sheet
+
+                if (sectionsToDisplay.Contains("Info"))
+                {
+                    Section_VersionControlServer.Display_VCS_Changeset_Info(changeSet);
+                }
+
+                if (sectionsToDisplay.Contains("Changes"))
+                {
+                    Section_VersionControlServer.Display_VCS_ChangeSet_Changes(changeSet);
+                }
+
+                if (sectionsToDisplay.Contains("Associated WorkItems"))
+                {
+                    Section_VersionControlServer.Display_VCS_ChangeSet_AssociatedWorkItems(changeSet);
+                }
+
+                if (sectionsToDisplay.Contains("WorkItems"))
+                {
+                    Section_VersionControlServer.Display_VCS_Changeset_WorkItems(changeSet, AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore, commonStructureService);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        }
+
+        private void CreateWS_VCS_ShelveSets(string teamProjectCollectionName,
+            Options_AZDO_TFS options)
+        {
+            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+
+            try
+            {
+                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TP", "ShelveSets"),
+                    options);
+
+                XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Name:", teamProjectCollectionName);
+
+                insertAt = Section_VersionControlServer.Add_Shelvesets(insertAt, options, AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        }
+
+        void CreateWS_VCS_Workspaces(string tfsUri,
+            string teamProjectCollection,
+            Options_AZDO_TFS options)
+        {
+            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+
+            try
+            {
+                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TP", "WorkSpaces"),
+                    options);
+
+                insertAt = Section_VersionControlServer.Add_Workspaces(insertAt, options, AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        }
+
+        #endregion
+
+        #region WorkItemStore (WIS)
 
         private void CreateWS_WIS_WorkItemInfo(int workItemID,
             WorkItemActionRequest request,
@@ -1349,31 +1251,10 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                     // TODO(crhodes)
                     // Check for null
 
-                    insertAt = Section_WorkItemStore.Add_WorkItem_WorkItemLinks(insertAt, options, 
+                    insertAt = Section_WorkItemStore.Add_WorkItem_WorkItemLinks(insertAt, options,
                         AzureDevOpsExplorer.Presentation.Views.Server.WorkItemStore, workitem);
                     insertAt.IncrementRows();
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
-        }
-
-        void CreateWS_Workspaces(string tfsUri,
-            string teamProjectCollection,
-            Options_AZDO_TFS options)
-        {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
-
-            try
-            {
-                XlHlp.XlLocation insertAt = CreateNewWorksheet(string.Format("{0}_{1}", "All_TP", "WorkSpaces"),
-                    options);
-
-                insertAt = Section_VersionControlServer.Add_Workspaces(insertAt, options, AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer);
             }
             catch (Exception ex)
             {
@@ -1561,6 +1442,8 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
         }
 
+        #endregion
+
         void DisplayListOf_Categories(XlHlp.XlLocation insertAt, Microsoft.TeamFoundation.WorkItemTracking.Client.CategoryCollection categories)
         {
             long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
@@ -1646,7 +1529,5 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
         }
-
-        #endregion
     }
 }

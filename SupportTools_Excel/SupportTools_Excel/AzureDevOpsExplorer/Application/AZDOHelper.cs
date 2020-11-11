@@ -1,26 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Windows;
-using System.Windows.Controls;
+using System.Threading;
 
-using Microsoft.Office.Interop.Excel;
-
-using Microsoft.TeamFoundation.Client;
 using Microsoft.TeamFoundation.Framework.Client;
 using Microsoft.TeamFoundation.Framework.Common;
-using Microsoft.TeamFoundation.VersionControl.Client;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
-using SupportTools_Excel.Domain;
-using VNC.AddinHelper;
-using XlHlp = VNC.AddinHelper.Excel;
-using SupportTools_Excel.AzureDevOpsExplorer.Application;
-using SupportTools_Excel.Presentation.Views;
+
 using SupportTools_Excel.AzureDevOpsExplorer.Domain;
-using SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views;
-using System.Threading;
+
+using XlHlp = VNC.AddinHelper.Excel;
 
 namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 {
@@ -97,7 +85,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             return filter;
         }
-
 
         internal static string ParseQueryTokens(
             string tokenizedQuery,

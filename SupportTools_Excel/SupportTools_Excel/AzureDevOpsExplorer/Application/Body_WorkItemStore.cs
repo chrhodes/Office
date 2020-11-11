@@ -794,13 +794,15 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             maxLastChangedDate = DateTime.MinValue;
             maxLastRevisedDate = DateTime.MinValue;
 
-            DateTime startingDate = (DateTime.Now - TimeSpan.FromDays(options.GoBackDays));
-            string startDate = "1/1/1900";
+            //DateTime startingDate = (DateTime.Now - TimeSpan.FromDays(options.GoBackDays));
+            //string startDate = "1/1/1900";
 
-            if (options.GoBackDays > 0)
-            {
-                startDate = startingDate.ToShortDateString();
-            }
+            //if (options.GoBackDays > 0)
+            //{
+            //    startDate = startingDate.ToShortDateString();
+            //}
+
+            string startDate = options.StartDate.ToShortDateString();
 
             Dictionary<WorkItemType, List<Transition>> allTransitions = new Dictionary<WorkItemType, List<Transition>>();
 
@@ -899,6 +901,146 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{lastChangedDate}");
                     XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{lastRevisedDate}");
                     XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{transitionsDisplay}");
+
+                    insertAt.IncrementRows();
+
+                    AZDOHelper.ProcessItemDelay(options);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+
+                XlHlp.DisplayInWatchWindow("Loop", startTicks);
+            }
+
+            XlHlp.DisplayInWatchWindow("End", startTicks);
+            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        }
+
+        internal static void Add_TP_WorkItemActivity(
+            XlHlp.XlLocation insertAt,
+            Options_AZDO_TFS options,
+            WorkItemStore workItemStore,
+            Project project,
+            out DateTime maxLastCreatedDate,
+            out DateTime maxLastChangedDate,
+            out DateTime maxLastRevisedDate)
+        {
+            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            XlHlp.DisplayInWatchWindow("Begin");
+
+            maxLastCreatedDate = DateTime.MinValue;
+            maxLastChangedDate = DateTime.MinValue;
+            maxLastRevisedDate = DateTime.MinValue;
+
+            //DateTime startingDate = (DateTime.Now - TimeSpan.FromDays(options.GoBackDays));
+            //string startDate = "1/1/1900";
+
+            //if (options.GoBackDays > 0)
+            //{
+            //    startDate = startingDate.ToShortDateString();
+            //}
+
+            string startDate = options.StartDate.ToShortDateString();
+
+            //Dictionary<WorkItemType, List<Transition>> allTransitions = new Dictionary<WorkItemType, List<Transition>>();
+
+            foreach (WorkItemType wit in project.WorkItemTypes.Cast<WorkItemType>().OrderBy(nnn => nnn.Name))
+            {
+                long loopTicks = XlHlp.DisplayInWatchWindow("WorkItemType Loop");
+
+                string exportXMLFilePath = "";
+
+                //if (options.ExportXMLTemplate)
+                //{
+                //    exportXMLFilePath = $@"{options.XMLTemplateFilePath}\{project.Name}";
+
+                //    Directory.CreateDirectory(exportXMLFilePath);
+
+                //    XmlDocument exportXml = wit.Export(includeGlobalListsFlag: false);
+                //    exportXml.Save($@"{exportXMLFilePath}\{wit.Name}.txt");
+
+                //    if (options.IncludeGlobalLists)
+                //    {
+                //        XmlDocument exportXmlGlobalLists = wit.Export(includeGlobalListsFlag: true);
+                //        exportXmlGlobalLists.Save($@"{exportXMLFilePath}\{wit.Name}.gl.txt");
+                //    }
+                //}
+
+                try
+                {
+                    //var transitions = GetTransitions(allTransitions, wit);
+
+                    //string transitionsDisplay = PrintTransitions(transitions);
+
+                    insertAt.ClearOffsets();
+                    int count = 0;
+
+                    string lastCreateDate = "???";
+                    string lastChangedDate = "???";
+                    string lastRevisedDate = "???";
+
+                    //if (options.GetLastActivityDates)
+                    //{
+                        try
+                        {
+                            string query = String.Format(
+                                "Select [Id], [Created Date], [Changed Date], [Revised Date]"
+                                + " From WorkItems"
+                                + " Where [Work Item Type] = '{0}'"
+                                + " and [System.TeamProject] = '{1}'"
+                                + " and ([Created Date] >= '{2}' or [Changed Date] >= '{2}')",
+                                wit.Name, project.Name, startDate);
+
+                            WorkItemCollection queryResults = workItemStore.Query(query);
+
+                            if ((count = queryResults.Count) > 0)
+                            {
+                                WorkItem lastCreatedItem = queryResults.Cast<WorkItem>().OrderByDescending(iii => iii.CreatedDate).First();
+                                lastCreateDate = lastCreatedItem.CreatedDate.ToString();
+
+                                if (lastCreatedItem.CreatedDate > maxLastCreatedDate)
+                                {
+                                    maxLastCreatedDate = lastCreatedItem.CreatedDate;
+                                }
+
+                                WorkItem lastChangedItem = queryResults.Cast<WorkItem>().OrderByDescending(iii => iii.ChangedDate).First();
+                                lastChangedDate = lastChangedItem.ChangedDate.ToString();
+
+                                if (lastChangedItem.ChangedDate > maxLastChangedDate)
+                                {
+                                    maxLastChangedDate = lastChangedItem.ChangedDate;
+                                }
+
+                                WorkItem lastRevisedItem = queryResults.Cast<WorkItem>().OrderByDescending(iii => iii.RevisedDate).First();
+                                lastRevisedDate = lastRevisedItem.RevisedDate.ToString();
+
+                                if (lastRevisedItem.RevisedDate > maxLastRevisedDate)
+                                {
+                                    maxLastRevisedDate = lastRevisedItem.RevisedDate;
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString());
+                        }
+
+                        if (options.SkipIfNoActivity && lastCreateDate == "???")
+                        {
+                            continue;
+                        }
+                    //}
+
+                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{project.Name}");
+                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{wit.Name}");
+                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{count}");
+                    //XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{wit.FieldDefinitions.Count}");
+                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{lastCreateDate}");
+                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{lastChangedDate}");
+                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{lastRevisedDate}");
+                    //XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{transitionsDisplay}");
 
                     insertAt.IncrementRows();
 

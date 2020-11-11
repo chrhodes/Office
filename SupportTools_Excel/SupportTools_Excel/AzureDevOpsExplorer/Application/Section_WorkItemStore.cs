@@ -76,6 +76,11 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                         insertAt = Add_TP_WorkItemTypes(insertAt, options, workItemStore, project);
                     }
 
+                    if (sectionsToDisplay.Contains("Work Item Activity"))
+                    {
+                        insertAt = Add_TP_WorkItemActivity(insertAt, options, workItemStore, project);
+                    }
+
                     if (sectionsToDisplay.Contains("Work Item Details"))
                     {
                         insertAt = Add_TP_WorkItemDetails(insertAt, options, workItemStore, project).IncrementPosition(insertAt.OrientVertical);
@@ -887,7 +892,65 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             return insertAt;
         }
-        
+
+        internal static XlHlp.XlLocation Add_TP_WorkItemActivity(
+            XlHlp.XlLocation insertAt,
+            Options_AZDO_TFS options,
+            WorkItemStore workItemStore,
+            Project project)
+        {
+            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            XlHlp.DisplayInWatchWindow(insertAt);
+
+            try
+            {
+                // Save the location of the title so we can update later after have traversed all items.
+
+                Range rngTitle = insertAt.GetCurrentRange();
+
+                if (insertAt.OrientVertical)
+                {
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), "WorkItem Activity", project.WorkItemTypes.Count.ToString());
+                }
+                else
+                {
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), "WorkItem Activity", project.WorkItemTypes.Count.ToString(),
+                        orientation: XlOrientation.xlUpward);
+                    insertAt.IncrementColumns();
+                }
+
+                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
+
+                Header_WorkItemStore.Add_TP_WorkItemActivity(insertAt);
+
+                DateTime maxLastCreatedDate = DateTime.MinValue;
+                DateTime maxLastChangedDate = DateTime.MinValue;
+                DateTime maxLastRevisedDate = DateTime.MinValue;
+
+                Body_WorkItemStore.Add_TP_WorkItemActivity(insertAt, options, workItemStore, project, out maxLastCreatedDate, out maxLastChangedDate, out maxLastRevisedDate);
+
+                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tblWIT_{0}", project.Name));
+
+                insertAt.Group(insertAt.OrientVertical);
+
+                // Add the date information
+                rngTitle.Offset[0, 2].Value = maxLastCreatedDate.ToString();
+                rngTitle.Offset[0, 3].Value = maxLastChangedDate.ToString();
+                rngTitle.Offset[0, 4].Value = maxLastRevisedDate.ToString();
+
+                insertAt.EndSectionAndSetNextLocation(insertAt.OrientVertical);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
+            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+
+            return insertAt;
+        }
+
         //private static XlHlp.XlLocation Add_TP_WorkItemTypesXML(
         //    XlHlp.XlLocation insertAt, 
         //    Options_AZDO_TFS options, 

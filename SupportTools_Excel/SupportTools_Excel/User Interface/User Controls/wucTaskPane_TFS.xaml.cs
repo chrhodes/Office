@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -13,7 +12,6 @@ using DevExpress.Xpf.Core;
 
 using Microsoft.Office.Interop.Excel;
 using Microsoft.TeamFoundation.Client;
-using Microsoft.TeamFoundation.Framework.Client;
 using Microsoft.TeamFoundation.VersionControl.Client;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
 
@@ -25,7 +23,6 @@ using SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels;
 using VNC;
 using VNC.TFS.User_Interface.User_Controls;
 
-using VNCTFS = VNC.TFS;
 using XlHlp = VNC.AddinHelper.Excel;
 
 namespace SupportTools_Excel.User_Interface.User_Controls
@@ -92,7 +89,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             Common.EventAggregator.GetEvent<GetTPCWorkItemDetailsEvent>().Subscribe(Get_TPC_WorkItemDetails);
             Common.EventAggregator.GetEvent<GetTPCWorkspacesEvent>().Subscribe(Get_TPC_Workspaces);
             Common.EventAggregator.GetEvent<GetTPCLastChangesetEvent>().Subscribe(Get_TPC_LastChangeset);
-            Common.EventAggregator.GetEvent<GetTPCLastWorkItemEvent>().Subscribe(Get_TPC_LastWorkItem);
+            Common.EventAggregator.GetEvent<GetTPCWorkItemActivityEvent>().Subscribe(Get_TPC_WorkItemActivity);
             Common.EventAggregator.GetEvent<GetTPCTestPlansEvent>().Subscribe(Get_TPC_TestPlans);
             Common.EventAggregator.GetEvent<GetTPCTestSuitesEvent>().Subscribe(Get_TPC_TestSuites);
             Common.EventAggregator.GetEvent<GetTPCTestCasesEvent>().Subscribe(Get_TPC_TestCases);
@@ -692,7 +689,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 RequestHandlers.SpeedUpStart();
 
-                CreateWS_ConfigurationServer_Info(GetOptions());
+                CreateWS_ConfigurationServer_Info(GetOptions(), AzureDevOpsExplorer.Presentation.Views.Server.ConfigurationServer);
             }
             catch (Exception ex)
             {
@@ -923,11 +920,6 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             RequestHandlers.ProcessCreateWorkSheet(CreateWS_All_TPC_Areas, GetOptions());
         }
 
-        //private void Get_TPC_Releases()
-        //{
-        //    RequestHandlers.ProcessCreateWorkSheet(CreateWS_All_TPC_Releases, GetOptions());
-        //}
-
         private void Get_TPC_Info()
         {
             long startTicks = XlHlp.DisplayInWatchWindow("Begin");
@@ -938,19 +930,13 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 RequestHandlers.SpeedUpStart();
 
-                // Get the Team Project Collections
+                //// Get the Team Project Collections
 
-                ReadOnlyCollection<CatalogNode> projectCollectionNodes = VNCTFS.Helper.Get_TeamProjectCollectionNodes(AzureDevOpsExplorer.Presentation.Views.Server.ConfigurationServer);
+                //ReadOnlyCollection<CatalogNode> projectCollectionNodes = VNCTFS.Helper.Get_TeamProjectCollectionNodes(AzureDevOpsExplorer.Presentation.Views.Server.ConfigurationServer);
 
-                // TODO(crhodes)
-                // Fix this to use the cbeTeamProjectCollection for only one
+                var tpc = AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.CatalogNode;
 
-                foreach (CatalogNode teamProjectCollectionNode in projectCollectionNodes)
-                {
-                    TfsTeamProjectCollection teamProjectCollection = VNCTFS.Helper.Get_TeamProjectCollection(AzureDevOpsExplorer.Presentation.Views.Server.ConfigurationServer, teamProjectCollectionNode);
-
-                    CreateWS_TPC_Info(teamProjectCollectionNode, AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection, false, options);
-                }
+                CreateWS_TPC_Info(tpc, AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection, false, options);
             }
             catch (Exception ex)
             {
@@ -966,12 +952,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
         private void Get_TPC_LastChangeset()
         {
-            RequestHandlers.ProcessCreateWorkSheet((options) => CreateWS_All_TPC_LastChangeset(options, AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer), GetOptions());
+            RequestHandlers.ProcessCreateWorkSheet((options) => Worksheet_Output.CreateWS_All_TPC_LastChangeset(options, AzureDevOpsExplorer.Presentation.Views.Server.VersionControlServer), GetOptions());
         }
 
-        private void Get_TPC_LastWorkItem()
+        private void Get_TPC_WorkItemActivity()
         {
-            RequestHandlers.ProcessCreateWorkSheet(CreateWS_All_TPC_LastWorkItem, GetOptions());
+            RequestHandlers.ProcessCreateWorkSheet(CreateWS_All_TPC_WorkItemActivity, GetOptions());
         }
 
         private void Get_TPC_Members()

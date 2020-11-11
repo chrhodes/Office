@@ -78,6 +78,7 @@
                         <dxe:ComboBoxEditItem Content="Iterations" />
                         <dxe:ComboBoxEditItem Content="Stored Queries" />
                         <dxe:ComboBoxEditItem Content="Work Item Types" />
+                        <dxe:ComboBoxEditItem Content="Work Item Activity" />
                         <dxe:ComboBoxEditItem Content="Work Item Fields" />
                         <dxe:ComboBoxEditItem Content="Work Item Categories" />
                         <dxe:ComboBoxEditItem Content="Work Item Details" />

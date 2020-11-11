@@ -143,9 +143,9 @@
 
             <dxlc:LayoutItem>
                 <Button 
-        		    Command="{Binding GetTPCLastWorkItemCommand }"
-        		    Content="{Binding GetTPCLastWorkItemContent, FallbackValue ='Get TPC Last WorkItem' }"
-        		    ToolTip="{Binding GetTPCLastWorkItemToolTip }" />
+        		    Command="{Binding GetTPCWorkItemActivityCommand }"
+        		    Content="{Binding GetTPCWorkItemActivityContent, FallbackValue ='Get TPC WorkItem Activity' }"
+        		    ToolTip="{Binding GetTPCWorkItemActivityToolTip }" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem>
