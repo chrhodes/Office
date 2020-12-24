@@ -15,6 +15,8 @@ using SupportTools_Excel.AzureDevOpsExplorer.Domain;
 
 using SupportTools_Excel.Domain;
 
+using VNC;
+
 using XlHlp = VNC.AddinHelper.Excel;
 
 namespace SupportTools_Excel.AzureDevOpsExplorer.Application
@@ -29,6 +31,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             VersionControlServer versionControlServer,
             TeamProject teamProject)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             //TeamProject teamProject = VNC.TFS.Helper.Get_TeamProject(versionControlServer, teamProjectName);
 
             var path = teamProject.ServerItem;
@@ -93,6 +97,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             insertAt.IncrementRows();
+
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         internal static void Add_TP_Changesets(
@@ -101,6 +107,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             ICommonStructureService commonStructureService,
             bool listChanges, bool listWorkItems, IEnumerable history)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             foreach (Changeset changeset in history)
             {
                 insertAt.ClearOffsets();
@@ -161,6 +169,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     insertAt.DecrementColumns();
                 }
             }
+
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         internal static void Add_TP_Developers(
@@ -171,6 +181,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             SortedDictionary<string, DateTime> developersLatestDate,
             SortedDictionary<string, DateTime> developersEarliestDate)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             foreach (string developer in developers.Keys)
             {
                 insertAt.ClearOffsets();
@@ -183,6 +195,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 insertAt.IncrementRows();
             }
+
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         internal static void Add_TP_Shelvesets(
@@ -190,6 +204,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             Shelveset[] shelvesets)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             try
             {
                 foreach (Shelveset item in shelvesets)
@@ -214,6 +230,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), msg);
             }
+
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         internal static void Add_TP_Teams(
@@ -224,6 +242,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             IEnumerable<TeamFoundationTeam> allTeams,
             TeamFoundationTeam defaultTeam)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             foreach (var team in allTeams.OrderBy(team => team.Name))
             {
                 insertAt.ClearOffsets();
@@ -251,6 +271,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     insertAt.IncrementRows();
                 }
             }
+
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         internal static void Add_TP_Workspaces(
@@ -258,6 +280,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             Workspace[] workSpaces)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             foreach (Workspace workspace in workSpaces)
             {
                 insertAt.ClearOffsets();
@@ -276,6 +300,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 insertAt.IncrementRows();
             }
+
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         #endregion

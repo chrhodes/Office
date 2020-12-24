@@ -36,7 +36,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
         public wucTaskPane_TFS()
         {
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
 
             //try
             //{
@@ -120,12 +120,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             //RunQueryCommand = new DelegateCommand(RunQuery);
 
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         private void LoadControlContents()
         {
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.LOG_APPNAME);
 
             try
             {
@@ -145,7 +145,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             ApplicationThemeHelper.ApplicationThemeName = "MetropolisLight";
 
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION_INITIALIZE("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         #endregion Constructors and Load
@@ -705,7 +705,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
         private void GetTeamProjectInfo(TeamProjectActionRequest request)
         {
-            Log.Trace($"Enter", Common.PROJECT_NAME);
+            Log.Trace("Enter", Common.PROJECT_NAME);
             long startTicks = XlHlp.DisplayInWatchWindow("Begin");
 
             Options_AZDO_TFS options = GetOptions();
@@ -749,12 +749,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             }
 
             XlHlp.DisplayInWatchWindow("End", startTicks);
-            Log.Trace($"Exit", Common.PROJECT_NAME);
+            Log.Trace("Exit", Common.PROJECT_NAME);
         }
 
         private void GetTeamProjectXML(TeamProjectActionRequest request)
         {
-            Log.Trace($"Enter", Common.PROJECT_NAME);
+            Log.Trace("Enter", Common.PROJECT_NAME);
             long startTicks = XlHlp.DisplayInWatchWindow("Begin");
 
             Options_AZDO_TFS options = GetOptions();
@@ -798,7 +798,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             }
 
             XlHlp.DisplayInWatchWindow("End", startTicks);
-            Log.Trace($"Exit", Common.PROJECT_NAME);
+            Log.Trace("Exit", Common.PROJECT_NAME);
         }
 
         #endregion

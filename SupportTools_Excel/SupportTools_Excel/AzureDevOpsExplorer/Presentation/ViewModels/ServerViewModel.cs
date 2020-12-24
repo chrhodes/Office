@@ -28,7 +28,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         public ServerViewModel()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             // TODO(crhodes)
             // Decide if we want defaults
@@ -36,7 +36,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
             InitializeViewModel();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         // ViewModel First
@@ -44,16 +44,16 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         public ServerViewModel(AzureDevOpsExplorer.Presentation.Views.Server view) : base(view)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             InitializeViewModel();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void InitializeViewModel()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.VIEWMODEL("Enter", Common.PROJECT_NAME);
 
             // TODO(crhodes)
             // Initialize any controls and/or properties that need to be
@@ -65,7 +65,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
             DoSomethingToolTip = "ToolTip for DoSomething Button";
 
             //InitializeRows();
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.VIEWMODEL("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion

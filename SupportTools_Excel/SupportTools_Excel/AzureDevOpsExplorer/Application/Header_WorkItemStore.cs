@@ -12,7 +12,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
         internal static void Add_TP_Areas(XlHlp.XlLocation insertAt)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION("Enter", Common.PROJECT_NAME);
 
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Team Project");
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Area");
@@ -22,13 +22,13 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             insertAt.IncrementRows();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.PROJECT_NAME, startTicks);
         }
 
 
         internal static void Add_TP_Iterations(XlHlp.XlLocation insertAt)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION("Enter", Common.PROJECT_NAME);
 
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Team Project");
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Iteration");
@@ -38,12 +38,12 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             insertAt.IncrementRows();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         internal static void Add_TP_FieldMapping(XlHlp.XlLocation insertAt)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION("Enter", Common.PROJECT_NAME);
 
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Team Project");
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "WIT Name");
@@ -62,12 +62,12 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             insertAt.IncrementRows();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         internal static void Add_TP_WorkItemFields(XlHlp.XlLocation insertAt)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION("Enter", Common.PROJECT_NAME);
 
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Team Project");
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "WIT Name");
@@ -95,12 +95,12 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             insertAt.IncrementRows();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         internal static void Add_TP_WorkItemActivity(XlHlp.XlLocation insertAt)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION("Enter", Common.PROJECT_NAME);
 
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Team Project");
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Name");
@@ -122,12 +122,12 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             insertAt.IncrementRows();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         internal static void Add_TP_WorkItemTypes(XlHlp.XlLocation insertAt)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION("Enter", Common.PROJECT_NAME);
 
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Team Project");
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Name");
@@ -149,12 +149,12 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             insertAt.IncrementRows();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         internal static void Add_TP_WorkItemDetails(XlHlp.XlLocation insertAt)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION("Enter", Common.PROJECT_NAME);
 
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Project");
 
@@ -183,11 +183,13 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Rev");
 
             insertAt.IncrementRows();
+
+            Log.APPLICATION("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         internal static void Add_TP_WorkItemFieldValues(XlHlp.XlLocation insertAt)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION("Enter", Common.PROJECT_NAME);
 
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 10, "Id");
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 45, "Name");
@@ -200,12 +202,12 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             insertAt.IncrementRows();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         internal static void Add_TP_WorkItemFieldValues2(XlHlp.XlLocation insertAt)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION("Enter", Common.PROJECT_NAME);
 
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Team Project");
 
@@ -223,12 +225,12 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             insertAt.IncrementRows();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         internal static void Add_TP_WorkItem_Links(XlHlp.XlLocation insertAt)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION("Enter", Common.PROJECT_NAME);
 
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 10, "ArtifactLinkType");
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 10, "BaseType");
@@ -238,12 +240,12 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             insertAt.IncrementRows();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         internal static void Add_TP_WorkItem_WorkItemLinks(XlHlp.XlLocation insertAt)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION("Enter", Common.PROJECT_NAME);
 
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 15, "Source.Type");
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 12, "Source.Id");
@@ -284,7 +286,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             insertAt.IncrementRows();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion

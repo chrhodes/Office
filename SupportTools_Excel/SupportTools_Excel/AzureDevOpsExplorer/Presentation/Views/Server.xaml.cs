@@ -51,7 +51,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
         public Server()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             InitializeComponent();
 
@@ -63,7 +63,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
             InitializeView();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         // View First.  View is passed ViewModel through Injection
@@ -71,7 +71,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
         public Server(IAZDOServerViewModel viewModel)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             InitializeComponent();
 
@@ -79,12 +79,12 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
             InitializeView();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void InitializeView()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.VIEW("Enter", Common.PROJECT_NAME);
 
             // TODO(crhodes)
             // Perform any initialization or configuration of View
@@ -98,7 +98,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
             //lgMain.IsCollapsed = true;
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.VIEW("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion
@@ -124,29 +124,29 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
         private void btnGetConfigurationServerInfo_Click(object sender, RoutedEventArgs e)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             Common.EventAggregator.GetEvent<GetConfigurationServerInfoEvent>().Publish(serverProvider);
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void serverProvider_Changed()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             ServerChanged();
 
             btnLoad_TFS_Collections.Visibility = Visibility.Visible;
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion
 
         private void cbeTeamProjectCollections_SelectedIndexChanged(object sender, RoutedEventArgs e)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -161,7 +161,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
                 if (string.IsNullOrEmpty(cbeTeamProjectCollections.Text))
                 {
-                    Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+                    Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
                     return;
                 }
 
@@ -175,7 +175,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
                 if (TfsTeamProjectCollection == null)
                 {
                     MessageBox.Show("Cannot GetTeamProjectCollection");
-                    Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+                    Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
                     return;
                 }
 
@@ -198,23 +198,23 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void btnLoad_TFS_Collections_Click(object sender, RoutedEventArgs e)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             PopulateTeamProjectCollections();
             liTeamProjectCollection.Visibility = Visibility.Visible;
             liTeamProjectCollection2.Visibility = Visibility.Visible;
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void ServerChanged()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.VIEW("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -240,12 +240,12 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.VIEW("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void PopulateTeamProjectCollections()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.VIEW("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -286,12 +286,12 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
                 // Should we throw?
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.VIEW("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void Populate_TPC_Services(TfsTeamProjectCollection tpc)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.VIEW("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -331,7 +331,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
                 // Should we throw?
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.VIEW("Exit", Common.PROJECT_NAME, startTicks);
         }
     }
 }

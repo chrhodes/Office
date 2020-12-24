@@ -7,6 +7,8 @@ using SupportTools_Excel.Domain;
 using SupportTools_Excel.AzureDevOpsExplorer.Domain;
 
 using XlHlp = VNC.AddinHelper.Excel;
+using VNC;
+
 namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 {
     class Body_BuildServer
@@ -18,6 +20,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             IBuildServer buildServer,
             TeamProject teamProject)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             //var buildDefinitions = Server.BuildServer.QueryBuildAgents();
 
             //foreach (IBuildDefinition buildDef in buildDefinitions)
@@ -31,6 +35,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             //    insertAt.IncrementRows();
             //}
+
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         internal static void Add_BuildControllers(XlHlp.XlLocation insertAt,
@@ -38,6 +44,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             IBuildServer buildServer,
             TeamProject teamProject)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             var buildControllers = buildServer.QueryBuildControllers();
 
             foreach (IBuildController buildController in buildControllers)
@@ -51,6 +59,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 insertAt.IncrementRows();
             }
+
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         internal static void Add_BuildDefinitions(XlHlp.XlLocation insertAt,
@@ -58,6 +68,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             IBuildServer buildServer,
             TeamProject teamProject)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             try
             {
                 var buildDefinitions = buildServer.QueryBuildDefinitions(teamProject.Name);
@@ -85,6 +97,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 insertAt.IncrementRows();
             }
+
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         internal static void Add_BuildProcessTemplates(XlHlp.XlLocation insertAt,
@@ -92,6 +106,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             IBuildServer buildServer,
             TeamProject teamProject)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             var processTemplates = buildServer.QueryProcessTemplates(teamProject.Name);
 
             foreach (IProcessTemplate processTemplate in processTemplates)
@@ -105,6 +121,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 insertAt.IncrementRows();
             }
+
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         internal static void Add_Builds(XlHlp.XlLocation insertAt,
@@ -112,6 +130,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             IBuildServer buildServer,
             TeamProject teamProject)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             var builds = buildServer.QueryBuilds(teamProject.Name);
 
             foreach (IBuildDetail buildDetail in builds)
@@ -126,6 +146,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 insertAt.IncrementRows();
             }
+
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         internal static void Add_BuildServiceHosts(XlHlp.XlLocation insertAt,
@@ -133,6 +155,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             IBuildServer buildServer,
             TeamProject teamProject)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             var buildServiceHosts = buildServer.QueryBuildServiceHosts("*");
 
             foreach (IBuildServiceHost buildServiceHost in buildServiceHosts)
@@ -145,6 +169,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 insertAt.IncrementRows();
             }
+
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         #endregion

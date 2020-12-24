@@ -21,7 +21,7 @@ namespace SupportTools_Excel
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
-            long startTicks = Log.Info($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION_START("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -55,12 +55,12 @@ namespace SupportTools_Excel
                 throw (ex);
             }
 
-            Log.Info($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION_START("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
         {
-            long startTicks = Log.Info($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION_END("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -88,7 +88,7 @@ namespace SupportTools_Excel
                 throw (ex);
             }
 
-            Log.Info($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION_END("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #region VSTO generated code
@@ -114,7 +114,7 @@ namespace SupportTools_Excel
 
         void InitializeWPFApplication()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.PROJECT_NAME);
 
             Common.CurrentUser = new WindowsPrincipal(WindowsIdentity.GetCurrent());
 
@@ -202,7 +202,7 @@ namespace SupportTools_Excel
                 MessageBox.Show(ex.InnerException.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION_INITIALIZE("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         /// <summary>
@@ -215,7 +215,7 @@ namespace SupportTools_Excel
 
         private static void CreateXamlApplication()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.PROJECT_NAME);
 
             Common.DeveloperMode = true;
             Common.WriteToDebugWindow("CreateXamlApplication()");
@@ -270,12 +270,12 @@ namespace SupportTools_Excel
                 Common.DeveloperMode = false;
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION_INITIALIZE("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void UnLoadXamlApplication()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION_END("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -292,7 +292,7 @@ namespace SupportTools_Excel
                 Common.DeveloperMode = false;
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION_END("Exit", Common.PROJECT_NAME, startTicks);
         }
     }
 }

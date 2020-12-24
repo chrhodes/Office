@@ -7,6 +7,7 @@ using SupportTools_Excel.Presentation.ModelWrappers;
 using SupportTools_Excel.Presentation.Views;
 using SupportTools_Excel.Infrastructure.Presentation.ViewModels;
 using SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views;
+using System;
 
 namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 {
@@ -20,8 +21,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         public OrganizationActionsViewModel()
         {
-            Log.Trace($"Enter", Common.PROJECT_NAME);
-
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             // TODO(crhodes)
             // Decide if we want defaults
@@ -29,7 +29,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
             InitializeViewModel();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME);
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         // ViewModel First
@@ -37,15 +37,17 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         public OrganizationActionsViewModel(OrganizationActions view) : base(view)
         {
-            Log.Trace($"Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             InitializeViewModel();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME);
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void InitializeViewModel()
         {
+            Int64 startTicks = Log.VIEWMODEL("Enter", Common.PROJECT_NAME);
+
             GetTPCInfoCommand = new DelegateCommand(OnGetTPCInfoExecute, OnGetTPCInfoCanExecute);
             GetTPCAreasCommand = new DelegateCommand(OnGetTPCAreasExecute, OnGetTPCAreasCanExecute);
             GetBranchesCommand = new DelegateCommand(OnGetBranchesExecute, OnGetBranchesCanExecute);
@@ -69,6 +71,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
             //TeamProjectActionRequest = new AZDOTeamProjectActionRequestWrapper(
             //    new Domain.AZDOTeamProjectActionRequest());
+            Log.VIEWMODEL("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion

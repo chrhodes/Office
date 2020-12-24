@@ -29,7 +29,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         public QueriesViewModel()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             // TODO(crhodes)
             // Decide if we want defaults
@@ -37,7 +37,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
             InitializeViewModel();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         // ViewModel First
@@ -45,16 +45,16 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         public QueriesViewModel(Queries view) : base(view)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             InitializeViewModel();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void InitializeViewModel()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.VIEWMODEL("Enter", Common.PROJECT_NAME);
 
             //RunQueryCommand = new DelegateCommand(OnRunQueryExecute, OnRunQueryCanExecute);
             //RunTeamProjectQueryCommand = new DelegateCommand(OnRunTeamProjectQueryExecute, OnRunTeamProjectQueryCanExecute);
@@ -64,12 +64,12 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
             PopulateWorkItemQueries();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.VIEWMODEL("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void PopulateWorkItemQueries()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.VIEWMODEL("Enter", Common.PROJECT_NAME);
 
             WorkItemQueries = new ObservableCollection<WorkItemQueryWrapper>();
 
@@ -133,7 +133,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
             //        QueryWithTokens = "SELECT SOMETHING3 FROM SOMEWHERE3 WHERE STUFF3"
             //    }));
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.VIEWMODEL("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion

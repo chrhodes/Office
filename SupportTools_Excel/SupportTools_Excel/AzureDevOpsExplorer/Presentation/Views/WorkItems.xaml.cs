@@ -16,13 +16,13 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
         public WorkItems()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             InitializeComponent();
 
             lgMain.IsCollapsed = true;
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
 
@@ -31,7 +31,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
         public WorkItems(IAZDOWorkItemsViewModel viewModel)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             InitializeComponent();
 
@@ -39,17 +39,17 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
             InitializeView();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void InitializeView()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.VIEW("Enter", Common.PROJECT_NAME);
 
             // TODO(crhodes)
             // Perform any initialization or configuration of View
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.VIEW("Exit", Common.PROJECT_NAME, startTicks);
 
         }
 

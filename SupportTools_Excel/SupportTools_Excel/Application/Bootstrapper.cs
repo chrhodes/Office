@@ -23,8 +23,8 @@ namespace SupportTools_Excel.Application
 
         protected override IModuleCatalog CreateModuleCatalog()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            long startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.PROJECT_NAME);
+            Log.APPLICATION_INITIALIZE("Exit", Common.PROJECT_NAME, startTicks);
 
             return new ConfigurationModuleCatalog();
         }
@@ -34,7 +34,7 @@ namespace SupportTools_Excel.Application
 
         protected override void ConfigureModuleCatalog()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.PROJECT_NAME);
 
             var moduleCatalog = (ModuleCatalog)ModuleCatalog;
             moduleCatalog.AddModule(typeof(ModuleAModule));
@@ -51,14 +51,14 @@ namespace SupportTools_Excel.Application
             //    // InitializationMode = InitializationMode.OnDemand
             //});
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION_INITIALIZE("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         // Step 2 - Configure the container
 
         protected override void ConfigureContainer()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.PROJECT_NAME);
             //Container.RegisterType<IEditTextViewModel, EditTextViewModel>();
             //Container.RegisterType<EditText>();
 
@@ -72,7 +72,7 @@ namespace SupportTools_Excel.Application
             // Create a Singleton ShellService (DialogService)
             //Container.RegisterType<IShellService, ShellService>(new ContainerControlledLifetimeManager());
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION_INITIALIZE("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         // Step 3 - Configure the RegionAdapters if any custom ones have been created
@@ -81,8 +81,8 @@ namespace SupportTools_Excel.Application
 
         protected override DependencyObject CreateShell()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
-            Log.Trace($"Exit (null)", Common.PROJECT_NAME, startTicks);
+            long startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.PROJECT_NAME);
+            Log.APPLICATION_INITIALIZE($"Exit (null)", Common.PROJECT_NAME, startTicks);
 
             return null;
             //return Container.Resolve<Views.MainWindow>();
@@ -100,13 +100,13 @@ namespace SupportTools_Excel.Application
 
         protected override RegionAdapterMappings ConfigureRegionAdapterMappings()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.PROJECT_NAME);
 
             RegionAdapterMappings mappings = base.ConfigureRegionAdapterMappings();
 
             mappings.RegisterMapping(typeof(StackPanel), Container.TryResolve<StackPanelRegionAdapter>());
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION_INITIALIZE("Exit", Common.PROJECT_NAME, startTicks);
 
             return mappings;
         }

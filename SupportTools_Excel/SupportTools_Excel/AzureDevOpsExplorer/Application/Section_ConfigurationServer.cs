@@ -45,7 +45,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
         internal static XlHlp.XlLocation AddSection_OperationalDatabaseNames(XlHlp.XlLocation insertAt)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Operational Database Names:", "");
 
@@ -62,7 +62,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             XlHlp.AddLabeledInfoX(insertAt.AddRowX(2), "WorkItemTracking:", $"{OperationalDatabaseNames.WorkItemTracking}");
             XlHlp.AddLabeledInfoX(insertAt.AddRowX(2), "WorkItemTrackingAttachments:", $"{OperationalDatabaseNames.WorkItemTrackingAttachments}");
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
 
             return insertAt;
         }

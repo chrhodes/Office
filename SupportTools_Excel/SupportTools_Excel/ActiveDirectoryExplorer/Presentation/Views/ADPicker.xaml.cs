@@ -20,7 +20,7 @@ namespace SupportTools_Excel.ActiveDirectoryExplorer.Presentation.Views
 
         public ADPicker()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             InitializeComponent();
 
@@ -33,25 +33,29 @@ namespace SupportTools_Excel.ActiveDirectoryExplorer.Presentation.Views
 
             InitializeView();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         public ADPicker(IADPickerViewModel viewModel)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             InitializeComponent();
             ViewModel = viewModel;
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void InitializeView()
         {
+            long startTicks = Log.VIEW("Enter", Common.PROJECT_NAME);
+
             // TODO(crhodes)
             // Perform any initialization or configuration of View
 
             lgMain.IsCollapsed = true;
+
+            Log.VIEW("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion

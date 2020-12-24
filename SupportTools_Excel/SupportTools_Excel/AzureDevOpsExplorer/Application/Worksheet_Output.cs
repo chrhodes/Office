@@ -32,7 +32,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
         internal static void CreateWS_All_TPC_LastChangeset(Options_AZDO_TFS options,
             VersionControlServer versionControlServer)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
 
             try
             {
@@ -83,21 +83,19 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         internal static XlHlp.XlLocation CreateNewWorksheet(string sheetName,
             Options_AZDO_TFS options, [CallerMemberName] string callerName = "")
         {
-            long startTicks = XlHlp.DisplayInWatchWindow($"Begin: sheetName: {sheetName}");
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
 
             string safeSheetName = XlHlp.SafeSheetName(sheetName);
             Worksheet ws = XlHlp.NewWorksheet(safeSheetName, beforeSheetName: "FIRST");
 
             XlHlp.XlLocation insertAt = new XlHlp.XlLocation(ws, options.StartingRow, options.StartingColumn, options.OrientOutputVertically);
             XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Date Run", DateTime.Now.ToString());
-
-            XlHlp.DisplayInWatchWindow("End", startTicks);
 
             if (!options.FormatSpecs.IsInitialized)
             {
@@ -134,6 +132,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     MessageBox.Show(ex.Message);
                 }
             }
+
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return insertAt;
         }

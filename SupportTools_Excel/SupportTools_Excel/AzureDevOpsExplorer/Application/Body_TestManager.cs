@@ -11,6 +11,7 @@ using VNC.AddinHelper;
 using XlHlp = VNC.AddinHelper.Excel;
 using SupportTools_Excel.AzureDevOpsExplorer.Application;
 using SupportTools_Excel.AzureDevOpsExplorer.Domain;
+using VNC;
 
 namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 {
@@ -23,7 +24,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             ITestManagementTeamProject testManagementTeamProject)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow(insertAt);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
 
             int itemCount = 0;
             int totalItems = testManagementTeamProject.Queries.Count;
@@ -47,7 +48,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 AZDOHelper.DisplayLoopUpdates(startTicks, options, totalItems, itemCount);
             }
 
-            XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return itemCount;
         }
@@ -56,7 +57,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             ITestManagementTeamProject testManagementTeamProject)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow(insertAt);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
 
             int count = 0;
 
@@ -95,7 +96,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 count++;
             }
 
-            XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return count;
         }
@@ -104,7 +105,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             ITestManagementTeamProject testManagementTeamProject)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow(insertAt);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
 
             int itemCount = 0;
 
@@ -141,7 +142,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 AZDOHelper.DisplayLoopUpdates(startTicks, options, totalItems, itemCount);
             }
 
-            XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return itemCount;
         }
@@ -151,7 +152,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             ITestManagementTeamProject testManagementTeamProject)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow(insertAt);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
 
             int itemCount = 0;
 
@@ -195,7 +196,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 AZDOHelper.DisplayLoopUpdates(startTicks, options, totalItems, itemCount);
             }
 
-            XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return itemCount;
         }
@@ -205,7 +206,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             ITestManagementTeamProject testManagementTeamProject)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow(insertAt);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
 
             int itemCount = 0;
 
@@ -235,7 +236,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 AZDOHelper.DisplayLoopUpdates(startTicks, options, totalItems, itemCount);
             }
 
-            XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return itemCount;
         }
@@ -245,7 +246,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             ITestManagementTeamProject testManagementTeamProject)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow(insertAt);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
 
             int itemCount = 0;
             //string query = String.Format(
@@ -298,7 +299,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 AZDOHelper.DisplayLoopUpdates(startTicks, options, totalItems, itemCount);
             }
 
-            XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return itemCount;
         }
@@ -308,7 +309,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             ITestManagementTeamProject testManagementTeamProject)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow(insertAt);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
 
             int itemCount = 0;
 
@@ -340,7 +341,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             //    DisplayLoopUpdates(options, totalItems, itemCount);
             //}
 
-            XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return itemCount;
         }
@@ -350,7 +351,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             ITestManagementTeamProject testManagementTeamProject)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow(insertAt);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
 
             int itemCount = 0;
 
@@ -376,7 +377,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 AZDOHelper.DisplayLoopUpdates(startTicks, options, totalItems, itemCount);
             }
 
-            XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return itemCount;
         }
@@ -386,7 +387,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             ITestManagementTeamProject testManagementTeamProject)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow(insertAt);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
 
             int itemCount = 0;
 
@@ -432,7 +433,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 AZDOHelper.DisplayLoopUpdates(startTicks, options, totalItems, itemCount);
             }
 
-            XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return itemCount;
         }
@@ -442,7 +443,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             ITestManagementTeamProject testManagementTeamProject)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow(insertAt);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
 
             int itemCount = 0;
 
@@ -539,7 +540,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 AZDOHelper.DisplayLoopUpdates(startTicks, options, totalItems, itemCount);
             }
 
-            XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return itemCount;
         }
@@ -549,7 +550,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             ITestManagementTeamProject testManagementTeamProject)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow(insertAt);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
 
             int itemCount = 0;
 
@@ -584,7 +585,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 AZDOHelper.DisplayLoopUpdates(startTicks, options, totalItems, itemCount);
             }
 
-            XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return itemCount;
         }
@@ -594,7 +595,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             ITestManagementTeamProject testManagementTeamProject)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow(insertAt);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
 
             int itemCount = 0;
 
@@ -640,7 +641,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 AZDOHelper.DisplayLoopUpdates(startTicks, options, totalItems, itemCount);
             }
 
-            XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return itemCount;
         }
@@ -650,7 +651,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             ITestManagementTeamProject testManagementTeamProject)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow(insertAt);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
 
             int itemCount = 0;
 
@@ -697,7 +698,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 AZDOHelper.DisplayLoopUpdates(startTicks, options, totalItems, itemCount);
             }
 
-            XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return itemCount;
         }

@@ -24,7 +24,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         public OptionsViewModel()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             DoSomethingCommand = new DelegateCommand(OnDoSomethingExecute, OnDoSomethingCanExecute);
             DoSomethingContent = "Update Actions for selected shapes";
@@ -35,7 +35,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
             // Decide if we want defaults
             //XXX = new XXXWrapper(new Domain.XXX());
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         // ViewModel First
@@ -43,7 +43,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         public OptionsViewModel(Options view) : base(view)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             DoSomethingCommand = new DelegateCommand(OnDoSomethingExecute, OnDoSomethingCanExecute);
             DoSomethingContent = "Update Actions for selected shapes";
@@ -51,21 +51,21 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
             InitializeViewModel();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void InitializeViewModel()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.VIEWMODEL("Enter", Common.PROJECT_NAME);
 
             InitializeOptions();
             InitializeTeamProjects();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.VIEWMODEL("Exit", Common.PROJECT_NAME, startTicks);
         }
         private void InitializeTeamProjects()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.VIEWMODEL("Enter", Common.PROJECT_NAME);
 
             TeamProjects = new ObservableCollection<string>();
             //{
@@ -75,7 +75,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
             //    "Team Four"
             //};
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.VIEWMODEL("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion
@@ -243,7 +243,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         private void InitializeOptions()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.VIEWMODEL("Enter", Common.PROJECT_NAME);
 
             Options = new Options_AZDO_TFSWrapper(new Options_AZDO_TFS());
 
@@ -253,7 +253,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
             //Options.ShowWorkItemFieldData = true;
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.VIEWMODEL("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         // void InitializeRows()
@@ -269,7 +269,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         public Options_AZDO_TFS GetOptions()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.VIEWMODEL("Enter", Common.PROJECT_NAME);
 
             Options_AZDO_TFS options = Options.Model;
 
@@ -278,7 +278,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
                 Options.Model.WorkItemQuerySpec = ((QueriesViewModel)((Options)View).ucQueries.ViewModel).SelectedQuery3.Model;
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.VIEWMODEL("Exit", Common.PROJECT_NAME, startTicks);
 
             return options;
         }

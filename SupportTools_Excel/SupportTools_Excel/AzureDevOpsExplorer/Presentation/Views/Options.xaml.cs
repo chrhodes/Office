@@ -18,7 +18,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
         public Options()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             InitializeComponent();
 
@@ -34,7 +34,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
             InitializeView();
 
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         // View First.  View is passed ViewModel through Injection
@@ -42,7 +42,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
         public Options(IAZDOOptionsViewModel viewModel)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             InitializeComponent();
 
@@ -51,12 +51,12 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
             InitializeView();
 
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         private void InitializeView()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.VIEW("Enter", Common.PROJECT_NAME);
             // TODO(crhodes)
             // Perform any initialization or configuration of View
 
@@ -69,7 +69,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
             miscOptions.IsCollapsed = true;
             excelOutputOptions.IsCollapsed = true;
 
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.VIEW("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         #endregion
@@ -93,7 +93,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
         public Options_AZDO_TFS GetOptions()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.VIEW("Enter", Common.PROJECT_NAME);
 
             Options_AZDO_TFS options = new Options_AZDO_TFS();
 
@@ -134,7 +134,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
             //options.XMLTemplateFilePath = teXMLTemplateFilePath.Text;
             //options.IncludeGlobalLists = (bool)ceIncludeGlobalLists.IsChecked;
 
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.VIEW("Exit", Common.LOG_APPNAME, startTicks);
 
             return options;
         }

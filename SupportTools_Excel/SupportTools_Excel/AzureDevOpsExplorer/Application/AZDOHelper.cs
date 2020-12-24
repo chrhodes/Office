@@ -8,6 +8,8 @@ using Microsoft.TeamFoundation.WorkItemTracking.Client;
 
 using SupportTools_Excel.AzureDevOpsExplorer.Domain;
 
+using VNC;
+
 using XlHlp = VNC.AddinHelper.Excel;
 
 namespace SupportTools_Excel.AzureDevOpsExplorer.Application
@@ -16,10 +18,14 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
     {
         internal static void InsertItemDelay(Options_AZDO_TFS options)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             if (options.ItemDelaySeconds > 0)
             {
                 Thread.Sleep(Convert.ToInt16(options.ItemDelaySeconds * 1000));
             }
+
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         internal static void DisplayLoopUpdates(long startTicks, Options_AZDO_TFS options, int totalItems, int itemCount)
@@ -32,18 +38,26 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
         internal static void ProcessLoopDelay(Options_AZDO_TFS options)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             if (options.EnableDelays && options.LoopDelaySeconds > 0)
             {
                 Thread.Sleep(options.LoopDelaySeconds * 1000);
             }
+
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         internal static void ProcessItemDelay(Options_AZDO_TFS options)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             if (options.EnableDelays && options.ItemDelaySeconds > 0)
             {
                 Thread.Sleep(Convert.ToInt16(options.ItemDelaySeconds * 1000));
             }
+
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         // TODO(crhodes)
@@ -56,6 +70,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
         private static string GetWorkItemTypesFilter(Options_AZDO_TFS options)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             string filter;
 
             if (options.WorkItemTypes.Count == 1)
@@ -67,11 +83,15 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 filter = "AND ([System.WorkItemType] in " + String.Join(",", options.WorkItemTypes);
             }
 
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+
             return filter;
         }
 
         private static string GetTeamProjectsFilter(Options_AZDO_TFS options)
         {
+
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
             string filter;
 
             if (options.TeamProjects.Count == 1)
@@ -83,6 +103,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 filter = "AND ([System.TeamProject] in " + String.Join(",", options.TeamProjects);
             }
 
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+
             return filter;
         }
 
@@ -90,6 +112,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             string tokenizedQuery,
             Options_AZDO_TFS options)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             string query = tokenizedQuery;
 
             query = query.Replace("@STARTDATE", options.StartDate.ToShortDateString());
@@ -109,6 +133,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             // Have moved to startDate and endDate.  No one should be using GoBackDays, but check in Excel Template file (query).
             //query = query.Replace("@goBackDays", options.GoBackDays.ToString());
 
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+
             return query;
         }
 
@@ -117,6 +143,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             Project project)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             string query = tokenizedQuery;
 
             if (project != null)
@@ -136,6 +164,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             // Have moved to startDate and endDate.  No one should be using GoBackDays, but check in Excel Template file (query).
             //query = query.Replace("@goBackDays", options.GoBackDays.ToString());
 
+
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
             return query;
         }
 
@@ -143,7 +173,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             List<TeamFoundationIdentity> globalGroups,
             Dictionary<IdentityDescriptor, TeamFoundationIdentity> globalIdentities)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow("Begin");
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
 
             TeamFoundationIdentity[] identities;
 
@@ -178,13 +208,15 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 SortIdentities(identities, globalGroups, globalIdentities);
             }
 
-            XlHlp.DisplayInWatchWindow("End", startTicks);
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         internal static void SortIdentities(TeamFoundationIdentity[] identitiesToAdd,
             List<TeamFoundationIdentity> _Groups,
             Dictionary<IdentityDescriptor, TeamFoundationIdentity> _Identities)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             foreach (TeamFoundationIdentity identity in identitiesToAdd)
             {
                 _Identities[identity.Descriptor] = identity;
@@ -194,6 +226,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     _Groups.Add(identity);
                 }
             }
+
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
     }
 }

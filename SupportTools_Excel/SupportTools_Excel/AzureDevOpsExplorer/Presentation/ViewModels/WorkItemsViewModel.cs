@@ -20,7 +20,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         public WorkItemsViewModel()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             InitializeViewModel();
 
@@ -30,7 +30,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
             // InitializeRows();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         // ViewModel First
@@ -38,7 +38,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         public WorkItemsViewModel(WorkItems view) : base(view)
         {
-            Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             InitializeViewModel();
 
@@ -46,11 +46,13 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
             //View = view;
 
-            Log.Trace($"Exit", Common.PROJECT_NAME);
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void InitializeViewModel()
         {
+            long startTicks = Log.VIEWMODEL("Enter", Common.PROJECT_NAME);
+
             // TODO(crhodes)
             // Initialize any controls and/or properties that need to be
 
@@ -63,6 +65,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
             WorkItemID_DoubleClickCommand = new DelegateCommand(OnWorkItemID_DoubleClick, OnWorkItemID_DoubleClickCanExecute);
 
             //InitializeRows();
+
+            Log.VIEWMODEL("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion

@@ -21,7 +21,7 @@ namespace SupportTools_Excel.Presentation.Views
 
         //public Cat3()
         //{
-        //    long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+        //    long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
         //    InitializeComponent();
 
@@ -34,12 +34,12 @@ namespace SupportTools_Excel.Presentation.Views
 
         //    InitializeView();
 
-        //    Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        //    Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         //}
 
         public Cat3(ICat3ViewModel viewModel)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             InitializeComponent();
 
@@ -47,7 +47,7 @@ namespace SupportTools_Excel.Presentation.Views
 
             InitializeView();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void InitializeView()

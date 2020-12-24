@@ -18,7 +18,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         public TestManagementActionsViewModel()
         {
-            Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             // TODO(crhodes)
             // Decide if we want defaults
@@ -26,24 +26,26 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
             InitializeViewModel();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME);
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         // ViewModel First
 
         public TestManagementActionsViewModel(TestManagementActions view) : base(view)
         {
-            Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             InitializeViewModel();
 
             //View = view;
 
-            Log.Trace($"Exit", Common.PROJECT_NAME);
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void InitializeViewModel()
         {
+            long startTicks = Log.VIEWMODEL("Enter", Common.PROJECT_NAME);
+
             GetTestPlanInfoCommand = new DelegateCommand(OnGetTestPlanInfoExecute, OnGetTestPlanInfoCanExecute);
             GetTestSuiteInfoCommand = new DelegateCommand(OnGetTestSuiteInfoExecute, OnGetTestSuiteInfoCanExecute);
             GetTestCaseInfoCommand = new DelegateCommand(OnGetTestCaseInfoExecute, OnGetTestCaseInfoCanExecute);
@@ -57,6 +59,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
             TestPlanRequest = new TestPlanRequestWrapper(new TestPlanRequest());
             TestSuiteRequest = new TestSuiteRequestWrapper(new TestSuiteRequest());
             TestCaseRequest = new TestCaseRequestWrapper(new TestCaseRequest());
+
+            Log.VIEWMODEL("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion

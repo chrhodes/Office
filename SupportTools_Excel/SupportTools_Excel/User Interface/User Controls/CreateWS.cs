@@ -35,7 +35,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             Options_AZDO_TFS options,
             TfsConfigurationServer configurationServer)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             XlHlp.XlLocation insertAt = CreateNewWorksheet($"CS_{configurationServer.Name}", options);
 
@@ -242,7 +242,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 //CreateWS_TPC_Info(teamProjectCollectionNode, teamProjectCollection, false, orientVertical);
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion
@@ -255,7 +255,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             bool showDetails,
             Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -276,12 +276,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void CreateWS_All_TPC_Areas(Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -322,12 +322,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void CreateWS_All_TPC_AreaCheck(string areasToCheck, Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -352,12 +352,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         void CreateWS_All_TPC_BuildDefinitions(Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -392,12 +392,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void CreateWS_All_TPC_Developers(Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -438,13 +438,13 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         //void CreateWS_All_TPC_LastChangeset(Options_AZDO_TFS options,
         //    VersionControlServer versionControlServer)
         //{
-        //    long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+        //    long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
         //    try
         //    {
@@ -488,12 +488,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
         //        MessageBox.Show(ex.ToString());
         //    }
 
-        //    Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        //    Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         //}
 
         void CreateWS_All_TPC_WorkItemActivity(Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -541,12 +541,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         void CreateWS_All_TPC_Teams(Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -594,12 +594,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         void CreateWS_All_TPC_TestCases(Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -639,12 +639,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         void CreateWS_All_TPC_TestPlans(Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -684,12 +684,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         void CreateWS_All_TPC_TestSuites(Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -729,12 +729,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         void CreateWS_All_TPC_WorkItemDetails(Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -801,12 +801,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         void CreateWS_All_TPC_WorkItemFields(Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -847,12 +847,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         void CreateWS_All_TPC_WorkItemTypes(Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -900,13 +900,13 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void CreateWS_TPC_Members(string teamProjectCollectionName,
             Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -922,7 +922,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion
@@ -931,7 +931,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             TeamProjectActionRequest request,
             Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -1022,7 +1022,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void CreateWS_TP_Queries(
@@ -1031,7 +1031,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             Dictionary<string, string> queries,
             Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -1050,12 +1050,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         void CreateWS_TP_TemplateType(Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -1085,7 +1085,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion
@@ -1095,7 +1095,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
         void CreateWS_VCS_Branches(string teamProjectCollectionName,
             Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -1111,7 +1111,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void CreateWS_VCS_ChangeSetInfo(int changesetId,
@@ -1119,7 +1119,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             Options_AZDO_TFS options,
             ICommonStructureService commonStructureService)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -1158,13 +1158,13 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void CreateWS_VCS_ShelveSets(string teamProjectCollectionName,
             Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -1180,14 +1180,14 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         void CreateWS_VCS_Workspaces(string tfsUri,
             string teamProjectCollection,
             Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -1201,7 +1201,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion
@@ -1212,7 +1212,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             WorkItemActionRequest request,
             Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -1261,7 +1261,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion
@@ -1270,7 +1270,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
         void CreateWS_TM_TestPlanInfo(int testPlanId, List<string> sectionsToDisplay, Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             // Get Test Plan Info
 
@@ -1332,12 +1332,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 insertAt.IncrementRows();
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         void CreateWS_TM_TestSuiteInfo(int testSuiteId, List<string> sectionsToDisplay, Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             // Get Test Suite Info
 
@@ -1386,12 +1386,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 insertAt.IncrementRows();
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         void CreateWS_TM_TestCaseInfo(int testCaseId, List<string> sectionsToDisplay, Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             // Get Test Case Info
 
@@ -1439,14 +1439,14 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 insertAt.IncrementRows();
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion
 
         void DisplayListOf_Categories(XlHlp.XlLocation insertAt, Microsoft.TeamFoundation.WorkItemTracking.Client.CategoryCollection categories)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             insertAt.MarkStart(XlHlp.MarkType.Group);
 
@@ -1527,7 +1527,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             insertAt.Group(insertAt.OrientVertical, hide: true);
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         public MiscViewModel()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             CodeChurnCommand = new DelegateCommand(OnCodeChurnExecute, OnCodeChurnCanExecute);
             SearchForFilesCommand = new DelegateCommand(OnSearchForFilesExecute, OnSearchForFilesCanExecute);
@@ -32,7 +32,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
             //InitializeRows();
 
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         // ViewModel First
@@ -40,7 +40,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         public MiscViewModel(Misc view) : base(view)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             CodeChurnCommand = new DelegateCommand(OnCodeChurnExecute, OnCodeChurnCanExecute);
             SearchForFilesCommand = new DelegateCommand(OnSearchForFilesExecute, OnSearchForFilesCanExecute);
@@ -55,7 +55,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
             //View = view;
 
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         #endregion

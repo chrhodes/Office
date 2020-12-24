@@ -17,7 +17,7 @@ namespace SupportTools_Excel.Presentation.ViewModels
 
         public CatViewModel()
         {
-            Log.Trace($"Enter", Common.PROJECT_NAME);
+            Log.Trace("Enter", Common.PROJECT_NAME);
 
             DoSomethingCommand = new DelegateCommand(OnDoSomethingExecute, OnDoSomethingCanExecute);
             DoSomethingContent = "Update Actions for selected shapes";
@@ -28,7 +28,7 @@ namespace SupportTools_Excel.Presentation.ViewModels
 
             InitializeRows();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME);
+            Log.Trace("Exit", Common.PROJECT_NAME);
         }
 
         // ViewModel First
@@ -36,7 +36,7 @@ namespace SupportTools_Excel.Presentation.ViewModels
 
         public CatViewModel(Cat view) : base(view)
         {
-            Log.Trace($"Enter", Common.PROJECT_NAME);
+            Log.Trace("Enter", Common.PROJECT_NAME);
 
             DoSomethingCommand = new DelegateCommand(OnDoSomethingExecute, OnDoSomethingCanExecute);
             DoSomethingContent = "Update Actions for selected shapes";
@@ -47,7 +47,7 @@ namespace SupportTools_Excel.Presentation.ViewModels
             // Save the View (in ViewModelBase)
             View = view;
 
-            Log.Trace($"Exit", Common.PROJECT_NAME);
+            Log.Trace("Exit", Common.PROJECT_NAME);
         }
 
         #endregion

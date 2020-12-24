@@ -1,7 +1,7 @@
 ﻿Figure out what consequences of using IViewModel vs. a stronger type
         public Cat(IViewModel viewModel)
         {
-            Log.Trace($"Enter", Common.PROJECT_NAME);
+            Log.Trace("Enter", Common.PROJECT_NAME);
 
             InitializeComponent();
 
@@ -9,12 +9,12 @@
 
             InitializeView();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME);
+            Log.Trace("Exit", Common.PROJECT_NAME);
         }
 
         public Cat(ICatViewModel viewModel)
         {
-            Log.Trace($"Enter", Common.PROJECT_NAME);
+            Log.Trace("Enter", Common.PROJECT_NAME);
 
             InitializeComponent();
 
@@ -22,7 +22,7 @@
 
             InitializeView();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME);
+            Log.Trace("Exit", Common.PROJECT_NAME);
         }
 
 Add Save after each WorkSheet Creation

@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
+using VNC;
 using VNC.Core;
 
 namespace SupportTools_Excel.AzureDevOpsExplorer.Domain
@@ -29,6 +31,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Domain
             Options_AZDO_TFS options,
             string projectName = null)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             Query = QueryWithTokens;
 
             // TODO(crhodes)
@@ -54,10 +58,14 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Domain
             {
                 Query += GetWorkItemTypesFilter(options);
             }
+
+            Log.APPLICATION($"Exit ({Query})", Common.LOG_APPNAME, startTicks);
         }
 
         private string GetWorkItemTypesFilter(Options_AZDO_TFS options)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             StringBuilder filter = new StringBuilder();
 
             if (options.WorkItemTypes.Count == 1)
@@ -84,11 +92,16 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Domain
                 filter.Append(')');
             }
 
+            Log.APPLICATION($"Exit ({filter})", Common.LOG_APPNAME, startTicks);
+
             return filter.ToString();
+
         }
 
         private string GetTeamProjectsFilter(Options_AZDO_TFS options)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             StringBuilder filter = new StringBuilder();
 
             if (options.TeamProjects.Count == 1)
@@ -115,6 +128,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Domain
 
                 filter.Append(')');
             }
+
+            Log.APPLICATION($"Exit ({filter})", Common.LOG_APPNAME, startTicks);
 
             return filter.ToString();
         }

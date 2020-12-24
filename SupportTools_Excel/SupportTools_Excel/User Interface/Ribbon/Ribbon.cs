@@ -27,57 +27,57 @@ namespace SupportTools_Excel
             Log.Info("SignalR Startup Message - Sleeping for 1000ms so SignalR can load", Common.LOG_APPNAME);
             // HACK(crhodes)
             // See if this helps logging first few messages
-            Thread.Sleep(1000);
+            Thread.Sleep(250);
 
-            Int64 startTicks = Log.APPLICATION_START($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
 
             InitializeComponent();
 
             // NOTE(crhodes)
-            // Try moving Bootstapper to Common so we can access UnityContainer
+            // Try moving Bootstrapper to Common so we can access UnityContainer
             Common.ApplicationBootstrapper = new Application.Bootstrapper();
             Common.ApplicationBootstrapper.Run();
             //var bootstrapper = new Application.Bootstrapper();
             //bootstrapper.Run();
 
-            Log.APPLICATION_START($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         #region Event Handlers
 
         private void btnExplore_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.UI_CONTROL($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
 
             var frm = new User_Interface.Forms.frmExploreHost();
             frm.Show();
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void btnLoadTPHost_ActiveDirectory_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.UI_CONTROL($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
 
             var frm = new User_Interface.Forms.frmTaskPaneHost_ActiveDirectory();
             frm.Show();
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void btnLoadSMOHost_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.UI_CONTROL($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
 
             var frm = new User_Interface.Forms.frmSMOHost();
             frm.Show();
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void btnSMO_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.UI_CONTROL($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
 
             if (Common.TaskPaneSMO == null)
             {
@@ -92,7 +92,7 @@ namespace SupportTools_Excel
                 Common.TaskPaneSMO.Visible = !Common.TaskPaneSMO.Visible;
             }
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         //private void btnTPDevelopment_Click(object sender, RibbonControlEventArgs e)
@@ -113,7 +113,7 @@ namespace SupportTools_Excel
 
         private void btnTPDevelopment_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.UI_CONTROL($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
 
             if (Common.TaskPaneDevelopment == null)
             {
@@ -130,12 +130,12 @@ namespace SupportTools_Excel
                 Common.TaskPaneDevelopment.Visible = !Common.TaskPaneDevelopment.Visible;
             }
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void ddTheme_SelectionChanged(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.UI_CONTROL($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
 
             // TODO(crhodes):
             // This doesn't work.  Try putting it in Support Tools
@@ -143,12 +143,12 @@ namespace SupportTools_Excel
 
             DevExpress.Xpf.Core.ThemeManager.ApplicationThemeName = ((RibbonDropDown)sender).SelectedItem.Label;
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void btnActiveDirectory_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.UI_CONTROL($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
 
             if (Common.TaskPaneActiveDirectory == null)
             {
@@ -163,7 +163,7 @@ namespace SupportTools_Excel
                 Common.TaskPaneActiveDirectory.Visible = !Common.TaskPaneActiveDirectory.Visible;
             }
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void btnAddInInfo_Click(object sender, RibbonControlEventArgs e)
@@ -185,7 +185,7 @@ namespace SupportTools_Excel
 
         private void btnAppUtilities_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.UI_CONTROL($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
 
             if (Common.TaskPaneAppUtilities == null)
             {
@@ -201,12 +201,12 @@ namespace SupportTools_Excel
                 Common.TaskPaneAppUtilities.Visible = !Common.TaskPaneAppUtilities.Visible;
             }
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void btnExcelUtilities_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.UI_CONTROL($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
 
             if (Common.TaskPaneUtilities == null)
             {
@@ -223,12 +223,12 @@ namespace SupportTools_Excel
                 Common.TaskPaneUtilities.Visible = !Common.TaskPaneUtilities.Visible;
             }
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void btnSharePoint_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.UI_CONTROL($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
 
             Common.TaskPaneSharePoint = VNCHlp.TaskPaneUtil.GetTaskPane(
                 () => new User_Interface.Task_Panes.TaskPane_SharePoint(), "SharePoint Utilities",
@@ -238,12 +238,12 @@ namespace SupportTools_Excel
             Common.TaskPaneSharePoint.Width = Common.TaskPaneSharePoint.Control.Width;
             Common.TaskPaneSharePoint.Visible = !Common.TaskPaneSharePoint.Visible;
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void btnTFS_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.UI_CONTROL($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
 
             Common.TaskPaneTFS = VNCHlp.TaskPaneUtil.GetTaskPane(
                 () => new User_Interface.Task_Panes.TaskPane_TFS(), "TFS Utilities",
@@ -253,7 +253,7 @@ namespace SupportTools_Excel
             Common.TaskPaneTFS.Width = Common.TaskPaneTFS.Control.Width;
             Common.TaskPaneTFS.Visible = !Common.TaskPaneTFS.Visible;
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion
@@ -264,7 +264,7 @@ namespace SupportTools_Excel
 
         private void btnLoadTFSHost_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             // NOTE(crhodes)
             // Maybe this is where boot strapper should go.
@@ -282,7 +282,7 @@ namespace SupportTools_Excel
             var frm = new User_Interface.Forms.frmTFSHost();
             frm.Show();
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion
@@ -293,7 +293,7 @@ namespace SupportTools_Excel
 
         private void btnLoadADHost_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.UI_CONTROL($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref ad_Host,
             "Active Directory Explorer",
@@ -302,14 +302,14 @@ namespace SupportTools_Excel
             DxThemedWindowHost.ShowWindowMode.Modeless,
             new User_Interface.User_Controls.wucTaskPane_ActiveDirectory());
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         public static DxThemedWindowHost ad_HostMVVM = null;
 
         private void btnLoadActiveDirectoryHostMVVM_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.UI_CONTROL($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref ad_HostMVVM,
             "Active Directory Explorer (MVVM)",
@@ -318,14 +318,14 @@ namespace SupportTools_Excel
             DxThemedWindowHost.ShowWindowMode.Modeless,
             new ActiveDirectoryExplorer.Presentation.Views.ActiveDirectoryExplorer());
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         public static DxThemedWindowHost azdo_Host = null;
 
         private void btnLoadAZDOHost_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.UI_CONTROL($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref azdo_Host,
             "wucTaskPane_TFS",
@@ -334,7 +334,7 @@ namespace SupportTools_Excel
             DxThemedWindowHost.ShowWindowMode.Modeless,
             new User_Interface.User_Controls.wucTaskPane_TFS());
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion
@@ -356,7 +356,7 @@ namespace SupportTools_Excel
 
         private void btnLogParser_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.UI_CONTROL($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
 
             if (Common.TaskPaneLogParser == null)
             {
@@ -373,12 +373,12 @@ namespace SupportTools_Excel
                 Common.TaskPaneLogParser.Visible = ! Common.TaskPaneLogParser.Visible;
             }
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void btnLTC_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.UI_CONTROL($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
 
             if (Common.TaskPaneLTC == null)
             {
@@ -395,12 +395,12 @@ namespace SupportTools_Excel
                 Common.TaskPaneLTC.Visible = ! Common.TaskPaneLTC.Visible;
             }
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void btnMTreaty_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.UI_CONTROL($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
 
             if (Common.TaskPaneMTreaty == null)
             {
@@ -417,12 +417,12 @@ namespace SupportTools_Excel
                 Common.TaskPaneMTreaty.Visible = !Common.TaskPaneMTreaty.Visible;
             }
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void btnNetworkTraces_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.UI_CONTROL($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
 
             if (Common.TaskPaneNetworkTrace == null)
             {
@@ -439,12 +439,12 @@ namespace SupportTools_Excel
                 Common.TaskPaneNetworkTrace.Visible = !Common.TaskPaneNetworkTrace.Visible;
             }
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void btnSQLSMO_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.UI_CONTROL($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
 
             if (Common.TaskPaneSQLSMO == null)
             {
@@ -470,7 +470,7 @@ namespace SupportTools_Excel
                 Common.TaskPaneSQLSMO.Visible = !Common.TaskPaneSQLSMO.Visible;
             }
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void btnWatchWindow_Click(object sender, RibbonControlEventArgs e)
@@ -569,56 +569,56 @@ namespace SupportTools_Excel
         private void btnThemedWindowHostModeless_Click(object sender, RibbonControlEventArgs e)
         {
 
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref themedWindowHost,
                 "ThemedWindowHost (ModeLess)",
                 Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
                 DxThemedWindowHost.ShowWindowMode.Modeless);
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void btnThemedWIndowHostModal_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref themedWindowHost,
                 "ThemedWindowHost (Modal)",
                 Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
                 DxThemedWindowHost.ShowWindowMode.Modal);
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         public static WindowHost windowHostLocal = null;
 
         private void btnWindowHostLocal_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             WindowHost.DisplayUserControlInHost(ref windowHostLocal,
                 "WindowHost (local) Test",
                 Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
                 WindowHost.ShowWindowMode.Modeless_Show);
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         public static VNC.Core.Xaml.Presentation.WindowHost windowHostVNC = null;
 
         private void btnWindowHostVNC_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             ShowEmptyHost(windowHostVNC, "WindowHost (VNC)", ShowWindowMode.Modal_ShowDialog);
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private static void ShowEmptyHost(Window host, string title, ShowWindowMode mode)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             if (host is null)
             {
@@ -630,7 +630,7 @@ namespace SupportTools_Excel
 
             if (mode == ShowWindowMode.Modal_ShowDialog)
             {
-                long endTicks2 = Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+                long endTicks2 = Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
 
                 host.Title = $"{host.GetType()} loadtime: {Log.GetDuration(startTicks, endTicks2)}";
 
@@ -641,7 +641,7 @@ namespace SupportTools_Excel
                 host.Show();
             }
 
-            long endTicks = Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            long endTicks = Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
 
             host.Title = $"{host.GetType()} loadtime: {Log.GetDuration(startTicks, endTicks)}";
         }
@@ -650,14 +650,14 @@ namespace SupportTools_Excel
 
         private void btnDxWindowHost_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             DxDXWindowHost.DisplayUserControlInHost(ref dxWindowHost,
                 "DxWindowHost Test",
                 Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
                 DxDXWindowHost.ShowWindowMode.Modeless_Show);
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion
@@ -668,7 +668,7 @@ namespace SupportTools_Excel
 
         private void btnLaunchCylon_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             WindowHost.DisplayUserControlInHost(ref cylonHost,
                 "I am a Cylon loaded by name",
@@ -676,14 +676,14 @@ namespace SupportTools_Excel
                 WindowHost.ShowWindowMode.Modeless_Show,
                 "VNC.WPF.Presentation.Views.CylonEyeBall, VNC.WPF.Presentation");
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         public static VNC.Core.Xaml.Presentation.WindowHost cylonHost2 = null;
 
         private void btnLaunchCylonn2_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             WindowHost.DisplayUserControlInHost(ref cylonHost,
                 "I am a Cylon loaded by type",
@@ -691,7 +691,7 @@ namespace SupportTools_Excel
                 WindowHost.ShowWindowMode.Modeless_Show,
                 new CylonEyeBall());
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         PrismRegionTest _prismRegionTest;
@@ -717,21 +717,21 @@ namespace SupportTools_Excel
         private DxThemedWindowHost prismRegionTestHost = null;
         private void btnPrismRegionTest_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref prismRegionTestHost,
                 "Prism Region Test 2", 600, 400,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                 PrismRegionTest);
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private DxThemedWindowHost dxLayoutControlHost = null;
 
         private void btnDxLayoutControl_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref dxLayoutControlHost,
                 "DxLayoutControl Test",
@@ -739,14 +739,14 @@ namespace SupportTools_Excel
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                 new DxLayoutControl());
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private DxThemedWindowHost dxDockLayoutControlHost = null;
 
         private void btnDxDockLayoutControl_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref dxDockLayoutControlHost,
                 "DxDockLayoutControl Test",
@@ -754,14 +754,14 @@ namespace SupportTools_Excel
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                 new DxDockLayoutControl());
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private DxThemedWindowHost dxDockLayoutManagerControlHost = null;
 
         private void btnDockLayoutManagerControl_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref dxDockLayoutManagerControlHost,
                 "DxDocLayoutManagerControl Test",
@@ -769,7 +769,7 @@ namespace SupportTools_Excel
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                 new DxDockLayoutManagerControl());
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion
@@ -780,7 +780,7 @@ namespace SupportTools_Excel
 
         private void btnVNC_MVVM_V1_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref vncMVVM_V1_Host,
             "MVVM View First (View is passed ViewModel)",
@@ -789,14 +789,14 @@ namespace SupportTools_Excel
             DxThemedWindowHost.ShowWindowMode.Modeless,
             new Cat(new CatViewModel()));
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         public static DxThemedWindowHost vncMVVM_VM1_Host = null;
 
         private void btnVNC_MVVM_VM1_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref vncMVVM_VM1_Host,
             "MVVM ViewModel First (ViewModel is passed View)",
@@ -805,14 +805,14 @@ namespace SupportTools_Excel
             DxThemedWindowHost.ShowWindowMode.Modeless,
             new CatViewModel(new Cat()));
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         public static DxThemedWindowHost vncMVVM_V1_Modal_Host = null;
 
         private void btnVNC_MVVM_V1_Modal_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref vncMVVM_V1_Modal_Host,
             "MVVM View First (View is passed ViewModel) Modal",
@@ -821,14 +821,14 @@ namespace SupportTools_Excel
             DxThemedWindowHost.ShowWindowMode.Modal,
             new Cat(new CatViewModel()));
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         public static DxThemedWindowHost vncMVVM_VM1_Modal_Host = null;
 
         private void btnVNC_MVVM_VM1_Modal_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref vncMVVM_VM1_Modal_Host,
             "MVVM ViewModel First (ViewModel is passed View) Modal",
@@ -837,7 +837,7 @@ namespace SupportTools_Excel
             DxThemedWindowHost.ShowWindowMode.Modal,
             new CatViewModel(new Cat()));
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion
@@ -848,7 +848,7 @@ namespace SupportTools_Excel
 
         private void btnVNC_MVVM_V1_DI_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref vncMVVM_V1_DI_Host,
                 "MVVM View First (Cat) using Dependency Injection",
@@ -857,14 +857,14 @@ namespace SupportTools_Excel
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                 Common.ApplicationBootstrapper.Container.TryResolve<Cat>());
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         public static DxThemedWindowHost vncMVVM_V1_DI2_Host = null;
 
         private void btnVNC_MVVM_V1_DI2_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref vncMVVM_V1_DI2_Host,
                 "MVVM View First (Cat2) using Dependency Injection",
@@ -876,14 +876,14 @@ namespace SupportTools_Excel
             // NOTE(crhodes)
             // Hum.  This is interesting.  Have not registered Cat2 in Bootstrapper but still Resolved!
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         public static DxThemedWindowHost vncMVVM_V1_DI3_Host = null;
 
         private void btnVNC_MVVM_V1_DI3_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref vncMVVM_V1_DI3_Host,
                 "MVVM View First (Cat3) using Dependency Injection",
@@ -892,14 +892,14 @@ namespace SupportTools_Excel
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                 Common.ApplicationBootstrapper.Container.TryResolve<Cat3>());
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         public static DxThemedWindowHost vncMVVM_V1_DI4_Host = null;
 
         private void btnVNC_MVVM_V1_DI4_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref vncMVVM_V1_DI3_Host,
                 "MVVM View First (Cat3) using Dependency Injection",
@@ -908,14 +908,14 @@ namespace SupportTools_Excel
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                 Common.ApplicationBootstrapper.Container.TryResolve<Cat3>());
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         public static DxThemedWindowHost vncMVVM_VM1_DI_Host = null;
 
         private void btnVNC_MVVM_VM1_DI_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref vncMVVM_VM1_DI_Host,
                 "MVVM ViewModel First (CatViewModel) using Dependency Injection",
@@ -929,14 +929,14 @@ namespace SupportTools_Excel
             // Might be exactly what we want but how would you just call the CatViewModel() constructor?
             // Does it matter if we don't register the Cat View?
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         public static DxThemedWindowHost vncMVVM_V1XamlVM_DI_Host = null;
 
         private void btnVNC_MVVM_V1XamlVM_DI_Click(object sender, RibbonControlEventArgs e)
         {
-            long startTicks = Log.UI_CONTROL($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref vncMVVM_V1XamlVM_DI_Host,
                 "MVVM View First (CatXamlVM) using Dependency Injection",
@@ -945,7 +945,7 @@ namespace SupportTools_Excel
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                 Common.ApplicationBootstrapper.Container.TryResolve<CatXamlVM>());
 
-            Log.UI_CONTROL($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion

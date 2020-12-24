@@ -25,7 +25,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
         Project project,
         List<string> sectionsToDisplay)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
 
             XlHlp.DisplayInWatchWindow(insertAt);
 
@@ -105,7 +105,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return insertAt;
         }
@@ -116,7 +116,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             WorkItemStore workItemStore,
             Project project = null)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -152,7 +152,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return insertAt;
         }
@@ -210,11 +210,15 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
         internal static void DisplayQueryInfo(XlHlp.XlLocation insertAt, Options_AZDO_TFS options)
         {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+
             XlHlp.AddLabeledInfo(insertAt.AddRow(2), "Name", options.WorkItemQuerySpec.Name);
 
             XlHlp.AddLabeledInfo(insertAt.AddRow(2), "QueryWithTokens", options.WorkItemQuerySpec.QueryWithTokens);
 
             XlHlp.AddLabeledInfo(insertAt.AddRow(2), "Query", options.WorkItemQuerySpec.Query);
+
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         internal static XlHlp.XlLocation Add_TP_AreaCheck(
@@ -222,7 +226,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Project project,
             string areasToCheck)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -272,7 +276,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return insertAt;
         }
@@ -283,7 +287,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             ICommonStructureService commonStructureService,
             Project project)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -340,7 +344,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return insertAt;
         }
@@ -350,7 +354,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             Project project)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -384,7 +388,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return insertAt;
         }
@@ -395,7 +399,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             ICommonStructureService commonStructureService,
             Project project)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -451,7 +455,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return insertAt;
         }
@@ -478,7 +482,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             Project project)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -534,7 +538,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return insertAt;
         }
@@ -545,7 +549,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
         //    WorkItemStore workItemStore,
         //    Project project)
         //{
-        //    long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+        //    long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
         //    XlHlp.DisplayInWatchWindow(insertAt);
 
         //    try
@@ -584,7 +588,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
         //    }
 
         //    XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-        //    Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        //    Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
 
         //    return insertAt;
         //}
@@ -595,7 +599,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
         //    WorkItemStore workItemStore,
         //    Project project)
         //{
-        //    long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+        //    long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
         //    XlHlp.DisplayInWatchWindow(insertAt);
 
         //    try
@@ -634,7 +638,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
         //    }
 
         //    XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-        //    Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        //    Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
 
         //    return insertAt;
         //}
@@ -645,7 +649,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             WorkItemStore workItemStore,
             Project project)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -694,7 +698,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return insertAt;
         }
@@ -705,7 +709,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             WorkItemStore workItemStore,
             Project project)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             WorkItemCollection queryResults;
@@ -782,7 +786,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return insertAt;
         }
@@ -792,7 +796,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             Project project)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -830,7 +834,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return insertAt;
         }
@@ -841,7 +845,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             WorkItemStore workItemStore,
             Project project)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -888,7 +892,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return insertAt;
         }
@@ -899,7 +903,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             WorkItemStore workItemStore,
             Project project)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -946,7 +950,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return insertAt;
         }
@@ -957,7 +961,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
         //    WorkItemStore workItemStore, 
         //    Project project)
         //{
-        //    long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+        //    long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
         //    try
         //    {
@@ -1003,7 +1007,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
         //    }
 
         //    XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-        //    Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+        //    Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
 
         //    return insertAt;
         //}
@@ -1014,7 +1018,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             WorkItem workItem,
             WorkItemActionRequest request)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -1093,7 +1097,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return insertAt;
         }
@@ -1103,7 +1107,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             WorkItem workItem)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -1238,7 +1242,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return insertAt;
         }
@@ -1249,7 +1253,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             WorkItemStore workItemStore,
             int workItemID)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -1287,7 +1291,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return insertAt;
         }
@@ -1298,7 +1302,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             WorkItemStore workItemStore,
             WorkItem workItem)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -1337,7 +1341,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return insertAt;
         }
@@ -1346,7 +1350,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             XlHlp.XlLocation insertAt,
             QueryFolder queryFolder)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             insertAt.ClearOffsets();
@@ -1385,7 +1389,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow("End", startTicks);
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
 
             return insertAt;
         }

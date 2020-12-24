@@ -25,7 +25,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
         public static void ProcessCreateWorkSheet(ProcessCreateWorksheetCommand command,
             Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter ({command.Method.Name})", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION($"Enter ({command.Method.Name})", Common.PROJECT_NAME);
 
             XlHlp.DisplayInWatchWindow(string.Format("{0} {1}",
                 MethodBase.GetCurrentMethod().Name,
@@ -48,14 +48,14 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 Globals.ThisAddIn.Application.StatusBar = Common.PriorStatusBar;
             }
 
-            Log.Trace($"Exit ({command.Method.Name})", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION($"Exit ({command.Method.Name})", Common.PROJECT_NAME, startTicks);
         }
 
         public static void ProcessCreateWorkSheetSections(ProcessCreateWorksheetCommandSections command,
             string sectionsToDisplay, 
             Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter ({command.Method.Name})", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION($"Enter ({command.Method.Name})", Common.PROJECT_NAME);
 
             try
             {
@@ -74,14 +74,14 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 Globals.ThisAddIn.Application.StatusBar = Common.PriorStatusBar;
             }
 
-            Log.Trace($"Exit ({command.Method.Name})", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION($"Exit ({command.Method.Name})", Common.PROJECT_NAME, startTicks);
         }
 
         public static void ProcessCreateWorkSheetTeamProjectCollection(ProcessCreateWorksheetCommandSections command,
             string teamProjectCollectionUri,
             Options_AZDO_TFS options)
         {
-            long startTicks = Log.Trace($"Enter ({command.Method.Name})", Common.PROJECT_NAME);
+            long startTicks = Log.APPLICATION($"Enter ({command.Method.Name})", Common.PROJECT_NAME);
 
             try
             {
@@ -100,7 +100,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 Globals.ThisAddIn.Application.StatusBar = Common.PriorStatusBar;
             }
 
-            XlHlp.DisplayInWatchWindow("End", startTicks, command.Method.Name);
+            Log.APPLICATION($"Exit ({command.Method.Name})", Common.PROJECT_NAME, startTicks);
         }
 
         public static void SpeedUpStart()

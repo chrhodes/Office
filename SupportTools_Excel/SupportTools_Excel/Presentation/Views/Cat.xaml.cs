@@ -16,7 +16,7 @@ namespace SupportTools_Excel.Presentation.Views
 
         public Cat()
         {
-            Log.Trace($"Enter", Common.PROJECT_NAME);
+            Log.Trace("Enter", Common.PROJECT_NAME);
 
             InitializeComponent();
 
@@ -29,7 +29,7 @@ namespace SupportTools_Excel.Presentation.Views
 
             InitializeView();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME);
+            Log.Trace("Exit", Common.PROJECT_NAME);
         }
 
         // View First.  View is passed ViewModel through Injection
@@ -37,7 +37,7 @@ namespace SupportTools_Excel.Presentation.Views
 
         public Cat(ICatViewModel viewModel)
         {
-            Log.Trace($"Enter", Common.PROJECT_NAME);
+            Log.Trace("Enter", Common.PROJECT_NAME);
 
             InitializeComponent();
 
@@ -45,7 +45,7 @@ namespace SupportTools_Excel.Presentation.Views
 
             InitializeView();
 
-            Log.Trace($"Exit", Common.PROJECT_NAME);
+            Log.Trace("Exit", Common.PROJECT_NAME);
         }
 
         private void InitializeView()
