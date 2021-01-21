@@ -39,9 +39,18 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Domain
             // Until we better think through how to handle looping delays across Projects
             // Support both the @PROJECT token and TeamProjectFilter
 
-            if (projectName != null)
+            //if ((options.TeamProjects?.Count ?? 0) > 0)
+            //{
+            //    Query += GetTeamProjectsFilter(options);
+            //}
+            //else if (projectName != null)
+            //{
+            //    Query = Query.Replace("@PROJECT", $"{projectName}");
+            //}
+
+             if (Query.Contains("@PROJECT") && projectName != null)
             {
-                Query = Query.Replace("@PROJECT", $"{projectName}");
+                Query = Query.Replace("@PROJECT", $"'{projectName}'");
             }
             else
             {

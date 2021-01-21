@@ -20,7 +20,7 @@
     
     mc:Ignorable="d"
     Background="WhiteSmoke"
-    d:DesignWidth="400"
+    d:DesignWidth="500"
 >
     <UserControl.Resources>
         <localc:SelectedItemsConverter x:Key="SelectedItemsConverter" />
@@ -116,11 +116,11 @@
                             Style="{StaticResource dxlcGroup}">
 
                             <dxlc:LayoutItem HorizontalAlignment="Left" Label="Start Date">
-                                <dxe:DateEdit Text="{ Binding Options.StartDate }"  />
+                                <dxe:DateEdit Text="{ Binding Options.StartDate }" Mask="yyyy-MM-dd" MaskType="Simple" />
                             </dxlc:LayoutItem>
 
                             <dxlc:LayoutItem HorizontalAlignment="Left" Label="End Date">
-                                <dxe:DateEdit Text="{ Binding Options.EndDate }"  />
+                                <dxe:DateEdit Text="{ Binding Options.EndDate }" Mask="yyyy-MM-dd" />
                             </dxlc:LayoutItem>
          
                             <dxlc:LayoutItem HorizontalAlignment="Right" Label="Go Back Days">

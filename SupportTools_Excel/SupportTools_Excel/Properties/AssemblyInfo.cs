@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("VNC")]
 [assembly: AssemblyProduct("SupportTools_Excel")]
-[assembly: AssemblyCopyright("Copyright @ VNC 2000-2020")]
+[assembly: AssemblyCopyright("Copyright @ VNC 2000-2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -63,4 +63,4 @@ using System.Runtime.InteropServices;
 //  Version   Date        By
 //  1.0.0.0   mm/dd/yyyy    Developer
 //      Initial Version
-[assembly: AssemblyInformationalVersion("1.0.0.2020.12.23A")]
+[assembly: AssemblyInformationalVersion("1.0.0.2021.01.20A")]
