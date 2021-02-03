@@ -57,7 +57,7 @@ namespace VNC.AddinHelper
         public static void DisplayInfo()
         {
             //AssemblyHelper.AssemblyInformation info = new AssemblyHelper.AssemblyInformation(System.Reflection.Assembly.GetExecutingAssembly());
-            AssemblyHelper.AssemblyInformation info = new AssemblyHelper.AssemblyInformation(System.Reflection.Assembly.GetCallingAssembly());
+            VNC.AssemblyHelper.AssemblyInformation info = new AssemblyHelper.AssemblyInformation(System.Reflection.Assembly.GetCallingAssembly());
             MessageBox.Show(info.ToString());
         }
 

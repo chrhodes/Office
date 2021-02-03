@@ -35,11 +35,15 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 if (insertAt.OrientVertical)
                 {
-                    XlHlp.AddContentToCell(insertAt.AddRowX(), "TeamProject (TP) Information");
+                    //XlHlp.AddContentToCell(insertAt.AddRowX(), "TeamProject (TP) Information");
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), "TeamProject (TP) Information", "");
+                    insertAt.IncrementRows();
                 }
                 else
                 {
-                    XlHlp.AddContentToCell(insertAt.AddRowX(), "TeamProject (TP) Information");
+                    //XlHlp.AddContentToCell(insertAt.AddRowX(), "TeamProject (TP) Information");
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), "TeamProject(TP) Information", "",
+                        orientation: XlOrientation.xlUpward);
                     insertAt.DecrementRows();   // AddRow bumped it.
                     insertAt.IncrementColumns();
                 }
@@ -102,11 +106,14 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 if (insertAt.OrientVertical)
                 {
-                    XlHlp.AddLabeledInfo(insertAt.AddRow(), "Members Group", "");
+                    XlHlp.AddSectionInfo(insertAt.AddRow(),
+                        "Members Group", "");
                 }
                 else
                 {
-                    XlHlp.AddLabeledInfo(insertAt.AddRow(), "Members Group", "", orientation: XlOrientation.xlUpward);
+                    XlHlp.AddSectionInfo(insertAt.AddRow(),
+                        "Members Group", "",
+                        orientation: XlOrientation.xlUpward);
                     insertAt.IncrementColumns();
                 }
 

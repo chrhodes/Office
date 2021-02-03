@@ -53,7 +53,7 @@ namespace VNC.AddinHelper
                 XL.Application xlApp = new XL.Application();
 
                 XL.Workbook wb = xlApp.Workbooks.Open(Path);
-                XL.Worksheet ws = wb.Sheets[sheetName];
+                XL.Worksheet ws = (XL.Worksheet)wb.Sheets[sheetName];
                 XL.ListObject lo = ws.ListObjects[tableName];
                 XL.ListColumns listColumns = lo.ListColumns;
                 XL.ListRows listRows = lo.ListRows;

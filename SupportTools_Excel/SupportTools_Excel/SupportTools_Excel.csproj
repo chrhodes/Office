@@ -213,41 +213,99 @@
       <HintPath>..\packages\Crc32C.NET.1.0.5.0\lib\net20\Crc32C.NET.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Data.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Mvvm.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
+    <Reference Include="DevExpress.CodeParser.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.CodeParser.19.2.6\lib\net452\DevExpress.CodeParser.v19.2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Pdf.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Data.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Data.19.2.6\lib\net452\DevExpress.Data.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.DataAccess.19.2.6\lib\net452\DevExpress.DataAccess.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Images.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Images.19.2.6\lib\net452\DevExpress.Images.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Mvvm.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Mvvm.19.2.6\lib\net452\DevExpress.Mvvm.v19.2.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Office.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Office.Core.19.2.6\lib\net452\DevExpress.Office.v19.2.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.RichEdit.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-    </Reference>
-    <Reference Include="DevExpress.RichEdit.v19.2.Export, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Pdf.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Pdf.Core.19.2.6\lib\net452\DevExpress.Pdf.v19.2.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Printing.Core.19.2.6\lib\net452\DevExpress.Printing.v19.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.RichEdit.Core.19.2.6\lib\net452\DevExpress.RichEdit.v19.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v19.2.Export, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.RichEdit.Export.19.2.6\lib\net452\DevExpress.RichEdit.v19.2.Export.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Utils.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
     </Reference>
     <Reference Include="DevExpress.Utils.v19.2.UI, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
     </Reference>
+    <Reference Include="DevExpress.Xpf.Accordion.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Wpf.Navigation.19.2.6\lib\net452\DevExpress.Xpf.Accordion.v19.2.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Xpf.CodeView.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
     </Reference>
+    <Reference Include="DevExpress.Xpf.Controls.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Wpf.Navigation.19.2.6\lib\net452\DevExpress.Xpf.Controls.v19.2.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Xpf.Core.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Wpf.Core.19.2.6\lib\net452\DevExpress.Xpf.Core.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Core.v19.2.Extensions, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Wpf.Core.19.2.6\lib\net452\DevExpress.Xpf.Core.v19.2.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Xpf.Docking.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Wpf.Navigation.19.2.6\lib\net452\DevExpress.Xpf.Docking.v19.2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Printing.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Xpf.DocumentViewer.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Wpf.DocumentViewer.Core.19.2.6\lib\net452\DevExpress.Xpf.DocumentViewer.v19.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.ExpressionEditor.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Wpf.ExpressionEditor.19.2.6\lib\net452\DevExpress.Xpf.ExpressionEditor.v19.2.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Xpf.Grid.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Wpf.Grid.Core.19.2.6\lib\net452\DevExpress.Xpf.Grid.v19.2.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Xpf.Grid.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Wpf.Grid.Core.19.2.6\lib\net452\DevExpress.Xpf.Grid.v19.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v19.2.Extensions, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Wpf.Grid.Core.19.2.6\lib\net452\DevExpress.Xpf.Grid.v19.2.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Layout.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Wpf.Navigation.19.2.6\lib\net452\DevExpress.Xpf.Layout.v19.2.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Xpf.LayoutControl.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Wpf.Layout.19.2.6\lib\net452\DevExpress.Xpf.LayoutControl.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.NavBar.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Wpf.Navigation.19.2.6\lib\net452\DevExpress.Xpf.NavBar.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Printing.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Wpf.Printing.19.2.6\lib\net452\DevExpress.Xpf.Printing.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Ribbon.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Wpf.Navigation.19.2.6\lib\net452\DevExpress.Xpf.Ribbon.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.RichEdit.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Wpf.RichEdit.19.2.6\lib\net452\DevExpress.Xpf.RichEdit.v19.2.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Xpf.Themes.MetropolisDark.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
     </Reference>
     <Reference Include="DevExpress.Xpf.Themes.MetropolisLight.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Themes.Office2016White.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Wpf.Themes.Office2016White.19.2.6\lib\net452\DevExpress.Xpf.Themes.Office2016White.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Xpo.19.2.6\lib\net452\DevExpress.Xpo.v19.2.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
     </Reference>
@@ -265,6 +323,9 @@
     </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.DevOps.Comments.WebApi, Version=18.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.170.0\lib\net462\Microsoft.Azure.DevOps.Comments.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Services.AppAuthentication, Version=1.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.Services.AppAuthentication.1.6.0\lib\net472\Microsoft.Azure.Services.AppAuthentication.dll</HintPath>
@@ -299,14 +360,26 @@
     <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.7.1\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Client.Policy, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20912.12000\lib\net45\Microsoft.Office.Client.Policy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Client.TranslationServices, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20912.12000\lib\net45\Microsoft.Office.Client.TranslationServices.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.SharePoint.Tools, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20912.12000\lib\net45\Microsoft.Office.SharePoint.Tools.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Tools, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.Office.Tools.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Online.SharePoint.Client.Tenant, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20912.12000\lib\net45\Microsoft.Online.SharePoint.Client.Tenant.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.4.1.1\lib\net45\Microsoft.Owin.dll</HintPath>
@@ -323,17 +396,41 @@
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ProjectServer.Client, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20912.12000\lib\net45\Microsoft.ProjectServer.Client.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.22\lib\net461\Microsoft.Rest.ClientRuntime.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ServiceBus, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAzure.ServiceBus.6.0.3\lib\net462\Microsoft.ServiceBus.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SharePoint.Client, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharePoint.Client.15.0.0\lib\Microsoft.SharePoint.Client\Microsoft.SharePoint.Client.dll</HintPath>
+    <Reference Include="Microsoft.SharePoint.Client, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20912.12000\lib\net45\Microsoft.SharePoint.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SharePoint.Client.Runtime, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharePoint.Client.Runtime.15.0.0\lib\Microsoft.SharePoint.Client.Runtime\Microsoft.SharePoint.Client.Runtime.dll</HintPath>
+    <Reference Include="Microsoft.SharePoint.Client.DocumentManagement, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20912.12000\lib\net45\Microsoft.SharePoint.Client.DocumentManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.Publishing, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20912.12000\lib\net45\Microsoft.SharePoint.Client.Publishing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.Runtime, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20912.12000\lib\net45\Microsoft.SharePoint.Client.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.Search, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20912.12000\lib\net45\Microsoft.SharePoint.Client.Search.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.Search.Applications, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20912.12000\lib\net45\Microsoft.SharePoint.Client.Search.Applications.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.Taxonomy, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20912.12000\lib\net45\Microsoft.SharePoint.Client.Taxonomy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.UserProfiles, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20912.12000\lib\net45\Microsoft.SharePoint.Client.UserProfiles.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.WorkflowServices, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20912.12000\lib\net45\Microsoft.SharePoint.Client.WorkflowServices.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Assessment, Version=1.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\net462\Microsoft.SqlServer.Assessment.dll</HintPath>
@@ -423,123 +520,130 @@
       <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\net462\Microsoft.SqlServer.WmiEnum.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Build.Client, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.Build.Client.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.Build.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Build.Common, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.Build.Common.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.Build.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Build2.WebApi, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.153.0\lib\net45\Microsoft.TeamFoundation.Build2.WebApi.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.170.0\lib\net462\Microsoft.TeamFoundation.Build2.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Client, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.Client.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Common, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.VisualStudio.Services.Client.16.153.0\lib\net45\Microsoft.TeamFoundation.Common.dll</HintPath>
+      <HintPath>..\packages\Microsoft.VisualStudio.Services.Client.16.170.0\lib\net462\Microsoft.TeamFoundation.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Core.WebApi, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.153.0\lib\net45\Microsoft.TeamFoundation.Core.WebApi.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.170.0\lib\net462\Microsoft.TeamFoundation.Core.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Dashboards.WebApi, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.153.0\lib\net45\Microsoft.TeamFoundation.Dashboards.WebApi.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.170.0\lib\net462\Microsoft.TeamFoundation.Dashboards.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.DeleteTeamProject, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.DeleteTeamProject.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.DeleteTeamProject.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Diff, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.Diff.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.Diff.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Discussion.Client, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.Discussion.Client.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.Discussion.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.DistributedTask.Common.Contracts, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.TeamFoundation.DistributedTask.Common.Contracts.16.170.0\lib\net462\Microsoft.TeamFoundation.DistributedTask.Common.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Git.Client, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.Git.Client.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.Git.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Lab.Client, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.Lab.Client.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.Lab.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Lab.Common, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.Lab.Common.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.Lab.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Lab.TestIntegration.Client, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.Lab.TestIntegration.Client.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.Lab.TestIntegration.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Policy.WebApi, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.153.0\lib\net45\Microsoft.TeamFoundation.Policy.WebApi.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.170.0\lib\net462\Microsoft.TeamFoundation.Policy.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.ProjectManagement, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.ProjectManagement.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.ProjectManagement.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.SharePointReporting.Integration, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.SharePointReporting.Integration.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.SharePointReporting.Integration.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.SourceControl.WebApi, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.153.0\lib\net45\Microsoft.TeamFoundation.SourceControl.WebApi.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.170.0\lib\net462\Microsoft.TeamFoundation.SourceControl.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Test.WebApi, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.153.0\lib\net45\Microsoft.TeamFoundation.Test.WebApi.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.170.0\lib\net462\Microsoft.TeamFoundation.Test.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.TestImpact.Client, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.TestImpact.Client.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.TestImpact.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.TestManagement.Client, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.TestManagement.Client.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.TestManagement.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.TestManagement.Common, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.TestManagement.Common.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.TestManagement.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.TestManagement.WebApi, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.153.0\lib\net45\Microsoft.TeamFoundation.TestManagement.WebApi.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.170.0\lib\net462\Microsoft.TeamFoundation.TestManagement.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.VersionControl.Client, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.VersionControl.Client.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.VersionControl.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.VersionControl.Common, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.VersionControl.Common.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.VersionControl.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.VersionControl.Common.Integration, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.VersionControl.Common.Integration.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.VersionControl.Common.Integration.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Wiki.WebApi, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.153.0\lib\net45\Microsoft.TeamFoundation.Wiki.WebApi.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.170.0\lib\net462\Microsoft.TeamFoundation.Wiki.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Work.WebApi, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.153.0\lib\net45\Microsoft.TeamFoundation.Work.WebApi.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.170.0\lib\net462\Microsoft.TeamFoundation.Work.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Client, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.WorkItemTracking.Client.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.WorkItemTracking.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Client.DataStoreLoader, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.WorkItemTracking.Client.DataStoreLoader.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.WorkItemTracking.Client.DataStoreLoader.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Common, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.WorkItemTracking.Common.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.WorkItemTracking.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.153.0\lib\net45\Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.170.0\lib\net462\Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Proxy, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\lib\net45\Microsoft.TeamFoundation.WorkItemTracking.Proxy.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\lib\net462\Microsoft.TeamFoundation.WorkItemTracking.Proxy.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.WebApi, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.153.0\lib\net45\Microsoft.TeamFoundation.WorkItemTracking.WebApi.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.170.0\lib\net462\Microsoft.TeamFoundation.WorkItemTracking.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Services.Client.Interactive, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Services.InteractiveClient.16.170.0\lib\net462\Microsoft.VisualStudio.Services.Client.Interactive.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Services.Common, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.VisualStudio.Services.Client.16.153.0\lib\net45\Microsoft.VisualStudio.Services.Common.dll</HintPath>
+      <HintPath>..\packages\Microsoft.VisualStudio.Services.Client.16.170.0\lib\net462\Microsoft.VisualStudio.Services.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.153.0\lib\net45\Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.170.0\lib\net462\Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Services.TestResults.WebApi, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.153.0\lib\net45\Microsoft.VisualStudio.Services.TestResults.WebApi.dll</HintPath>
+      <HintPath>..\packages\Microsoft.TeamFoundationServer.Client.16.170.0\lib\net462\Microsoft.VisualStudio.Services.TestResults.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Services.WebApi, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Services.Client.16.170.0\lib\net462\Microsoft.VisualStudio.Services.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Tools.Applications.Runtime, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -664,11 +768,15 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Cors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -691,11 +799,20 @@
     <Reference Include="Unity.Interception, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.Interception.5.11.1\lib\net47\Unity.Interception.dll</HintPath>
     </Reference>
+    <Reference Include="VNC.AssemblyHelperNF, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VNC.AssemblyHelperNF.1.0.0\lib\net48\VNC.AssemblyHelperNF.dll</HintPath>
+    </Reference>
     <Reference Include="VNC.CoreNF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\VNC.CoreNF.1.0.0\lib\net48\VNC.CoreNF.dll</HintPath>
     </Reference>
     <Reference Include="VNC.LoggingNF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6621de8a79b51ca3, processorArchitecture=MSIL">
       <HintPath>..\packages\VNC.LoggingNF.1.0.0\lib\net48\VNC.LoggingNF.dll</HintPath>
+    </Reference>
+    <Reference Include="VNC.SPHelperNF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VNC.SPHelperNF.1.0.0\lib\net48\VNC.SPHelperNF.dll</HintPath>
+    </Reference>
+    <Reference Include="VNC.TFSHelperNF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VNC.TFSHelperNF.1.0.0\lib\net48\VNC.TFSHelperNF.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
@@ -1728,21 +1845,9 @@
       <Project>{1032ce4c-4274-476a-8aef-7147241d4b4a}</Project>
       <Name>VNC.ActiveDirectoryHelperNF</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\vnc\VNC.AssemblyHelper\VNC.AssemblyHelperNF.csproj">
-      <Project>{ef3a5e06-1ad6-4089-8526-07850da33dff}</Project>
-      <Name>VNC.AssemblyHelperNF</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\vnc\VNC.SMOHelper\VNC.SMOHelperNF.csproj">
       <Project>{0c945142-f05b-429c-971a-4f72924cdabb}</Project>
       <Name>VNC.SMOHelperNF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\vnc\VNC.SPHelper\VNC.SPHelperNF.csproj">
-      <Project>{79c204c4-7696-4980-b456-f40f97e4e972}</Project>
-      <Name>VNC.SPHelperNF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\vnc\VNC.TFSHelper\VNC.TFSHelperNF.csproj">
-      <Project>{3107b94b-f69c-42de-afe1-7864fddccb73}</Project>
-      <Name>VNC.TFSHelperNF</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\vnc\VNC.WPF.Presentation.Dx\VNC.WPF.Presentation.DxNF.csproj">
       <Project>{e1790662-2083-4640-bb3c-aeda5d9a7137}</Project>
@@ -1819,7 +1924,6 @@
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <Error Condition="!Exists('..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\build\Microsoft.TeamFoundationServer.ExtendedClient.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\build\Microsoft.TeamFoundationServer.ExtendedClient.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.3.3.0\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.3.3.0\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeQuality.Analyzers.3.3.0\build\Microsoft.CodeQuality.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeQuality.Analyzers.3.3.0\build\Microsoft.CodeQuality.Analyzers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.NetCore.Analyzers.3.3.0\build\Microsoft.NetCore.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetCore.Analyzers.3.3.0\build\Microsoft.NetCore.Analyzers.props'))" />
@@ -1828,8 +1932,9 @@
     <Error Condition="!Exists('..\packages\Microsoft.Data.SqlClient.SNI.2.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Data.SqlClient.SNI.2.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\build\Microsoft.TeamFoundationServer.ExtendedClient.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\build\Microsoft.TeamFoundationServer.ExtendedClient.targets'))" />
   </Target>
-  <Import Project="..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\build\Microsoft.TeamFoundationServer.ExtendedClient.targets" Condition="Exists('..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.153.0\build\Microsoft.TeamFoundationServer.ExtendedClient.targets')" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.2.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.2.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\build\Microsoft.TeamFoundationServer.ExtendedClient.targets" Condition="Exists('..\packages\Microsoft.TeamFoundationServer.ExtendedClient.16.170.0\build\Microsoft.TeamFoundationServer.ExtendedClient.targets')" />
 </Project>

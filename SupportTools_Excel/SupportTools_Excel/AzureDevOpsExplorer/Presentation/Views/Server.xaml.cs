@@ -3,8 +3,6 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 
-using DevExpress.Utils.ViewInfo;
-
 using Microsoft.TeamFoundation.Build.Client;
 using Microsoft.TeamFoundation.Client;
 using Microsoft.TeamFoundation.Framework.Client;
@@ -14,12 +12,12 @@ using Microsoft.TeamFoundation.TestManagement.Client;
 using Microsoft.TeamFoundation.VersionControl.Client;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
 
-using Prism.Events;
 using SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels;
 using SupportTools_Excel.Infrastructure.Presentation.ViewModels;
-using SupportTools_Excel.Presentation.ViewModels;
+
 using VNC;
 using VNC.Core.Mvvm;
+
 using VNCTFS = VNC.TFS;
 using XlHlp = VNC.AddinHelper.Excel;
 

@@ -11,14 +11,13 @@ using System.Xml.Linq;
 using Microsoft.Office.Interop.Excel;
 using Microsoft.TeamFoundation.Server;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
+
 using SupportTools_Excel.AzureDevOpsExplorer.Domain;
-using SupportTools_Excel.Domain;
 
 using VNC;
 using VNC.AddinHelper;
 
 using XlHlp = VNC.AddinHelper.Excel;
-
 
 namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 {
@@ -123,64 +122,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             return insertAt;
         }
 
-        //internal static void Add_TP_Query(
-        //    XlHlp.XlLocation insertAt,
-        //    Options_AZDO_TFS options,
-        //    WorkItemCollection queryResults,
-        //    int totalItems)
-        //{
-        //    int itemCount = 0;
-
-        //    foreach (WorkItem workItem in queryResults)
-        //    {
-        //        insertAt.ClearOffsets();
-
-        //        // TODO(crhodes)
-        //        // Parse Query and dynamically determine columns to show - this will be way cool!
-
-        //        //[System.Id], [System.WorkItemType], [System.Title], [System.State], [System.Tags], 
-        //        //[Microsoft.VSTS.Scheduling.StoryPoints], [System.AreaPath], [System.IterationPath], 
-        //        //[System.RelatedLinkCount], [System.ExternalLinkCount], [System.HyperLinkCount] 
-
-        //        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Project.Name }");
-
-        //        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Id }");
-        //        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Type.Name }");
-        //        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Title }");
-        //        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.CreatedBy }");
-        //        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.CreatedDate }");
-        //        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.ChangedBy }");
-        //        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.ChangedDate }");
-
-        //        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.AuthorizedDate }");
-        //        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.State }");
-        //        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Tags }");
-        //        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.AreaPath }");
-        //        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.IterationPath }");
-        //        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.RelatedLinkCount }");
-        //        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.ExternalLinkCount }");
-        //        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.HyperLinkCount }");
-        //        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Reason }");
-        //        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Rev }");
-        //        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.RevisedDate }");
-
-        //        // TODO(crhodes)
-        //        // Figure out how to handle missing fields (not part of WI)
-
-        //        //XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{workItem.Fields["DevCustom.ProjectId"].Value}");
-
-        //        insertAt.IncrementRows();
-
-        //        itemCount++;
-
-        //        if (itemCount % options.LoopUpdateInterval == 0)
-        //        {
-        //            XlHlp.DisplayInWatchWindow($"Added {itemCount} out of {totalItems}");
-        //        }
-        //    }
-        //}
-
-        internal static void Add_TP_WorkItem_Info(
+         internal static void Add_TP_WorkItem_Info(
             XlHlp.XlLocation insertAt,
             Options_AZDO_TFS options,
             WorkItemStore workItemStore,
@@ -193,17 +135,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             try
             {
-                //string query = String.Format(
-                //    "Select [Id], [Created Date], [Changed Date], [Revised Date]"
-                //    + " From WorkItems"
-                //    + " Where [System.Id] = '{0}'",
-                //    workItemID);
-
-                //WorkItemCollection queryResults = Server.WorkItemStore.Query(query);
-
-                //foreach (WorkItem wi in queryResults)
-                //{
-
                 WorkItem wi = VNC.TFS.Helper.RetrieveWorkItem(workItemID, workItemStore);
                 insertAt.ClearOffsets();
 
@@ -310,19 +241,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
-        //private void PrintTrees(WorkItemLinkInfo[] wiTrees, int sourceId)
-        //{
-        //    foreach (WorkItemLinkInfo wili in wiTrees)
-        //    {
-        //        if (wili.SourceId == sourceId)
-        //        {
-        //            WorkItem target = workItemStore.GetWorkItem(wili.TargetId);
-        //            var v1 = target.Type.Name;
-        //            var v2 = target.Id;
-        //        }
-        //    }
-        //}
-
         internal static void Add_TP_WorkItem_WorkItemLinks(
             XlHlp.XlLocation insertAt,
             Options_AZDO_TFS options,
@@ -344,14 +262,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             try
             {
-                //string queryWI = String.Format(
-                //    "Select [Id], [Created Date], [Changed Date], [Revised Date]"
-                //    + " From WorkItems"
-                //    + " Where [System.Id] = '{0}'",
-                //    workItem.Id);
-
-                //WorkItemCollection queryResultsWI = Server.WorkItemStore.Query(queryWI);
-
                 string queryWIL = String.Format(
                     "Select [Id], [System.Title]"
                     + " From WorkItemLinks"
@@ -376,29 +286,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 Query wilDetailsQuery = new Query(workItemStore, queryWILdetails, linkedIDsUnique);
 
                 WorkItemCollection queryResultsWIL = wilDetailsQuery.RunQuery();
-
-                //PrintTrees(wiTrees, workItemID);
-
-                // Produce a lookup dictionary of Target Types
-
-                //Dictionary<int, string> linkTypes = new Dictionary<int, string>();
-
-                //foreach (WorkItem wi in queryResultsWIL)
-                //{
-                //    if (! linkTypes.ContainsKey(wi.Id))
-                //    {
-                //        linkTypes.Add(wi.Id, wi.Type.Name);
-                //    }
-                //    else
-                //    {
-                //        MessageBox.Show($"ID {wi.Id} already in list");
-                //    }
-                //}
-
-                //if (queryResultsWI.Count > 0)
-                //{
-                //    WorkItem wi = queryResultsWI[0];
-
 
                 List<WorkItem> bugWI = new List<WorkItem>();
                 List<WorkItem> changeRequestWI = new List<WorkItem>();
@@ -689,8 +576,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             {
                 insertAt.ClearOffsets();
 
-                //StringBuilder sb = new StringBuilder();
-
                 foreach (FieldDefinition fieldDef in wit.FieldDefinitions)
                 {
                     var fieldName = fieldDef.Name;
@@ -779,8 +664,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                     insertAt.IncrementRows();
                 }
-
-                insertAt.IncrementRows();
             }
 
             Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
@@ -1095,13 +978,13 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
-        internal static void Add_WorkItemDetails(
-            XlHlp.XlLocation insertAt,
-            Options_AZDO_TFS options)
-        {
-            // TODO(crhodes)
-            // Loop across Team Projects and get last change or maybe go back days
-        }
+        //internal static void Add_WorkItemDetails(
+        //    XlHlp.XlLocation insertAt,
+        //    Options_AZDO_TFS options)
+        //{
+        //    // TODO(crhodes)
+        //    // Loop across Team Projects and get last change or maybe go back days
+        //}
 
         internal static XlHlp.XlLocation AddChildNodes(
             XlHlp.XlLocation insertAt,
@@ -1117,9 +1000,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             foreach (Node item in childNodes)
             {
-
-                //insertAt.ClearOffsets();
-
                 var nodeInfo = commonStructureService.GetNode(item.Uri.ToString());
 
                 Range startofRowRange = insertAt.workSheet.Cells[insertAt.RowCurrent, 1];
@@ -1132,8 +1012,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     // HACK(crhodes)
                     // Somehow this needs to use the offsetLevel to get back to the first column or just hard code it.
 
-
-                    //XlHlp.AddContentToCell(insertAt.AddRowX(), item.Name);
                     XlHlp.AddContentToCell(insertAt.AddRowX(), item.Name);
 
                     if (options.ShowAllNodeLevels && item.HasChildNodes)
@@ -1156,13 +1034,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                         days = ((DateTime)nodeInfo.FinishDate).Subtract((DateTime)nodeInfo.StartDate).TotalDays.ToString();
                     }
 
-                    string iterationinfo = string.Format("{3,2} days ({1} to {2})  {0} (id: {4})",
-                        item.Name,
-                        //nodeinfo.structuretype,
-                        startdate,
-                        finishdate,
-                        days,
-                        item.Id);
+                    string iterationinfo = $"Name: >{item.Name,30}< (id: {item.Id}) - {days,3} days ({startdate} to {finishdate})";
 
                     XlHlp.AddContentToCell(insertAt.AddRowX(), iterationinfo);
 
@@ -1215,62 +1087,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 var layoutControls = xDocument.Descendants("Layout").Descendants("Control");
                 var webLayoutControls = xDocument.Descendants("WebLayout").Descendants("Control");
 
-                //XElement xElement = XElement.Parse(workItemTypeXml.OuterXml);
-
-
-                //XElement fieldsElement = xElement.Element("FIELDS");
-                //var bar = xElement.Elements("FIELD");
-                //XElement layoutElement = xElement.Element("Layout");
-                //XElement webLayoutElement = xElement.Element("WebLayout");
-
-
-                //// get the transitions node.
-
-                //var foo1 = workItemTypeXml.GetElementById("WORKITEMTYPE");
-                //var foo2 = workItemTypeXml.SelectSingleNode("WORKITEMTYPE");
-                //var foo2a = workItemTypeXml.SelectSingleNode("WORKITEMTYPE/FORM/Layout");
-                //var foo2al = workItemTypeXml.SelectNodes("WORKITEMTYPE/FORM/Layout/Control[@FieldName]");
-
-                //var foo2b = workItemTypeXml.SelectSingleNode("//WORKITEMTYPE");
-
-                //// This seems to get us the Layout Node.
-                //// Now how to get elements inside
-                //var foo2b1 = workItemTypeXml.SelectSingleNode("//WORKITEMTYPE/FORM/Layout");
-
-                //var foo2b1a = foo2b1.SelectNodes("Control");
-
-
-                //var foo2b1b = foo2b1.SelectNodes(@"Control[@FieldName]");
-
-                //var foo2b1c = foo2b1.SelectNodes(@"*/Control");
-
-                //var foo2b1d = foo2b1.SelectNodes(@"*/Control[@FieldName]");
-
-                //var foo2b2 = workItemTypeXml.SelectNodes("//WORKITEMTYPE/FORM/Layout/*/Control[@FieldName]");
-
-                //var foo3 = workItemTypeXml.GetElementsByTagName("WORKITEMTYPE");
-
-                //var fieldsNode = foo3[0].SelectSingleNode("FIELDS");
-
-                //var formNode = foo3[0].SelectSingleNode("FORM");
-                //XmlNodeList fieldNodes = fieldsNode.SelectNodes("FIELD");
-
-                //var layoutNode = formNode.SelectSingleNode("Layout");
-                //var webLayoutNode = formNode.SelectSingleNode("WebLayout");
-
-                //// Get all the "Control" nodes with a "FieldName" attribute
-
-                //// This double counts
-                //XmlNodeList layoutControlNodes = layoutNode.SelectNodes("//Control[@FieldName]");
-                //// This returns nothing :(
-                ////XmlNodeList webLayoutControlNodes = webLayoutNode.SelectNodes("Control[@FieldName]");
-                //XmlNodeList webLayoutControlNodes = webLayoutNode.SelectNodes("/Control[@FieldName]");
-
-                //XlHlp.DisplayInWatchWindow($"LayoutControlNodes: {layoutControlNodes.Count} WebLayoutControLNodes: {webLayoutControlNodes.Count}");
-
-                ////Dictionary<string, ControlMap> layoutControlDictionary = new Dictionary<string, ControlMap>();
-                ////Dictionary<string, ControlMap> webLayoutControlDictionary = new Dictionary<string, ControlMap>();
-
                 List<ControlMap> layoutControlList = new List<ControlMap>();
                 List<ControlMap> webLayoutControlList = new List<ControlMap>();
 
@@ -1288,27 +1104,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 // Get all the Fields
 
-                //var countFieldNodes = fieldNodes.Count;
                 var countFieldNodes = fields.Count();
-
-
-                //foreach (XmlNode field in fieldNodes)
-                //{
-                //    // Some fields are inconsistent between the Fields Definition and Layout Sections
-                //    // e.g. System.Id and System.ID.  Force to lower so we can find them later.
-                //    // But if we do that they show up in lower case :( system.id
-                //    // Better to tell dictionary to ignore case, infra :)
-
-                //    //string refName = field.Attributes["refname"].Value.ToLower();
-                //    string refName = field.Attributes["refname"].Value;
-
-                //    fieldDictionary.Add(refName, new FieldMap
-                //    {
-                //        Name = field.Attributes["name"].Value,
-                //        RefName = refName,
-                //        Type = field.Attributes["type"].Value
-                //    });
-                //}
 
                 foreach (XElement field in fields)
                 {
@@ -1323,9 +1119,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     string type = "";
                     bool required = false;
 
-                    //name ??= field.Attribute("name").Value;
-                    //type ??= field.Attribute("type").Value;
-
                     name = field.Attribute("name")?.Value ?? "";
                     type = field.Attribute("type")?.Value ?? "";
 
@@ -1333,16 +1126,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     {
                         required = true;
                     }
-
-                    //if (! ( field.Attribute("name") is null))
-                    //{
-                    //    name = field.Attribute("name").Value;
-                    //}
-
-                    //if (field.Attribute("type") != null)
-                    //{
-                    //    type = field.Attribute("type").Value;
-                    //}
 
                     // TODO(crhodes)
                     // Name and Type may not exist.  Figure out null check.
@@ -1362,25 +1145,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                         });
                     }
                 }
-
-                // Get all Controls in Layout Section
-
-                //foreach (XmlNode control in layoutControlNodes)
-                //{
-                //    string label = "";
-
-                //    if (null != control.Attributes["Label"])
-                //    {
-                //        label = control.Attributes["Label"].Value;
-                //    }
-
-                //    layoutControlList.Add(new ControlMap
-                //    {
-                //        FieldName = control.Attributes["FieldName"].Value,
-                //        Type = control.Attributes["Type"].Value,
-                //        Label = label
-                //    });
-                //}
 
                 foreach (XElement control in layoutControls)
                 {
@@ -1416,34 +1180,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     }
                 }
 
-                // Get all Controls in Web Layout Section
-
-                //foreach (XmlNode control in webLayoutControlNodes)
-                //{
-                //    string label = "";
-
-                //    if (null != control.Attributes["Label"])
-                //    {
-                //        label = control.Attributes["Label"].Value;
-                //    }
-
-                //    webLayoutControlList.Add(new ControlMap
-                //    {
-                //        FieldName = control.Attributes["FieldName"].Value,
-                //        Type = control.Attributes["Type"].Value,
-                //        Label = label
-                //    });
-                //}
-
-
                 foreach (XElement control in webLayoutControls)
                 {
-                    //string label = "";
-
-                    //if (null != control.Attribute("Label"))
-                    //{
-                    //    label = control.Attribute("Label").Value;
-                    //}
 
                     ControlMap controLMap = new ControlMap
                     {
@@ -1476,8 +1214,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                         }
                     }
                 }
-
-                //XlHlp.DisplayInWatchWindow($"newMappings: {newMappings.Count}");
 
                 var countLayoutControlList = layoutControlList.Count;
                 var countWebLayoutControlList = webLayoutControlList.Count;
@@ -1520,76 +1256,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                         MessageBox.Show(ex.ToString());
                     }
                 }
-
-                //foreach (var control in layoutControlList)
-                //{
-                //    try
-                //    {
-                //        ControlFieldMap controlFieldMap = new ControlFieldMap();
-
-                //        controlFieldMap.MapType = "Layout";
-
-                //        controlFieldMap.ControlMap = new ControlMap
-                //        {
-                //            FieldName = control.FieldName,
-                //            Label = control.Label,
-                //            Type = control.Type
-                //        };
-
-                //        // Add field information.
-                //        // N.B. No field if Links or Attachments.
-
-                //        if ((control.Type != "LinksControl") && (control.Type != "AttachmentsControl") && (control.Type != "AssociatedAutomationControl"))
-                //        {
-                //            controlFieldMap.FieldMap = fieldDictionary[control.FieldName];
-                //        }
-
-                //        newMappings.Add(controlFieldMap);
-                //    }
-                //    catch (Exception ex)
-                //    {
-                //        MessageBox.Show(ex.ToString());
-                //    }
-                //}
-
-                ////XlHlp.DisplayInWatchWindow($"newMappings: {newMappings.Count}");
-
-                //// Iterate all the Web Layout Controls and get the appropriate FieldMap
-
-                //foreach (var control in webLayoutControlList)
-                //{
-                //    try
-                //    {
-                //        ControlFieldMap controlFieldMap = new ControlFieldMap();
-
-                //        controlFieldMap.MapType = "WebLayout";
-
-                //        controlFieldMap.ControlMap = new ControlMap
-                //        {
-                //            FieldName = control.FieldName,
-                //            Label = control.Label,
-                //            Type = control.Type
-                //        };
-
-                //        // Force name to lower when we look in fieldDictionary
-
-                //        //controlFieldMap.FieldMap = fieldDictionary[control.FieldName.ToLower()];
-
-                //        // Add field information.
-                //        // N.B. No field if Links or Attachments.
-
-                //        if ((control.Type != "LinksControl") && (control.Type != "AttachmentsControl") && (control.Type != "AssociatedAutomationControl"))
-                //        {
-                //            controlFieldMap.FieldMap = fieldDictionary[control.FieldName];                            
-                //        }
-
-                //        newMappings.Add(controlFieldMap);
-                //    }
-                //    catch (Exception ex)
-                //    {
-                //        MessageBox.Show(ex.ToString());
-                //    }
-                //}
 
                 allMappings.Add(workItemType, newMappings);
 
@@ -1718,7 +1384,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     });
                 }
 
-                // Save off this transition so we don't do it again if it is needed.
+                // Add transition so we don't do it again if it is needed.
                 allTransitions.Add(workItemType, newTransitions);
             }
             catch (Exception ex)
@@ -1789,31 +1455,31 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
         }
 
-        private string PrintMappings(List<FieldMap> mappings)
-        {
-            StringBuilder sb = new StringBuilder();
-            string pad = new string(' ', 40);
+        //private string PrintMappings(List<FieldMap> mappings)
+        //{
+        //    StringBuilder sb = new StringBuilder();
+        //    string pad = new string(' ', 40);
 
-            //foreach (var transition in mappings.OrderBy(n => n.From))
-            //{
-            //    if (sb.Length == 0)
-            //    {
-            //        sb.Append($"{transition.From,17} -> {transition.To,-17} ({transition.Reasons})");
-            //        if (transition.For.Length > 0) sb.Append($" > {pad}{transition.For}");
+        //    //foreach (var transition in mappings.OrderBy(n => n.From))
+        //    //{
+        //    //    if (sb.Length == 0)
+        //    //    {
+        //    //        sb.Append($"{transition.From,17} -> {transition.To,-17} ({transition.Reasons})");
+        //    //        if (transition.For.Length > 0) sb.Append($" > {pad}{transition.For}");
 
-            //        if (transition.Fields.Length > 0) sb.Append($"\n{pad}Fields: {transition.Fields}");
-            //    }
-            //    else
-            //    {
-            //        sb.Append($"\n{transition.From,17} -> {transition.To,-17} ({transition.Reasons})");
-            //        if (transition.For.Length > 0) sb.Append($"> {transition.For}");
+        //    //        if (transition.Fields.Length > 0) sb.Append($"\n{pad}Fields: {transition.Fields}");
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        sb.Append($"\n{transition.From,17} -> {transition.To,-17} ({transition.Reasons})");
+        //    //        if (transition.For.Length > 0) sb.Append($"> {transition.For}");
 
-            //        if (transition.Fields.Length > 0) sb.Append($"\n{pad}Fields: {transition.Fields}");
-            //    }
-            //}
+        //    //        if (transition.Fields.Length > 0) sb.Append($"\n{pad}Fields: {transition.Fields}");
+        //    //    }
+        //    //}
 
-            return sb.ToString();
-        }
+        //    return sb.ToString();
+        //}
 
         internal struct ControlFieldMap
         {

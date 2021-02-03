@@ -6,8 +6,8 @@ using System.Windows;
 using Microsoft.Office.Interop.Excel;
 using Microsoft.TeamFoundation.Server;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
+
 using SupportTools_Excel.AzureDevOpsExplorer.Domain;
-using SupportTools_Excel.Domain;
 
 using VNC;
 using VNC.AddinHelper;
@@ -49,52 +49,62 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     if (sectionsToDisplay.Contains("Info"))
                     {
                         insertAt = Add_Info(insertAt, options, workItemStore, project).IncrementPosition(insertAt.OrientVertical);
+                        insertAt.IncrementRows();
                     }
 
                     if (sectionsToDisplay.Contains("Areas"))
                     {
                         insertAt = Add_TP_Areas(insertAt, options, commonStructureService, project).IncrementPosition(insertAt.OrientVertical);
+                        insertAt.IncrementRows();
                     }
 
                     if (sectionsToDisplay.Contains("Iterations"))
                     {
                         insertAt = Add_TP_Iterations(insertAt, options, commonStructureService, project).IncrementPosition(insertAt.OrientVertical);
+                        insertAt.IncrementRows();
                     }
 
                     if (sectionsToDisplay.Contains("Stored Queries"))
                     {
                         insertAt = Add_TP_StoredQueries(insertAt, options, project).IncrementPosition(insertAt.OrientVertical);
+                        insertAt.IncrementRows();
                     }
 
                     if (sectionsToDisplay.Contains("Work Item Fields"))
                     {
                         insertAt = Add_TP_WorkItemFields(insertAt, options, project).IncrementPosition(insertAt.OrientVertical);
+                        insertAt.IncrementRows();
                     }
 
                     if (sectionsToDisplay.Contains("Work Item Types"))
                     {
                         insertAt = Add_TP_WorkItemTypes(insertAt, options, workItemStore, project);
+                        insertAt.IncrementRows();
                     }
 
                     if (sectionsToDisplay.Contains("Work Item Activity"))
                     {
                         insertAt = Add_TP_WorkItemActivity(insertAt, options, workItemStore, project);
+                        insertAt.IncrementRows();
                     }
 
                     if (sectionsToDisplay.Contains("Work Item Details"))
                     {
                         insertAt = Add_TP_WorkItemDetails(insertAt, options, workItemStore, project).IncrementPosition(insertAt.OrientVertical);
+                        insertAt.IncrementRows();
                     }
 
                     if (sectionsToDisplay.Contains("Work Item Field Mapping"))
                     {
                         insertAt = Add_TP_FieldMapping(insertAt, options, project).IncrementPosition(insertAt.OrientVertical);
+                        insertAt.IncrementRows();
                     }
 
                     // Put Work Item Categories last as it has odd output.  Too lazy to fix indent.
                     if (sectionsToDisplay.Contains("Work Item Categories"))
                     {
                         insertAt = Add_TP_WorkItemCategories(insertAt, options, workItemStore, project).IncrementPosition(insertAt.OrientVertical);
+                        insertAt.IncrementRows();
                     }
                 }
                 catch (Exception ex)
@@ -293,11 +303,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             try
             {
                 int areaNodesCount = project.AreaRootNodes.Count;
-                int currentRows = insertAt.RowsAdded;
-
-                // Save the location of the count so we can update later after have traversed all items.
-
-                Range rngTitle = insertAt.GetCurrentRange();
 
                 if (insertAt.OrientVertical)
                 {
@@ -319,18 +324,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 insertAt.MarkEnd(XlHlp.MarkType.GroupTable);
 
                 insertAt.Group(insertAt.OrientVertical);
-
-                // Update  counts
-
-                if (insertAt.OrientVertical)
-                {
-                    XlHlp.AddLabeledInfoX(rngTitle, "Areas", (insertAt.RowsAdded - currentRows).ToString());
-                }
-                else
-                {
-                    XlHlp.AddLabeledInfoX(rngTitle, "Areas", (insertAt.RowsAdded - currentRows).ToString(),
-                        orientation: XlOrientation.xlUpward);
-                }
 
                 if (!insertAt.OrientVertical)
                 {
@@ -376,7 +369,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 Body_WorkItemStore.Add_TP_FieldMapping(insertAt, options, project);
 
-                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tblWITF_{0}", project.Name));
+                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tblWITFM_{0}", project.Name));
 
                 insertAt.Group(insertAt.OrientVertical);
 
@@ -405,11 +398,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             try
             {
                 int iterationNodes = project.IterationRootNodes.Count;
-                int currentRows = insertAt.RowsAdded;
-
-                // Save the location of the count so we can update later after have traversed all items.
-
-                Range rngTitle = insertAt.GetCurrentRange();
 
                 if (insertAt.OrientVertical)
                 {
@@ -431,17 +419,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 insertAt.MarkEnd(XlHlp.MarkType.GroupTable);
 
                 insertAt.Group(insertAt.OrientVertical);
-
-                // Update counts
-
-                if (insertAt.OrientVertical)
-                {
-                    XlHlp.AddLabeledInfoX(rngTitle, "Iterations", (insertAt.RowsAdded - currentRows).ToString());
-                }
-                else
-                {
-                    XlHlp.AddLabeledInfoX(rngTitle, "Iterations", (insertAt.RowsAdded - currentRows).ToString(), orientation: XlOrientation.xlUpward);
-                }
 
                 if (!insertAt.OrientVertical)
                 {
@@ -487,19 +464,16 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             try
             {
-                int currentRows = insertAt.RowsAdded;
-
-                // Save the location of the count so we can update later after have traversed all items.
-
-                Range rngTitle = insertAt.GetCurrentRange();
-
                 if (insertAt.OrientVertical)
                 {
-                    XlHlp.AddSectionInfo(insertAt.AddRow(), "StoredQueries", "");
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), 
+                        "StoredQueries", "");
                 }
                 else
                 {
-                    XlHlp.AddSectionInfo(insertAt.AddRow(), "StoredQueries", "", orientation: XlOrientation.xlUpward);
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), 
+                        "StoredQueries", "", 
+                        orientation: XlOrientation.xlUpward);
                     insertAt.IncrementColumns();
                 }
 
@@ -510,21 +484,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 insertAt.MarkEnd(XlHlp.MarkType.Group);
 
                 insertAt.Group(insertAt.OrientVertical);
-
-                // TODO(crhodes)
-                // What does this do compared to following lines
-                //insertAt.EndSectionAndSetNextLocation(insertAt.OrientVertical);
-
-                // Update 
-
-                if (insertAt.OrientVertical)
-                {
-                    XlHlp.AddLabeledInfoX(rngTitle, "Stored Queries", (insertAt.RowsAdded - currentRows).ToString());
-                }
-                else
-                {
-                    XlHlp.AddLabeledInfoX(rngTitle, "Stored Queries", (insertAt.RowsAdded - currentRows).ToString(), orientation: XlOrientation.xlUpward);
-                }
 
                 if (!insertAt.OrientVertical)
                 {
@@ -543,106 +502,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             return insertAt;
         }
 
-        //internal static XlHlp.XlLocation Add_TP_WorkItem_Release(
-        //    XlHlp.XlLocation insertAt,
-        //    Options_AZDO_TFS options,
-        //    WorkItemStore workItemStore,
-        //    Project project)
-        //{
-        //    long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
-        //    XlHlp.DisplayInWatchWindow(insertAt);
-
-        //    try
-        //    {
-
-        //        // Save the location of the title so we can update later after have traversed all items.
-
-        //        Range rngTitle = insertAt.GetCurrentRange();
-
-        //        if (insertAt.OrientVertical)
-        //        {
-        //            XlHlp.AddSectionInfo(insertAt.AddRow(), "WorkItem Details", "Release");
-        //        }
-        //        else
-        //        {
-        //            XlHlp.AddSectionInfo(insertAt.AddRow(), "WorkItem Details", "Release",
-        //                orientation: XlOrientation.xlUpward);
-        //            insertAt.IncrementColumns();
-        //        }
-
-        //        insertAt.MarkStart(XlHlp.MarkType.GroupTable);
-
-        //        Header_WorkItemStore.Add_TP_WorkItemDetails(insertAt);
-
-        //        Body_WorkItemStore.Add_TP_WorkItemDetails(insertAt, options, workItemStore, project, "Release");
-
-        //        insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tblWIT_{0}", project.Name));
-
-        //        insertAt.Group(insertAt.OrientVertical);
-
-        //        insertAt.EndSectionAndSetNextLocation(insertAt.OrientVertical);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.ToString());
-        //    }
-
-        //    XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-        //    Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
-
-        //    return insertAt;
-        //}
-
-        //internal static XlHlp.XlLocation Add_TP_WorkItem_UserStory(
-        //    XlHlp.XlLocation insertAt,
-        //    Options_AZDO_TFS options,
-        //    WorkItemStore workItemStore,
-        //    Project project)
-        //{
-        //    long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
-        //    XlHlp.DisplayInWatchWindow(insertAt);
-
-        //    try
-        //    {
-
-        //        // Save the location of the title so we can update later after have traversed all items.
-
-        //        Range rngTitle = insertAt.GetCurrentRange();
-
-        //        if (insertAt.OrientVertical)
-        //        {
-        //            XlHlp.AddSectionInfo(insertAt.AddRow(), "WorkItem Details", "");
-        //        }
-        //        else
-        //        {
-        //            XlHlp.AddSectionInfo(insertAt.AddRow(), "WorkItem Details", "",
-        //                orientation: XlOrientation.xlUpward);
-        //            insertAt.IncrementColumns();
-        //        }
-
-        //        insertAt.MarkStart(XlHlp.MarkType.GroupTable);
-
-        //        Header_WorkItemStore.Add_TP_WorkItemDetails(insertAt);
-
-        //        Body_WorkItemStore.Add_TP_WorkItemDetails(insertAt, options, workItemStore, project, "User Story");
-
-        //        insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tblWIT_{0}", project.Name));
-
-        //        insertAt.Group(insertAt.OrientVertical);
-
-        //        insertAt.EndSectionAndSetNextLocation(insertAt.OrientVertical);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.ToString());
-        //    }
-
-        //    XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-        //    Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
-
-        //    return insertAt;
-        //}
-
         internal static XlHlp.XlLocation Add_TP_WorkItemCategories(
             XlHlp.XlLocation insertAt,
             Options_AZDO_TFS options,
@@ -654,15 +513,18 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             try
             {
-                Microsoft.TeamFoundation.WorkItemTracking.Client.CategoryCollection categories = workItemStore.Projects[project.Name].Categories;
+                Microsoft.TeamFoundation.WorkItemTracking.Client.CategoryCollection categories = 
+                    workItemStore.Projects[project.Name].Categories;
 
                 if (insertAt.OrientVertical)
                 {
-                    XlHlp.AddSectionInfo(insertAt.AddRow(), "WorkItem Categories", categories.Count.ToString());
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), 
+                        "WorkItem Categories", $"{categories.Count}");
                 }
                 else
                 {
-                    XlHlp.AddSectionInfo(insertAt.AddRow(), "WorkItem Categories", categories.Count.ToString(),
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), 
+                        "WorkItem Categories", $"{categories.Count}",
                         orientation: XlOrientation.xlUpward);
                     insertAt.IncrementColumns();
                 }
@@ -686,7 +548,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     AZDOHelper.ProcessLoopDelay(options);
                 }
 
-                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tblWICategories_{0}", project.Name));
+                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tblWIC_{0}", project.Name));
 
                 insertAt.Group(insertAt.OrientVertical, hide: true);
 
@@ -716,25 +578,18 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             try
             {
-                //string query = String.Format(
-                //    "Select [Id], [Created Date], [Changed Date], [Revised Date]"
-                //    + " From WorkItems"
-                //    + " Where [System.TeamProject] = '@project'"
-                //    + " and ([Created Date] >= '@startDate' or [Changed Date] >= '@startDate')");
-
-                //string projectName = project.Name;
-                //queryResults = Presentation.Views.Server.WorkItemStore.Query(parsedQuery);
-                // Save the location of the title so we can update later after have traversed all items.
-
-                Range rngTitle = insertAt.GetCurrentRange();
+                options.WorkItemQuerySpec.ReplaceQueryTokens(options, project.Name);
 
                 if (insertAt.OrientVertical)
                 {
-                    XlHlp.AddSectionInfo(insertAt.AddRow(), "WorkItem Details", "");
+                    //XlHlp.AddSectionInfo(insertAt.AddRow(), options.WorkItemQuerySpec.Query);
+                    XlHlp.AddSectionInfo(insertAt.AddRow(),
+                        "WorkItem Details", options.WorkItemQuerySpec.Query);
                 }
                 else
                 {
-                    XlHlp.AddSectionInfo(insertAt.AddRow(), "WorkItem Details", "",
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), 
+                        "WorkItem Details", options.WorkItemQuerySpec.Query,
                         orientation: XlOrientation.xlUpward);
                     insertAt.IncrementColumns();
                 }
@@ -743,38 +598,12 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 Header_WorkItemStore.Add_TP_WorkItemDetails(insertAt);
 
-                // HACK(crhodes)
-                // This exact code is in CreateWS_All_TPC_WorkItemDetails
+                queryResults = workItemStore.Query(options.WorkItemQuerySpec.Query);
 
-                options.WorkItemQuerySpec.ReplaceQueryTokens(options, project.Name);
-                //string parsedQuery = AZDOHelper.ParseQueryTokens(query, options, project);
-
-                // TODO(crhodes)
-                // Maybe this goes in ReplaceQueryTokens
-                // If we do it here we can put in a loop delay
-
-                //if ((options.WorkItemTypes?.Count ?? 0) > 0)
-                //{
-                //    string parsedQueryWIT;
-
-                //    foreach (string workItemType in options.WorkItemTypes)
-                //    {
-                //        parsedQueryWIT = options.Query.Query + $" and [System.WorkItemType] = '{workItemType}'";
-                //        queryResults = workItemStore.Query(parsedQueryWIT);
-
-                //        Body_WorkItemStore.Add_TP_WorkItemDetails(insertAt,
-                //            options, queryResults);
-                //    }
-                //}
-                //else
-                //{
-                    queryResults = workItemStore.Query(options.WorkItemQuerySpec.Query);
-
-                    Body_WorkItemStore.Add_TP_WorkItemDetails(insertAt,
+                Body_WorkItemStore.Add_TP_WorkItemDetails(insertAt,
                         options, queryResults);
-                //}
 
-                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tblWIT_{0}", project.Name));
+                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tblWID_{0}", project.Name));
 
                 insertAt.Group(insertAt.OrientVertical);
 
@@ -933,7 +762,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 Body_WorkItemStore.Add_TP_WorkItemActivity(insertAt, options, workItemStore, project, out maxLastCreatedDate, out maxLastChangedDate, out maxLastRevisedDate);
 
-                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tblWIT_{0}", project.Name));
+                insertAt.MarkEnd(XlHlp.MarkType.GroupTable, string.Format("tblWIA_{0}", project.Name));
 
                 insertAt.Group(insertAt.OrientVertical);
 

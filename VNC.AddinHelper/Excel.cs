@@ -214,7 +214,7 @@ namespace VNC.AddinHelper
                 //h/*eaderFormat = insertAt.;*/
             }
 
-            AddColumnHeaderToSheetX(ws.Cells[row, column], columnWidth, headerTitle, headerFormat);
+            AddColumnHeaderToSheetX((Range)ws.Cells[row, column], columnWidth, headerTitle, headerFormat);
         }
 
         [Obsolete("AddColumnHeaderToSheetX has been replaced with AddColumnHeaderToSheet which takes an XlLocation instead of a Range")]      
@@ -243,7 +243,7 @@ namespace VNC.AddinHelper
                 //h/*eaderFormat = insertAt.;*/
             }
 
-            AddColumnHeaderToSheetX(ws.Cells[row, column], columnWidth, headerTitle, headerFormat);
+            AddColumnHeaderToSheetX((Range)ws.Cells[row, column], columnWidth, headerTitle, headerFormat);
         }
 
         #endregion
@@ -275,7 +275,7 @@ namespace VNC.AddinHelper
             string text,
             CellFormatSpecification cellFormatSpecification = null)
         {
-            Range rng = ws.Cells[row, column];
+            Range rng = (Range)ws.Cells[row, column];
 
             AddCommentToCell(rng, text, cellFormatSpecification);
         }
@@ -335,7 +335,7 @@ namespace VNC.AddinHelper
             string text,
             CellFormatSpecification cellFormat = null)
         {
-            Range rng = ws.Cells[row, column];
+            Range rng = (Range)ws.Cells[row, column];
 
             AddContentToCell(rng, text, cellFormat);
         }
@@ -405,7 +405,7 @@ namespace VNC.AddinHelper
             CellFormatSpecification titleFormat = null,
             CellFormatSpecification contentFormat = null)
         {
-            Range rng = ws.Cells[row, column];
+            Range rng = (Range)ws.Cells[row, column];
 
             AddLabeledInfoX(rng, title, info, columnWidth, lableLocation, orientation, titleFormat, contentFormat);
         }
@@ -522,7 +522,7 @@ namespace VNC.AddinHelper
 
             if (sectionFormat == null)
             {
-                sectionFormat = insertAt.SectionCenterFormat;
+                sectionFormat = insertAt.SectionLeftFormat;
             }
 
             if (contentFormat == null)
@@ -1355,15 +1355,15 @@ namespace VNC.AddinHelper
             string endLetter = GetExcelColumnName(endingColumn);
 
             string groupRange = string.Format("{0}:{1}", startLetter, endLetter);
-            ws.Columns[groupRange].Group();
-            ws.Columns[groupRange].Hidden = hide;
+            ((Range)ws.Columns[groupRange]).Group();
+            ((Range)ws.Columns[groupRange]).Hidden = hide;
         }
 
         public static void GroupAndHideRows(Worksheet ws, int startingRow, int endingRow, bool hide)
         {
             string groupRange = string.Format("{0}:{1}", startingRow, endingRow);
-            ws.Rows[groupRange].Group();
-            ws.Rows[groupRange].Hidden = hide;            
+            ((Range)ws.Rows[groupRange]).Group();
+            ((Range)ws.Rows[groupRange]).Hidden = hide;            
         }
 
         public static bool HasCustomFooter()

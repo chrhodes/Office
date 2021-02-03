@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("VNC")]
 [assembly: AssemblyProduct("AddinHelper")]
-[assembly: AssemblyCopyright("Copyright © VNC 2015-2019")]
+[assembly: AssemblyCopyright("Copyright © VNC 2015-2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -66,4 +66,4 @@ using System.Runtime.InteropServices;
 //  Version   Date        By
 //  1.0.0.0   mm/dd/yyyy    Developer
 //      Initial Version
-[assembly: AssemblyInformationalVersion("2019.11.20A")]
+[assembly: AssemblyInformationalVersion("2021.02.03A")]

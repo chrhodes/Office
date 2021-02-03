@@ -37,12 +37,15 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             {
                 if (insertAt.OrientVertical)
                 {
-                    XlHlp.AddContentToCell(insertAt.AddRowX(), "Version Control Server (VCS) Information");
-                    //insertAt.IncrementRows();
+                    //XlHlp.AddContentToCell(insertAt.AddRowX(), "Version Control Server (VCS) Information");
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), "Version Control Server (VCS) Information", "");
+                    insertAt.IncrementRows();
                 }
                 else
                 {
-                    XlHlp.AddContentToCell(insertAt.AddRowX(), "Version Control Server (VCS) Information");
+                    //XlHlp.AddContentToCell(insertAt.AddRowX(), "Version Control Server (VCS) Information");
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), "Version Control Server (VCS) Information", "",
+                        orientation: XlOrientation.xlUpward);
                     insertAt.DecrementRows();   // AddRow bumped it.
                     insertAt.IncrementColumns();
                 }
@@ -321,11 +324,14 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 if (insertAt.OrientVertical)
                 {
-                    XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "AffectedTeamProjects", count.ToString());
+                    //XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "AffectedTeamProjects", count.ToString());
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), "AffectedTeamProjects", $"{ count }");
                 }
                 else
                 {
-                    XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "AffectedTeamProjects", count.ToString(), orientation: XlOrientation.xlUpward);
+                    //XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "AffectedTeamProjects", count.ToString(), orientation: XlOrientation.xlUpward);
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), "AffectedTeamProjects", $"{ count }",
+                        orientation: XlOrientation.xlUpward);
                     insertAt.IncrementColumns();
                 }
 
@@ -362,11 +368,14 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 if (insertAt.OrientVertical)
                 {
-                    XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Branches", count.ToString());
+                    //XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Branches", count.ToString());
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), "Branches", $"{ count }");
                 }
                 else
                 {
-                    XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Branches", count.ToString(), orientation: XlOrientation.xlUpward);
+                    //XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Branches", count.ToString(), orientation: XlOrientation.xlUpward);
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), "Branches", $"{ count }",
+                        orientation: XlOrientation.xlUpward);
                     insertAt.IncrementColumns();
                 }
 
@@ -501,13 +510,17 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                     if (insertAt.OrientVertical)
                     {
-                        XlHlp.AddLabeledInfoX(insertAt.AddRowX(),
-                            string.Format("Developers (Changesets(Last {0} days)", options.GoBackDays), count.ToString());
+                        //XlHlp.AddLabeledInfoX(insertAt.AddRowX(),
+                        //    string.Format("Developers (Changesets(Last {0} days)", options.GoBackDays), count.ToString());
+                        XlHlp.AddSectionInfo(insertAt.AddRow(), $"Developers(Changesets(Last { options.GoBackDays } days)", $"{ count }");
                     }
                     else
                     {
-                        XlHlp.AddLabeledInfoX(insertAt.AddRowX(),
-                            string.Format("Developers (Changesets(Last {0} days)", options.GoBackDays), count.ToString(), orientation: XlOrientation.xlUpward);
+                        //XlHlp.AddLabeledInfoX(insertAt.AddRowX(),
+                            //string.Format("Developers (Changesets(Last {0} days)", options.GoBackDays), count.ToString(), orientation: XlOrientation.xlUpward);
+
+                        XlHlp.AddSectionInfo(insertAt.AddRow(), $"Developers(Changesets(Last { options.GoBackDays } days)", $"{ count }",
+                            orientation: XlOrientation.xlUpward);
                         insertAt.IncrementColumns();
                     }
                 };
@@ -688,11 +701,14 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 if (insertAt.OrientVertical)
                 {
-                    XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "ShelveSets", count.ToString());
+                    //XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "ShelveSets", count.ToString());
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), "ShelveSets", $"{ count }");
                 }
                 else
                 {
-                    XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "ShelveSets", count.ToString(), orientation: XlOrientation.xlUpward);
+                    //XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "ShelveSets", count.ToString(), orientation: XlOrientation.xlUpward);
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), "ShelveSets", $"{ count }",
+                        orientation: XlOrientation.xlUpward);
                     insertAt.IncrementColumns();
                 }
 
@@ -741,11 +757,14 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 if (insertAt.OrientVertical)
                 {
-                    XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Teams", allTeams.Count().ToString());
+                    //XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Teams", allTeams.Count().ToString());
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), "Teams", $"{ allTeams.Count() }");
                 }
                 else
                 {
-                    XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Teams", allTeams.Count().ToString(), orientation: XlOrientation.xlUpward);
+                    //XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Teams", allTeams.Count().ToString(), orientation: XlOrientation.xlUpward);
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), "Teams", $"{ allTeams.Count() }",
+                        orientation: XlOrientation.xlUpward);
                     insertAt.IncrementColumns();
                 }
 
@@ -800,12 +819,15 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 if (insertAt.OrientVertical)
                 {
-                    XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Workspaces", count.ToString());
+                    //XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Workspaces", count.ToString());
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), "Workspaces", $"{ count }");
                     //XlHlp.AddContentToCell(insertAt.AddRow(), defaultTeam.Name);
                 }
                 else
                 {
                     XlHlp.AddLabeledInfoX(insertAt.AddRowX(), "Workspaces", count.ToString(), orientation: XlOrientation.xlUpward);
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), "Workspaces", $"{ count }",
+                        orientation: XlOrientation.xlUpward);
                     insertAt.IncrementColumns();
                 }
 

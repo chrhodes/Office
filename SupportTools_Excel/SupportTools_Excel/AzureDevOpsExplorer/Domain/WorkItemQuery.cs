@@ -50,7 +50,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Domain
 
              if (Query.Contains("@PROJECT") && projectName != null)
             {
-                Query = Query.Replace("@PROJECT", $"'{projectName}'");
+                Query = Query.Replace("@PROJECT", $"{projectName}");
             }
             else
             {

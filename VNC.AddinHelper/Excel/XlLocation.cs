@@ -98,7 +98,7 @@ namespace VNC.AddinHelper
                 : this(row, column)
             {
                 workSheet = ws;
-                startRange = ws.Cells[row, column];
+                startRange = (Range)ws.Cells[row, column];
                 nextRange = startRange;
 
                 InitializeFont(startRange.Font, ContentFormat);
@@ -498,7 +498,6 @@ namespace VNC.AddinHelper
                 return nextRange;
             }
 
-
             public Range GetStartRange()
             {
                 return startRange;
@@ -736,17 +735,17 @@ namespace VNC.AddinHelper
 
             public void SetRow(int row)
             {
-                nextRange = workSheet.Cells[row, nextRange.Column];
+                nextRange = (Range)workSheet.Cells[row, nextRange.Column];
             }
 
             public void SetColumn(int column)
             {
-                nextRange = workSheet.Cells[nextRange.Row, column];
+                nextRange = (Range)workSheet.Cells[nextRange.Row, column];
             }
 
             public void SetLocation(int row, int column)
             {
-                nextRange = workSheet.Cells[row, column];
+                nextRange = (Range)workSheet.Cells[row, column];
             }
 
             public void UpdateOffsets()
