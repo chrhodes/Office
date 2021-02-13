@@ -1,21 +1,16 @@
-﻿using System.Collections.ObjectModel;
-
-using Microsoft.Office.Interop.Excel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Xml;
+using System.Xml.Linq;
 
 using Prism.Commands;
 
 using SupportTools_Excel.AzureDevOpsExplorer.Presentation.ModelWrappers;
 using SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views;
 using SupportTools_Excel.Infrastructure.Presentation.ViewModels;
-using System;
+
 using VNC;
 using VNC.Core.Mvvm;
-using Microsoft.SharePoint.Client;
-using System.Collections.Generic;
-using System.Xml.Linq;
-using SupportTools_Excel.Data;
-using System.Xml;
-using SupportTools_Excel.AzureDevOpsExplorer.Domain;
 
 namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 {
@@ -144,11 +139,13 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         #region Properties
 
-        public ObservableCollection<WorkItemQueryWrapper> WorkItemQueries 
+        public ObservableCollection<string> WorkItemFields 
         { 
             get; 
             set; 
         }
+
+        public ObservableCollection<WorkItemQueryWrapper> WorkItemQueries { get; set; }
 
         //public ObservableCollection<WorkItemQueryWrapper> WorkItemQueries2 
         //{ 

@@ -33,7 +33,6 @@ namespace SupportTools_Excel.Presentation.Converters
             var returnValue = (WorkItemQueryWrapper)value;
 
             return returnValue;
-
         }
     }
 }

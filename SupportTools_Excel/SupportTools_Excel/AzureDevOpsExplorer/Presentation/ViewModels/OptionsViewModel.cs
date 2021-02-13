@@ -276,6 +276,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
             if (((QueriesViewModel)((Options)View).ucQueries.ViewModel).SelectedQuery3 != null)
             {
                 Options.Model.WorkItemQuerySpec = ((QueriesViewModel)((Options)View).ucQueries.ViewModel).SelectedQuery3.Model;
+                var foo = ((QueriesViewModel)((Options)View).ucQueries.ViewModel);
             }
 
             Log.VIEWMODEL("Exit", Common.PROJECT_NAME, startTicks);

@@ -118,7 +118,13 @@
                 
                 <dxlc:LayoutItem Label="Select WorkItemFields"
                  	LabelPosition="Top">
-                    <dxe:ComboBoxEdit x:Name="cbeWorkItemFields">
+                    <dxe:ComboBoxEdit x:Name="cbeWorkItemFields"
+                        ItemsSource="{Binding WorkItemFields}"                               
+                        EditValue="{ Binding
+                            Path=Queries.WorkItemFields,
+                            Mode=TwoWay,
+                            UpdateSourceTrigger=PropertyChanged,
+                            Converter={StaticResource SelectedItemsConverter3} }" >
                         <dxe:ComboBoxEdit.StyleSettings>
                             <!--<dxe:CheckedTokenComboBoxStyleSettings/>-->
                             <dxe:CheckedComboBoxStyleSettings/>
@@ -171,7 +177,7 @@
             </dxlc:LayoutGroup>
             
             <dxlc:LayoutGroup 
-            	View="Group" Orientation="Horizontal" >
+            	View="Group" Orientation="Vertical" >
 
                 <dxlc:LayoutItem Label="Tokenized Query" LabelPosition="Top">
                     <dxe:TextEdit

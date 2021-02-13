@@ -115,7 +115,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Domain
 
             if (options.TeamProjects.Count == 1)
             {
-                filter.Append( " AND [System.TeamProject] == " + $"{ options.TeamProjects[0].WrapInSngQuotes() })");
+                filter.Append( " AND [System.TeamProject] == " + $"{ options.TeamProjects[0].WrapInSngQuotes() }");
             }
             else
             {
