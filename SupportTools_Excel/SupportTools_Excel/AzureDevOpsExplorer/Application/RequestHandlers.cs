@@ -115,7 +115,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
         {
             // NOTE(crhodes)
             // These keep track of prior state, but not having screen updates make no sense
-            XlHlp.CalculationsOn();
+            XlHlp.CalculationsOn(force: true);
             XlHlp.ScreenUpdatesOn(force: true);
         }
     }

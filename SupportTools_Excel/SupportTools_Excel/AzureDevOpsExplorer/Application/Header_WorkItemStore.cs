@@ -170,6 +170,10 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "AuthorizedDate");
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "RevisedDate");
 
+            // NOTE(crhodes)
+            // Closed Date is a Field.  Need to ask for in Query else a round trip occurs.  Not part of Work Item
+            XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Closed Date");
+
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "State");
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Reason");
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Tags");
@@ -181,6 +185,10 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "HyperLinkCount");
 
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Rev");
+
+            // NOTE(crhodes)
+            // Field Issue is a Field.  Need to ask for in Query else a round trip occurs.  Not part of Work Item
+            XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Field Issue");
 
             insertAt.IncrementRows();
 

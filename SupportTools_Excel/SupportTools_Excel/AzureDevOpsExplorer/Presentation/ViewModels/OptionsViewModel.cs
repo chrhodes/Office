@@ -273,10 +273,11 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
             Options_AZDO_TFS options = Options.Model;
 
-            if (((QueriesViewModel)((Options)View).ucQueries.ViewModel).SelectedQuery3 != null)
+            if (((QueriesViewModel)((Options)View).ucQueries.ViewModel).SelectedQuery != null)
             {
-                Options.Model.WorkItemQuerySpec = ((QueriesViewModel)((Options)View).ucQueries.ViewModel).SelectedQuery3.Model;
-                var foo = ((QueriesViewModel)((Options)View).ucQueries.ViewModel);
+                Options.Model.WorkItemQuerySpec = ((QueriesViewModel)((Options)View).ucQueries.ViewModel).SelectedQuery.Model;
+
+                var foo = ((QueriesViewModel)((Options)View).ucQueries.ViewModel).WorkItemFields;
             }
 
             Log.VIEWMODEL("Exit", Common.PROJECT_NAME, startTicks);

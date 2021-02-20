@@ -8,7 +8,7 @@ using Prism.Commands;
 using SupportTools_Excel.AzureDevOpsExplorer.Presentation.ModelWrappers;
 using SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views;
 using SupportTools_Excel.Infrastructure.Presentation.ViewModels;
-
+using System;
 using VNC;
 using VNC.Core.Mvvm;
 
@@ -58,75 +58,52 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
             QueryDoubleClickCommand = new DelegateCommand(OnQueryDoubleClickExecute, OnQueryDoubleClickCanExecute);
 
             PopulateWorkItemQueries();
+            PopulateWorkItemFields();
 
             Log.VIEWMODEL("Exit", Common.PROJECT_NAME, startTicks);
+        }
+
+        private void PopulateWorkItemFields()
+        {
+            WorkItemFields = new ObservableCollection<string>();
+
+            WorkItemFields.Add("Created Date");
+            WorkItemFields.Add("Field Issue");
         }
 
         private void PopulateWorkItemQueries()
         {
             long startTicks = Log.VIEWMODEL("Enter", Common.PROJECT_NAME);
 
-            WorkItemQueries = new ObservableCollection<WorkItemQueryWrapper>();
-
-            WorkItemQueries.Add(
-                new WorkItemQueryWrapper(new Domain.WorkItemQuery() { Name="MyQuery", QueryWithTokens="SELECT SOMETHING FROM SOMEWHERE WHERE STUFF" }));
-
-            //WorkItemQueries2 = new ObservableCollection<WorkItemQueryWrapper>();
-            WorkItemQueries3 = new List<WorkItemQueryWrapper>();
+            WorkItemQueries = new List<WorkItemQueryWrapper>();
 
             XmlTextReader xtr = new XmlTextReader(Common.cCONFIG_FILE);
 
             XDocument xDocument = XDocument.Load(xtr, LoadOptions.PreserveWhitespace);
-            //XElement xElement = XElement.Load(Common.cCONFIG_FILE, LoadOptions.PreserveWhitespace);
-
-            //XElement xElement = XElement.Load(Common.cCONFIG_FILE);
 
             var queries = xDocument.Descendants("TFSQueries");
 
-            //var queries2 = xElement.Element("TFSQueries");
-
-            WorkItemQueries3.Add(
+            WorkItemQueries.Add(
                 new WorkItemQueryWrapper(new Domain.WorkItemQuery()
                 {
                     Name = "Default",
                     QueryWithTokens = "SELECT [System.Id] FROM WorkItems WHERE [System.TeamProject] = '@PROJECT'"
                 }));
 
-            SelectedQuery3 = WorkItemQueries3[0];
+            SelectedQuery = WorkItemQueries[0];
 
             foreach (var query in queries.Elements())
             {
                 //var nameV = query.Attribute("Name").Value;
                 //var queryV = query.Attribute("Query").Value;
 
-                WorkItemQueries3.Add(
+                WorkItemQueries.Add(
                     new WorkItemQueryWrapper(new Domain.WorkItemQuery()
                     {
                         Name = query.Attribute("Name").Value,
                         QueryWithTokens = query.Attribute("Query").Value
                     }));
             }
-
-            //WorkItemQueries3.Add(
-            //    new WorkItemQueryWrapper(new Domain.WorkItemQuery()
-            //        {
-            //            Name = "Query1",
-            //            QueryWithTokens = "SELECT SOMETHING1 FROM SOMEWHERE1 WHERE STUFF1"
-            //        }));
-
-            //WorkItemQueries3.Add(
-            //    new WorkItemQueryWrapper(new Domain.WorkItemQuery()
-            //    {
-            //        Name = "Query2",
-            //        QueryWithTokens = "SELECT SOMETHING2 FROM SOMEWHERE2 WHERE STUFF2"
-            //    }));
-
-            //WorkItemQueries3.Add(
-            //    new WorkItemQueryWrapper(new Domain.WorkItemQuery()
-            //    {
-            //        Name = "Query3",
-            //        QueryWithTokens = "SELECT SOMETHING3 FROM SOMEWHERE3 WHERE STUFF3"
-            //    }));
 
             Log.VIEWMODEL("Exit", Common.PROJECT_NAME, startTicks);
         }
@@ -139,29 +116,21 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         #region Properties
 
-        public ObservableCollection<string> WorkItemFields 
-        { 
-            get; 
-            set; 
+        public ObservableCollection<string> WorkItemFields
+        {
+            get;
+            set;
         }
 
-        public ObservableCollection<WorkItemQueryWrapper> WorkItemQueries { get; set; }
-
-        //public ObservableCollection<WorkItemQueryWrapper> WorkItemQueries2 
-        //{ 
-        //    get; 
-        //    set;
-        //}
-
-         private List<WorkItemQueryWrapper> _workItemQueries3;       
-        public List<WorkItemQueryWrapper> WorkItemQueries3
+         private List<WorkItemQueryWrapper> _workItemQueries;       
+        public List<WorkItemQueryWrapper> WorkItemQueries
         {
-            get => _workItemQueries3;
+            get => _workItemQueries;
             set
             {
-                if (_workItemQueries3 == value)
+                if (_workItemQueries == value)
                     return;
-                _workItemQueries3 = value;
+                _workItemQueries = value;
                 OnPropertyChanged();
             }
         }
@@ -194,33 +163,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
             }
         }
 
-        WorkItemQueryWrapper _selectedQuery2;
-        public WorkItemQueryWrapper SelectedQuery2
-        {
-            get
-            {
-                return _selectedQuery2;
-            }
-            set
-            {
-                _selectedQuery2 = value;
-                OnPropertyChanged();
-            }
-        }
-
-        WorkItemQueryWrapper _selectedQuery3;
-        public WorkItemQueryWrapper SelectedQuery3
-        {
-            get
-            {
-                return _selectedQuery3;
-            }
-            set
-            {
-                _selectedQuery3 = value;
-                OnPropertyChanged();
-            }
-        }
 
         #endregion
 
@@ -266,67 +208,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         #endregion
 
-        //#region Run Query Command
-
-        //public DelegateCommand RunQueryCommand { get; set; }
-        //public string RunQueryContent { get; set; } = "Run Query";
-        //public string RunQueryToolTip { get; set; } = "Run Query ToolTip";
-
-        //public void OnRunQueryExecute()
-        //{
-        //    Common.EventAggregator.GetEvent<RunQueryEvent>().Publish(SelectedQuery.Model);
-        //}
-
-        //public bool OnRunQueryCanExecute()
-        //{
-        //    // TODO(crhodes)
-        //    // Add any before button is enabled logic.
-        //    return true;
-        //}
-
-        //#endregion
-
-        //#region Run TeamProject Query Command
-
-        //public DelegateCommand RunTeamProjectQueryCommand { get; set; }
-        //public string RunTeamProjectQueryContent { get; set; } = "Run Query on TeamProject";
-        //public string RunTeamProjectQueryToolTip { get; set; } = "Run Query on TeamProject ToolTip";
-
-        //public void OnRunTeamProjectQueryExecute()
-        //{
-        //    Common.EventAggregator.GetEvent<RunTeamProjectQueryEvent>().Publish(SelectedQuery.Model);
-        //}
-
-        //public bool OnRunTeamProjectQueryCanExecute()
-        //{
-        //    // TODO(crhodes)
-        //    // Add any before button is enabled logic.
-        //    return true;
-        //}
-
-        //#endregion
-
-        //#region Run TeamProject Queries Command
-
-        //public DelegateCommand RunTeamProjectQueriesCommand { get; set; }
-        //public string RunTeamProjectQueriesContent { get; set; } = "Run Queries on TeamProject";
-        //public string RunTeamProjectQueriesToolTip { get; set; } = "Run Queries on TeamProject ToolTip";
-
-        //public void OnRunTeamProjectQueriesExecute()
-        //{
-        //    // TODO(crhodes)
-        //    // Figure out how to pass a collection of queries
-        //    Common.EventAggregator.GetEvent<RunTeamProjectQueriesEvent>().Publish(SelectedQuery.Model);
-        //}
-
-        //public bool OnRunTeamProjectQueriesCanExecute()
-        //{
-        //    // TODO(crhodes)
-        //    // Add any before button is enabled logic.
-        //    return true;
-        //}
-
-        //#endregion
 
         #endregion Commands
 

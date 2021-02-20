@@ -58,50 +58,15 @@
                 Orientation="Vertical"
                 Style="{StaticResource dxlcGroup}">
             
-                <!--<vncTFSuiuc:wucTFSQuery_Picker x:Name="queryPicker" 
-                                              ControlChanged="queryPicker_ControlChanged"/>-->
-
-                <!--Someday figure out why this doesn't work.  data template not working 
-                and SelectedQuery2 binding not firing.-->
-                <!--<dxlc:LayoutItem 
-                	    Label="Select Query2"
-                 	    LabelPosition="Top">
-                    <dxlc:LayoutItem.DataContext>
-
-                        <XmlDataProvider x:Name="dataProvider" 
-                            XPath="//TFSQueries/Query" 
-                            IsAsynchronous="False"
-                            IsInitialLoadEnabled="True" />
-
-                    </dxlc:LayoutItem.DataContext>
-
-                    <dxe:ComboBoxEdit x:Name="cbeQueries"
-                        ItemsSource="{Binding}"
-                        ItemTemplate="{StaticResource dataTemplate}"
-                        EditValue="{ Binding
-                            Path=SelectedQuery2,
-                            Mode=TwoWay,
-                            UpdateSourceTrigger=PropertyChanged,
-                            Converter={StaticResource SelectedItemsConverter2} }">
-                        <dxe:ComboBoxEdit.StyleSettings>
-                            --><!--<dxe:CheckedTokenComboBoxStyleSettings/>-->
-                            <!--<dxe:CheckedComboBoxStyleSettings/>--><!--
-                            <dxe:RadioComboBoxStyleSettings/>
-                            --><!--<dxe:RadioTokenComboBoxStyleSettings/>-->
-                            <!--<dxe:TokenComboBoxStyleSettings/>--><!--
-                        </dxe:ComboBoxEdit.StyleSettings>
-                    </dxe:ComboBoxEdit>
-
-                </dxlc:LayoutItem>-->
 
                 <dxlc:LayoutItem Label="Select WorkItem Query"
                  	    LabelPosition="Top">
 
-                    <dxe:ComboBoxEdit x:Name="cbeQuery2"
-                        ItemsSource="{Binding WorkItemQueries3}"
+                    <dxe:ComboBoxEdit x:Name="cbeQuery"
+                        ItemsSource="{Binding WorkItemQueries}"
                         ItemTemplate="{StaticResource dataTemplate3}"                                     
                         EditValue="{ Binding
-                            Path=SelectedQuery3,
+                            Path=SelectedQuery,
                             Mode=TwoWay,
                             UpdateSourceTrigger=PropertyChanged,
                             Converter={StaticResource SelectedItemsConverter3} }">
@@ -132,47 +97,8 @@
                             <!--<dxe:RadioTokenComboBoxStyleSettings/>-->
                             <!--<dxe:TokenComboBoxStyleSettings/>-->       
                         </dxe:ComboBoxEdit.StyleSettings>
-                        <dxe:ComboBoxEditItem Content="Red" />
-                        <dxe:ComboBoxEditItem Content="Green" />
-                        <dxe:ComboBoxEditItem Content="Blue" />
                     </dxe:ComboBoxEdit>
                 </dxlc:LayoutItem>
-                
-                <!--<vncTFSuiuc:wucTFSQuery_Picker x:Name="queryPicker2" >
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Changed">
-                            <prism:InvokeCommandAction Command="{Binding Path=QueryChangedCommand}"/>
-                        </i:EventTrigger>
-
-                        <i:EventTrigger EventName="MouseDoubleClick" >
-                            <i:InvokeCommandAction Command="{Binding Path=QueryDoubleClickCommand}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </vncTFSuiuc:wucTFSQuery_Picker>-->
-
-                <!--<dxlc:LayoutItem>
-                    <Button 
-                        Style="{StaticResource QueryButton}"
-		                Command="{Binding RunQueryCommand }"
-		                Content="{Binding RunQueryContent, FallbackValue='Run Query' }"
-		                ToolTip="{Binding RunQueryToolTip }" />
-                </dxlc:LayoutItem>
-            
-                <dxlc:LayoutItem>
-                    <Button 
-                        Style="{StaticResource QueryButton}"
-            		    Command="{Binding RunTeamProjectQueryCommand }"
-            		    Content="{Binding RunTeamProjectQueryContent, FallbackValue='Run Team Project Query' }"
-            		    ToolTip="{Binding RunTeamProjectQueryToolTip }" />
-                </dxlc:LayoutItem>
-            
-                <dxlc:LayoutItem>
-                    <Button 
-                        Style="{StaticResource QueryButton}"
-            		    Command="{Binding RunTeamProjectQueriesCommand }"
-            		    Content="{Binding RunTeamProjectQueriesContent, FallbackValue='Run Team Project(s) Query' }"
-            		    ToolTip="{Binding RunTeamProjectQueriesToolTip }" />
-                </dxlc:LayoutItem>-->
 
             </dxlc:LayoutGroup>
             
@@ -181,25 +107,15 @@
 
                 <dxlc:LayoutItem Label="Tokenized Query" LabelPosition="Top">
                     <dxe:TextEdit
-        		    Text="{ Binding SelectedQuery3.QueryWithTokens }" />
+        		    Text="{ Binding SelectedQuery.QueryWithTokens }" />
                 </dxlc:LayoutItem>
 
                 <dxlc:LayoutItem Label="Parsed Query" LabelPosition="Top">
                     <dxe:TextEdit
-        		    Text="{ Binding SelectedQuery3.Query }" />
+        		    Text="{ Binding SelectedQuery.Query }" />
                 </dxlc:LayoutItem>
                 
             </dxlc:LayoutGroup>
-
-            <!--<dxlc:LayoutItem Label="SelectedQuery2" LabelPosition="Top">
-                <dxe:TextEdit
-        		    Text="{ Binding SelectedQuery2.Query }" />
-            </dxlc:LayoutItem>
-
-            <dxlc:LayoutItem Label="SelectedQuery3" LabelPosition="Top">
-                <dxe:TextEdit
-        		    Text="{ Binding SelectedQuery.Query }" />
-            </dxlc:LayoutItem>-->
 
             <dxlc:LayoutItem Label="Message" LabelPosition="Top">
                 <dxe:TextEdit
