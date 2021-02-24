@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 using Prism.Commands;
 
@@ -136,8 +137,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         //public WorkItemQuery workItemQuery
 
-
-
         // and the SelectedItem in the Grid or List or ComboBox, etc.
 
         ObservableCollection<string> _selectedTeamProjectSelectedItem2;
@@ -256,17 +255,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
             Log.VIEWMODEL("Exit", Common.PROJECT_NAME, startTicks);
         }
 
-        // void InitializeRows()
-        // {
-        // Rows = new System.Collections.ObjectModel.ObservableCollection<VNC_ModelWrapper>();
-        // Rows.Add(new VNC_ModelWrapper(new Domain.VNC_Model(){ StringProperty ="Red", IntProperty = 1}));
-        // Rows.Add(new VNC_ModelWrapper(new Domain.VNC_Model(){ StringProperty = "Green", IntProperty = 2 }));
-        // Rows.Add(new VNC_ModelWrapper(new Domain.VNC_Model(){ StringProperty = "Blue", IntProperty = 3 }));
-
-        // OnPropertyChanged("Rows");
-        // }
-
-
         public Options_AZDO_TFS GetOptions()
         {
             long startTicks = Log.VIEWMODEL("Enter", Common.PROJECT_NAME);
@@ -276,8 +264,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
             if (((QueriesViewModel)((Options)View).ucQueries.ViewModel).SelectedQuery != null)
             {
                 Options.Model.WorkItemQuerySpec = ((QueriesViewModel)((Options)View).ucQueries.ViewModel).SelectedQuery.Model;
-
-                var foo = ((QueriesViewModel)((Options)View).ucQueries.ViewModel).WorkItemFields;
             }
 
             Log.VIEWMODEL("Exit", Common.PROJECT_NAME, startTicks);

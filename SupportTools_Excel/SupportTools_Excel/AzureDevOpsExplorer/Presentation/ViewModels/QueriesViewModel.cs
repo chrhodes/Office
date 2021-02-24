@@ -67,8 +67,26 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
         {
             WorkItemFields = new ObservableCollection<string>();
 
+            // HACK(crhodes)
+            // Should either retrieve all the fields or drive this in the XML file
+            // For now just hard code some fields that will likely be interesting.
+            // NB.  Can use short name or ref name, eg. BugReason or Custom.BugReason
+
             WorkItemFields.Add("Created Date");
             WorkItemFields.Add("Field Issue");
+            WorkItemFields.Add("BugReason");
+            WorkItemFields.Add("FeatureReason");
+            WorkItemFields.Add("IssueReason");
+            WorkItemFields.Add("ProductionIssueReason");
+            WorkItemFields.Add("ReleaseReason");
+            WorkItemFields.Add("RequestReason");
+            WorkItemFields.Add("TaskReason");
+            WorkItemFields.Add("TestCaseReason");
+            WorkItemFields.Add("TestPlanReason");
+            WorkItemFields.Add("TestSuiteReason");
+            WorkItemFields.Add("UserNeedsReason");
+            WorkItemFields.Add("UserStoryReason");
+            WorkItemFields.Add("Project ID");
         }
 
         private void PopulateWorkItemQueries()
@@ -87,7 +105,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
                 new WorkItemQueryWrapper(new Domain.WorkItemQuery()
                 {
                     Name = "Default",
-                    QueryWithTokens = "SELECT [System.Id] FROM WorkItems WHERE [System.TeamProject] = '@PROJECT'"
+                    QueryWithTokens = "SELECT @FIELDS FROM WorkItems WHERE [System.TeamProject] = '@PROJECT'"
                 }));
 
             SelectedQuery = WorkItemQueries[0];
@@ -122,7 +140,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
             set;
         }
 
-         private List<WorkItemQueryWrapper> _workItemQueries;       
+         private List<WorkItemQueryWrapper> _workItemQueries;
         public List<WorkItemQueryWrapper> WorkItemQueries
         {
             get => _workItemQueries;

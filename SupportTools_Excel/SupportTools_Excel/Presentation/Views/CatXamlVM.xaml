@@ -22,7 +22,7 @@
     d:DesignHeight="300" d:DesignWidth="300"
 >
     <UserControl.Resources>
-        <localc:SelectedItemsConverter x:Key="SelectedItemsConverter" />
+        <localc:SelectedItemsToListOfStringConverter x:Key="SelectedItemsConverter" />
     </UserControl.Resources>
     <!--Background="WhiteSmoke"-->
     <!-- 

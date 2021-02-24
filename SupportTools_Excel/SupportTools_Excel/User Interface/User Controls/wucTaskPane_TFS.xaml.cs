@@ -718,23 +718,30 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
                 RequestHandlers.SpeedUpStart();
 
-                options.TeamProjects.Reverse();
-
-                foreach (string teamProjectName in options.TeamProjects)
+                if (options.TeamProjects is null)
                 {
-                    try
+                    MessageBox.Show("No Team Project(s) selected, aborting");
+                }
+                else
+                {
+                    options.TeamProjects.Reverse();
+
+                    foreach (string teamProjectName in options.TeamProjects)
                     {
-                        Globals.ThisAddIn.Application.StatusBar = "Processing " + teamProjectName;
+                        try
+                        {
+                            Globals.ThisAddIn.Application.StatusBar = "Processing " + teamProjectName;
 
-                        CreateWS_TP(teamProjectName, request, options);
+                            CreateWS_TP(teamProjectName, request, options);
 
-                        Globals.ThisAddIn.Application.ActiveWorkbook.Save();
+                            Globals.ThisAddIn.Application.ActiveWorkbook.Save();
 
-                        AZDOHelper.ProcessLoopDelay(options);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
+                            AZDOHelper.ProcessLoopDelay(options);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString());
+                        }
                     }
                 }
             }

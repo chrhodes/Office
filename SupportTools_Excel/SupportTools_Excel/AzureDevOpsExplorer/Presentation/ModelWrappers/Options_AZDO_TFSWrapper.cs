@@ -43,5 +43,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ModelWrappers
 
         public bool ListChangeSetChanges { get { return GetValue<bool>(); } set { SetValue(value); } }
         public bool ListChangeSetWorkItems { get { return GetValue<bool>(); } set { SetValue(value); } }
+
+        public WorkItemQuery WorkItemQuerySpec { get { return GetValue<WorkItemQuery>(); } set { SetValue(value); } }
     }
 }

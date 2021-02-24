@@ -25,9 +25,9 @@
     d:DesignWidth="300"
 >
     <UserControl.Resources>
-        <localc:SelectedItemsConverter x:Key="SelectedItemsConverter" />
+        <localc:SelectedItemsToListOfStringConverter x:Key="SelectedItemsToListOfStringConverter" />
         <localc:SelectedItemsConverter2 x:Key="SelectedItemsConverter2" />
-        <localc:SelectedItemsConverter3 x:Key="SelectedItemsConverter3" />
+        <localc:SelectedItemsToWorkItemQueryWrapperConverter x:Key="SelectedItemsToWorkItemQueryWrapperConverter" />
 
         <DataTemplate x:Key="dataTemplate">
             <StackPanel>
@@ -69,7 +69,7 @@
                             Path=SelectedQuery,
                             Mode=TwoWay,
                             UpdateSourceTrigger=PropertyChanged,
-                            Converter={StaticResource SelectedItemsConverter3} }">
+                            Converter={StaticResource SelectedItemsToWorkItemQueryWrapperConverter} }">
                         <dxe:ComboBoxEdit.StyleSettings>
                             <!--<dxe:CheckedTokenComboBoxStyleSettings/>-->
                             <!--<dxe:CheckedComboBoxStyleSettings/>-->
@@ -86,10 +86,10 @@
                     <dxe:ComboBoxEdit x:Name="cbeWorkItemFields"
                         ItemsSource="{Binding WorkItemFields}"                               
                         EditValue="{ Binding
-                            Path=Queries.WorkItemFields,
+                            Path=SelectedQuery.Fields,
                             Mode=TwoWay,
                             UpdateSourceTrigger=PropertyChanged,
-                            Converter={StaticResource SelectedItemsConverter3} }" >
+                            Converter={StaticResource SelectedItemsToListOfStringConverter} }" >
                         <dxe:ComboBoxEdit.StyleSettings>
                             <!--<dxe:CheckedTokenComboBoxStyleSettings/>-->
                             <dxe:CheckedComboBoxStyleSettings/>

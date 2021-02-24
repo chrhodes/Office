@@ -32,12 +32,6 @@ namespace SupportTools_Excel.Presentation.Converters
             var returnValue = ((XmlElement)value).Attributes["Name"].Value;
 
             return value;
-            //List<WorkItemQueryWrapper> result = new List<WorkItemQueryWrapper>();
-            //var enumerable = (List<object>)value;
-            //if (enumerable != null)
-            //    foreach (object item in enumerable)
-            //        result.Add(((WorkItemQueryWrapper)item).Name);
-            //return result;
         }
     }
 }

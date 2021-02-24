@@ -24,7 +24,7 @@
     d:DesignHeight="300" d:DesignWidth="200"
 >
     <UserControl.Resources>
-        <localc:SelectedItemsConverter x:Key="SelectedItemsConverter" />
+        <localc:SelectedItemsToListOfStringConverter x:Key="SelectedItemsConverter" />
     </UserControl.Resources>
 <!-- 
 	Can Declare ViewModel here

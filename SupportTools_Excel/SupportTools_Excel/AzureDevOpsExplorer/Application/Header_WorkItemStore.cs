@@ -1,4 +1,6 @@
 ﻿
+using SupportTools_Excel.AzureDevOpsExplorer.Domain;
+
 using VNC;
 using VNC.AddinHelper;
 
@@ -152,7 +154,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Log.APPLICATION("Exit", Common.PROJECT_NAME, startTicks);
         }
 
-        internal static void Add_TP_WorkItemDetails(XlHlp.XlLocation insertAt)
+        internal static void Add_TP_WorkItemDetails(XlHlp.XlLocation insertAt, Options_AZDO_TFS options)
         {
             long startTicks = Log.APPLICATION("Enter", Common.PROJECT_NAME);
 
@@ -170,10 +172,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "AuthorizedDate");
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "RevisedDate");
 
-            // NOTE(crhodes)
-            // Closed Date is a Field.  Need to ask for in Query else a round trip occurs.  Not part of Work Item
-            XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Closed Date");
-
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "State");
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Reason");
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Tags");
@@ -187,8 +185,25 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Rev");
 
             // NOTE(crhodes)
-            // Field Issue is a Field.  Need to ask for in Query else a round trip occurs.  Not part of Work Item
-            XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Field Issue");
+            // The Query can specify additional fields to retrieve
+            // Add Headers for any requested
+
+            if ((options.WorkItemQuerySpec.Fields?.Count ?? 0) > 0)
+            {
+                foreach (string field in options.WorkItemQuerySpec.Fields)
+                {
+                    XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, field);
+                }
+
+            }
+
+            //// NOTE(crhodes)
+            //// Closed Date is a Field.  Need to ask for in Query else a round trip occurs.  Not part of Work Item
+            //XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Closed Date");
+
+            //// NOTE(crhodes)
+            //// Field Issue is a Field.  Need to ask for in Query else a round trip occurs.  Not part of Work Item
+            //XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 20, "Field Issue");
 
             insertAt.IncrementRows();
 

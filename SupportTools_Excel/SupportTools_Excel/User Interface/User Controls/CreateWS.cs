@@ -746,7 +746,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
                 WorkItemCollection queryResults;
 
-                Header_WorkItemStore.Add_TP_WorkItemDetails(insertAt);
+                Header_WorkItemStore.Add_TP_WorkItemDetails(insertAt, options);
 
                 // HACK(crhodes)
                 // If the Query contains @PROJECT looping across makes sense.

@@ -249,6 +249,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
 
             int itemCount = 0;
+
             //string query = String.Format(
             //    "SELECT [System.Id]"
             //    + " FROM TestPlan"

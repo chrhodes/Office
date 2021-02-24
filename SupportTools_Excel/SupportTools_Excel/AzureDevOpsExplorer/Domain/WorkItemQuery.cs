@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 using VNC;
@@ -35,6 +36,15 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Domain
 
             Query = QueryWithTokens;
 
+            //if ((options.WorkItemQuerySpec.Fields?.Count ?? 0) > 0)
+            //{
+                Query = Query.Replace("@FIELDS", GetFieldsToRetrieve(options));
+            //}
+            //else
+            //{
+            //    Query = Query.Replace("@FIELDS", "[System.Id]");
+            //}
+
             // TODO(crhodes)
             // Until we better think through how to handle looping delays across Projects
             // Support both the @PROJECT token and TeamProjectFilter
@@ -48,7 +58,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Domain
             //    Query = Query.Replace("@PROJECT", $"{projectName}");
             //}
 
-             if (Query.Contains("@PROJECT") && projectName != null)
+            if (Query.Contains("@PROJECT") && projectName != null)
             {
                 Query = Query.Replace("@PROJECT", $"{projectName}");
             }
@@ -70,6 +80,23 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Domain
 
             Log.APPLICATION($"Exit ({Query})", Common.LOG_APPNAME, startTicks);
         }
+
+        private string GetFieldsToRetrieve(Options_AZDO_TFS options)
+        {
+            StringBuilder fields = new StringBuilder("[System.Id]");
+
+            if ((options.WorkItemQuerySpec.Fields?.Count ?? 0) > 0)
+            {
+                foreach (string field in options.WorkItemQuerySpec.Fields)
+                {
+                    fields.Append($", [{field}]");
+                }
+
+            }
+
+            return fields.ToString();
+        }
+
 
         private string GetWorkItemTypesFilter(Options_AZDO_TFS options)
         {

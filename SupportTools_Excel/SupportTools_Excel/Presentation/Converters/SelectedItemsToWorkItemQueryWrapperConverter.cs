@@ -8,7 +8,7 @@ using SupportTools_Excel.AzureDevOpsExplorer.Presentation.ModelWrappers;
 
 namespace SupportTools_Excel.Presentation.Converters
 {
-    public class SelectedItemsConverter3: MarkupExtension, IValueConverter
+    public class SelectedItemsToWorkItemQueryWrapperConverter: MarkupExtension, IValueConverter
     {
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
@@ -18,8 +18,9 @@ namespace SupportTools_Excel.Presentation.Converters
         object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value != null)
+            {
                 return ((WorkItemQueryWrapper)value).Name;
-                //return new List<object>((IEnumerable<string>)value);
+            }
 
             return null;
         }
@@ -29,7 +30,6 @@ namespace SupportTools_Excel.Presentation.Converters
 
             var valueType = value.GetType();
 
-            //var returnValue = ((WorkItemQueryWrapper)value).Name;
             var returnValue = (WorkItemQueryWrapper)value;
 
             return returnValue;

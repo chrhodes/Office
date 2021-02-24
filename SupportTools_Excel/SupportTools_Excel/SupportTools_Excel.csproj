@@ -891,9 +891,9 @@
     <Compile Include="AzureDevOpsExplorer\Domain\WorkItemQuery.cs" />
     <Compile Include="ErrorNumbers.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Presentation\Converters\SelectedItemsConverter3.cs" />
+    <Compile Include="Presentation\Converters\SelectedItemsToWorkItemQueryWrapperConverter.cs" />
     <Compile Include="Presentation\Converters\SelectedItemsConverter2.cs" />
-    <Compile Include="Presentation\Converters\SelectedItemsConverter.cs" />
+    <Compile Include="Presentation\Converters\SelectedItemsToListOfStringConverter.cs" />
     <Compile Include="AzureDevOpsExplorer\Presentation\ModelWrappers\TeamProjectActionRequestWrapper.cs" />
     <Compile Include="AzureDevOpsExplorer\Presentation\ModelWrappers\TestSuiteRequestWrapper.cs" />
     <Compile Include="AzureDevOpsExplorer\Presentation\ModelWrappers\TestPlanRequestWrapper.cs" />

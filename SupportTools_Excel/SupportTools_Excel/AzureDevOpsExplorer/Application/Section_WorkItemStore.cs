@@ -50,54 +50,63 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     {
                         insertAt = Add_Info(insertAt, options, workItemStore, project).IncrementPosition(insertAt.OrientVertical);
                         insertAt.IncrementRows();
+                        Globals.ThisAddIn.Application.ActiveWorkbook.Save();
                     }
 
                     if (sectionsToDisplay.Contains("Areas"))
                     {
                         insertAt = Add_TP_Areas(insertAt, options, commonStructureService, project).IncrementPosition(insertAt.OrientVertical);
                         insertAt.IncrementRows();
+                        Globals.ThisAddIn.Application.ActiveWorkbook.Save();
                     }
 
                     if (sectionsToDisplay.Contains("Iterations"))
                     {
                         insertAt = Add_TP_Iterations(insertAt, options, commonStructureService, project).IncrementPosition(insertAt.OrientVertical);
                         insertAt.IncrementRows();
+                        Globals.ThisAddIn.Application.ActiveWorkbook.Save();
                     }
 
                     if (sectionsToDisplay.Contains("Stored Queries"))
                     {
                         insertAt = Add_TP_StoredQueries(insertAt, options, project).IncrementPosition(insertAt.OrientVertical);
                         insertAt.IncrementRows();
+                        Globals.ThisAddIn.Application.ActiveWorkbook.Save();
                     }
 
                     if (sectionsToDisplay.Contains("Work Item Fields"))
                     {
                         insertAt = Add_TP_WorkItemFields(insertAt, options, project).IncrementPosition(insertAt.OrientVertical);
                         insertAt.IncrementRows();
+                        Globals.ThisAddIn.Application.ActiveWorkbook.Save();
                     }
 
                     if (sectionsToDisplay.Contains("Work Item Types"))
                     {
                         insertAt = Add_TP_WorkItemTypes(insertAt, options, workItemStore, project);
                         insertAt.IncrementRows();
+                        Globals.ThisAddIn.Application.ActiveWorkbook.Save();
                     }
 
                     if (sectionsToDisplay.Contains("Work Item Activity"))
                     {
                         insertAt = Add_TP_WorkItemActivity(insertAt, options, workItemStore, project);
                         insertAt.IncrementRows();
+                        Globals.ThisAddIn.Application.ActiveWorkbook.Save();
                     }
 
                     if (sectionsToDisplay.Contains("Work Item Details"))
                     {
                         insertAt = Add_TP_WorkItemDetails(insertAt, options, workItemStore, project).IncrementPosition(insertAt.OrientVertical);
                         insertAt.IncrementRows();
+                        Globals.ThisAddIn.Application.ActiveWorkbook.Save();
                     }
 
                     if (sectionsToDisplay.Contains("Work Item Field Mapping"))
                     {
                         insertAt = Add_TP_FieldMapping(insertAt, options, project).IncrementPosition(insertAt.OrientVertical);
                         insertAt.IncrementRows();
+                        Globals.ThisAddIn.Application.ActiveWorkbook.Save();
                     }
 
                     // Put Work Item Categories last as it has odd output.  Too lazy to fix indent.
@@ -105,6 +114,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     {
                         insertAt = Add_TP_WorkItemCategories(insertAt, options, workItemStore, project).IncrementPosition(insertAt.OrientVertical);
                         insertAt.IncrementRows();
+                        Globals.ThisAddIn.Application.ActiveWorkbook.Save();
                     }
                 }
                 catch (Exception ex)
@@ -596,7 +606,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 insertAt.MarkStart(XlHlp.MarkType.GroupTable);
 
-                Header_WorkItemStore.Add_TP_WorkItemDetails(insertAt);
+                Header_WorkItemStore.Add_TP_WorkItemDetails(insertAt, options);
 
                 queryResults = workItemStore.Query(options.WorkItemQuerySpec.Query);
 

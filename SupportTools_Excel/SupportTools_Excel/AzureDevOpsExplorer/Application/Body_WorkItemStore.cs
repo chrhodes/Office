@@ -220,10 +220,10 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                         XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ link.BaseType.ToString() }");
 
                         XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ link.Comment }");
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ link.IsLocked.ToString() }");
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ link.IsNew.ToString() }");
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ ((RelatedLink)link).LinkTypeEnd.Id.ToString() }");
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ ((RelatedLink)link).LinkTypeEnd.Id.ToString() }");
+                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ link.IsLocked }");
+                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ link.IsNew }");
+                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ ((RelatedLink)link).LinkTypeEnd.Id }");
+                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ ((RelatedLink)link).LinkTypeEnd.Id }");
 
                         insertAt.IncrementRows();
                     }
@@ -535,9 +535,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.AuthorizedDate }");
                     XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.RevisedDate }");
 
-                    // NOTE(crhodes)
-                    // Closed Date is a Field.  Need to ask for in Query else a round trip occurs.  Not part of Work Item
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Fields["Closed Date"].Value }");
+
 
                     XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.State }");
                     XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Reason }");
@@ -552,8 +550,25 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Rev }");
 
                     // NOTE(crhodes)
-                    // Field Issue is a Field.  Need to ask for in Query else a round trip occurs.  Not part of Work Item
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Fields["Field Issue"].Value }");
+                    // The Query can specify additional fields to display
+                    // Display them
+
+                    if ((options.WorkItemQuerySpec.Fields?.Count ?? 0) > 0)
+                    {
+                        foreach (string field in options.WorkItemQuerySpec.Fields)
+                        {
+                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Fields[field].Value }");
+                        }
+
+                    }
+
+                    //// NOTE(crhodes)
+                    //// Closed Date is a Field.  Need to ask for in Query else a round trip occurs.  Not part of Work Item
+                    //XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Fields["Closed Date"].Value }");
+
+                    //// NOTE(crhodes)
+                    //// Field Issue is a Field.  Need to ask for in Query else a round trip occurs.  Not part of Work Item
+                    //XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Fields["Field Issue"].Value }");
 
 
                     insertAt.IncrementRows();

@@ -23,7 +23,7 @@
     d:DesignWidth="500"
 >
     <UserControl.Resources>
-        <localc:SelectedItemsConverter x:Key="SelectedItemsConverter" />
+        <localc:SelectedItemsToListOfStringConverter x:Key="SelectedItemsToListOfStringConverter" />
     </UserControl.Resources>
     
     <UserControl.DataContext>
@@ -47,7 +47,7 @@
                             Path=Options.TeamProjects,
                             Mode=TwoWay,
                             UpdateSourceTrigger=PropertyChanged,
-                            Converter={StaticResource SelectedItemsConverter} }" >
+                            Converter={StaticResource SelectedItemsToListOfStringConverter} }" >
                         <dxe:ComboBoxEdit.StyleSettings>
                             <dxe:CheckedComboBoxStyleSettings />
                         </dxe:ComboBoxEdit.StyleSettings>
@@ -71,7 +71,7 @@
                                     Path=Options.WorkItemTypes,
                                     Mode=TwoWay,
                                     UpdateSourceTrigger=PropertyChanged,
-                                    Converter={StaticResource SelectedItemsConverter} }" >
+                                    Converter={StaticResource SelectedItemsToListOfStringConverter} }" >
                             <dxe:ComboBoxEdit.StyleSettings>
                                 <dxe:CheckedComboBoxStyleSettings />
                             </dxe:ComboBoxEdit.StyleSettings>
