@@ -69,20 +69,20 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     {
                         insertAt.ClearOffsets();
 
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{project.Name}");
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{wit.Name}");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{project.Name}");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{wit.Name}");
 
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{controlFieldMap.FieldMap.Name}");
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{controlFieldMap.FieldMap.RefName}");
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{controlFieldMap.FieldMap.Type}");
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{controlFieldMap.FieldMap.Required}");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{controlFieldMap.FieldMap.Name}");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{controlFieldMap.FieldMap.RefName}");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{controlFieldMap.FieldMap.Type}");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{controlFieldMap.FieldMap.Required}");
 
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{controlFieldMap.MapType}");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{controlFieldMap.MapType}");
 
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{controlFieldMap.ControlMap.Label}");
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{controlFieldMap.ControlMap.Name}");
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{controlFieldMap.ControlMap.FieldName}");
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{controlFieldMap.ControlMap.Type}");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{controlFieldMap.ControlMap.Label}");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{controlFieldMap.ControlMap.Name}");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{controlFieldMap.ControlMap.FieldName}");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{controlFieldMap.ControlMap.Type}");
 
                         insertAt.IncrementRows();
                     }
@@ -138,18 +138,18 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 WorkItem wi = VNC.TFS.Helper.RetrieveWorkItem(workItemID, workItemStore);
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ wi.Project.Name }");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ wi.Id }");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ wi.Type.Name }");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ wi.Title }");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ wi.CreatedBy }");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ wi.CreatedDate }");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ wi.ChangedBy }");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ wi.ChangedDate }");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ wi.Reason }");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ wi.State }");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ wi.AreaPath }");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ wi.IterationPath }");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ wi.Project.Name }");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ wi.Id }");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ wi.Type.Name }");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ wi.Title }");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ wi.CreatedBy }");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ wi.CreatedDate }");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ wi.ChangedBy }");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ wi.ChangedDate }");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ wi.Reason }");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ wi.State }");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ wi.AreaPath }");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ wi.IterationPath }");
 
                 insertAt.IncrementRows();
                 //}
@@ -210,20 +210,20 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                         if (link.ArtifactLinkType != null)
                         {
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ link.ArtifactLinkType.Name }");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ link.ArtifactLinkType.Name }");
                         }
                         else
                         {
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "<null>");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "<null>");
                         }
 
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ link.BaseType.ToString() }");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ link.BaseType }");
 
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ link.Comment }");
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ link.IsLocked }");
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ link.IsNew }");
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ ((RelatedLink)link).LinkTypeEnd.Id }");
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ ((RelatedLink)link).LinkTypeEnd.Id }");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ link.Comment }");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ link.IsLocked }");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ link.IsNew }");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ ((RelatedLink)link).LinkTypeEnd.Id }");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ ((RelatedLink)link).LinkTypeEnd.Id }");
 
                         insertAt.IncrementRows();
                     }
@@ -407,57 +407,57 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                             break;
                     }
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Type.Name}", cellFormat: witContent);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Id}", cellFormat: redContent);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.State}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Title}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Type.Name}", cellFormat: witContent);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Id}", cellFormat: redContent);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.State}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Title}");
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ linkedWorkItem.Type.Name}", cellFormat: witContent);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ linkedWorkItem.Id}", cellFormat: redContent);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ linkedWorkItem.State}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ linkedWorkItem.Title}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ linkedWorkItem.Type.Name}", cellFormat: witContent);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ linkedWorkItem.Id}", cellFormat: redContent);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ linkedWorkItem.State}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ linkedWorkItem.Title}");
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItemLink.SourceId}", cellFormat: redContent);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItemLink.TargetId}", cellFormat: redContent);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItemLink.SourceId}", cellFormat: redContent);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItemLink.TargetId}", cellFormat: redContent);
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItemLink.AddedBy}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItemLink.AddedDate}", cellFormat: dateContent);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItemLink.AddedBy}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItemLink.AddedDate}", cellFormat: dateContent);
 
                     if (workItemLink.ArtifactLinkType != null)
                     {
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItemLink.ArtifactLinkType.Name}");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItemLink.ArtifactLinkType.Name}");
                     }
                     else
                     {
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "<null>");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "<null>");
                     }
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItemLink.BaseType }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItemLink.BaseType }");
 
                     if (workItemLink.ChangedDate != null)
                     {
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItemLink.ChangedDate}", cellFormat: dateContent);
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItemLink.ChangedDate}", cellFormat: dateContent);
                     }
                     else
                     {
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "<null>", cellFormat: dateContent);
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "<null>", cellFormat: dateContent);
                     }
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItemLink.Comment}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItemLink.IsLocked}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItemLink.IsNew}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItemLink.LinkTypeEnd.Id}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ GetLastPartOfDelimitedName(workItemLink.LinkTypeEnd.ImmutableName, '.')}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItemLink.LinkTypeEnd.IsForwardLink}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ GetLastPartOfDelimitedName(workItemLink.LinkTypeEnd.LinkType.ToString(), '.')}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItemLink.LinkTypeEnd.Name}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItemLink.LinkTypeEnd.OppositeEnd.Id}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ GetLastPartOfDelimitedName(workItemLink.LinkTypeEnd.OppositeEnd.ImmutableName, '.')}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItemLink.LinkTypeEnd.OppositeEnd.IsForwardLink}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ GetLastPartOfDelimitedName(workItemLink.LinkTypeEnd.OppositeEnd.LinkType.ToString(), '.')}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItemLink.LinkTypeEnd.OppositeEnd.Name}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItemLink.RemovedBy}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItemLink.RemovedDate}", cellFormat: dateContent);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItemLink.Comment}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItemLink.IsLocked}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItemLink.IsNew}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItemLink.LinkTypeEnd.Id}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ GetLastPartOfDelimitedName(workItemLink.LinkTypeEnd.ImmutableName, '.')}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItemLink.LinkTypeEnd.IsForwardLink}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ GetLastPartOfDelimitedName(workItemLink.LinkTypeEnd.LinkType.ToString(), '.')}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItemLink.LinkTypeEnd.Name}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItemLink.LinkTypeEnd.OppositeEnd.Id}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ GetLastPartOfDelimitedName(workItemLink.LinkTypeEnd.OppositeEnd.ImmutableName, '.')}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItemLink.LinkTypeEnd.OppositeEnd.IsForwardLink}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ GetLastPartOfDelimitedName(workItemLink.LinkTypeEnd.OppositeEnd.LinkType.ToString(), '.')}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItemLink.LinkTypeEnd.OppositeEnd.Name}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItemLink.RemovedBy}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItemLink.RemovedDate}", cellFormat: dateContent);
 
                     insertAt.IncrementRows();
 
@@ -515,63 +515,210 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             int itemCount = 0;
             int totalItems = queryResults.Count;
 
+            CellFormatSpecification redContent = options.FormatSpecs.RedContent;
+
+
             try
             {
                 foreach (WorkItem workItem in queryResults)
                 {
                     insertAt.ClearOffsets();
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Project.Name }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Project.Name }");
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Id }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Type.Name }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Title }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Id }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Type.Name }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Title }");
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.CreatedBy }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.CreatedDate }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.ChangedBy }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.ChangedDate }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.CreatedBy }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.CreatedDate }");
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.AuthorizedDate }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.RevisedDate }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.ChangedBy }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.ChangedDate }");
 
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.AuthorizedDate }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.RevisedDate }");
 
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Rev }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Revision }");
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.State }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Reason }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Tags }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.AreaPath }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.IterationPath }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.State }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Reason }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Tags }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.AreaPath }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.IterationPath }");
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.RelatedLinkCount }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.ExternalLinkCount }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.HyperLinkCount }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.RelatedLinkCount }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.ExternalLinkCount }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.HyperLinkCount }");
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Rev }");
+                    // TODO(crhodes)
+                    // Things to consider displaying
+                    // AttachedFileCount
+                    // Attachments.Count
+                    // Description
+                    // IsAccessDenied
+                    // IsAccessDenied
+                    // IsDirty
+                    // IsNew
+                    // IsOpen
+                    // IsPartialOpen
+                    // IsReadOnly
+                    // IsReadOnlyOpen
+                    // AreaId
+                    // IterationId
+                    // Uri
 
                     // NOTE(crhodes)
                     // The Query can specify additional fields to display
+                    // They are added to the query to avoid a round trip if accessed 
+                    // after the result set is returned.
+
                     // Display them
 
                     if ((options.WorkItemQuerySpec.Fields?.Count ?? 0) > 0)
                     {
                         foreach (string field in options.WorkItemQuerySpec.Fields)
                         {
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Fields[field].Value }");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Fields[field].Value }");
                         }
-
                     }
 
-                    //// NOTE(crhodes)
-                    //// Closed Date is a Field.  Need to ask for in Query else a round trip occurs.  Not part of Work Item
-                    //XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Fields["Closed Date"].Value }");
-
-                    //// NOTE(crhodes)
-                    //// Field Issue is a Field.  Need to ask for in Query else a round trip occurs.  Not part of Work Item
-                    //XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ workItem.Fields["Field Issue"].Value }");
-
-
                     insertAt.IncrementRows();
+
+                    if (options.RetrieveRevisions is true)
+                    {
+                        int currentOffset = insertAt.ColumnOffset;
+
+                        Boolean isClosed = false;
+                        int closedCount = 0;
+
+                        // TODO(crhodes)
+                        // Figure out what we can get from Revisions.
+                        foreach (Revision revision in workItem.Revisions)
+                        {
+
+                            try
+                            {
+                                // HACK(crhodes)
+                                // Let's see what is in revision.Fields
+
+                                // Sigh, it is all fields.
+
+                                if (options.RetrieveFieldChanges is true)
+                                {
+                                    string oldValue;
+                                    string currentValue;
+
+                                    foreach (Field revisionField in revision.Fields)
+                                    {
+
+                                        //insertAt.ClearOffsets();
+                                        insertAt.SetColumnOffset(currentOffset);
+
+                                        oldValue = (revision.Fields[revisionField.Name].Value ?? "").ToString();
+                                        currentValue = (revision.Fields[revisionField.Name].OriginalValue ?? "").ToString();
+
+
+                                        //var originalValue = revisionField.OriginalValue;
+                                        //var currentValue = revisionField.Value;
+                                        //var hashOriginalValue = originalValue.GetHashCode();
+                                        //var hashCurrentValue = currentValue.GetHashCode();
+                                        //var stringOriginalValue = originalValue.ToString();
+                                        //var stringCurrentValue = currentValue.ToString();
+
+                                        //var same = originalValue.Equals(currentValue);
+                                        //var hashSame = hashOriginalValue.Equals(hashCurrentValue);
+                                        //var stringSame = stringOriginalValue.Equals(stringCurrentValue);
+
+                                        //if (! same)
+                                        //{
+
+                                        if (!oldValue.Equals(currentValue))
+                                        {
+                                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revisionField.Name }");
+                                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revisionField.ReferenceName }");
+
+                                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revisionField.OriginalValue }");
+                                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revisionField.Value }");
+                                            insertAt.IncrementRows();
+                                        }
+                                        //XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ same }");
+                                        //XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ hashSame }");
+                                        //XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ stringSame }");
+
+
+                                        //}
+                                    }
+                                }
+
+                                insertAt.ClearOffsets();
+
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revision.WorkItem.Project.Name }");
+
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revision.WorkItem.Id }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revision.WorkItem.Type.Name }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revision.Fields["Title"].Value }");
+
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revision.Fields["Created By"].Value }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revision.Fields["Created Date"].Value }");
+
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revision.Fields["Changed By"].Value }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revision.Fields["Changed Date"].Value }");
+
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revision.Fields["Authorized Date"].Value }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revision.Fields["Revised Date"].Value }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revision.Fields["Rev"].Value }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "");   // Placeholder for Revision which is not a Field on Revision
+
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revision.Fields["State"].Value }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revision.Fields["Reason"].Value }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revision.Fields["Tags"].Value }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revision.Fields["Area Path"].Value }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revision.Fields["Iteration Path"].Value }");
+
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revision.Fields["Related Link Count"].Value }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revision.Fields["External Link Count"].Value }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revision.Fields["HyperLink Count"].Value }");
+
+                                if ((options.WorkItemQuerySpec.Fields?.Count ?? 0) > 0)
+                                {
+                                    foreach (string field in options.WorkItemQuerySpec.Fields)
+                                    {
+                                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ revision.Fields[field].Value }");
+                                    }
+                                }
+
+                                if (isClosed)
+                                {
+                                    if (revision.Fields["State"].Value.ToString() != "Closed")
+                                    {
+                                        isClosed = false;
+                                    }
+
+                                    continue;
+                                }
+
+                                if (revision.Fields["State"].Value.ToString() == "Closed")
+                                {
+                                    isClosed = true;
+                                    closedCount++;
+                                }
+
+                                if (closedCount > 1)
+                                {
+                                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ closedCount }", redContent);
+                                }
+                                
+                            }
+                            catch (Exception ex)
+                            {
+                                
+                            }
+
+                            insertAt.IncrementRows();
+                        }
+                    }
 
                     itemCount++;
 
@@ -625,27 +772,27 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                     insertAt.ClearOffsets();
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", project.Name));
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", wit.Name));
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", fieldDef.Name));
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", fieldDef.FieldType));
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", fieldDef.SystemType));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", project.Name));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", wit.Name));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", fieldDef.Name));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", fieldDef.FieldType));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", fieldDef.SystemType));
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", fieldDef.Id));
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", fieldDef.IsComputed));
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", fieldDef.IsCoreField));
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", fieldDef.IsEditable));
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", fieldDef.IsIdentity));
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", fieldDef.IsIndexed));
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", fieldDef.IsQueryable));
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", fieldDef.ReferenceName));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", fieldDef.Id));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", fieldDef.IsComputed));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", fieldDef.IsCoreField));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", fieldDef.IsEditable));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", fieldDef.IsIdentity));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", fieldDef.IsIndexed));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", fieldDef.IsQueryable));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", fieldDef.ReferenceName));
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", fieldDef.ReportingAttributes.Name));
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", fieldDef.ReportingAttributes.ReferenceName));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", fieldDef.ReportingAttributes.Name));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", fieldDef.ReportingAttributes.ReferenceName));
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", fieldDef.Usage));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", fieldDef.Usage));
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", fieldName + "[" + fieldType + "]"));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", fieldName + "[" + fieldType + "]"));
 
                     if (fieldDef.AllowedValues.Count > 0)
                     {
@@ -663,7 +810,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                             }
                         }
 
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{sb}");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{sb}");
                     }
 
                     if (fieldDef.ProhibitedValues.Count > 0)
@@ -682,8 +829,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                             }
                         }
 
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{sb}");
-                        //XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", sb.ToString()));
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{sb}");
+                        //XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", sb.ToString()));
                     }
 
                     insertAt.IncrementRows();
@@ -809,14 +956,14 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                         }
                     }
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{project.Name}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{wit.Name}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{count}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{wit.FieldDefinitions.Count}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{lastCreateDate}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{lastChangedDate}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{lastRevisedDate}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{transitionsDisplay}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{project.Name}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{wit.Name}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{count}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{wit.FieldDefinitions.Count}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{lastCreateDate}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{lastChangedDate}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{lastRevisedDate}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{transitionsDisplay}");
 
                     insertAt.IncrementRows();
 
@@ -949,14 +1096,14 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                         }
                     //}
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{project.Name}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{wit.Name}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{count}");
-                    //XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{wit.FieldDefinitions.Count}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{lastCreateDate}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{lastChangedDate}");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{lastRevisedDate}");
-                    //XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{transitionsDisplay}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{project.Name}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{wit.Name}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{count}");
+                    //XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{wit.FieldDefinitions.Count}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{lastCreateDate}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{lastChangedDate}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{lastRevisedDate}");
+                    //XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{transitionsDisplay}");
 
                     insertAt.IncrementRows();
 
@@ -1313,6 +1460,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
 
             List<Transition> currentTransitions;
+            Boolean supportsExport = true;
 
             // See if this WorkItemType has already had it's transitions figured out.
             allTransitions.TryGetValue(workItemType, out currentTransitions);
@@ -1329,87 +1477,103 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             try
             {
                 var foo = workItemType.Name;
-
-                XmlDocument workItemTypeXml = workItemType.Export(false);
-
-                // get the transitions node.
-                XmlNodeList transitionsList = workItemTypeXml.GetElementsByTagName("TRANSITIONS");
-
-                // As there is only one transitions item we can just get the first
-                XmlNode transitions = transitionsList[0];
-
-                // Iterate all the transitions
-                foreach (XmlNode transition in transitions)
+                XmlDocument workItemTypeXml = null;
+                try
                 {
-                    StringBuilder reasons = new StringBuilder();
-                    StringBuilder fields = new StringBuilder();
-
-                    XmlNode reasonsNode = transition.SelectSingleNode("REASONS");
-                    XmlNode fieldsNode = transition.SelectSingleNode("FIELDS");
-
-                    foreach (XmlNode reason in reasonsNode)
-                    {
-                        if (reasons.Length != 0)
-                        {
-                            reasons.Append($", {reason.Attributes["value"].Value}");
-                        }
-                        else
-                        {
-                            reasons.Append(reason.Attributes["value"].Value);
-                        }
-
-                        if (reason.Name == "DEFAULTREASON")
-                        {
-                            reasons.Append("*");
-                        }
-                    }
-
-                    // Not all REASONS have required FIELDS
-
-                    if (fieldsNode != null)
-                    {
-                        foreach (XmlNode field in fieldsNode)
-                        {
-                            try
-                            {
-                                string trimedField = field.Attributes["refname"].Value.Replace("Microsoft.", "M.");
-
-                                if (fields.Length != 0)
-                                {
-                                    fields.Append($", {trimedField}");
-                                }
-                                else
-                                {
-                                    fields.Append(trimedField);
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-
-                            }
-
-                            // TODO(crhodes)
-                            // Maybe show <EMPTY />
-                            //if (field.Name == "DEFAULTREASON")
-                            //{
-                            //    reasons.Append("*");
-                            //}
-                        }
-                    }
-
-                    // save off the transition 
+                    workItemTypeXml = workItemType.Export(false);
+                }
+                catch (Exception ex)
+                {
+                    // Inherited Process Templates cannot be exported.
                     newTransitions.Add(new Transition
                     {
-                        From = transition.Attributes["from"].Value,
-                        To = transition.Attributes["to"].Value,
-                        For = transition.Attributes["for"] != null ? $"for {transition.Attributes["for"].Value}" : "",
-                        Reasons = reasons.ToString(),
-                        Fields = fields.ToString()
+                        From = "Not Supported"
                     });
+
+                    supportsExport = false;
                 }
 
-                // Add transition so we don't do it again if it is needed.
-                allTransitions.Add(workItemType, newTransitions);
+                if (supportsExport)
+                {
+                    // get the transitions node.
+                    XmlNodeList transitionsList = workItemTypeXml.GetElementsByTagName("TRANSITIONS");
+
+                    // As there is only one transitions item we can just get the first
+                    XmlNode transitions = transitionsList[0];
+
+                    // Iterate all the transitions
+                    foreach (XmlNode transition in transitions)
+                    {
+                        StringBuilder reasons = new StringBuilder();
+                        StringBuilder fields = new StringBuilder();
+
+                        XmlNode reasonsNode = transition.SelectSingleNode("REASONS");
+                        XmlNode fieldsNode = transition.SelectSingleNode("FIELDS");
+
+                        foreach (XmlNode reason in reasonsNode)
+                        {
+                            if (reasons.Length != 0)
+                            {
+                                reasons.Append($", {reason.Attributes["value"].Value}");
+                            }
+                            else
+                            {
+                                reasons.Append(reason.Attributes["value"].Value);
+                            }
+
+                            if (reason.Name == "DEFAULTREASON")
+                            {
+                                reasons.Append("*");
+                            }
+                        }
+
+                        // Not all REASONS have required FIELDS
+
+                        if (fieldsNode != null)
+                        {
+                            foreach (XmlNode field in fieldsNode)
+                            {
+                                try
+                                {
+                                    string trimedField = field.Attributes["refname"].Value.Replace("Microsoft.", "M.");
+
+                                    if (fields.Length != 0)
+                                    {
+                                        fields.Append($", {trimedField}");
+                                    }
+                                    else
+                                    {
+                                        fields.Append(trimedField);
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+
+                                }
+
+                                // TODO(crhodes)
+                                // Maybe show <EMPTY />
+                                //if (field.Name == "DEFAULTREASON")
+                                //{
+                                //    reasons.Append("*");
+                                //}
+                            }
+                        }
+
+                        // save off the transition 
+                        newTransitions.Add(new Transition
+                        {
+                            From = transition.Attributes["from"].Value,
+                            To = transition.Attributes["to"].Value,
+                            For = transition.Attributes["for"] != null ? $"for {transition.Attributes["for"].Value}" : "",
+                            Reasons = reasons.ToString(),
+                            Fields = fields.ToString()
+                        });
+                    }
+
+                    // Add transition so we don't do it again if it is needed.
+                    allTransitions.Add(workItemType, newTransitions);
+                }
             }
             catch (Exception ex)
             {

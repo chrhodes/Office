@@ -219,23 +219,23 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
                         if (sourceName != "")
                         {
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), sourceName);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), applicationName);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), sourceName);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), applicationName);
                         }
 
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), structure.Assembly);
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), structure.DeclaringType);
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), structure.Type);
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), structure.Assembly);
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), structure.DeclaringType);
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), structure.Type);
 
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), structure.Field);
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), structure.FieldType);
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), structure.IsArray);
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), structure.IsEnum);
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), structure.IsValueType);
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), structure.Field);
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), structure.FieldType);
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), structure.IsArray);
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), structure.IsEnum);
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), structure.IsValueType);
 
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), structure.Attribute);
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), structure.AttributeValue);
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), structure.AttributeToString);
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), structure.Attribute);
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), structure.AttributeValue);
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), structure.AttributeToString);
 
                         insertAt.IncrementRows();
                     }
@@ -413,23 +413,23 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
                             if (sourceName != "")
                             {
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), sourceName);
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), applicationName);
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), sourceName);
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), applicationName);
                             }
 
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), method.Assembly);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), method.Type);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), method.IsStatic);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), method.IsPublic);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), method.IsPrivate);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), method.ReturnType);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), method.Method);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), method.Parameters);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), method.RetValParameters);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), method.OutParameters);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), method.OptionalParameters);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), method.ByRefParameters);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), method.MD5);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), method.Assembly);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), method.Type);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), method.IsStatic);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), method.IsPublic);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), method.IsPrivate);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), method.ReturnType);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), method.Method);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), method.Parameters);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), method.RetValParameters);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), method.OutParameters);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), method.OptionalParameters);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), method.ByRefParameters);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), method.MD5);
 
                             insertAt.IncrementRows();
                         }
@@ -507,7 +507,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             foreach (string item in headers)
             {
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), item);
             }
         }
 
@@ -517,7 +517,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             foreach (string item in headers)
             {
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), item);
             }
         }
 
@@ -527,7 +527,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             foreach (string item in headers)
             {
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), item);
             }
         }
 
@@ -568,7 +568,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             foreach (string item in headers)
             {
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), item);
             }
         }
 
@@ -583,7 +583,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             insertAt.MarkStart(XlHlp.MarkType.GroupTable);
 
-            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "Custom Attributes");
+            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "Custom Attributes");
 
             insertAt.IncrementRows();
 
@@ -611,7 +611,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             insertAt.MarkStart(XlHlp.MarkType.GroupTable);
 
-            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "DefinedTypes");
+            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "DefinedTypes");
 
             insertAt.IncrementRows();
 
@@ -651,7 +651,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             insertAt.MarkStart(XlHlp.MarkType.GroupTable);
 
-            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "ExportedTypes");
+            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "ExportedTypes");
 
             insertAt.IncrementRows();
 
@@ -713,33 +713,33 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
                         if (sourceName != "")
                         {
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), sourceName);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), applicationName);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), sourceName);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), applicationName);
                         }
 
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), assembly.GetName().Name);
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), assembly.GetName().Name);
 
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.FullName);
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.FullName);
 
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), methodInfo.IsStatic.ToString());
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), methodInfo.IsPublic.ToString());
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), methodInfo.IsPrivate.ToString());
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), methodInfo.IsStatic.ToString());
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), methodInfo.IsPublic.ToString());
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), methodInfo.IsPrivate.ToString());
 
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), methodInfo.ReturnType.ToString());
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), methodInfo.ReturnType.ToString());
 
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), methodInfo.Name);
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), methodInfo.Name);
 
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), methodParameters);
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), methodParameters);
 
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), hasRetValParameters ? "X" : "");
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), hasOutParameters ? "X" : "");
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), hasOptionalParameters ? "X" : "");
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), hasByRefParameters ? "X" : "");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), hasRetValParameters ? "X" : "");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), hasOutParameters ? "X" : "");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), hasOptionalParameters ? "X" : "");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), hasByRefParameters ? "X" : "");
 
                         byte[] methodBodyBytes = methodInfo.GetMethodBody().GetILAsByteArray();
 
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), Crc32CAlgorithm.Compute(methodBodyBytes).ToString());
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), GetMd5Hash(md5Hash, methodBodyBytes));                     
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), Crc32CAlgorithm.Compute(methodBodyBytes).ToString());
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), GetMd5Hash(md5Hash, methodBodyBytes));                     
                     }
                     catch (Exception ex)
                     {
@@ -768,7 +768,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             insertAt.MarkStart(XlHlp.MarkType.GroupTable);
 
-            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "Modules");
+            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "Modules");
 
             insertAt.IncrementRows();
 
@@ -796,7 +796,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             insertAt.MarkStart(XlHlp.MarkType.GroupTable);
 
-            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "References");
+            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "References");
 
             insertAt.IncrementRows();
 
@@ -825,7 +825,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             insertAt.MarkStart(XlHlp.MarkType.GroupTable);
 
-            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "Types");
+            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "Types");
 
             insertAt.IncrementRows();
 
@@ -889,7 +889,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), customAttributeData.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), customAttributeData.ToString());
 
                 insertAt.IncrementRows();
             }
@@ -967,39 +967,39 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 if (sourceName != "")
                 {
                     // Only the Master sheets display source and application
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), sourceName);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), applicationName);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), sourceName);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), applicationName);
                 }
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), assemblyFileName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), assemblyFileName);
                 //XlHlp.AddContentToCell(insertAt.AddOffsetColumn(), typeInfo.Assembly.GetName().Name);
 
                 //Type type = typeInfo;
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.FullName);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.DeclaringType != null ? typeInfo.DeclaringType : "");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.FullName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.DeclaringType != null ? typeInfo.DeclaringType : "");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.Name);
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.IsPublic);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.IsNotPublic);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.IsPublic);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.IsNotPublic);
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.IsValueType);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.IsValueType);
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.IsPrimitive);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.IsEnum);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.IsInterface);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.IsPrimitive);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.IsEnum);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.IsInterface);
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.IsClass);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.IsAbstract);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.IsClass);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.IsAbstract);
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.IsSealed);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.IsNested);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.IsNestedPublic);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.IsNestedPrivate);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.IsSealed);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.IsNested);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.IsNestedPublic);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.IsNestedPrivate);
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.HasElementType);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.IsArray);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.IsByRef);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.IsPointer);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.HasElementType);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.IsArray);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.IsByRef);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.IsPointer);
 
                 insertAt.IncrementRows();
             }
@@ -1019,33 +1019,33 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
       
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), type.Assembly.GetName().Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), type.Assembly.GetName().Name);
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), type.FullName);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), type.DeclaringType != null ?  type.DeclaringType.Name : "");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), type.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), type.FullName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), type.DeclaringType != null ?  type.DeclaringType.Name : "");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), type.Name);
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), type.IsPublic.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), type.IsNotPublic.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), type.IsPublic.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), type.IsNotPublic.ToString());
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), type.IsValueType.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), type.IsValueType.ToString());
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), type.IsPrimitive.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), type.IsEnum.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), type.IsInterface.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), type.IsPrimitive.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), type.IsEnum.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), type.IsInterface.ToString());
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), type.IsClass.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), type.IsAbstract.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), type.IsClass.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), type.IsAbstract.ToString());
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), type.IsSealed.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), type.IsNested.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), type.IsNestedPublic.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), type.IsNestedPrivate.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), type.IsSealed.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), type.IsNested.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), type.IsNestedPublic.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), type.IsNestedPrivate.ToString());
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), type.HasElementType.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), type.IsArray.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), type.IsByRef.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), type.IsPointer.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), type.HasElementType.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), type.IsArray.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), type.IsByRef.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), type.IsPointer.ToString());
 
                 insertAt.IncrementRows();
             }
@@ -1065,7 +1065,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), module.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), module.Name);
 
                 insertAt.IncrementRows();
             }
@@ -1085,7 +1085,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), assemblyName.FullName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), assemblyName.FullName);
 
                 insertAt.IncrementRows();
             }
@@ -1105,7 +1105,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), typeInfo.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), typeInfo.Name);
 
                 insertAt.IncrementRows();
             }
@@ -1125,7 +1125,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), s);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), s);
 
                 insertAt.IncrementRows();
             }

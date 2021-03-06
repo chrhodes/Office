@@ -131,7 +131,7 @@
     <PackageReference Include="Prism.Unity">
       <Version>7.2.0.1422</Version>
     </PackageReference>
-    <PackageReference Include="VNC.CoreNF">
+    <PackageReference Include="VNC.Core">
       <Version>1.0.0</Version>
     </PackageReference>
   </ItemGroup>

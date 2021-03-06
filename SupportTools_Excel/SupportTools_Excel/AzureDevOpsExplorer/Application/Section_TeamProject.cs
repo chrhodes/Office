@@ -77,6 +77,12 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             XlHlp.AddLabeledInfo(insertAt.AddRow(2), "ServerItem", teamProject.ServerItem);
             XlHlp.AddLabeledInfo(insertAt.AddRow(2), "VCS ServerGuid", teamProject.VersionControlServer.ServerGuid.ToString());
 
+            // TODO(crhodes)
+            // What else can we get here?
+            // Capabilities
+            // Template?
+            // Creation Date?
+
             insertAt.MarkEnd();
 
             if (!insertAt.OrientVertical)
@@ -184,20 +190,20 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                         {
                             // Group
 
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), identity.Descriptor.Identifier);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), identity.DisplayName);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), identity.Descriptor.Identifier);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), identity.DisplayName);
 
                             // Members
 
                             // NOTE(crhodes)
                             // This line is throwing exception.  Why?
 
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), Section_TeamProjectCollection._Global_Identities[member].IsContainer.ToString());
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), Section_TeamProjectCollection._Global_Identities[member].DisplayName);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), Section_TeamProjectCollection._Global_Identities[member].UniqueName);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), Section_TeamProjectCollection._Global_Identities[member].Descriptor.IdentityType);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), Section_TeamProjectCollection._Global_Identities[member].UniqueUserId.ToString());
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), Section_TeamProjectCollection._Global_Identities[member].IsActive.ToString());
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), Section_TeamProjectCollection._Global_Identities[member].IsContainer.ToString());
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), Section_TeamProjectCollection._Global_Identities[member].DisplayName);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), Section_TeamProjectCollection._Global_Identities[member].UniqueName);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), Section_TeamProjectCollection._Global_Identities[member].Descriptor.IdentityType);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), Section_TeamProjectCollection._Global_Identities[member].UniqueUserId.ToString());
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), Section_TeamProjectCollection._Global_Identities[member].IsActive.ToString());
 
                         }
                         catch (Exception ex)

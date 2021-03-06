@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v19.2"
     xmlns:localpv="clr-namespace:SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views"
-    xmlns:vncWPF="clr-namespace:VNC.WPF.Presentation.Views;assembly=VNC.WPF.PresentationNF"
+    xmlns:vncWPF="clr-namespace:VNC.WPF.Presentation.Views;assembly=VNC.WPF.Presentation"
     mc:Ignorable="d"
 
     Background="White"

@@ -214,7 +214,7 @@ namespace VNC.AddinHelper
                 return this;
             }
 
-            [Obsolete("AddColumnX has been replaced with AddColumn which returns an XlLocation instead of a Range")]
+            [Obsolete("AddColumnX() has been replaced with AddColumn() which returns an XlLocation instead of a Range")]
             public Range AddColumnX(int columns = 1)
             {
                 if (Common.DisplayXlLocationUpdates)
@@ -274,7 +274,9 @@ namespace VNC.AddinHelper
                 return this;
             }
 
-            [Obsolete("AddOffsetColumnX has been replaced with AddOffsetColumn which returns an XlLocation instead of a Range")]
+            [Obsolete("\nAddOffsetColumnX has been replaced with AddOffsetColumn()" +
+                "\nwhich returns an XlLocation instead of a Range.  " +
+                "\nUse AddOffsetContentToCell(AddOffsetColumn(), ...) instead.")]
             public Range AddOffsetColumnX()
             {
                 if (Common.DisplayXlLocationUpdates)
@@ -416,6 +418,19 @@ namespace VNC.AddinHelper
                     RowOffsetMax = 0;
                     ColumnOffsetMax = 0;
                 }
+            }
+
+            public void SetColumnOffset(int column)
+            {
+                if (Common.DisplayXlLocationUpdates)
+                {
+                    StackFrame frame = new StackFrame(1);
+                    MethodBase caller = frame.GetMethod();
+
+                    Excel.DisplayInWatchWindow(this, caller.Name);
+                }
+
+                ColumnOffset = column;
             }
 
             public void CreateTable(string tableName)

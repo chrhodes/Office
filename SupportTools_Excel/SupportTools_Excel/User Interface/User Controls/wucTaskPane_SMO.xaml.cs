@@ -622,12 +622,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             insertAt.ClearOffsets();
 
             XlHlp.AddLabeledInfoX(insertAt.AddOffsetColumnX(), "Header:", "");
-            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), storedProcedure.TextHeader);
+            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), storedProcedure.TextHeader);
 
             insertAt.ClearOffsets();
 
             XlHlp.AddLabeledInfoX(insertAt.AddOffsetColumnX(), "Body:", "");
-            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), storedProcedure.TextBody);
+            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), storedProcedure.TextBody);
 
             Common.WriteToDebugWindow("CreateStoredProcedureInfoWorksheet(End)", startTicks);
         }
@@ -683,16 +683,16 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
                 insertAt.MarkStart(XlHlp.MarkType.GroupTable);
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "Database");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "Table");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "Column");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "DataType");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "MaximumLength");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "NumericPrecision");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "NumericScale");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "IsPrimaryKey");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "IsForeignKey");
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "Nullable");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "Database");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "Table");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "Column");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "DataType");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "MaximumLength");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "NumericPrecision");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "NumericScale");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "IsPrimaryKey");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "IsForeignKey");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "Nullable");
 
                 insertAt.IncrementRows();
 
@@ -1381,20 +1381,20 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 {
                     insertAt.ClearOffsets();
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), database.Name);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), table.Name);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), database.Name);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), table.Name);
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.Name);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.DataType);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.MaximumLength);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.NumericPrecision);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.NumericScale);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.Name);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.DataType);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.MaximumLength);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.NumericPrecision);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.NumericScale);
                     //XlHlp.AddContentToCell(rng.Offset[rowsAdded, col++], column.Default);
                     //XlHlp.AddContentToCell(rng.Offset[rowsAdded, col++], column.ID);
                     //XlHlp.AddContentToCell(rng.Offset[rowsAdded, col++], column.Identity);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.InPrimaryKey);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.IsForeignKey);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.Nullable);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.InPrimaryKey);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.IsForeignKey);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.Nullable);
 
                     insertAt.IncrementRows();
                 }
@@ -1497,17 +1497,17 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.Name);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.DataType);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.MaximumLength);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.NumericPrecision);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.NumericScale);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.Default);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.ID);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.Identity);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.InPrimaryKey);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.IsForeignKey);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.Nullable);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.DataType);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.MaximumLength);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.NumericPrecision);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.NumericScale);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.Default);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.ID);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.Identity);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.InPrimaryKey);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.IsForeignKey);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.Nullable);
 
                 insertAt.IncrementRows();
             }
@@ -1524,17 +1524,17 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.Name);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.DataType);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.MaximumLength);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.NumericPrecision);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.NumericScale);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.Default);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.ID);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.Identity);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.InPrimaryKey);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.IsForeignKey);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), column.Nullable);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.DataType);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.MaximumLength);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.NumericPrecision);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.NumericScale);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.Default);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.ID);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.Identity);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.InPrimaryKey);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.IsForeignKey);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), column.Nullable);
 
                 insertAt.IncrementRows();
             }
@@ -1554,11 +1554,11 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 XlHlp.DisplayInWatchWindow(string.Format("Adding Database Info for ({0})", dataBase.Name));
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), dataBase.Name);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), dataBase.Owner);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), dataBase.CreateDate);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), dataBase.Size);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), dataBase.DataSpaceUsage);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), dataBase.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), dataBase.Owner);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), dataBase.CreateDate);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), dataBase.Size);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), dataBase.DataSpaceUsage);
 
                 // These can throw exceptions if not access
 
@@ -1569,9 +1569,9 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                     SMO.Database db = new SMO.Database(_SMOServer, dataBase.Name);
                     db.Refresh();
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), db.Tables.Count.ToString());
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), db.Views.Count.ToString());
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), db.StoredProcedures.Count.ToString());
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), db.Tables.Count.ToString());
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), db.Views.Count.ToString());
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), db.StoredProcedures.Count.ToString());
 
                     Int64 count = 0;
 
@@ -1580,7 +1580,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                         count++;
                     }
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), count.ToString());
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), count.ToString());
 
                     //XlHlp.AddContentToCell(insertAt.AddOffsetColumn(), dataBase.Tables.Count().ToString());
                     //XlHlp.AddContentToCell(insertAt.AddOffsetColumn(), dataBase.Views.Count().ToString());
@@ -1611,18 +1611,18 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), dataFile.FileName);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), dataFile.AvailableSpace);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), dataFile.Name);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), dataFile.Growth);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), dataFile.GrowthType);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), dataFile.MaxSize);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), dataFile.NumberOfDiskReads);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), dataFile.NumberOfDiskWrites);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), dataFile.Size);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), dataFile.State);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), dataFile.UsedSpace);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), dataFile.VolumeFreeSpace);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), dataFile.FileName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), dataFile.AvailableSpace);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), dataFile.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), dataFile.Growth);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), dataFile.GrowthType);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), dataFile.MaxSize);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), dataFile.NumberOfDiskReads);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), dataFile.NumberOfDiskWrites);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), dataFile.Size);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), dataFile.State);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), dataFile.UsedSpace);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), dataFile.VolumeFreeSpace);
 
                 insertAt.IncrementRows();
             }
@@ -1641,16 +1641,16 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), endPoint.EndpointState);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), endPoint.EndpointType);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), endPoint.ID);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), endPoint.IsAdminEndpoint);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), endPoint.IsSystemObject);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), endPoint.Name);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), endPoint.Owner);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), endPoint.Protocol);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), endPoint.ProtocolType);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), endPoint.Urn);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), endPoint.EndpointState);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), endPoint.EndpointType);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), endPoint.ID);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), endPoint.IsAdminEndpoint);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), endPoint.IsSystemObject);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), endPoint.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), endPoint.Owner);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), endPoint.Protocol);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), endPoint.ProtocolType);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), endPoint.Urn);
 
                 insertAt.IncrementRows();
             }
@@ -1669,8 +1669,8 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), extendedProperty.Name);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), extendedProperty.Value.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), extendedProperty.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), extendedProperty.Value.ToString());
 
                 insertAt.IncrementRows();
             }
@@ -1689,8 +1689,8 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), fileGroup.Name);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), fileGroup.IsDefault);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), fileGroup.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), fileGroup.IsDefault);
 
                 insertAt.IncrementRows();
 
@@ -1711,8 +1711,8 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), linkedServer.Name);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), linkedServer.Catalog);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), linkedServer.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), linkedServer.Catalog);
 
                 insertAt.IncrementRows();
             }
@@ -1731,7 +1731,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), login.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), login.Name);
 
                 insertAt.IncrementRows();
             }
@@ -1750,7 +1750,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), serverRole.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), serverRole.Name);
 
                 insertAt.IncrementRows();
             }
@@ -1767,12 +1767,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), parameter.Name);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), parameter.DataType);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), parameter.MaximumLength);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), parameter.NumericPrecision);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), parameter.NumericScale);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), parameter.DefaultValue);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), parameter.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), parameter.DataType);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), parameter.MaximumLength);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), parameter.NumericPrecision);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), parameter.NumericScale);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), parameter.DefaultValue);
 
                 insertAt.IncrementRows();
             }
@@ -1794,12 +1794,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), storedProcedure.Name);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), storedProcedure.Owner);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), storedProcedure.CreateDate);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), storedProcedure.DateLastModified);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), storedProcedure.ID);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), storedProcedure.MethodName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), storedProcedure.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), storedProcedure.Owner);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), storedProcedure.CreateDate);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), storedProcedure.DateLastModified);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), storedProcedure.ID);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), storedProcedure.MethodName);
 
                 insertAt.IncrementRows();
             }
@@ -1818,13 +1818,13 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), table.Name);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), table.Owner);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), table.CreateDate);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), table.DateLastModified);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), table.DataSpaceUsed);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), table.ID);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), table.RowCount.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), table.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), table.Owner);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), table.CreateDate);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), table.DateLastModified);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), table.DataSpaceUsed);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), table.ID);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), table.RowCount.ToString());
 
                 insertAt.IncrementRows();
             }
@@ -1843,11 +1843,11 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), view.Name);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), view.Owner);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), view.CreateDate);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), view.DateLastModified);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), view.ID.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), view.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), view.Owner);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), view.CreateDate);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), view.DateLastModified);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), view.ID.ToString());
 
                 insertAt.IncrementRows();
             }

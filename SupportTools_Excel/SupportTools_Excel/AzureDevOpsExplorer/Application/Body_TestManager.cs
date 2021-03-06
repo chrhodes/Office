@@ -79,18 +79,18 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             foreach (var testCase in testManagementTeamProject.TestCases.Query(query))
             {
                 insertAt.ClearOffsets();
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), testManagementTeamProject.TeamProjectName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), testManagementTeamProject.TeamProjectName);
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), testCase.Id.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), testCase.Title);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), testCase.Description);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), testCase.DateCreated.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), testCase.DateModified.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), testCase.Revision.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), testCase.State);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), testCase.Links.Count.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), testCase.TestSuiteEntry.Id.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), testCase.TestSuiteEntry.Title);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), testCase.Id.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), testCase.Title);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), testCase.Description);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), testCase.DateCreated.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), testCase.DateModified.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), testCase.Revision.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), testCase.State);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), testCase.Links.Count.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), testCase.TestSuiteEntry.Id.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), testCase.TestSuiteEntry.Title);
 
                 insertAt.IncrementRows();
                 count++;
@@ -412,7 +412,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 
                 // IAttachmentOwner
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{testResult.Attachments.Count}");
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{testResult.Attachments.Count}");
 
                 // ITestResult
 

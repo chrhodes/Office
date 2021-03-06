@@ -21,9 +21,9 @@
     xmlns:localv="clr-namespace:SupportTools_Excel.ActiveDirectoryExplorer.Presentation.Views"
     xmlns:localvm="clr-namespace:SupportTools_Excel.ActiveDirectoryExplorer.Presentation.ViewModels"
     
-    xmlns:vncADuiuc="clr-namespace:VNC.AD.User_Interface.User_Controls;assembly=VNC.ActiveDirectoryHelperNF"
+    xmlns:vncADuiuc="clr-namespace:VNC.AD.User_Interface.User_Controls;assembly=VNC.ActiveDirectoryHelper"
     
-    xmlns:vncWPF="clr-namespace:VNC.WPF.Presentation.Views;assembly=VNC.WPF.PresentationNF"  
+    xmlns:vncWPF="clr-namespace:VNC.WPF.Presentation.Views;assembly=VNC.WPF.Presentation"  
         
 
     d:DesignHeight="800" 

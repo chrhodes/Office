@@ -10,9 +10,9 @@
     xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
     
     xmlns:uiuc="clr-namespace:SupportTools_Excel.User_Interface.User_Controls"
-    xmlns:vncADuiuc="clr-namespace:VNC.AD.User_Interface.User_Controls;assembly=VNC.ActiveDirectoryHelperNF"
+    xmlns:vncADuiuc="clr-namespace:VNC.AD.User_Interface.User_Controls;assembly=VNC.ActiveDirectoryHelper"
     
-    xmlns:vncWPF="clr-namespace:VNC.WPF.Presentation.Views;assembly=VNC.WPF.PresentationNF"  
+    xmlns:vncWPF="clr-namespace:VNC.WPF.Presentation.Views;assembly=VNC.WPF.Presentation"  
     mc:Ignorable="d" Loaded="UserControl_Loaded" 
     d:DesignHeight="900" d:DesignWidth="400" >
     

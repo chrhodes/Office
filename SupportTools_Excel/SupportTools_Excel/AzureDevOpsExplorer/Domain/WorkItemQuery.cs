@@ -16,8 +16,12 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Domain
         // NOTE(crhodes)
         // We can set a default here or do in ViewModel PopulateWorkItemQueries
         public string QueryWithTokens { get; set; }
-        public List<string> Fields { get; set; }
+
         public string Query { get; set; }
+
+        public List<string> Fields { get; set; }
+
+        //public Boolean RetrieveRevisions { get; set; }
 
         #endregion
 

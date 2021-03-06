@@ -603,10 +603,10 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), cType.Name);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), cType.Group);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), cType.Id.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), cType.SchemaXml);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), cType.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), cType.Group);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), cType.Id.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), cType.SchemaXml);
 
                 insertAt.IncrementRows();
             }
@@ -637,9 +637,9 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), library.Title);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), library.Id.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), library.SchemaXml);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), library.Title);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), library.Id.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), library.SchemaXml);
 
                 insertAt.IncrementRows();
             }
@@ -670,9 +670,9 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), list.Title);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), list.Id.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), list.SchemaXml);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), list.Title);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), list.Id.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), list.SchemaXml);
 
                 insertAt.IncrementRows();
             }
@@ -733,11 +733,11 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), field.Title);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), field.Group);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), field.Id.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), field.TypeAsString.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), field.SchemaXml);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), field.Title);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), field.Group);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), field.Id.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), field.TypeAsString.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), field.SchemaXml);
 
                 insertAt.IncrementRows();
             }

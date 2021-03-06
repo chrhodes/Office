@@ -52,10 +52,10 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", buildController.Name));
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", buildController.Description));
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", buildController.Enabled));
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", buildController.Agents.Count));
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", buildController.Name));
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", buildController.Description));
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", buildController.Enabled));
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", buildController.Agents.Count));
 
                 insertAt.IncrementRows();
             }
@@ -78,10 +78,10 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 {
                     insertAt.ClearOffsets();
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", teamProject.Name));
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", buildDef.Name));
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", buildDef.Description));
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", buildDef.QueueStatus));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", teamProject.Name));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", buildDef.Name));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", buildDef.Description));
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", buildDef.QueueStatus));
 
                     insertAt.IncrementRows();
                 }
@@ -90,10 +90,10 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", teamProject.Name));
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", "<N/A>"));
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", "<N/A>"));
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", "<N/A>"));
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", teamProject.Name));
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", "<N/A>"));
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", "<N/A>"));
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", "<N/A>"));
 
                 insertAt.IncrementRows();
             }
@@ -114,10 +114,10 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", processTemplate.Id));
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", processTemplate.Description));
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", processTemplate.TemplateType));
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", processTemplate.Version));
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", processTemplate.Id));
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", processTemplate.Description));
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", processTemplate.TemplateType));
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", processTemplate.Version));
 
                 insertAt.IncrementRows();
             }
@@ -138,11 +138,11 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", buildDetail.BuildController.Name));
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", buildDetail.LabelName));
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", buildDetail.StartTime));
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", buildDetail.FinishTime));
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", buildDetail.BuildFinished));
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", buildDetail.BuildController.Name));
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", buildDetail.LabelName));
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", buildDetail.StartTime));
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", buildDetail.FinishTime));
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", buildDetail.BuildFinished));
 
                 insertAt.IncrementRows();
             }
@@ -163,9 +163,9 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", buildServiceHost.Name));
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", buildServiceHost.Status));
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), string.Format("{0}", buildServiceHost.StatusChangedOn));
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", buildServiceHost.Name));
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", buildServiceHost.Status));
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), string.Format("{0}", buildServiceHost.StatusChangedOn));
 
                 insertAt.IncrementRows();
             }

@@ -65,7 +65,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 false,
                 false);
 
-            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), teamProject.Name);
+            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), teamProject.Name);
 
             try
             {
@@ -74,26 +74,26 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 string lastChangesetId = lastestChangeset.ChangesetId.ToString();
                 string lastChangeSetCreationDate = lastestChangeset.CreationDate.ToString();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), lastChangesetId);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), lastChangeSetCreationDate);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), teamProject.VersionControlServer.SupportedFeatures.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), teamProject.VersionControlServer.WebServiceLevel.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), lastChangesetId);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), lastChangeSetCreationDate);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), teamProject.VersionControlServer.SupportedFeatures.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), teamProject.VersionControlServer.WebServiceLevel.ToString());
             }
             catch (InvalidOperationException ioe)
             {
                 if (ioe.Message.Equals("Sequence contains no elements"))
                 {
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "No Changesets");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "No Changesets");
                 }
                 else
                 {
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), ioe.ToString());
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), ioe.ToString());
                 }
 
             }
             catch (Exception ex)
             {
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), ex.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), ex.ToString());
             }
 
             insertAt.IncrementRows();
@@ -113,19 +113,19 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), changeset.ChangesetId.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), changeset.ChangesetId.ToString());
                 //XlHlp.AddContentToCell(insertAt.AddOffsetColumn(), changeset.CheckinNote.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), changeset.Committer);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), changeset.CommitterDisplayName);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), changeset.Owner);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), changeset.OwnerDisplayName);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), changeset.CreationDate.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), changeset.CheckinNote.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), changeset.Comment);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), changeset.Committer);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), changeset.CommitterDisplayName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), changeset.Owner);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), changeset.OwnerDisplayName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), changeset.CreationDate.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), changeset.CheckinNote.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), changeset.Comment);
                 //XlHlp.AddContentToCell(insertAt.AddOffsetColumn(), changeset.AssociatedWorkItems.Count().ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), changeset.Changes.Count().ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), changeset.WorkItems.Count().ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), changeset.AssociatedWorkItems.Count().ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), changeset.Changes.Count().ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), changeset.WorkItems.Count().ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), changeset.AssociatedWorkItems.Count().ToString());
 
                 insertAt.IncrementRows();
 
@@ -187,11 +187,11 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), teamProjectName);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), developer);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), developers[developer].ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), developersEarliestDate[developer].ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), developersLatestDate[developer].ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), teamProjectName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), developer);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), developers[developer].ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), developersEarliestDate[developer].ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), developersLatestDate[developer].ToString());
 
                 insertAt.IncrementRows();
             }
@@ -212,14 +212,14 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 {
                     insertAt.ClearOffsets();
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.OwnerDisplayName);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.OwnerName);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.Name);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.CreationDate.ToString());
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), item.OwnerDisplayName);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), item.OwnerName);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), item.Name);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), item.CreationDate.ToString());
                     //ExcelHlp.AddContentToCell(insertAt.AddOffsetColumn(), item.DisplayName);
                     //ExcelHlp.AddContentToCell(insertAt.AddOffsetColumn(), item.QualifiedName);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.CheckinNote.ToString());
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.Comment);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), item.CheckinNote.ToString());
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), item.Comment);
 
                     insertAt.IncrementRows();
                 }
@@ -228,7 +228,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             {
                 string msg = string.Format("{0} - {1}", "TP", ex.ToString());
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), msg);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), msg);
             }
 
             Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
@@ -254,19 +254,19 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 {
                     insertAt.ClearOffsets();
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), teamProject.Name);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), teamProject.Name);
 
                     // Team 
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), team.Name);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), team.Description);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(),
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), team.Name);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), team.Description);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(),
                         defaultTeam.Name.Equals(team.Name) ? "*" : "");
 
                     // Members
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), member.DisplayName);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), member.UniqueName);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), member.DisplayName);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), member.UniqueName);
 
                     insertAt.IncrementRows();
                 }
@@ -288,14 +288,14 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 // Keep in same order with headers, supra.
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), workspace.Computer);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), workspace.Name);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), workspace.OwnerDisplayName);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), workspace.OwnerName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), workspace.Computer);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), workspace.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), workspace.OwnerDisplayName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), workspace.OwnerName);
                 //ExcelHlp.AddContentToCell(rngOutput.Offset[currentRow, col++], workspace.DisambiguatedDisplayName);
                 //ExcelHlp.AddContentToCell(rngOutput.Offset[currentRow, col++], workspace.DisplayName);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), workspace.LastAccessDate.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), workspace.Comment);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), workspace.LastAccessDate.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), workspace.Comment);
                 //ExcelHlp.AddContentToCell(rngOutput.Offset[XlLocation.Rows, col++], workspace.QualifiedName);
 
                 insertAt.IncrementRows();

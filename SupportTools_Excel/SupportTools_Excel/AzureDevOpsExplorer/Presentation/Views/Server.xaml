@@ -15,7 +15,7 @@
     xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
     xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
     
-    xmlns:vncTFSuiuc="clr-namespace:VNC.TFS.User_Interface.User_Controls;assembly=VNC.TFSHelperNF"
+    xmlns:vncTFSuiuc="clr-namespace:VNC.TFS.User_Interface.User_Controls;assembly=VNC.TFSHelper"
     
     xmlns:localc="clr-namespace:SupportTools_Excel.Presentation.Converters"
     xmlns:localv="clr-namespace:SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views"

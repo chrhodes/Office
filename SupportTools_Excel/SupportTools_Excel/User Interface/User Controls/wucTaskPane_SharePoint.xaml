@@ -6,7 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"  
     xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
-    xmlns:vncSPuiuc="clr-namespace:VNC.SP.User_Interface.User_Controls;assembly=VNC.SPHelperNF"
+    xmlns:vncSPuiuc="clr-namespace:VNC.SP.User_Interface.User_Controls;assembly=VNC.SPHelper"
     mc:Ignorable="d" Loaded="UserControl_Loaded" >
     <dxlc:LayoutControl x:Name="layoutItems" Orientation="Vertical" Background="White">
         <dxlc:LayoutItem 

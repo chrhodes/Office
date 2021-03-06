@@ -580,32 +580,32 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 {
                     insertAt.ClearOffsets();
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.Id }", cellFormat: redContent);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.AssignedToName }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.Comment }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.ConfigurationId }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.ConfigurationName }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.HasCachedProperties }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.History.Count }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.IsTestCaseAutomated }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.LastUpdated }", cellFormat: dateContent);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.LastUpdatedByName }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.MostRecentFailureType }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.MostRecentFailureTypeId }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.MostRecentResolutionStateId }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.MostRecentResult }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.MostRecentResultId }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.MostRecentResultOutcome }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.MostRecentResultState }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.MostRecentRunId }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.Plan.Id }", cellFormat: redContent);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.Revision }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.State }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.SuiteId }", cellFormat: redContent);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.TestCaseExists }");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.TestCaseId }", cellFormat: redContent);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.TestCaseWorkItem.Id }", cellFormat: redContent);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testPoint.UserData }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.Id }", cellFormat: redContent);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.AssignedToName }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.Comment }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.ConfigurationId }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.ConfigurationName }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.HasCachedProperties }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.History.Count }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.IsTestCaseAutomated }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.LastUpdated }", cellFormat: dateContent);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.LastUpdatedByName }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.MostRecentFailureType }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.MostRecentFailureTypeId }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.MostRecentResolutionStateId }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.MostRecentResult }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.MostRecentResultId }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.MostRecentResultOutcome }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.MostRecentResultState }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.MostRecentRunId }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.Plan.Id }", cellFormat: redContent);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.Revision }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.State }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.SuiteId }", cellFormat: redContent);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.TestCaseExists }");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.TestCaseId }", cellFormat: redContent);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.TestCaseWorkItem.Id }", cellFormat: redContent);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testPoint.UserData }");
 
                     insertAt.IncrementRows();
 
@@ -739,8 +739,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                         {
                             insertAt.ClearOffsets();
 
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{entry.Id}", cellFormat: redContent);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{entry.Title}");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{entry.Id}", cellFormat: redContent);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{entry.Title}");
 
                             string configurationCount = "null";
                             string pointAssignments = "null";
@@ -753,8 +753,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                                 configurationCount = entry.Configurations.Count.ToString();
                             }
 
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), configurationCount);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{entry.EntryType}");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), configurationCount);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{entry.EntryType}");
                             //XlHlp.AddContentToCell(insertAt.AddOffsetColumn(), entry.InvalidProperties.ToString());
                             //XlHlp.AddContentToCell(insertAt.AddOffsetColumn(), ((IPropertyOwner)entry).IsDirty.ToString());
                             //XlHlp.AddContentToCell(insertAt.AddOffsetColumn(), entry.Par
@@ -764,28 +764,28 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                                 pointAssignments = $"{entry.PointAssignments}";
                             }
 
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), pointAssignments);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), pointAssignments);
 
                             if (entry.TestCase != null)
                             {
                                 testCaseStuff = $"{entry.TestCase}";
                             }
 
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), testCaseStuff);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), testCaseStuff);
 
                             if (entry.TestObject != null)
                             {
                                 testObjectStuff = $"{entry.TestObject}";
                             }
 
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), testObjectStuff);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), testObjectStuff);
 
                             if (entry.TestSuite != null)
                             {
                                 testSuiteStuff = $"{entry.TestSuite}";
                             }
 
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), testSuiteStuff);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), testSuiteStuff);
 
                             insertAt.IncrementRows();
                         }
@@ -803,11 +803,11 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                             insertAt.ClearOffsets();
 
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{testSuite.Id}", cellFormat: redContent);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{testSuite.Title}");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{testSuite.Id}", cellFormat: redContent);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{testSuite.Title}");
 
 
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{testSuite.AllTestCases.Count}");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{testSuite.AllTestCases.Count}");
 
                             string defaultConfigurations = "null";
                             string error = "null";
@@ -817,36 +817,36 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                             {
                                 defaultConfigurations = $"{testSuite.DefaultConfigurations.Count}";
                             }
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), defaultConfigurations);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), defaultConfigurations);
 
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), testSuite.Description);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), testSuite.Description);
 
                             if (testSuite.Error != null)
                             {
                                 error = testSuite.Error;
                             }
 
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), error);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{testSuite.InvalidProperties}");
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{testSuite.IsDirty}");
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{testSuite.IsRoot}");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), error);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{testSuite.InvalidProperties}");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{testSuite.IsDirty}");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{testSuite.IsRoot}");
 
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{testSuite.LastUpdated}", cellFormat: dateContent);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{testSuite.LastUpdated}", cellFormat: dateContent);
 
                             if (testSuite.LastUpdatedByName != null)
                             {
                                 lastUpdatedByName = testSuite.LastUpdatedByName;
                             }
 
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), lastUpdatedByName);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), lastUpdatedByName);
 
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{testSuite.Parent.Id}", cellFormat: redContent);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{testSuite.Plan.Id}", cellFormat: redContent);
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{testSuite.Plan.Name}");
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{testSuite.Revision}");
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{testSuite.State}");
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{testSuite.TestCaseCount}");
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{testSuite.TestSuiteType}");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{testSuite.Parent.Id}", cellFormat: redContent);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{testSuite.Plan.Id}", cellFormat: redContent);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{testSuite.Plan.Name}");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{testSuite.Revision}");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{testSuite.State}");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{testSuite.TestCaseCount}");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{testSuite.TestSuiteType}");
 
                             insertAt.IncrementRows();
 
@@ -870,33 +870,33 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                             {
                                 insertAt.ClearOffsets();
 
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testCase.Id }", cellFormat: redContent);
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testCase.Title  }");
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testCase.Actions.Count }");
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testCase.Area }");
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testCase.Attachments.Count }");
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testCase.DateCreated }", cellFormat: dateContent);
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testCase.DateModified }", cellFormat: dateContent);
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testCase.Error }");
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testCase.Exists }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testCase.Id }", cellFormat: redContent);
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testCase.Title  }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testCase.Actions.Count }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testCase.Area }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testCase.Attachments.Count }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testCase.DateCreated }", cellFormat: dateContent);
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testCase.DateModified }", cellFormat: dateContent);
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testCase.Error }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testCase.Exists }");
 
                                 if (testCase.Implementation != null)
                                 {
                                     implementation = testCase.Implementation.DisplayText;
                                 }
 
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), implementation);
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), implementation);
 
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testCase.IsAutomated }");
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testCase.IsDirty }");
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testCase.Links.Count }");
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testCase.OwnerName }");
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testCase.Priority }");
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testCase.Project.TeamProjectName }");
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testCase.Reason }");
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testCase.Revision }");
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testCase.State }");
-                                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), $"{ testCase.WorkItem.Id }", cellFormat: redContent);
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testCase.IsAutomated }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testCase.IsDirty }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testCase.Links.Count }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testCase.OwnerName }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testCase.Priority }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testCase.Project.TeamProjectName }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testCase.Reason }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testCase.Revision }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testCase.State }");
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ testCase.WorkItem.Id }", cellFormat: redContent);
 
                                 insertAt.IncrementRows();
 

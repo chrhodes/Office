@@ -19,22 +19,28 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Domain
         public List<String> TeamProjects { get; set; }
         public List<String> WorkItemTypes { get; set; }
 
-        public bool ShowAllNodeLevels { get; set; } = false;
+        public bool ShowAllNodeLevels { get; set; }
 
-        public bool ShowIndividualItems { get; set; } = false;
+        public bool ShowIndividualItems { get; set; }
         public int LoopUpdateInterval { get; set; } = 50;
+
+        public Boolean RetrieveRevisions { get; set; }
+        public Boolean RetrieveFieldChanges { get; set; }
 
         public int RecursionLevel { get; set; } = 1;
 
-        public bool ExportXMLTemplate { get; set; } = false;
-        public bool IncludeGlobalLists { get; set; } = false;
+        public bool ExportXMLTemplate { get; set; }
+        public bool IncludeGlobalLists { get; set; }
         public string XMLTemplateFilePath { get; set; } = @"C:\Temp\AZDO-TFS";
 
         public FormatSpecifications FormatSpecs { get; set; } = new FormatSpecifications();
 
-        public bool ListChangeSetChanges { get; set; } = false;
-        public bool ListChangeSetWorkItems { get; set; } = false;
+        public bool ListChangeSetChanges { get; set; }
+        public bool ListChangeSetWorkItems { get; set; }
 
         public WorkItemQuery WorkItemQuerySpec { get; set; }
+
+
+
     }
 }

@@ -153,6 +153,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 XlHlp.AddLabeledInfoX(insertAt.AddRowX(2), $"ServerInfo.Features.Count: {workItemStore.ServerInfo.Features.Count()}", "");
                 XlHlp.AddLabeledInfoX(insertAt.AddRowX(2), $"TimeZone: {workItemStore.TimeZone}", "");
                 XlHlp.AddLabeledInfoX(insertAt.AddRowX(2), $"Projects.Count: {workItemStore.Projects.Count}", "");
+                XlHlp.AddLabeledInfoX(insertAt.AddRowX(2), $"ClientService.WorkItemServerVersion: {workItemStore.ClientService.WorkItemServerVersion}", "");
 
                 if (project is { })
                 {
@@ -251,8 +252,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             try
             {
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), project.Name);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), project.AreaRootNodes.Count.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), project.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), project.AreaRootNodes.Count.ToString());
 
                 //XlHlp.AddTitledInfo(insertAt.AddRow(), "Areas", project.AreaRootNodes.Count.ToString());
 
@@ -271,7 +272,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                         try
                         {
                             var result = project.AreaRootNodes[area];
-                            XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), area);
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), area);
                         }
                         catch (Exception)
                         {
@@ -545,12 +546,12 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 {
                     insertAt.ClearOffsets();
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), category.Name);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), category.DefaultWorkItemType.Name);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), category.Name);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), category.DefaultWorkItemType.Name);
 
                     foreach (WorkItemType wit in category.WorkItemTypes.OrderBy(nnn => nnn.Name))
                     {
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), wit.Name);
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), wit.Name);
                     }
 
                     insertAt.IncrementRows();
@@ -1207,21 +1208,21 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 {
                     insertAt.ColumnOffset = 0;
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.Name);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "QueryDefinition");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), ((QueryDefinition)item).QueryType.ToString());
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), ((QueryDefinition)item).QueryText);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), item.Name);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "QueryDefinition");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), ((QueryDefinition)item).QueryType.ToString());
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), ((QueryDefinition)item).QueryText);
                 }
 
                 if (item is QueryFolder)
                 {
                     insertAt.ColumnOffset = 0;
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.Name);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "QueryFolder");
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.Id.ToString());
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.IsPersonal.ToString());
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.Path);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), item.Name);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "QueryFolder");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), item.Id.ToString());
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), item.IsPersonal.ToString());
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), item.Path);
 
                     insertAt = AddQueryNodes(insertAt, (QueryFolder)item);
                 }

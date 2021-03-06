@@ -17,7 +17,7 @@
     xmlns:ui="clr-namespace:SupportTools_Excel.User_Interface"
     xmlns:uiuc="clr-namespace:SupportTools_Excel.User_Interface.User_Controls"
              
-    xmlns:vncWPF="clr-namespace:VNC.WPF.Presentation.Views;assembly=VNC.WPF.PresentationNF"
+    xmlns:vncWPF="clr-namespace:VNC.WPF.Presentation.Views;assembly=VNC.WPF.Presentation"
              
     dx:ThemeManager.ThemeName="MetropolisLight"
     mc:Ignorable="d" Loaded="UserControl_Loaded" 

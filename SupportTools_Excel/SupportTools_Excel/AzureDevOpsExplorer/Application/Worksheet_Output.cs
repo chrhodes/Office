@@ -66,8 +66,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     }
                     else
                     {
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), teamProjectName);
-                        XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), "No VCS Project");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), teamProjectName);
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "No VCS Project");
                         insertAt.IncrementRows();
                     }
 

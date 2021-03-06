@@ -123,11 +123,11 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), branch.Properties.RootItem.Item);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), branch.DateCreated.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), branch.Properties.RootItem.Item);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), branch.DateCreated.ToString());
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), branch.Properties.RootItem.ChangeType.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), branch.Properties.RootItem.Version.DisplayString);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), branch.Properties.RootItem.ChangeType.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), branch.Properties.RootItem.Version.DisplayString);
                 //ExcelHlp.AddContentToCell(insertAt.AddOffsetColumn(), branch.Properties.RootItem.ToString());
 
                 insertAt.IncrementRows();
@@ -145,11 +145,11 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                         continue;
                     }
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), childBranch.Properties.RootItem.Item);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), childBranch.DateCreated.ToString());
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), childBranch.Properties.RootItem.Item);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), childBranch.DateCreated.ToString());
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), childBranch.Properties.RootItem.ChangeType.ToString());
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), childBranch.Properties.RootItem.Version.DisplayString);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), childBranch.Properties.RootItem.ChangeType.ToString());
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), childBranch.Properties.RootItem.Version.DisplayString);
 
                     insertAt.IncrementRows();
 
@@ -1102,17 +1102,17 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             {
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), branch.Properties.RootItem.Item);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), branch.Properties.RootItem.Item);
 
                 string parentBranch = branch.Properties.ParentBranch != null ? branch.Properties.ParentBranch.Item : "<none>";
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), parentBranch);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), branch.DateCreated.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), branch.Properties.Owner);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), branch.Properties.OwnerDisplayName);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), branch.Properties.RootItem.ChangeType.ToString());
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), branch.Properties.RootItem.Version.DisplayString);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), branch.RelatedBranches.Count().ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), parentBranch);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), branch.DateCreated.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), branch.Properties.Owner);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), branch.Properties.OwnerDisplayName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), branch.Properties.RootItem.ChangeType.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), branch.Properties.RootItem.Version.DisplayString);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), branch.RelatedBranches.Count().ToString());
 
                 insertAt.IncrementRows();
             }

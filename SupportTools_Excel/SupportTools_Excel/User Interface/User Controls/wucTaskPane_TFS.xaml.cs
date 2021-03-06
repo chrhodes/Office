@@ -1247,8 +1247,8 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 //{
                 //    insertAt.ClearOffsets();
 
-                //    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.ItemType.ToString());
-                //    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), item.ServerItem.ToString());
+                //    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), item.ItemType.ToString());
+                //    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), item.ServerItem.ToString());
 
                 //    insertAt.IncrementRows();
                 //}

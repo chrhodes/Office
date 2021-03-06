@@ -31,6 +31,9 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ModelWrappers
         public bool ShowIndividualItems { get { return GetValue<bool>(); } set { SetValue(value); } }
         public int LoopUpdateInterval { get { return GetValue<int>(); } set { SetValue(value); } }
 
+        public Boolean RetrieveRevisions { get { return GetValue<Boolean>(); } set { SetValue(value); } }
+        public Boolean RetrieveFieldChanges { get { return GetValue<Boolean>(); } set { SetValue(value); } }
+
         public int RecursionLevel { get { return GetValue<int>(); } set { SetValue(value); } }
 
         //public bool ShowWorkItemFieldData { get { return GetValue<bool>(); } set { SetValue(value); } }

@@ -1456,10 +1456,10 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
                 insertAt.ClearOffsets();
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), category.Name);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), category.ReferenceName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), category.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), category.ReferenceName);
                 int count = category.WorkItemTypes.Count();
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), count.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), count.ToString());
 
                 sbWorkItemTypes.Append("WorkItemTypes:(");
 
@@ -1478,10 +1478,10 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
                 sbWorkItemTypes.Append(")");
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), category.DefaultWorkItemType.Name);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), category.DefaultWorkItemType.Description);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), category.DefaultWorkItemType.Description);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), sbWorkItemTypes.ToString());
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), category.DefaultWorkItemType.Name);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), category.DefaultWorkItemType.Description);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), category.DefaultWorkItemType.Description);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), sbWorkItemTypes.ToString());
 
                 //string templateType = "???";
 

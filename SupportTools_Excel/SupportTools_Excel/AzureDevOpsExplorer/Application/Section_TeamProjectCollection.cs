@@ -65,9 +65,9 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 XlHlp.AddLabeledInfo(insertAt.AddRow(), "Everyone", everyone.Members.Count().ToString());
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), everyone.DisplayName);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), everyone.UniqueName);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), everyone.Descriptor.IdentityType);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), everyone.DisplayName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), everyone.UniqueName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), everyone.Descriptor.IdentityType);
 
                 insertAt.IncrementRows();
             }
@@ -82,9 +82,9 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 XlHlp.AddLabeledInfo(insertAt.AddRow(), "Licensees", licensees.Members.Count().ToString());
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), licensees.DisplayName);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), licensees.UniqueName);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), licensees.Descriptor.IdentityType);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), licensees.DisplayName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), licensees.UniqueName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), licensees.Descriptor.IdentityType);
 
                 insertAt.IncrementRows();
             }
@@ -99,9 +99,9 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 XlHlp.AddLabeledInfo(insertAt.AddRow(), "NamespaceAdministrators", namespaceAdministrators.Members.Count().ToString());
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), namespaceAdministrators.DisplayName);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), namespaceAdministrators.UniqueName);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), namespaceAdministrators.Descriptor.IdentityType);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), namespaceAdministrators.DisplayName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), namespaceAdministrators.UniqueName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), namespaceAdministrators.Descriptor.IdentityType);
 
                 insertAt.IncrementRows();
             }
@@ -116,9 +116,9 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 XlHlp.AddLabeledInfo(insertAt.AddRow(), "ServiceUsers", serviceUsers.Members.Count().ToString());
 
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), serviceUsers.DisplayName);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), serviceUsers.UniqueName);
-                XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), serviceUsers.Descriptor.IdentityType);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), serviceUsers.DisplayName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), serviceUsers.UniqueName);
+                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), serviceUsers.Descriptor.IdentityType);
 
                 insertAt.IncrementRows();
             }
@@ -213,23 +213,23 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                     }
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), topLevel);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), topLevel);
 
                     // Group
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), identity.Descriptor.Identifier);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), identity.DisplayName);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), identity.Descriptor.Identifier);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), identity.DisplayName);
 
                     // Members
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), _Global_Identities[member].IsContainer.ToString());
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), _Global_Identities[member].TeamFoundationId.ToString());
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), _Global_Identities[member].DisplayName);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), _Global_Identities[member].UniqueName);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), _Global_Identities[member].Descriptor.IdentityType);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), _Global_Identities[member].Descriptor.Identifier);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), _Global_Identities[member].UniqueUserId.ToString());
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), _Global_Identities[member].IsActive.ToString());
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), _Global_Identities[member].IsContainer.ToString());
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), _Global_Identities[member].TeamFoundationId.ToString());
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), _Global_Identities[member].DisplayName);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), _Global_Identities[member].UniqueName);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), _Global_Identities[member].Descriptor.IdentityType);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), _Global_Identities[member].Descriptor.Identifier);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), _Global_Identities[member].UniqueUserId.ToString());
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), _Global_Identities[member].IsActive.ToString());
 
                     insertAt.IncrementRows();
                 }
@@ -289,7 +289,9 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 //XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 25, "ProjectName", 12);
                 XlHlp.AddColumnHeaderToSheetX(insertAt.AddOffsetColumnX(), 25, "ProjectState");
                 XlHlp.AddColumnHeaderToSheetX(insertAt.AddOffsetColumnX(), 62, "ProjectUri");
+                XlHlp.AddColumnHeaderToSheetX(insertAt.AddOffsetColumnX(), 10, "Tfvc Enabled");
                 XlHlp.AddColumnHeaderToSheetX(insertAt.AddOffsetColumnX(), 25, "SCC");
+
 
 
                 //XlHlp.AddTitledInfo(insertAt.AddRow(2), "TP Name", teamProject.Name);
@@ -307,13 +309,14 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                 try
                 {
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), projectNode.Resource.DisplayName);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), projectNode.Resource.Description);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), projectNode.Resource.Identifier.ToString());
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), projectNode.Resource.Properties["ProjectId"]);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), projectNode.Resource.DisplayName);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), projectNode.Resource.Description);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), projectNode.Resource.Identifier.ToString());
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), projectNode.Resource.Properties["ProjectId"]);
                     //XlHlp.AddContentToCell(insertAt.AddOffsetColumn(), projectNode.Resource.Properties["ProjectName"]);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), projectNode.Resource.Properties["ProjectState"]);
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), projectNode.Resource.Properties["ProjectUri"]);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), projectNode.Resource.Properties["ProjectState"]);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), projectNode.Resource.Properties["ProjectUri"]);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), projectNode.Resource.Properties["SourceControlTfvcEnabled"]);
 
                     string sccType = "??";
 
@@ -343,7 +346,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                         }
                     }
 
-                    XlHlp.AddContentToCell(insertAt.AddOffsetColumnX(), sccType);
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), sccType);
                 }
                 catch (Exception ex)
                 {
