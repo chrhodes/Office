@@ -1237,6 +1237,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                     insertAt.IncrementRows();
                 }
 
+                if (request.WorkItemSections.Contains("TestFields"))
+                {
+                    insertAt = Section_WorkItemStore.Test_WorkItem_Fields(insertAt, options, workItem, request);
+                    insertAt.IncrementRows();
+                }
+
                 if (request.WorkItemSections.Contains("PlainLinks"))
                 {
                     insertAt = Section_WorkItemStore.Add_WorkItem_Links(insertAt, options,
