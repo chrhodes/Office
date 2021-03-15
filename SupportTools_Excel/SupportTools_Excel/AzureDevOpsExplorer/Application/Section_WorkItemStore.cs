@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Web;
 using System.Windows;
 
 using Microsoft.Office.Interop.Excel;
@@ -851,6 +853,146 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
         //    return insertAt;
         //}
+
+        internal static XlHlp.XlLocation Test_WorkItem_Fields(
+            XlHlp.XlLocation insertAt,
+            Options_AZDO_TFS options,
+            WorkItem workItem,
+            WorkItemActionRequest request)
+        {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            XlHlp.DisplayInWatchWindow(insertAt);
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("This is > 1 & < '2' but > \"1.5\" <div> <br> \"<div>\" '<br>' Oh My");
+            sb.AppendLine("&lt; (<) &gt; (>) &amp; (&) &apos &quot; (\") &#39; (')");
+            sb.AppendLine("This is > 2 & < '3' but > \"2.5\" <div> <br> \"<div>\" '<br>' Oh My");
+            sb.AppendLine("&lt; (<) &gt; (>) &amp; (&) &apos &quot; (\") &#39; (')");
+            sb.AppendLine("This is > 3 & < '4' but > \"3.5\" <div> <br> \"<div>\" '<br>' Oh My");
+
+            try
+            {
+                if (insertAt.OrientVertical)
+                {
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), "WorkItem Fields", workItem.Id.ToString(), columnWidth: 25);
+                }
+                else
+                {
+                    XlHlp.AddSectionInfo(insertAt.AddRow(), "WorkItem Fields", workItem.Id.ToString(),
+                        orientation: XlOrientation.xlUpward);
+                    insertAt.IncrementColumns();
+                }
+
+                insertAt.IncrementRows();
+
+                insertAt.MarkStart(XlHlp.MarkType.GroupTable);
+
+                if (request.RetrieveAllWorkItemFieldData)
+                {
+                    Header_WorkItemStore.Add_TP_WorkItemFieldValues(insertAt);
+
+                    workItem.Open();
+
+                    // HACK(crhodes)
+                    // Put better test data in original fields.
+
+                    workItem.Fields["Custom.TestCase.TestData"].Value = sb.ToString();
+                    workItem.Fields["Custom.TestCase.ExecutionSteps"].Value = sb.ToString();
+                    workItem.Fields["Custom.TestCase.SetupSteps"].Value = sb.ToString();
+
+                    foreach (Field field in workItem.Fields)
+                    {
+                        insertAt.ClearOffsets();
+
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ field.Id }");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ field.Name }");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ field.ReferenceName }");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $">{ field.OriginalValue }<");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $">{ field.Value }<");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $">{ field.FieldDefinition.FieldType }<");
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $">{ field.FieldDefinition.SystemType }<");
+
+                        // HACK(crhodes)
+                        // 
+
+                        if (field.Name.Equals("STS_Data"))
+                        {
+
+                            string htmlEncodeded = HttpUtility.HtmlEncode(workItem.Fields["Custom.TestCase.TestData"].Value);
+
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $">{ htmlEncodeded }<");
+
+                            field.Value = htmlEncodeded;
+                        }
+
+                        if (field.Name.Equals("STS_Execution"))
+                        {
+                            string htmlEncodeded = HttpUtility.HtmlEncode(workItem.Fields["Custom.TestCase.ExecutionSteps"].Value);
+
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $">{ htmlEncodeded }<");
+
+                            field.Value = htmlEncodeded;
+                        }
+
+                        if (field.Name.Equals("STS_Setup"))
+                        {
+                            string htmlEncodeded = HttpUtility.HtmlEncode(workItem.Fields["Custom.TestCase.SetupSteps"].Value);
+
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $">{ htmlEncodeded }<");
+
+                            field.Value = htmlEncodeded;
+                        }
+
+                        insertAt.IncrementRows();
+                    }
+                }
+                else
+                {
+                    Header_WorkItemStore.Add_TP_WorkItemFieldValues2(insertAt);
+
+                    foreach (Field field in workItem.Fields)
+                    {
+                        if (request.WorkItemFields.Contains(field.ReferenceName))
+                        {
+                            insertAt.ClearOffsets();
+
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Project.Name }");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Id}");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Type.Name}");
+
+
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ field.Id }");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ field.Name }");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ field.ReferenceName }");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $">{ field.OriginalValue }<");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $">{ field.Value }<");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $">{ field.FieldDefinition.FieldType }<");
+                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $">{ field.FieldDefinition.SystemType }<");
+
+                            insertAt.IncrementRows();
+                        }
+                    }
+                }
+
+                workItem.Save();
+
+                insertAt.MarkEnd(XlHlp.MarkType.GroupTable);
+
+                insertAt.Group(insertAt.OrientVertical);
+
+                insertAt.EndSectionAndSetNextLocation(insertAt.OrientVertical);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
+            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+
+            return insertAt;
+        }
 
         internal static XlHlp.XlLocation Add_WorkItem_Fields(
             XlHlp.XlLocation insertAt,

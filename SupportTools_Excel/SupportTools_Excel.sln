@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleA", "Modules\ModuleA\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupportTools_Excel.Infrastructure", "SupportTools_Excel.Infrastructure\SupportTools_Excel.Infrastructure.csproj", "{BB1193EC-4836-4850-A4C4-0CD639EC39F5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNC.TFSHelper", "..\..\VNC\VNC.TFSHelper\VNC.TFSHelper\VNC.TFSHelper.csproj", "{006B334F-C558-49C7-A5BC-71C59A1A9105}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|Any CPU = All|Any CPU
@@ -142,6 +144,24 @@ Global
 		{BB1193EC-4836-4850-A4C4-0CD639EC39F5}.Release|x64.Build.0 = Release|x64
 		{BB1193EC-4836-4850-A4C4-0CD639EC39F5}.Release|x86.ActiveCfg = Release|x86
 		{BB1193EC-4836-4850-A4C4-0CD639EC39F5}.Release|x86.Build.0 = Release|x86
+		{006B334F-C558-49C7-A5BC-71C59A1A9105}.All|Any CPU.ActiveCfg = Debug|Any CPU
+		{006B334F-C558-49C7-A5BC-71C59A1A9105}.All|Any CPU.Build.0 = Debug|Any CPU
+		{006B334F-C558-49C7-A5BC-71C59A1A9105}.All|x64.ActiveCfg = Debug|Any CPU
+		{006B334F-C558-49C7-A5BC-71C59A1A9105}.All|x64.Build.0 = Debug|Any CPU
+		{006B334F-C558-49C7-A5BC-71C59A1A9105}.All|x86.ActiveCfg = Debug|Any CPU
+		{006B334F-C558-49C7-A5BC-71C59A1A9105}.All|x86.Build.0 = Debug|Any CPU
+		{006B334F-C558-49C7-A5BC-71C59A1A9105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{006B334F-C558-49C7-A5BC-71C59A1A9105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{006B334F-C558-49C7-A5BC-71C59A1A9105}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{006B334F-C558-49C7-A5BC-71C59A1A9105}.Debug|x64.Build.0 = Debug|Any CPU
+		{006B334F-C558-49C7-A5BC-71C59A1A9105}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{006B334F-C558-49C7-A5BC-71C59A1A9105}.Debug|x86.Build.0 = Debug|Any CPU
+		{006B334F-C558-49C7-A5BC-71C59A1A9105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{006B334F-C558-49C7-A5BC-71C59A1A9105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{006B334F-C558-49C7-A5BC-71C59A1A9105}.Release|x64.ActiveCfg = Release|Any CPU
+		{006B334F-C558-49C7-A5BC-71C59A1A9105}.Release|x64.Build.0 = Release|Any CPU
+		{006B334F-C558-49C7-A5BC-71C59A1A9105}.Release|x86.ActiveCfg = Release|Any CPU
+		{006B334F-C558-49C7-A5BC-71C59A1A9105}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -152,9 +172,10 @@ Global
 		{88BDCDD4-816B-4A4A-8DF6-72FE2644714C} = {A48D6CA7-3475-4E8D-A69A-0A5F58753AE2}
 		{3D9A8549-A7A8-4DF9-829E-AEAE7ECACACA} = {A48D6CA7-3475-4E8D-A69A-0A5F58753AE2}
 		{BB1193EC-4836-4850-A4C4-0CD639EC39F5} = {218FF1DE-B270-4651-AE7A-61912FF7EA42}
+		{006B334F-C558-49C7-A5BC-71C59A1A9105} = {218FF1DE-B270-4651-AE7A-61912FF7EA42}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45
 		SolutionGuid = {AEA2EFEA-B2AD-4B26-8A98-3EB10703C746}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal
