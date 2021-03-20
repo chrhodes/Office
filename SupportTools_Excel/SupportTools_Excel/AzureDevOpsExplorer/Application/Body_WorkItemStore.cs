@@ -1487,7 +1487,11 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     // Inherited Process Templates cannot be exported.
                     newTransitions.Add(new Transition
                     {
-                        From = "Not Supported"
+                        From = "Not Supported by Process Template",
+                        To = "",
+                        Fields = "",
+                        Reasons = "",
+                        For = ""
                     });
 
                     supportsExport = false;
