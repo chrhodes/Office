@@ -266,19 +266,6 @@ namespace SupportTools_Excel
         {
             long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
-            // NOTE(crhodes)
-            // Maybe this is where boot strapper should go.
-
-            //try
-            //{
-            //    var bootstrapper = new Bootstrapper();
-            //    bootstrapper.Run();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.ToString());
-            //}
-
             var frm = new User_Interface.Forms.frmTFSHost();
             frm.Show();
 

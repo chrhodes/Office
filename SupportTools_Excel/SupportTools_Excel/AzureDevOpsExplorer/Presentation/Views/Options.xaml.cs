@@ -1,11 +1,9 @@
 ﻿using System.Windows.Controls;
 
-using SupportTools_Excel.Domain;
 using SupportTools_Excel.Infrastructure.Presentation.ViewModels;
 
 using VNC;
 using VNC.Core.Mvvm;
-using SupportTools_Excel.AzureDevOpsExplorer.Domain;
 
 namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 {
@@ -91,52 +89,5 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
         #endregion
 
-        public Options_AZDO_TFS GetOptions()
-        {
-            long startTicks = Log.VIEW("Enter", Common.PROJECT_NAME);
-
-            Options_AZDO_TFS options = new Options_AZDO_TFS();
-
-            // TODO(crhodes)
-            // Put some error handling, validation here.
-
-            //options.GoBackDays = int.Parse(teGoBackDays.Text);
-            //options.StartDate = deStartDate.DateTime;
-            //options.EndDate = deEndDate.DateTime;
-            //options.GetLastActivityDates = (bool)ceGetLastActivityDates.IsChecked;
-            //options.SkipIfNoActivity = (bool)ceSkipIfNoActivity.IsChecked;
-
-            if ((bool)ceEnableDelays.IsChecked)
-            {
-                //options.LoopDelaySeconds = int.Parse(teLoopDelay.Text);
-                //options.ItemDelaySeconds = Single.Parse(teItemDelay.Text);
-            }
-
-            //options.StartingRow = (int)spnStartingRow.Value;
-            //options.StartingColumn = (int)spnStartingColumn.Value;
-            //options.OrientOutputVertically = (bool)ceOrientOutputVertically.IsChecked;
-
-            //char[] splitChars = { ';' };
-            //options.TeamProjects = cbeTeamProjects.Text.Split(splitChars, StringSplitOptions.None).ToList();
-            //options.TeamProjects.Sort();
-
-            //options.WorkItemTypes = cbeWorkItemType.Text.Split(splitChars, StringSplitOptions.None).ToList();
-            //options.WorkItemTypes.Sort();
-
-            //options.ShowIndividualItems = (bool)ceShowIndividualItems.IsChecked;
-            //options.LoopUpdateInterval = int.Parse(teLoopUpdateInterval.Text);
-
-            //options.RecursionLevel = (int)spnRecursionLevel.Value;
-
-            //options.ShowWorkItemFieldData = (bool)ceShowWorkItemFields.IsChecked;
-
-            //options.ExportXMLTemplate = (bool)ceExportXMLTemplate.IsChecked;
-            //options.XMLTemplateFilePath = teXMLTemplateFilePath.Text;
-            //options.IncludeGlobalLists = (bool)ceIncludeGlobalLists.IsChecked;
-
-            Log.VIEW("Exit", Common.LOG_APPNAME, startTicks);
-
-            return options;
-        }
     }
 }
