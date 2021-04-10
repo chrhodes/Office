@@ -67,6 +67,18 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
         {
             WorkItemFields = new ObservableCollection<string>();
 
+            using (XmlTextReader xtr = new XmlTextReader(Common.cCONFIG_FILE))
+            {
+                XDocument xDocument = XDocument.Load(xtr, LoadOptions.PreserveWhitespace);
+
+                var fields = xDocument.Descendants("TFSQueries").Descendants("Fields");
+
+                foreach (var field in fields.Elements())
+                {
+                    WorkItemFields.Add(field.Attribute("Name").Value);
+                }
+            }
+
             // HACK(crhodes)
             // Should either retrieve all the fields or drive this in the XML file
             // For now just hard code some fields that will likely be interesting.
@@ -78,81 +90,81 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
             //WorkItemFields.Add("Changed By");
             //WorkItemFields.Add("Changed Date");
 
-            WorkItemFields.Add("CVSS Vector String");
-            WorkItemFields.Add("CVSSScore");
+            //WorkItemFields.Add("CVSS Vector String");
+            //WorkItemFields.Add("CVSSScore");
 
-            WorkItemFields.Add("DeferNote");
-            WorkItemFields.Add("DeferNoteHTML");
-            WorkItemFields.Add("Deferred By");
-            WorkItemFields.Add("Deferred Date");
-            WorkItemFields.Add("Deferred Fix Rating");
+            //WorkItemFields.Add("DeferNote");
+            //WorkItemFields.Add("DeferNoteHTML");
+            //WorkItemFields.Add("Deferred By");
+            //WorkItemFields.Add("Deferred Date");
+            //WorkItemFields.Add("Deferred Fix Rating");
 
-            WorkItemFields.Add("Field Issue");
-            WorkItemFields.Add("Project ID");
-            WorkItemFields.Add("StoryPoints");
+            //WorkItemFields.Add("Field Issue");
+            //WorkItemFields.Add("Project ID");
+            //WorkItemFields.Add("StoryPoints");
 
-            WorkItemFields.Add("BugReason");
-            WorkItemFields.Add("FeatureReason");
-            WorkItemFields.Add("IssueReason");
-            WorkItemFields.Add("ProductionIssueReason");
-            WorkItemFields.Add("ReleaseReason");
-            WorkItemFields.Add("RequestReason");
-            WorkItemFields.Add("TaskReason");
-            WorkItemFields.Add("TestCaseReason");
-            WorkItemFields.Add("TestPlanReason");
-            WorkItemFields.Add("TestSuiteReason");
-            WorkItemFields.Add("UserNeedsReason");
-            WorkItemFields.Add("UserStoryReason");
+            //WorkItemFields.Add("BugReason");
+            //WorkItemFields.Add("FeatureReason");
+            //WorkItemFields.Add("IssueReason");
+            //WorkItemFields.Add("ProductionIssueReason");
+            //WorkItemFields.Add("ReleaseReason");
+            //WorkItemFields.Add("RequestReason");
+            //WorkItemFields.Add("TaskReason");
+            //WorkItemFields.Add("TestCaseReason");
+            //WorkItemFields.Add("TestPlanReason");
+            //WorkItemFields.Add("TestSuiteReason");
+            //WorkItemFields.Add("UserNeedsReason");
+            //WorkItemFields.Add("UserStoryReason");
 
-            // NOTE(crhodes)
-            // Fields for PlainText (multiline) to HTML fix
+            //// NOTE(crhodes)
+            //// Fields for PlainText (multiline) to HTML fix
 
-            // Bug
+            //// Bug
 
-            WorkItemFields.Add("CF.VSTS.HazardAnalysisHHS");
-            WorkItemFields.Add("Custom.STS_HazardAnalysisHHS");
+            //WorkItemFields.Add("CF.VSTS.HazardAnalysisHHS");
+            //WorkItemFields.Add("Custom.STS_HazardAnalysisHHS");
 
-            WorkItemFields.Add("CF.VSTS.MilestoneChanges");
-            WorkItemFields.Add("Custom.STS_MilestoneChanges");
+            //WorkItemFields.Add("CF.VSTS.MilestoneChanges");
+            //WorkItemFields.Add("Custom.STS_MilestoneChanges");
 
-            WorkItemFields.Add("CF.VSTS.MilestoneWithCompletionDate");
-            WorkItemFields.Add("Custom.STS_MilestoneWithCompletionDate");
+            //WorkItemFields.Add("CF.VSTS.MilestoneWithCompletionDate");
+            //WorkItemFields.Add("Custom.STS_MilestoneWithCompletionDate");
 
-            WorkItemFields.Add("CF.VSTS.OfficialPOAMComments");
-            WorkItemFields.Add("Custom.STS_OfficialPOAMComments");
+            //WorkItemFields.Add("CF.VSTS.OfficialPOAMComments");
+            //WorkItemFields.Add("Custom.STS_OfficialPOAMComments");
 
-            WorkItemFields.Add("CF.VSTS.RemediationDescription");
-            WorkItemFields.Add("Custom.STS_RemediationDescription");
+            //WorkItemFields.Add("CF.VSTS.RemediationDescription");
+            //WorkItemFields.Add("Custom.STS_RemediationDescription");
 
-            // Release
+            //// Release
 
-            WorkItemFields.Add("CF.VSTS.PRD.ChangeHistory");
-            WorkItemFields.Add("Custom.STS_ChangeHistoryPRD");
+            //WorkItemFields.Add("CF.VSTS.PRD.ChangeHistory");
+            //WorkItemFields.Add("Custom.STS_ChangeHistoryPRD");
 
-            WorkItemFields.Add("CF.VSTS.PRD.Scope");
-            WorkItemFields.Add("Custom.STS_PRDScope");
+            //WorkItemFields.Add("CF.VSTS.PRD.Scope");
+            //WorkItemFields.Add("Custom.STS_PRDScope");
 
-            WorkItemFields.Add("DevCustom.ReferenceDocumentsPRD");
-            WorkItemFields.Add("Custom.STS_ReferenceDocumentsPRD");
+            //WorkItemFields.Add("DevCustom.ReferenceDocumentsPRD");
+            //WorkItemFields.Add("Custom.STS_ReferenceDocumentsPRD");
 
-            WorkItemFields.Add("CF.VSTS.PRD.UserDefinition");
-            WorkItemFields.Add("Custom.STS_UserDefinition");
+            //WorkItemFields.Add("CF.VSTS.PRD.UserDefinition");
+            //WorkItemFields.Add("Custom.STS_UserDefinition");
 
-            // Request 
+            //// Request 
 
-            WorkItemFields.Add("CF.VSTS.RequestJustification");
-            WorkItemFields.Add("Custom.STS_RequestJustification");
+            //WorkItemFields.Add("CF.VSTS.RequestJustification");
+            //WorkItemFields.Add("Custom.STS_RequestJustification");
 
-            // Test Case
+            //// Test Case
 
-            WorkItemFields.Add("Custom.TestCase.TestData");
-            WorkItemFields.Add("Custom.STS_Data");
+            //WorkItemFields.Add("Custom.TestCase.TestData");
+            //WorkItemFields.Add("Custom.STS_Data");
 
-            WorkItemFields.Add("Custom.TestCase.ExecutionSteps");
-            WorkItemFields.Add("Custom.STS_Execution");
+            //WorkItemFields.Add("Custom.TestCase.ExecutionSteps");
+            //WorkItemFields.Add("Custom.STS_Execution");
 
-            WorkItemFields.Add("Custom.TestCase.SetupSteps");
-            WorkItemFields.Add("Custom.STS_Setup");
+            //WorkItemFields.Add("Custom.TestCase.SetupSteps");
+            //WorkItemFields.Add("Custom.STS_Setup");
         }
 
         private void PopulateWorkItemQueries()
@@ -165,7 +177,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
             XDocument xDocument = XDocument.Load(xtr, LoadOptions.PreserveWhitespace);
 
-            var queries = xDocument.Descendants("TFSQueries");
+            var queries = xDocument.Descendants("TFSQueries").Descendants("Queries");
 
             WorkItemQueries.Add(
                 new WorkItemQueryWrapper(new Domain.WorkItemQuery()
