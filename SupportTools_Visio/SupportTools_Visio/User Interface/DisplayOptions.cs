@@ -71,7 +71,7 @@ namespace SupportTools_Visio.User_Interface
 
         protected void OnDisplayBackupColumns(object sender, RoutedEventArgs e)
         {
-            var vtroot = VNC.Xaml.PhysicalTree.FindAncestor<UserControl>((DependencyObject)sender);
+            var vtroot = VNC.Core.Xaml.PhysicalTree.FindAncestor<UserControl>((DependencyObject)sender);
 
             string[] columnsToCheck = 
             { 
@@ -86,7 +86,7 @@ namespace SupportTools_Visio.User_Interface
 
         protected void OnDisplayEnvironmentColumns(object sender, RoutedEventArgs e)
         {
-            var vtroot = VNC.Xaml.PhysicalTree.FindAncestor<UserControl>((DependencyObject)sender);
+            var vtroot = VNC.Core.Xaml.PhysicalTree.FindAncestor<UserControl>((DependencyObject)sender);
 
             string[] columnsToCheck = 
             { 
@@ -140,7 +140,7 @@ namespace SupportTools_Visio.User_Interface
 
         protected void OnDisplayMonitoredColumns(object sender, RoutedEventArgs e)
         {
-            var vtroot = VNC.Xaml.PhysicalTree.FindAncestor<UserControl>((DependencyObject)sender);
+            var vtroot = VNC.Core.Xaml.PhysicalTree.FindAncestor<UserControl>((DependencyObject)sender);
 
             string[] columnsToCheck = 
             { 
@@ -154,7 +154,7 @@ namespace SupportTools_Visio.User_Interface
 
         protected void OnDisplayOperatingSystemColumns(object sender, RoutedEventArgs e)
         {
-            var vtroot = VNC.Xaml.PhysicalTree.FindAncestor<UserControl>((DependencyObject)sender);
+            var vtroot = VNC.Core.Xaml.PhysicalTree.FindAncestor<UserControl>((DependencyObject)sender);
 
             string[] columnsToCheck = 
             { 
@@ -169,7 +169,7 @@ namespace SupportTools_Visio.User_Interface
 
         protected void OnDisplayExpandColumns(object sender, RoutedEventArgs e)
         {
-            var vtroot = VNC.Xaml.PhysicalTree.FindAncestor<UserControl>((DependencyObject)sender);
+            var vtroot = VNC.Core.Xaml.PhysicalTree.FindAncestor<UserControl>((DependencyObject)sender);
 
             string[] columnsToCheck = 
             { 
@@ -188,7 +188,7 @@ namespace SupportTools_Visio.User_Interface
 
         protected void OnDisplayExtendedPropertyColumns(object sender, RoutedEventArgs e)
         {
-            var vtroot = VNC.Xaml.PhysicalTree.FindAncestor<UserControl>((DependencyObject)sender);
+            var vtroot = VNC.Core.Xaml.PhysicalTree.FindAncestor<UserControl>((DependencyObject)sender);
 
             string[] columnsToCheck = 
             { 
@@ -286,7 +286,7 @@ namespace SupportTools_Visio.User_Interface
 
         protected void OnDisplaySQLVersionColumns(object sender, RoutedEventArgs e)
         {
-            var vtroot = VNC.Xaml.PhysicalTree.FindAncestor<UserControl>((DependencyObject)sender);
+            var vtroot = VNC.Core.Xaml.PhysicalTree.FindAncestor<UserControl>((DependencyObject)sender);
 
             string[] columnsToCheck = 
             { 
@@ -333,7 +333,7 @@ namespace SupportTools_Visio.User_Interface
 
         private static void UpdateVisibilityOfColumns(object sender, string[] columnsToCheck, bool isVisible)
         {
-            var vtrootUserControl = VNC.Xaml.PhysicalTree.FindAncestor<UserControl>((DependencyObject)sender);
+            var vtrootUserControl = VNC.Core.Xaml.PhysicalTree.FindAncestor<UserControl>((DependencyObject)sender);
 
             if (vtrootUserControl != null)
             {
@@ -359,7 +359,7 @@ namespace SupportTools_Visio.User_Interface
             }
             else
             {
-                var vtrootWindow = VNC.Xaml.PhysicalTree.FindAncestor<DXWindow>((DependencyObject)sender);
+                var vtrootWindow = VNC.Core.Xaml.PhysicalTree.FindAncestor<DXWindow>((DependencyObject)sender);
 
                 foreach (string column in columnsToCheck)
                 {
@@ -392,11 +392,11 @@ namespace SupportTools_Visio.User_Interface
 
         private static void UpdateVisibilityOfFilterPanel(object sender, bool isVisible)
         {
-            var vtrootUserControl = VNC.Xaml.PhysicalTree.FindAncestor<UserControl>((DependencyObject)sender);
+            var vtrootUserControl = VNC.Core.Xaml.PhysicalTree.FindAncestor<UserControl>((DependencyObject)sender);
 
             if (vtrootUserControl != null)
             {
-                var tv = VNC.Xaml.PhysicalTree.FindChild<TableView>(vtrootUserControl, "tableView");
+                var tv = VNC.Core.Xaml.PhysicalTree.FindChild<TableView>(vtrootUserControl, "tableView");
 
                 if (isVisible)
                 {
@@ -411,9 +411,9 @@ namespace SupportTools_Visio.User_Interface
             }
             else
             {
-                var vtrootWindow = VNC.Xaml.PhysicalTree.FindAncestor<DXWindow>((DependencyObject)sender);
+                var vtrootWindow = VNC.Core.Xaml.PhysicalTree.FindAncestor<DXWindow>((DependencyObject)sender);
 
-                var tv = VNC.Xaml.PhysicalTree.FindChild<TableView>(vtrootWindow, "tableView");
+                var tv = VNC.Core.Xaml.PhysicalTree.FindChild<TableView>(vtrootWindow, "tableView");
 
                 if (isVisible)
                 {
@@ -430,12 +430,12 @@ namespace SupportTools_Visio.User_Interface
 
         private static void UpdateVisibilityOfGroupByPanel(object sender, bool isVisible)
         {
-            var vtrootUserControl = VNC.Xaml.PhysicalTree.FindAncestor<UserControl>((DependencyObject)sender);
+            var vtrootUserControl = VNC.Core.Xaml.PhysicalTree.FindAncestor<UserControl>((DependencyObject)sender);
 
             if (vtrootUserControl != null)
             {
-                var dg = VNC.Xaml.PhysicalTree.FindChild<DataGrid>(vtrootUserControl, "dataGrid");
-                var tv = VNC.Xaml.PhysicalTree.FindChild<TableView>(vtrootUserControl, "tableView");
+                var dg = VNC.Core.Xaml.PhysicalTree.FindChild<DataGrid>(vtrootUserControl, "dataGrid");
+                var tv = VNC.Core.Xaml.PhysicalTree.FindChild<TableView>(vtrootUserControl, "tableView");
 
                 if (isVisible)
                 {
@@ -448,9 +448,9 @@ namespace SupportTools_Visio.User_Interface
             }
             else
             {
-                var vtrootWindow = VNC.Xaml.PhysicalTree.FindAncestor<DXWindow>((DependencyObject)sender);
+                var vtrootWindow = VNC.Core.Xaml.PhysicalTree.FindAncestor<DXWindow>((DependencyObject)sender);
 
-                var tv = VNC.Xaml.PhysicalTree.FindChild<TableView>(vtrootWindow, "tableView");
+                var tv = VNC.Core.Xaml.PhysicalTree.FindChild<TableView>(vtrootWindow, "tableView");
 
                 if (isVisible)
                 {

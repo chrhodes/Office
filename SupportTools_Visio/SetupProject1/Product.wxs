@@ -447,7 +447,7 @@
 
       <Component Id="VNC_XamlHelper_dll_Component">
          <File Id="VNC_XamlHelper_dll" KeyPath="yes"
-               Name="VNC.XamlHelper.dll" Source="$(var.AddinFiles)" />
+               Name="VNC.Core.XamlHelper.dll" Source="$(var.AddinFiles)" />
       </Component>  
 		</ComponentGroup>
   

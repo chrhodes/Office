@@ -87,7 +87,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    VisioHelper.DisplayInWatchWindow(ex.ToString());
+                    Log.Error(ex, Common.LOG_APPNAME);
                 }
             }
 
@@ -133,7 +133,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
         public static void Add_IDandTextSupport_ToSelection()
@@ -236,11 +236,27 @@ namespace SupportTools_Visio.Actions
 
                     for (short row = 0; row < rows; row++)
                     {
-                        Visio.Cell cnntX = shape.CellsSRC[sectionConnection, row, (short)Visio.VisCellIndices.visCnnctX];
-                        Visio.Cell cnntY = shape.CellsSRC[sectionConnection, row, (short)Visio.VisCellIndices.visCnnctY];
-                        Visio.Cell cnntType = shape.CellsSRC[sectionConnection, row, (short)Visio.VisCellIndices.visCnnctType];
-                        Visio.Cell cnntD = shape.CellsSRC[sectionConnection, row, (short)Visio.VisCellIndices.visCnnctType];
-                        string value = cnntD.FormulaU;
+                        Visio.Cell cnnctX = shape.CellsSRC[sectionConnection, row, (short)Visio.VisCellIndices.visCnnctX];
+                        Visio.Cell cnnctY = shape.CellsSRC[sectionConnection, row, (short)Visio.VisCellIndices.visCnnctY];
+                        Visio.Cell cnnctDirX = shape.CellsSRC[sectionConnection, row, (short)Visio.VisCellIndices.visCnnctDirX];
+                        Visio.Cell cnnctA = shape.CellsSRC[sectionConnection, row, (short)Visio.VisCellIndices.visCnnctA];
+                        Visio.Cell cnnctDirY = shape.CellsSRC[sectionConnection, row, (short)Visio.VisCellIndices.visCnnctDirY];
+                        Visio.Cell cnnctB = shape.CellsSRC[sectionConnection, row, (short)Visio.VisCellIndices.visCnnctB];
+                        Visio.Cell cnnctType = shape.CellsSRC[sectionConnection, row, (short)Visio.VisCellIndices.visCnnctType];
+                        Visio.Cell cnnctC = shape.CellsSRC[sectionConnection, row, (short)Visio.VisCellIndices.visCnnctC];
+                        Visio.Cell cnnctD = shape.CellsSRC[sectionConnection, row, (short)Visio.VisCellIndices.visCnnctD];
+
+                        var cpX = cnnctX.FormulaU;
+                        var cpY = cnnctY.FormulaU;
+                        var cpDirX = cnnctDirX.FormulaU;
+                        var cpA = cnnctA.FormulaU;
+                        var cpDirY = cnnctDirY.FormulaU;
+                        var cpB = cnnctB.FormulaU;
+                        var cpType = cnnctType.FormulaU;
+                        var cpC = cnnctC.FormulaU;
+                        var cpD = cnnctD.FormulaU;
+
+                        string value = cnnctD.FormulaU;
 
                         if (value.Contains(tag))
                         {
@@ -278,7 +294,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -365,7 +381,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -539,7 +555,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -558,7 +574,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                
+                Log.Error(ex, Common.LOG_APPNAME);
             }
                 
             if (backgroundLayer == null)
@@ -663,7 +679,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -695,7 +711,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -942,7 +958,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -1006,7 +1022,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
 
         }
@@ -1075,7 +1091,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -1160,7 +1176,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -1189,7 +1205,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -1213,7 +1229,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -1269,7 +1285,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -1325,7 +1341,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -1376,7 +1392,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -1410,7 +1426,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -1455,7 +1471,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -1469,7 +1485,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    VisioHelper.DisplayInWatchWindow(ex.ToString());
+                    Log.Error(ex, Common.LOG_APPNAME);
                 }
             }
         }
@@ -1488,7 +1504,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    VisioHelper.DisplayInWatchWindow(ex.ToString());
+                    Log.Error(ex, Common.LOG_APPNAME);
                 }
             }
         }
@@ -1505,7 +1521,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    VisioHelper.DisplayInWatchWindow(ex.ToString());
+                    Log.Error(ex, Common.LOG_APPNAME);
                 }
             }
         }
@@ -1522,7 +1538,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    VisioHelper.DisplayInWatchWindow(ex.ToString());
+                    Log.Error(ex, Common.LOG_APPNAME);
                 }
             }
         }
@@ -1545,7 +1561,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    VisioHelper.DisplayInWatchWindow(ex.ToString());
+                    Log.Error(ex, Common.LOG_APPNAME);
                 }
             }
         }
@@ -1568,7 +1584,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    VisioHelper.DisplayInWatchWindow(ex.ToString());
+                    Log.Error(ex, Common.LOG_APPNAME);
                 }
             }
         }
@@ -1589,7 +1605,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    VisioHelper.DisplayInWatchWindow(ex.ToString());
+                    Log.Error(ex, Common.LOG_APPNAME);
                 }
             }
         }
@@ -1604,7 +1620,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    VisioHelper.DisplayInWatchWindow(ex.ToString());
+                    Log.Error(ex, Common.LOG_APPNAME);
                 }
             }
         }
@@ -2685,6 +2701,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
         public static void Set_BevelPropertiesWrapper_Section(Shape shape, BevelProperties bevelProperties)
@@ -2710,6 +2727,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -2727,6 +2745,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -2750,6 +2769,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -2789,6 +2809,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -2810,6 +2831,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -2843,6 +2865,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -2858,6 +2881,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -2882,6 +2906,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -2911,6 +2936,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -2928,42 +2954,50 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
         public static void Set_PageLayout_Section(Shape shape, PageLayout pageLayout)
         {
-            Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionObject];
-            Visio.Row sectionRow = section[(short)Visio.VisRowIndices.visRowPageLayout];
+            try
+            {
+                Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionObject];
+                Visio.Row sectionRow = section[(short)Visio.VisRowIndices.visRowPageLayout];
 
-            sectionRow[VisCellIndices.visPLOPlaceStyle].FormulaU =  pageLayout.PlaceStyle;
-            sectionRow[VisCellIndices.visPLOPlaceDepth].FormulaU = pageLayout.PlaceDepth;
-            sectionRow[VisCellIndices.visPLOPlowCode].FormulaU = pageLayout.PlowCode;
-            sectionRow[VisCellIndices.visPLOResizePage].FormulaU = pageLayout.ResizePage;
-            sectionRow[VisCellIndices.visPLODynamicsOff].FormulaU = pageLayout.DynamicsOff;
-            sectionRow[VisCellIndices.visPLOEnableGrid].FormulaU = pageLayout.EnableGrid;
-            sectionRow[VisCellIndices.visPLOCtrlAsInput].FormulaU = pageLayout.CtrlAsInput;
-            sectionRow[VisCellIndices.visPLOLineAdjustFrom].FormulaU = pageLayout.LineAdjustFrom;
-            sectionRow[VisCellIndices.visPLOPlaceFlip].FormulaU = pageLayout.PlaceFlip;
-            sectionRow[VisCellIndices.visPLOAvoidPageBreaks].FormulaU = pageLayout.AvoidPageBreaks;
-            sectionRow[VisCellIndices.visPLOBlockSizeX].FormulaU = pageLayout.BlockSizeX;
-            sectionRow[VisCellIndices.visPLOBlockSizeY].FormulaU = pageLayout.BlockSizeY;
-            sectionRow[VisCellIndices.visPLOAvenueSizeX].FormulaU = pageLayout.AvenueSizeX;
-            sectionRow[VisCellIndices.visPLOAvenueSizeY].FormulaU = pageLayout.AvenueSizeY;
-            sectionRow[VisCellIndices.visPLORouteStyle].FormulaU = pageLayout.RouteStyle;
-            sectionRow[VisCellIndices.visPLOJumpDirX].FormulaU = pageLayout.PageLineJumpDirX;
-            sectionRow[VisCellIndices.visPLOJumpDirY].FormulaU = pageLayout.PageLineJumpDirY;
-            sectionRow[VisCellIndices.visPLOLineAdjustTo].FormulaU = pageLayout.LineAdjustTo;
-            sectionRow[VisCellIndices.visPLOLineRouteExt].FormulaU = pageLayout.LineRouteExt;
-            sectionRow[VisCellIndices.visPLOLineToNodeX].FormulaU = pageLayout.LineToNodeX;
-            sectionRow[VisCellIndices.visPLOLineToNodeY].FormulaU = pageLayout.LineToNodeY;
-            sectionRow[VisCellIndices.visPLOLineToLineX].FormulaU = pageLayout.LineToLineX;
-            sectionRow[VisCellIndices.visPLOLineToLineY].FormulaU = pageLayout.LineToLineY;
-            sectionRow[VisCellIndices.visPLOJumpFactorX].FormulaU = pageLayout.LineJumpFactorX;
-            sectionRow[VisCellIndices.visPLOJumpFactorY].FormulaU = pageLayout.LineJumpFactorY;
-            sectionRow[VisCellIndices.visPLOJumpCode].FormulaU = pageLayout.LineJumpCode;
-            sectionRow[VisCellIndices.visPLOJumpStyle].FormulaU = pageLayout.LineJumpStyle;
-            sectionRow[VisCellIndices.visPLOSplit].FormulaU = pageLayout.PageShapeSplit;
+                sectionRow[VisCellIndices.visPLOPlaceStyle].FormulaU = pageLayout.PlaceStyle;
+                sectionRow[VisCellIndices.visPLOPlaceDepth].FormulaU = pageLayout.PlaceDepth;
+                sectionRow[VisCellIndices.visPLOPlowCode].FormulaU = pageLayout.PlowCode;
+                sectionRow[VisCellIndices.visPLOResizePage].FormulaU = pageLayout.ResizePage;
+                sectionRow[VisCellIndices.visPLODynamicsOff].FormulaU = pageLayout.DynamicsOff;
+                sectionRow[VisCellIndices.visPLOEnableGrid].FormulaU = pageLayout.EnableGrid;
+                sectionRow[VisCellIndices.visPLOCtrlAsInput].FormulaU = pageLayout.CtrlAsInput;
+                sectionRow[VisCellIndices.visPLOLineAdjustFrom].FormulaU = pageLayout.LineAdjustFrom;
+                sectionRow[VisCellIndices.visPLOPlaceFlip].FormulaU = pageLayout.PlaceFlip;
+                sectionRow[VisCellIndices.visPLOAvoidPageBreaks].FormulaU = pageLayout.AvoidPageBreaks;
+                sectionRow[VisCellIndices.visPLOBlockSizeX].FormulaU = pageLayout.BlockSizeX;
+                sectionRow[VisCellIndices.visPLOBlockSizeY].FormulaU = pageLayout.BlockSizeY;
+                sectionRow[VisCellIndices.visPLOAvenueSizeX].FormulaU = pageLayout.AvenueSizeX;
+                sectionRow[VisCellIndices.visPLOAvenueSizeY].FormulaU = pageLayout.AvenueSizeY;
+                sectionRow[VisCellIndices.visPLORouteStyle].FormulaU = pageLayout.RouteStyle;
+                sectionRow[VisCellIndices.visPLOJumpDirX].FormulaU = pageLayout.PageLineJumpDirX;
+                sectionRow[VisCellIndices.visPLOJumpDirY].FormulaU = pageLayout.PageLineJumpDirY;
+                sectionRow[VisCellIndices.visPLOLineAdjustTo].FormulaU = pageLayout.LineAdjustTo;
+                sectionRow[VisCellIndices.visPLOLineRouteExt].FormulaU = pageLayout.LineRouteExt;
+                sectionRow[VisCellIndices.visPLOLineToNodeX].FormulaU = pageLayout.LineToNodeX;
+                sectionRow[VisCellIndices.visPLOLineToNodeY].FormulaU = pageLayout.LineToNodeY;
+                sectionRow[VisCellIndices.visPLOLineToLineX].FormulaU = pageLayout.LineToLineX;
+                sectionRow[VisCellIndices.visPLOLineToLineY].FormulaU = pageLayout.LineToLineY;
+                sectionRow[VisCellIndices.visPLOJumpFactorX].FormulaU = pageLayout.LineJumpFactorX;
+                sectionRow[VisCellIndices.visPLOJumpFactorY].FormulaU = pageLayout.LineJumpFactorY;
+                sectionRow[VisCellIndices.visPLOJumpCode].FormulaU = pageLayout.LineJumpCode;
+                sectionRow[VisCellIndices.visPLOJumpStyle].FormulaU = pageLayout.LineJumpStyle;
+                sectionRow[VisCellIndices.visPLOSplit].FormulaU = pageLayout.PageShapeSplit;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, Common.LOG_APPNAME);
+            }
         }
 
         public static void Set_Paragraph_Section(Visio.Shape shape, Domain.ParagraphRow paragraph)
@@ -2990,7 +3024,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
         public static void Set_PrintProperties_Section(Shape shape, PrintProperties printProperties)
@@ -3018,6 +3052,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
         public static void Set_Protection_Section(Shape shape, Protection protection)
@@ -3055,6 +3090,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
         public static void Set_QuickStyle_Section(Shape shape, QuickStyle quickStyle)
@@ -3076,6 +3112,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -3099,6 +3136,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -3129,6 +3167,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -3152,6 +3191,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -3172,7 +3212,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
         public static void Set_ThemeProperties_Section(Shape shape, ThemeProperties themeProperties)
@@ -3193,6 +3233,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -3213,6 +3254,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 

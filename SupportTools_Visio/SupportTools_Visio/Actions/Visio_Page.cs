@@ -89,7 +89,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
 
             return layer;
@@ -192,7 +192,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
                 // No navigation Links Page perhaps
             }
         }
@@ -246,7 +246,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
                 // No navigation Links Page perhaps
             }
         }
@@ -551,7 +551,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -779,7 +779,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -826,7 +826,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -867,7 +867,7 @@ namespace SupportTools_Visio.Actions
             {
                 // TODO(crhodes):
                 // Decide if what to show this to user.  Layer maybe locked.
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -911,7 +911,7 @@ namespace SupportTools_Visio.Actions
             {
                 // TODO(crhodes):
                 // Decide if what to show this to user.  Layer maybe locked.
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
 
             VisioHelper.DisplayInWatchWindow("Exit");
@@ -1006,7 +1006,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
 
             // From Macro Recorder
@@ -1059,7 +1059,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
 
             }
             finally
@@ -1282,7 +1282,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    VisioHelper.DisplayInWatchWindow(ex.ToString());
+                    Log.Error(ex, Common.LOG_APPNAME);
                 }
             }
         }
@@ -1408,7 +1408,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    VisioHelper.DisplayInWatchWindow(ex.ToString());
+                    Log.Error(ex, Common.LOG_APPNAME);
                 }
             }
         }
@@ -1447,7 +1447,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    VisioHelper.DisplayInWatchWindow(ex.ToString());
+                    Log.Error(ex, Common.LOG_APPNAME);
                 }
             }
         }
@@ -1563,7 +1563,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 

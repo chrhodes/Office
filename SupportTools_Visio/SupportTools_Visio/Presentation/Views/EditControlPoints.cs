@@ -103,12 +103,40 @@ namespace SupportTools_Visio.Presentation.Views
                 });
             }
 
+            if ((bool)ceT16LLL.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "T16LLL",
+                    X = "Width*0.0625",
+                    Y = "Height*1.0",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Top"
+                });
+            }
+
             if ((bool)ceT8LL.IsChecked)
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
                     Name = "T8LL",
                     X = "Width*0.125",
+                    Y = "Height*1.0",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Top"
+                });
+            }
+
+            if ((bool)ceT16LLR.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "T16LLR",
+                    X = "Width*0.1875",
                     Y = "Height*1.0",
                     DirX = "0 in",
                     DirY = "0 in",
@@ -131,12 +159,40 @@ namespace SupportTools_Visio.Presentation.Views
                 });
             }
 
+            if ((bool)ceT16LRL.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "T16LRL",
+                    X = "Width*0.3125",
+                    Y = "Height*1.0",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Top"
+                });
+            }
+
             if ((bool)ceT8LR.IsChecked)
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
                     Name = "T8LR",
                     X = "Width*0.375",
+                    Y = "Height*1.0",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Top"
+                });
+            }
+
+            if ((bool)ceT16LRR.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "T16LRR",
+                    X = "Width*0.4375",
                     Y = "Height*1.0",
                     DirX = "0 in",
                     DirY = "0 in",
@@ -159,12 +215,40 @@ namespace SupportTools_Visio.Presentation.Views
                 });
             }
 
+            if ((bool)ceT16RLL.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "T16RLL",
+                    X = "Width*0.5625",
+                    Y = "Height*1.0",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Top"
+                });
+            }
+
             if ((bool)ceT8RL.IsChecked)
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
                     Name = "T8RL",
                     X = "Width*0.625",
+                    Y = "Height*1.0",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Top"
+                });
+            }
+
+            if ((bool)ceT16RLR.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "T16RL",
+                    X = "Width*0.6875",
                     Y = "Height*1.0",
                     DirX = "0 in",
                     DirY = "0 in",
@@ -187,12 +271,40 @@ namespace SupportTools_Visio.Presentation.Views
                 });
             }
 
+            if ((bool)ceT16RRL.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "T16RRL",
+                    X = "Width*0.8125",
+                    Y = "Height*1.0",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Top"
+                });
+            }
+
             if ((bool)ceT8RR.IsChecked)
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
                     Name = "T8RR",
                     X = "Width*0.875",
+                    Y = "Height*1.0",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Top"
+                });
+            }
+
+            if ((bool)ceT16RRR.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "T16RRR",
+                    X = "Width*0.9375",
                     Y = "Height*1.0",
                     DirX = "0 in",
                     DirY = "0 in",
@@ -233,12 +345,40 @@ namespace SupportTools_Visio.Presentation.Views
                 });
             }
 
+            if ((bool)ceB16LLL.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "B16LLL",
+                    X = "Width*0.0625",
+                    Y = "Height*0.0",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Bottom"
+                });
+            }
+
             if ((bool)ceB8LL.IsChecked)
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
                     Name = "B8LL",
                     X = "Width*0.125",
+                    Y = "Height*0.0",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Bottom"
+                });
+            }
+
+            if ((bool)ceB16LLR.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "B16LLR",
+                    X = "Width*0.1875",
                     Y = "Height*0.0",
                     DirX = "0 in",
                     DirY = "0 in",
@@ -261,12 +401,40 @@ namespace SupportTools_Visio.Presentation.Views
                 });
             }
 
+            if ((bool)ceB16LRL.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "B16LRL",
+                    X = "Width*0.3125",
+                    Y = "Height*0.0",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Bottom"
+                });
+            }
+
             if ((bool)ceB8LR.IsChecked)
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
                     Name = "B8LR",
                     X = "Width*0.375",
+                    Y = "Height*0.0",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Bottom"
+                });
+            }
+
+            if ((bool)ceB16LRR.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "B16LRR",
+                    X = "Width*0.4375",
                     Y = "Height*0.0",
                     DirX = "0 in",
                     DirY = "0 in",
@@ -289,12 +457,40 @@ namespace SupportTools_Visio.Presentation.Views
                 });
             }
 
+            if ((bool)ceB16RLL.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "B16RLL",
+                    X = "Width*0.5625",
+                    Y = "Height*0.0",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Bottom"
+                });
+            }
+
             if ((bool)ceB8RL.IsChecked)
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
                     Name = "B8RL",
                     X = "Width*0.625",
+                    Y = "Height*0.0",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Bottom"
+                });
+            }
+
+            if ((bool)ceB16RLR.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "B16RL",
+                    X = "Width*0.6875",
                     Y = "Height*0.0",
                     DirX = "0 in",
                     DirY = "0 in",
@@ -317,12 +513,40 @@ namespace SupportTools_Visio.Presentation.Views
                 });
             }
 
+            if ((bool)ceB16RRL.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "B16RRL",
+                    X = "Width*0.8125",
+                    Y = "Height*0.0",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Bottom"
+                });
+            }
+
             if ((bool)ceB8RR.IsChecked)
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
                     Name = "B8RR",
                     X = "Width*0.875",
+                    Y = "Height*0.0",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Bottom"
+                });
+            }
+
+            if ((bool)ceB16RRR.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "B16RRR",
+                    X = "Width*0.9375",
                     Y = "Height*0.0",
                     DirX = "0 in",
                     DirY = "0 in",
@@ -349,6 +573,20 @@ namespace SupportTools_Visio.Presentation.Views
 
             #region Left
 
+            if ((bool)ceL16TTT.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "L16TTT",
+                    X = "Width*0.0",
+                    Y = "Height*0.9125",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Left"
+                });
+            }
+
             if ((bool)ceL8TT.IsChecked)
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
@@ -356,6 +594,20 @@ namespace SupportTools_Visio.Presentation.Views
                     Name = "L8TT",
                     X = "Width*0.0",
                     Y = "Height*0.875",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Left"
+                });
+            }
+
+            if ((bool)ceL16TTB.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "L16TTB",
+                    X = "Width*0.0",
+                    Y = "Height*0.8125",
                     DirX = "0 in",
                     DirY = "0 in",
                     Type = "0",
@@ -377,6 +629,20 @@ namespace SupportTools_Visio.Presentation.Views
                 });
             }
 
+            if ((bool)ceL16TBT.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "L16TBT",
+                    X = "Width*0.0",
+                    Y = "Height*0.6875",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Left"
+                });
+            }
+
             if ((bool)ceL8TB.IsChecked)
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
@@ -384,6 +650,20 @@ namespace SupportTools_Visio.Presentation.Views
                     Name = "L8TB",
                     X = "Width*0.0",
                     Y = "Height*0.625",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Left"
+                });
+            }
+
+            if ((bool)ceL16TBB.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "L16TBB",
+                    X = "Width*0.0",
+                    Y = "Height*0.5625",
                     DirX = "0 in",
                     DirY = "0 in",
                     Type = "0",
@@ -405,6 +685,20 @@ namespace SupportTools_Visio.Presentation.Views
                 });
             }
 
+            if ((bool)ceL16BTT.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "L16BTT",
+                    X = "Width*0.0",
+                    Y = "Height*0.4125",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Left"
+                });
+            }
+
             if ((bool)ceL8BT.IsChecked)
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
@@ -412,6 +706,20 @@ namespace SupportTools_Visio.Presentation.Views
                     Name = "L8BT",
                     X = "Width*0.0",
                     Y = "Height*0.375",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Left"
+                });
+            }
+
+            if ((bool)ceL16BTB.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "L16BTB",
+                    X = "Width*0.0",
+                    Y = "Height*0.3125",
                     DirX = "0 in",
                     DirY = "0 in",
                     Type = "0",
@@ -433,6 +741,20 @@ namespace SupportTools_Visio.Presentation.Views
                 });
             }
 
+            if ((bool)ceL16BBT.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "L16BBT",
+                    X = "Width*0.0",
+                    Y = "Height*0.1875",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Left"
+                });
+            }
+
             if ((bool)ceL8BB.IsChecked)
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
@@ -447,17 +769,59 @@ namespace SupportTools_Visio.Presentation.Views
                 });
             }
 
+            if ((bool)ceL16BBB.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "L16BBB",
+                    X = "Width*0.0",
+                    Y = "Height*0.0625",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Left"
+                });
+            }
+
             #endregion Left
 
             #region Right
+
+            if ((bool)ceR16TTT.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "L16TTT",
+                    X = "Width*1.0",
+                    Y = "Height*0.9125",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Right"
+                });
+            }
 
             if ((bool)ceR8TT.IsChecked)
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "R8TT",
+                    Name = "L8TT",
                     X = "Width*1.0",
                     Y = "Height*0.875",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Right"
+                });
+            }
+
+            if ((bool)ceR16TTB.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "L16TTB",
+                    X = "Width*1.0",
+                    Y = "Height*0.8125",
                     DirX = "0 in",
                     DirY = "0 in",
                     Type = "0",
@@ -469,9 +833,23 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "RQT",
+                    Name = "LQT",
                     X = "Width*1.0",
                     Y = "Height*0.75",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Right"
+                });
+            }
+
+            if ((bool)ceR16TBT.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "L16TBT",
+                    X = "Width*1.0",
+                    Y = "Height*0.6875",
                     DirX = "0 in",
                     DirY = "0 in",
                     Type = "0",
@@ -483,9 +861,23 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "R8TB",
+                    Name = "L8TB",
                     X = "Width*1.0",
                     Y = "Height*0.625",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Right"
+                });
+            }
+
+            if ((bool)ceR16TBB.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "L16TBB",
+                    X = "Width*1.0",
+                    Y = "Height*0.5625",
                     DirX = "0 in",
                     DirY = "0 in",
                     Type = "0",
@@ -497,9 +889,23 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "RM",
+                    Name = "LM",
                     X = "Width*1.0",
                     Y = "Height*0.5",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Right"
+                });
+            }
+
+            if ((bool)ceR16BTT.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "L16BTT",
+                    X = "Width*1.0",
+                    Y = "Height*0.4125",
                     DirX = "0 in",
                     DirY = "0 in",
                     Type = "0",
@@ -511,9 +917,23 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "R8BT",
+                    Name = "L8BT",
                     X = "Width*1.0",
                     Y = "Height*0.375",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Right"
+                });
+            }
+
+            if ((bool)ceR16BTB.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "L16BTB",
+                    X = "Width*1.0",
+                    Y = "Height*0.3125",
                     DirX = "0 in",
                     DirY = "0 in",
                     Type = "0",
@@ -525,9 +945,23 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "RQB",
+                    Name = "LQB",
                     X = "Width*1.0",
                     Y = "Height*0.25",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Right"
+                });
+            }
+
+            if ((bool)ceR16BBT.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "L16BBT",
+                    X = "Width*1.0",
+                    Y = "Height*0.1875",
                     DirX = "0 in",
                     DirY = "0 in",
                     Type = "0",
@@ -539,9 +973,23 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "R8BB",
+                    Name = "L8BB",
                     X = "Width*1.0",
                     Y = "Height*0.125",
+                    DirX = "0 in",
+                    DirY = "0 in",
+                    Type = "0",
+                    D = "Right"
+                });
+            }
+
+            if ((bool)ceR16BBB.IsChecked)
+            {
+                connectionPoints.Add(new Domain.ConnectionPointRow
+                {
+                    Name = "L16BBB",
+                    X = "Width*1.0",
+                    Y = "Height*0.0625",
                     DirX = "0 in",
                     DirY = "0 in",
                     Type = "0",
@@ -591,6 +1039,10 @@ namespace SupportTools_Visio.Presentation.Views
                     CheckEighths(true);
                     break;
 
+                case "Sixteenths":
+                    CheckSixteenths(true);
+                    break;
+
                 case "All":
                     CheckAll();
                     break;
@@ -601,35 +1053,35 @@ namespace SupportTools_Visio.Presentation.Views
             }
         }
 
-        private void btnInitializeConnectionPoints_Click(string tag)
-        {
-            switch (tag)
-            {
-                case "Tops":
-                    CheckTops(false);
-                    break;
+        //private void btnInitializeConnectionPoints_Click(string tag)
+        //{
+        //    switch (tag)
+        //    {
+        //        case "Tops":
+        //            CheckTops(false);
+        //            break;
 
-                case "Bottoms":
-                    CheckBottoms(false);
-                    break;
+        //        case "Bottoms":
+        //            CheckBottoms(false);
+        //            break;
 
-                case "Lefts":
-                    CheckLefts(false);
-                    break;
+        //        case "Lefts":
+        //            CheckLefts(false);
+        //            break;
 
-                case "Rights":
-                    CheckRights(false);
-                    break;
+        //        case "Rights":
+        //            CheckRights(false);
+        //            break;
 
-                case "All":
-                    ClearAll();
-                    break;
+        //        case "All":
+        //            ClearAll();
+        //            break;
 
-                default:
-                    MessageBox.Show($"Unknown tag: {tag}");
-                    break;
-            }
-        }
+        //        default:
+        //            MessageBox.Show($"Unknown tag: {tag}");
+        //            break;
+        //    }
+        //}
 
         void ClearAll()
         {
@@ -637,6 +1089,7 @@ namespace SupportTools_Visio.Presentation.Views
             CheckMiddles(false);
             CheckQuarters(false);
             CheckEighths(false);
+            CheckSixteenths(false);
         }
 
         void CheckAll()
@@ -645,31 +1098,64 @@ namespace SupportTools_Visio.Presentation.Views
             CheckMiddles(true);
             CheckQuarters(true);
             CheckEighths(true);
+            CheckSixteenths(true);
         }
 
         void CheckTops(bool isChecked)
         {
             ceTEL.IsChecked = isChecked;
+
+            ceT16LLL.IsChecked = isChecked;
             ceT8LL.IsChecked = isChecked;
+            ceT16LLR.IsChecked = isChecked;
+
             ceTQL.IsChecked = isChecked;
+
+            ceT16LRL.IsChecked = isChecked;
             ceT8LR.IsChecked = isChecked;
+            ceT16LRR.IsChecked = isChecked;
+
             ceTM.IsChecked = isChecked;
+
+            ceT16RLL.IsChecked = isChecked;
             ceT8RL.IsChecked = isChecked;
+            ceT16RLR.IsChecked = isChecked;
+
             ceTQR.IsChecked = isChecked;
+
+            ceT16RRL.IsChecked = isChecked;
             ceT8RR.IsChecked = isChecked;
+            ceT16RRR.IsChecked = isChecked;
+
             ceTER.IsChecked = isChecked;
         }
 
         void CheckBottoms(bool isChecked)
         {
             ceBEL.IsChecked = isChecked;
+
+            ceB16LLL.IsChecked = isChecked;
             ceB8LL.IsChecked = isChecked;
+            ceB16LLR.IsChecked = isChecked;
+
             ceBQL.IsChecked = isChecked;
+
+            ceB16LRL.IsChecked = isChecked;
             ceB8LR.IsChecked = isChecked;
+            ceB16LRR.IsChecked = isChecked;
+
             ceBM.IsChecked = isChecked;
+
+            ceB16RLL.IsChecked = isChecked;
             ceB8RL.IsChecked = isChecked;
+            ceB16RLR.IsChecked = isChecked;
+
             ceBQR.IsChecked = isChecked;
+
+            ceB16RRL.IsChecked = isChecked;
             ceB8RR.IsChecked = isChecked;
+            ceB16RRR.IsChecked = isChecked;
+
             ceBER.IsChecked = isChecked;
         }
 
@@ -677,13 +1163,27 @@ namespace SupportTools_Visio.Presentation.Views
         {
             ceTEL.IsChecked = isChecked;
 
+            ceL16TTT.IsChecked = isChecked;
             ceL8TT.IsChecked = isChecked;
+            ceL16TTB.IsChecked = isChecked;
+
             ceLQT.IsChecked = isChecked;
+
+            ceL16TBT.IsChecked = isChecked;
             ceL8TB.IsChecked = isChecked;
+            ceL16TBB.IsChecked = isChecked;
+
             ceLM.IsChecked = isChecked;
+
+            ceL16BTT.IsChecked = isChecked;
             ceL8BT.IsChecked = isChecked;
+            ceL16BTB.IsChecked = isChecked;
+
             ceLQB.IsChecked = isChecked;
+
+            ceL16BBT.IsChecked = isChecked;
             ceL8BB.IsChecked = isChecked;
+            ceL16BBB.IsChecked = isChecked;
 
             ceBEL.IsChecked = isChecked;
         }
@@ -692,15 +1192,68 @@ namespace SupportTools_Visio.Presentation.Views
         {
             ceTER.IsChecked = isChecked;
 
+            ceR16TTT.IsChecked = isChecked;
             ceR8TT.IsChecked = isChecked;
+            ceR16TTB.IsChecked = isChecked;
+
             ceRQT.IsChecked = isChecked;
+
+            ceR16TBT.IsChecked = isChecked;
             ceR8TB.IsChecked = isChecked;
+            ceR16TBB.IsChecked = isChecked;
+
             ceRM.IsChecked = isChecked;
+
+            ceR16BTT.IsChecked = isChecked;
             ceR8BT.IsChecked = isChecked;
+            ceR16BTB.IsChecked = isChecked;
+
             ceRQB.IsChecked = isChecked;
+
+            ceR16BBT.IsChecked = isChecked;
             ceR8BB.IsChecked = isChecked;
+            ceR16BBB.IsChecked = isChecked;
 
             ceBER.IsChecked = isChecked;
+        }
+
+        private void CheckSixteenths(bool isChecked)
+        {
+            ceT16LLL.IsChecked = isChecked;
+            ceT16LLR.IsChecked = isChecked;
+            ceT16LRL.IsChecked = isChecked;
+            ceT16LRR.IsChecked = isChecked;
+            ceT16RLL.IsChecked = isChecked;
+            ceT16RLR.IsChecked = isChecked;
+            ceT16RRL.IsChecked = isChecked;
+            ceT16RRR.IsChecked = isChecked;
+
+            ceB16LLL.IsChecked = isChecked;
+            ceB16LLR.IsChecked = isChecked;
+            ceB16LRL.IsChecked = isChecked;
+            ceB16LRR.IsChecked = isChecked;
+            ceB16RLL.IsChecked = isChecked;
+            ceB16RLR.IsChecked = isChecked;
+            ceB16RRL.IsChecked = isChecked;
+            ceB16RRR.IsChecked = isChecked;
+
+            ceL16TTT.IsChecked = isChecked;
+            ceL16TTB.IsChecked = isChecked;
+            ceL16TBT.IsChecked = isChecked;
+            ceL16TBB.IsChecked = isChecked;
+            ceL16BTT.IsChecked = isChecked;
+            ceL16BTB.IsChecked = isChecked;
+            ceL16BBT.IsChecked = isChecked;
+            ceL16BBB.IsChecked = isChecked;
+
+            ceR16TTT.IsChecked = isChecked;
+            ceR16TTB.IsChecked = isChecked;
+            ceR16TBT.IsChecked = isChecked;
+            ceR16TBB.IsChecked = isChecked;
+            ceR16BTT.IsChecked = isChecked;
+            ceR16BTB.IsChecked = isChecked;
+            ceR16BBT.IsChecked = isChecked;
+            ceR16BBB.IsChecked = isChecked;
         }
 
         private void CheckEighths(bool isChecked)

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+
+using VNC;
+
 using Visio = Microsoft.Office.Interop.Visio;
 using VisioHelper = VNC.AddinHelper.Visio;
 
@@ -238,7 +241,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
 
             }
 
@@ -272,7 +275,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    VisioHelper.DisplayInWatchWindow(ex.ToString());
+                    Log.Error(ex, Common.LOG_APPNAME);
                 }
             }
         }
@@ -393,7 +396,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -432,7 +435,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    VisioHelper.DisplayInWatchWindow(ex.ToString());
+                    Log.Error(ex, Common.LOG_APPNAME);
                 }
             }
         }
@@ -472,7 +475,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -515,7 +518,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    VisioHelper.DisplayInWatchWindow(ex.ToString());
+                    Log.Error(ex, Common.LOG_APPNAME);
                 }
             }
         }
@@ -538,7 +541,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    VisioHelper.DisplayInWatchWindow(ex.ToString());
+                    Log.Error(ex, Common.LOG_APPNAME);
                 }
             }
         }
@@ -594,7 +597,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
         }
 
@@ -724,7 +727,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                VisioHelper.DisplayInWatchWindow(ex.ToString());
+                Log.Error(ex, Common.LOG_APPNAME);
             }
 
             System.Diagnostics.Debug.WriteLine(string.Format("Shapes on Page: {0}", page.Shapes.Count));
