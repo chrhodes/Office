@@ -579,7 +579,7 @@ namespace SupportTools_Visio.Presentation.Views
                 {
                     Name = "L16TTT",
                     X = "Width*0.0",
-                    Y = "Height*0.9125",
+                    Y = "Height*0.9375",
                     DirX = "0 in",
                     DirY = "0 in",
                     Type = "0",
@@ -691,7 +691,7 @@ namespace SupportTools_Visio.Presentation.Views
                 {
                     Name = "L16BTT",
                     X = "Width*0.0",
-                    Y = "Height*0.4125",
+                    Y = "Height*0.4375",
                     DirX = "0 in",
                     DirY = "0 in",
                     Type = "0",
@@ -791,9 +791,9 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "L16TTT",
+                    Name = "R16TTT",
                     X = "Width*1.0",
-                    Y = "Height*0.9125",
+                    Y = "Height*0.9375",
                     DirX = "0 in",
                     DirY = "0 in",
                     Type = "0",
@@ -805,7 +805,7 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "L8TT",
+                    Name = "R8TT",
                     X = "Width*1.0",
                     Y = "Height*0.875",
                     DirX = "0 in",
@@ -819,7 +819,7 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "L16TTB",
+                    Name = "R16TTB",
                     X = "Width*1.0",
                     Y = "Height*0.8125",
                     DirX = "0 in",
@@ -833,7 +833,7 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "LQT",
+                    Name = "RQT",
                     X = "Width*1.0",
                     Y = "Height*0.75",
                     DirX = "0 in",
@@ -847,7 +847,7 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "L16TBT",
+                    Name = "R16TBT",
                     X = "Width*1.0",
                     Y = "Height*0.6875",
                     DirX = "0 in",
@@ -861,7 +861,7 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "L8TB",
+                    Name = "R8TB",
                     X = "Width*1.0",
                     Y = "Height*0.625",
                     DirX = "0 in",
@@ -875,7 +875,7 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "L16TBB",
+                    Name = "R16TBB",
                     X = "Width*1.0",
                     Y = "Height*0.5625",
                     DirX = "0 in",
@@ -889,7 +889,7 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "LM",
+                    Name = "RM",
                     X = "Width*1.0",
                     Y = "Height*0.5",
                     DirX = "0 in",
@@ -903,9 +903,9 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "L16BTT",
+                    Name = "R16BTT",
                     X = "Width*1.0",
-                    Y = "Height*0.4125",
+                    Y = "Height*0.4375",
                     DirX = "0 in",
                     DirY = "0 in",
                     Type = "0",
@@ -917,7 +917,7 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "L8BT",
+                    Name = "R8BT",
                     X = "Width*1.0",
                     Y = "Height*0.375",
                     DirX = "0 in",
@@ -931,7 +931,7 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "L16BTB",
+                    Name = "R16BTB",
                     X = "Width*1.0",
                     Y = "Height*0.3125",
                     DirX = "0 in",
@@ -945,7 +945,7 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "LQB",
+                    Name = "RQB",
                     X = "Width*1.0",
                     Y = "Height*0.25",
                     DirX = "0 in",
@@ -959,7 +959,7 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "L16BBT",
+                    Name = "R16BBT",
                     X = "Width*1.0",
                     Y = "Height*0.1875",
                     DirX = "0 in",
@@ -973,7 +973,7 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "L8BB",
+                    Name = "R8BB",
                     X = "Width*1.0",
                     Y = "Height*0.125",
                     DirX = "0 in",
@@ -987,7 +987,7 @@ namespace SupportTools_Visio.Presentation.Views
             {
                 connectionPoints.Add(new Domain.ConnectionPointRow
                 {
-                    Name = "L16BBB",
+                    Name = "R16BBB",
                     X = "Width*1.0",
                     Y = "Height*0.0625",
                     DirX = "0 in",
