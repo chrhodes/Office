@@ -1201,10 +1201,15 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 //itemCol.BeginUpdate();
                 //itemCol.Clear();
 
+                var priorStatusBar = Globals.ThisAddIn.Application.StatusBar;
+
                 foreach (var item in projectList)
                 {
                     ((OptionsViewModel)azdoOptions.ViewModel).TeamProjects.Add(item);
+                    Globals.ThisAddIn.Application.StatusBar = $"{item}";
                 }
+
+                Globals.ThisAddIn.Application.StatusBar = priorStatusBar;
 
                 //itemCol.EndUpdate();
 

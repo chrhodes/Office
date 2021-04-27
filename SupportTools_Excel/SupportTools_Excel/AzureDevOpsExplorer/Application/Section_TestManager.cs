@@ -735,7 +735,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                         Header_TestManager.Add_TestSuite_Entry(insertAt);
 
-                        foreach (ITestSuiteEntry entry in staticTestSuite.Entries)
+                        foreach (ITestSuiteEntry entry in staticTestSuite.Entries.ToList().OrderBy(x => x.Id))
                         {
                             insertAt.ClearOffsets();
 
@@ -797,7 +797,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                         Header_TestManager.Add_TestSuite_TestSuite(insertAt);
 
-                        foreach (var testSuite in staticTestSuite.SubSuites)
+                        foreach (var testSuite in staticTestSuite.SubSuites.ToList().OrderBy(x => x.Id))
                         {
                             XlHlp.DisplayInWatchWindow($"Adding TestSuite");
 
@@ -866,7 +866,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                             XlHlp.DisplayInWatchWindow($"Adding {totalItems} TestCases");
 
-                            foreach (ITestCase testCase in testSuite.AllTestCases)
+                            foreach (ITestCase testCase in testSuite.AllTestCases.ToList().OrderBy(x => x.Id))
                             {
                                 insertAt.ClearOffsets();
 

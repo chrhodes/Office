@@ -70,8 +70,8 @@
                         <dxe:ComboBoxEditItem Content="Info" IsSelected="True"/>
                         <dxe:ComboBoxEditItem Content="PlainLinks" />
                         <dxe:ComboBoxEditItem Content="Fields" />
-                        <dxe:ComboBoxEditItem Content="TestFields" />
                         <dxe:ComboBoxEditItem Content="WorkItemLinks" IsSelected="True"/>
+                        <dxe:ComboBoxEditItem Content="XXXTestFieldsXXX" IsEnabled="False" />
                     </dxe:ComboBoxEdit>
                 </dxlc:LayoutItem>
 

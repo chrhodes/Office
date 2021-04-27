@@ -574,13 +574,25 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     // They are added to the query to avoid a round trip if accessed 
                     // after the result set is returned.
 
-                    // Display them
+                    // Display them.  Some may not exist, catch and display N/A
 
                     if ((options.WorkItemQuerySpec.Fields?.Count ?? 0) > 0)
                     {
                         foreach (string field in options.WorkItemQuerySpec.Fields)
                         {
-                            XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Fields[field].Value }");
+                            try
+                            {
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Fields[field].Value }");
+                            }
+                            catch (Exception ex)
+                            {
+                                // NOTE(crhodes)
+                                // Exception is thrown trying to access field which occurs
+                                // before column is incremented.
+                                //insertAt.DecrementColumns();
+                                insertAt.ColumnOffset--;
+                                XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), "...");
+                            }
                         }
                     }
 
@@ -1205,7 +1217,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                         days = ((DateTime)nodeInfo.FinishDate).Subtract((DateTime)nodeInfo.StartDate).TotalDays.ToString();
                     }
 
-                    string iterationinfo = $"Name: >{item.Name,30}< (id: {item.Id}) - {days,3} days ({startdate} to {finishdate})";
+                    string iterationinfo = $"{item.Name}< (id: {item.Id}) - {days,3} days ({startdate} to {finishdate})";
 
                     XlHlp.AddContentToCell(insertAt.AddRowX(), iterationinfo);
 
