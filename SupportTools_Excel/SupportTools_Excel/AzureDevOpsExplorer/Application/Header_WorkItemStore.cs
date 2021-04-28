@@ -275,6 +275,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 12, "Target.Id");
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 15, "Target.State");
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 30, "Target.Title");
+            XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 15, "Target.Created");
+            XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 15, "Target.CreatedBy");
 
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 15, "Link Source.Id");
             XlHlp.AddColumnHeaderToSheet(insertAt.AddOffsetColumn(), 15, "Link Target.Id");

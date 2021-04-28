@@ -416,6 +416,8 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                     XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ linkedWorkItem.Id}", cellFormat: redContent);
                     XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ linkedWorkItem.State}");
                     XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ linkedWorkItem.Title}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ linkedWorkItem.CreatedDate}");
+                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ linkedWorkItem.CreatedBy}");
 
                     XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItemLink.SourceId}", cellFormat: redContent);
                     XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItemLink.TargetId}", cellFormat: redContent);
