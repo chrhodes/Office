@@ -9,7 +9,7 @@ using System.IO;
 using Microsoft.CodeAnalysis.VisualBasic;
 using VNC.CodeAnalysis;
 
-namespace SupportTools_Visio.Actions
+namespace SupportTools_Visio.Domain
 {
     public class FileInfoShape
     {

@@ -919,6 +919,45 @@ namespace SupportTools_Visio.Events
                 // Skip(1) skips past <Action> and passes any <args> that are present (separated by commas)
                 switch (actionArgs[0])
                 {
+                    #region AZDOActions
+
+                    case "GetWorkItemInfo":
+                        Actions.AZDOActions.GetWorkItemInfo(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
+                        break;
+
+                    case "AddLinkedWorkItems":
+                        Actions.AZDOActions.AddLinkedWorkItems(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
+                        break;
+
+                    #endregion
+
+                    #region RoslynActions
+
+                    case "CreateMethodShapes":
+                        Actions.RoslynActions.CreateMethodShapes(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
+                        break;
+
+                    case "GetClassInfo":
+                        Actions.RoslynActions.GetClassInfo(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
+                        break;
+
+                    case "GetProjectFileInfo":
+                        Actions.RoslynActions.GetProjectFileInfo(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
+                        break;
+
+                    case "GetSolutionFileInfo":
+                        Actions.RoslynActions.GetSolutionFileInfo(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
+                        break;
+
+                    case "GetSourceFileInfo":
+                        Actions.RoslynActions.GetSourceFileInfo(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
+                        break;
+
+
+                    #endregion
+
+                    #region Visio_Page Actions
+
                     case "CreateActivityPage":
                         Actions.Visio_Page.CreateActivityPage(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
                         break;
@@ -929,10 +968,6 @@ namespace SupportTools_Visio.Events
 
                     case "CreateDefaultLayersPage":
                         Actions.Visio_Page.CreateDefaultLayersPage(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
-                        break;
-
-                    case "CreateMethodShapes":
-                        Actions.RoslynActions.CreateMethodShapes(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
                         break;
 
                     case "CreateMetricPage":
@@ -963,66 +998,6 @@ namespace SupportTools_Visio.Events
                         Actions.Visio_Page.CreateToolPage(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
                         break;
 
-                    case "DrillDown":
-                        ShapeSheetActions.DrillDown(app, doc, page, shape, shapeu);
-                        break;
-
-                    case "DrillUp":
-                        ShapeSheetActions.DrillUp(app, doc, page, shape, shapeu);
-                        break;
-
-                    case "EditVisio":
-                        ShapeSheetActions.EditVisio(app, doc, page, shape, shapeu);
-                        break;
-
-                    case "GetClassInfo":
-                        Actions.RoslynActions.GetClassInfo(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
-                        break;
-
-                    case "GetProjectFileInfo":
-                        Actions.RoslynActions.GetProjectFileInfo(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
-                        break;
-
-                    case "GetSolutionFileInfo":
-                        Actions.RoslynActions.GetSolutionFileInfo(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
-                        break;
-
-                    case "GetSourceFileInfo":
-                        Actions.RoslynActions.GetSourceFileInfo(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
-                        break;
-
-                    case "LinkShapeToPage":
-                        Actions.Visio_Shape.LinkShapeToPage(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
-                        break;
-
-                    case "ListInvocationsInMethod":
-                        Actions.Visio_Shape.ListInvocationsInMethod(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
-                        break;
-
-                    case "ListMethodsInClass":
-                        Actions.Visio_Shape.ListMethodsInClass(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
-                        break;
-
-                    case "Properties":
-                        ShapeSheetActions.Properties(app, doc, page, shape, shapeu);
-                        break;
-
-                    case "RelatedProcess":
-                        ShapeSheetActions.RelatedProcess(app, doc, page, shape, shapeu);
-                        break;
-
-                    case "RelatedSystem":
-                        ShapeSheetActions.RelatedSystem(app, doc, page, shape, shapeu);
-                        break;
-
-                    case "RelatedInfrastructure":
-                        ShapeSheetActions.RelatedInfrastructure(app, doc, page, shape, shapeu);
-                        break;
-
-                    case "Retrieve":
-                        ShapeSheetActions.Retrieve(app, doc, page, shape, shapeu);
-                        break;
-
                     case "ToggleLayerLock":
                         Actions.Visio_Page.ToggleLayerLock(app, doc, page, shape, shapeu);
                         break;
@@ -1045,6 +1020,56 @@ namespace SupportTools_Visio.Events
 
                     case "UpdateLayer":
                         Actions.Visio_Page.UpdateLayer(app, doc, page, shape, shapeu);
+                        break;
+
+                    #endregion
+
+                    #region Visio_Shape Actions
+
+                    case "LinkShapeToPage":
+                        Actions.Visio_Shape.LinkShapeToPage(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
+                        break;
+
+                    case "ListInvocationsInMethod":
+                        Actions.Visio_Shape.ListInvocationsInMethod(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
+                        break;
+
+                    case "ListMethodsInClass":
+                        Actions.Visio_Shape.ListMethodsInClass(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
+                        break;
+
+                    #endregion
+
+                    case "DrillDown":
+                        ShapeSheetActions.DrillDown(app, doc, page, shape, shapeu);
+                        break;
+
+                    case "DrillUp":
+                        ShapeSheetActions.DrillUp(app, doc, page, shape, shapeu);
+                        break;
+
+                    case "EditVisio":
+                        ShapeSheetActions.EditVisio(app, doc, page, shape, shapeu);
+                        break;
+
+                    case "Properties":
+                        ShapeSheetActions.Properties(app, doc, page, shape, shapeu);
+                        break;
+
+                    case "RelatedProcess":
+                        ShapeSheetActions.RelatedProcess(app, doc, page, shape, shapeu);
+                        break;
+
+                    case "RelatedSystem":
+                        ShapeSheetActions.RelatedSystem(app, doc, page, shape, shapeu);
+                        break;
+
+                    case "RelatedInfrastructure":
+                        ShapeSheetActions.RelatedInfrastructure(app, doc, page, shape, shapeu);
+                        break;
+
+                    case "Retrieve":
+                        ShapeSheetActions.Retrieve(app, doc, page, shape, shapeu);
                         break;
 
                     case "Validate":

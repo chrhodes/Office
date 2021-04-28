@@ -558,9 +558,11 @@
     can be found.
   -->
   <ItemGroup>
-    <Compile Include="Actions\FileInfoShape.cs" />
-    <Compile Include="Actions\MethodInfoShape.cs" />
-    <Compile Include="Actions\ClassInfoShape.cs" />
+    <Compile Include="Domain\WorkItemInfoShape.cs" />
+    <Compile Include="Domain\FileInfoShape.cs" />
+    <Compile Include="Domain\MethodInfoShape.cs" />
+    <Compile Include="Domain\ClassInfoShape.cs" />
+    <Compile Include="Actions\AZDOActions.cs" />
     <Compile Include="Actions\RoslynActions.cs" />
     <Compile Include="Actions\Visio_Application.cs" />
     <Compile Include="Actions\Visio_Document.cs" />

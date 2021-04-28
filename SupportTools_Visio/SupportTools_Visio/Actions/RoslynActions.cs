@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
+using SupportTools_Visio.Domain;
+
 using VNC.Core;
 
 using Visio = Microsoft.Office.Interop.Visio;

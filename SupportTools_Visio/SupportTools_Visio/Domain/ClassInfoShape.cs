@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Visio = Microsoft.Office.Interop.Visio;
 
-namespace SupportTools_Visio.Actions
+namespace SupportTools_Visio.Domain
 {
     public class ClassInfoShape
     {
