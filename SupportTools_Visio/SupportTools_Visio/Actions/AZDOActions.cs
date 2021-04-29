@@ -43,7 +43,9 @@ namespace SupportTools_Visio.Actions
 
             activeShape.CellsU["Prop.PageName"].FormulaU = workItemType.ToString().WrapInDblQuotes();
 
-            activeShape.CellsU["Prop.Title"].FormulaU = title.ToString().WrapInDblQuotes();
+            var cleanTitle = title.ToString().Replace("\"", "\"\"").WrapInDblQuotes();
+
+            activeShape.CellsU["Prop.Title"].FormulaU = cleanTitle;
             activeShape.CellsU["Prop.State"].FormulaU = state.ToString().WrapInDblQuotes();
             activeShape.CellsU["Prop.CreatedDate"].FormulaU = createdDate.ToString().WrapInDblQuotes();
             activeShape.CellsU["Prop.CreatedBy"].FormulaU = createdBy.WrapInDblQuotes();
