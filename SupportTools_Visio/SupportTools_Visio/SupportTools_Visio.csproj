@@ -805,6 +805,12 @@
     </Compile>
     <Compile Include="Presentation\ViewModels\DuplicatePageViewModel.cs" />
     <Compile Include="Presentation\ModelWrappers\DuplicatePageWrapper.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\Actions.xaml.cs">
+      <DependentUpon>Actions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\ActionTags.xaml.cs">
+      <DependentUpon>ActionTags.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Views\ShapeSheet\Hyperlinks.xaml.cs">
       <DependentUpon>Hyperlinks.xaml</DependentUpon>
     </Compile>
