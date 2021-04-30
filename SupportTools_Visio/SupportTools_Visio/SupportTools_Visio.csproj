@@ -765,7 +765,6 @@
     <Compile Include="Presentation\ModelWrappers\ShapeSheet\ThemePropertiesWrapper.cs" />
     <Compile Include="Presentation\ModelWrappers\ShapeSheet\ThreeDRotationPropertiesWrapper.cs" />
     <Compile Include="Presentation\ModelWrappers\ShapeSheet\UserDefinedCellRowWrapper.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\ActionsViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\BevelPropertiesViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\ChangeShapeBehaviorViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\CharacterRowViewModel.cs" />
@@ -781,11 +780,9 @@
     <Compile Include="Presentation\ViewModels\ShapeSheet\GlueInfoViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\GradientPropertiesViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\GroupPropertiesViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\HyperlinksViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\ImagePropertiesViewModel.cs" />
     <Compile Include="Presentation\ViewModels\Interfaces\IEditTextViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\LayerMembershipViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\LayerRowViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\LineFormatViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\LineGradientStopRowViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\MiscellaneousViewModel.cs" />
@@ -811,6 +808,9 @@
     <Compile Include="Presentation\Views\ShapeSheet\ActionTags.xaml.cs">
       <DependentUpon>ActionTags.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\Character.xaml.cs">
+      <DependentUpon>Character.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Views\ShapeSheet\Hyperlinks.xaml.cs">
       <DependentUpon>Hyperlinks.xaml</DependentUpon>
     </Compile>
@@ -821,6 +821,9 @@
       <DependentUpon>Controls.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\ViewModels\Interfaces\IDuplicatePageViewModel.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\Layers.xaml.cs">
+      <DependentUpon>Layers.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Views\ShapeSheet\Page\PageLayout.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\Page\PageProperties.xaml.cs">
       <DependentUpon>PageProperties.xaml</DependentUpon>
@@ -900,7 +903,6 @@
     <Compile Include="Presentation\Views\ShapeSheet\Shape\ThreeDRotationProperties.xaml.cs">
       <DependentUpon>ThreeDRotationProperties.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\ViewModels\ShapeSheet\ActionTagsViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\AdditionalEffectPropertiesViewModel.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\Document\DocumentProperties.xaml.cs">
       <DependentUpon>DocumentProperties.xaml</DependentUpon>
@@ -1192,6 +1194,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Presentation\Views\ShapeSheet\Character.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Presentation\Views\ShapeSheet\Hyperlinks.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1201,6 +1207,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Presentation\Views\ShapeSheet\Controls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\Layers.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

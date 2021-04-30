@@ -2165,6 +2165,42 @@ namespace SupportTools_Visio.Actions
             return row;
         }
 
+
+        internal static ObservableCollection<LayerRow> Get_LayerRows(Shape shape)
+        {
+            var rows = new ObservableCollection<LayerRow>();
+
+            Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionLayer];
+
+            var rowCount = section.Count;
+
+            for (short i = 0; i < rowCount; i++)
+            {
+                Domain.LayerRow layerRow = new LayerRow();
+
+                var row = section[i];
+
+                layerRow.Name = row[(short)VisCellIndices.visLayerName].FormulaU;
+                layerRow.Visible = row[(short)VisCellIndices.visLayerVisible].FormulaU;
+                layerRow.Print = row[(short)VisCellIndices.visLayerPrint].FormulaU;
+                layerRow.Active = row[(short)VisCellIndices.visLayerActive].FormulaU;
+                layerRow.Lock = row[(short)VisCellIndices.visLayerLock].FormulaU;
+                layerRow.Snap = row[(short)VisCellIndices.visLayerSnap].FormulaU;
+                layerRow.Glue = row[(short)VisCellIndices.visLayerGlue].FormulaU;
+                layerRow.Color = row[(short)VisCellIndices.visLayerColor].FormulaU;
+                layerRow.Transparency = row[(short)VisCellIndices.visLayerColorTrans].FormulaU;
+
+                // NOTE(crhodes)
+                // There are a few more VisCellIndices.  See what they do
+                //VisCellIndices.visLayerMember
+                //VisCellIndices.visLayerStatus
+
+                rows.Add(layerRow);
+            }
+
+            return rows;
+        }
+
         public static LineGradientStopRow Get_LineGradientStopRow(Shape shape)
         {
             LineGradientStopRow row = new LineGradientStopRow();

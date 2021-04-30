@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Security.Principal;
 using System.Windows.Forms;
+
 using DevExpress.Xpf.Core;
+
 using VNC;
-                
+
 namespace SupportTools_Visio
 {
     public partial class ThisAddIn
@@ -21,7 +23,7 @@ namespace SupportTools_Visio
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
+            Log.APPLICATION_START("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -50,12 +52,13 @@ namespace SupportTools_Visio
                 Log.Error(ex, Common.PROJECT_NAME);
                 throw (ex);
             }
-            Log.Trace("Exit", Common.PROJECT_NAME);
+
+            Log.APPLICATION_START("Exit", Common.PROJECT_NAME);
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);  
+            Log.APPLICATION_END("Enter", Common.PROJECT_NAME);  
             try
             {
 
@@ -75,12 +78,12 @@ namespace SupportTools_Visio
                 Log.Error(ex, Common.PROJECT_NAME);
                 throw (ex);
             }
-            Log.Trace("Exit", Common.PROJECT_NAME);
+            Log.APPLICATION_END("Exit", Common.PROJECT_NAME);
         }
 
         void InitializeWPFApplication()
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
+            Log.APPLICATION_INITIALIZE("Enter", Common.PROJECT_NAME);
             Common.CurrentUser = new WindowsPrincipal(WindowsIdentity.GetCurrent());
 
             CreateXamlApplication();
@@ -166,7 +169,7 @@ namespace SupportTools_Visio
                 MessageBox.Show(ex.ToString());
                 MessageBox.Show(ex.InnerException.ToString());
             }
-            Log.Trace("Exit", Common.PROJECT_NAME);
+            Log.APPLICATION_INITIALIZE("Exit", Common.PROJECT_NAME);
         }
 
         /// <summary>
@@ -178,7 +181,8 @@ namespace SupportTools_Visio
 
         private static void CreateXamlApplication()
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
+            Log.APPLICATION_INITIALIZE("Enter", Common.PROJECT_NAME);
+
             Common.DeveloperMode = true;
             Common.WriteToDebugWindow("CreateXamlApplication()");
             Common.DeveloperMode = false;
@@ -223,12 +227,14 @@ namespace SupportTools_Visio
                 Common.WriteToDebugWindow(ex.ToString());
                 Common.DeveloperMode = false;
             }
-            Log.Trace("Exit", Common.PROJECT_NAME);
+
+            Log.APPLICATION_INITIALIZE("Exit", Common.PROJECT_NAME);
         }
 
         private void UnLoadXamlApplicationResources()
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
+            Log.APPLICATION_END("Enter", Common.PROJECT_NAME);
+
             try
             {
                 if (null != _XamlApp)
@@ -248,7 +254,8 @@ namespace SupportTools_Visio
                 Common.WriteToDebugWindow(ex.ToString());
                 Common.DeveloperMode = false;
             }
-            Log.Trace("Exit", Common.PROJECT_NAME);
+
+            Log.APPLICATION_END("Exit", Common.PROJECT_NAME);
         }
 
         #region VSTO generated code

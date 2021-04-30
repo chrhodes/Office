@@ -5,6 +5,8 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class LayerRowWrapper : ModelWrapper<Domain.LayerRow>
     {
+        public LayerRowWrapper() { }
+
         public LayerRowWrapper(LayerRow model) : base(model)
         {
         }

@@ -1101,7 +1101,7 @@
             // 
             // btnLayers
             // 
-            this.btnLayers.Label = "X Layers";
+            this.btnLayers.Label = "Layers";
             this.btnLayers.Name = "btnLayers";
             this.btnLayers.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnLayers_Click);
             // 
@@ -1119,7 +1119,7 @@
             // 
             // btnPageHyperlinks
             // 
-            this.btnPageHyperlinks.Label = "X Hyperlinks";
+            this.btnPageHyperlinks.Label = "Hyperlinks";
             this.btnPageHyperlinks.Name = "btnPageHyperlinks";
             this.btnPageHyperlinks.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageHyperlinks_Click);
             // 
