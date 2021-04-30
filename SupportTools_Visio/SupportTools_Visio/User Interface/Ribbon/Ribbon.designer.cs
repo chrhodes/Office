@@ -140,26 +140,28 @@
             this.btnNavigateDown = this.Factory.CreateRibbonButton();
             this.btnHilight = this.Factory.CreateRibbonButton();
             this.tabShapeSheet = this.Factory.CreateRibbonTab();
-            this.grpSSDocument = this.Factory.CreateRibbonGroup();
+            this.grpSSDocumentObjectSections = this.Factory.CreateRibbonGroup();
             this.btnDocumentProperties = this.Factory.CreateRibbonButton();
+            this.grpSSDocumentRowSections = this.Factory.CreateRibbonGroup();
             this.btnDocumentHyperlinks = this.Factory.CreateRibbonButton();
             this.btnDocumentScratch = this.Factory.CreateRibbonButton();
             this.btnDocumentShapeData = this.Factory.CreateRibbonButton();
             this.btnDocumentUserDefinedCells = this.Factory.CreateRibbonButton();
-            this.grpSSPage = this.Factory.CreateRibbonGroup();
+            this.grpSSPageObjectSections = this.Factory.CreateRibbonGroup();
             this.btnPageProperties = this.Factory.CreateRibbonButton();
             this.btnPageLayout = this.Factory.CreateRibbonButton();
-            this.btnLayers = this.Factory.CreateRibbonButton();
             this.btnRulerAndGrid = this.Factory.CreateRibbonButton();
             this.btnPrintProperties = this.Factory.CreateRibbonButton();
+            this.btnPageThemeProperties = this.Factory.CreateRibbonButton();
+            this.grpSSPPageRowSections = this.Factory.CreateRibbonGroup();
+            this.btnLayers = this.Factory.CreateRibbonButton();
             this.btnPageActions = this.Factory.CreateRibbonButton();
             this.btnPageActionTags = this.Factory.CreateRibbonButton();
             this.btnPageHyperlinks = this.Factory.CreateRibbonButton();
             this.btnPageScratch = this.Factory.CreateRibbonButton();
             this.btnPageShapeData = this.Factory.CreateRibbonButton();
-            this.btnPageThemeProperties = this.Factory.CreateRibbonButton();
             this.btnPageUserDefinedCells = this.Factory.CreateRibbonButton();
-            this.grpSSObjectSections = this.Factory.CreateRibbonGroup();
+            this.grpSSShapeObjectSections = this.Factory.CreateRibbonGroup();
             this.btn1DEndpoints = this.Factory.CreateRibbonButton();
             this.btn3DRotationProperties = this.Factory.CreateRibbonButton();
             this.btnAdditionalEffectProperties = this.Factory.CreateRibbonButton();
@@ -181,7 +183,7 @@
             this.btnTextBlockFormat = this.Factory.CreateRibbonButton();
             this.btnTextTransform = this.Factory.CreateRibbonButton();
             this.btnThemeProperties = this.Factory.CreateRibbonButton();
-            this.grpSSRowSections = this.Factory.CreateRibbonGroup();
+            this.grpSSShapeRowSections = this.Factory.CreateRibbonGroup();
             this.btnActions = this.Factory.CreateRibbonButton();
             this.btnActionTags = this.Factory.CreateRibbonButton();
             this.btnCharacter = this.Factory.CreateRibbonButton();
@@ -215,10 +217,12 @@
             this.grpMVVMExamples.SuspendLayout();
             this.rgSMARTS.SuspendLayout();
             this.tabShapeSheet.SuspendLayout();
-            this.grpSSDocument.SuspendLayout();
-            this.grpSSPage.SuspendLayout();
-            this.grpSSObjectSections.SuspendLayout();
-            this.grpSSRowSections.SuspendLayout();
+            this.grpSSDocumentObjectSections.SuspendLayout();
+            this.grpSSDocumentRowSections.SuspendLayout();
+            this.grpSSPageObjectSections.SuspendLayout();
+            this.grpSSPPageRowSections.SuspendLayout();
+            this.grpSSShapeObjectSections.SuspendLayout();
+            this.grpSSShapeRowSections.SuspendLayout();
             this.grpCustomUI.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -988,29 +992,36 @@
             // 
             // tabShapeSheet
             // 
-            this.tabShapeSheet.Groups.Add(this.grpSSDocument);
-            this.tabShapeSheet.Groups.Add(this.grpSSPage);
-            this.tabShapeSheet.Groups.Add(this.grpSSObjectSections);
-            this.tabShapeSheet.Groups.Add(this.grpSSRowSections);
+            this.tabShapeSheet.Groups.Add(this.grpSSDocumentObjectSections);
+            this.tabShapeSheet.Groups.Add(this.grpSSDocumentRowSections);
+            this.tabShapeSheet.Groups.Add(this.grpSSPageObjectSections);
+            this.tabShapeSheet.Groups.Add(this.grpSSPPageRowSections);
+            this.tabShapeSheet.Groups.Add(this.grpSSShapeObjectSections);
+            this.tabShapeSheet.Groups.Add(this.grpSSShapeRowSections);
             this.tabShapeSheet.Groups.Add(this.grpCustomUI);
             this.tabShapeSheet.Label = "ShapeSheet";
             this.tabShapeSheet.Name = "tabShapeSheet";
             // 
-            // grpSSDocument
+            // grpSSDocumentObjectSections
             // 
-            this.grpSSDocument.Items.Add(this.btnDocumentProperties);
-            this.grpSSDocument.Items.Add(this.btnDocumentHyperlinks);
-            this.grpSSDocument.Items.Add(this.btnDocumentScratch);
-            this.grpSSDocument.Items.Add(this.btnDocumentShapeData);
-            this.grpSSDocument.Items.Add(this.btnDocumentUserDefinedCells);
-            this.grpSSDocument.Label = "Document";
-            this.grpSSDocument.Name = "grpSSDocument";
+            this.grpSSDocumentObjectSections.Items.Add(this.btnDocumentProperties);
+            this.grpSSDocumentObjectSections.Label = "Document (Object)";
+            this.grpSSDocumentObjectSections.Name = "grpSSDocumentObjectSections";
             // 
             // btnDocumentProperties
             // 
             this.btnDocumentProperties.Label = "Document Properties";
             this.btnDocumentProperties.Name = "btnDocumentProperties";
             this.btnDocumentProperties.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDocumentProperties_Click);
+            // 
+            // grpSSDocumentRowSections
+            // 
+            this.grpSSDocumentRowSections.Items.Add(this.btnDocumentHyperlinks);
+            this.grpSSDocumentRowSections.Items.Add(this.btnDocumentScratch);
+            this.grpSSDocumentRowSections.Items.Add(this.btnDocumentShapeData);
+            this.grpSSDocumentRowSections.Items.Add(this.btnDocumentUserDefinedCells);
+            this.grpSSDocumentRowSections.Label = "Document (Rows)";
+            this.grpSSDocumentRowSections.Name = "grpSSDocumentRowSections";
             // 
             // btnDocumentHyperlinks
             // 
@@ -1020,7 +1031,7 @@
             // 
             // btnDocumentScratch
             // 
-            this.btnDocumentScratch.Label = "ScratchRows";
+            this.btnDocumentScratch.Label = "Scratch";
             this.btnDocumentScratch.Name = "btnDocumentScratch";
             this.btnDocumentScratch.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDocumentScratch_Click);
             // 
@@ -1036,22 +1047,15 @@
             this.btnDocumentUserDefinedCells.Name = "btnDocumentUserDefinedCells";
             this.btnDocumentUserDefinedCells.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDocumentUserDefinedCells_Click);
             // 
-            // grpSSPage
+            // grpSSPageObjectSections
             // 
-            this.grpSSPage.Items.Add(this.btnPageProperties);
-            this.grpSSPage.Items.Add(this.btnPageLayout);
-            this.grpSSPage.Items.Add(this.btnLayers);
-            this.grpSSPage.Items.Add(this.btnRulerAndGrid);
-            this.grpSSPage.Items.Add(this.btnPrintProperties);
-            this.grpSSPage.Items.Add(this.btnPageActions);
-            this.grpSSPage.Items.Add(this.btnPageActionTags);
-            this.grpSSPage.Items.Add(this.btnPageHyperlinks);
-            this.grpSSPage.Items.Add(this.btnPageScratch);
-            this.grpSSPage.Items.Add(this.btnPageShapeData);
-            this.grpSSPage.Items.Add(this.btnPageThemeProperties);
-            this.grpSSPage.Items.Add(this.btnPageUserDefinedCells);
-            this.grpSSPage.Label = "Page";
-            this.grpSSPage.Name = "grpSSPage";
+            this.grpSSPageObjectSections.Items.Add(this.btnPageProperties);
+            this.grpSSPageObjectSections.Items.Add(this.btnPageLayout);
+            this.grpSSPageObjectSections.Items.Add(this.btnRulerAndGrid);
+            this.grpSSPageObjectSections.Items.Add(this.btnPrintProperties);
+            this.grpSSPageObjectSections.Items.Add(this.btnPageThemeProperties);
+            this.grpSSPageObjectSections.Label = "Page (Object)";
+            this.grpSSPageObjectSections.Name = "grpSSPageObjectSections";
             // 
             // btnPageProperties
             // 
@@ -1065,12 +1069,6 @@
             this.btnPageLayout.Name = "btnPageLayout";
             this.btnPageLayout.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageLayout_Click);
             // 
-            // btnLayers
-            // 
-            this.btnLayers.Label = "X Layers";
-            this.btnLayers.Name = "btnLayers";
-            this.btnLayers.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnLayers_Click);
-            // 
             // btnRulerAndGrid
             // 
             this.btnRulerAndGrid.Label = "X Ruler and Grid";
@@ -1083,21 +1081,45 @@
             this.btnPrintProperties.Name = "btnPrintProperties";
             this.btnPrintProperties.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPrintProperties_Click);
             // 
+            // btnPageThemeProperties
+            // 
+            this.btnPageThemeProperties.Label = "X Theme Properties";
+            this.btnPageThemeProperties.Name = "btnPageThemeProperties";
+            this.btnPageThemeProperties.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageThemeProperties_Click);
+            // 
+            // grpSSPPageRowSections
+            // 
+            this.grpSSPPageRowSections.Items.Add(this.btnLayers);
+            this.grpSSPPageRowSections.Items.Add(this.btnPageActions);
+            this.grpSSPPageRowSections.Items.Add(this.btnPageActionTags);
+            this.grpSSPPageRowSections.Items.Add(this.btnPageHyperlinks);
+            this.grpSSPPageRowSections.Items.Add(this.btnPageScratch);
+            this.grpSSPPageRowSections.Items.Add(this.btnPageShapeData);
+            this.grpSSPPageRowSections.Items.Add(this.btnPageUserDefinedCells);
+            this.grpSSPPageRowSections.Label = "Page (Rows)";
+            this.grpSSPPageRowSections.Name = "grpSSPPageRowSections";
+            // 
+            // btnLayers
+            // 
+            this.btnLayers.Label = "X Layers";
+            this.btnLayers.Name = "btnLayers";
+            this.btnLayers.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnLayers_Click);
+            // 
             // btnPageActions
             // 
-            this.btnPageActions.Label = "X Actions";
+            this.btnPageActions.Label = "Actions";
             this.btnPageActions.Name = "btnPageActions";
-            this.btnPageActions.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageActions_Click);
+            this.btnPageActions.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnActionsPage_Click);
             // 
             // btnPageActionTags
             // 
-            this.btnPageActionTags.Label = "X Action Tags";
+            this.btnPageActionTags.Label = "Action Tags";
             this.btnPageActionTags.Name = "btnPageActionTags";
-            this.btnPageActionTags.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageActionTags_Click);
+            this.btnPageActionTags.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnActionTagsPage_Click);
             // 
             // btnPageHyperlinks
             // 
-            this.btnPageHyperlinks.Label = "Hyperlinks";
+            this.btnPageHyperlinks.Label = "X Hyperlinks";
             this.btnPageHyperlinks.Name = "btnPageHyperlinks";
             this.btnPageHyperlinks.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageHyperlinks_Click);
             // 
@@ -1113,45 +1135,37 @@
             this.btnPageShapeData.Name = "btnPageShapeData";
             this.btnPageShapeData.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageShapeData_Click);
             // 
-            // btnPageThemeProperties
-            // 
-            this.btnPageThemeProperties.Label = "X Theme Properties";
-            this.btnPageThemeProperties.Name = "btnPageThemeProperties";
-            this.btnPageThemeProperties.ScreenTip = "Edit Text";
-            this.btnPageThemeProperties.SuperTip = "Launch the Super Duper Edit Text UI";
-            this.btnPageThemeProperties.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageThemeProperties_Click);
-            // 
             // btnPageUserDefinedCells
             // 
             this.btnPageUserDefinedCells.Label = "X User-Defined Cells";
             this.btnPageUserDefinedCells.Name = "btnPageUserDefinedCells";
             this.btnPageUserDefinedCells.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageUserDefinedCells_Click);
             // 
-            // grpSSObjectSections
+            // grpSSShapeObjectSections
             // 
-            this.grpSSObjectSections.Items.Add(this.btn1DEndpoints);
-            this.grpSSObjectSections.Items.Add(this.btn3DRotationProperties);
-            this.grpSSObjectSections.Items.Add(this.btnAdditionalEffectProperties);
-            this.grpSSObjectSections.Items.Add(this.btnBevelProperties);
-            this.grpSSObjectSections.Items.Add(this.btnChangeShapeBehavior);
-            this.grpSSObjectSections.Items.Add(this.btnEvents);
-            this.grpSSObjectSections.Items.Add(this.btnFillFormat);
-            this.grpSSObjectSections.Items.Add(this.btnGlueInfo);
-            this.grpSSObjectSections.Items.Add(this.btnGradientProperties);
-            this.grpSSObjectSections.Items.Add(this.btnGroupProperties);
-            this.grpSSObjectSections.Items.Add(this.btnImageProperties);
-            this.grpSSObjectSections.Items.Add(this.btnLayerMembership);
-            this.grpSSObjectSections.Items.Add(this.btnLineFormat);
-            this.grpSSObjectSections.Items.Add(this.btnMiscelleaneous);
-            this.grpSSObjectSections.Items.Add(this.btnProtection);
-            this.grpSSObjectSections.Items.Add(this.btnQuickStyle);
-            this.grpSSObjectSections.Items.Add(this.btnShapeLayout);
-            this.grpSSObjectSections.Items.Add(this.btnShapeTransform);
-            this.grpSSObjectSections.Items.Add(this.btnTextBlockFormat);
-            this.grpSSObjectSections.Items.Add(this.btnTextTransform);
-            this.grpSSObjectSections.Items.Add(this.btnThemeProperties);
-            this.grpSSObjectSections.Label = "Shape Object";
-            this.grpSSObjectSections.Name = "grpSSObjectSections";
+            this.grpSSShapeObjectSections.Items.Add(this.btn1DEndpoints);
+            this.grpSSShapeObjectSections.Items.Add(this.btn3DRotationProperties);
+            this.grpSSShapeObjectSections.Items.Add(this.btnAdditionalEffectProperties);
+            this.grpSSShapeObjectSections.Items.Add(this.btnBevelProperties);
+            this.grpSSShapeObjectSections.Items.Add(this.btnChangeShapeBehavior);
+            this.grpSSShapeObjectSections.Items.Add(this.btnEvents);
+            this.grpSSShapeObjectSections.Items.Add(this.btnFillFormat);
+            this.grpSSShapeObjectSections.Items.Add(this.btnGlueInfo);
+            this.grpSSShapeObjectSections.Items.Add(this.btnGradientProperties);
+            this.grpSSShapeObjectSections.Items.Add(this.btnGroupProperties);
+            this.grpSSShapeObjectSections.Items.Add(this.btnImageProperties);
+            this.grpSSShapeObjectSections.Items.Add(this.btnLayerMembership);
+            this.grpSSShapeObjectSections.Items.Add(this.btnLineFormat);
+            this.grpSSShapeObjectSections.Items.Add(this.btnMiscelleaneous);
+            this.grpSSShapeObjectSections.Items.Add(this.btnProtection);
+            this.grpSSShapeObjectSections.Items.Add(this.btnQuickStyle);
+            this.grpSSShapeObjectSections.Items.Add(this.btnShapeLayout);
+            this.grpSSShapeObjectSections.Items.Add(this.btnShapeTransform);
+            this.grpSSShapeObjectSections.Items.Add(this.btnTextBlockFormat);
+            this.grpSSShapeObjectSections.Items.Add(this.btnTextTransform);
+            this.grpSSShapeObjectSections.Items.Add(this.btnThemeProperties);
+            this.grpSSShapeObjectSections.Label = "Shape (Object)";
+            this.grpSSShapeObjectSections.Name = "grpSSShapeObjectSections";
             // 
             // btn1DEndpoints
             // 
@@ -1315,35 +1329,35 @@
             this.btnThemeProperties.SuperTip = "Launch the Super Duper Edit Text UI";
             this.btnThemeProperties.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnThemeProperties_Click);
             // 
-            // grpSSRowSections
+            // grpSSShapeRowSections
             // 
-            this.grpSSRowSections.Items.Add(this.btnActions);
-            this.grpSSRowSections.Items.Add(this.btnActionTags);
-            this.grpSSRowSections.Items.Add(this.btnCharacter);
-            this.grpSSRowSections.Items.Add(this.btnConnectionPoints);
-            this.grpSSRowSections.Items.Add(this.btnControls);
-            this.grpSSRowSections.Items.Add(this.btnGeometry);
-            this.grpSSRowSections.Items.Add(this.btnGradientStops);
-            this.grpSSRowSections.Items.Add(this.btnParagraph);
-            this.grpSSRowSections.Items.Add(this.btnShapeHyperlinks);
-            this.grpSSRowSections.Items.Add(this.btnShapeScratch);
-            this.grpSSRowSections.Items.Add(this.btnShapeShapeData);
-            this.grpSSRowSections.Items.Add(this.btnTabs);
-            this.grpSSRowSections.Items.Add(this.btnShapeUserDefinedCells);
-            this.grpSSRowSections.Label = "Shape Row";
-            this.grpSSRowSections.Name = "grpSSRowSections";
+            this.grpSSShapeRowSections.Items.Add(this.btnActions);
+            this.grpSSShapeRowSections.Items.Add(this.btnActionTags);
+            this.grpSSShapeRowSections.Items.Add(this.btnCharacter);
+            this.grpSSShapeRowSections.Items.Add(this.btnConnectionPoints);
+            this.grpSSShapeRowSections.Items.Add(this.btnControls);
+            this.grpSSShapeRowSections.Items.Add(this.btnGeometry);
+            this.grpSSShapeRowSections.Items.Add(this.btnGradientStops);
+            this.grpSSShapeRowSections.Items.Add(this.btnParagraph);
+            this.grpSSShapeRowSections.Items.Add(this.btnShapeHyperlinks);
+            this.grpSSShapeRowSections.Items.Add(this.btnShapeScratch);
+            this.grpSSShapeRowSections.Items.Add(this.btnShapeShapeData);
+            this.grpSSShapeRowSections.Items.Add(this.btnTabs);
+            this.grpSSShapeRowSections.Items.Add(this.btnShapeUserDefinedCells);
+            this.grpSSShapeRowSections.Label = "Shape (Rows)";
+            this.grpSSShapeRowSections.Name = "grpSSShapeRowSections";
             // 
             // btnActions
             // 
             this.btnActions.Label = "Actions";
             this.btnActions.Name = "btnActions";
-            this.btnActions.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnShapeActions_Click);
+            this.btnActions.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnActionsShape_Click);
             // 
             // btnActionTags
             // 
             this.btnActionTags.Label = "Action Tags";
             this.btnActionTags.Name = "btnActionTags";
-            this.btnActionTags.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnActionTags_Click);
+            this.btnActionTags.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnActionTagsShape_Click);
             // 
             // btnCharacter
             // 
@@ -1389,7 +1403,7 @@
             // 
             // btnShapeScratch
             // 
-            this.btnShapeScratch.Label = "Scratch";
+            this.btnShapeScratch.Label = "X Scratch";
             this.btnShapeScratch.Name = "btnShapeScratch";
             this.btnShapeScratch.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnShapeScratch_Click);
             // 
@@ -1493,14 +1507,18 @@
             this.rgSMARTS.PerformLayout();
             this.tabShapeSheet.ResumeLayout(false);
             this.tabShapeSheet.PerformLayout();
-            this.grpSSDocument.ResumeLayout(false);
-            this.grpSSDocument.PerformLayout();
-            this.grpSSPage.ResumeLayout(false);
-            this.grpSSPage.PerformLayout();
-            this.grpSSObjectSections.ResumeLayout(false);
-            this.grpSSObjectSections.PerformLayout();
-            this.grpSSRowSections.ResumeLayout(false);
-            this.grpSSRowSections.PerformLayout();
+            this.grpSSDocumentObjectSections.ResumeLayout(false);
+            this.grpSSDocumentObjectSections.PerformLayout();
+            this.grpSSDocumentRowSections.ResumeLayout(false);
+            this.grpSSDocumentRowSections.PerformLayout();
+            this.grpSSPageObjectSections.ResumeLayout(false);
+            this.grpSSPageObjectSections.PerformLayout();
+            this.grpSSPPageRowSections.ResumeLayout(false);
+            this.grpSSPPageRowSections.PerformLayout();
+            this.grpSSShapeObjectSections.ResumeLayout(false);
+            this.grpSSShapeObjectSections.PerformLayout();
+            this.grpSSShapeRowSections.ResumeLayout(false);
+            this.grpSSShapeRowSections.PerformLayout();
             this.grpCustomUI.ResumeLayout(false);
             this.grpCustomUI.PerformLayout();
             this.ResumeLayout(false);
@@ -1623,17 +1641,19 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnQuickStyle;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnChangeShapeBehavior;
         private Microsoft.Office.Tools.Ribbon.RibbonTab tabShapeSheet;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpSSObjectSections;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpSSShapeObjectSections;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn3DRotationProperties;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpSSRowSections;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpSSShapeRowSections;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn1DEndpoints;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpCustomUI;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnShapeUserDefinedCells;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnLayerMembership;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnGroupProperties;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnTextTransform;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpSSDocument;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpSSPage;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpSSDocumentRowSections;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpSSDocumentObjectSections;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpSSPPageRowSections;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpSSPageObjectSections;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDocumentUserDefinedCells;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDocumentHyperlinks;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnPageUserDefinedCells;

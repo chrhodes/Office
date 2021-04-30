@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-using SupportTools_Visio.Domain;
-
-using VisioHelper = VNC.AddinHelper.Visio;
 using VNC;
 
 namespace SupportTools_Visio.Presentation.Views
@@ -52,7 +49,7 @@ namespace SupportTools_Visio.Presentation.Views
 
             int undoScope = Globals.ThisAddIn.Application.BeginUndoScope("AddConnectionPoints");
 
-            Actions.Visio_Shape.Add_ConnectionPoints(GetConnectionPointSettings());
+            SupportTools_Visio.Actions.Visio_Shape.Add_ConnectionPoints(GetConnectionPointSettings());
 
             Globals.ThisAddIn.Application.EndUndoScope(undoScope, true);
         }
@@ -62,7 +59,7 @@ namespace SupportTools_Visio.Presentation.Views
             Log.Trace("Enter", Common.PROJECT_NAME);
             string tag = ((Button)sender).Tag.ToString();
 
-            Actions.Visio_Shape.ClearConnectionPoints(tag);
+            SupportTools_Visio.Actions.Visio_Shape.ClearConnectionPoints(tag);
         }
 
         #endregion

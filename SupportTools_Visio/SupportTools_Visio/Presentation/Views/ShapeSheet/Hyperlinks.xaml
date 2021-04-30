@@ -19,7 +19,7 @@
             
                 <dxg:GridControl x:Name="dgW" AutoGenerateColumns="AddNew" 
                          EnableSmartColumnsGeneration="True" 
-                         ItemsSource="{Binding Hyperlinks}"
+                         ItemsSource="{Binding Rows}"
                          SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                          Height="200">
                     <dxg:GridControl.View>

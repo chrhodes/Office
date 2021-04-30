@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Text;
 using System.Windows;
@@ -2179,10 +2180,9 @@ namespace SupportTools_Visio.Actions
             return row;
         }
 
-        internal static System.Collections.ObjectModel.ObservableCollection<ActionRow> Get_ActionsRows(Shape shape)
+        internal static ObservableCollection<ActionRow> Get_ActionsRows(Shape shape)
         {
-            System.Collections.ObjectModel.ObservableCollection<Domain.ActionRow> rows =
-                new System.Collections.ObjectModel.ObservableCollection<ActionRow>();
+            var rows = new ObservableCollection<ActionRow>();
 
             Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionAction];
 
@@ -2214,10 +2214,9 @@ namespace SupportTools_Visio.Actions
             return rows;
         }
 
-        internal static System.Collections.ObjectModel.ObservableCollection<ActionTagRow> Get_ActionTagRows(Shape shape)
+        internal static ObservableCollection<ActionTagRow> Get_ActionTagRows(Shape shape)
         {
-            System.Collections.ObjectModel.ObservableCollection<Domain.ActionTagRow> rows =
-                new System.Collections.ObjectModel.ObservableCollection<ActionTagRow>();
+            var rows = new ObservableCollection<ActionTagRow>();
 
             Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionSmartTag];
 
@@ -2247,10 +2246,9 @@ namespace SupportTools_Visio.Actions
             return rows;
         }
 
-        internal static System.Collections.ObjectModel.ObservableCollection<ConnectionPointRow> Get_ConnectionPointRows(Shape shape)
+        internal static ObservableCollection<ConnectionPointRow> Get_ConnectionPointRows(Shape shape)
         {
-            System.Collections.ObjectModel.ObservableCollection<Domain.ConnectionPointRow> rows =
-                new System.Collections.ObjectModel.ObservableCollection<ConnectionPointRow>();
+            var rows = new ObservableCollection<ConnectionPointRow>();
 
             Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionConnectionPts];
 
@@ -2280,10 +2278,9 @@ namespace SupportTools_Visio.Actions
             return rows;
         }
 
-        internal static System.Collections.ObjectModel.ObservableCollection<ControlsRow> Get_ControlsRows(Shape shape)
+        internal static ObservableCollection<ControlsRow> Get_ControlsRows(Shape shape)
         {
-            System.Collections.ObjectModel.ObservableCollection<Domain.ControlsRow> rows =
-                new System.Collections.ObjectModel.ObservableCollection<ControlsRow>();
+            var rows = new ObservableCollection<ControlsRow>();
 
             Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionControls];
 
@@ -2312,10 +2309,9 @@ namespace SupportTools_Visio.Actions
             return rows;
         }
 
-        internal static System.Collections.ObjectModel.ObservableCollection<HyperlinkRow> Get_HyperlinksRows(Shape shape)
+        internal static ObservableCollection<HyperlinkRow> Get_HyperlinksRows(Shape shape)
         {
-            System.Collections.ObjectModel.ObservableCollection<Domain.HyperlinkRow> rows =
-                new System.Collections.ObjectModel.ObservableCollection<HyperlinkRow>();
+            var rows = new ObservableCollection<HyperlinkRow>();
 
             Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionHyperlink];
 

@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="SupportTools_Visio.Presentation.Views.Actions_Shape"    
+    x:Class="SupportTools_Visio.Presentation.Views.Layers"    
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -10,9 +10,8 @@
     xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
     xmlns:local="clr-namespace:SupportTools_Visio.Presentation.Views"
     mc:Ignorable="d" 
-    Background="WhiteSmoke"
 >
-    <dxlc:LayoutGroup 
+    <dxlc:LayoutControl 
     	View="Group" Orientation="Horizontal" >
     
         <dxlc:LayoutGroup 
@@ -22,7 +21,7 @@
                          EnableSmartColumnsGeneration="True" 
                          ItemsSource="{Binding Rows}"
                          SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                         Height="300">
+                         Height="200">
                     <dxg:GridControl.View>
                         <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True"/>
                     </dxg:GridControl.View>
@@ -40,48 +39,48 @@
     	                          ToolTip="tooltip" />
                         </dxlc:LayoutItem>
 
-                        <dxlc:LayoutItem Label="Action">
-                            <dxe:TextEdit Text="{Binding Action}"
+                        <dxlc:LayoutItem Label="Description">
+                            <dxe:TextEdit Text="{Binding Description}"
     	                          ToolTip="tooltip" />
                         </dxlc:LayoutItem>
 
-                        <dxlc:LayoutItem Label="Menu">
-                            <dxe:TextEdit Text="{Binding Menu}"
+                        <dxlc:LayoutItem Label="Address">
+                            <dxe:TextEdit Text="{Binding Address}"
     	                          ToolTip="tooltip" />
                         </dxlc:LayoutItem>
 
-                        <dxlc:LayoutItem Label="TagName">
-                            <dxe:TextEdit Text="{Binding TagName}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-                        
-                        <dxlc:LayoutItem Label="ButtonFace">
-                            <dxe:TextEdit Text="{Binding ButtonFace}"
-    	                          ToolTip="tooltip" />
+                        <dxlc:LayoutItem Label="SubAddress">
+                            <dxe:TextEdit Text="{Binding SubAddress}"
+    	                              ToolTip="tooltip" />
                         </dxlc:LayoutItem>
 
-                    <dxlc:LayoutItem Label="SortKey">
-                        <dxe:TextEdit Text="{Binding SortKey}"
-    	                          ToolTip="tooltip" />
-                    </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="ExtraInfo">
+                            <dxe:TextEdit Text="{Binding ExtraInfo}"
+    	                                  ToolTip="tooltip" />
+                        </dxlc:LayoutItem>
 
-                </dxlc:LayoutGroup>
+                    </dxlc:LayoutGroup>
 
                     <dxlc:LayoutGroup 
                     	View="Group" Orientation="Vertical" >
 
-                        <dxlc:LayoutItem Label="Checked">
-                            <dxe:TextEdit Text="{Binding Checked}"
+                        <dxlc:LayoutItem Label="Frame">
+                            <dxe:TextEdit Text="{Binding Frame}"
     	                          ToolTip="tooltip" />
                         </dxlc:LayoutItem>
 
-                        <dxlc:LayoutItem Label="Disabled">
-                            <dxe:TextEdit Text="{Binding Disabled}"
+                        <dxlc:LayoutItem Label="SortKey">
+                            <dxe:TextEdit Text="{Binding SortKey}"
     	                          ToolTip="tooltip" />
                         </dxlc:LayoutItem>
 
-                        <dxlc:LayoutItem Label="ReadOnly">
-                            <dxe:TextEdit Text="{Binding ReadOnly}"
+                        <dxlc:LayoutItem Label="NewWindow">
+                            <dxe:TextEdit Text="{Binding NewWindow}"
+    	                          ToolTip="tooltip" />
+                        </dxlc:LayoutItem>
+
+                        <dxlc:LayoutItem Label="Default">
+                            <dxe:TextEdit Text="{Binding Default}"
     	                          ToolTip="tooltip" />
                         </dxlc:LayoutItem>
 
@@ -90,22 +89,12 @@
     	                          ToolTip="tooltip" />
                         </dxlc:LayoutItem>
 
-                        <dxlc:LayoutItem Label="BeginGroup">
-                            <dxe:TextEdit Text="{Binding BeginGroup}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-
-                        <dxlc:LayoutItem Label="FlyoutChild">
-                            <dxe:TextEdit Text="{Binding FlyoutChild}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-
-                </dxlc:LayoutGroup>
+                    </dxlc:LayoutGroup>
 
                 </dxlc:LayoutGroup>
             
             </dxlc:LayoutGroup>
         
-    </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
 
 </UserControl>

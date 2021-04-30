@@ -4,13 +4,11 @@ using VNC;
 
 namespace SupportTools_Visio.Presentation.Views
 {
-    public partial class ControlsRow : UserControl
+    public partial class Character : UserControl
     {
-        //private readonly ControlsRowViewModel _viewModel;
-
         #region Constructors and Load
 
-        public ControlsRow(ControlsViewModel viewModel)
+        public Character()
         {
             Log.Trace("Enter", Common.PROJECT_NAME);
             InitializeComponent();

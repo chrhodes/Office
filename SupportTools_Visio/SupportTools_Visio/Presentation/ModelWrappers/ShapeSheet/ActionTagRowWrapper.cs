@@ -5,6 +5,7 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class ActionTagRowWrapper : ModelWrapper<ActionTagRow>
     {
+        public ActionTagRowWrapper() { }
         public ActionTagRowWrapper(ActionTagRow model) : base(model)
         {
         }

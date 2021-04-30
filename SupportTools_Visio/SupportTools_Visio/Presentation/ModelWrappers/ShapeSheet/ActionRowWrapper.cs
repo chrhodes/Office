@@ -6,6 +6,7 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
     public class ActionRowWrapper : ModelWrapper<Domain.ActionRow>
     {
         public ActionRowWrapper() { }
+
         public ActionRowWrapper(ActionRow model) : base(model)
         {
         }

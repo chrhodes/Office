@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Windows.Controls;
-using SupportTools_Visio.Presentation.ViewModels;
+
 using VNC;
 
 namespace SupportTools_Visio.Presentation.Views
 {
-    public partial class Hyperlinks : UserControl
+    public partial class Actions : UserControl
     {
         #region Constructors and Load
 
-        public Hyperlinks()
+        public Actions()
         {
             Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 

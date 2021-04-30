@@ -3,10 +3,12 @@ using System.Windows.Controls;
 //using System.Windows.Forms;
 
 using Microsoft.Office.Tools.Ribbon;
+using Visio = Microsoft.Office.Interop.Visio;
 
 using VNC;
 using VNC.WPF.Presentation.Dx.Views;
 using VNC.WPF.Presentation.Views;
+using SupportTools_Visio.Domain;
 
 namespace SupportTools_Visio
 {
@@ -529,32 +531,20 @@ namespace SupportTools_Visio
                     new Presentation.Views.DocumentProperties()));
         }
 
-        public static DxThemedWindowHost documentHyperLinks_ShapeSheetSectionHost = null;
 
-        private void btnDocumentHyperlinks_Click(object sender, RibbonControlEventArgs e)
-        {
-            DxThemedWindowHost.DisplayUserControlInHost(ref documentHyperLinks_ShapeSheetSectionHost,
-                "Hyperlinks (Document)",
-                600, 450,
-                //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-                DxThemedWindowHost.ShowWindowMode.Modeless,
-                new Presentation.Views.DocumentShapeSheetSection(
-                    new Presentation.ViewModels.DocumentHyperLinksViewModel(),
-                    new Presentation.Views.Hyperlinks())); // Think we can use same View as Shape
-        }
 
         public static DxThemedWindowHost documentScratch_ShapeSheetSectionHost = null;
 
         private void btnDocumentScratch_Click(object sender, RibbonControlEventArgs e)
         {
-            DxThemedWindowHost.DisplayUserControlInHost(ref documentScratch_ShapeSheetSectionHost,
-                "Document Scratch",
-                600, 450,
-                //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-                DxThemedWindowHost.ShowWindowMode.Modeless,
-                new Presentation.Views.DocumentShapeSheetSection(
-                    new Presentation.ViewModels.DocumentScratchViewModel(),
-                    new Presentation.Views.DocumentScratchRows()));
+            //DxThemedWindowHost.DisplayUserControlInHost(ref documentScratch_ShapeSheetSectionHost,
+            //    "Document Scratch",
+            //    600, 450,
+            //    //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
+            //    DxThemedWindowHost.ShowWindowMode.Modeless,
+            //    new Presentation.Views.DocumentShapeSheetSection(
+            //        new Presentation.ViewModels.DocumentScratchViewModel(),
+            //        new Presentation.Views.DocumentScratchRows()));
         }
 
         public static DxThemedWindowHost documentShapeData_ShapeSheetSectionHost = null;
@@ -594,29 +584,9 @@ namespace SupportTools_Visio
 
         }
 
-        private void btnPageActions_Click(object sender, RibbonControlEventArgs e)
-        {
 
-        }
 
-        private void btnPageActionTags_Click(object sender, RibbonControlEventArgs e)
-        {
 
-        }
-
-        public static DxThemedWindowHost pageHyperLinks_ShapeSheetSectionHost = null;
-
-        private void btnPageHyperlinks_Click(object sender, RibbonControlEventArgs e)
-        {
-            DxThemedWindowHost.DisplayUserControlInHost(ref pageHyperLinks_ShapeSheetSectionHost,
-                "Hyperlinks (Page)",
-                600, 450,
-                //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-                DxThemedWindowHost.ShowWindowMode.Modeless,
-                new Presentation.Views.PageShapeSheetSection(
-                    new Presentation.ViewModels.PageHyperLinksViewModel(),
-                    new Presentation.Views.Hyperlinks())); // Think we can use same View as Shape
-        }
         private void btnPageLayout_Click(object sender, RibbonControlEventArgs e)
         {
 
@@ -640,14 +610,14 @@ namespace SupportTools_Visio
 
         private void btnPageScratch_Click(object sender, RibbonControlEventArgs e)
         {
-            DxThemedWindowHost.DisplayUserControlInHost(ref pageScratch_ShapeSheetSectionHost,
-                "Page Scratch",
-                600, 450,
-                //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-                DxThemedWindowHost.ShowWindowMode.Modeless,
-                new Presentation.Views.PageShapeSheetSection(
-                    new Presentation.ViewModels.PageScratchViewModel(),
-                    new Presentation.Views.PageScratchRows()));
+            //DxThemedWindowHost.DisplayUserControlInHost(ref pageScratch_ShapeSheetSectionHost,
+            //    "Page Scratch",
+            //    600, 450,
+            //    //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
+            //    DxThemedWindowHost.ShowWindowMode.Modeless,
+            //    new Presentation.Views.PageShapeSheetSection(
+            //        new Presentation.ViewModels.PageScratchViewModel(),
+            //        new Presentation.Views.PageScratchRows()));
         }
 
         private void btnPageShapeData_Click(object sender, RibbonControlEventArgs e)
@@ -767,12 +737,12 @@ namespace SupportTools_Visio
 
         private void btnUserDefinedCells_Click(object sender, RibbonControlEventArgs e)
         {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssUserDefinedCells_ShapeSheetSectionHost,
-            "User-Defined Cells",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.UserDefinedCellRow(new Presentation.ViewModels.UserDefinedCellRowViewModel()));
+            //DxThemedWindowHost.DisplayUserControlInHost(ref ssUserDefinedCells_ShapeSheetSectionHost,
+            //"User-Defined Cells",
+            //600, 450,
+            ////Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
+            //DxThemedWindowHost.ShowWindowMode.Modeless,
+            //new Presentation.Views.UserDefinedCells(new Presentation.ViewModels.UserDefinedCellRowViewModel()));
         }
 
         public static DxThemedWindowHost ssChangeShapeBehavior_ShapeSheetSectionHost = null;
@@ -996,37 +966,135 @@ namespace SupportTools_Visio
 
         #endregion
 
-        #region UI Events Shape Related - Row Based
+        #region UI Events Shape - Row Based
 
-        public static DxThemedWindowHost ssShapeActions_ShapeSheetSectionHost = null;
+        #region Actions
 
-        private void btnShapeActions_Click(object sender, RibbonControlEventArgs e)
+        public static DxThemedWindowHost _pageActionsHost = null;
+
+        private void btnActionsPage_Click(object sender, RibbonControlEventArgs e)
         {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssShapeActions_ShapeSheetSectionHost,
-            "Actions (Shape)",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                //new Presentation.ViewModels.ActionsViewModel(), 
-                new Presentation.ViewModels.RowsViewModel<Domain.ActionRow, Presentation.ModelWrappers.ActionRowWrapper>(
-                    "Hello Vikki", Actions.Visio_Shape.Get_ActionsRows),
-                new Presentation.Views.Actions_Shape()));
+            DxThemedWindowHost.DisplayUserControlInHost(ref _pageActionsHost,
+                "Actions (Page)",
+                600, 800,
+                //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    // NOTE(crhodes)
+                    // 
+                    //new Presentation.ViewModels.ActionsViewModel(), 
+                    new Presentation.ViewModels.RowsViewModel<Domain.ActionRow, Presentation.ModelWrappers.ActionRowWrapper>(
+                        "Update Actions",
+                        Actions.Visio_Shape.Get_ActionsRows,
+                        ShapeType.Page),
+                    new Presentation.Views.Actions()));
         }
 
-        public static DxThemedWindowHost ssActionTags_ShapeSheetSectionHost = null;
+        public static DxThemedWindowHost _shapeActionsHost = null;
 
-        private void btnActionTags_Click(object sender, RibbonControlEventArgs e)
+        private void btnActionsShape_Click(object sender, RibbonControlEventArgs e)
         {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssActionTags_ShapeSheetSectionHost,
-            "ActionTags (Shape)",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.ActionTagsViewModel(), 
-                new Presentation.Views.ActionTags_Shape()));
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeActionsHost,
+                "Actions (Shape)",
+                600, 800,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.RowsViewModel<Domain.ActionRow, Presentation.ModelWrappers.ActionRowWrapper>(
+                        "Update Actions",
+                        Actions.Visio_Shape.Get_ActionsRows,
+                        ShapeType.Shape),
+                    new Presentation.Views.Actions()));
         }
+
+        #endregion
+
+        #region ActionTags
+
+        public static DxThemedWindowHost _pageActionTagsHost = null;
+
+        private void btnActionTagsPage_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _pageActionTagsHost,
+                "ActionsTags (Page)",
+                600, 750,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.RowsViewModel<Domain.ActionTagRow, Presentation.ModelWrappers.ActionTagRowWrapper>(
+                        "Hello Natalie", 
+                        Actions.Visio_Shape.Get_ActionTagRows,
+                        ShapeType.Page),
+                    new Presentation.Views.ActionTags()));
+        }
+
+        public static DxThemedWindowHost _shapeActionTagsHost = null;
+
+        private void btnActionTagsShape_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeActionTagsHost,
+                "ActionsTags (Shape)",
+                600, 750,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.RowsViewModel<Domain.ActionTagRow, Presentation.ModelWrappers.ActionTagRowWrapper>(
+                        "Hello Natalie", 
+                        Actions.Visio_Shape.Get_ActionTagRows,
+                        ShapeType.Shape),
+                    new Presentation.Views.ActionTags()));
+        }
+
+        #endregion
+
+        #region Hyperlinks
+
+        public static DxThemedWindowHost _documentHyperLinksHost = null;
+
+        private void btnDocumentHyperlinks_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _documentHyperLinksHost,
+                "Hyperlinks (Document)",
+                800, 700,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.RowsViewModel<Domain.HyperlinkRow, Presentation.ModelWrappers.HyperlinkRowWrapper>(
+                        "Update Hyperlinks",
+                        Actions.Visio_Shape.Get_HyperlinksRows,
+                        ShapeType.Document),
+                    new Presentation.Views.Hyperlinks()));
+        }
+
+        public static DxThemedWindowHost _pageHyperLinksHost = null;
+
+        private void btnPageHyperlinks_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _pageHyperLinksHost,
+                "Hyperlinks (Page)",
+                800, 700,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                    new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.RowsViewModel<Domain.HyperlinkRow, Presentation.ModelWrappers.HyperlinkRowWrapper>(
+                        "Update Hyperlinks",
+                        Actions.Visio_Shape.Get_HyperlinksRows,
+                        ShapeType.Page),
+                    new Presentation.Views.Hyperlinks()));
+        }
+
+        public static DxThemedWindowHost _shapeHyperlinksHost = null;
+
+        private void btnShapeHyperlinks_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeHyperlinksHost,
+                "Hyperlinks (Shape)",
+                800, 700,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                    new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.RowsViewModel<Domain.HyperlinkRow, Presentation.ModelWrappers.HyperlinkRowWrapper>(
+                        "Update Hyperlinks",
+                        Actions.Visio_Shape.Get_HyperlinksRows,
+                        ShapeType.Shape),
+                    new Presentation.Views.Hyperlinks()));
+        }
+
+        #endregion
 
         private void btnCharacter_Click(object sender, RibbonControlEventArgs e)
         {
@@ -1078,20 +1146,6 @@ namespace SupportTools_Visio
 
         }
 
-        public static DxThemedWindowHost ssShapeHyperlinks_ShapeSheetSectionHost = null;
-
-        private void btnShapeHyperlinks_Click(object sender, RibbonControlEventArgs e)
-        {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssShapeHyperlinks_ShapeSheetSectionHost,
-            "Hyperlinks (Shape)",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.HyperlinksViewModel(), 
-                new Presentation.Views.Hyperlinks()));
-        }
-
         public static DxThemedWindowHost shapeScratch_ShapeSheetSectionHost = null;
 
         private void btnShapeScratch_Click(object sender, RibbonControlEventArgs e)
@@ -1103,7 +1157,7 @@ namespace SupportTools_Visio
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                 new Presentation.Views.ShapeSheetSection(
                     new Presentation.ViewModels.ScratchViewModel(),
-                    new Presentation.Views.ScratchRows()));
+                    new Presentation.Views.Scratch()));
         }
 
         public static DxThemedWindowHost ssShapeData_ShapeSheetSectionHost = null;

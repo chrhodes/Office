@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Windows.Controls;
-using SupportTools_Visio.Presentation.ViewModels;
+
 using VNC;
 
 namespace SupportTools_Visio.Presentation.Views
 {
-    public partial class DocumentScratchRows : UserControl
+    public partial class Scratch : UserControl
     {
         #region Constructors and Load
 
-        public DocumentScratchRows()
+        public Scratch()
         {
             Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 

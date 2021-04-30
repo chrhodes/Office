@@ -5,6 +5,8 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class HyperlinkRowWrapper : ModelWrapper<Domain.HyperlinkRow>
     {
+        public HyperlinkRowWrapper() { }
+
         public HyperlinkRowWrapper(HyperlinkRow model) : base(model)
         {
         }

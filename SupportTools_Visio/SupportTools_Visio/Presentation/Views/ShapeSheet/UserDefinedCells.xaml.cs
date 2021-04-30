@@ -4,18 +4,17 @@ using VNC;
 
 namespace SupportTools_Visio.Presentation.Views
 {
-    public partial class LineGradientStopRow : UserControl
+    public partial class UserDefinedCells : UserControl
     {
-        private readonly LineGradientStopRowViewModel _viewModel;
 
         #region Constructors and Load
 
-        public LineGradientStopRow(LineGradientStopRowViewModel viewModel)
+        public UserDefinedCells()
         {
             Log.Trace("Enter", Common.PROJECT_NAME);
+
             InitializeComponent();
-            _viewModel = viewModel;
-            DataContext = _viewModel;
+
             Log.Trace("Exit", Common.PROJECT_NAME);
         }
 
