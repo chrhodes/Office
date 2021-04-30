@@ -4,39 +4,36 @@ using Prism.Commands;
 
 using SupportTools_Visio.Actions;
 using SupportTools_Visio.Presentation.ModelWrappers;
+
 using VNC;
-using VNC.Core.Mvvm;
 
 using Visio = Microsoft.Office.Interop.Visio;
 
 namespace SupportTools_Visio.Presentation.ViewModels
 {
-    public class LineGradientStopRowViewModel : ViewModelBase //, ILineGradientStopRowViewModelViewModel
+    public class LineGradientStopRowViewModel : ShapeSheetSectionBase
     {
-        public System.Collections.ObjectModel.ObservableCollection<Domain.ControlsRow> ControlRows { get; set; }
-
-
-        public DelegateCommand UpdateSettings { get; private set; }
-        public DelegateCommand LoadCurrentSettings { get; private set; }
-
-        public LineGradientStopRowWrapper LineGradientStopRow { get; set; }
-
-
         public LineGradientStopRowViewModel()
         {
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
+
             UpdateSettings = new DelegateCommand(OnUpdateSettingsExecute, OnUpdateSettingsCanExecute);
             LoadCurrentSettings = new DelegateCommand(OnLoadCurrentSettingsExecute, OnLoadCurrentSettingsCanExecute);
 
             // TODO(crhodes)
             // Decide if we want defaults
             //LineGradientStopRowViewModel = new LineGradientStopRowWrapper(new Domain.LineGradientStopRowViewModel());
+
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
 
-        public void OnUpdateSettingsExecute()
-        {
-            Log.Trace("Enter", Common.PROJECT_NAME);
-            // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
+        public LineGradientStopRowWrapper LineGradientStopRow { get; set; }
 
+        public override void OnUpdateSettingsExecute()
+        {
+            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
+
+            // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
             int undoScope = Globals.ThisAddIn.Application.BeginUndoScope("UpdateControlRow");
 
             // Just need to pass in the model.
@@ -53,19 +50,14 @@ namespace SupportTools_Visio.Presentation.ViewModels
             //}
 
             Globals.ThisAddIn.Application.EndUndoScope(undoScope, true);
-            Log.Trace("Exit", Common.PROJECT_NAME);
+
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
         }
 
-        public Boolean OnUpdateSettingsCanExecute()
+        public override void OnLoadCurrentSettingsExecute()
         {
-            // TODO(crhodes)
-            // Validate we have new settings
+            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
-            return true;
-        }
-
-        void OnLoadCurrentSettingsExecute()
-        {
             Visio.Application app = Globals.ThisAddIn.Application;
 
             Visio.Selection selection = app.ActiveWindow.Selection;
@@ -77,14 +69,8 @@ namespace SupportTools_Visio.Presentation.ViewModels
                 LineGradientStopRow = new LineGradientStopRowWrapper(Visio_Shape.Get_LineGradientStopRow(shape));
                 OnPropertyChanged("LineGradientStopRow");
             }
-        }
 
-        bool OnLoadCurrentSettingsCanExecute()
-        {
-            // TODO(crhodes)
-            // Check if shape selected
-
-            return true;
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
         }
     }
 }

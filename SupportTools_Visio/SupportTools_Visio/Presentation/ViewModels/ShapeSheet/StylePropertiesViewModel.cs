@@ -11,14 +11,11 @@ using Visio = Microsoft.Office.Interop.Visio;
 
 namespace SupportTools_Visio.Presentation.ViewModels
 {
-    public class StylePropertiesViewModel : ShapeSheetSectionBase //, IStylePropertiesViewModelViewModel
+    public class StylePropertiesViewModel : ShapeSheetSectionBase
     {
-        public StylePropertiesWrapper StyleProperties { get; set; }
-
         public StylePropertiesViewModel() : base()
         {
-            //UpdateSettings = new DelegateCommand(OnUpdateSettingsExecute, OnUpdateSettingsCanExecute);
-            //LoadCurrentSettings = new DelegateCommand(OnLoadCurrentSettingsExecute, OnLoadCurrentSettingsCanExecute);
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
 
             UpdateButtonContent = "Update StyleProperties for selected shapes";
             // TODO(crhodes)
@@ -26,11 +23,13 @@ namespace SupportTools_Visio.Presentation.ViewModels
             //StylePropertiesViewModel = new StylePropertiesWrapper(new Domain.StylePropertiesViewModel());
         }
 
+        public StylePropertiesWrapper StyleProperties { get; set; }
+
         public override void OnUpdateSettingsExecute()
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
-            // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
+            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
+            // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
             int undoScope = Globals.ThisAddIn.Application.BeginUndoScope("UpdateStyleProperties");
 
             Visio.Application app = Globals.ThisAddIn.Application;
@@ -43,11 +42,14 @@ namespace SupportTools_Visio.Presentation.ViewModels
             }
 
             Globals.ThisAddIn.Application.EndUndoScope(undoScope, true);
-            Log.Trace("Exit", Common.PROJECT_NAME);
+
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
         }
 
         public override void OnLoadCurrentSettingsExecute()
         {
+            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
+
             Visio.Application app = Globals.ThisAddIn.Application;
 
             Visio.Selection selection = app.ActiveWindow.Selection;
@@ -57,6 +59,8 @@ namespace SupportTools_Visio.Presentation.ViewModels
                 StyleProperties = new StylePropertiesWrapper(Visio_Shape.Get_StyleProperties(shape));
                 OnPropertyChanged("StyleProperties");
             }
+
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
         }
     }
 }

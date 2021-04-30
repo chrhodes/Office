@@ -12,6 +12,20 @@ namespace SupportTools_Visio.Presentation.ViewModels
 {
     public class ActionsViewModel : ShapeSheetSectionBase
     { 
+
+
+        public ActionsViewModel()
+        {
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
+
+            UpdateButtonContent = "Update Actions for selected shapes";
+            // TODO(crhodes)
+            // Decide if we want defaults
+            //XXX = new XXXWrapper(new Domain.XXX());
+
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+        }
+
         public System.Collections.ObjectModel.ObservableCollection<ActionRowWrapper> Actions { get; set; }
 
         ActionRowWrapper _selectedItem;
@@ -28,19 +42,11 @@ namespace SupportTools_Visio.Presentation.ViewModels
             }
         }
 
-        public ActionsViewModel()
-        {
-            UpdateButtonContent = "Update Actions for selected shapes";
-            // TODO(crhodes)
-            // Decide if we want defaults
-            //XXX = new XXXWrapper(new Domain.XXX());
-        }
-
         public override void OnUpdateSettingsExecute()
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
-            // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
+            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
+            // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
             int undoScope = Globals.ThisAddIn.Application.BeginUndoScope("UpdateActions");
 
             // Just need to pass in the model.
@@ -57,19 +63,14 @@ namespace SupportTools_Visio.Presentation.ViewModels
             //}
 
             Globals.ThisAddIn.Application.EndUndoScope(undoScope, true);
-            Log.Trace("Exit", Common.PROJECT_NAME);
+
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
         }
-
-        //public override Boolean OnUpdateSettingsCanExecute()
-        //{
-        //    // TODO(crhodes)
-        //    // Validate we have new settings
-
-        //    return true;
-        //}
 
         public override void OnLoadCurrentSettingsExecute()
         {
+            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
+
             Visio.Application app = Globals.ThisAddIn.Application;
 
             Visio.Selection selection = app.ActiveWindow.Selection;
@@ -85,15 +86,8 @@ namespace SupportTools_Visio.Presentation.ViewModels
             }
 
             OnPropertyChanged("Actions");
-        }
 
-        public override bool OnLoadCurrentSettingsCanExecute()
-        {
-            // TODO(crhodes)
-            // Anything else we need to do?
-
-            //return true;
-            return base.OnLoadCurrentSettingsCanExecute();
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 using Prism.Commands;
 
 using SupportTools_Visio.Actions;
@@ -10,27 +11,27 @@ using Visio = Microsoft.Office.Interop.Visio;
 
 namespace SupportTools_Visio.Presentation.ViewModels
 {
-    public class GlueInfoViewModel : ShapeSheetSectionBase //, IGlueInfoViewModelViewModel
+    public class GlueInfoViewModel : ShapeSheetSectionBase
     {
-        public GlueInfoWrapper GlueInfo { get; set; }
-
-
         public GlueInfoViewModel() : base()
         {
-            //UpdateSettings = new DelegateCommand(OnUpdateSettingsExecute, OnUpdateSettingsCanExecute);
-            //LoadCurrentSettings = new DelegateCommand(OnLoadCurrentSettingsExecute, OnLoadCurrentSettingsCanExecute);
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
 
             UpdateButtonContent = "Update GlueInfo for selected shapes";
             // TODO(crhodes)
             // Decide if we want defaults
             //GlueInfoViewModel = new GlueInfoWrapper(new Domain.GlueInfoViewModel());
+
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
+
+        public GlueInfoWrapper GlueInfo { get; set; }
 
         public override void OnUpdateSettingsExecute()
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
-            // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
+            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
+            // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
             int undoScope = Globals.ThisAddIn.Application.BeginUndoScope("UpdateGlueInfo");
 
             Visio.Application app = Globals.ThisAddIn.Application;
@@ -43,11 +44,14 @@ namespace SupportTools_Visio.Presentation.ViewModels
             }
 
             Globals.ThisAddIn.Application.EndUndoScope(undoScope, true);
-            Log.Trace("Exit", Common.PROJECT_NAME);
+
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
         }
 
         public override void OnLoadCurrentSettingsExecute()
         {
+            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
+
             Visio.Application app = Globals.ThisAddIn.Application;
 
             Visio.Selection selection = app.ActiveWindow.Selection;
@@ -57,6 +61,8 @@ namespace SupportTools_Visio.Presentation.ViewModels
                 GlueInfo = new GlueInfoWrapper(Visio_Shape.Get_GlueInfo(shape));
                 OnPropertyChanged("GlueInfo");
             }
+
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
         }
     }
 }

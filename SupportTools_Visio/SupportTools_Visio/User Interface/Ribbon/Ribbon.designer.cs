@@ -1020,19 +1020,19 @@
             // 
             // btnDocumentScratch
             // 
-            this.btnDocumentScratch.Label = "Scratch";
+            this.btnDocumentScratch.Label = "ScratchRows";
             this.btnDocumentScratch.Name = "btnDocumentScratch";
             this.btnDocumentScratch.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDocumentScratch_Click);
             // 
             // btnDocumentShapeData
             // 
-            this.btnDocumentShapeData.Label = "Shape Data";
+            this.btnDocumentShapeData.Label = "X Shape Data";
             this.btnDocumentShapeData.Name = "btnDocumentShapeData";
             this.btnDocumentShapeData.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDocumentShapeData_Click);
             // 
             // btnDocumentUserDefinedCells
             // 
-            this.btnDocumentUserDefinedCells.Label = "User-Defined Cells";
+            this.btnDocumentUserDefinedCells.Label = "X User-Defined Cells";
             this.btnDocumentUserDefinedCells.Name = "btnDocumentUserDefinedCells";
             this.btnDocumentUserDefinedCells.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDocumentUserDefinedCells_Click);
             // 
@@ -1061,37 +1061,37 @@
             // 
             // btnPageLayout
             // 
-            this.btnPageLayout.Label = "Page Layout";
+            this.btnPageLayout.Label = "X Page Layout";
             this.btnPageLayout.Name = "btnPageLayout";
             this.btnPageLayout.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageLayout_Click);
             // 
             // btnLayers
             // 
-            this.btnLayers.Label = "Layers";
+            this.btnLayers.Label = "X Layers";
             this.btnLayers.Name = "btnLayers";
             this.btnLayers.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnLayers_Click);
             // 
             // btnRulerAndGrid
             // 
-            this.btnRulerAndGrid.Label = "Ruler and Grid";
+            this.btnRulerAndGrid.Label = "X Ruler and Grid";
             this.btnRulerAndGrid.Name = "btnRulerAndGrid";
             this.btnRulerAndGrid.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnRulerAndGrid_Click);
             // 
             // btnPrintProperties
             // 
-            this.btnPrintProperties.Label = "Print Properties";
+            this.btnPrintProperties.Label = "X Print Properties";
             this.btnPrintProperties.Name = "btnPrintProperties";
             this.btnPrintProperties.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPrintProperties_Click);
             // 
             // btnPageActions
             // 
-            this.btnPageActions.Label = "Actions";
+            this.btnPageActions.Label = "X Actions";
             this.btnPageActions.Name = "btnPageActions";
             this.btnPageActions.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageActions_Click);
             // 
             // btnPageActionTags
             // 
-            this.btnPageActionTags.Label = "Action Tags";
+            this.btnPageActionTags.Label = "X Action Tags";
             this.btnPageActionTags.Name = "btnPageActionTags";
             this.btnPageActionTags.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageActionTags_Click);
             // 
@@ -1109,13 +1109,13 @@
             // 
             // btnPageShapeData
             // 
-            this.btnPageShapeData.Label = "Shape Data";
+            this.btnPageShapeData.Label = "X Shape Data";
             this.btnPageShapeData.Name = "btnPageShapeData";
             this.btnPageShapeData.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageShapeData_Click);
             // 
             // btnPageThemeProperties
             // 
-            this.btnPageThemeProperties.Label = "Theme Properties";
+            this.btnPageThemeProperties.Label = "X Theme Properties";
             this.btnPageThemeProperties.Name = "btnPageThemeProperties";
             this.btnPageThemeProperties.ScreenTip = "Edit Text";
             this.btnPageThemeProperties.SuperTip = "Launch the Super Duper Edit Text UI";
@@ -1123,7 +1123,7 @@
             // 
             // btnPageUserDefinedCells
             // 
-            this.btnPageUserDefinedCells.Label = "User-Defined Cells";
+            this.btnPageUserDefinedCells.Label = "X User-Defined Cells";
             this.btnPageUserDefinedCells.Name = "btnPageUserDefinedCells";
             this.btnPageUserDefinedCells.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageUserDefinedCells_Click);
             // 
@@ -1347,7 +1347,7 @@
             // 
             // btnCharacter
             // 
-            this.btnCharacter.Label = "Character";
+            this.btnCharacter.Label = "X Character";
             this.btnCharacter.Name = "btnCharacter";
             this.btnCharacter.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnCharacter_Click);
             // 
@@ -1365,19 +1365,19 @@
             // 
             // btnGeometry
             // 
-            this.btnGeometry.Label = "Geometry";
+            this.btnGeometry.Label = "X Geometry";
             this.btnGeometry.Name = "btnGeometry";
             this.btnGeometry.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnGeometry_Click);
             // 
             // btnGradientStops
             // 
-            this.btnGradientStops.Label = "Gradient Stops";
+            this.btnGradientStops.Label = "X Gradient Stops";
             this.btnGradientStops.Name = "btnGradientStops";
             this.btnGradientStops.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnGradientStops_Click);
             // 
             // btnParagraph
             // 
-            this.btnParagraph.Label = "Paragraph";
+            this.btnParagraph.Label = "X Paragraph";
             this.btnParagraph.Name = "btnParagraph";
             this.btnParagraph.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnParagraph_Click);
             // 
@@ -1401,13 +1401,13 @@
             // 
             // btnTabs
             // 
-            this.btnTabs.Label = "Tabs";
+            this.btnTabs.Label = "X Tabs";
             this.btnTabs.Name = "btnTabs";
             this.btnTabs.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnTabs_Click);
             // 
             // btnShapeUserDefinedCells
             // 
-            this.btnShapeUserDefinedCells.Label = "User-Defined Cells";
+            this.btnShapeUserDefinedCells.Label = "X User-Defined Cells";
             this.btnShapeUserDefinedCells.Name = "btnShapeUserDefinedCells";
             this.btnShapeUserDefinedCells.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnShapeUserDefinedCells_Click);
             // 

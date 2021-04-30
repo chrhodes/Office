@@ -1,12 +1,10 @@
 ﻿using System;
-using DevExpress.XtraRichEdit.Model;
-using Prism.Commands;
 
 using SupportTools_Visio.Actions;
 using SupportTools_Visio.Domain;
 using SupportTools_Visio.Presentation.ModelWrappers;
+
 using VNC;
-using VNC.Core.Mvvm;
 
 using Visio = Microsoft.Office.Interop.Visio;
 
@@ -14,6 +12,17 @@ namespace SupportTools_Visio.Presentation.ViewModels
 {
     public class ConnectionPointsViewModel : ShapeSheetSectionBase //, IConnectionPointRowViewModelViewModel
     {
+        public ConnectionPointsViewModel()
+        {
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
+            UpdateButtonContent = "Update ConnectionPoints for selected shapes";
+            // TODO(crhodes)
+            // Decide if we want defaults
+            //ConnectionPointRowViewModel = new ConnectionPointRowWrapper(new Domain.ConnectionPointRowViewModel());
+
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+        }
+
         public System.Collections.ObjectModel.ObservableCollection<ConnectionPointRowWrapper> ConnectionPoints { get; set; }
 
 
@@ -31,19 +40,11 @@ namespace SupportTools_Visio.Presentation.ViewModels
             }
         }
 
-        public ConnectionPointsViewModel()
-        {
-            UpdateButtonContent = "Update ConnectionPoints for selected shapes";
-            // TODO(crhodes)
-            // Decide if we want defaults
-            //ConnectionPointRowViewModel = new ConnectionPointRowWrapper(new Domain.ConnectionPointRowViewModel());
-        }
-
         public override void OnUpdateSettingsExecute()
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
-            // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
+            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
+            // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
             int undoScope = Globals.ThisAddIn.Application.BeginUndoScope("UpdateControlRow");
 
             // Just need to pass in the model.
@@ -60,19 +61,14 @@ namespace SupportTools_Visio.Presentation.ViewModels
             //}
 
             Globals.ThisAddIn.Application.EndUndoScope(undoScope, true);
-            Log.Trace("Exit", Common.PROJECT_NAME);
-        }
 
-        public override Boolean OnUpdateSettingsCanExecute()
-        {
-            // TODO(crhodes)
-            // Validate we have new settings
-
-            return true;
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
         }
 
         public override void OnLoadCurrentSettingsExecute()
         {
+            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
+
             Visio.Application app = Globals.ThisAddIn.Application;
 
             Visio.Selection selection = app.ActiveWindow.Selection;
@@ -88,14 +84,8 @@ namespace SupportTools_Visio.Presentation.ViewModels
             }
 
             OnPropertyChanged("ConnectionPoints");
+
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
         }
-
-        //public override bool OnLoadCurrentSettingsCanExecute()
-        //{
-        //    // TODO(crhodes)
-        //    // Check if shape selected
-
-        //    return true;
-        //}
     }
 }

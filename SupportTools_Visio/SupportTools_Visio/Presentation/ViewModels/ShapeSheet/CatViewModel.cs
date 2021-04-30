@@ -19,7 +19,7 @@ namespace SupportTools_Visio.Presentation.ViewModels
 
         public CatViewModel()
         {
-            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
 
             // TODO(crhodes)
             // Decide if we want defaults
@@ -27,7 +27,7 @@ namespace SupportTools_Visio.Presentation.ViewModels
 
             InitializeViewModel();
 
-            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         // ViewModel First

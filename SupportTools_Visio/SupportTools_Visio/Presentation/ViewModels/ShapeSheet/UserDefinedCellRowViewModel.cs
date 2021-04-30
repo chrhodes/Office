@@ -1,42 +1,37 @@
 ﻿using System;
 
-using Prism.Commands;
-
 using SupportTools_Visio.Actions;
 using SupportTools_Visio.Presentation.ModelWrappers;
+
 using VNC;
-using VNC.Core.Mvvm;
 
 using Visio = Microsoft.Office.Interop.Visio;
 
 namespace SupportTools_Visio.Presentation.ViewModels
 {
-    public class UserDefinedCellRowViewModel : ViewModelBase //, IUserDefinedCellRowViewModel
+    public class UserDefinedCellRowViewModel : ShapeSheetSectionBase
     {
-        public System.Collections.ObjectModel.ObservableCollection<Domain.ControlsRow> ControlRows { get; set; }
-
-
-        public DelegateCommand UpdateSettings { get; private set; }
-        public DelegateCommand LoadCurrentSettings { get; private set; }
+        //public System.Collections.ObjectModel.ObservableCollection<Domain.ControlsRow> ControlRows { get; set; }
 
         public UserDefinedCellRowWrapper UserDefinedCellRow { get; set; }
 
 
-        public UserDefinedCellRowViewModel()
+        public UserDefinedCellRowViewModel() : base()
         {
-            UpdateSettings = new DelegateCommand(OnUpdateSettingsExecute, OnUpdateSettingsCanExecute);
-            LoadCurrentSettings = new DelegateCommand(OnLoadCurrentSettingsExecute, OnLoadCurrentSettingsCanExecute);
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
 
             // TODO(crhodes)
             // Decide if we want defaults
             //UserDefinedCellRowViewModel = new UserDefinedCellRowWrapper(new Domain.UserDefinedCellRowViewModel());
+
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
 
-        public void OnUpdateSettingsExecute()
+        public override void OnUpdateSettingsExecute()
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
-            // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
+            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
+            // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
             int undoScope = Globals.ThisAddIn.Application.BeginUndoScope("UpdateControlRow");
 
             // Just need to pass in the model.
@@ -53,19 +48,14 @@ namespace SupportTools_Visio.Presentation.ViewModels
             //}
 
             Globals.ThisAddIn.Application.EndUndoScope(undoScope, true);
-            Log.Trace("Exit", Common.PROJECT_NAME);
+
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
         }
 
-        public Boolean OnUpdateSettingsCanExecute()
+        public override void OnLoadCurrentSettingsExecute()
         {
-            // TODO(crhodes)
-            // Validate we have new settings
+            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
-            return true;
-        }
-
-        void OnLoadCurrentSettingsExecute()
-        {
             Visio.Application app = Globals.ThisAddIn.Application;
 
             Visio.Selection selection = app.ActiveWindow.Selection;
@@ -77,14 +67,9 @@ namespace SupportTools_Visio.Presentation.ViewModels
                 UserDefinedCellRow = new UserDefinedCellRowWrapper(Visio_Shape.Get_UserDefinedCellRow(shape));
                 OnPropertyChanged("UserDefinedCellRow");
             }
+
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
         }
 
-        bool OnLoadCurrentSettingsCanExecute()
-        {
-            // TODO(crhodes)
-            // Check if shape selected
-
-            return true;
-        }
     }
 }

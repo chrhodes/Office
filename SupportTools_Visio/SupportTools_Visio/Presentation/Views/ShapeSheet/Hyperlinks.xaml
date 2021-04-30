@@ -11,7 +11,7 @@
     xmlns:local="clr-namespace:SupportTools_Visio.Presentation.Views"
     mc:Ignorable="d" 
 >
-    <dxlc:LayoutGroup 
+    <dxlc:LayoutControl 
     	View="Group" Orientation="Horizontal" >
     
         <dxlc:LayoutGroup 
@@ -95,6 +95,6 @@
             
             </dxlc:LayoutGroup>
         
-    </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
 
 </UserControl>

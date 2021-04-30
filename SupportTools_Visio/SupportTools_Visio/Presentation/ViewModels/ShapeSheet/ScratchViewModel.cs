@@ -3,40 +3,50 @@
 using Prism.Commands;
 
 using SupportTools_Visio.Actions;
+using SupportTools_Visio.Domain;
 using SupportTools_Visio.Presentation.ModelWrappers;
+
 using VNC;
-using VNC.Core.Mvvm;
 
 using Visio = Microsoft.Office.Interop.Visio;
 
 namespace SupportTools_Visio.Presentation.ViewModels
 {
-    public class ScratchViewModel : ViewModelBase //, IScratchRowViewModelViewModel
+    public class ScratchViewModel : ShapeSheetSectionBase
     {
-        public System.Collections.ObjectModel.ObservableCollection<Domain.ControlsRow> ControlRows { get; set; }
-
-
-        public DelegateCommand UpdateSettings { get; private set; }
-        public DelegateCommand LoadCurrentSettings { get; private set; }
-
-        public ScratchRowWrapper ScratchRow { get; set; }
-
-
         public ScratchViewModel()
         {
-            UpdateSettings = new DelegateCommand(OnUpdateSettingsExecute, OnUpdateSettingsCanExecute);
-            LoadCurrentSettings = new DelegateCommand(OnLoadCurrentSettingsExecute, OnLoadCurrentSettingsCanExecute);
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
 
+            OnLoadCurrentSettingsExecute();
             // TODO(crhodes)
             // Decide if we want defaults
             //ScratchRowViewModel = new ScratchRowWrapper(new Domain.ScratchRowViewModel());
+
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
 
-        public void OnUpdateSettingsExecute()
-        {
-            Log.Trace("Enter", Common.PROJECT_NAME);
-            // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
+        public System.Collections.ObjectModel.ObservableCollection<ScratchRowWrapper> ScratchRows { get; set; }
 
+        ScratchRowWrapper _selectedItem;
+        public ScratchRowWrapper SelectedItem
+        {
+            get
+            {
+                return _selectedItem;
+            }
+            set
+            {
+                _selectedItem = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public override void OnUpdateSettingsExecute()
+        {
+            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
+
+            // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
             int undoScope = Globals.ThisAddIn.Application.BeginUndoScope("UpdateControlRow");
 
             // Just need to pass in the model.
@@ -53,38 +63,33 @@ namespace SupportTools_Visio.Presentation.ViewModels
             //}
 
             Globals.ThisAddIn.Application.EndUndoScope(undoScope, true);
-            Log.Trace("Exit", Common.PROJECT_NAME);
+
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
         }
 
-        public Boolean OnUpdateSettingsCanExecute()
+        public override void OnLoadCurrentSettingsExecute()
         {
-            // TODO(crhodes)
-            // Validate we have new settings
+            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
-            return true;
-        }
-
-        void OnLoadCurrentSettingsExecute()
-        {
             Visio.Application app = Globals.ThisAddIn.Application;
 
             Visio.Selection selection = app.ActiveWindow.Selection;
 
             // Verify only one shape, for now just grab first.
 
+            ScratchRows = new System.Collections.ObjectModel.ObservableCollection<ScratchRowWrapper>();
+
             foreach (Visio.Shape shape in selection)
             {
-                ScratchRow = new ScratchRowWrapper(Visio_Shape.Get_ScratchRow(shape));
-                OnPropertyChanged("ScratchRow");
+                foreach (ScratchRow row in Visio_Shape.Get_ScratchRows(shape))
+                {
+                    ScratchRows.Add(new ScratchRowWrapper(row));
+                }
             }
-        }
 
-        bool OnLoadCurrentSettingsCanExecute()
-        {
-            // TODO(crhodes)
-            // Check if shape selected
+            OnPropertyChanged("ScratchRows");
 
-            return true;
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
         }
     }
 }

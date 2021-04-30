@@ -633,6 +633,7 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Domain\ShapeSheet\PageProperties.cs" />
     <Compile Include="Domain\WorkItemInfoShape.cs" />
     <Compile Include="Domain\FileInfoShape.cs" />
     <Compile Include="Domain\MethodInfoShape.cs" />
@@ -705,6 +706,16 @@
     <Compile Include="Domain\Cat.cs" />
     <Compile Include="Domain\ShapeSheet\NewButton.cs" />
     <Compile Include="Presentation\Converters\SelectedItemsConverter.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\Page\PagePropertiesWrapper.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\Document\DocumentHyperlinksViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\Document\DocumentScratchViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\Document\DocumentShapeDataViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\Document\DocumentUserDefinedCellsViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\Document\DocumentShapeSheetSectionBase.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\Page\PagePropertiesViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\Page\PageHyperlinksViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\Page\PageScratchViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\Page\PageShapeSheetSectionBase.cs" />
     <Compile Include="Presentation\Views\Cat.xaml.cs">
       <DependentUpon>Cat.xaml</DependentUpon>
     </Compile>
@@ -719,7 +730,7 @@
     <Compile Include="Presentation\ModelWrappers\ShapeSheet\CharacterRowWrapper.cs" />
     <Compile Include="Presentation\ModelWrappers\ShapeSheet\ConnectionPointRowWrapper.cs" />
     <Compile Include="Presentation\ModelWrappers\ShapeSheet\ControlsRowWrapper.cs" />
-    <Compile Include="Presentation\ModelWrappers\ShapeSheet\DocumentPropertiesWrapper.cs" />
+    <Compile Include="Presentation\ModelWrappers\ShapeSheet\Document\DocumentPropertiesWrapper.cs" />
     <Compile Include="Presentation\ModelWrappers\ShapeSheet\EventsWrapper.cs" />
     <Compile Include="Presentation\ModelWrappers\ShapeSheet\FillFormatWrapper.cs" />
     <Compile Include="Presentation\ModelWrappers\ShapeSheet\FillGradientStopRowWrapper.cs" />
@@ -759,7 +770,7 @@
     <Compile Include="Presentation\ViewModels\ShapeSheet\CharacterRowViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\ConnectionPointsViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\ControlsViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\DocumentPropertiesViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\Document\DocumentPropertiesViewModel.cs" />
     <Compile Include="Presentation\ViewModels\EditControlRowsViewModel.cs" />
     <Compile Include="Presentation\ViewModels\EditParagraphViewModel.cs" />
     <Compile Include="Presentation\ViewModels\EditTextViewModel.cs" />
@@ -771,35 +782,7 @@
     <Compile Include="Presentation\ViewModels\ShapeSheet\GroupPropertiesViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\HyperlinksViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\ImagePropertiesViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IActionRowViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IActionTagRowViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IBevelPropertiesViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IChangeShapeBehaviorViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\ICharacterRowViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IConnectionPointRowViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IControlsRowViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IDocumentPropertiesViewModel.cs" />
     <Compile Include="Presentation\ViewModels\Interfaces\IEditTextViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IEventsViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IFillFormatViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IFillGradientStopRowWrapperViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IGeometryRowViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IGlueInfoViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IGradientPropertiesViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IGroupPropertiesViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IHyperlinkRowViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IImagePropertiesViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\ILayerMembershipViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\ILayerRowViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\ILineFormatViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\ILineGradientStopRowViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IMiscellaneousViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IOneDEndPointsViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IPageLayoutViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IPrintPropertiesViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IProtectionViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IQuickStyleViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IRulerAndGridViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\LayerMembershipViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\LayerRowViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\LineFormatViewModel.cs" />
@@ -825,6 +808,9 @@
     </Compile>
     <Compile Include="Presentation\ViewModels\DuplicatePageViewModel.cs" />
     <Compile Include="Presentation\ModelWrappers\DuplicatePageWrapper.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\Document\DocumentScratchRows.cs">
+      <DependentUpon>DocumentScratchRows.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Views\ShapeSheet\Hyperlinks.cs">
       <DependentUpon>Hyperlinks.xaml</DependentUpon>
     </Compile>
@@ -835,8 +821,20 @@
       <DependentUpon>Controls.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\ViewModels\Interfaces\IDuplicatePageViewModel.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\Page\DocumentProperties.cs">
+      <DependentUpon>PageProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\Page\PageShapeSheetSection.xaml.cs">
+      <DependentUpon>PageShapeSheetSection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\Page\PageScratchRows.cs">
+      <DependentUpon>PageScratchRows.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Views\ShapeSheet\ShapeData.cs">
       <DependentUpon>ShapeData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\Document\DocumentShapeSheetSection.xaml.cs">
+      <DependentUpon>DocumentShapeSheetSection.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Views\ShapeSheet\ShapeSheetSection.xaml.cs">
       <DependentUpon>ShapeSheetSection.xaml</DependentUpon>
@@ -858,7 +856,6 @@
       <DependentUpon>AdditionalEffectProperties.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\ViewModels\ShapeSheet\AdditionalEffectPropertiesViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IAdditionalEffectPropertiesViewModel.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\ChangeShapeBehavior.cs">
       <DependentUpon>ChangeShapeBehavior.xaml</DependentUpon>
     </Compile>
@@ -871,7 +868,7 @@
     <Compile Include="Presentation\Views\ShapeSheet\ControlsRow.cs">
       <DependentUpon>ControlsRow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Views\ShapeSheet\DocumentProperties.cs">
+    <Compile Include="Presentation\Views\ShapeSheet\Document\DocumentProperties.cs">
       <DependentUpon>DocumentProperties.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Views\EditControlRows.cs">
@@ -902,24 +899,9 @@
     <Compile Include="Presentation\Views\ShapeSheet\GroupProperties.cs">
       <DependentUpon>GroupProperties.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Views\ShapeSheet\HyperlinkRow.cs">
-      <DependentUpon>HyperlinkRow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Presentation\Views\ShapeSheet\ImageProperties.cs">
       <DependentUpon>ImageProperties.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IScratchRowViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IShapeDataRowViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IShapeLayoutViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IShapeTransformViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IStylePropertiesViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\ITabRowViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\ITextBlockFormatViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\ITextFieldRowViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\ITextTransformViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IThemePropertiesViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IThreeDRotationPropertiesViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ShapeSheet\IUserDefinedCellRowViewModel.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\LayerMembership.cs">
       <DependentUpon>LayerMembership.xaml</DependentUpon>
     </Compile>
@@ -960,7 +942,7 @@
       <DependentUpon>RulerAndGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Views\ShapeSheet\ScratchRow.cs">
-      <DependentUpon>ScratchRow.xaml</DependentUpon>
+      <DependentUpon>ScratchRows.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\ViewModels\ShapeSheet\ScratchViewModel.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\SelectedShapesInfo.xaml.cs">
@@ -1246,6 +1228,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Presentation\Views\ShapeSheet\Document\DocumentScratchRows.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Presentation\Views\ShapeSheet\Hyperlinks.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1258,7 +1244,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Presentation\Views\ShapeSheet\Page\PageProperties.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\Page\PageShapeSheetSection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\Page\PageScratchRows.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Presentation\Views\ShapeSheet\ShapeData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\ShapeSheet\Document\DocumentShapeSheetSection.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -1302,7 +1304,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Presentation\Views\ShapeSheet\DocumentProperties.xaml">
+    <Page Include="Presentation\Views\ShapeSheet\Document\DocumentProperties.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1339,10 +1341,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\Views\ShapeSheet\GroupProperties.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Presentation\Views\ShapeSheet\HyperlinkRow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1402,7 +1400,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Presentation\Views\ShapeSheet\ScratchRow.xaml">
+    <Page Include="Presentation\Views\ShapeSheet\ScratchRows.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1557,6 +1555,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Fakes\" />
+    <Folder Include="Presentation\ViewModels\Interfaces\ShapeSheet\" />
     <Folder Include="User Interface\Windows\" />
   </ItemGroup>
   <ItemGroup>

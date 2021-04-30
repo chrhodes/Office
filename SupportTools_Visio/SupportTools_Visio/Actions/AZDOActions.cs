@@ -13,6 +13,7 @@ using Microsoft.VisualStudio.Services.WebApi;
 using SupportTools_Visio.Domain;
 
 using VNC.Core;
+using VNC.WPF.Presentation.Dx.Views;
 
 using Visio = Microsoft.Office.Interop.Visio;
 using VisioHelper = VNC.AddinHelper.Visio;
@@ -99,10 +100,18 @@ namespace SupportTools_Visio.Actions
             }
         }
 
+        public static VNC.WPF.Presentation.Dx.Views.DxThemedWindowHost addLinkedWorkItemsHost = null;
+
         internal static async void AddLinkedWorkItems(Visio.Application app, string doc, string page, string shape, string shapeu, string[] vs)
         {
             VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
                 MethodBase.GetCurrentMethod().Name));
+
+            DxThemedWindowHost.DisplayUserControlInHost(ref addLinkedWorkItemsHost,
+                "Edit Shape Control Points Text",
+                Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.EditControlPoints());
 
             Visio.Page activePage = app.ActivePage;
             Visio.Shape activeShape = app.ActivePage.Shapes[shape];

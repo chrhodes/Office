@@ -1,47 +1,33 @@
 ﻿using System;
-using System.CodeDom;
-using Prism.Commands;
 
 using SupportTools_Visio.Actions;
 using SupportTools_Visio.Domain;
 using SupportTools_Visio.Presentation.ModelWrappers;
+
 using VNC;
-using VNC.Core.Mvvm;
 
 using Visio = Microsoft.Office.Interop.Visio;
 
 namespace SupportTools_Visio.Presentation.ViewModels
 {
-    public class ShapeDataViewModel : ShapeSheetSectionBase //, IShapeDataRowViewModelViewModel
+    public class ShapeDataViewModel : ShapeSheetSectionBase
     {
+        public ShapeDataViewModel() : base()
+        {
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
+
+            // TODO(crhodes)
+            // Decide if we want defaults
+            //ShapeDataRowViewModel = new ShapeDataRowWrapper(new Domain.ShapeDataRowViewModel());
+
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+        }
+
         //public System.Collections.ObjectModel.ObservableCollection<Domain.ShapeDataRow> ShapeDataRows { get; set; }
         public System.Collections.ObjectModel.ObservableCollection<ShapeDataRowWrapper> ShapeDataRowsW { get; set; }
 
-        ////ShapeDataRowWrapper _currentShapeDataRow;
-        //Domain.ShapeDataRow _currentShapeDataRow;
-        //public Domain.ShapeDataRow CurrentShapeDataRow
-        ////{ 
-        ////    get; 
-        ////    set;
-        ////}
-        //{
-        //    get
-        //    {
-        //        return _currentShapeDataRow;
-        //    }
-        //    set
-        //    {
-        //        _currentShapeDataRow = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
-
         ShapeDataRowWrapper _currentShapeDataRowW;
         public ShapeDataRowWrapper CurrentShapeDataRowW
-        //{ 
-        //    get; 
-        //    set;
-        //}
         {
             get
             {
@@ -54,18 +40,11 @@ namespace SupportTools_Visio.Presentation.ViewModels
             }
         }
 
-        public ShapeDataViewModel()
-        {
-            // TODO(crhodes)
-            // Decide if we want defaults
-            //ShapeDataRowViewModel = new ShapeDataRowWrapper(new Domain.ShapeDataRowViewModel());
-        }
-
         public override void OnUpdateSettingsExecute()
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
-            // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
+            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
+            // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
             int undoScope = Globals.ThisAddIn.Application.BeginUndoScope("UpdateShapeData");
 
             // Just need to pass in the model.
@@ -82,24 +61,14 @@ namespace SupportTools_Visio.Presentation.ViewModels
             //}
 
             Globals.ThisAddIn.Application.EndUndoScope(undoScope, true);
-            Log.Trace("Exit", Common.PROJECT_NAME);
-        }
 
-        public void OnSelectedItemChanged()
-        {
-
-        }
-
-        public override Boolean OnUpdateSettingsCanExecute()
-        {
-            // TODO(crhodes)
-            // Validate we have new settings
-
-            return true;
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
         }
 
         public override void OnLoadCurrentSettingsExecute()
         {
+            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
+
             Visio.Application app = Globals.ThisAddIn.Application;
 
             Visio.Selection selection = app.ActiveWindow.Selection;
@@ -119,14 +88,8 @@ namespace SupportTools_Visio.Presentation.ViewModels
                 //OnPropertyChanged("ShapeDataRows");
                 OnPropertyChanged("ShapeDataRowsW");
             }
-        }
 
-        public override bool OnLoadCurrentSettingsCanExecute()
-        {
-            // TODO(crhodes)
-            // Check if shape selected
-
-            return true;
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 using SupportTools_Visio.Actions;
 using SupportTools_Visio.Presentation.ModelWrappers;
 
@@ -8,24 +9,28 @@ using Visio = Microsoft.Office.Interop.Visio;
 
 namespace SupportTools_Visio.Presentation.ViewModels
 {
-    public class MiscellaneousViewModel : ShapeSheetSectionBase //, IMiscellaneousViewModelViewModel
+    public class MiscellaneousViewModel : ShapeSheetSectionBase
     {
         public MiscellaneousWrapper Miscellaneous { get; set; }
 
         public MiscellaneousViewModel() : base()
         {
-             UpdateButtonContent = "Update Miscellaneous for selected shapes";
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
+
+            UpdateButtonContent = "Update Miscellaneous for selected shapes";
 
             // TODO(crhodes)
             // Decide if we want defaults
             //MiscellaneousViewModel = new MiscellaneousWrapper(new Domain.MiscellaneousViewModel());
+
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         public override void OnUpdateSettingsExecute()
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
-            // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
+            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
+            // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
             int undoScope = Globals.ThisAddIn.Application.BeginUndoScope("UpdateControlRow");
 
             Visio.Application app = Globals.ThisAddIn.Application;
@@ -38,11 +43,14 @@ namespace SupportTools_Visio.Presentation.ViewModels
             }
 
             Globals.ThisAddIn.Application.EndUndoScope(undoScope, true);
-            Log.Trace("Exit", Common.PROJECT_NAME);
+
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
         }
 
         public override void OnLoadCurrentSettingsExecute()
         {
+            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
+
             Visio.Application app = Globals.ThisAddIn.Application;
 
             Visio.Selection selection = app.ActiveWindow.Selection;
@@ -52,6 +60,8 @@ namespace SupportTools_Visio.Presentation.ViewModels
                 Miscellaneous = new MiscellaneousWrapper(Visio_Shape.Get_Miscellaneous(shape));
                 OnPropertyChanged("Miscellaneous");
             }
+
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
         }
     }
 }

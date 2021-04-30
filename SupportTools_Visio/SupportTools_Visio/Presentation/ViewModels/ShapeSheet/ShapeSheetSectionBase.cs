@@ -4,6 +4,7 @@ using Prism.Commands;
 
 using SupportTools_Visio.Infrastructure;
 
+using VNC;
 using VNC.Core.Mvvm;
 
 using Visio = Microsoft.Office.Interop.Visio;
@@ -19,10 +20,14 @@ namespace SupportTools_Visio.Presentation.ViewModels
 
         public ShapeSheetSectionBase()
         {
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
+
             UpdateSettings = new DelegateCommand(OnUpdateSettingsExecute, OnUpdateSettingsCanExecute);
             LoadCurrentSettings = new DelegateCommand(OnLoadCurrentSettingsExecute, OnLoadCurrentSettingsCanExecute);
 
             Common.EventAggregator.GetEvent<SelectionChangedEvent>().Subscribe(OnRefresh);
+
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         string _message = "";

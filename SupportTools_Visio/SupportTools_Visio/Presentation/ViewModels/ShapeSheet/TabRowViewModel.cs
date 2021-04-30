@@ -11,30 +11,24 @@ using Visio = Microsoft.Office.Interop.Visio;
 
 namespace SupportTools_Visio.Presentation.ViewModels
 {
-    public class TabRowViewModel : ViewModelBase //, ITabRowViewModelViewModel
+    public class TabRowViewModel : ShapeSheetSectionBase //, ITabRowViewModelViewModel
     {
-        public System.Collections.ObjectModel.ObservableCollection<Domain.ControlsRow> ControlRows { get; set; }
-
-
-        public DelegateCommand UpdateSettings { get; private set; }
-        public DelegateCommand LoadCurrentSettings { get; private set; }
-
-        public TabRowWrapper TabRow { get; set; }
-
-
-        public TabRowViewModel()
+        public TabRowViewModel() : base()
         {
-            UpdateSettings = new DelegateCommand(OnUpdateSettingsExecute, OnUpdateSettingsCanExecute);
-            LoadCurrentSettings = new DelegateCommand(OnLoadCurrentSettingsExecute, OnLoadCurrentSettingsCanExecute);
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
 
             // TODO(crhodes)
             // Decide if we want defaults
             //TabRowViewModel = new TabRowWrapper(new Domain.TabRowViewModel());
+
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
 
-        public void OnUpdateSettingsExecute()
+        public TabRowWrapper TabRow { get; set; }
+
+        public override void OnUpdateSettingsExecute()
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
+            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
             // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
 
             int undoScope = Globals.ThisAddIn.Application.BeginUndoScope("UpdateControlRow");
@@ -53,19 +47,14 @@ namespace SupportTools_Visio.Presentation.ViewModels
             //}
 
             Globals.ThisAddIn.Application.EndUndoScope(undoScope, true);
-            Log.Trace("Exit", Common.PROJECT_NAME);
+
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
         }
 
-        public Boolean OnUpdateSettingsCanExecute()
+        public override void OnLoadCurrentSettingsExecute()
         {
-            // TODO(crhodes)
-            // Validate we have new settings
+            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
-            return true;
-        }
-
-        void OnLoadCurrentSettingsExecute()
-        {
             Visio.Application app = Globals.ThisAddIn.Application;
 
             Visio.Selection selection = app.ActiveWindow.Selection;
@@ -77,14 +66,8 @@ namespace SupportTools_Visio.Presentation.ViewModels
                 TabRow = new TabRowWrapper(Visio_Shape.Get_TabRow(shape));
                 OnPropertyChanged("TabRow");
             }
-        }
 
-        bool OnLoadCurrentSettingsCanExecute()
-        {
-            // TODO(crhodes)
-            // Check if shape selected
-
-            return true;
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
         }
     }
 }

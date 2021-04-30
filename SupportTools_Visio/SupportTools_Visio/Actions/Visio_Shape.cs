@@ -1,24 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Windows;
 
-using Visio = Microsoft.Office.Interop.Visio;
-using VisioHelper = VNC.AddinHelper.Visio;
+using Microsoft.Office.Interop.Visio;
+
+using SupportTools_Visio.Domain;
 //using static VNC.Helper;
 using VNC;
 using VNC.Core;
 
-using System.Drawing;
-using DevExpress.XtraRichEdit.Model;
-using SupportTools_Visio.User_Interface.User_Controls;
-using System.Windows;
-using Microsoft.Office.Interop.Visio;
-using SupportTools_Visio.Domain;
-using DevExpress.Xpf.CodeView;
-using DevExpress.XtraEditors.Filtering.Templates;
-using DevExpress.Mvvm.POCO;
+using Visio = Microsoft.Office.Interop.Visio;
+using VisioHelper = VNC.AddinHelper.Visio;
 
 namespace SupportTools_Visio.Actions
 {
@@ -94,7 +88,6 @@ namespace SupportTools_Visio.Actions
             VisioHelper.DisplayInWatchWindow(string.Format("Visio_Shape.Add_User_IsPageName() {0}", "End"));
         }
 
-
         public static void AddColorSupportToSelection()
         {
             Visio.Application app = Globals.ThisAddIn.Application;
@@ -136,6 +129,7 @@ namespace SupportTools_Visio.Actions
                 Log.Error(ex, Common.LOG_APPNAME);
             }
         }
+
         public static void Add_IDandTextSupport_ToSelection()
         {
             VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
@@ -614,7 +608,6 @@ namespace SupportTools_Visio.Actions
                 address, 
                 subAddress, 
                 extraInfo, frame, sortKey, newWindow, default1, invisible);
-
         }
 
         private static void Set_RowFill_Cell(Visio.Shape shape, Visio.VisCellIndices cellIndex, string value)
@@ -2131,28 +2124,27 @@ namespace SupportTools_Visio.Actions
             return row;
         }
 
-        public static HyperlinkRow Get_HyperlinkRow(Shape shape)
-        {
-            HyperlinkRow row = new HyperlinkRow();
+        //public static HyperlinkRow Get_HyperlinkRow(Shape shape)
+        //{
+        //    HyperlinkRow row = new HyperlinkRow();
 
-            Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionHyperlink];
-            Visio.Row sectionRow = section[0];
+        //    Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionHyperlink];
+        //    Visio.Row sectionRow = section[0];
 
-            // TODO(crhodes)
-            // Handle multiple rows
+        //    // TODO(crhodes)
+        //    // Handle multiple rows
 
-            row.Name = sectionRow.Name;
+        //    row.Name = sectionRow.Name;
 
-            row.Address = sectionRow[VisCellIndices.visHLinkAddress].FormulaU;
+        //    row.Address = sectionRow[VisCellIndices.visHLinkAddress].FormulaU;
 
-            return row;
-        }
+        //    return row;
+        //}
 
         internal static LayerRow Get_LayerRow(Shape shape)
         {
             LayerRow row = new LayerRow();
 
-            // Shape Transform Section is part of object
             Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionObject];
             Visio.Row sectionRow = section[(short)Visio.VisRowIndices.visRowLayer];
 
@@ -2187,6 +2179,200 @@ namespace SupportTools_Visio.Actions
             return row;
         }
 
+        internal static System.Collections.ObjectModel.ObservableCollection<ActionRow> Get_ActionsRows(Shape shape)
+        {
+            System.Collections.ObjectModel.ObservableCollection<Domain.ActionRow> rows =
+                new System.Collections.ObjectModel.ObservableCollection<ActionRow>();
+
+            Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionAction];
+
+            var rowCount = section.Count;
+
+            for (short i = 0; i < rowCount; i++)
+            {
+                Domain.ActionRow actionRow = new ActionRow();
+
+                var row = section[i];
+
+                actionRow.Name = row.NameU;
+
+                actionRow.Action = row[(short)VisCellIndices.visActionAction].FormulaU;
+                actionRow.Menu = row[(short)VisCellIndices.visActionMenu].FormulaU;
+                actionRow.TagName = row[(short)VisCellIndices.visActionTagName].FormulaU;
+                actionRow.ButtonFace = row[(short)VisCellIndices.visActionButtonFace].FormulaU;
+                actionRow.SortKey = row[(short)VisCellIndices.visActionSortKey].FormulaU;
+                actionRow.Checked = row[(short)VisCellIndices.visActionChecked].FormulaU;
+                actionRow.Disabled = row[(short)VisCellIndices.visActionDisabled].FormulaU;
+                actionRow.ReadOnly = row[(short)VisCellIndices.visActionReadOnly].FormulaU;
+                actionRow.Invisible = row[(short)VisCellIndices.visActionInvisible].FormulaU;
+                actionRow.BeginGroup = row[(short)VisCellIndices.visActionBeginGroup].FormulaU;
+                actionRow.FlyoutChild = row[(short)VisCellIndices.visActionFlyoutChild].FormulaU;
+
+                rows.Add(actionRow);
+            }
+
+            return rows;
+        }
+
+        internal static System.Collections.ObjectModel.ObservableCollection<ActionTagRow> Get_ActionTagRows(Shape shape)
+        {
+            System.Collections.ObjectModel.ObservableCollection<Domain.ActionTagRow> rows =
+                new System.Collections.ObjectModel.ObservableCollection<ActionTagRow>();
+
+            Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionSmartTag];
+
+            var rowCount = section.Count;
+
+            for (short i = 0; i < rowCount; i++)
+            {
+                Domain.ActionTagRow actionTagRow = new ActionTagRow();
+
+                var row = section[i];
+
+                actionTagRow.Name = row.NameU;
+
+                actionTagRow.X = row[(short)VisCellIndices.visSmartTagX].FormulaU;
+                actionTagRow.Y = row[(short)VisCellIndices.visSmartTagY].FormulaU;
+                actionTagRow.TagName = row[(short)VisCellIndices.visSmartTagName].FormulaU;
+                actionTagRow.XJustify = row[(short)VisCellIndices.visSmartTagXJustify].FormulaU;
+                actionTagRow.YJustify = row[(short)VisCellIndices.visSmartTagYJustify].FormulaU;
+                actionTagRow.DisplayMode = row[(short)VisCellIndices.visSmartTagDisplayMode].FormulaU;
+                actionTagRow.ButtonFace = row[(short)VisCellIndices.visSmartTagButtonFace].FormulaU;
+                actionTagRow.Description = row[(short)VisCellIndices.visSmartTagDescription].FormulaU;
+                actionTagRow.Disabled = row[(short)VisCellIndices.visSmartTagDisabled].FormulaU;
+
+                rows.Add(actionTagRow);
+            }
+
+            return rows;
+        }
+
+        internal static System.Collections.ObjectModel.ObservableCollection<ConnectionPointRow> Get_ConnectionPointRows(Shape shape)
+        {
+            System.Collections.ObjectModel.ObservableCollection<Domain.ConnectionPointRow> rows =
+                new System.Collections.ObjectModel.ObservableCollection<ConnectionPointRow>();
+
+            Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionConnectionPts];
+
+            var rowCount = section.Count;
+
+            for (short i = 0; i < rowCount; i++)
+            {
+                Domain.ConnectionPointRow connectionPointRow = new ConnectionPointRow();
+
+                var row = section[i];
+
+                connectionPointRow.Name = row.NameU;
+
+                connectionPointRow.X = row[(short)VisCellIndices.visCnnctX].FormulaU;
+                connectionPointRow.Y = row[(short)VisCellIndices.visCnnctY].FormulaU;
+                connectionPointRow.DirX = row[(short)VisCellIndices.visCnnctDirX].FormulaU;
+                connectionPointRow.A = row[(short)VisCellIndices.visCnnctA].FormulaU;
+                connectionPointRow.DirY = row[(short)VisCellIndices.visCnnctDirY].FormulaU;
+                connectionPointRow.B = row[(short)VisCellIndices.visCnnctB].FormulaU;
+                connectionPointRow.Type = row[(short)VisCellIndices.visCnnctType].FormulaU;
+                connectionPointRow.C = row[(short)VisCellIndices.visCnnctC].FormulaU;
+                connectionPointRow.D = row[(short)VisCellIndices.visCnnctD].FormulaU;
+
+                rows.Add(connectionPointRow);
+            }
+
+            return rows;
+        }
+
+        internal static System.Collections.ObjectModel.ObservableCollection<ControlsRow> Get_ControlsRows(Shape shape)
+        {
+            System.Collections.ObjectModel.ObservableCollection<Domain.ControlsRow> rows =
+                new System.Collections.ObjectModel.ObservableCollection<ControlsRow>();
+
+            Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionControls];
+
+            var rowCount = section.Count;
+
+            for (short i = 0; i < rowCount; i++)
+            {
+                Domain.ControlsRow controlsRow = new ControlsRow();
+
+                var row = section[i];
+
+                controlsRow.Name = row.NameU;
+
+                controlsRow.X = row[VisCellIndices.visCtlX].FormulaU;
+                controlsRow.Y = row[VisCellIndices.visCtlY].FormulaU;
+                controlsRow.XDynamics = row[VisCellIndices.visCtlXDyn].FormulaU;
+                controlsRow.YDynamics = row[VisCellIndices.visCtlYDyn].FormulaU;
+                controlsRow.XBehavior = row[VisCellIndices.visCtlXCon].FormulaU;
+                controlsRow.YBehavior = row[VisCellIndices.visCtlYCon].FormulaU;
+                controlsRow.CanGlue = row[VisCellIndices.visCtlGlue].FormulaU;
+                controlsRow.Tip = row[VisCellIndices.visCtlTip].FormulaU;
+
+                rows.Add(controlsRow);
+            }
+
+            return rows;
+        }
+
+        internal static System.Collections.ObjectModel.ObservableCollection<HyperlinkRow> Get_HyperlinksRows(Shape shape)
+        {
+            System.Collections.ObjectModel.ObservableCollection<Domain.HyperlinkRow> rows =
+                new System.Collections.ObjectModel.ObservableCollection<HyperlinkRow>();
+
+            Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionHyperlink];
+
+            var rowCount = section.Count;
+
+            for (short i = 0; i < rowCount; i++)
+            {
+                Domain.HyperlinkRow hyperlinkRow = new HyperlinkRow();
+
+                var row = section[i];
+
+                hyperlinkRow.Name = row.NameU;
+
+                hyperlinkRow.Description = row[(short)VisCellIndices.visHLinkDescription].FormulaU;
+                hyperlinkRow.Address = row[(short)VisCellIndices.visHLinkAddress].FormulaU;
+                hyperlinkRow.SubAddress = row[(short)VisCellIndices.visHLinkSubAddress].FormulaU;
+                hyperlinkRow.ExtraInfo = row[(short)VisCellIndices.visHLinkExtraInfo].FormulaU;
+                hyperlinkRow.Frame = row[(short)VisCellIndices.visHLinkFrame].FormulaU;
+                hyperlinkRow.SortKey = row[(short)VisCellIndices.visHLinkSortKey].FormulaU;
+                hyperlinkRow.NewWindow = row[(short)VisCellIndices.visHLinkNewWin].FormulaU;
+                hyperlinkRow.Default = row[(short)VisCellIndices.visHLinkDefault].FormulaU;
+                hyperlinkRow.Invisible = row[(short)VisCellIndices.visHLinkInvisible].FormulaU;
+
+                rows.Add(hyperlinkRow);
+            }
+
+            return rows;
+        }
+
+        internal static System.Collections.ObjectModel.ObservableCollection<ScratchRow> Get_ScratchRows(Shape shape)
+        {
+            System.Collections.ObjectModel.ObservableCollection<ScratchRow> rows =
+                new System.Collections.ObjectModel.ObservableCollection<ScratchRow>();
+
+            Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionScratch];
+
+            var rowCount = section.Count;
+
+            for (short i = 0; i < rowCount; i++)
+            {
+                ScratchRow scratchRow = new ScratchRow();
+
+                var row = section[i];
+
+                scratchRow.X = row[(short)VisCellIndices.visScratchX].FormulaU;
+                scratchRow.Y = row[(short)VisCellIndices.visScratchY].FormulaU;
+                scratchRow.A = row[(short)VisCellIndices.visScratchA].FormulaU;
+                scratchRow.B = row[(short)VisCellIndices.visScratchB].FormulaU;
+                scratchRow.C = row[(short)VisCellIndices.visScratchC].FormulaU;
+                scratchRow.D = row[(short)VisCellIndices.visScratchD].FormulaU;
+
+                rows.Add(scratchRow);
+            }
+
+            return rows;
+        }
+
         public static Domain.ParagraphRow Get_ParagraphSection(Visio.Shape shape)
         {
             Domain.ParagraphRow paragraph = new Domain.ParagraphRow();
@@ -2216,6 +2402,28 @@ namespace SupportTools_Visio.Actions
         #endregion
 
         #region Get ShapeSheet Page Section
+
+        internal static Domain.PageProperties Get_PageProperties(Shape shape)
+        {
+            Domain.PageProperties row = new Domain.PageProperties();
+
+            Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionObject];
+            Visio.Row sectionRow = section[(short)Visio.VisRowIndices.visRowPage];
+
+            row.PageWidth = sectionRow[VisCellIndices.visPageWidth].FormulaU;
+            row.PageHeight = sectionRow[VisCellIndices.visPageHeight].FormulaU;
+            row.PageScale = sectionRow[VisCellIndices.visPageScale].FormulaU;
+            row.DrawingScale = sectionRow[VisCellIndices.visPageDrawingScale].FormulaU;
+            row.DrawingSizeType = sectionRow[VisCellIndices.visPageDrawSizeType].FormulaU;
+            row.DrawingResizeType = sectionRow[VisCellIndices.visPageDrawResizeType].FormulaU;
+            row.DrawingScaleType = sectionRow[VisCellIndices.visPageDrawScaleType].FormulaU;
+            row.InhibitSnap = sectionRow[VisCellIndices.visPageInhibitSnap].FormulaU;
+            row.UIVisibility = sectionRow[VisCellIndices.visPageUIVisibility].FormulaU;
+            row.PageLockReplace = sectionRow[VisCellIndices.visPageLockReplace].FormulaU;
+            row.PageLockDuplicate = sectionRow[VisCellIndices.visPageLockDuplicate].FormulaU;
+
+            return row;
+        }
 
         internal static PageLayout Get_PageLayout(Shape shape)
         {
@@ -2348,8 +2556,6 @@ namespace SupportTools_Visio.Actions
             return row;
         }
 
-
-
         public static bool HasTextTransformSection(Shape shape)
         {
             bool result = false;
@@ -2445,7 +2651,6 @@ namespace SupportTools_Visio.Actions
             return row;
         }
 
-
         public static StyleProperties Get_StyleProperties(Shape shape)
         {
             StyleProperties row = new StyleProperties();
@@ -2462,173 +2667,6 @@ namespace SupportTools_Visio.Actions
         public static TabRow Get_TabRow(Shape shape)
         {
             throw new NotImplementedException();
-        }
-
-
-        internal static System.Collections.ObjectModel.ObservableCollection<ActionRow> Get_ActionsRows(Shape shape)
-        {
-            System.Collections.ObjectModel.ObservableCollection<Domain.ActionRow> rows = 
-                new System.Collections.ObjectModel.ObservableCollection<ActionRow>();
-
-            Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionAction];
-
-            var rowCount = section.Count;
-
-            for (short i = 0; i < rowCount; i++)
-            {
-                Domain.ActionRow actionRow = new ActionRow();
-
-                var row = section[i];
-
-                actionRow.Name = row.NameU;
-
-                actionRow.Action = row[(short)VisCellIndices.visActionAction].FormulaU;
-                actionRow.Menu = row[(short)VisCellIndices.visActionMenu].FormulaU;
-                actionRow.TagName = row[(short)VisCellIndices.visActionTagName].FormulaU;
-                actionRow.ButtonFace = row[(short)VisCellIndices.visActionButtonFace].FormulaU;
-                actionRow.SortKey = row[(short)VisCellIndices.visActionSortKey].FormulaU;
-                actionRow.Checked = row[(short)VisCellIndices.visActionChecked].FormulaU;
-                actionRow.Disabled = row[(short)VisCellIndices.visActionDisabled].FormulaU;
-                actionRow.ReadOnly = row[(short)VisCellIndices.visActionReadOnly].FormulaU;
-                actionRow.Invisible = row[(short)VisCellIndices.visActionInvisible].FormulaU;
-                actionRow.BeginGroup = row[(short)VisCellIndices.visActionBeginGroup].FormulaU;
-                actionRow.FlyoutChild = row[(short)VisCellIndices.visActionFlyoutChild].FormulaU;
-
-                rows.Add(actionRow);
-            }
-
-            return rows;
-        }
-
-        internal static System.Collections.ObjectModel.ObservableCollection<ActionTagRow> Get_ActionTagRows(Shape shape)
-        {
-            System.Collections.ObjectModel.ObservableCollection<Domain.ActionTagRow> rows = 
-                new System.Collections.ObjectModel.ObservableCollection<ActionTagRow>();
-
-            Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionSmartTag];
-
-            var rowCount = section.Count;
-
-            for (short i = 0; i < rowCount; i++)
-            {
-                Domain.ActionTagRow actionTagRow = new ActionTagRow();
-
-                var row = section[i];
-
-                actionTagRow.Name = row.NameU;
-
-                actionTagRow.X = row[(short)VisCellIndices.visSmartTagX].FormulaU;
-                actionTagRow.Y = row[(short)VisCellIndices.visSmartTagY].FormulaU;
-                actionTagRow.TagName = row[(short)VisCellIndices.visSmartTagName].FormulaU;
-                actionTagRow.XJustify = row[(short)VisCellIndices.visSmartTagXJustify].FormulaU;
-                actionTagRow.YJustify = row[(short)VisCellIndices.visSmartTagYJustify].FormulaU;
-                actionTagRow.DisplayMode = row[(short)VisCellIndices.visSmartTagDisplayMode].FormulaU;
-                actionTagRow.ButtonFace = row[(short)VisCellIndices.visSmartTagButtonFace].FormulaU;
-                actionTagRow.Description = row[(short)VisCellIndices.visSmartTagDescription].FormulaU;
-                actionTagRow.Disabled = row[(short)VisCellIndices.visSmartTagDisabled].FormulaU;
-
-                rows.Add(actionTagRow);
-            }
-
-            return rows;
-        }
-
-        internal static System.Collections.ObjectModel.ObservableCollection<ConnectionPointRow> Get_ConnectionPointRows(Shape shape)
-        {
-            System.Collections.ObjectModel.ObservableCollection<Domain.ConnectionPointRow> rows =
-                new System.Collections.ObjectModel.ObservableCollection<ConnectionPointRow>();
-
-            Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionConnectionPts];
-
-            var rowCount = section.Count;
-
-            for (short i = 0; i < rowCount; i++)
-            {
-                Domain.ConnectionPointRow connectionPointRow = new ConnectionPointRow();
-
-                var row = section[i];
-
-                connectionPointRow.Name = row.NameU;
-
-                connectionPointRow.X = row[(short)VisCellIndices.visCnnctX].FormulaU;
-                connectionPointRow.Y = row[(short)VisCellIndices.visCnnctY].FormulaU;
-                connectionPointRow.DirX = row[(short)VisCellIndices.visCnnctDirX].FormulaU;
-                connectionPointRow.A = row[(short)VisCellIndices.visCnnctA].FormulaU;
-                connectionPointRow.DirY = row[(short)VisCellIndices.visCnnctDirY].FormulaU;
-                connectionPointRow.B = row[(short)VisCellIndices.visCnnctB].FormulaU;
-                connectionPointRow.Type = row[(short)VisCellIndices.visCnnctType].FormulaU;
-                connectionPointRow.C = row[(short)VisCellIndices.visCnnctC].FormulaU;
-                connectionPointRow.D = row[(short)VisCellIndices.visCnnctD].FormulaU;
-
-                rows.Add(connectionPointRow);
-            }
-
-            return rows;
-        }
-
-        internal static System.Collections.ObjectModel.ObservableCollection<ControlsRow> Get_ControlsRows(Shape shape)
-        {
-            System.Collections.ObjectModel.ObservableCollection<Domain.ControlsRow> rows =
-                new System.Collections.ObjectModel.ObservableCollection<ControlsRow>();
-
-            Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionControls];
-
-            var rowCount = section.Count;
-
-            for (short i = 0; i < rowCount; i++)
-            {
-                Domain.ControlsRow controlsRow = new ControlsRow();
-
-                var row = section[i];
-
-                controlsRow.Name = row.NameU;
-
-                controlsRow.X = row[VisCellIndices.visCtlX].FormulaU;
-                controlsRow.Y = row[VisCellIndices.visCtlY].FormulaU;
-                controlsRow.XDynamics = row[VisCellIndices.visCtlXDyn].FormulaU;
-                controlsRow.YDynamics = row[VisCellIndices.visCtlYDyn].FormulaU;
-                controlsRow.XBehavior = row[VisCellIndices.visCtlXCon].FormulaU;
-                controlsRow.YBehavior = row[VisCellIndices.visCtlYCon].FormulaU;
-                controlsRow.CanGlue = row[VisCellIndices.visCtlGlue].FormulaU;
-                controlsRow.Tip = row[VisCellIndices.visCtlTip].FormulaU;
-
-                rows.Add(controlsRow);
-            }
-
-            return rows;
-        }
-
-        internal static System.Collections.ObjectModel.ObservableCollection<HyperlinkRow> Get_HyperlinksRows(Shape shape)
-        {
-            System.Collections.ObjectModel.ObservableCollection<Domain.HyperlinkRow> rows =
-                new System.Collections.ObjectModel.ObservableCollection<HyperlinkRow>();
-
-            Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionHyperlink];
-
-            var rowCount = section.Count;
-
-            for (short i = 0; i < rowCount; i++)
-            {
-                Domain.HyperlinkRow hyperlinkRow = new HyperlinkRow();
-
-                var row = section[i];
-
-                hyperlinkRow.Name = row.NameU;
-
-                hyperlinkRow.Description = row[(short)VisCellIndices.visHLinkDescription].FormulaU;
-                hyperlinkRow.Address = row[(short)VisCellIndices.visHLinkAddress].FormulaU;
-                hyperlinkRow.SubAddress = row[(short)VisCellIndices.visHLinkSubAddress].FormulaU;
-                hyperlinkRow.ExtraInfo = row[(short)VisCellIndices.visHLinkExtraInfo].FormulaU;
-                hyperlinkRow.Frame = row[(short)VisCellIndices.visHLinkFrame].FormulaU;
-                hyperlinkRow.SortKey = row[(short)VisCellIndices.visHLinkSortKey].FormulaU;
-                hyperlinkRow.NewWindow = row[(short)VisCellIndices.visHLinkNewWin].FormulaU;
-                hyperlinkRow.Default = row[(short)VisCellIndices.visHLinkDefault].FormulaU;
-                hyperlinkRow.Invisible = row[(short)VisCellIndices.visHLinkInvisible].FormulaU;
-
-                rows.Add(hyperlinkRow);
-            }
-
-            return rows;
         }
 
         public static System.Collections.ObjectModel.ObservableCollection<Domain.ShapeDataRow> Get_ShapeDataRows(Shape shape)
@@ -2677,6 +2715,65 @@ namespace SupportTools_Visio.Actions
         #endregion
 
         #region Set ShapeSheet Section
+
+        #region Document Section
+        public static void Set_DocumentProperties_Section(Shape shape, Domain.DocumentProperties documentProperties)
+        {
+            try
+            {
+                Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionObject];
+                Visio.Row sectionRow = section[(short)Visio.VisRowIndices.visRowDoc];
+
+                sectionRow[VisCellIndices.visDocPreviewQuality].FormulaU = documentProperties.PreviewQuality;
+                sectionRow[VisCellIndices.visDocOutputFormat].FormulaU = documentProperties.OutputFormat;
+                sectionRow[VisCellIndices.visDocPreviewScope].FormulaU = documentProperties.PreviewScope;
+                sectionRow[VisCellIndices.visDocLockPreview].FormulaU = documentProperties.LockPreview;
+                sectionRow[VisCellIndices.visDocAddMarkup].FormulaU = documentProperties.AddMarkup;
+                sectionRow[VisCellIndices.visDocViewMarkup].FormulaU = documentProperties.ViewMarkup;
+                sectionRow[VisCellIndices.visDocLangID].FormulaU = documentProperties.DocLangID;
+                sectionRow[VisCellIndices.visDocLockReplace].FormulaU = documentProperties.DocLockReplace;
+                sectionRow[VisCellIndices.visDocNoCoauth].FormulaU = documentProperties.NoCoauth;
+                sectionRow[VisCellIndices.visDocLockDuplicatePage].FormulaU = documentProperties.DocLockDuplicatePage;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, Common.LOG_APPNAME);
+            }
+        }
+
+        #endregion
+
+        #region Page Section
+
+        public static void Set_PageProperties_Section(Shape shape, Domain.PageProperties pageProperties)
+        {
+            try
+            {
+                Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionObject];
+                Visio.Row sectionRow = section[(short)Visio.VisRowIndices.visRowPage];
+
+                sectionRow[VisCellIndices.visPageWidth].FormulaU = pageProperties.PageWidth;
+                sectionRow[VisCellIndices.visPageHeight].FormulaU = pageProperties.PageHeight;
+                sectionRow[VisCellIndices.visPageScale].FormulaU = pageProperties.PageScale;
+                sectionRow[VisCellIndices.visPageDrawingScale].FormulaU = pageProperties.DrawingScale;
+                sectionRow[VisCellIndices.visPageDrawSizeType].FormulaU = pageProperties.DrawingSizeType;
+                sectionRow[VisCellIndices.visPageDrawScaleType].FormulaU = pageProperties.DrawingScaleType;
+                sectionRow[VisCellIndices.visPageInhibitSnap].FormulaU = pageProperties.InhibitSnap;
+                sectionRow[VisCellIndices.visPageUIVisibility].FormulaU = pageProperties.UIVisibility;
+                sectionRow[VisCellIndices.visPageLockReplace].FormulaU = pageProperties.PageLockReplace;
+                sectionRow[VisCellIndices.visPageLockDuplicate].FormulaU = pageProperties.PageLockDuplicate;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, Common.LOG_APPNAME);
+            }
+        }
+
+        #endregion
+
+        #region Shape Section
+
+
         public static void Set_AdditionalEffectProperties_Section(Shape shape, AdditionalEffectProperties additionalEffectProperties)
         {
             try
@@ -2749,29 +2846,7 @@ namespace SupportTools_Visio.Actions
             }
         }
 
-        public static void Set_DocumentProperties_Section(Shape shape, Domain.DocumentProperties documentProperties)
-        {
-            try
-            {
-                Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionObject];
-                Visio.Row sectionRow = section[(short)Visio.VisRowIndices.visRowDoc];
 
-                sectionRow[VisCellIndices.visDocPreviewQuality].FormulaU = documentProperties.PreviewQuality;
-                sectionRow[VisCellIndices.visDocOutputFormat].FormulaU = documentProperties.OutputFormat;
-                sectionRow[VisCellIndices.visDocPreviewScope].FormulaU = documentProperties.PreviewScope;
-                sectionRow[VisCellIndices.visDocLockPreview].FormulaU = documentProperties.LockPreview;
-                sectionRow[VisCellIndices.visDocAddMarkup].FormulaU = documentProperties.AddMarkup;
-                sectionRow[VisCellIndices.visDocViewMarkup].FormulaU = documentProperties.ViewMarkup;
-                sectionRow[VisCellIndices.visDocLangID].FormulaU = documentProperties.DocLangID;
-                sectionRow[VisCellIndices.visDocLockReplace].FormulaU = documentProperties.DocLockReplace;
-                sectionRow[VisCellIndices.visDocNoCoauth].FormulaU = documentProperties.NoCoauth;
-                sectionRow[VisCellIndices.visDocLockDuplicatePage].FormulaU = documentProperties.DocLockDuplicatePage;
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex, Common.LOG_APPNAME);
-            }
-        }
 
         public static void Set_FillFormat_Section(Shape shape, FillFormat fillFormat)
         {
@@ -3027,6 +3102,7 @@ namespace SupportTools_Visio.Actions
                 Log.Error(ex, Common.LOG_APPNAME);
             }
         }
+
         public static void Set_PrintProperties_Section(Shape shape, PrintProperties printProperties)
         {
             try
@@ -3055,6 +3131,7 @@ namespace SupportTools_Visio.Actions
                 Log.Error(ex, Common.LOG_APPNAME);
             }
         }
+
         public static void Set_Protection_Section(Shape shape, Protection protection)
         {
             try
@@ -3093,6 +3170,7 @@ namespace SupportTools_Visio.Actions
                 Log.Error(ex, Common.LOG_APPNAME);
             }
         }
+
         public static void Set_QuickStyle_Section(Shape shape, QuickStyle quickStyle)
         {
             try
@@ -3215,6 +3293,7 @@ namespace SupportTools_Visio.Actions
                 Log.Error(ex, Common.LOG_APPNAME);
             }
         }
+
         public static void Set_ThemeProperties_Section(Shape shape, ThemeProperties themeProperties)
         {
             try
@@ -3257,6 +3336,9 @@ namespace SupportTools_Visio.Actions
                 Log.Error(ex, Common.LOG_APPNAME);
             }
         }
+
+        #endregion
+
 
         #endregion
 

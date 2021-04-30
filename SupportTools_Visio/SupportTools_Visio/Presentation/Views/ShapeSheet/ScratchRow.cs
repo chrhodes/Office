@@ -1,22 +1,23 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 using SupportTools_Visio.Presentation.ViewModels;
 using VNC;
 
 namespace SupportTools_Visio.Presentation.Views
 {
-    public partial class ScratchRow : UserControl
+    public partial class ScratchRows : UserControl
     {
         private readonly ScratchViewModel _viewModel;
 
         #region Constructors and Load
 
-        public ScratchRow(ScratchViewModel viewModel)
+        public ScratchRows()
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
+
             InitializeComponent();
-            _viewModel = viewModel;
-            DataContext = _viewModel;
-            Log.Trace("Exit", Common.PROJECT_NAME);
+
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion
