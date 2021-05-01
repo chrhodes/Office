@@ -1037,13 +1037,13 @@
             // 
             // btnDocumentShapeData
             // 
-            this.btnDocumentShapeData.Label = "X Shape Data";
+            this.btnDocumentShapeData.Label = "Shape Data";
             this.btnDocumentShapeData.Name = "btnDocumentShapeData";
             this.btnDocumentShapeData.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDocumentShapeData_Click);
             // 
             // btnDocumentUserDefinedCells
             // 
-            this.btnDocumentUserDefinedCells.Label = "X User-Defined Cells";
+            this.btnDocumentUserDefinedCells.Label = "User-Defined Cells";
             this.btnDocumentUserDefinedCells.Name = "btnDocumentUserDefinedCells";
             this.btnDocumentUserDefinedCells.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDocumentUserDefinedCells_Click);
             // 
@@ -1131,13 +1131,13 @@
             // 
             // btnPageShapeData
             // 
-            this.btnPageShapeData.Label = "X Shape Data";
+            this.btnPageShapeData.Label = "Shape Data";
             this.btnPageShapeData.Name = "btnPageShapeData";
             this.btnPageShapeData.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageShapeData_Click);
             // 
             // btnPageUserDefinedCells
             // 
-            this.btnPageUserDefinedCells.Label = "X User-Defined Cells";
+            this.btnPageUserDefinedCells.Label = "User-Defined Cells";
             this.btnPageUserDefinedCells.Name = "btnPageUserDefinedCells";
             this.btnPageUserDefinedCells.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageUserDefinedCells_Click);
             // 
@@ -1411,7 +1411,7 @@
             // 
             this.btnShapeShapeData.Label = "Shape Data";
             this.btnShapeShapeData.Name = "btnShapeShapeData";
-            this.btnShapeShapeData.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnShapeData_Click);
+            this.btnShapeShapeData.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnShapeShapeData_Click);
             // 
             // btnTabs
             // 
@@ -1421,7 +1421,7 @@
             // 
             // btnShapeUserDefinedCells
             // 
-            this.btnShapeUserDefinedCells.Label = "X User-Defined Cells";
+            this.btnShapeUserDefinedCells.Label = "User-Defined Cells";
             this.btnShapeUserDefinedCells.Name = "btnShapeUserDefinedCells";
             this.btnShapeUserDefinedCells.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnShapeUserDefinedCells_Click);
             // 

@@ -111,7 +111,6 @@ namespace SupportTools_Visio.Presentation.ViewModels
 
         public virtual Boolean OnLoadCurrentSettingsCanExecute()
         {
-            //return true;
             Visio.Application app = Globals.ThisAddIn.Application;
 
             Visio.Selection selection = app.ActiveWindow.Selection;

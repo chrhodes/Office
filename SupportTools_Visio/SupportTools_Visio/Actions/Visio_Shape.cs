@@ -2701,9 +2701,9 @@ namespace SupportTools_Visio.Actions
             throw new NotImplementedException();
         }
 
-        public static System.Collections.ObjectModel.ObservableCollection<Domain.ShapeDataRow> Get_ShapeDataRows(Shape shape)
+        public static ObservableCollection<Domain.ShapeDataRow> Get_ShapeDataRows(Shape shape)
         {
-            System.Collections.ObjectModel.ObservableCollection<Domain.ShapeDataRow> rows = new System.Collections.ObjectModel.ObservableCollection<ShapeDataRow>();
+            var rows = new ObservableCollection<ShapeDataRow>();
 
             Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionProp];
 
@@ -2734,9 +2734,29 @@ namespace SupportTools_Visio.Actions
             return rows;
         }
 
-        public static UserDefinedCellRow Get_UserDefinedCellRow(Shape shape)
+        public static ObservableCollection<Domain.UserDefinedCellRow> Get_UserDefinedCellsRows(Shape shape)
         {
-            throw new NotImplementedException();
+            var rows = new ObservableCollection<UserDefinedCellRow>();
+
+            Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionUser];
+
+            var rowCount = section.Count;
+
+            for (short i = 0; i < rowCount; i++)
+            {
+                var userRow = new UserDefinedCellRow();
+
+                var row = section[i];
+
+                userRow.Name = row.NameU;
+
+                userRow.Value = row[(short)VisCellIndices.visUserValue].FormulaU;
+                userRow.Prompt = row[(short)VisCellIndices.visUserPrompt].FormulaU;
+
+                rows.Add(userRow);
+            }
+
+            return rows;
         }
 
         public static TextFieldRow Get_TextFieldRow(Shape shape)

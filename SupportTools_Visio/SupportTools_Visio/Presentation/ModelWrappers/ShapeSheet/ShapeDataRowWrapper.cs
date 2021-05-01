@@ -1,10 +1,13 @@
 ﻿using SupportTools_Visio.Domain;
+
 using VNC.Core.Mvvm;
 
 namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class ShapeDataRowWrapper : ModelWrapper<Domain.ShapeDataRow>
     {
+        public ShapeDataRowWrapper() { }
+
         public ShapeDataRowWrapper(ShapeDataRow model) : base(model)
         {
         }

@@ -11,58 +11,59 @@
 >
 
     <dxlc:LayoutControl 
-                	View="Group" Orientation="Horizontal" >
+                	View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
 
         <dxlc:LayoutGroup 
                 	    View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="PreviewQuality">
-                <dxe:TextEdit Text="{Binding DocumentProperties.PreviewQuality}"
+                <dxe:TextEdit Text="{Binding PreviewQuality}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="OutputFormat">
-                <dxe:TextEdit Text="{Binding DocumentProperties.OutputFormat}"
+                <dxe:TextEdit Text="{Binding OutputFormat}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="PreviewScope">
-                <dxe:TextEdit Text="{Binding DocumentProperties.PreviewScope}"
+                <dxe:TextEdit Text="{Binding PreviewScope}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="LockPreview">
-                <dxe:TextEdit Text="{Binding DocumentProperties.LockPreview}"
+                <dxe:TextEdit Text="{Binding LockPreview}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="AddMarkup">
-                <dxe:TextEdit Text="{Binding DocumentProperties.AddMarkup}"
+                <dxe:TextEdit Text="{Binding AddMarkup}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ViewMarkup">
-                <dxe:TextEdit Text="{Binding DocumentProperties.ViewMarkup}"
+                <dxe:TextEdit Text="{Binding ViewMarkup}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="DocLangID">
-                <dxe:TextEdit Text="{Binding DocumentProperties.DocLangID}"
+                <dxe:TextEdit Text="{Binding DocLangID}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="DocLockReplace">
-                <dxe:TextEdit Text="{Binding DocumentProperties.DocLockReplace}"
+                <dxe:TextEdit Text="{Binding DocLockReplace}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="NoCoauth">
-                <dxe:TextEdit Text="{Binding DocumentProperties.NoCoauth}"
+                <dxe:TextEdit Text="{Binding NoCoauth}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="DocLockDuplicatePage">
-                <dxe:TextEdit Text="{Binding DocumentProperties.DocLockDuplicatePage}"
+                <dxe:TextEdit Text="{Binding DocLockDuplicatePage}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 

@@ -708,15 +708,10 @@
     <Compile Include="Domain\ShapeSheet\NewButton.cs" />
     <Compile Include="Presentation\Converters\SelectedItemsConverter.cs" />
     <Compile Include="Presentation\ModelWrappers\ShapeSheet\Page\PagePropertiesWrapper.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\Document\DocumentHyperlinksViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\Document\DocumentScratchViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\Document\DocumentShapeDataViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\Document\DocumentUserDefinedCellsViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\Document\DocumentShapeSheetSectionBase.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\Page\PagePropertiesViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\Page\PageHyperlinksViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\Page\PageScratchViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\Page\PageShapeSheetSectionBase.cs" />
+    <Compile Include="Presentation\ViewModels\ShapeSheet\ObjectViewModel.cs" />
     <Compile Include="Presentation\Views\Cat.xaml.cs">
       <DependentUpon>Cat.xaml</DependentUpon>
     </Compile>
@@ -949,7 +944,6 @@
     <Compile Include="Presentation\Views\ShapeSheet\UserDefinedCells.xaml.cs">
       <DependentUpon>UserDefinedCells.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\ViewModels\ShapeSheet\UserDefinedCellRowViewModel.cs" />
     <Compile Include="ShapeSheetActions.cs" />
     <Compile Include="Actions\Class1.cs" />
     <Compile Include="Actions\Visio_PageFormatting.cs" />

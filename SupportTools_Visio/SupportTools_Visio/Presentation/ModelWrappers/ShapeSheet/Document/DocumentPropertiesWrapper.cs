@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class DocumentPropertiesWrapper : ModelWrapper<Domain.DocumentProperties>
     {
+        public DocumentPropertiesWrapper()
+        {
+        }
         public DocumentPropertiesWrapper(DocumentProperties model) : base(model)
         {
         }

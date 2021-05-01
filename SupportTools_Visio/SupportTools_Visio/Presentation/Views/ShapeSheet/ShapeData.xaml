@@ -11,17 +11,17 @@
     xmlns:local="clr-namespace:SupportTools_Visio.Presentation.Views"
     mc:Ignorable="d" 
 >
-    <dxlc:LayoutGroup 
+    <dxlc:LayoutControl 
     	View="Group" Orientation="Horizontal" >
     
-        <!--<dxlc:LayoutGroup 
+        <dxlc:LayoutGroup 
         	View="Group" Orientation="Vertical" >
             
-            <dxg:GridControl x:Name="dg" AutoGenerateColumns="AddNew" 
-                         EnableSmartColumnsGeneration="True" 
-                         ItemsSource="{Binding ShapeDataRows}"
-                         SelectedItem="{Binding CurrentShapeDataRow, Mode=TwoWay}"
-                         Height="300">
+            <dxg:GridControl x:Name="dgW" AutoGenerateColumns="AddNew" 
+                        EnableSmartColumnsGeneration="True" 
+                        ItemsSource="{Binding Rows}"
+                        SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                        Height="300">
                 <dxg:GridControl.View>
                     <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True"/>
                 </dxg:GridControl.View>
@@ -29,161 +29,76 @@
 
             <dxlc:LayoutGroup 
                 View="Group" Orientation="Horizontal"
-                DataContext="{Binding CurrentShapeDataRow}">
+                DataContext="{Binding SelectedItem}">
 
                 <dxlc:LayoutGroup 
-                	    View="Group" Orientation="Vertical" >
+                	View="Group" Orientation="Vertical" >
 
                     <dxlc:LayoutItem Label="Name">
-                        <dxe:TextEdit Text="{Binding SelectedItem.Name, ElementName=dg}"
-    	                          ToolTip="tooltip" />
+                        <dxe:TextEdit Text="{Binding Name}"
+    	                        ToolTip="tooltip" />
                     </dxlc:LayoutItem>
 
                     <dxlc:LayoutItem Label="Label">
-                        <dxe:TextEdit Text="{Binding SelectedItem.Label, ElementName=dg}"
-    	                          ToolTip="tooltip" />
+                        <dxe:TextEdit Text="{Binding Label}"
+    	                        ToolTip="tooltip" />
                     </dxlc:LayoutItem>
 
                     <dxlc:LayoutItem Label="Prompt">
                         <dxe:TextEdit Text="{Binding Prompt}"
-    	                          ToolTip="tooltip" />
+    	                        ToolTip="tooltip" />
                     </dxlc:LayoutItem>
 
                     <dxlc:LayoutItem Label="Type">
                         <dxe:TextEdit Text="{Binding Type}"
-    	                          ToolTip="tooltip" />
+    	                        ToolTip="tooltip" />
                     </dxlc:LayoutItem>
 
                     <dxlc:LayoutItem Label="Label">
                         <dxe:TextEdit Text="{Binding Format}"
-    	                          ToolTip="tooltip" />
+    	                        ToolTip="tooltip" />
                     </dxlc:LayoutItem>
                     <dxlc:LayoutItem Label="Value">
                         <dxe:TextEdit Text="{Binding Value}"
-    	                          ToolTip="tooltip" />
+    	                        ToolTip="tooltip" />
                     </dxlc:LayoutItem>
 
                 </dxlc:LayoutGroup>
 
                 <dxlc:LayoutGroup 
-                    	View="Group" Orientation="Vertical" >
+                    View="Group" Orientation="Vertical" >
 
                     <dxlc:LayoutItem Label="SortKey">
                         <dxe:TextEdit Text="{Binding SortKey}"
-    	                          ToolTip="tooltip" />
+    	                        ToolTip="tooltip" />
                     </dxlc:LayoutItem>
 
                     <dxlc:LayoutItem Label="Invisible">
                         <dxe:TextEdit Text="{Binding Invisible}"
-    	                          ToolTip="tooltip" />
+    	                        ToolTip="tooltip" />
                     </dxlc:LayoutItem>
 
                     <dxlc:LayoutItem Label="Ask">
                         <dxe:TextEdit Text="{Binding Ask}"
-    	                          ToolTip="tooltip" />
+    	                        ToolTip="tooltip" />
                     </dxlc:LayoutItem>
 
                     <dxlc:LayoutItem Label="LangID">
                         <dxe:TextEdit Text="{Binding LangID}"
-    	                          ToolTip="tooltip" />
+    	                        ToolTip="tooltip" />
                     </dxlc:LayoutItem>
 
                     <dxlc:LayoutItem Label="Calendar">
                         <dxe:TextEdit Text="{Binding Calendar}"
-    	                          ToolTip="tooltip" />
+    	                        ToolTip="tooltip" />
                     </dxlc:LayoutItem>
 
                 </dxlc:LayoutGroup>
 
             </dxlc:LayoutGroup>
             
-        </dxlc:LayoutGroup>-->
-
-        <dxlc:LayoutGroup 
-        	View="Group" Orientation="Vertical" >
-            
-                <dxg:GridControl x:Name="dgW" AutoGenerateColumns="AddNew" 
-                         EnableSmartColumnsGeneration="True" 
-                         ItemsSource="{Binding ShapeDataRowsW}"
-                         SelectedItem="{Binding CurrentShapeDataRowW, Mode=TwoWay}"
-                         Height="300">
-                    <dxg:GridControl.View>
-                        <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True"/>
-                    </dxg:GridControl.View>
-                </dxg:GridControl>
-
-                <dxlc:LayoutGroup 
-                    View="Group" Orientation="Horizontal"
-                    DataContext="{Binding CurrentShapeDataRowW}">
-
-                    <dxlc:LayoutGroup 
-                	    View="Group" Orientation="Vertical" >
-
-                        <dxlc:LayoutItem Label="Name">
-                            <dxe:TextEdit Text="{Binding SelectedItem.Name, ElementName=dgW}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-
-                        <dxlc:LayoutItem Label="Label">
-                            <dxe:TextEdit Text="{Binding SelectedItem.Label, ElementName=dgW}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-
-                        <dxlc:LayoutItem Label="Prompt">
-                            <dxe:TextEdit Text="{Binding Prompt}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-
-                        <dxlc:LayoutItem Label="Type">
-                            <dxe:TextEdit Text="{Binding Type}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-
-                        <dxlc:LayoutItem Label="Label">
-                            <dxe:TextEdit Text="{Binding Format}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-                        <dxlc:LayoutItem Label="Value">
-                            <dxe:TextEdit Text="{Binding Value}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-
-                    </dxlc:LayoutGroup>
-
-                    <dxlc:LayoutGroup 
-                    	View="Group" Orientation="Vertical" >
-
-                        <dxlc:LayoutItem Label="SortKey">
-                            <dxe:TextEdit Text="{Binding SortKey}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-
-                        <dxlc:LayoutItem Label="Invisible">
-                            <dxe:TextEdit Text="{Binding Invisible}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-
-                        <dxlc:LayoutItem Label="Ask">
-                            <dxe:TextEdit Text="{Binding Ask}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-
-                        <dxlc:LayoutItem Label="LangID">
-                            <dxe:TextEdit Text="{Binding LangID}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-
-                        <dxlc:LayoutItem Label="Calendar">
-                            <dxe:TextEdit Text="{Binding Calendar}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-
-                    </dxlc:LayoutGroup>
-
-                </dxlc:LayoutGroup>
-            
-            </dxlc:LayoutGroup>
+        </dxlc:LayoutGroup>
         
-    </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
 
 </UserControl>

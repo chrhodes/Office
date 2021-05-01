@@ -515,85 +515,48 @@ namespace SupportTools_Visio
 
         #region WPF UI Events
 
-        #region WPF UI Events Document Related
+        #region ShapeSheet UI Events Document Related
 
-        public static DxThemedWindowHost documentProperties_ShapeSheetSectionHost = null;
+        public static DxThemedWindowHost _documentPropertiesHost = null;
 
         private void btnDocumentProperties_Click(object sender, RibbonControlEventArgs e)
         {
-            DxThemedWindowHost.DisplayUserControlInHost(ref documentProperties_ShapeSheetSectionHost,
-                "Document Properties",
-                600, 450,
-                //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-                DxThemedWindowHost.ShowWindowMode.Modeless,
-                new Presentation.Views.DocumentShapeSheetSection(
-                    new Presentation.ViewModels.DocumentPropertiesViewModel(),
-                    new Presentation.Views.DocumentProperties()));
-        }
-
-
-
-        public static DxThemedWindowHost documentScratch_ShapeSheetSectionHost = null;
-
-        private void btnDocumentScratch_Click(object sender, RibbonControlEventArgs e)
-        {
-            //DxThemedWindowHost.DisplayUserControlInHost(ref documentScratch_ShapeSheetSectionHost,
-            //    "Document Scratch",
+            //DxThemedWindowHost.DisplayUserControlInHost(ref _documentPropertiesHost,
+            //    "Document Properties",
             //    600, 450,
             //    //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
             //    DxThemedWindowHost.ShowWindowMode.Modeless,
             //    new Presentation.Views.DocumentShapeSheetSection(
-            //        new Presentation.ViewModels.DocumentScratchViewModel(),
-            //        new Presentation.Views.DocumentScratchRows()));
-        }
-
-        public static DxThemedWindowHost documentShapeData_ShapeSheetSectionHost = null;
-
-        private void btnDocumentShapeData_Click(object sender, RibbonControlEventArgs e)
-        {
-            DxThemedWindowHost.DisplayUserControlInHost(ref documentShapeData_ShapeSheetSectionHost,
-                "Document ShapeData",
-                600, 450,
-                //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
+            //        new Presentation.ViewModels.DocumentPropertiesViewModel(),
+            //        new Presentation.Views.DocumentProperties()));
+            DxThemedWindowHost.DisplayUserControlInHost(ref _pageActionsHost,
+                "Document Properties",
+                600, 800,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
-                new Presentation.Views.DocumentShapeSheetSection(
-                    new Presentation.ViewModels.DocumentPropertiesViewModel(),
-                    new Presentation.Views.DocumentProperties()));
-        }
-
-        public static DxThemedWindowHost documentUserDefinedCells_ShapeSheetSectionHost = null;
-
-        private void btnDocumentUserDefinedCells_Click(object sender, RibbonControlEventArgs e)
-        {
-            DxThemedWindowHost.DisplayUserControlInHost(ref documentUserDefinedCells_ShapeSheetSectionHost,
-                "Document UserDefinedCells",
-                600, 450,
-                //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-                DxThemedWindowHost.ShowWindowMode.Modeless,
-                new Presentation.Views.DocumentShapeSheetSection(
-                    new Presentation.ViewModels.DocumentPropertiesViewModel(),
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.ObjectViewModel<Domain.DocumentProperties, Presentation.ModelWrappers.DocumentPropertiesWrapper>(
+                        "Update Properties",
+                        Actions.Visio_Shape.Get_DocumentProperties,
+                        ShapeType.Document),
                     new Presentation.Views.DocumentProperties()));
         }
 
         #endregion
 
-        #region WPF UI Events Page Related
+        #region ShapeSheet UI Events Page Related
 
-
-
-
-
+        public static DxThemedWindowHost _pageLayoutHost = null;
 
         private void btnPageLayout_Click(object sender, RibbonControlEventArgs e)
         {
 
         }
 
-        public static DxThemedWindowHost pageProperties_ShapeSheetSectionHost = null;
+        public static DxThemedWindowHost _pagePagePropertiesHost = null;
 
         private void btnPageProperties_Click(object sender, RibbonControlEventArgs e)
         {
-            DxThemedWindowHost.DisplayUserControlInHost(ref pageProperties_ShapeSheetSectionHost,
+            DxThemedWindowHost.DisplayUserControlInHost(ref _pagePagePropertiesHost,
                 "Page Properties",
                 600, 450,
                 //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
@@ -603,34 +566,30 @@ namespace SupportTools_Visio
                     new Presentation.Views.PageProperties()));
         }
 
-        private void btnPageShapeData_Click(object sender, RibbonControlEventArgs e)
-        {
-
-        }
-
-        private void btnPageThemeProperties_Click(object sender, RibbonControlEventArgs e)
-        {
-
-        }
-
-        private void btnPageUserDefinedCells_Click(object sender, RibbonControlEventArgs e)
-        {
-
-        }
-
-        private void btnRulerAndGrid_Click(object sender, RibbonControlEventArgs e)
-        {
-
-        }
+        public static DxThemedWindowHost _pagePrintPropertiesHost = null;
 
         private void btnPrintProperties_Click(object sender, RibbonControlEventArgs e)
         {
 
         }
 
+        public static DxThemedWindowHost _pageRulerAndGridsHost = null;
+
+        private void btnRulerAndGrid_Click(object sender, RibbonControlEventArgs e)
+        {
+
+        }
+
+        public static DxThemedWindowHost _pageThemePropertiesHost = null;
+
+        private void btnPageThemeProperties_Click(object sender, RibbonControlEventArgs e)
+        {
+
+        }
+
         #endregion
 
-        #region WPF UI Events Shape Related - Section Based
+        #region ShapeSheet UI Events Shape Related
 
         public static DxThemedWindowHost ss1DEndpoints_ShapeSheetSectionHost = null;
 
@@ -960,12 +919,8 @@ namespace SupportTools_Visio
             DxThemedWindowHost.DisplayUserControlInHost(ref _pageActionsHost,
                 "Actions (Page)",
                 600, 800,
-                //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                 new Presentation.Views.ShapeSheetSection(
-                    // NOTE(crhodes)
-                    // 
-                    //new Presentation.ViewModels.ActionsViewModel(), 
                     new Presentation.ViewModels.RowsViewModel<Domain.ActionRow, Presentation.ModelWrappers.ActionRowWrapper>(
                         "Update Actions",
                         Actions.Visio_Shape.Get_ActionsRows,
@@ -1099,22 +1054,22 @@ namespace SupportTools_Visio
 
         #endregion
 
-        #region Hyperlinks
+        #region Scratch
 
         public static DxThemedWindowHost _documentScratchHost = null;
 
         private void btnDocumentScratch_Click(object sender, RibbonControlEventArgs e)
         {
             DxThemedWindowHost.DisplayUserControlInHost(ref _documentScratchHost,
-                "Hyperlinks (Document)",
+                "Scratch (Document)",
                 800, 700,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                 new Presentation.Views.ShapeSheetSection(
-                    new Presentation.ViewModels.RowsViewModel<Domain.HyperlinkRow, Presentation.ModelWrappers.HyperlinkRowWrapper>(
-                        "Update Hyperlinks",
-                        Actions.Visio_Shape.Get_HyperlinksRows,
+                    new Presentation.ViewModels.RowsViewModel<Domain.ScratchRow, Presentation.ModelWrappers.ScratchRowWrapper>(
+                        "Update Scratch",
+                        Actions.Visio_Shape.Get_ScratchRows,
                         ShapeType.Document),
-                    new Presentation.Views.Hyperlinks()));
+                    new Presentation.Views.Scratch()));
         }
 
         public static DxThemedWindowHost _pageScratchHost = null;
@@ -1122,15 +1077,15 @@ namespace SupportTools_Visio
         private void btnPageScratch_Click(object sender, RibbonControlEventArgs e)
         {
             DxThemedWindowHost.DisplayUserControlInHost(ref _pageScratchHost,
-                "Hyperlinks (Page)",
+                "Scratch (Page)",
                 800, 700,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                     new Presentation.Views.ShapeSheetSection(
-                    new Presentation.ViewModels.RowsViewModel<Domain.HyperlinkRow, Presentation.ModelWrappers.HyperlinkRowWrapper>(
-                        "Update Hyperlinks",
-                        Actions.Visio_Shape.Get_HyperlinksRows,
+                    new Presentation.ViewModels.RowsViewModel<Domain.ScratchRow, Presentation.ModelWrappers.ScratchRowWrapper>(
+                        "Update Scratch",
+                        Actions.Visio_Shape.Get_ScratchRows,
                         ShapeType.Page),
-                    new Presentation.Views.Hyperlinks()));
+                    new Presentation.Views.Scratch()));
         }
 
         public static DxThemedWindowHost _shapeScratchHost = null;
@@ -1138,16 +1093,122 @@ namespace SupportTools_Visio
         private void btnShapeScratch_Click(object sender, RibbonControlEventArgs e)
         {
             DxThemedWindowHost.DisplayUserControlInHost(ref _shapeScratchHost,
-                "Hyperlinks (Shape)",
+                "Scratch (Shape)",
                 800, 700,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                     new Presentation.Views.ShapeSheetSection(
-                    new Presentation.ViewModels.RowsViewModel<Domain.HyperlinkRow, Presentation.ModelWrappers.HyperlinkRowWrapper>(
-                        "Update Hyperlinks",
-                        Actions.Visio_Shape.Get_HyperlinksRows,
+                    new Presentation.ViewModels.RowsViewModel<Domain.ScratchRow, Presentation.ModelWrappers.ScratchRowWrapper>(
+                        "Update Scratch",
+                        Actions.Visio_Shape.Get_ScratchRows,
                         ShapeType.Shape),
-                    new Presentation.Views.Hyperlinks()));
+                    new Presentation.Views.Scratch()));
         }
+
+        #endregion
+
+        #region ShapeData
+
+        public static DxThemedWindowHost _documentShapeDataHost = null;
+
+        private void btnDocumentShapeData_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _documentShapeDataHost,
+                "Shape Data (Document)",
+                800, 700,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.RowsViewModel<Domain.ShapeDataRow, Presentation.ModelWrappers.ShapeDataRowWrapper>(
+                        "Update ShapeData",
+                        Actions.Visio_Shape.Get_ShapeDataRows,
+                        ShapeType.Document),
+                    new Presentation.Views.ShapeData()));
+        }
+
+        public static DxThemedWindowHost _pageShapeDataHost = null;
+
+        private void btnPageShapeData_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _pageShapeDataHost,
+                "Shape Data (Page)",
+                800, 700,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                    new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.RowsViewModel<Domain.ShapeDataRow, Presentation.ModelWrappers.ShapeDataRowWrapper>(
+                        "Update ShapeData",
+                        Actions.Visio_Shape.Get_ShapeDataRows,
+                        ShapeType.Page),
+                    new Presentation.Views.ShapeData()));
+        }
+
+        public static DxThemedWindowHost _shapeShapeDataHost = null;
+
+        private void btnShapeShapeData_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeShapeDataHost,
+                "Scratch (Shape)",
+                800, 700,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                    new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.RowsViewModel<Domain.ShapeDataRow, Presentation.ModelWrappers.ShapeDataRowWrapper>(
+                        "Update ShapeData",
+                        Actions.Visio_Shape.Get_ShapeDataRows,
+                        ShapeType.Shape),
+                    new Presentation.Views.ShapeData()));
+        }
+
+        #endregion
+
+        #region UserDefinedCells
+
+        public static DxThemedWindowHost _documentUserDefineCellsHost = null;
+
+        private void btnDocumentUserDefinedCells_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _documentUserDefineCellsHost,
+                "Shape Data (Document)",
+                800, 700,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.RowsViewModel<Domain.UserDefinedCellRow, Presentation.ModelWrappers.UserDefinedCellRowWrapper>(
+                        "Update ShapeData",
+                        Actions.Visio_Shape.Get_UserDefinedCellsRows,
+                        ShapeType.Document),
+                    new Presentation.Views.UserDefinedCells()));
+        }
+
+        public static DxThemedWindowHost _pageUserDefineCellsHost = null;
+
+        private void btnPageUserDefinedCells_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _pageUserDefineCellsHost,
+                "Shape Data (Page)",
+                800, 700,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                    new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.RowsViewModel<Domain.UserDefinedCellRow, Presentation.ModelWrappers.UserDefinedCellRowWrapper>(
+                        "Update ShapeData",
+                        Actions.Visio_Shape.Get_UserDefinedCellsRows,
+                        ShapeType.Page),
+                    new Presentation.Views.UserDefinedCells()));
+        }
+
+        public static DxThemedWindowHost _shapeUserDefineCellsHost = null;
+
+        private void btnShapeUserDefinedCells_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeUserDefineCellsHost,
+                "Scratch (Shape)",
+                800, 700,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                    new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.RowsViewModel<Domain.UserDefinedCellRow, Presentation.ModelWrappers.UserDefinedCellRowWrapper>(
+                        "Update ShapeData",
+                        Actions.Visio_Shape.Get_UserDefinedCellsRows,
+                        ShapeType.Shape),
+                    new Presentation.Views.UserDefinedCells()));
+        }
+
+        #endregion
 
         #endregion
 
@@ -1201,8 +1262,6 @@ namespace SupportTools_Visio
 
         }
 
-
-
         public static DxThemedWindowHost ssShapeData_ShapeSheetSectionHost = null;
 
         private void btnShapeData_Click(object sender, RibbonControlEventArgs e)
@@ -1220,14 +1279,6 @@ namespace SupportTools_Visio
 
         }
 
-        public static DxThemedWindowHost ssShapeUserDefinedCells_ShapeSheetSectionHost = null;
-
-        private void btnShapeUserDefinedCells_Click(object sender, RibbonControlEventArgs e)
-        {
-
-        }
-
-        #endregion
 
         #region WPF Events - Custom
 

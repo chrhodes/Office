@@ -5,6 +5,8 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class ScratchRowWrapper : ModelWrapper<Domain.ScratchRow>
     {
+        public ScratchRowWrapper() { }
+
         public ScratchRowWrapper(ScratchRow model) : base(model)
         {
         }

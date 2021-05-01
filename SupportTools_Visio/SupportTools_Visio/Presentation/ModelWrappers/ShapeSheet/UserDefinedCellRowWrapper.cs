@@ -5,6 +5,10 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class UserDefinedCellRowWrapper : ModelWrapper<Domain.UserDefinedCellRow>
     {
+        public UserDefinedCellRowWrapper()
+        {
+        }
+
         public UserDefinedCellRowWrapper(UserDefinedCellRow model) : base(model)
         {
         }
