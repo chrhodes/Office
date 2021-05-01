@@ -10,29 +10,30 @@
     mc:Ignorable="d" 
 >
 
-    <dxlc:LayoutGroup 
-                	View="Group" Orientation="Horizontal" >
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
 
         <dxlc:LayoutGroup 
                 	    View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="ReplaceLockShapeData">
-                <dxe:TextEdit Text="{Binding ChangeShapeBehavior.ReplaceLockShapeData}"
+                <dxe:TextEdit Text="{Binding ReplaceLockShapeData}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ReplaceLockText">
-                <dxe:TextEdit Text="{Binding ChangeShapeBehavior.ReplaceLockText}"
+                <dxe:TextEdit Text="{Binding ReplaceLockText}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ReplaceLockFormat">
-                <dxe:TextEdit Text="{Binding ChangeShapeBehavior.ReplaceLockFormat}"
+                <dxe:TextEdit Text="{Binding ReplaceLockFormat}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ReplaceCopyCells">
-                <dxe:TextEdit Text="{Binding ChangeShapeBehavior.ReplaceCopyCells}"
+                <dxe:TextEdit Text="{Binding ReplaceCopyCells}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
@@ -43,5 +44,5 @@
 
         </dxlc:LayoutGroup>
 
-    </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
 </UserControl>

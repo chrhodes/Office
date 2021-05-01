@@ -121,6 +121,7 @@
     <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <!--
     This section defines properties that are set when the "Release" configuration is selected.
@@ -757,32 +758,17 @@
     <Compile Include="Presentation\ModelWrappers\ShapeSheet\ThemePropertiesWrapper.cs" />
     <Compile Include="Presentation\ModelWrappers\ShapeSheet\ThreeDRotationPropertiesWrapper.cs" />
     <Compile Include="Presentation\ModelWrappers\ShapeSheet\UserDefinedCellRowWrapper.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\BevelPropertiesViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\ChangeShapeBehaviorViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\CharacterRowViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\ConnectionPointsViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\ControlsViewModel.cs" />
     <Compile Include="Presentation\ViewModels\EditControlRowsViewModel.cs" />
     <Compile Include="Presentation\ViewModels\EditParagraphViewModel.cs" />
     <Compile Include="Presentation\ViewModels\EditTextViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\EventsViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\FillGradientStopRowViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\GeometryRowViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\GlueInfoViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\GradientPropertiesViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\GroupPropertiesViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\ImagePropertiesViewModel.cs" />
     <Compile Include="Presentation\ViewModels\Interfaces\IEditTextViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\LayerMembershipViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\LineFormatViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\LineGradientStopRowViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\MiscellaneousViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\OneDEndPointsViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\PageLayoutViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\ProtectionViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\QuickStyleViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\RowsViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\RulerAndGridViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\ShapeSheetSectionBase.cs" />
     <Compile Include="Presentation\Views\EditText.xaml.cs" />
     <Compile Include="Presentation\Views\PrismRegionTest.xaml.cs" />
@@ -818,17 +804,11 @@
     <Compile Include="Presentation\Views\ShapeSheet\Page\PageProperties.xaml.cs">
       <DependentUpon>PageProperties.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Views\ShapeSheet\Page\PageShapeSheetSection.xaml.cs">
-      <DependentUpon>PageShapeSheetSection.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Presentation\Views\ShapeSheet\Page\ThemeProperties.xaml.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\Page\PrintProperties.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\Page\RuleAndGrid.xaml.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\ShapeData.xaml.cs">
       <DependentUpon>ShapeData.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Presentation\Views\ShapeSheet\Document\DocumentShapeSheetSection.xaml.cs">
-      <DependentUpon>DocumentShapeSheetSection.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Views\ShapeSheet\ShapeSheetSection.xaml.cs">
       <DependentUpon>ShapeSheetSection.xaml</DependentUpon>
@@ -891,7 +871,6 @@
     <Compile Include="Presentation\Views\ShapeSheet\Shape\ThreeDRotationProperties.xaml.cs">
       <DependentUpon>ThreeDRotationProperties.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\ViewModels\ShapeSheet\AdditionalEffectPropertiesViewModel.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\Document\DocumentProperties.xaml.cs">
       <DependentUpon>DocumentProperties.xaml</DependentUpon>
     </Compile>
@@ -911,28 +890,22 @@
     <Compile Include="Presentation\Views\ShapeSheet\Scratch.xaml.cs">
       <DependentUpon>Scratch.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\ViewModels\ShapeSheet\ScratchViewModel.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\SelectedShapesInfo.xaml.cs">
       <DependentUpon>SelectedShapesInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\ViewModels\ShapeSheet\ShapeDataViewModel.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\ShapeLayout.xaml.cs">
       <DependentUpon>ShapeLayout.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\ViewModels\ShapeSheet\ShapeLayoutViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\ShapeTransformViewModel.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\StyleProperties.xaml.cs">
       <DependentUpon>StyleProperties.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\ViewModels\ShapeSheet\StylePropertiesViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\TabRowViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\TextBlockFormatViewModel.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\TextFieldRow.xaml.cs">
       <DependentUpon>TextFieldRow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\ViewModels\ShapeSheet\TextFieldRowViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\TextTransformViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\ThreeDRotationPropertiesViewModel.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\UserDefinedCells.xaml.cs">
       <DependentUpon>UserDefinedCells.xaml</DependentUpon>
     </Compile>
@@ -1208,10 +1181,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Presentation\Views\ShapeSheet\Page\PageShapeSheetSection.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Presentation\Views\ShapeSheet\Page\ThemeProperties.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1225,10 +1194,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Presentation\Views\ShapeSheet\ShapeData.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Presentation\Views\ShapeSheet\Document\DocumentShapeSheetSection.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -1464,9 +1429,6 @@
   <ItemGroup>
     <Folder Include="Fakes\" />
     <Folder Include="Presentation\ModelWrappers\ShapeSheet\Shape\" />
-    <Folder Include="Presentation\ViewModels\ShapeSheet\Document\" />
-    <Folder Include="Presentation\ViewModels\ShapeSheet\Page\" />
-    <Folder Include="Presentation\ViewModels\ShapeSheet\Shape\" />
     <Folder Include="User Interface\Windows\" />
   </ItemGroup>
   <ItemGroup>

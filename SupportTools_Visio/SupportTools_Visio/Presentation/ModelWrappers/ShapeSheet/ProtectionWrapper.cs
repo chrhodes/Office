@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 { 
     public class ProtectionWrapper : ModelWrapper<Protection>
     {
+        public ProtectionWrapper()
+        {
+        }
         public ProtectionWrapper(Protection model) : base(model)
         {
         }

@@ -1327,7 +1327,7 @@
             this.btnThemeProperties.Name = "btnThemeProperties";
             this.btnThemeProperties.ScreenTip = "Edit Text";
             this.btnThemeProperties.SuperTip = "Launch the Super Duper Edit Text UI";
-            this.btnThemeProperties.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnThemeProperties_Click);
+            this.btnThemeProperties.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnShapeThemeProperties_Click);
             // 
             // grpSSShapeRowSections
             // 

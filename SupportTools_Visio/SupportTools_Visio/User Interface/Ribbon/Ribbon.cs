@@ -531,7 +531,7 @@ namespace SupportTools_Visio
             //        new Presentation.Views.DocumentProperties()));
             DxThemedWindowHost.DisplayUserControlInHost(ref _pageActionsHost,
                 "Document Properties",
-                600, 800,
+                600, 600,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                 new Presentation.Views.ShapeSheetSection(
                     new Presentation.ViewModels.ObjectViewModel<Domain.DocumentProperties, Presentation.ModelWrappers.DocumentPropertiesWrapper>(
@@ -545,11 +545,20 @@ namespace SupportTools_Visio
 
         #region ShapeSheet UI Events Page Related
 
-        public static DxThemedWindowHost _pageLayoutHost = null;
+        public static DxThemedWindowHost _pagePageLayoutHost = null;
 
         private void btnPageLayout_Click(object sender, RibbonControlEventArgs e)
         {
-
+            DxThemedWindowHost.DisplayUserControlInHost(ref _pagePagePropertiesHost,
+                "Page PageLayout",
+                600, 600,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.ObjectViewModel<Domain.PageLayout, Presentation.ModelWrappers.PageLayoutWrapper>(
+                        "Update Page Properties",
+                        Actions.Visio_Shape.Get_PageLayout,
+                        ShapeType.Page),
+                    new Presentation.Views.PageLayout()));
         }
 
         public static DxThemedWindowHost _pagePagePropertiesHost = null;
@@ -566,7 +575,7 @@ namespace SupportTools_Visio
             //        new Presentation.Views.PageProperties()));
             DxThemedWindowHost.DisplayUserControlInHost(ref _pagePagePropertiesHost,
                 "Page Properties",
-                600, 800,
+                600, 600,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                 new Presentation.Views.ShapeSheetSection(
                     new Presentation.ViewModels.ObjectViewModel<Domain.PageProperties, Presentation.ModelWrappers.PagePropertiesWrapper>(
@@ -582,7 +591,7 @@ namespace SupportTools_Visio
         {
             DxThemedWindowHost.DisplayUserControlInHost(ref _pagePrintPropertiesHost,
                 "Page PrintProperties",
-                600, 800,
+                600, 600,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                 new Presentation.Views.ShapeSheetSection(
                     new Presentation.ViewModels.ObjectViewModel<Domain.PrintProperties, Presentation.ModelWrappers.PrintPropertiesWrapper>(
@@ -598,7 +607,7 @@ namespace SupportTools_Visio
         {
             DxThemedWindowHost.DisplayUserControlInHost(ref _pageRulerAndGridsHost,
                 "Page Ruler & Grid",
-                600, 800,
+                600, 600,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                 new Presentation.Views.ShapeSheetSection(
                     new Presentation.ViewModels.ObjectViewModel<Domain.RulerAndGrid, Presentation.ModelWrappers.RulerAndGridWrapper>(
@@ -618,7 +627,7 @@ namespace SupportTools_Visio
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                 new Presentation.Views.ShapeSheetSection(
                     new Presentation.ViewModels.ObjectViewModel<Domain.ThemeProperties, Presentation.ModelWrappers.ThemePropertiesWrapper>(
-                        "Update PrintProperties",
+                        "Update ThemeProperties",
                         Actions.Visio_Shape.Get_ThemeProperties,
                         ShapeType.Page),
                     new Presentation.Views.ThemeProperties()));
@@ -628,74 +637,195 @@ namespace SupportTools_Visio
 
         #region ShapeSheet UI Events Shape Related
 
-        public static DxThemedWindowHost ss1DEndpoints_ShapeSheetSectionHost = null;
+        public static DxThemedWindowHost _shapeOneDEndpointsHost = null;
 
         private void btn1DEndpoints_Click(object sender, RibbonControlEventArgs e)
         {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ss1DEndpoints_ShapeSheetSectionHost,
-            "1-D Endpoints",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.OneDEndPointsViewModel(), 
-                new Presentation.Views.OneDEndPoints()));
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeOneDEndpointsHost,
+                "Shape 1-D Endpoints",
+                600, 600,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.ObjectViewModel<Domain.OneDEndPoints, Presentation.ModelWrappers.OneDEndPointsWrapper>(
+                        "Update 1-D Endpoints",
+                        Actions.Visio_Shape.Get_OneDEndPoints,
+                        ShapeType.Shape),
+                    new Presentation.Views.OneDEndPoints()));
         }
 
-        public static DxThemedWindowHost ssTextBlockFormat_ShapeSheetSectionHost = null;
+        public static DxThemedWindowHost _shapeThreeDRotationPropertiesHost = null;
 
-        private void btnTextBlockFormat_Click(object sender, RibbonControlEventArgs e)
+        private void btn3DRotationProperties_Click(object sender, RibbonControlEventArgs e)
         {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssTextBlockFormat_ShapeSheetSectionHost,
-            "ShapeSheetSection(TextBlock Format)",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.TextBlockFormatViewModel(), 
-                new Presentation.Views.TextBlockFormat()));
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeThreeDRotationPropertiesHost,
+                "3D Rotation Properties",
+                600, 450,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.ObjectViewModel<Domain.ThreeDRotationProperties, Presentation.ModelWrappers.ThreeDRotationPropertiesWrapper>(
+                        "Update 3-D Rotation Properties",
+                        Actions.Visio_Shape.Get_ThreeDRotationProperties,
+                        ShapeType.Shape),
+                    new Presentation.Views.OneDEndPoints()));
         }
 
-        public static DxThemedWindowHost ssTextTransform_ShapeSheetSectionHost = null;
+        public static DxThemedWindowHost _shapeAdditionalEffectPropertiesHost = null;
 
-        private void btnTextTransform_Click(object sender, RibbonControlEventArgs e)
+        private void btnAdditionalEffectProperties_Click(object sender, RibbonControlEventArgs e)
         {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssTextTransform_ShapeSheetSectionHost,
-            "ShapeSheetSection(Text Transform)",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.TextTransformViewModel(), 
-                new Presentation.Views.TextTransformContent()));
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeAdditionalEffectPropertiesHost,
+                "Additional Effect Properties",
+                600, 450,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.ObjectViewModel<Domain.AdditionalEffectProperties, Presentation.ModelWrappers.AdditionalEffectPropertiesWrapper>(
+                        "Update Additional Effect Properties",
+                        Actions.Visio_Shape.Get_AdditionalEffectProperties,
+                        ShapeType.Shape),
+                    new Presentation.Views.AdditionalEffectProperties()));
         }
 
-        public static DxThemedWindowHost ssThemeProperties_ShapeSheetSectionHost = null;
+        public static DxThemedWindowHost _shapeBevelPropertiesHost = null;
 
-        private void btnThemeProperties_Click(object sender, RibbonControlEventArgs e)
+        private void btnBevelProperties_Click(object sender, RibbonControlEventArgs e)
         {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssThemeProperties_ShapeSheetSectionHost,
-            "Theme Properties",
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeBevelPropertiesHost,
+            "Bevel Properties",
             600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
             DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.ThemePropertiesViewModel(), 
-            new Presentation.Views.ThemeProperties()));
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.ObjectViewModel<Domain.BevelProperties, Presentation.ModelWrappers.BevelPropertiesWrapper>(
+                        "Update Bevel Properties",
+                        Actions.Visio_Shape.Get_BevelProperties,
+                        ShapeType.Shape),
+                    new Presentation.Views.BevelProperties()));
         }
 
-        public static DxThemedWindowHost ssGroupProperties_ShapeSheetSectionHost = null;
+        public static DxThemedWindowHost _shapeChangeShapeBehaviorHost = null;
+
+        private void btnChangeShapeBehavior_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeChangeShapeBehaviorHost,
+            "Change Shape Behavior",
+            600, 450,
+            DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.ObjectViewModel<Domain.ChangeShapeBehavior, Presentation.ModelWrappers.ChangeShapeBehaviorWrapper>(
+                        "Update ChangeShapeBehavior",
+                        Actions.Visio_Shape.Get_ChangeShapeBehavior,
+                        ShapeType.Shape),
+                    new Presentation.Views.ChangeShapeBehavior()));
+        }
+
+        public static DxThemedWindowHost _shapeEventsHost = null;
+
+        private void btnEvents_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeEventsHost,
+            "Events",
+            600, 450,
+            DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.ObjectViewModel<Domain.Events, Presentation.ModelWrappers.EventsWrapper>(
+                        "Update Events",
+                        Actions.Visio_Shape.Get_Events,
+                        ShapeType.Shape),
+                    new Presentation.Views.Events()));
+        }
+
+        public static DxThemedWindowHost _shapeFillFormatHost = null;
+
+        private void btnFillFormat_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeFillFormatHost,
+            "Fill Format",
+            600, 450,
+            DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.ObjectViewModel<Domain.FillFormat, Presentation.ModelWrappers.FillFormatWrapper>(
+                        "Update Fill Format",
+                        Actions.Visio_Shape.Get_FillFormat,
+                        ShapeType.Shape),
+                    new Presentation.Views.FillFormat()));
+        }
+
+        public static DxThemedWindowHost _shapeGlueInfoHost = null;
+
+        private void btnGlueInfo_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeGlueInfoHost,
+            "Glue Info",
+            600, 450,
+            DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.ObjectViewModel<Domain.GlueInfo, Presentation.ModelWrappers.GlueInfoWrapper>(
+                        "Update Glue Info",
+                        Actions.Visio_Shape.Get_GlueInfo,
+                        ShapeType.Shape),
+                    new Presentation.Views.GlueInfo()));
+        }
+        public static DxThemedWindowHost _shapeGradientPropertiesHost = null;
+
+        private void btnGradientProperties_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeGradientPropertiesHost,
+            "Gradient Properties",
+            600, 450,
+            DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.ObjectViewModel<Domain.GradientProperties, Presentation.ModelWrappers.GradientPropertiesWrapper>(
+                        "Update Gradient Properties",
+                        Actions.Visio_Shape.Get_GradientProperties,
+                        ShapeType.Shape),
+                    new Presentation.Views.GradientProperties()));
+        }
+
+        public static DxThemedWindowHost _shapeShapeLayoutHost = null;
+
+        private void btnShapeLayout_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeShapeLayoutHost,
+            "Shape Layout",
+            600, 450,
+            DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.ObjectViewModel<Domain.ShapeLayout, Presentation.ModelWrappers.ShapeLayoutWrapper>(
+                        "Update Shape Layout",
+                        Actions.Visio_Shape.Get_ShapeLayout,
+                        ShapeType.Shape),
+                    new Presentation.Views.ShapeLayout()));
+        }
+
+        public static DxThemedWindowHost _shapeGroupPropertiesHost = null;
 
         private void btnGroupProperties_Click(object sender, RibbonControlEventArgs e)
         {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssGroupProperties_ShapeSheetSectionHost,
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeGroupPropertiesHost,
             "Group Properties",
             600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
             DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.GroupPropertiesViewModel(), 
-            new Presentation.Views.GroupProperties()));
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.ObjectViewModel<Domain.GroupProperties, Presentation.ModelWrappers.GroupPropertiesWrapper>(
+                        "Update Group Properties",
+                        Actions.Visio_Shape.Get_GroupProperties,
+                        ShapeType.Shape),
+                    new Presentation.Views.GroupProperties()));
+        }
+
+        public static DxThemedWindowHost _shapeImagePropertiesHost = null;
+
+        private void btnImageProperties_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeImagePropertiesHost,
+                "Image Properties",
+                600, 450,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                    new Presentation.Views.ShapeSheetSection(
+                        new Presentation.ViewModels.ObjectViewModel<Domain.ImageProperties, Presentation.ModelWrappers.ImagePropertiesWrapper>(
+                            "Update Group Properties",
+                            Actions.Visio_Shape.Get_ImageProperties,
+                            ShapeType.Shape),
+                        new Presentation.Views.ImageProperties()));
         }
 
         public static DxThemedWindowHost ssLayerMembership_ShapeSheetSectionHost = null;
@@ -705,242 +835,140 @@ namespace SupportTools_Visio
             DxThemedWindowHost.DisplayUserControlInHost(ref ssLayerMembership_ShapeSheetSectionHost,
             "Layer Membership",
             600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
             DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.LayerMembershipViewModel(), 
-                new Presentation.Views.LayerMembership()));
-        }
-
-        public static DxThemedWindowHost ssUserDefinedCells_ShapeSheetSectionHost = null;
-
-        private void btnUserDefinedCells_Click(object sender, RibbonControlEventArgs e)
-        {
-            //DxThemedWindowHost.DisplayUserControlInHost(ref ssUserDefinedCells_ShapeSheetSectionHost,
-            //"User-Defined Cells",
-            //600, 450,
-            ////Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            //DxThemedWindowHost.ShowWindowMode.Modeless,
-            //new Presentation.Views.UserDefinedCells(new Presentation.ViewModels.UserDefinedCellRowViewModel()));
-        }
-
-        public static DxThemedWindowHost ssChangeShapeBehavior_ShapeSheetSectionHost = null;
-
-        private void btnChangeShapeBehavior_Click(object sender, RibbonControlEventArgs e)
-        {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssChangeShapeBehavior_ShapeSheetSectionHost,
-            "Change Shape Behavior",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.ChangeShapeBehaviorViewModel(), 
-                new Presentation.Views.ChangeShapeBehavior()));
-        }
-
-        public static DxThemedWindowHost ssQuickStyle_ShapeSheetSectionHost = null;
-
-        private void btnQuickStyle_Click(object sender, RibbonControlEventArgs e)
-        {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssQuickStyle_ShapeSheetSectionHost,
-            "Quick Style",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.QuickStyleViewModel(), 
-                new Presentation.Views.QuickStyle()));
-        }
-
-        public static DxThemedWindowHost threeDRotationProperties_ShapeSheetSectionHost = null;
-
-        private void btn3DRotationProperties_Click(object sender, RibbonControlEventArgs e)
-        {
-            DxThemedWindowHost.DisplayUserControlInHost(ref threeDRotationProperties_ShapeSheetSectionHost,
-            "3D Rotation Properties",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.ThreeDRotationPropertiesViewModel(), 
-                new Presentation.Views.ThreeDRotationProperties()));
-        }
-
-        public static DxThemedWindowHost ssBevelProperties_ShapeSheetSectionHost = null;
-
-        private void btnBevelProperties_Click(object sender, RibbonControlEventArgs e)
-        {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssBevelProperties_ShapeSheetSectionHost,
-            "Bevel Properties",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.BevelPropertiesViewModel(), 
-                new Presentation.Views.BevelProperties()));
-        }
-
-        public static DxThemedWindowHost ssAdditionalEffectProperties_ShapeSheetSectionHost = null;
-
-        private void btnAdditionalEffectProperties_Click(object sender, RibbonControlEventArgs e)
-        {
-            DxThemedWindowHost.DisplayUserControlInHost(
-                ref ssAdditionalEffectProperties_ShapeSheetSectionHost,
-                "Additional Effect Properties",
-                600, 450,
-                //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-                DxThemedWindowHost.ShowWindowMode.Modeless,
                 new Presentation.Views.ShapeSheetSection(
-                    new Presentation.ViewModels.AdditionalEffectPropertiesViewModel(), 
-                    new Presentation.Views.AdditionalEffectProperties()));
+                    new Presentation.ViewModels.ObjectViewModel<Domain.LayerMembership, Presentation.ModelWrappers.LayerMembershipWrapper>(
+                        "Update Layer Membership",
+                        Actions.Visio_Shape.Get_LayerMembership,
+                        ShapeType.Shape),
+                    new Presentation.Views.LayerMembership()));
         }
 
-        public static DxThemedWindowHost ssGradientProperties_ShapeSheetSectionHost = null;
-
-        private void btnGradientProperties_Click(object sender, RibbonControlEventArgs e)
-        {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssGradientProperties_ShapeSheetSectionHost,
-            "Gradient Properties",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.GradientPropertiesViewModel(), 
-            new Presentation.Views.GradientProperties()));
-        }
-
-        public static DxThemedWindowHost ssShapeLayout_ShapeSheetSectionHost = null;
-
-        private void btnShapeLayout_Click(object sender, RibbonControlEventArgs e)
-        {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssShapeLayout_ShapeSheetSectionHost,
-            "Shape Layout",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.ShapeLayoutViewModel(), 
-                new Presentation.Views.ShapeLayout()));
-        }
-
-        public static DxThemedWindowHost ssGlueInfo_ShapeSheetSectionHost = null;
-
-        private void btnGlueInfo_Click(object sender, RibbonControlEventArgs e)
-        {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssGlueInfo_ShapeSheetSectionHost,
-            "GLue Info",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.GlueInfoViewModel(), 
-                new Presentation.Views.GlueInfo()));
-        }
-
-        public static DxThemedWindowHost ssImageProperties_ShapeSheetSectionHost = null;
-
-        private void btnImageProperties_Click(object sender, RibbonControlEventArgs e)
-        {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssImageProperties_ShapeSheetSectionHost,
-            "Image Properties",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(new Presentation.ViewModels.ImagePropertiesViewModel(), new Presentation.Views.ImageProperties()));
-        }
-
-        public static DxThemedWindowHost ssEvents_ShapeSheetSectionHost = null;
-
-        private void btnEvents_Click(object sender, RibbonControlEventArgs e)
-        {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssEvents_ShapeSheetSectionHost,
-            "Events",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.EventsViewModel(), 
-                new Presentation.Views.Events()));
-        }
-
-        //public static DxThemedWindowHost textBlockFormatHost = null;
-        //private void btnTextBlockFormat_Click(object sender, RibbonControlEventArgs e)
-        //{
-        //    DxThemedWindowHost.DisplayUserControlInDxThemedWindowHost(ref textBlockFormatHost,
-        //    "Text Block Format",
-        //    600, 450,
-        //    //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-        //    DxThemedWindowHost.ShowWindowMode.Modeless_Show,
-        //    new Presentation.Views.TextBlockFormat(new Presentation.ViewModels.TextBlockFormatViewModel()));
-        //}
-
-        public static DxThemedWindowHost ssFillFormat_ShapeSheetSectionHost = null;
-
-        private void btnFillFormat_Click(object sender, RibbonControlEventArgs e)
-        {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssFillFormat_ShapeSheetSectionHost,
-            "Fill Format",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.FillFormatViewModel(), 
-                new Presentation.Views.FillFormat()));
-        }
-
-        public static DxThemedWindowHost ssLineFormat_ShapeSheetSectionHost = null;
+        public static DxThemedWindowHost _shapeLineFormatHost = null;
 
         private void btnLineFormat_Click(object sender, RibbonControlEventArgs e)
         {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssLineFormat_ShapeSheetSectionHost,
-            "Line Format",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.LineFormatViewModel(), 
-                new Presentation.Views.LineFormat()));
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeLineFormatHost,
+                "Line Format",
+                600, 450,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                    new Presentation.Views.ShapeSheetSection(
+                        new Presentation.ViewModels.ObjectViewModel<Domain.LineFormat, Presentation.ModelWrappers.LineFormatWrapper>(
+                            "Update LineFormat",
+                            Actions.Visio_Shape.Get_LineFormat,
+                            ShapeType.Shape),
+                        new Presentation.Views.LineFormat()));
         }
 
-        public static DxThemedWindowHost ssMiscellaneous_ShapeSheetSectionHost = null;
+        public static DxThemedWindowHost _shapeMiscellaneousHost = null;
 
         private void btnMiscelleaneous_Click(object sender, RibbonControlEventArgs e)
         {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssMiscellaneous_ShapeSheetSectionHost,
-            "Miscellaneous",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.MiscellaneousViewModel(),
-                new Presentation.Views.Miscellaneous()));
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeMiscellaneousHost,
+                "Miscellaneous",
+                600, 450,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                    new Presentation.Views.ShapeSheetSection(
+                        new Presentation.ViewModels.ObjectViewModel<Domain.Miscellaneous, Presentation.ModelWrappers.MiscellaneousWrapper>(
+                            "Update Miscellaneous",
+                            Actions.Visio_Shape.Get_Miscellaneous,
+                            ShapeType.Shape),
+                        new Presentation.Views.Miscellaneous()));
         }
 
-        public static DxThemedWindowHost ssProtection_ShapeSheetSectionHost = null;
+        public static DxThemedWindowHost _shapeProtectionHost = null;
 
         private void btnProtection_Click(object sender, RibbonControlEventArgs e)
         {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssProtection_ShapeSheetSectionHost,
-            "Protection",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.ProtectionViewModel(), 
-                new Presentation.Views.Protection()));
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeProtectionHost,
+                "Protection",
+                600, 450,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                    new Presentation.Views.ShapeSheetSection(
+                        new Presentation.ViewModels.ObjectViewModel<Domain.Protection, Presentation.ModelWrappers.ProtectionWrapper>(
+                            "Update Protection",
+                            Actions.Visio_Shape.Get_Protection,
+                            ShapeType.Shape),
+                        new Presentation.Views.Protection()));
         }
 
-        public static DxThemedWindowHost ssShapeTransform_ShapeSheetSectionHost = null;
+        public static DxThemedWindowHost _shapeQuickStyleHost = null;
+
+        private void btnQuickStyle_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeQuickStyleHost,
+                "Quick Style",
+                600, 450,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                    new Presentation.Views.ShapeSheetSection(
+                        new Presentation.ViewModels.ObjectViewModel<Domain.QuickStyle, Presentation.ModelWrappers.QuickStyleWrapper>(
+                            "Update Layer Membership",
+                            Actions.Visio_Shape.Get_QuickStyle,
+                            ShapeType.Shape),
+                        new Presentation.Views.QuickStyle()));
+        }
+
+        public static DxThemedWindowHost _shapeShapeTransformHost = null;
+
         private void btnShapeTransform_Click(object sender, RibbonControlEventArgs e)
         {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssShapeTransform_ShapeSheetSectionHost,
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeShapeTransformHost,
                 "Shape Transform",
                 250, 450,
-                //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
+            DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.ObjectViewModel<Domain.ShapeTransform, Presentation.ModelWrappers.ShapeTransformWrapper>(
+                        "Update Shape Transform",
+                        Actions.Visio_Shape.Get_ShapeTransform,
+                        ShapeType.Shape),
+                    new Presentation.Views.ShapeTransform()));
+        }
+
+        public static DxThemedWindowHost _shapeTextBlockFormatHost = null;
+
+        private void btnTextBlockFormat_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeTextBlockFormatHost,
+            "Shape TextBlock Format",
+            600, 450,
+            DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.ObjectViewModel<Domain.TextBlockFormat, Presentation.ModelWrappers.TextBlockFormatWrapper>(
+                        "Update Text Block Format",
+                        Actions.Visio_Shape.Get_TextBlockFormat,
+                        ShapeType.Shape),
+                    new Presentation.Views.TextBlockFormat()));
+        }
+
+        public static DxThemedWindowHost _shapeTextTransformHost = null;
+
+        private void btnTextTransform_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeTextTransformHost,
+            "Shape Text Transform",
+            600, 450,
+            DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.ObjectViewModel<Domain.TextTransform, Presentation.ModelWrappers.TextTransformWrapper>(
+                        "Update 3-D Rotation Properties",
+                        Actions.Visio_Shape.Get_TextTransform,
+                        ShapeType.Shape),
+                    new Presentation.Views.TextTransform()));
+        }
+        public static DxThemedWindowHost _shapeThemePropertiesHost = null;
+
+        private void btnShapeThemeProperties_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref _shapeThemePropertiesHost,
+                "Shape ThemeProperties",
+                600, 800,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                 new Presentation.Views.ShapeSheetSection(
-                    new Presentation.ViewModels.ShapeTransformViewModel(), 
-                    new Presentation.Views.ShapeTransform()));
+                    new Presentation.ViewModels.ObjectViewModel<Domain.ThemeProperties, Presentation.ModelWrappers.ThemePropertiesWrapper>(
+                        "Update ThemeProperties",
+                        Actions.Visio_Shape.Get_ThemeProperties,
+                        ShapeType.Shape),
+                    new Presentation.Views.ThemeProperties()));
         }
 
         #endregion
@@ -1297,18 +1325,6 @@ namespace SupportTools_Visio
         private void btnParagraph_Click(object sender, RibbonControlEventArgs e)
         {
 
-        }
-
-        public static DxThemedWindowHost ssShapeData_ShapeSheetSectionHost = null;
-
-        private void btnShapeData_Click(object sender, RibbonControlEventArgs e)
-        {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssShapeData_ShapeSheetSectionHost,
-            "Shape Data",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(new Presentation.ViewModels.ShapeDataViewModel(), new Presentation.Views.ShapeData()));
         }
 
         private void btnTabs_Click(object sender, RibbonControlEventArgs e)

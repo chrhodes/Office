@@ -10,25 +10,26 @@
     mc:Ignorable="d" 
 >
 
-    <dxlc:LayoutGroup 
-        View="Group" Orientation="Horizontal" >
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
                 
 
         <dxlc:LayoutGroup 
                 View="Group" Orientation="Vertical" >
                     
             <dxlc:LayoutItem Label="Width">
-                <dxe:TextEdit Text="{Binding ShapeTransform.Width}"
+                <dxe:TextEdit Text="{Binding Width}"
     	                        ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="Height">
-                <dxe:TextEdit Text="{Binding ShapeTransform.Height}"
+                <dxe:TextEdit Text="{Binding Height}"
     	                        ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="Angle">
-                <dxe:TextEdit Text="{Binding ShapeTransform.Angle}"
+                <dxe:TextEdit Text="{Binding Angle}"
     	                        ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
@@ -38,41 +39,41 @@
                 View="Group" Orientation="Vertical" >
                     
             <dxlc:LayoutItem Label="PinX">
-                <dxe:TextEdit Text="{Binding ShapeTransform.PinX}"
+                <dxe:TextEdit Text="{Binding PinX}"
     	                        ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="PinY">
-                <dxe:TextEdit Text="{Binding ShapeTransform.PinY}"
+                <dxe:TextEdit Text="{Binding PinY}"
     	                        ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="LocPinX">
-                <dxe:TextEdit Text="{Binding ShapeTransform.LocPinX}"
+                <dxe:TextEdit Text="{Binding LocPinX}"
     	                        ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="LocPinY">
-                <dxe:TextEdit Text="{Binding ShapeTransform.LocPinY}"
+                <dxe:TextEdit Text="{Binding LocPinY}"
     	                        ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="FlipX">
-                <dxe:TextEdit Text="{Binding ShapeTransform.FlipX}"
+                <dxe:TextEdit Text="{Binding FlipX}"
     	                        ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="FlipY">
-                <dxe:TextEdit Text="{Binding ShapeTransform.FlipY}"
+                <dxe:TextEdit Text="{Binding FlipY}"
     	                        ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ResizeMode">
-                <dxe:TextEdit Text="{Binding ShapeTransform.ResizeMode}"
+                <dxe:TextEdit Text="{Binding ResizeMode}"
     	                        ToolTip="tooltip" />
             </dxlc:LayoutItem>
         </dxlc:LayoutGroup>
 
-        </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
 
 </UserControl>

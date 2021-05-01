@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class GroupPropertiesWrapper : ModelWrapper<Domain.GroupProperties>
     {
+        public GroupPropertiesWrapper()
+        {
+        }
         public GroupPropertiesWrapper(GroupProperties model) : base(model)
         {
         }

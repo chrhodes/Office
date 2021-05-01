@@ -10,44 +10,45 @@
     mc:Ignorable="d" 
 >
 
-    <dxlc:LayoutGroup 
-                	View="Group" Orientation="Horizontal" >
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
 
         <dxlc:LayoutGroup 
                 	    View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="ReflectionTrans">
-                <dxe:TextEdit Text="{Binding AdditionalEffectProperties.ReflectionTrans}"
+                <dxe:TextEdit Text="{Binding ReflectionTrans}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ReflectionSize">
-                <dxe:TextEdit Text="{Binding AdditionalEffectProperties.ReflectionSize}"
+                <dxe:TextEdit Text="{Binding ReflectionSize}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ReflectionDist">
-                <dxe:TextEdit Text="{Binding AdditionalEffectProperties.ReflectionDist}"
+                <dxe:TextEdit Text="{Binding ReflectionDist}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ReflectionBlur">
-                <dxe:TextEdit Text="{Binding AdditionalEffectProperties.ReflectionBlur}"
+                <dxe:TextEdit Text="{Binding ReflectionBlur}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="SketchEnabled">
-                <dxe:TextEdit Text="{Binding AdditionalEffectProperties.SketchEnabled}"
+                <dxe:TextEdit Text="{Binding SketchEnabled}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="SketchSeed">
-                <dxe:TextEdit Text="{Binding AdditionalEffectProperties.SketchSeed}"
+                <dxe:TextEdit Text="{Binding SketchSeed}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="SketchAmount">
-                <dxe:TextEdit Text="{Binding AdditionalEffectProperties.SketchAmount}"
+                <dxe:TextEdit Text="{Binding SketchAmount}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
@@ -57,41 +58,41 @@
                     	View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="SketchLineWeight">
-                <dxe:TextEdit Text="{Binding AdditionalEffectProperties.SketchLineWeight}"
+                <dxe:TextEdit Text="{Binding SketchLineWeight}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="SketchLineChange">
-                <dxe:TextEdit Text="{Binding AdditionalEffectProperties.SketchLineChange}"
+                <dxe:TextEdit Text="{Binding SketchLineChange}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="SketchFillChange">
-                <dxe:TextEdit Text="{Binding AdditionalEffectProperties.SketchFillChange}"
+                <dxe:TextEdit Text="{Binding SketchFillChange}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="GlowColor">
-                <dxe:TextEdit Text="{Binding AdditionalEffectProperties.GlowColor}"
+                <dxe:TextEdit Text="{Binding GlowColor}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="GlowColorTrans">
-                <dxe:TextEdit Text="{Binding AdditionalEffectProperties.GlowColorTrans}"
+                <dxe:TextEdit Text="{Binding GlowColorTrans}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="GlowSize">
-                <dxe:TextEdit Text="{Binding AdditionalEffectProperties.GlowSize}"
+                <dxe:TextEdit Text="{Binding GlowSize}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="SoftEdgesSize">
-                <dxe:TextEdit Text="{Binding AdditionalEffectProperties.SoftEdgesSize}"
+                <dxe:TextEdit Text="{Binding SoftEdgesSize}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
         </dxlc:LayoutGroup>
 
-    </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
 </UserControl>

@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class GlueInfoWrapper : ModelWrapper<Domain.GlueInfo>
     {
+        public GlueInfoWrapper()
+        {
+        }
         public GlueInfoWrapper(GlueInfo model) : base(model)
         {
         }

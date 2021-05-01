@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class ShapeTransformWrapper : ModelWrapper<Domain.ShapeTransform>
     {
+        public ShapeTransformWrapper()
+        {
+        }
         public ShapeTransformWrapper(ShapeTransform model) : base(model)
         {
         }

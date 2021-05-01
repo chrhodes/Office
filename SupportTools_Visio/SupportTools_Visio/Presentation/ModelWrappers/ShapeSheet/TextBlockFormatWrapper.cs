@@ -4,6 +4,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class TextBlockFormatWrapper : ModelWrapper<Domain.TextBlockFormat>
     {
+        public TextBlockFormatWrapper()
+        {
+        }
         public TextBlockFormatWrapper(Domain.TextBlockFormat model) : base(model)
         {
         }

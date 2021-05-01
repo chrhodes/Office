@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class QuickStyleWrapper : ModelWrapper<Domain.QuickStyle>
     {
+        public QuickStyleWrapper()
+        {
+        }
         public QuickStyleWrapper(QuickStyle model) : base(model)
         {
         }

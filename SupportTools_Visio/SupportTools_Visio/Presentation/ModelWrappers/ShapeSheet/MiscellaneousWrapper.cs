@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class MiscellaneousWrapper : ModelWrapper<Domain.Miscellaneous>
     {
+        public MiscellaneousWrapper()
+        {
+        }
         public MiscellaneousWrapper(Miscellaneous model) : base(model)
         {
         } 

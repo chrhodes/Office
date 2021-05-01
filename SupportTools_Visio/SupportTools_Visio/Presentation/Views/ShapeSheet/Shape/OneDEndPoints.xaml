@@ -9,38 +9,44 @@
     xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"    
     mc:Ignorable="d" 
 >
-    <dxlc:LayoutGroup 
-        View="Group" Orientation="Horizontal" >
-
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
+        
         <dxlc:LayoutGroup 
-            View="Group" Orientation="Vertical" >
+            View="Group" Orientation="Horizontal" >
 
-            <dxlc:LayoutItem Label="BeginX">
-                <dxe:TextEdit Text="{Binding OneDEndPoints.BeginX}"
-    	                ToolTip="tooltip" />
-            </dxlc:LayoutItem>
+            <dxlc:LayoutGroup 
+                View="Group" Orientation="Vertical" >
 
-            <dxlc:LayoutItem Label="BeginY">
-                <dxe:TextEdit Text="{Binding OneDEndPoints.BeginY}"
-    	                ToolTip="tooltip" />
-            </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="BeginX">
+                    <dxe:TextEdit Text="{Binding BeginX}"
+    	                    ToolTip="tooltip" />
+                </dxlc:LayoutItem>
+
+                <dxlc:LayoutItem Label="BeginY">
+                    <dxe:TextEdit Text="{Binding BeginY}"
+    	                    ToolTip="tooltip" />
+                </dxlc:LayoutItem>
+
+            </dxlc:LayoutGroup>
+
+            <dxlc:LayoutGroup 
+                View="Group" Orientation="Vertical" >
+
+                <dxlc:LayoutItem Label="EndX">
+                    <dxe:TextEdit Text="{Binding EndX}"
+    	                    ToolTip="tooltip" />
+                </dxlc:LayoutItem>
+
+                <dxlc:LayoutItem Label="EndY">
+                    <dxe:TextEdit Text="{Binding EndY}"
+    	                    ToolTip="tooltip" />
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
 
         </dxlc:LayoutGroup>
-
-        <dxlc:LayoutGroup 
-            View="Group" Orientation="Vertical" >
-
-            <dxlc:LayoutItem Label="EndX">
-                <dxe:TextEdit Text="{Binding OneDEndPoints.EndX}"
-    	                ToolTip="tooltip" />
-            </dxlc:LayoutItem>
-
-            <dxlc:LayoutItem Label="EndY">
-                <dxe:TextEdit Text="{Binding OneDEndPoints.EndY}"
-    	                ToolTip="tooltip" />
-            </dxlc:LayoutItem>
-        </dxlc:LayoutGroup>
-
-    </dxlc:LayoutGroup>
+        
+    </dxlc:LayoutControl>        
 
 </UserControl>

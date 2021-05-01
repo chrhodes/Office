@@ -10,19 +10,20 @@
     mc:Ignorable="d" 
 >
 
-    <dxlc:LayoutGroup 
-                	View="Group" Orientation="Horizontal" >
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
 
         <dxlc:LayoutGroup 
                 	    View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="BegTrigger">
-                <dxe:TextEdit Text="{Binding GlueInfo.BegTrigger}"
+                <dxe:TextEdit Text="{Binding BegTrigger}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="EndTrigger">
-                <dxe:TextEdit Text="{Binding GlueInfo.EndTrigger}"
+                <dxe:TextEdit Text="{Binding EndTrigger}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
@@ -32,15 +33,15 @@
                     	View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="GlueType">
-                <dxe:TextEdit Text="{Binding GlueInfo.GlueType}"
+                <dxe:TextEdit Text="{Binding GlueType}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="WalkPreference">
-                <dxe:TextEdit Text="{Binding GlueInfo.WalkPreference}"
+                <dxe:TextEdit Text="{Binding WalkPreference}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
         </dxlc:LayoutGroup>
 
-    </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
 </UserControl>

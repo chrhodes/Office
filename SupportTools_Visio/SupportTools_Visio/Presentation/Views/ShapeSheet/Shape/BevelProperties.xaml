@@ -10,44 +10,45 @@
     mc:Ignorable="d" 
 >
 
-    <dxlc:LayoutGroup 
-                	View="Group" Orientation="Horizontal" >
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
 
         <dxlc:LayoutGroup 
                 	    View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="BevelTopType">
-                <dxe:TextEdit Text="{Binding BevelProperties.BevelTopType}"
+                <dxe:TextEdit Text="{Binding BevelTopType}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="BevelTopWidth">
-                <dxe:TextEdit Text="{Binding BevelProperties.BevelTopWidth}"
+                <dxe:TextEdit Text="{Binding BevelTopWidth}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="BevelTopHeight">
-                <dxe:TextEdit Text="{Binding BevelProperties.BevelTopHeight}"
+                <dxe:TextEdit Text="{Binding BevelTopHeight}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="BevelBottomType">
-                <dxe:TextEdit Text="{Binding BevelProperties.BevelBottomType}"
+                <dxe:TextEdit Text="{Binding BevelBottomType}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="BevelBottomWidth">
-                <dxe:TextEdit Text="{Binding BevelProperties.BevelBottomWidth}"
+                <dxe:TextEdit Text="{Binding BevelBottomWidth}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="BevelBottomHeight">
-                <dxe:TextEdit Text="{Binding BevelProperties.BevelBottomHeight}"
+                <dxe:TextEdit Text="{Binding BevelBottomHeight}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="BevelDepthColor">
-                <dxe:TextEdit Text="{Binding BevelProperties.BevelDepthColor}"
+                <dxe:TextEdit Text="{Binding BevelDepthColor}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
@@ -57,36 +58,36 @@
                     	View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="BevelDepthSize">
-                <dxe:TextEdit Text="{Binding BevelProperties.BevelDepthSize}"
+                <dxe:TextEdit Text="{Binding BevelDepthSize}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="BevelContourColor">
-                <dxe:TextEdit Text="{Binding BevelProperties.BevelContourColor}"
+                <dxe:TextEdit Text="{Binding BevelContourColor}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="BevelContourSize">
-                <dxe:TextEdit Text="{Binding BevelProperties.BevelContourSize}"
+                <dxe:TextEdit Text="{Binding BevelContourSize}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="BevelMaterialType">
-                <dxe:TextEdit Text="{Binding BevelProperties.BevelMaterialType}"
+                <dxe:TextEdit Text="{Binding BevelMaterialType}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="BevelLightingType">
-                <dxe:TextEdit Text="{Binding BevelProperties.BevelLightingType}"
+                <dxe:TextEdit Text="{Binding BevelLightingType}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="BevelLightingAngle">
-                <dxe:TextEdit Text="{Binding BevelProperties.BevelLightingAngle}"
+                <dxe:TextEdit Text="{Binding BevelLightingAngle}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
         </dxlc:LayoutGroup>
 
-    </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
 </UserControl>

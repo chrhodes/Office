@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class BevelPropertiesWrapper : ModelWrapper<BevelProperties>
     {
+        public BevelPropertiesWrapper()
+        {
+        }
         public BevelPropertiesWrapper(BevelProperties model) : base(model)
         {
         }

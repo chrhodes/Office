@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class LayerMembershipWrapper : ModelWrapper<Domain.LayerMembership>
     {
+        public LayerMembershipWrapper()
+        {
+        }
         public LayerMembershipWrapper(LayerMembership model) : base(model)
         {
         } 

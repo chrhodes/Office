@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class TextTransformWrapper : ModelWrapper<Domain.TextTransform>
     {
+        public TextTransformWrapper()
+        {
+        }
         public TextTransformWrapper(TextTransform model) : base(model)
         {
         }

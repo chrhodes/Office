@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class ImagePropertiesWrapper : ModelWrapper<Domain.ImageProperties>
     {
+        public ImagePropertiesWrapper()
+        {
+        }
         public ImagePropertiesWrapper(ImageProperties model) : base(model)
         {
         }

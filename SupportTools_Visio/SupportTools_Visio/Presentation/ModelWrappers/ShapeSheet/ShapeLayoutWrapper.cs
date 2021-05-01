@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class ShapeLayoutWrapper : ModelWrapper<Domain.ShapeLayout>
     {
+        public ShapeLayoutWrapper()
+        {
+        }
         public ShapeLayoutWrapper(ShapeLayout model) : base(model)
         {
         }

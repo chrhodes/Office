@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class FillFormatWrapper : ModelWrapper<Domain.FillFormat>
     {
+        public FillFormatWrapper()
+        {
+        }
         public FillFormatWrapper(FillFormat model) : base(model)
         {
         }

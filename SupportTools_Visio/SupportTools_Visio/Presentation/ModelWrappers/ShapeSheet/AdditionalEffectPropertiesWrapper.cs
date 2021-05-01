@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class AdditionalEffectPropertiesWrapper : ModelWrapper<Domain.AdditionalEffectProperties>
     {
+        public AdditionalEffectPropertiesWrapper()
+        {
+        }
         public AdditionalEffectPropertiesWrapper(AdditionalEffectProperties model) : base(model)
         {
         }

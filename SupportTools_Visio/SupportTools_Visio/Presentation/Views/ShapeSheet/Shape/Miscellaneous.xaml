@@ -9,58 +9,59 @@
     xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"    
     mc:Ignorable="d" 
 >
-    <dxlc:LayoutGroup 
-        View="Group" Orientation="Horizontal" >
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
                     
         <dxlc:LayoutGroup 
             View="Group" Orientation="Vertical" >
             <dxlc:LayoutItem Label="NoObjHandles">
-                <dxe:TextEdit Text="{Binding Miscellaneous.NoObjHandles}"
+                <dxe:TextEdit Text="{Binding NoObjHandles}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="NoCtlHandle">
-                <dxe:TextEdit Text="{Binding Miscellaneous.NoCtlHandle}"
+                <dxe:TextEdit Text="{Binding NoCtlHandle}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="NoAlignBox">
-                <dxe:TextEdit Text="{Binding Miscellaneous.NoAlignBox}"
+                <dxe:TextEdit Text="{Binding NoAlignBox}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="NonPrinting">
-                <dxe:TextEdit Text="{Binding Miscellaneous.NonPrinting}"
+                <dxe:TextEdit Text="{Binding NonPrinting}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="LangID">
-                <dxe:TextEdit Text="{Binding Miscellaneous.LangID}"
+                <dxe:TextEdit Text="{Binding LangID}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="HideText">
-                <dxe:TextEdit Text="{Binding Miscellaneous.HideText}"
+                <dxe:TextEdit Text="{Binding HideText}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="UpdateAlignBox">
-                <dxe:TextEdit Text="{Binding Miscellaneous.UpdateAlignBox}"
+                <dxe:TextEdit Text="{Binding UpdateAlignBox}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="DynFeedback">
-                <dxe:TextEdit Text="{Binding Miscellaneous.DynFeedback}"
+                <dxe:TextEdit Text="{Binding DynFeedback}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="NoLiveDynamics">
-                <dxe:TextEdit Text="{Binding Miscellaneous.NoLiveDynamics}"
+                <dxe:TextEdit Text="{Binding NoLiveDynamics}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="Calendar">
-                <dxe:TextEdit Text="{Binding Miscellaneous.Calendar}"
+                <dxe:TextEdit Text="{Binding Calendar}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
         </dxlc:LayoutGroup>
@@ -69,37 +70,37 @@
             View="Group" Orientation="Vertical" >
                         
             <dxlc:LayoutItem Label="ObjType">
-                <dxe:TextEdit Text="{Binding Miscellaneous.ObjType}"
+                <dxe:TextEdit Text="{Binding ObjType}"
     	                        ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="IsDropSource">
-                <dxe:TextEdit Text="{Binding Miscellaneous.IsDropSource}"
+                <dxe:TextEdit Text="{Binding IsDropSource}"
     	                        ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="Comment">
-                <dxe:TextEdit Text="{Binding Miscellaneous.Comment}"
+                <dxe:TextEdit Text="{Binding Comment}"
     	                        ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="DropOnPageScale">
-                <dxe:TextEdit Text="{Binding Miscellaneous.DropOnPageScale}"
+                <dxe:TextEdit Text="{Binding DropOnPageScale}"
     	                        ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="LocalizeMerge">
-                <dxe:TextEdit Text="{Binding Miscellaneous.LocalizeMerge}"
+                <dxe:TextEdit Text="{Binding LocalizeMerge}"
     	                        ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="NoProofing">
-                <dxe:TextEdit Text="{Binding Miscellaneous.NoProofing}"
+                <dxe:TextEdit Text="{Binding NoProofing}"
     	                        ToolTip="tooltip" />
             </dxlc:LayoutItem>
                     
         </dxlc:LayoutGroup>
-                
-    </dxlc:LayoutGroup>
+
+    </dxlc:LayoutControl>
 
 </UserControl>

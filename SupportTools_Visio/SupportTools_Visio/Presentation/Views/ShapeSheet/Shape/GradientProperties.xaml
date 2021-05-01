@@ -10,29 +10,30 @@
     mc:Ignorable="d" 
 >
 
-    <dxlc:LayoutGroup 
-                	View="Group" Orientation="Horizontal" >
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
 
         <dxlc:LayoutGroup 
                 	    View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="LineGradientDir">
-                <dxe:TextEdit Text="{Binding GradientProperties.LineGradientDir}"
+                <dxe:TextEdit Text="{Binding LineGradientDir}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="LineGradientAngle">
-                <dxe:TextEdit Text="{Binding GradientProperties.LineGradientAngle}"
+                <dxe:TextEdit Text="{Binding LineGradientAngle}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="FillGradientDir">
-                <dxe:TextEdit Text="{Binding GradientProperties.FillGradientDir}"
+                <dxe:TextEdit Text="{Binding FillGradientDir}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="FillGradientAngle">
-                <dxe:TextEdit Text="{Binding GradientProperties.FillGradientAngle}"
+                <dxe:TextEdit Text="{Binding FillGradientAngle}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
@@ -42,26 +43,26 @@
                     	View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="LineGradientEnabled">
-                <dxe:TextEdit Text="{Binding GradientProperties.LineGradientEnabled}"
+                <dxe:TextEdit Text="{Binding LineGradientEnabled}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="FillGradientEnabled">
-                <dxe:TextEdit Text="{Binding GradientProperties.FillGradientEnabled}"
+                <dxe:TextEdit Text="{Binding FillGradientEnabled}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="RotateGradientWithShape">
-                <dxe:TextEdit Text="{Binding GradientProperties.RotateGradientWithShape}"
+                <dxe:TextEdit Text="{Binding RotateGradientWithShape}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="UseGroupGradient">
-                <dxe:TextEdit Text="{Binding GradientProperties.UseGroupGradient}"
+                <dxe:TextEdit Text="{Binding UseGroupGradient}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
         </dxlc:LayoutGroup>
 
-    </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
 </UserControl>

@@ -9,14 +9,15 @@
     xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"    
     mc:Ignorable="d" 
 >
-    <dxlc:LayoutGroup 
-                	View="Group" Orientation="Horizontal" >
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
 
         <dxlc:LayoutGroup 
                 	    View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="Name">
-                <dxe:TextEdit Text="{Binding LayerMembership.Name}"
+                <dxe:TextEdit Text="{Binding Name}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
@@ -27,6 +28,6 @@
 
         </dxlc:LayoutGroup>
 
-    </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
     
 </UserControl>

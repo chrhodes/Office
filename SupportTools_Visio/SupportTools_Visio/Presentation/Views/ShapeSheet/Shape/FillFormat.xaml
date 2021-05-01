@@ -10,49 +10,50 @@
     mc:Ignorable="d" 
 >
 
-    <dxlc:LayoutGroup 
-                	View="Group" Orientation="Horizontal" >
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
 
         <dxlc:LayoutGroup 
                 	    View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="FillForeground">
-                <dxe:TextEdit Text="{Binding FillFormat.FillForegnd}"
+                <dxe:TextEdit Text="{Binding FillForegnd}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ShdwForegnd">
-                <dxe:TextEdit Text="{Binding FillFormat.ShdwForegnd}"
+                <dxe:TextEdit Text="{Binding ShdwForegnd}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ShapeShdwType">
-                <dxe:TextEdit Text="{Binding FillFormat.ShapeShdwType}"
+                <dxe:TextEdit Text="{Binding ShapeShdwType}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="FillForegndTrans">
-                <dxe:TextEdit Text="{Binding FillFormat.FillForegndTrans}"
+                <dxe:TextEdit Text="{Binding FillForegndTrans}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ShdwForegndTrans">
-                <dxe:TextEdit Text="{Binding FillFormat.ShdwForegndTrans}"
+                <dxe:TextEdit Text="{Binding ShdwForegndTrans}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ShapeShdwObliqueAngle">
-                <dxe:TextEdit Text="{Binding FillFormat.ShapeShdwObliqueAngle}"
+                <dxe:TextEdit Text="{Binding ShapeShdwObliqueAngle}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="FillBkgnd">
-                <dxe:TextEdit Text="{Binding FillFormat.FillBkgnd}"
+                <dxe:TextEdit Text="{Binding FillBkgnd}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ShdwPattern">
-                <dxe:TextEdit Text="{Binding FillFormat.ShdwPattern}"
+                <dxe:TextEdit Text="{Binding ShdwPattern}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
@@ -62,42 +63,42 @@
                     	View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="ShapeShdwScaleFactor">
-                <dxe:TextEdit Text="{Binding FillFormat.ShapeShdwScaleFactor}"
+                <dxe:TextEdit Text="{Binding ShapeShdwScaleFactor}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="FillBkgndTrans">
-                <dxe:TextEdit Text="{Binding FillFormat.FillBkgndTrans}"
+                <dxe:TextEdit Text="{Binding FillBkgndTrans}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ShapeShdwOffsetX">
-                <dxe:TextEdit Text="{Binding FillFormat.ShapeShdwOffsetX}"
+                <dxe:TextEdit Text="{Binding ShapeShdwOffsetX}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="FillBkgndOffsetY">
-                <dxe:TextEdit Text="{Binding FillFormat.ShapeShdwOffsetY}"
+                <dxe:TextEdit Text="{Binding ShapeShdwOffsetY}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ShapeShdwBlur">
-                <dxe:TextEdit Text="{Binding FillFormat.ShapeShdwBlur}"
+                <dxe:TextEdit Text="{Binding ShapeShdwBlur}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="FillPattern">
-                <dxe:TextEdit Text="{Binding FillFormat.FillPattern}"
+                <dxe:TextEdit Text="{Binding FillPattern}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ShapeShdwShow">
-                <dxe:TextEdit Text="{Binding FillFormat.ShapeShdwShow}"
+                <dxe:TextEdit Text="{Binding ShapeShdwShow}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
         </dxlc:LayoutGroup>
 
-    </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
     
 </UserControl>

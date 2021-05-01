@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class ThreeDRotationPropertiesWrapper : ModelWrapper<Domain.ThreeDRotationProperties>
     {
+        public ThreeDRotationPropertiesWrapper()
+        {
+        }
         public ThreeDRotationPropertiesWrapper(ThreeDRotationProperties model) : base(model)
         {
         }

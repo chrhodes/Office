@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class ChangeShapeBehaviorWrapper : ModelWrapper<ChangeShapeBehavior>
     {
+        public ChangeShapeBehaviorWrapper()
+        {
+        }
         public ChangeShapeBehaviorWrapper(ChangeShapeBehavior model) : base(model)
         {
         }

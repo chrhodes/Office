@@ -9,40 +9,41 @@
     xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"    
     mc:Ignorable="d" 
 >
-    <dxlc:LayoutGroup 
-                	View="Group" Orientation="Horizontal" >
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
 
         <dxlc:LayoutGroup 
                 	    View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="SelectMode">
-                <dxe:TextEdit Text="{Binding GroupProperties.SelectMode}"
+                <dxe:TextEdit Text="{Binding SelectMode}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
 
             <dxlc:LayoutItem Label="IsTextEditTarget">
-                <dxe:TextEdit Text="{Binding GroupProperties.IsTextEditTarget}"
+                <dxe:TextEdit Text="{Binding IsTextEditTarget}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="IsDropTarget">
-                <dxe:TextEdit Text="{Binding GroupProperties.IsDropTarget}"
+                <dxe:TextEdit Text="{Binding IsDropTarget}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="DisplayMode">
-                <dxe:TextEdit Text="{Binding GroupProperties.DisplayMode}"
+                <dxe:TextEdit Text="{Binding DisplayMode}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="IsSnapTarget">
-                <dxe:TextEdit Text="{Binding GroupProperties.IsSnapTarget}"
+                <dxe:TextEdit Text="{Binding IsSnapTarget}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="DontMoveChildren">
-                <dxe:TextEdit Text="{Binding GroupProperties.DontMoveChildren}"
+                <dxe:TextEdit Text="{Binding DontMoveChildren}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
@@ -52,6 +53,5 @@
                     	View="Group" Orientation="Vertical" >
 
         </dxlc:LayoutGroup>
-
-    </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
 </UserControl>

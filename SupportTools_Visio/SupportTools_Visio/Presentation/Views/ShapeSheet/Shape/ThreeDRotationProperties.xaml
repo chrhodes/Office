@@ -10,29 +10,30 @@
     mc:Ignorable="d" 
 >
 
-    <dxlc:LayoutGroup 
-        View="Group" Orientation="Horizontal" >
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
 
         <dxlc:LayoutGroup 
             View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="RotationXAngle">
-                <dxe:TextEdit Text="{Binding ThreeDRotationProperties.RotationXAngle}"
+                <dxe:TextEdit Text="{Binding RotationXAngle}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="RotationYAngle">
-                <dxe:TextEdit Text="{Binding ThreeDRotationProperties.RotationYAngle}"
+                <dxe:TextEdit Text="{Binding RotationYAngle}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="RotationZAngle">
-                <dxe:TextEdit Text="{Binding ThreeDRotationProperties.RotationZAngle}"
+                <dxe:TextEdit Text="{Binding RotationZAngle}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="RotationType">
-                <dxe:TextEdit Text="{Binding ThreeDRotationProperties.RotationType}"
+                <dxe:TextEdit Text="{Binding RotationType}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
@@ -42,22 +43,22 @@
             View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="Perspective">
-                <dxe:TextEdit Text="{Binding ThreeDRotationProperties.Perspective}"
+                <dxe:TextEdit Text="{Binding Perspective}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="DistanceFromGround">
-                <dxe:TextEdit Text="{Binding ThreeDRotationProperties.DistanceFromGround}"
+                <dxe:TextEdit Text="{Binding DistanceFromGround}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="KeepTextFlat">
-                <dxe:TextEdit Text="{Binding ThreeDRotationProperties.KeepTextFlat}"
+                <dxe:TextEdit Text="{Binding KeepTextFlat}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
                         
         </dxlc:LayoutGroup>
 
-    </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
 
 </UserControl>

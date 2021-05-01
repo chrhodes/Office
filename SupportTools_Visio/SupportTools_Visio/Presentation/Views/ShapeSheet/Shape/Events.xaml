@@ -10,24 +10,25 @@
     mc:Ignorable="d" 
 >
 
-    <dxlc:LayoutGroup 
-                	View="Group" Orientation="Horizontal" >
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
 
         <dxlc:LayoutGroup 
                 	    View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="TheData">
-                <dxe:TextEdit Text="{Binding Events.TheData}"
+                <dxe:TextEdit Text="{Binding TheData}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="EventDblClick">
-                <dxe:TextEdit Text="{Binding Events.EventDblClick}"
+                <dxe:TextEdit Text="{Binding EventDblClick}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="EventDrop">
-                <dxe:TextEdit Text="{Binding Events.EventDrop}"
+                <dxe:TextEdit Text="{Binding EventDrop}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
@@ -37,22 +38,22 @@
                     	View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="TheText">
-                <dxe:TextEdit Text="{Binding Events.TheText}"
+                <dxe:TextEdit Text="{Binding TheText}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="EventXFMod">
-                <dxe:TextEdit Text="{Binding Events.EventXFMod}"
+                <dxe:TextEdit Text="{Binding EventXFMod}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="EventMultiDrop">
-                <dxe:TextEdit Text="{Binding Events.EventMultiDrop}"
+                <dxe:TextEdit Text="{Binding EventMultiDrop}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
         </dxlc:LayoutGroup>
 
-    </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
     
 </UserControl>

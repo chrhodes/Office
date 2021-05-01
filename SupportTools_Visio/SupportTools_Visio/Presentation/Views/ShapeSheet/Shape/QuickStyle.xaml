@@ -9,42 +9,35 @@
     xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"    
     mc:Ignorable="d" 
 >
-    <UserControl.Resources>
-        <Style x:Key="ActionLayoutGroup1" TargetType="dxlc:LayoutGroup">
-            <Setter Property="dxlc:LayoutGroup.Background" Value="Red" />
-            <Setter Property="dxlc:LayoutGroup.Padding" Value="5" />
-            <Setter Property="dxlc:LayoutControl.VerticalAlignment" Value="Top" />
-        </Style>
-    </UserControl.Resources>
-
-    <dxlc:LayoutGroup 
-        View="Group" Orientation="Horizontal" >
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
 
         <dxlc:LayoutGroup 
             View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="QuickStyleLineMatrix">
-                <dxe:TextEdit Text="{Binding QuickStyle.QuickStyleLineMatrix}"
+                <dxe:TextEdit Text="{Binding QuickStyleLineMatrix}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="QuickStyleLineColor">
-                <dxe:TextEdit Text="{Binding QuickStyle.QuickStyleLineColor}"
+                <dxe:TextEdit Text="{Binding QuickStyleLineColor}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="QuickStyleFontColor">
-                <dxe:TextEdit Text="{Binding QuickStyle.QuickStyleFontColor}"
+                <dxe:TextEdit Text="{Binding QuickStyleFontColor}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="QuickStyleVariation">
-                <dxe:TextEdit Text="{Binding QuickStyle.QuickStyleVariation}"
+                <dxe:TextEdit Text="{Binding QuickStyleVariation}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="QuickStyleFillMatrix">
-                <dxe:TextEdit Text="{Binding QuickStyle.QuickStyleFillMatrix}"
+                <dxe:TextEdit Text="{Binding QuickStyleFillMatrix}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
                         
@@ -54,27 +47,26 @@
             View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="QuickStyleFontMatrix">
-                <dxe:TextEdit Text="{Binding QuickStyle.QuickStyleFontMatrix}"
+                <dxe:TextEdit Text="{Binding QuickStyleFontMatrix}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="QuickStyleEffectsMatrix">
-                <dxe:TextEdit Text="{Binding QuickStyle.QuickStyleEffectsMatrix}"
+                <dxe:TextEdit Text="{Binding QuickStyleEffectsMatrix}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="QuickStyleShadowColor">
-                <dxe:TextEdit Text="{Binding QuickStyle.QuickStyleShadowColor}"
+                <dxe:TextEdit Text="{Binding QuickStyleShadowColor}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="QuickStyleType">
-                <dxe:TextEdit Text="{Binding QuickStyle.QuickStyleType}"
+                <dxe:TextEdit Text="{Binding QuickStyleType}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
                         
         </dxlc:LayoutGroup>
 
-    </dxlc:LayoutGroup>
-
+    </dxlc:LayoutControl>
 </UserControl>

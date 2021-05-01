@@ -1,22 +1,21 @@
-﻿using System.Windows.Controls;
-using SupportTools_Visio.Presentation.ViewModels;
+﻿using System;
+using System.Windows.Controls;
+
 using VNC;
 
 namespace SupportTools_Visio.Presentation.Views
 {
     public partial class TextTransform : UserControl
     {
-        //private readonly TextTransformViewModel _viewModel;
-
         #region Constructors and Load
 
         public TextTransform()
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
-            //_viewModel = viewModel;
-            //DataContext = _viewModel;
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
+
             InitializeComponent();
-            Log.Trace("Exit", Common.PROJECT_NAME);
+
+            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion

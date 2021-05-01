@@ -12,27 +12,28 @@
     mc:Ignorable="d" 
  >
 
-    <dxlc:LayoutGroup 
-        View="Group" Orientation="Horizontal" >
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
 
         <dxlc:LayoutGroup 
             View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="TxtWidth" HorizontalAlignment="Right">
-                <dxe:TextEdit Text="{Binding TextTransform.TxtWidth}"
+                <dxe:TextEdit Text="{Binding TxtWidth}"
                               HorizontalAlignment="Right"
                               
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="TxtHeight" HorizontalAlignment="Right">
-                <dxe:TextEdit Text="{Binding TextTransform.TxtHeight}"
+                <dxe:TextEdit Text="{Binding TxtHeight}"
                                HorizontalAlignment="Right"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="TxtAngle" HorizontalAlignment="Right">
-                <dxe:TextEdit Text="{Binding TextTransform.TxtAngle}"
+                <dxe:TextEdit Text="{Binding TxtAngle}"
                               HorizontalAlignment="Right"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
@@ -43,30 +44,30 @@
             View="Group" Orientation="Vertical">
 
             <dxlc:LayoutItem Label="TxtPinX" HorizontalAlignment="Right">
-                <dxe:TextEdit Text="{Binding TextTransform.TxtPinX}"
+                <dxe:TextEdit Text="{Binding TxtPinX}"
                                 HorizontalAlignment="Right"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="TxtPinY" HorizontalAlignment="Right">
-                <dxe:TextEdit Text="{Binding TextTransform.TxtPinY}"
+                <dxe:TextEdit Text="{Binding TxtPinY}"
                                HorizontalAlignment="Right"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="TxtLocPinX" HorizontalAlignment="Right">
-                <dxe:TextEdit Text="{Binding TextTransform.TxtLocPinX}"
+                <dxe:TextEdit Text="{Binding TxtLocPinX}"
                                 HorizontalAlignment="Right"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="TxtLocPinY" HorizontalAlignment="Right">
-                <dxe:TextEdit Text="{Binding TextTransform.TxtLocPinY}"
+                <dxe:TextEdit Text="{Binding TxtLocPinY}"
                                HorizontalAlignment="Right"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
         </dxlc:LayoutGroup>
 
-    </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
 
 </UserControl>

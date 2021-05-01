@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class OneDEndPointsWrapper : ModelWrapper<Domain.OneDEndPoints>
     {
+        public OneDEndPointsWrapper()
+        {
+        }
         public OneDEndPointsWrapper(OneDEndPoints model) : base(model)
         {
         }

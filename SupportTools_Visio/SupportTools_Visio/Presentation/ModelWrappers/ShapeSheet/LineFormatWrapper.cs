@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class LineFormatWrapper : ModelWrapper<Domain.LineFormat>
     {
+        public LineFormatWrapper()
+        {
+        }
         public LineFormatWrapper(LineFormat model) : base(model)
         {
         }

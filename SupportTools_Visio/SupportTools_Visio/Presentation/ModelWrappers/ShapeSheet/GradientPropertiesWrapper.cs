@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class GradientPropertiesWrapper : ModelWrapper<GradientProperties>
     {
+        public GradientPropertiesWrapper()
+        {
+        }
         public GradientPropertiesWrapper(GradientProperties model) : base(model)
         {
         }

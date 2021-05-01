@@ -9,39 +9,40 @@
     xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"    
     mc:Ignorable="d" 
 >
-    <dxlc:LayoutGroup 
-                	View="Group" Orientation="Horizontal" >
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
 
         <dxlc:LayoutGroup 
                 	    View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="LinePattern">
-                <dxe:TextEdit Text="{Binding LineFormat.LinePattern}"
+                <dxe:TextEdit Text="{Binding LinePattern}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="LineWeight">
-                <dxe:TextEdit Text="{Binding LineFormat.LineWeight}"
+                <dxe:TextEdit Text="{Binding LineWeight}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="LineColor">
-                <dxe:TextEdit Text="{Binding LineFormat.LineColor}"
+                <dxe:TextEdit Text="{Binding LineColor}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="LineCap">
-                <dxe:TextEdit Text="{Binding LineFormat.LineCap}"
+                <dxe:TextEdit Text="{Binding LineCap}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="BeginArrow">
-                <dxe:TextEdit Text="{Binding LineFormat.BeginArrow}"
+                <dxe:TextEdit Text="{Binding BeginArrow}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="EndArrow">
-                <dxe:TextEdit Text="{Binding LineFormat.EndArrow}"
+                <dxe:TextEdit Text="{Binding EndArrow}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
@@ -51,32 +52,32 @@
                     	View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="LineColorTrans">
-                <dxe:TextEdit Text="{Binding LineFormat.LineColorTrans}"
+                <dxe:TextEdit Text="{Binding LineColorTrans}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="CompoundType">
-                <dxe:TextEdit Text="{Binding LineFormat.CompoundType}"
+                <dxe:TextEdit Text="{Binding CompoundType}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="BeginArrowSize">
-                <dxe:TextEdit Text="{Binding LineFormat.BeginArrowSize}"
+                <dxe:TextEdit Text="{Binding BeginArrowSize}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="EndArrowSize">
-                <dxe:TextEdit Text="{Binding LineFormat.EndArrowSize}"
+                <dxe:TextEdit Text="{Binding EndArrowSize}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="Rounding">
-                <dxe:TextEdit Text="{Binding LineFormat.Rounding}"
+                <dxe:TextEdit Text="{Binding Rounding}"
     	                          ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
         </dxlc:LayoutGroup>
 
-    </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
     
 </UserControl>

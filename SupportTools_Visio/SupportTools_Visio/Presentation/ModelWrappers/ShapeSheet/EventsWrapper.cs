@@ -4,6 +4,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class EventsWrapper : ModelWrapper<Domain.Events>
     {
+        public EventsWrapper()
+        {
+        }
         public EventsWrapper(Domain.Events model) : base(model)
         {
         }
