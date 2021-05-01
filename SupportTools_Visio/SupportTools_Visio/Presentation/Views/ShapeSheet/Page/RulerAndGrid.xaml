@@ -9,24 +9,70 @@
     xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"    
     mc:Ignorable="d" 
 >
-    <dxlc:LayoutGroup 
-        View="Group" Orientation="Horizontal" >
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
 
         <dxlc:LayoutGroup 
-            View="Group" Orientation="Vertical" >
+                	    View="Group" Orientation="Vertical" >
 
-            <dxlc:LayoutItem Label="PPP">
-                <dxe:TextEdit Text="{Binding LineFormat.PPP}"
-    	                ToolTip="tooltip" />
+            <dxlc:LayoutItem Label="XRulerOrigin">
+                <dxe:TextEdit Text="{Binding XRulerOrigin}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="YRulerOrigin">
+                <dxe:TextEdit Text="{Binding YRulerOrigin}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="XRulerDensity">
+                <dxe:TextEdit Text="{Binding XRulerDensity}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="YRulerDensity">
+                <dxe:TextEdit Text="{Binding YRulerDensity}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="XGridOrigin">
+                <dxe:TextEdit Text="{Binding XGridOrigin}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="YGridOrigin">
+                <dxe:TextEdit Text="{Binding YGridOrigin}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="XGridDensity">
+                <dxe:TextEdit Text="{Binding XGridDensity}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="YGridDensity">
+                <dxe:TextEdit Text="{Binding YGridDensity}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="XGridSpacing">
+                <dxe:TextEdit Text="{Binding NoCoauth}"
+    	                      ToolTip="XGridSpacing" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="YGridSpacing">
+                <dxe:TextEdit Text="{Binding YGridSpacing}"
+    	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
         </dxlc:LayoutGroup>
 
         <dxlc:LayoutGroup 
-            View="Group" Orientation="Vertical" >
+                    	View="Group" Orientation="Vertical" >
 
         </dxlc:LayoutGroup>
 
-    </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
 
 </UserControl>

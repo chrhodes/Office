@@ -1065,25 +1065,25 @@
             // 
             // btnPageLayout
             // 
-            this.btnPageLayout.Label = "X Page Layout";
+            this.btnPageLayout.Label = "Page Layout";
             this.btnPageLayout.Name = "btnPageLayout";
             this.btnPageLayout.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageLayout_Click);
             // 
             // btnRulerAndGrid
             // 
-            this.btnRulerAndGrid.Label = "X Ruler and Grid";
+            this.btnRulerAndGrid.Label = "Ruler and Grid";
             this.btnRulerAndGrid.Name = "btnRulerAndGrid";
             this.btnRulerAndGrid.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnRulerAndGrid_Click);
             // 
             // btnPrintProperties
             // 
-            this.btnPrintProperties.Label = "X Print Properties";
+            this.btnPrintProperties.Label = "Print Properties";
             this.btnPrintProperties.Name = "btnPrintProperties";
             this.btnPrintProperties.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPrintProperties_Click);
             // 
             // btnPageThemeProperties
             // 
-            this.btnPageThemeProperties.Label = "X Theme Properties";
+            this.btnPageThemeProperties.Label = "Theme Properties";
             this.btnPageThemeProperties.Name = "btnPageThemeProperties";
             this.btnPageThemeProperties.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageThemeProperties_Click);
             // 

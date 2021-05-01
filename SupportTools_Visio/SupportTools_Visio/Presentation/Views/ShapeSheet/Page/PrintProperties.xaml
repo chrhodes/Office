@@ -9,25 +9,94 @@
     xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"    
     mc:Ignorable="d" 
 >
-
-    <dxlc:LayoutGroup 
-        View="Group" Orientation="Horizontal" >
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
 
         <dxlc:LayoutGroup 
-            View="Group" Orientation="Vertical" >
+                	    View="Group" Orientation="Vertical" >
 
-            <dxlc:LayoutItem Label="PPP">
-                <dxe:TextEdit Text="{Binding LineFormat.PPP}"
-    	                ToolTip="tooltip" />
+            <dxlc:LayoutItem Label="PageLeftMargin">
+                <dxe:TextEdit Text="{Binding PageLeftMargin}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="PageTopMargin">
+                <dxe:TextEdit Text="{Binding PageTopMargin}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="PageRightMargin">
+                <dxe:TextEdit Text="{Binding PageRightMargin}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="PageBottomMargin">
+                <dxe:TextEdit Text="{Binding PageBottomMargin}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="ScaleX">
+                <dxe:TextEdit Text="{Binding ScaleX}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="ScaleY">
+                <dxe:TextEdit Text="{Binding ScaleY}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="PagesX">
+                <dxe:TextEdit Text="{Binding PagesX}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="PagesY">
+                <dxe:TextEdit Text="{Binding PagesY}"
+    	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
         </dxlc:LayoutGroup>
 
         <dxlc:LayoutGroup 
-            View="Group" Orientation="Vertical" >
+                    	View="Group" Orientation="Vertical" >
+            <dxlc:LayoutItem Label="CenterX">
+                <dxe:TextEdit Text="{Binding CenterX}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="CenterY">
+                <dxe:TextEdit Text="{Binding CenterY}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="OnPage">
+                <dxe:TextEdit Text="{Binding OnPage}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="PrintGrid">
+                <dxe:TextEdit Text="{Binding PrintGrid}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="PrintPageOrientation">
+                <dxe:TextEdit Text="{Binding PrintPageOrientation}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="PaperKind">
+                <dxe:TextEdit Text="{Binding PaperKind}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="PaperSource">
+                <dxe:TextEdit Text="{Binding PaperSource}"
+    	                      ToolTip="tooltip" />
+            </dxlc:LayoutItem>
 
         </dxlc:LayoutGroup>
 
-    </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
 
 </UserControl>

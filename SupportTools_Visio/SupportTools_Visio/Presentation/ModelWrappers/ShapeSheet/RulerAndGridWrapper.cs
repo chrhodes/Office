@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class RulerAndGridWrapper : ModelWrapper<Domain.RulerAndGrid>
     {
+        public RulerAndGridWrapper()
+        {
+        }
         public RulerAndGridWrapper(RulerAndGrid model) : base(model)
         {
         }

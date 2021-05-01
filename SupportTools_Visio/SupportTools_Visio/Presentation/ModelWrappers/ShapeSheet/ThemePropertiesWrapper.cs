@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class ThemePropertiesWrapper : ModelWrapper<Domain.ThemeProperties>
     {
+        public ThemePropertiesWrapper()
+        {
+        }
         public ThemePropertiesWrapper(ThemeProperties model) : base(model)
         {
         }

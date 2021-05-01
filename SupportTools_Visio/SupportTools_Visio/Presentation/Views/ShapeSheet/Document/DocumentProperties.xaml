@@ -11,7 +11,7 @@
 >
 
     <dxlc:LayoutControl 
-                	View="Group" Orientation="Horizontal" 
+        View="Group" Orientation="Horizontal" 
         DataContext="{Binding Info}">
 
         <dxlc:LayoutGroup 

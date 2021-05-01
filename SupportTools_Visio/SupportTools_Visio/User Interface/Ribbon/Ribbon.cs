@@ -556,13 +556,23 @@ namespace SupportTools_Visio
 
         private void btnPageProperties_Click(object sender, RibbonControlEventArgs e)
         {
+            //DxThemedWindowHost.DisplayUserControlInHost(ref _pagePagePropertiesHost,
+            //    "Page Properties",
+            //    600, 450,
+            //    //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
+            //    DxThemedWindowHost.ShowWindowMode.Modeless,
+            //    new Presentation.Views.PageShapeSheetSection(
+            //        new Presentation.ViewModels.PagePropertiesViewModel(),
+            //        new Presentation.Views.PageProperties()));
             DxThemedWindowHost.DisplayUserControlInHost(ref _pagePagePropertiesHost,
                 "Page Properties",
-                600, 450,
-                //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
+                600, 800,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
-                new Presentation.Views.PageShapeSheetSection(
-                    new Presentation.ViewModels.PagePropertiesViewModel(),
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.ObjectViewModel<Domain.PageProperties, Presentation.ModelWrappers.PagePropertiesWrapper>(
+                        "Update Page Properties",
+                        Actions.Visio_Shape.Get_PageProperties,
+                        ShapeType.Page),
                     new Presentation.Views.PageProperties()));
         }
 
@@ -570,21 +580,48 @@ namespace SupportTools_Visio
 
         private void btnPrintProperties_Click(object sender, RibbonControlEventArgs e)
         {
-
+            DxThemedWindowHost.DisplayUserControlInHost(ref _pagePrintPropertiesHost,
+                "Page PrintProperties",
+                600, 800,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.ObjectViewModel<Domain.PrintProperties, Presentation.ModelWrappers.PrintPropertiesWrapper>(
+                        "Update PrintProperties",
+                        Actions.Visio_Shape.Get_PrintProperties,
+                        ShapeType.Page),
+                    new Presentation.Views.PrintProperties()));
         }
 
         public static DxThemedWindowHost _pageRulerAndGridsHost = null;
 
         private void btnRulerAndGrid_Click(object sender, RibbonControlEventArgs e)
         {
-
+            DxThemedWindowHost.DisplayUserControlInHost(ref _pageRulerAndGridsHost,
+                "Page Ruler & Grid",
+                600, 800,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.ObjectViewModel<Domain.RulerAndGrid, Presentation.ModelWrappers.RulerAndGridWrapper>(
+                        "Update Ruler & Grid",
+                        Actions.Visio_Shape.Get_RulerAndGrid,
+                        ShapeType.Page),
+                    new Presentation.Views.RulerAndGrid()));
         }
 
         public static DxThemedWindowHost _pageThemePropertiesHost = null;
 
         private void btnPageThemeProperties_Click(object sender, RibbonControlEventArgs e)
         {
-
+            DxThemedWindowHost.DisplayUserControlInHost(ref _pageThemePropertiesHost,
+                "Page ThemeProperties",
+                600, 800,
+                DxThemedWindowHost.ShowWindowMode.Modeless,
+                new Presentation.Views.ShapeSheetSection(
+                    new Presentation.ViewModels.ObjectViewModel<Domain.ThemeProperties, Presentation.ModelWrappers.ThemePropertiesWrapper>(
+                        "Update PrintProperties",
+                        Actions.Visio_Shape.Get_ThemeProperties,
+                        ShapeType.Page),
+                    new Presentation.Views.ThemeProperties()));
         }
 
         #endregion

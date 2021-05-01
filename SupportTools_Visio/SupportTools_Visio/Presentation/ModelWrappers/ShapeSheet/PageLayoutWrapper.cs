@@ -5,6 +5,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class PageLayoutWrapper : ModelWrapper<Domain.PageLayout>
     {
+        public PageLayoutWrapper()
+        {
+        }
         public PageLayoutWrapper(PageLayout model) : base(model)
         {
         }
@@ -23,6 +26,7 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
         public string BlockSizeY { get { return GetValue<string>(); } set { SetValue(value); } }
         public string AvenueSizeX { get { return GetValue<string>(); } set { SetValue(value); } }
         public string AvenueSizeY { get { return GetValue<string>(); } set { SetValue(value); } }
+
         public string RouteStyle { get { return GetValue<string>(); } set { SetValue(value); } }
         public string PageLineJumpDirX { get { return GetValue<string>(); } set { SetValue(value); } }
         public string SizeLineJumpDirY { get { return GetValue<string>(); } set { SetValue(value); } }

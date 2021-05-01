@@ -708,9 +708,6 @@
     <Compile Include="Domain\ShapeSheet\NewButton.cs" />
     <Compile Include="Presentation\Converters\SelectedItemsConverter.cs" />
     <Compile Include="Presentation\ModelWrappers\ShapeSheet\Page\PagePropertiesWrapper.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\Document\DocumentShapeSheetSectionBase.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\Page\PagePropertiesViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\Page\PageShapeSheetSectionBase.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\ObjectViewModel.cs" />
     <Compile Include="Presentation\Views\Cat.xaml.cs">
       <DependentUpon>Cat.xaml</DependentUpon>
@@ -765,7 +762,6 @@
     <Compile Include="Presentation\ViewModels\ShapeSheet\CharacterRowViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\ConnectionPointsViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\ControlsViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\Document\DocumentPropertiesViewModel.cs" />
     <Compile Include="Presentation\ViewModels\EditControlRowsViewModel.cs" />
     <Compile Include="Presentation\ViewModels\EditParagraphViewModel.cs" />
     <Compile Include="Presentation\ViewModels\EditTextViewModel.cs" />
@@ -783,7 +779,6 @@
     <Compile Include="Presentation\ViewModels\ShapeSheet\MiscellaneousViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\OneDEndPointsViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\PageLayoutViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\PrintPropertiesViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\ProtectionViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\QuickStyleViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\RowsViewModel.cs" />
@@ -826,6 +821,7 @@
     <Compile Include="Presentation\Views\ShapeSheet\Page\PageShapeSheetSection.xaml.cs">
       <DependentUpon>PageShapeSheetSection.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\Views\ShapeSheet\Page\ThemeProperties.xaml.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\Page\PrintProperties.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\Page\RuleAndGrid.xaml.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\ShapeData.xaml.cs">
@@ -892,9 +888,6 @@
     <Compile Include="Presentation\Views\ShapeSheet\Shape\TextTransformContent.xaml.cs">
       <DependentUpon>TextTransformContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Views\ShapeSheet\Shape\ThemeProperties.xaml.cs">
-      <DependentUpon>ThemeProperties.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Presentation\Views\ShapeSheet\Shape\ThreeDRotationProperties.xaml.cs">
       <DependentUpon>ThreeDRotationProperties.xaml</DependentUpon>
     </Compile>
@@ -939,7 +932,6 @@
     </Compile>
     <Compile Include="Presentation\ViewModels\ShapeSheet\TextFieldRowViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\TextTransformViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ShapeSheet\ThemePropertiesViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\ThreeDRotationPropertiesViewModel.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\UserDefinedCells.xaml.cs">
       <DependentUpon>UserDefinedCells.xaml</DependentUpon>
@@ -1220,6 +1212,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Presentation\Views\ShapeSheet\Page\ThemeProperties.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Presentation\Views\ShapeSheet\Page\PrintProperties.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1313,10 +1309,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Presentation\Views\ShapeSheet\Shape\TextTransformContent.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Presentation\Views\ShapeSheet\Shape\ThemeProperties.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -1472,7 +1464,8 @@
   <ItemGroup>
     <Folder Include="Fakes\" />
     <Folder Include="Presentation\ModelWrappers\ShapeSheet\Shape\" />
-    <Folder Include="Presentation\ViewModels\Interfaces\ShapeSheet\" />
+    <Folder Include="Presentation\ViewModels\ShapeSheet\Document\" />
+    <Folder Include="Presentation\ViewModels\ShapeSheet\Page\" />
     <Folder Include="Presentation\ViewModels\ShapeSheet\Shape\" />
     <Folder Include="User Interface\Windows\" />
   </ItemGroup>

@@ -11,63 +11,64 @@
 >
 
     <dxlc:LayoutControl 
-                	View="Group" Orientation="Horizontal" >
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
 
         <dxlc:LayoutGroup 
                 	    View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="PageWidth">
-                <dxe:TextEdit Text="{Binding PageProperties.PageWidth}"
+                <dxe:TextEdit Text="{Binding PageWidth}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="PageHeight">
-                <dxe:TextEdit Text="{Binding PageProperties.PageHeight}"
+                <dxe:TextEdit Text="{Binding PageHeight}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="PageScale">
-                <dxe:TextEdit Text="{Binding PageProperties.PageScale}"
+                <dxe:TextEdit Text="{Binding PageScale}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="DrawingScale">
-                <dxe:TextEdit Text="{Binding PageProperties.DrawingScale}"
+                <dxe:TextEdit Text="{Binding DrawingScale}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="DrawingSizeType">
-                <dxe:TextEdit Text="{Binding PageProperties.DrawingSizeType}"
+                <dxe:TextEdit Text="{Binding DrawingSizeType}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="DrawingScaleType">
-                <dxe:TextEdit Text="{Binding PageProperties.DrawingScaleType}"
+                <dxe:TextEdit Text="{Binding DrawingScaleType}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="DrawingResizeType">
-                <dxe:TextEdit Text="{Binding PageProperties.DrawingResizeType}"
+                <dxe:TextEdit Text="{Binding DrawingResizeType}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="InhibitSnap">
-                <dxe:TextEdit Text="{Binding PageProperties.InhibitSnap}"
+                <dxe:TextEdit Text="{Binding InhibitSnap}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="UIVisibility">
-                <dxe:TextEdit Text="{Binding PageProperties.UIVisibility}"
+                <dxe:TextEdit Text="{Binding UIVisibility}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="PageLockReplace">
-                <dxe:TextEdit Text="{Binding PageProperties.PageLockReplace}"
+                <dxe:TextEdit Text="{Binding PageLockReplace}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="PageLockDuplicate">
-                <dxe:TextEdit Text="{Binding PageProperties.PageLockDuplicate}"
+                <dxe:TextEdit Text="{Binding PageLockDuplicate}"
     	                      ToolTip="tooltip" />
             </dxlc:LayoutItem>
 

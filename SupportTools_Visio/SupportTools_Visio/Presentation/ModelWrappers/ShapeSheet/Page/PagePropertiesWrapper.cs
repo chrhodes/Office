@@ -4,6 +4,9 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class PagePropertiesWrapper : ModelWrapper<Domain.PageProperties>
     {
+        public PagePropertiesWrapper()
+        {
+        }
         public PagePropertiesWrapper(Domain.PageProperties model) : base(model)
         {
         }

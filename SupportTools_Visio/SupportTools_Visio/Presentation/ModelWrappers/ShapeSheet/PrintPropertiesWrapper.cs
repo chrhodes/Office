@@ -5,6 +5,10 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 {
     public class PrintPropertiesWrapper : ModelWrapper<Domain.PrintProperties>
     {
+        public PrintPropertiesWrapper()
+        {
+        }
+
         public PrintPropertiesWrapper(PrintProperties model) : base(model)
         {
         }
