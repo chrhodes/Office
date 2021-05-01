@@ -101,8 +101,8 @@
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
-            <dxlc:LayoutItem Label="SizeLineJumpDirY">
-                <dxe:TextEdit Text="{Binding SizeLineJumpDirY}"
+            <dxlc:LayoutItem Label="PageLineJumpDirY">
+                <dxe:TextEdit Text="{Binding PageLineJumpDirY}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 

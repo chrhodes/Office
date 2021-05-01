@@ -29,7 +29,7 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
 
         public string RouteStyle { get { return GetValue<string>(); } set { SetValue(value); } }
         public string PageLineJumpDirX { get { return GetValue<string>(); } set { SetValue(value); } }
-        public string SizeLineJumpDirY { get { return GetValue<string>(); } set { SetValue(value); } }
+        public string PageLineJumpDirY { get { return GetValue<string>(); } set { SetValue(value); } }
         public string LineAdjustTo { get { return GetValue<string>(); } set { SetValue(value); } }
         public string LineRouteExt { get { return GetValue<string>(); } set { SetValue(value); } }
         public string LineToNodeX { get { return GetValue<string>(); } set { SetValue(value); } }

@@ -32,7 +32,12 @@
                     View="Group" Orientation="Vertical"
                     DataContext="{Binding SelectedItem}">
 
-                    <dxlc:LayoutItem Label="X">
+                <dxlc:LayoutItem Label="Row#">
+                    <dxe:TextEdit Text="{Binding Row}"
+    	                          ToolTip="tooltip" />
+                </dxlc:LayoutItem>
+                
+                <dxlc:LayoutItem Label="X">
                         <dxe:TextEdit Text="{Binding Y}"
     	                          ToolTip="tooltip" />
                     </dxlc:LayoutItem>

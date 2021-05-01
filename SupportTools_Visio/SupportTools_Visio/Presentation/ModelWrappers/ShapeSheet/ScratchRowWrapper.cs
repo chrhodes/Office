@@ -11,7 +11,7 @@ namespace SupportTools_Visio.Presentation.ModelWrappers
         {
         }
 
-        public string Name { get { return GetValue<string>(); } set { SetValue(value); } }
+        public string Row { get { return GetValue<string>(); } set { SetValue(value); } }
         public string X { get { return GetValue<string>(); } set { SetValue(value); } }
         public string Y { get { return GetValue<string>(); } set { SetValue(value); } }
         public string A { get { return GetValue<string>(); } set { SetValue(value); } }

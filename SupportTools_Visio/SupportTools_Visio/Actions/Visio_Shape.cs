@@ -2377,10 +2377,19 @@ namespace SupportTools_Visio.Actions
             return rows;
         }
 
-        internal static System.Collections.ObjectModel.ObservableCollection<ScratchRow> Get_ScratchRows(Shape shape)
+        public static ScratchRow Get_ScratchRow(Shape shape, short rowNumber)
         {
-            System.Collections.ObjectModel.ObservableCollection<ScratchRow> rows =
-                new System.Collections.ObjectModel.ObservableCollection<ScratchRow>();
+            ScratchRow row = new ScratchRow();
+
+            Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionScratch];
+            Visio.Row sectionRow = section[rowNumber];
+
+            return row;
+        }
+
+        internal static ObservableCollection<ScratchRow> Get_ScratchRows(Shape shape)
+        {
+            var rows = new ObservableCollection<ScratchRow>();
 
             Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionScratch];
 
@@ -2391,6 +2400,8 @@ namespace SupportTools_Visio.Actions
                 ScratchRow scratchRow = new ScratchRow();
 
                 var row = section[i];
+
+                scratchRow.Row = $"{i}";
 
                 scratchRow.X = row[(short)VisCellIndices.visScratchX].FormulaU;
                 scratchRow.Y = row[(short)VisCellIndices.visScratchY].FormulaU;
@@ -2598,21 +2609,7 @@ namespace SupportTools_Visio.Actions
             return result;
         }
 
-        public static ScratchRow Get_ScratchRow(Shape shape)
-        {
-            ScratchRow row = new ScratchRow();
 
-            Visio.Section section = shape.Section[(short)Visio.VisSectionIndices.visSectionScratch];
-            Visio.Row sectionRow = section[0];
-
-            // TODO(crhodes)
-            // Handle multiple rows
-
-            row.Name = sectionRow.Name;
-            //row.sectionRow[VisCellIndices.visActionAction].FormulaU;
-
-            return row;
-        }
 
         public static BevelProperties Get_BevelProperties(Shape shape)
         {
