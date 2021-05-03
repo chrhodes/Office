@@ -148,10 +148,10 @@
             this.btnDocumentShapeData = this.Factory.CreateRibbonButton();
             this.btnDocumentUserDefinedCells = this.Factory.CreateRibbonButton();
             this.grpSSPageObjectSections = this.Factory.CreateRibbonGroup();
-            this.btnPageProperties = this.Factory.CreateRibbonButton();
             this.btnPageLayout = this.Factory.CreateRibbonButton();
-            this.btnRulerAndGrid = this.Factory.CreateRibbonButton();
+            this.btnPageProperties = this.Factory.CreateRibbonButton();
             this.btnPrintProperties = this.Factory.CreateRibbonButton();
+            this.btnRulerAndGrid = this.Factory.CreateRibbonButton();
             this.btnPageThemeProperties = this.Factory.CreateRibbonButton();
             this.grpSSPPageRowSections = this.Factory.CreateRibbonGroup();
             this.btnLayers = this.Factory.CreateRibbonButton();
@@ -1049,19 +1049,13 @@
             // 
             // grpSSPageObjectSections
             // 
-            this.grpSSPageObjectSections.Items.Add(this.btnPageProperties);
             this.grpSSPageObjectSections.Items.Add(this.btnPageLayout);
-            this.grpSSPageObjectSections.Items.Add(this.btnRulerAndGrid);
+            this.grpSSPageObjectSections.Items.Add(this.btnPageProperties);
             this.grpSSPageObjectSections.Items.Add(this.btnPrintProperties);
+            this.grpSSPageObjectSections.Items.Add(this.btnRulerAndGrid);
             this.grpSSPageObjectSections.Items.Add(this.btnPageThemeProperties);
             this.grpSSPageObjectSections.Label = "Page (Object)";
             this.grpSSPageObjectSections.Name = "grpSSPageObjectSections";
-            // 
-            // btnPageProperties
-            // 
-            this.btnPageProperties.Label = "Page Properties";
-            this.btnPageProperties.Name = "btnPageProperties";
-            this.btnPageProperties.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageProperties_Click);
             // 
             // btnPageLayout
             // 
@@ -1069,17 +1063,23 @@
             this.btnPageLayout.Name = "btnPageLayout";
             this.btnPageLayout.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageLayout_Click);
             // 
-            // btnRulerAndGrid
+            // btnPageProperties
             // 
-            this.btnRulerAndGrid.Label = "Ruler and Grid";
-            this.btnRulerAndGrid.Name = "btnRulerAndGrid";
-            this.btnRulerAndGrid.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnRulerAndGrid_Click);
+            this.btnPageProperties.Label = "Page Properties";
+            this.btnPageProperties.Name = "btnPageProperties";
+            this.btnPageProperties.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageProperties_Click);
             // 
             // btnPrintProperties
             // 
             this.btnPrintProperties.Label = "Print Properties";
             this.btnPrintProperties.Name = "btnPrintProperties";
             this.btnPrintProperties.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPrintProperties_Click);
+            // 
+            // btnRulerAndGrid
+            // 
+            this.btnRulerAndGrid.Label = "Ruler and Grid";
+            this.btnRulerAndGrid.Name = "btnRulerAndGrid";
+            this.btnRulerAndGrid.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnRulerAndGrid_Click);
             // 
             // btnPageThemeProperties
             // 

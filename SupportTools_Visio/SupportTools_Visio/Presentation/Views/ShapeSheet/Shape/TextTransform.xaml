@@ -13,105 +13,54 @@
 
     d:DesignHeight="400" d:DesignWidth="300" >
 
-    <dxlc:LayoutControl x:Name="layoutControl" 
-                        Orientation="Vertical" 
-                        Background="White" >
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
 
-        <dxlc:LayoutGroup Header="Configuration"
-	        View="GroupBox" Orientation="Vertical" 
-	        VerticalAlignment="Top" HorizontalAlignment="Stretch"
-	        IsCollapsible="True"  IsCollapsed="False" >
+        <dxlc:LayoutGroup 
+            View="Group" Orientation="Vertical" >
 
-            <dxlc:LayoutGroup 
-                View="Group"  Orientation="Vertical" Background="Green" Padding="5" >
+            <dxlc:LayoutItem Label="TxtWidth">
+                <dxe:TextEdit Text="{Binding TextTransform.TxtWidth}"
+    	                ToolTip="tooltip" />
+            </dxlc:LayoutItem>
 
-                <dxlc:LayoutGroup 
-                	View="Group" Orientation="Horizontal" >
+            <dxlc:LayoutItem Label="txtHeight">
+                <dxe:TextEdit Text="{Binding TextTransform.TxtHeight}"
+    	                ToolTip="tooltip" />
+            </dxlc:LayoutItem>
 
-                    <dxlc:LayoutGroup 
-                	    View="Group" Orientation="Vertical" >
-
-                        <dxlc:LayoutItem Label="TxtWidth">
-                            <dxe:TextEdit Text="{Binding TextTransform.TxtWidth}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-
-                        <dxlc:LayoutItem Label="txtHeight">
-                            <dxe:TextEdit Text="{Binding TextTransform.TxtHeight}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-
-                        <dxlc:LayoutItem Label="TxtAngle">
-                            <dxe:TextEdit Text="{Binding TextTransform.TxtAngle}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-
-                    </dxlc:LayoutGroup>
-
-                    <dxlc:LayoutGroup 
-                    	View="Group" Orientation="Vertical" >
-
-                        <dxlc:LayoutItem Label="TxtPinX">
-                            <dxe:TextEdit Text="{Binding TextTransform.TxtPinX}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-
-                        <dxlc:LayoutItem Label="TxtPinY">
-                            <dxe:TextEdit Text="{Binding TextTransform.TxtPinY}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-
-                        <dxlc:LayoutItem Label="TxtLocPinX">
-                            <dxe:TextEdit Text="{Binding TextTransform.TxtLocPinX}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-
-                        <dxlc:LayoutItem Label="TxtLocPinY">
-                            <dxe:TextEdit Text="{Binding TextTransform.TxtLocPinY}"
-    	                          ToolTip="tooltip" />
-                        </dxlc:LayoutItem>
-                    </dxlc:LayoutGroup>
-
-                </dxlc:LayoutGroup>
-                
-                <!--<dxlc:LayoutGroup 
-                	View="Group" Orientation="Horizontal" >
-                <dxe:TextEdit Text="{Binding SelectedShapeCount}"
-                              HorizontalAlignment="Left"
-    	                      ToolTip="ShapesSelected" />
-
-                <dxe:TextEdit Text="{Binding Message}"
-    	                          ToolTip="tooltip" />                
-                </dxlc:LayoutGroup>-->
-                <local:SelectedShapesInfo />
-
-                <Button Content="Load from Current Shape" 
-                        Focusable="False"
-					Command="{Binding LoadCurrentSettings}" />
-
-                <!--<Button Content="Refresh" 
-                        Command="{Binding Refresh}"/>-->
-
-            </dxlc:LayoutGroup>
+            <dxlc:LayoutItem Label="TxtAngle">
+                <dxe:TextEdit Text="{Binding TextTransform.TxtAngle}"
+    	                ToolTip="tooltip" />
+            </dxlc:LayoutItem>
 
         </dxlc:LayoutGroup>
 
-        <dxlc:LayoutGroup Header="Actions"
-	            View="GroupBox" Orientation="Vertical" 
-	            VerticalAlignment="Top" HorizontalAlignment="Stretch"
-	            IsCollapsible="True"  IsCollapsed="False" >
+        <dxlc:LayoutGroup 
+            View="Group" Orientation="Vertical" >
 
-            <dxlc:LayoutGroup 
-                View="Group"  Orientation="Vertical" 
-                Style="{StaticResource ActionLayoutGroup}">
+            <dxlc:LayoutItem Label="TxtPinX">
+                <dxe:TextEdit Text="{Binding TxtPinX}"
+    	                ToolTip="tooltip" />
+            </dxlc:LayoutItem>
 
-                <Button Content="Update TextTransform Section" 
-                        Command="{Binding UpdateSettings}"/>
+            <dxlc:LayoutItem Label="TxtPinY">
+                <dxe:TextEdit Text="{Binding TxtPinY}"
+    	                ToolTip="tooltip" />
+            </dxlc:LayoutItem>
 
-            </dxlc:LayoutGroup>
+            <dxlc:LayoutItem Label="TxtLocPinX">
+                <dxe:TextEdit Text="{Binding TxtLocPinX}"
+    	                ToolTip="tooltip" />
+            </dxlc:LayoutItem>
 
+            <dxlc:LayoutItem Label="TxtLocPinY">
+                <dxe:TextEdit Text="{Binding TxtLocPinY}"
+    	                ToolTip="tooltip" />
+            </dxlc:LayoutItem>
         </dxlc:LayoutGroup>
 
     </dxlc:LayoutControl>
-    <!--</Grid>-->
+
 </UserControl>

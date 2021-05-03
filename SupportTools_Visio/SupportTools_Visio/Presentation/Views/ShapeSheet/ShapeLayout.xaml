@@ -9,55 +9,55 @@
     xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"    
     mc:Ignorable="d" 
 >
-
-    <dxlc:LayoutGroup 
-        View="Group" Orientation="Horizontal" >
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
 
         <dxlc:LayoutGroup 
             View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="ShapePermeableX">
-                <dxe:TextEdit Text="{Binding ShapeLayout.ShapePermeableX}"
+                <dxe:TextEdit Text="{Binding ShapePermeableX}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ShapePermeableY">
-                <dxe:TextEdit Text="{Binding ShapeLayout.ShapePermeableY}"
+                <dxe:TextEdit Text="{Binding ShapePermeableY}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ShapeFixedCode">
-                <dxe:TextEdit Text="{Binding ShapeLayout.ShapeFixedCode}"
+                <dxe:TextEdit Text="{Binding ShapeFixedCode}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ConLineJumpDirX">
-                <dxe:TextEdit Text="{Binding ShapeLayout.ConLineJumpDirX}"
+                <dxe:TextEdit Text="{Binding ConLineJumpDirX}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ConLineJumpDirY">
-                <dxe:TextEdit Text="{Binding ShapeLayout.ConLineJumpDirY}"
+                <dxe:TextEdit Text="{Binding ConLineJumpDirY}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ConLineJumpCode">
-                <dxe:TextEdit Text="{Binding ShapeLayout.ConLineJumpCode}"
+                <dxe:TextEdit Text="{Binding ConLineJumpCode}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ShapePlaceFlip">
-                <dxe:TextEdit Text="{Binding ShapeLayout.ShapePlaceFlip}"
+                <dxe:TextEdit Text="{Binding ShapePlaceFlip}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ShapePlaceStyle">
-                <dxe:TextEdit Text="{Binding ShapeLayout.ShapePlaceStyle}"
+                <dxe:TextEdit Text="{Binding ShapePlaceStyle}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ShapePlowCode">
-                <dxe:TextEdit Text="{Binding ShapeLayout.ShapePlowCode}"
+                <dxe:TextEdit Text="{Binding ShapePlowCode}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
@@ -67,47 +67,47 @@
             View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="ConLineJumpStyle">
-                <dxe:TextEdit Text="{Binding ShapeLayout.ConLineJumpStyle}"
+                <dxe:TextEdit Text="{Binding ConLineJumpStyle}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ConLineRouteExt">
-                <dxe:TextEdit Text="{Binding ShapeLayout.ConLineRouteExt}"
+                <dxe:TextEdit Text="{Binding ConLineRouteExt}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="DisplayLevel">
-                <dxe:TextEdit Text="{Binding ShapeLayout.DisplayLevel}"
+                <dxe:TextEdit Text="{Binding DisplayLevel}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ShapeRouteStyle">
-                <dxe:TextEdit Text="{Binding ShapeLayout.ShapeRouteStyle}"
+                <dxe:TextEdit Text="{Binding ShapeRouteStyle}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ConFixedCode">
-                <dxe:TextEdit Text="{Binding ShapeLayout.ConFixedCode}"
+                <dxe:TextEdit Text="{Binding ConFixedCode}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ShapeSplit">
-                <dxe:TextEdit Text="{Binding ShapeLayout.ShapeSplit}"
+                <dxe:TextEdit Text="{Binding ShapeSplit}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="ShapeSplittable">
-                <dxe:TextEdit Text="{Binding ShapeLayout.ShapeSplittable}"
+                <dxe:TextEdit Text="{Binding ShapeSplittable}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="Relationships">
-                <dxe:TextEdit Text="{Binding ShapeLayout.Relationships}"
+                <dxe:TextEdit Text="{Binding Relationships}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
         </dxlc:LayoutGroup>
 
-    </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
 
 </UserControl>

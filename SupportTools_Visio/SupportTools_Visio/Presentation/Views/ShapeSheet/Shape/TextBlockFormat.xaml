@@ -10,29 +10,30 @@
     mc:Ignorable="d"
 >
 
-    <dxlc:LayoutGroup 
-        View="Group" Orientation="Horizontal" >
+    <dxlc:LayoutControl 
+        View="Group" Orientation="Horizontal" 
+        DataContext="{Binding Info}">
 
         <dxlc:LayoutGroup 
             View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="LeftMargin">
-                <dxe:TextEdit Text="{Binding TextBlockFormat.LeftMargin}"
+                <dxe:TextEdit Text="{Binding LeftMargin}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="TopMargin">
-                <dxe:TextEdit Text="{Binding TextBlockFormat.TopMargin}"
+                <dxe:TextEdit Text="{Binding TopMargin}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="RightMargin">
-                <dxe:TextEdit Text="{Binding TextBlockFormat.RightMargin}"
+                <dxe:TextEdit Text="{Binding RightMargin}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="BottomMargin">
-                <dxe:TextEdit Text="{Binding TextBlockFormat.BottomMargin}"
+                <dxe:TextEdit Text="{Binding BottomMargin}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
@@ -42,32 +43,32 @@
             View="Group" Orientation="Vertical" >
 
             <dxlc:LayoutItem Label="TextBkgnd">
-                <dxe:TextEdit Text="{Binding TextBlockFormat.TextBkgnd}"
+                <dxe:TextEdit Text="{Binding TextBkgnd}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="TextBkgndTrans">
-                <dxe:TextEdit Text="{Binding TextBlockFormat.TextBkgndTrans}"
+                <dxe:TextEdit Text="{Binding TextBkgndTrans}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="TextDirection">
-                <dxe:TextEdit Text="{Binding TextBlockFormat.TextDirection}"
+                <dxe:TextEdit Text="{Binding TextDirection}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="VerticalAlign">
-                <dxe:TextEdit Text="{Binding TextBlockFormat.VerticalAlign}"
+                <dxe:TextEdit Text="{Binding VerticalAlign}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
 
             <dxlc:LayoutItem Label="DefaultTabStop">
-                <dxe:TextEdit Text="{Binding TextBlockFormat.DefaultTabStop}"
+                <dxe:TextEdit Text="{Binding DefaultTabStop}"
     	                ToolTip="tooltip" />
             </dxlc:LayoutItem>
                         
         </dxlc:LayoutGroup>
 
-    </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
 
 </UserControl>

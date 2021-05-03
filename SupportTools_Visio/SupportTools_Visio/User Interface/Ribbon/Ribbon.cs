@@ -914,7 +914,7 @@ namespace SupportTools_Visio
         {
             DxThemedWindowHost.DisplayUserControlInHost(ref _shapeShapeTransformHost,
                 "Shape Transform",
-                250, 450,
+                800,600,
             DxThemedWindowHost.ShowWindowMode.Modeless,
                 new Presentation.Views.ShapeSheetSection(
                     new Presentation.ViewModels.ObjectViewModel<Domain.ShapeTransform, Presentation.ModelWrappers.ShapeTransformWrapper>(
@@ -1047,6 +1047,51 @@ namespace SupportTools_Visio
 
         #endregion
 
+        private void btnCharacter_Click(object sender, RibbonControlEventArgs e)
+        {
+
+        }
+
+        public static DxThemedWindowHost ssConnectionPoints_ShapeSheetSectionHost = null;
+
+        private void btnConnectionPoints_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref ssConnectionPoints_ShapeSheetSectionHost,
+            "Connection Points",
+            600, 450,
+            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
+            DxThemedWindowHost.ShowWindowMode.Modeless,
+            new Presentation.Views.ShapeSheetSection(
+                new Presentation.ViewModels.ConnectionPointsViewModel(),
+                new Presentation.Views.ConnectionPoints()));
+        }
+
+        public static DxThemedWindowHost ssControls_ShapeSheetSectionHost = null;
+
+        private void btnControls_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref ssControls_ShapeSheetSectionHost,
+            "Controls",
+            600, 450,
+            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
+            DxThemedWindowHost.ShowWindowMode.Modeless,
+            new Presentation.Views.ShapeSheetSection(
+                new Presentation.ViewModels.ControlsViewModel(),
+                new Presentation.Views.Controls()));
+        }
+
+        private void btnGeometry_Click(object sender, RibbonControlEventArgs e)
+        {
+
+        }
+
+        public static DxThemedWindowHost ssGradientStops_ShapeSheetSectionHost = null;
+
+        private void btnGradientStops_Click(object sender, RibbonControlEventArgs e)
+        {
+
+        }
+
         #region Hyperlinks
 
         public static DxThemedWindowHost _documentHyperLinksHost = null;
@@ -1118,6 +1163,16 @@ namespace SupportTools_Visio
         }
 
         #endregion
+
+        private void btnParagraph_Click(object sender, RibbonControlEventArgs e)
+        {
+
+        }
+
+        private void btnTabs_Click(object sender, RibbonControlEventArgs e)
+        {
+
+        }
 
         #region Scratch
 
@@ -1230,7 +1285,7 @@ namespace SupportTools_Visio
         private void btnDocumentUserDefinedCells_Click(object sender, RibbonControlEventArgs e)
         {
             DxThemedWindowHost.DisplayUserControlInHost(ref _documentUserDefineCellsHost,
-                "Shape Data (Document)",
+                "User-Defined Cells (Document)",
                 800, 700,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                 new Presentation.Views.ShapeSheetSection(
@@ -1246,7 +1301,7 @@ namespace SupportTools_Visio
         private void btnPageUserDefinedCells_Click(object sender, RibbonControlEventArgs e)
         {
             DxThemedWindowHost.DisplayUserControlInHost(ref _pageUserDefineCellsHost,
-                "Shape Data (Page)",
+                "User-Defined Cells (Page)",
                 800, 700,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                     new Presentation.Views.ShapeSheetSection(
@@ -1262,7 +1317,7 @@ namespace SupportTools_Visio
         private void btnShapeUserDefinedCells_Click(object sender, RibbonControlEventArgs e)
         {
             DxThemedWindowHost.DisplayUserControlInHost(ref _shapeUserDefineCellsHost,
-                "Scratch (Shape)",
+                "User-Defined Cells (Shape)",
                 800, 700,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
                     new Presentation.Views.ShapeSheetSection(
@@ -1277,60 +1332,7 @@ namespace SupportTools_Visio
 
         #endregion
 
-        private void btnCharacter_Click(object sender, RibbonControlEventArgs e)
-        {
 
-        }
-
-        public static DxThemedWindowHost ssConnectionPoints_ShapeSheetSectionHost = null;
-
-        private void btnConnectionPoints_Click(object sender, RibbonControlEventArgs e)
-        {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssConnectionPoints_ShapeSheetSectionHost,
-            "Connection Points",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.ConnectionPointsViewModel(), 
-                new Presentation.Views.ConnectionPoints()));
-        }
-
-        public static DxThemedWindowHost ssControls_ShapeSheetSectionHost = null;
-
-        private void btnControls_Click(object sender, RibbonControlEventArgs e)
-        {
-            DxThemedWindowHost.DisplayUserControlInHost(ref ssControls_ShapeSheetSectionHost,
-            "Controls",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
-            new Presentation.Views.ShapeSheetSection(
-                new Presentation.ViewModels.ControlsViewModel(), 
-                new Presentation.Views.Controls()));
-        }
-
-        private void btnGeometry_Click(object sender, RibbonControlEventArgs e)
-        {
-
-        }
-
-        public static DxThemedWindowHost ssGradientStops_ShapeSheetSectionHost = null;
-
-        private void btnGradientStops_Click(object sender, RibbonControlEventArgs e)
-        {
-
-        }
-
-        private void btnParagraph_Click(object sender, RibbonControlEventArgs e)
-        {
-
-        }
-
-        private void btnTabs_Click(object sender, RibbonControlEventArgs e)
-        {
-
-        }
 
 
         #region WPF Events - Custom

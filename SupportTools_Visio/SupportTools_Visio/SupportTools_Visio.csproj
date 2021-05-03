@@ -800,12 +800,12 @@
     <Compile Include="Presentation\Views\ShapeSheet\Layers.xaml.cs">
       <DependentUpon>Layers.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Views\ShapeSheet\Page\PageLayout.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\Page\PageLayout.xaml.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\Page\PageProperties.xaml.cs">
       <DependentUpon>PageProperties.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Views\ShapeSheet\Page\ThemeProperties.xaml.cs" />
-    <Compile Include="Presentation\Views\ShapeSheet\Page\PrintProperties.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\Page\PrintProperties.xaml.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\Page\RuleAndGrid.xaml.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\ShapeData.xaml.cs">
       <DependentUpon>ShapeData.xaml</DependentUpon>
@@ -834,7 +834,7 @@
     <Compile Include="Presentation\Views\ShapeSheet\Shape\GradientProperties.xaml.cs">
       <DependentUpon>GradientProperties.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Views\ShapeSheet\Shape\GroupProperties.cs" />
+    <Compile Include="Presentation\Views\ShapeSheet\Shape\GroupProperties.xaml.cs" />
     <Compile Include="Presentation\Views\ShapeSheet\Shape\ImageProperties.xaml.cs">
       <DependentUpon>ImageProperties.xaml</DependentUpon>
     </Compile>

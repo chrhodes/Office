@@ -15,6 +15,7 @@
                     
         <dxlc:LayoutGroup 
             View="Group" Orientation="Vertical" >
+            
             <dxlc:LayoutItem Label="NoObjHandles">
                 <dxe:TextEdit Text="{Binding NoObjHandles}"
     	                ToolTip="tooltip" />
