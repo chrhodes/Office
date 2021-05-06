@@ -14,7 +14,18 @@ namespace SupportTools_Visio.Actions
             // TODO(crhodes)
             // Make this reflect on properties and loop across.
 
+            Organization = Helper.GetShapePropertyAsString(activeShape, "Organization");
+            TeamProject = Helper.GetShapePropertyAsString(activeShape, "TeamProject");
             ID = Helper.GetShapePropertyAsString(activeShape, "ID");
+
+            PinX = activeShape.CellsU["PinX"].ResultIU;
+            PinY = activeShape.CellsU["PinY"].ResultIU;
+
+            Height= activeShape.CellsU["Height"].ResultIU;
+            Width = activeShape.CellsU["Width"].ResultIU;
+
+            WorkItemType = activeShape.CellsU["Prop.PageName"].ResultStr[Visio.VisUnitCodes.visUnitsString];
+
             //Namespace = Helper.GetShapePropertyAsString(activeShape, "Namespace");
             //Version = Helper.GetShapePropertyAsString(activeShape, "Version");
             //Color = Helper.GetShapePropertyAsString(activeShape, "Color");
@@ -31,13 +42,22 @@ namespace SupportTools_Visio.Actions
 
         #region Enums, Fields, Properties, Structures
 
+        public string WorkItemType { get; set; }
+        public double PinX { get; set; }
+        public double PinY { get; set; }
+
+        public double Height { get; set; }
+        public double Width { get; set; }
+
+        public string Organization { get; set; }
+        public string TeamProject { get; set; }
+
         public string ID { get; set; }
 
         public string Title { get; set; }
 
         public string State { get; set; }
 
-        public string TeamProject { get; set; }
         public string CreatedBy { get; set; }
         public string CreatedDate { get; set; }
         public string ChangedBy { get; set; }
