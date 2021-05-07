@@ -647,6 +647,9 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Domain\OffsetDirection.cs" />
+    <Compile Include="Domain\WorkItemOffset.cs" />
+    <Compile Include="Domain\WorkItemOffsets.cs" />
     <Compile Include="Domain\ShapeSheet\PageProperties.cs" />
     <Compile Include="Domain\ShapeType.cs" />
     <Compile Include="Domain\WorkItemInfoShape.cs" />

@@ -63,6 +63,11 @@ namespace SupportTools_Visio.Actions
         public string ChangedBy { get; set; }
         public string ChangedDate { get; set; }
 
+        public string RelatedLinkCount { get; set; }
+        public string ExternalLinkCount { get; set; }
+        public string RemoteLinkCount { get; set; }
+        public string HyperLinkCount { get; set; }
+
         #endregion
 
         #region Main Methods
