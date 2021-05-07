@@ -24,7 +24,14 @@ namespace SupportTools_Visio.Actions
             Height= activeShape.CellsU["Height"].ResultIU;
             Width = activeShape.CellsU["Width"].ResultIU;
 
+            // TODO(crhodes)
+            // Maybe just use Helper (see infra)
             WorkItemType = activeShape.CellsU["Prop.PageName"].ResultStr[Visio.VisUnitCodes.visUnitsString];
+
+            // // TODO(crhodes)
+            // Why not get everything?
+
+            RelatedLinkCount = activeShape.CellsU["Prop.RelatedLinks"].ResultStr[Visio.VisUnitCodes.visUnitsString];
 
             //Namespace = Helper.GetShapePropertyAsString(activeShape, "Namespace");
             //Version = Helper.GetShapePropertyAsString(activeShape, "Version");

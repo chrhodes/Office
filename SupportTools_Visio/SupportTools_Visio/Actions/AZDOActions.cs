@@ -81,20 +81,34 @@ namespace SupportTools_Visio.Actions
             }
         }
 
-        public static async Task<IList<WorkItem>> QueryWorkItemLinks(string organization, int id)
+        public static async Task<IList<WorkItem>> QueryWorkItemLinks(string organization, int id, int relatedLinkCount)
         {
             var uri = new Uri($"https://dev.azure.com/{organization}");
             var credentials = GetVssCredentials();
 
             //var project = "VNC Agile";
 
+
             var wiql = new Wiql()
             {
                 // NOTE: Even if other columns are specified, only the ID & URL are available in the WorkItemReference
-                Query = "Select [Id] " +
-                    "From WorkItemLinks " +
-                    "Where Source.[System.Id] = " + id
+                Query = "Select [Id] "
+                    + "From WorkItemLinks "
+                    + "Where Source.[System.Id] = " + id
             };
+
+
+            if (relatedLinkCount > 250)
+                MessageBox.Show($"Great than 250 Links ({relatedLinkCount}), removing Test Cases");
+            {
+                wiql.Query += " AND Target.[System.WorkItemType] <> 'Test Case'";
+            }
+
+            // NOTE(crhodes)
+            // This works but still get BadRequest Exception when trying to get Test Cases back
+            // from release 918783.  Maybe do multiple queries
+
+            // " AND Target.[System.WorkItemType] = 'Test Case'"
 
             using (var httpClient = new WorkItemTrackingHttpClient(uri, credentials))
             {
@@ -108,16 +122,24 @@ namespace SupportTools_Visio.Actions
                     return Array.Empty<WorkItem>();
                 }
 
+                //if (ids.Length > 250)
+                //{
+                //    MessageBox.Show($"Great than 250 Links ({ids.Length}), removing Test Cases");
+                //}
+
                 string[] fields = GetFieldList();
 
                 // Get WorkItem details (fields) for the ids found in query
                 return await httpClient.GetWorkItemsAsync(ids, fields, result.AsOf).ConfigureAwait(false);
+                // HACK(crhodes)
+                // Try taking fewer to get beyond exceptions and bad requests
+                //return await httpClient.GetWorkItemsAsync(ids.Take(200), fields, result.AsOf).ConfigureAwait(false);
             }
         }
 
         private static string[] GetFieldList()
         {
-            // build a list of the fields we want to see
+            //build a list of the fields we want to see
             return new[]
             {
                 "System.Id", "System.TeamProject"
@@ -128,6 +150,11 @@ namespace SupportTools_Visio.Actions
                 , "System.RelatedLinkCount", "System.ExternalLinkCount"
                 , "System.RemoteLinkCount", "System.HyperLinkCount"
             };
+
+            //return new[]
+            //{
+            //    "System.Id"
+            //};
         }
 
         internal static async void AddLinkedWorkItems(Visio.Application app, string doc, string page, string shape, string shapeu, string[] vs)
@@ -160,7 +187,18 @@ namespace SupportTools_Visio.Actions
                 return;
             }
 
-            var result = await QueryWorkItemLinks(activeShapeWorkItemInfo.Organization, id);
+            int relatedLinkCount;
+
+            if (int.TryParse(activeShapeWorkItemInfo.RelatedLinkCount, out relatedLinkCount))
+            {
+            }
+            else
+            {
+                MessageBox.Show($"Cannot parse ({activeShapeWorkItemInfo.RelatedLinkCount}) as RelatedLinkCount");
+                return;
+            }
+
+            var result = await QueryWorkItemLinks(activeShapeWorkItemInfo.Organization, id, relatedLinkCount);
 
             if (result.Count > 0)
             {
@@ -229,8 +267,17 @@ namespace SupportTools_Visio.Actions
 
             WorkItemInfoShape workItemInfoShape = new WorkItemInfoShape(activeShape);
 
+            int id = 0;
+
+            if ( !int.TryParse(workItemInfoShape.ID, out id))
+            {
+                MessageBox.Show($"Invalid WorkItem ID: ({workItemInfoShape.ID})");
+                return;
+            }
+            
             var result = await QueryWorkItemInfo(workItemInfoShape.Organization, int.Parse(workItemInfoShape.ID));
 
+            var teamProject = result[0].Fields["System.TeamProject"];
             var workItemType = result[0].Fields["System.WorkItemType"];
 
             var title = result[0].Fields["System.Title"];
@@ -245,6 +292,10 @@ namespace SupportTools_Visio.Actions
             var externalLinkCount = result[0].Fields["System.ExternalLinkCount"];
             var remoteLinkCount = result[0].Fields["System.RemoteLinkCount"];
             var hyperLinkCount = result[0].Fields["System.HyperLinkCount"];
+
+            activeShape.CellsU["Prop.TeamProject"].FormulaU = teamProject.ToString().WrapInDblQuotes();
+
+            activeShape.CellsU["Prop.ExternalLink"].FormulaU = $"http://dev.azure.com/{workItemInfoShape.Organization}/{teamProject}/_workitems/edit/{id}/".WrapInDblQuotes();
 
             activeShape.CellsU["Prop.PageName"].FormulaU = workItemType.ToString().WrapInDblQuotes();
 
@@ -290,6 +341,7 @@ namespace SupportTools_Visio.Actions
 
                         newWorkItemShape.CellsU["Prop.ExternalLink"].FormulaU = $"http://dev.azure.com/{relatedShape.Organization}/{relatedShape.TeamProject}/_workitems/edit/{id}/".WrapInDblQuotes();
 
+                        var teamProject = linkedWorkItem.Fields["System.TeamProject"];
                         var workItemType = linkedWorkItem.Fields["System.WorkItemType"];
 
                         var title = linkedWorkItem.Fields["System.Title"];
@@ -305,6 +357,7 @@ namespace SupportTools_Visio.Actions
                         var remoteLinkCount = linkedWorkItem.Fields["System.RemoteLinkCount"];
                         var hyperLinkCount = linkedWorkItem.Fields["System.HyperLinkCount"];
 
+                        newWorkItemShape.CellsU["Prop.TeamProject"].FormulaU = teamProject.ToString().WrapInDblQuotes();
                         newWorkItemShape.CellsU["Prop.PageName"].FormulaU = workItemType.ToString().WrapInDblQuotes();
                         newWorkItemShape.CellsU["Prop.ID"].FormulaU = id.ToString().WrapInDblQuotes();
 
@@ -377,6 +430,12 @@ namespace SupportTools_Visio.Actions
                         case "Release":
                             //workItemOffsets.Bug.DecrementHorizontal(width);
                             workItemOffsets.Bug.DecrementHorizontal(width, OffsetDirection.Down);
+                            newInsertionPoint.X = workItemOffsets.Bug.X;
+                            newInsertionPoint.Y = workItemOffsets.Bug.Y;
+                            break;
+
+                        case "Requirement":
+                            workItemOffsets.Bug.IncrementHorizontal(width);
                             newInsertionPoint.X = workItemOffsets.Bug.X;
                             newInsertionPoint.Y = workItemOffsets.Bug.Y;
                             break;
@@ -463,6 +522,12 @@ namespace SupportTools_Visio.Actions
                             newInsertionPoint.Y = workItemOffsets.Epic.Y;
                             break;
 
+                        case "Requirement":
+                            workItemOffsets.Epic.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.Epic.X;
+                            newInsertionPoint.Y = workItemOffsets.Epic.Y;
+                            break;
+
                         case "Task":
                             workItemOffsets.Epic.DecrementHorizontal(width);
                             newInsertionPoint.X = workItemOffsets.Epic.X;
@@ -509,13 +574,31 @@ namespace SupportTools_Visio.Actions
                             break;
 
                         case "Feature":
-                            workItemOffsets.Feature.DecrementHorizontal(width);
+                            workItemOffsets.Feature.IncrementHorizontal(width);
                             newInsertionPoint.X = workItemOffsets.Feature.X;
                             newInsertionPoint.Y = workItemOffsets.Feature.Y;
                             break;
 
                         case "Release":
-                            workItemOffsets.Feature.DecrementHorizontal(width);
+                            //workItemOffsets.Feature.DecrementHorizontal(width);
+                            //newInsertionPoint.X = workItemOffsets.Feature.X;
+                            //newInsertionPoint.Y = workItemOffsets.Feature.Y;
+                            if (workItemOffsets.UserStory.Count > 0)
+                            {
+                                workItemOffsets.UserStory.IncrementHorizontal(width, OffsetDirection.Down);
+                                newInsertionPoint.X = workItemOffsets.UserStory.X;
+                                newInsertionPoint.Y = workItemOffsets.UserStory.Y;
+                            }
+                            else
+                            {
+                                workItemOffsets.Feature.IncrementHorizontal(width);
+                                newInsertionPoint.X = workItemOffsets.Feature.X;
+                                newInsertionPoint.Y = workItemOffsets.Feature.Y;
+                            }
+                            break;
+
+                        case "Requirement":
+                            workItemOffsets.Feature.IncrementHorizontal(width);
                             newInsertionPoint.X = workItemOffsets.Feature.X;
                             newInsertionPoint.Y = workItemOffsets.Feature.Y;
                             break;
@@ -577,7 +660,7 @@ namespace SupportTools_Visio.Actions
                             break;
 
                         case "Feature":
-                            workItemOffsets.Release.IncrementHorizontal(width);
+                            workItemOffsets.Release.DecrementHorizontal(width, OffsetDirection.Up);
 
                             newInsertionPoint.X = workItemOffsets.Release.X;
                             newInsertionPoint.Y = workItemOffsets.Release.Y;
@@ -586,6 +669,12 @@ namespace SupportTools_Visio.Actions
                         case "Release":
                             workItemOffsets.Release.DecrementHorizontal(width);
 
+                            newInsertionPoint.X = workItemOffsets.Release.X;
+                            newInsertionPoint.Y = workItemOffsets.Release.Y;
+                            break;
+
+                        case "Requirement":
+                            workItemOffsets.Release.IncrementHorizontal(width);
                             newInsertionPoint.X = workItemOffsets.Release.X;
                             newInsertionPoint.Y = workItemOffsets.Release.Y;
                             break;
@@ -613,8 +702,7 @@ namespace SupportTools_Visio.Actions
                             break;
 
                         case "User Needs":
-                            workItemOffsets.Release.IncrementHorizontal(width, OffsetDirection.Down);
-
+                            workItemOffsets.Release.DecrementHorizontal(width, OffsetDirection.Up);
                             newInsertionPoint.X = workItemOffsets.Release.X;
                             newInsertionPoint.Y = workItemOffsets.Release.Y;
                             break;
@@ -633,6 +721,79 @@ namespace SupportTools_Visio.Actions
                                 newInsertionPoint.Y = workItemOffsets.Release.Y;
                             }
 
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                    break;
+
+                case "Requirement":
+                    switch (shapeWorkItemType)
+                    {
+                        case "Bug":
+                            workItemOffsets.Requirement.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.Requirement.X;
+                            newInsertionPoint.Y = workItemOffsets.Requirement.Y;
+                            break;
+
+                        case "Epic":
+                            workItemOffsets.Requirement.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.Requirement.X;
+                            newInsertionPoint.Y = workItemOffsets.Requirement.Y;
+                            break;
+
+                        case "Feature":
+                            workItemOffsets.Requirement.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.Requirement.X;
+                            newInsertionPoint.Y = workItemOffsets.Requirement.Y;
+                            break;
+
+                        case "Release":
+                            if (workItemOffsets.UserStory.Count > 0)
+                            {
+                                workItemOffsets.UserStory.IncrementHorizontal(width, OffsetDirection.Down);
+                                newInsertionPoint.X = workItemOffsets.UserStory.X;
+                                newInsertionPoint.Y = workItemOffsets.UserStory.Y;
+                            }
+                            else
+                            {
+                                workItemOffsets.Requirement.IncrementHorizontal(width);
+                                newInsertionPoint.X = workItemOffsets.Requirement.X;
+                                newInsertionPoint.Y = workItemOffsets.Requirement.Y;
+                            }
+
+                            break;
+
+                        case "Requirement":
+                            workItemOffsets.Requirement.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.Requirement.X;
+                            newInsertionPoint.Y = workItemOffsets.Requirement.Y;
+                            break;
+
+                        case "Task":
+                            workItemOffsets.Requirement.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.Requirement.X;
+                            newInsertionPoint.Y = workItemOffsets.Requirement.Y;
+                            break;
+
+                        case "Test Case":
+                            workItemOffsets.Requirement.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.Requirement.X;
+                            newInsertionPoint.Y = workItemOffsets.Requirement.Y;
+                            break;
+
+                        case "User Needs":
+                            workItemOffsets.Requirement.IncrementHorizontal(width, OffsetDirection.Down);
+                            newInsertionPoint.X = workItemOffsets.Requirement.X;
+                            newInsertionPoint.Y = workItemOffsets.Requirement.Y;
+                            break;
+
+                        case "User Story":
+                            workItemOffsets.Requirement.IncrementHorizontal(width, OffsetDirection.Down);
+                            newInsertionPoint.X = workItemOffsets.Requirement.X;
+                            newInsertionPoint.Y = workItemOffsets.Requirement.Y;
                             break;
 
                         default:
@@ -663,6 +824,12 @@ namespace SupportTools_Visio.Actions
                             break;
 
                         case "Release":
+                            workItemOffsets.Task.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.Task.X;
+                            newInsertionPoint.Y = workItemOffsets.Task.Y;
+                            break;
+
+                        case "Requirement":
                             workItemOffsets.Task.IncrementHorizontal(width);
                             newInsertionPoint.X = workItemOffsets.Task.X;
                             newInsertionPoint.Y = workItemOffsets.Task.Y;
@@ -747,6 +914,12 @@ namespace SupportTools_Visio.Actions
                             newInsertionPoint.Y = workItemOffsets.TestCase.Y;
                             break;
 
+                        case "Requirement":
+                            workItemOffsets.TestCase.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.TestCase.X;
+                            newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            break;
+
                         case "Task":
                             workItemOffsets.TestCase.IncrementHorizontal(width);
                             newInsertionPoint.X = workItemOffsets.TestCase.X;
@@ -777,6 +950,90 @@ namespace SupportTools_Visio.Actions
 
                     break;
 
+                case "User Needs":
+                    switch (shapeWorkItemType)
+                    {
+                        case "Bug":
+                            workItemOffsets.UserNeeds.DecrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.UserNeeds.X;
+                            newInsertionPoint.Y = workItemOffsets.UserNeeds.Y;
+                            break;
+
+                        case "UserNeeds":
+                            workItemOffsets.UserNeeds.DecrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.UserNeeds.X;
+                            newInsertionPoint.Y = workItemOffsets.UserNeeds.Y;
+                            break;
+
+                        case "Feature":
+                            //if (workItemOffsets.UserNeed.Count > 0)
+                            //{
+                            //    workItemOffsets.Release.DecrementHorizontal(width, OffsetDirection.Up);
+                            //    newInsertionPoint.X = workItemOffsets.Release.X;
+                            //    newInsertionPoint.Y = workItemOffsets.Release.Y;
+                            //}
+                            //else
+                            //{
+                                workItemOffsets.UserNeeds.IncrementHorizontal(width, OffsetDirection.Down);
+                                newInsertionPoint.X = workItemOffsets.UserNeeds.X;
+                                newInsertionPoint.Y = workItemOffsets.UserNeeds.Y;
+                            //}
+
+                            break;
+
+                        case "Release":
+                            //workItemOffsets.UserNeeds.DecrementHorizontal(width, OffsetDirection.Up);
+                            //newInsertionPoint.X = workItemOffsets.UserNeeds.X;
+                            //newInsertionPoint.Y = workItemOffsets.UserNeeds.Y;
+                            if (workItemOffsets.UserStory.Count > 0)
+                            {
+                                workItemOffsets.UserStory.IncrementHorizontal(width, OffsetDirection.Down);
+                                newInsertionPoint.X = workItemOffsets.UserStory.X;
+                                newInsertionPoint.Y = workItemOffsets.UserStory.Y;
+                            }
+                            else
+                            {
+                                workItemOffsets.Feature.IncrementHorizontal(width);
+                                newInsertionPoint.X = workItemOffsets.UserNeeds.X;
+                                newInsertionPoint.Y = workItemOffsets.UserNeeds.Y;
+                            }
+                            break;
+
+                        case "Requirement":
+                            workItemOffsets.UserNeeds.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.UserNeeds.X;
+                            newInsertionPoint.Y = workItemOffsets.UserNeeds.Y;
+                            break;
+
+                        case "Task":
+                            workItemOffsets.UserNeeds.DecrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.UserNeeds.X;
+                            newInsertionPoint.Y = workItemOffsets.UserNeeds.Y;
+                            break;
+
+                        case "Test Case":
+                            workItemOffsets.UserNeeds.DecrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.UserNeeds.X;
+                            newInsertionPoint.Y = workItemOffsets.UserNeeds.Y;
+                            break;
+
+                        case "User Needs":
+                            workItemOffsets.UserNeeds.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.UserNeeds.X;
+                            newInsertionPoint.Y = workItemOffsets.UserNeeds.Y;
+                            break;
+
+                        case "User Story":
+                            workItemOffsets.UserNeeds.DecrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.UserNeeds.X;
+                            newInsertionPoint.Y = workItemOffsets.UserNeeds.Y;
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                    break;
                 case "User Story":
                     switch (shapeWorkItemType)
                     {
@@ -820,6 +1077,12 @@ namespace SupportTools_Visio.Actions
 
                         case "Release":
                             workItemOffsets.UserStory.IncrementHorizontal(width, OffsetDirection.Down);
+                            newInsertionPoint.X = workItemOffsets.UserStory.X;
+                            newInsertionPoint.Y = workItemOffsets.UserStory.Y;
+                            break;
+
+                        case "Requirement":
+                            workItemOffsets.UserStory.IncrementHorizontal(width);
                             newInsertionPoint.X = workItemOffsets.UserStory.X;
                             newInsertionPoint.Y = workItemOffsets.UserStory.Y;
                             break;

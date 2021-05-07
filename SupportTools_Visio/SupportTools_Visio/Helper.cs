@@ -62,6 +62,9 @@ namespace SupportTools_Visio
             //Common.ApplicationDataSet.ApplicationUsageTA.Update(Common.ApplicationDataSet.ApplicationUsage);
         }
 
+        // TODO(crhodes)
+        // Should we have more of these for other data types?
+
         static public string GetShapePropertyAsString(Visio.Shape activeShape, string property)
         {
             string propertyName = "Prop." + property;

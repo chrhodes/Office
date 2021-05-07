@@ -12,6 +12,8 @@ namespace SupportTools_Visio.Domain
 
         public WorkItemOffset Release;
 
+        public WorkItemOffset Requirement;
+
         public WorkItemOffset Task;
 
         public WorkItemOffset TestCase;
@@ -28,6 +30,7 @@ namespace SupportTools_Visio.Domain
             Epic = new WorkItemOffset(initialOffset, height, padX, padY);
             Feature = new WorkItemOffset(initialOffset, height, padX, padY);
             Release = new WorkItemOffset(initialOffset, height, padX, padY);
+            Requirement = new WorkItemOffset(initialOffset, height, padX, padY);
             Task = new WorkItemOffset(initialOffset, height, padX, padY);
             TestCase = new WorkItemOffset(initialOffset, height, padX, padY);
             UserNeeds = new WorkItemOffset(initialOffset, height, padX, padY);
