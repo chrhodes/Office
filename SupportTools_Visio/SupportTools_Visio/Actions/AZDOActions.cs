@@ -180,7 +180,34 @@ namespace SupportTools_Visio.Actions
                 Point initialPosition = GetPosition(activeShape);
                 Point insertionPoint = initialPosition;
 
-                WorkItemHorizontalOffsets horizontalOffsets = new WorkItemHorizontalOffsets(initialPosition.X);
+                string stencilName = "Azure DevOps.vssx";
+                string shapeName = "WI";
+                //string shapeName = "WI & Info";
+                Visio.Document linkStencil;
+                Visio.Master linkMaster = null;
+
+                try
+                {
+                    linkStencil = app.Documents[stencilName];
+
+                    try
+                    {
+                        linkMaster = linkStencil.Masters[shapeName];
+                    }
+                    catch (Exception ex)
+                    {
+                        VisioHelper.DisplayInWatchWindow(string.Format("  Cannot find Master named:>{0}<", shapeName));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    VisioHelper.DisplayInWatchWindow(string.Format("  Cannot find open Stencil named:>{0}<", stencilName));
+                }
+
+                // TODO(crhodes)
+                // Figure out how to get size of shape from master.
+
+                WorkItemOffsets workItemOffsets = new WorkItemOffsets(initialPosition, 0.375);
 
                 foreach (var linkedWorkItem in result)
                 {
@@ -194,14 +221,180 @@ namespace SupportTools_Visio.Actions
 
                     VisioHelper.DisplayInWatchWindow($"{linkedWorkItem.Id} {linkedWorkItem.Fields["System.Title"]}");
 
-                    insertionPoint = CalculateInsertionPoint(initialPosition, insertionPoint, linkedWorkItem, activeShapeWorkItemInfo, horizontalOffsets);
+                    insertionPoint = CalculateInsertionPoint(initialPosition, insertionPoint, linkedWorkItem, activeShapeWorkItemInfo, workItemOffsets);
 
-                    AddNewLinkedWorkItemShape(app, activePage, linkedWorkItem, insertionPoint, activeShapeWorkItemInfo);
+                    AddNewLinkedWorkItemShape(linkMaster, activePage, linkedWorkItem, insertionPoint, activeShapeWorkItemInfo);
                 }
             }
 
             VisioHelper.DisplayInWatchWindow($"{activeShapeWorkItemInfo}");
         }
+
+
+        public class WorkItemOffset
+        {
+
+            public WorkItemOffset(Point initialOffset, double overflowOffset)
+            {
+                _x = _xInitial = initialOffset.X;
+                _y = _yInitial = initialOffset.Y;
+
+                _rowOffset = overflowOffset;
+
+                PadX = 0.05;
+                PadY = 0.05;
+            }
+
+            public WorkItemOffset(Point initialOffset, double overflowOffset, double padX, double padY)
+            {
+                _x = _xInitial = initialOffset.X;
+                _y = _yInitial = initialOffset.Y;
+
+                _rowOffset = overflowOffset;
+            }
+
+            public double PadX { get; set; }
+            public double PadY { get; set; }
+
+            public double RowOffset
+            {
+                get => _rowOffset;
+                set => _rowOffset = value;
+            }
+            
+            private double _rowOffset;
+            private double _y;
+            private double _x;
+
+            private double _yInitial;
+            private double _xInitial;
+            private int _count;
+
+            public int Count
+            {
+                get => _count;
+                set => _count = value;
+            }
+
+            public double X
+            {
+                get => _x;
+                set => _x = value;
+            }
+
+            
+            public double Y
+            {
+                get => _y;
+                set => _y = value;
+            }
+
+            public void DecrementHorizontal(double offset)
+            {
+                //if (Count % 5 == 0)
+                //{
+                //    _y += RowOffset;
+                //    _y += RowOffset > 0 ? PadY : -PadY;
+                //    _x = _xInitial;
+                //}
+
+                _x -= offset;
+                _x -= PadX;
+
+                _count++;
+            }
+
+            public void IncrementHorizontal(double offset)
+            {
+                //if (Count % 5 == 0)
+                //{
+                //    _y += RowOffset;
+                //    _y += RowOffset > 0 ? PadY : -PadY;
+                //    _x = _xInitial;
+                //}
+
+                _x += offset;
+                _x += PadX;
+
+                _count++;
+            }
+
+            public void DecrementHorizontal(double offset, OffsetDirection offsetDirection)
+            {
+                if (Count % 5 == 0)
+                {
+                    if (offsetDirection == OffsetDirection.Up)
+                    {
+                        _y += RowOffset + PadY;
+                    }
+                    else
+                    {
+                        _y -= RowOffset + PadY;
+                    }
+
+                    _x = _xInitial;
+                }
+
+                _x -= offset + PadX;
+                //_x -= PadX;
+
+                _count++;
+            }
+
+            public void IncrementHorizontal(double offset, OffsetDirection offsetDirection)
+            {
+                if (Count % 5 == 0)
+                {
+                    if (offsetDirection == OffsetDirection.Up)
+                    {
+                        _y += RowOffset + PadY;
+                    }
+                    else
+                    {
+                        _y -= RowOffset + PadY;
+                    }
+
+                    _x = _xInitial;
+                }
+
+                _x += offset + PadX;
+                //_x += PadX;
+
+                _count++;
+            }
+        }
+
+    public enum OffsetDirection
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+
+    public class WorkItemOffsets
+    {
+            
+        public WorkItemOffsets(Point initialOffset, double height)
+        {
+            Bug = new WorkItemOffset(initialOffset, height);
+            Epic = new WorkItemOffset(initialOffset, height);
+            Feature = new WorkItemOffset(initialOffset, height);
+            Task = new WorkItemOffset(initialOffset, height);
+            TestCase = new WorkItemOffset(initialOffset, height);
+            UserStory = new WorkItemOffset(initialOffset, height);
+
+            Unknown = new WorkItemOffset(initialOffset, 0.0);
+        }
+
+        public WorkItemOffset Bug;
+        public WorkItemOffset Epic;
+        public WorkItemOffset Feature;
+        public WorkItemOffset Task;
+        public WorkItemOffset TestCase;
+        public WorkItemOffset UserStory;
+        public WorkItemOffset Unknown;
+    }
 
         class WorkItemHorizontalOffsets
         {
@@ -241,10 +434,9 @@ namespace SupportTools_Visio.Actions
                 return Feature = Feature += offset;
             }
 
-
             public double IncrementTask(double offset)
             {
-                return Task = Task  += offset;
+                return Task = Task += offset;
             }
 
             public double IncrementTestCase(double offset)
@@ -265,7 +457,7 @@ namespace SupportTools_Visio.Actions
 
 
         private static Point CalculateInsertionPoint(Point initialPosition, Point insertionPoint, 
-            WorkItem linkedWorkItem, WorkItemInfoShape activeShape, WorkItemHorizontalOffsets horizontalOffsets)
+            WorkItem linkedWorkItem, WorkItemInfoShape activeShape, WorkItemOffsets workItemOffsets)
         {
             Point newInsertionPoint = new Point();
 
@@ -274,49 +466,55 @@ namespace SupportTools_Visio.Actions
 
             string shapeWorkItemType = activeShape.WorkItemType;
 
-            // HACK(crhodes)
-            // See if can't make this less opaque
-            // Seems like work item should know where it stands in relation to other work items.
-            // if same time should go left or right at same level or maybe half step.
-
             switch (linkedWorkItem.Fields["System.WorkItemType"])
             {
                 case "Bug":
                     switch (shapeWorkItemType)
                     {
                         case "Bug":
-                            newInsertionPoint.X = horizontalOffsets.IncrementBug(-width);
-                            newInsertionPoint.Y = initialPosition.Y;
+                            workItemOffsets.Bug.DecrementHorizontal(width);
                             break;
 
                         case "Epic":
-                            newInsertionPoint.X = horizontalOffsets.IncrementBug(-width);
-                            newInsertionPoint.Y = initialPosition.Y;
+                            workItemOffsets.Bug.DecrementHorizontal(width);
                             break;
 
                         case "Feature":
-                            newInsertionPoint.X = horizontalOffsets.IncrementBug(-width);
-                            newInsertionPoint.Y = initialPosition.Y;
+                            workItemOffsets.Bug.DecrementHorizontal(width);
                             break;
 
                         case "Task":
-                            newInsertionPoint.X = horizontalOffsets.IncrementBug(-width);
-                            newInsertionPoint.Y = initialPosition.Y;
+                            workItemOffsets.Bug.DecrementHorizontal(width);
                             break;
 
                         case "Test Case":
-                            newInsertionPoint.X = horizontalOffsets.IncrementTestCase(width);
-                            newInsertionPoint.Y = initialPosition.Y;
+                            if (workItemOffsets.UserStory.Count > 0)
+                            {
+                                workItemOffsets.UserStory.DecrementHorizontal(width, OffsetDirection.Down);
+                                newInsertionPoint.X = workItemOffsets.UserStory.X;
+                                newInsertionPoint.Y = workItemOffsets.UserStory.Y;
+                            }
+                            else
+                            {
+                                workItemOffsets.Bug.DecrementHorizontal(width, OffsetDirection.Down);
+                                newInsertionPoint.X = workItemOffsets.Bug.X;
+                                newInsertionPoint.Y = workItemOffsets.Bug.Y;
+                            }
+                            
                             break;
 
                         case "User Story":
-                            newInsertionPoint.X = horizontalOffsets.IncrementBug(-width);
-                            newInsertionPoint.Y = initialPosition.Y + 1 * height;
+                            workItemOffsets.Bug.DecrementHorizontal(width, OffsetDirection.Down);
+                            newInsertionPoint.X = workItemOffsets.Bug.X;
+                            newInsertionPoint.Y = workItemOffsets.Bug.Y;
                             break;
 
                         default:
                             break;
                     }
+
+                    //newInsertionPoint.X = workItemOffsets.Bug.X;
+                    //newInsertionPoint.Y = workItemOffsets.Bug.Y;
 
                     break;
 
@@ -324,38 +522,35 @@ namespace SupportTools_Visio.Actions
                     switch (shapeWorkItemType)
                     {
                         case "Bug":
-                            newInsertionPoint.X = horizontalOffsets.IncrementEpic(width);
-                            newInsertionPoint.Y = initialPosition.Y;
+                            workItemOffsets.Epic.DecrementHorizontal(width);
                             break;
 
                         case "Epic":
-                            newInsertionPoint.X = horizontalOffsets.IncrementEpic(width);
-                            newInsertionPoint.Y = initialPosition.Y;
+                            workItemOffsets.Epic.DecrementHorizontal(width);
                             break;
 
                         case "Feature":
-                            newInsertionPoint.X = horizontalOffsets.IncrementEpic(width);
-                            newInsertionPoint.Y = initialPosition.Y - 1 * height;
+                            workItemOffsets.Epic.DecrementHorizontal(width);
                             break;
 
                         case "Task":
-                            newInsertionPoint.X = horizontalOffsets.IncrementEpic(width);
-                            newInsertionPoint.Y = initialPosition.Y;
+                            workItemOffsets.Epic.DecrementHorizontal(width);
                             break;
 
                         case "Test Case":
-                            newInsertionPoint.X = horizontalOffsets.IncrementTestCase(width);
-                            newInsertionPoint.Y = initialPosition.Y;
+                            workItemOffsets.Epic.DecrementHorizontal(width);
                             break;
 
                         case "User Story":
-                            newInsertionPoint.X = horizontalOffsets.IncrementEpic(width);
-                            newInsertionPoint.Y = initialPosition.Y + 1 * height;
+                            workItemOffsets.Epic.DecrementHorizontal(width);
                             break;
 
                         default:
                             break;
                     }
+
+                    newInsertionPoint.X = workItemOffsets.Epic.X;
+                    newInsertionPoint.Y = workItemOffsets.Epic.Y;
 
                     break;
 
@@ -363,38 +558,35 @@ namespace SupportTools_Visio.Actions
                     switch (shapeWorkItemType)
                     {
                         case "Bug":
-                            newInsertionPoint.X = horizontalOffsets.IncrementFeature(-width);
-                            newInsertionPoint.Y = initialPosition.Y + 1 * height;
+                            workItemOffsets.Feature.DecrementHorizontal(width);
                             break;
 
                         case "Epic":
-                            newInsertionPoint.X = horizontalOffsets.IncrementFeature(-width);
-                            newInsertionPoint.Y = initialPosition.Y - 1 * height;
+                            workItemOffsets.Feature.DecrementHorizontal(width);
                             break;
 
                         case "Feature":
-                            newInsertionPoint.X = horizontalOffsets.IncrementFeature(-width);
-                            newInsertionPoint.Y = initialPosition.Y - 1 * height;
+                            workItemOffsets.Feature.DecrementHorizontal(width);
                             break;
 
                         case "Task":
-                            newInsertionPoint.X = horizontalOffsets.IncrementFeature(-width);
-                            newInsertionPoint.Y = initialPosition.Y + 1 * height;
+                            workItemOffsets.Feature.DecrementHorizontal(width);
                             break;
 
                         case "Test Case":
-                            newInsertionPoint.X = horizontalOffsets.IncrementTestCase(width);
-                            newInsertionPoint.Y = initialPosition.Y;
+                            workItemOffsets.Feature.DecrementHorizontal(width);
                             break;
 
                         case "User Story":
-                            newInsertionPoint.X = horizontalOffsets.IncrementFeature(-width);
-                            newInsertionPoint.Y = initialPosition.Y + 1 * height;
+                            workItemOffsets.Feature.DecrementHorizontal(width, OffsetDirection.Up);
                             break;
 
                         default:
                             break;
                     }
+
+                    newInsertionPoint.X = workItemOffsets.Feature.X;
+                    newInsertionPoint.Y = workItemOffsets.Feature.Y;
 
                     break;
 
@@ -402,38 +594,35 @@ namespace SupportTools_Visio.Actions
                     switch (shapeWorkItemType)
                     {
                         case "Bug":
-                            newInsertionPoint.X = horizontalOffsets.IncrementTask(width);
-                            newInsertionPoint.Y = initialPosition.Y + 1 * height;
+                            workItemOffsets.Task.IncrementHorizontal(width);
                             break;
 
                         case "Epic":
-                            newInsertionPoint.X = horizontalOffsets.IncrementTask(-width);
-                            newInsertionPoint.Y = initialPosition.Y - 1 * height;
+                            workItemOffsets.Task.IncrementHorizontal(width);
                             break;
 
                         case "Feature":
-                            newInsertionPoint.X = horizontalOffsets.IncrementTask(-width);
-                            newInsertionPoint.Y = initialPosition.Y - 1 * height;
+                            workItemOffsets.Task.IncrementHorizontal(width);
                             break;
 
                         case "Task":
-                            newInsertionPoint.X = horizontalOffsets.IncrementTask(-width);
-                            newInsertionPoint.Y = initialPosition.Y + 1 * height;
+                            workItemOffsets.Task.IncrementHorizontal(width);
                             break;
 
                         case "Test Case":
-                            newInsertionPoint.X = horizontalOffsets.IncrementTask(width);
-                            newInsertionPoint.Y = initialPosition.Y;
+                            workItemOffsets.Task.IncrementHorizontal(width);
                             break;
 
                         case "User Story":
-                            newInsertionPoint.X = horizontalOffsets.IncrementTask(width);
-                            newInsertionPoint.Y = initialPosition.Y - 1 * height;
+                            workItemOffsets.Task.IncrementHorizontal(width, OffsetDirection.Down);
                             break;
 
                         default:
                             break;
                     }
+
+                    newInsertionPoint.X = workItemOffsets.Task.X;
+                    newInsertionPoint.Y = workItemOffsets.Task.Y;
 
                     break;
 
@@ -441,39 +630,36 @@ namespace SupportTools_Visio.Actions
                     switch (shapeWorkItemType)
                     {
                         case "Bug":
-                            newInsertionPoint.X = horizontalOffsets.IncrementTestCase(width);
-                            newInsertionPoint.Y = initialPosition.Y + 1 * height;
+                            workItemOffsets.TestCase.IncrementHorizontal(width, OffsetDirection.Up);
                             break;
 
                         case "Epic":
-                            newInsertionPoint.X = horizontalOffsets.IncrementTestCase(width);
-                            newInsertionPoint.Y = initialPosition.Y - 2 * height;
+                            workItemOffsets.TestCase.IncrementHorizontal(width);
                             break;
 
                         case "Feature":
-                            newInsertionPoint.X = horizontalOffsets.IncrementTestCase(width);
-                            newInsertionPoint.Y = initialPosition.Y - 1 * height;
+                            workItemOffsets.TestCase.IncrementHorizontal(width);
                             break;
 
                         case "Task":
-                            newInsertionPoint.X = horizontalOffsets.IncrementTestCase(-width);
-                            newInsertionPoint.Y = initialPosition.Y + 1 * height;
+                            workItemOffsets.TestCase.IncrementHorizontal(width);
                             break;
 
                         case "Test Case":
-                            newInsertionPoint.X = horizontalOffsets.IncrementTestCase(width);
-                            newInsertionPoint.Y = initialPosition.Y;
+                            workItemOffsets.TestCase.IncrementHorizontal(width);
                             break;
 
                         case "User Story":
-                            newInsertionPoint.X = horizontalOffsets.IncrementTestCase(-width);
-                            newInsertionPoint.Y = initialPosition.Y;
+                            workItemOffsets.TestCase.IncrementHorizontal(width, OffsetDirection.Up);
                             break;
 
                         default:
                             break;
 
                     }
+
+                    newInsertionPoint.X = workItemOffsets.TestCase.X;
+                    newInsertionPoint.Y = workItemOffsets.TestCase.Y;
 
                     break;
 
@@ -481,33 +667,34 @@ namespace SupportTools_Visio.Actions
                     switch (shapeWorkItemType)
                     {
                         case "Bug":
-                            newInsertionPoint.X = horizontalOffsets.IncrementUserStory(width);
-                            newInsertionPoint.Y = initialPosition.Y + 1 * height;
+                            workItemOffsets.UserStory.IncrementHorizontal(width, OffsetDirection.Up);
                             break;
 
                         case "Epic":
-                            newInsertionPoint.X = horizontalOffsets.IncrementUserStory(width);
-                            newInsertionPoint.Y = initialPosition.Y - 2 * height;
+                            workItemOffsets.UserStory.IncrementHorizontal(width);
                             break;
 
                         case "Feature":
-                            newInsertionPoint.X = horizontalOffsets.IncrementUserStory(width);
-                            newInsertionPoint.Y = initialPosition.Y - 1 * height;
+                            workItemOffsets.UserStory.IncrementHorizontal(width, OffsetDirection.Down);
                             break;
 
                         case "Task":
-                            newInsertionPoint.X = horizontalOffsets.IncrementUserStory(-width);
-                            newInsertionPoint.Y = initialPosition.Y + 1 * height;
+                            workItemOffsets.UserStory.DecrementHorizontal(width, OffsetDirection.Up);
                             break;
 
                         case "Test Case":
-                            newInsertionPoint.X = horizontalOffsets.IncrementUserStory(width);
-                            newInsertionPoint.Y = initialPosition.Y;
+                            if (workItemOffsets.Bug.Count > 0)
+                            {
+                                workItemOffsets.Bug.DecrementHorizontal(width, OffsetDirection.Down);
+                            }
+                            else
+                            {
+                                workItemOffsets.UserStory.DecrementHorizontal(width, OffsetDirection.Down);
+                            }
                             break;
 
                         case "User Story":
-                            newInsertionPoint.X = horizontalOffsets.IncrementUserStory(-width);
-                            newInsertionPoint.Y = initialPosition.Y;
+                            workItemOffsets.UserStory.IncrementHorizontal(width);
                             break;
 
                         default:
@@ -515,10 +702,13 @@ namespace SupportTools_Visio.Actions
 
                     }
 
+                    newInsertionPoint.X = workItemOffsets.UserStory.X;
+                    newInsertionPoint.Y = workItemOffsets.UserStory.Y;
+
                     break;
 
                 default:
-                    newInsertionPoint.X = horizontalOffsets.IncrementUnknown(-width);
+                    newInsertionPoint.X = initialPosition.X;
                     newInsertionPoint.Y = initialPosition.Y;
                     break;
             }
@@ -526,42 +716,57 @@ namespace SupportTools_Visio.Actions
             return newInsertionPoint;
         }
 
-        private static void AddNewLinkedWorkItemShape(Visio.Application app, Visio.Page page, WorkItem linkedWorkItem, Point insertionPoint, WorkItemInfoShape relatedShape)
+        private static void AddNewLinkedWorkItemShape(Visio.Master linkMaster, Visio.Page page, WorkItem linkedWorkItem, Point insertionPoint, WorkItemInfoShape relatedShape)
         {
             string stencilName = "Azure DevOps.vssx";
-            string shapeName = "WI & Info";
+            string shapeName = "WI";
+            //string shapeName = "WI & Info";
 
             try
             {
-                Visio.Document linkStencil = app.Documents[stencilName];
+                //Visio.Document linkStencil = app.Documents[stencilName];
 
                 try
                 {
-                    Visio.Master linkMaster = linkStencil.Masters[shapeName];
+                    //Visio.Master linkMaster = linkStencil.Masters[shapeName];
 
                     Visio.Shape newWorkItemShape = page.Drop(linkMaster, insertionPoint.X, insertionPoint.Y);
 
-                    var id = linkedWorkItem.Fields["System.Id"];
-                    var workItemType = linkedWorkItem.Fields["System.WorkItemType"];
-                    var title = linkedWorkItem.Fields["System.Title"];
-                    var state = linkedWorkItem.Fields["System.State"];
-                    var createdBy = ((IdentityRef)linkedWorkItem.Fields["System.CreatedBy"]).DisplayName;
-                    var createdDate = linkedWorkItem.Fields["System.CreatedDate"];
-                    var changedBy = ((IdentityRef)linkedWorkItem.Fields["System.ChangedBy"]).DisplayName;
-                    var changedDate = linkedWorkItem.Fields["System.ChangedDate"];
+                    try
+                    {
+                        var id = linkedWorkItem.Fields["System.Id"];
 
-                    newWorkItemShape.CellsU["Prop.PageName"].FormulaU = workItemType.ToString().WrapInDblQuotes();
-                    newWorkItemShape.CellsU["Prop.ID"].FormulaU = id.ToString().WrapInDblQuotes();
+            
+                        newWorkItemShape.CellsU["Prop.Organization"].FormulaU = relatedShape.Organization.WrapInDblQuotes();
+                        newWorkItemShape.CellsU["Prop.TeamProject"].FormulaU = relatedShape.TeamProject.WrapInDblQuotes();
 
-                    newWorkItemShape.CellsU["Prop.Title"].FormulaU = title.ToString().WrapInDblQuotes();
-                    newWorkItemShape.CellsU["Prop.State"].FormulaU = state.ToString().WrapInDblQuotes();
-                    newWorkItemShape.CellsU["Prop.CreatedDate"].FormulaU = createdDate.ToString().WrapInDblQuotes();
-                    newWorkItemShape.CellsU["Prop.CreatedBy"].FormulaU = createdBy.WrapInDblQuotes();
-                    newWorkItemShape.CellsU["Prop.ChangedDate"].FormulaU = changedDate.ToString().WrapInDblQuotes();
-                    newWorkItemShape.CellsU["Prop.ChangedBy"].FormulaU = changedBy.WrapInDblQuotes();
+                        newWorkItemShape.CellsU["Prop.ExternalLink"].FormulaU = $"http://dev.azure.com/{relatedShape.Organization}/{relatedShape.TeamProject}/_workitems/edit/{id}/".WrapInDblQuotes();
 
-                    newWorkItemShape.CellsU["Prop.Organization"].FormulaU = relatedShape.Organization.WrapInDblQuotes();
-                    newWorkItemShape.CellsU["Prop.TeamProject"].FormulaU = relatedShape.TeamProject.WrapInDblQuotes();
+
+                        var workItemType = linkedWorkItem.Fields["System.WorkItemType"];
+                        var title = linkedWorkItem.Fields["System.Title"];
+                        var state = linkedWorkItem.Fields["System.State"];
+                        var createdBy = ((IdentityRef)linkedWorkItem.Fields["System.CreatedBy"]).DisplayName;
+                        var createdDate = linkedWorkItem.Fields["System.CreatedDate"];
+                        var changedBy = ((IdentityRef)linkedWorkItem.Fields["System.ChangedBy"]).DisplayName;
+                        var changedDate = linkedWorkItem.Fields["System.ChangedDate"];
+
+                        newWorkItemShape.CellsU["Prop.PageName"].FormulaU = workItemType.ToString().WrapInDblQuotes();
+                        newWorkItemShape.CellsU["Prop.ID"].FormulaU = id.ToString().WrapInDblQuotes();
+
+                        var cleanTitle = title.ToString().Replace("\"", "\"\"").WrapInDblQuotes();
+
+                        newWorkItemShape.CellsU["Prop.Title"].FormulaU = cleanTitle;
+                        newWorkItemShape.CellsU["Prop.State"].FormulaU = state.ToString().WrapInDblQuotes();
+                        newWorkItemShape.CellsU["Prop.CreatedDate"].FormulaU = createdDate.ToString().WrapInDblQuotes();
+                        newWorkItemShape.CellsU["Prop.CreatedBy"].FormulaU = createdBy.WrapInDblQuotes();
+                        newWorkItemShape.CellsU["Prop.ChangedDate"].FormulaU = changedDate.ToString().WrapInDblQuotes();
+                        newWorkItemShape.CellsU["Prop.ChangedBy"].FormulaU = changedBy.WrapInDblQuotes();
+                    }
+                    catch (Exception ex)
+                    {
+                        VisioHelper.DisplayInWatchWindow($"{linkedWorkItem.Id}");
+                    }
                 }
                 catch (Exception ex)
                 {
