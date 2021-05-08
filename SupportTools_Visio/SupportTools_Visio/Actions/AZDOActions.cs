@@ -574,6 +574,7 @@ namespace SupportTools_Visio.Actions
                             break;
 
                         case "Feature":
+
                             workItemOffsets.Feature.IncrementHorizontal(width);
                             newInsertionPoint.X = workItemOffsets.Feature.X;
                             newInsertionPoint.Y = workItemOffsets.Feature.Y;
@@ -583,7 +584,13 @@ namespace SupportTools_Visio.Actions
                             //workItemOffsets.Feature.DecrementHorizontal(width);
                             //newInsertionPoint.X = workItemOffsets.Feature.X;
                             //newInsertionPoint.Y = workItemOffsets.Feature.Y;
-                            if (workItemOffsets.UserStory.Count > 0)
+                            if (workItemOffsets.UserNeeds.Count > 0)
+                            {
+                                workItemOffsets.UserStory.IncrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.UserNeeds.X;
+                                newInsertionPoint.Y = workItemOffsets.UserNeeds.Y;
+                            }
+                            else if (workItemOffsets.UserStory.Count > 0)
                             {
                                 workItemOffsets.UserStory.IncrementHorizontal(width, OffsetDirection.Down);
                                 newInsertionPoint.X = workItemOffsets.UserStory.X;
@@ -591,7 +598,7 @@ namespace SupportTools_Visio.Actions
                             }
                             else
                             {
-                                workItemOffsets.Feature.IncrementHorizontal(width);
+                                workItemOffsets.Feature.DecrementHorizontal(width, OffsetDirection.Up);
                                 newInsertionPoint.X = workItemOffsets.Feature.X;
                                 newInsertionPoint.Y = workItemOffsets.Feature.Y;
                             }
@@ -660,10 +667,18 @@ namespace SupportTools_Visio.Actions
                             break;
 
                         case "Feature":
-                            workItemOffsets.Release.DecrementHorizontal(width, OffsetDirection.Up);
-
-                            newInsertionPoint.X = workItemOffsets.Release.X;
-                            newInsertionPoint.Y = workItemOffsets.Release.Y;
+                            if (workItemOffsets.UserNeeds.Count > 0)
+                            {
+                                workItemOffsets.UserNeeds.DecrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.UserNeeds.X;
+                                newInsertionPoint.Y = workItemOffsets.UserNeeds.Y;
+                            }
+                            else
+                            {
+                                workItemOffsets.Release.DecrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.Release.X;
+                                newInsertionPoint.Y = workItemOffsets.Release.Y;
+                            }
                             break;
 
                         case "Release":
@@ -966,25 +981,22 @@ namespace SupportTools_Visio.Actions
                             break;
 
                         case "Feature":
-                            //if (workItemOffsets.UserNeed.Count > 0)
-                            //{
-                            //    workItemOffsets.Release.DecrementHorizontal(width, OffsetDirection.Up);
-                            //    newInsertionPoint.X = workItemOffsets.Release.X;
-                            //    newInsertionPoint.Y = workItemOffsets.Release.Y;
-                            //}
-                            //else
-                            //{
-                                workItemOffsets.UserNeeds.IncrementHorizontal(width, OffsetDirection.Down);
+                            if (workItemOffsets.Release.Count > 0)
+                            {
+                                workItemOffsets.Release.DecrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.Release.X;
+                                newInsertionPoint.Y = workItemOffsets.Release.Y;
+                            }
+                            else
+                            {
+                                workItemOffsets.UserNeeds.DecrementHorizontal(width, OffsetDirection.Up);
                                 newInsertionPoint.X = workItemOffsets.UserNeeds.X;
                                 newInsertionPoint.Y = workItemOffsets.UserNeeds.Y;
-                            //}
+                            }
 
                             break;
 
                         case "Release":
-                            //workItemOffsets.UserNeeds.DecrementHorizontal(width, OffsetDirection.Up);
-                            //newInsertionPoint.X = workItemOffsets.UserNeeds.X;
-                            //newInsertionPoint.Y = workItemOffsets.UserNeeds.Y;
                             if (workItemOffsets.UserStory.Count > 0)
                             {
                                 workItemOffsets.UserStory.IncrementHorizontal(width, OffsetDirection.Down);

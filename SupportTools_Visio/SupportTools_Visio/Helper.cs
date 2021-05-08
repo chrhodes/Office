@@ -58,7 +58,7 @@ namespace SupportTools_Visio
 
             Common.ApplicationDataSet.ApplicationUsage.AddApplicationUsageRow(dataRow);
             // HACK(crhodes)
-            // Skip writng to database for now
+            //+++ Skip writing to database for now
             //Common.ApplicationDataSet.ApplicationUsageTA.Update(Common.ApplicationDataSet.ApplicationUsage);
         }
 
