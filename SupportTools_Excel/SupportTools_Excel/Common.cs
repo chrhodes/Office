@@ -16,7 +16,7 @@ namespace SupportTools_Excel
     public class Common : VNC.AddinHelper.Common
     {
         new public const string PROJECT_NAME = "SupportTools_Excel";
-        public const string LOG_APPNAME = "SupportTools_Excel";
+        public const string LOG_CATEGORY = "SupportTools_Excel";
 
         //public const string cCONFIG_FILE = @"C:\temp\SupportTools_Config.xml";
         public const string cCONFIG_FILE = @"C:\temp\SupportTools_Excel.xml";
@@ -34,7 +34,7 @@ namespace SupportTools_Excel
         public const string cDEFAULT_FONT = "Calibri";
 
         public static IEventAggregator EventAggregator = new EventAggregator();
-        public static SupportTools_Excel.Application.Bootstrapper ApplicationBootstrapper;
+        public static Application.Bootstrapper ApplicationBootstrapper;
 
         // These values are added to the dimensions of a hosting window if the
         // hosted User_Control specifies values for MinWidth/MinHeight.

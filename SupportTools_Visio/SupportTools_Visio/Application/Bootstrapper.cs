@@ -16,6 +16,7 @@ using SupportTools_Visio.Presentation.Views;
 
 using VNC;
 using VNC.Core.Mvvm.Prism;
+using VNC.Core.Services;
 
 //using VNC.Core.Mvvm;
 //using VNC.Core.Mvvm.Prism;
@@ -40,6 +41,8 @@ namespace SupportTools_Visio.Application
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             Int64 startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.LOG_CATEGORY);
+
+            moduleCatalog.AddModule(typeof(SupportTools_VisioModule));
 
             moduleCatalog.AddModule(typeof(ModuleAModule));
 
@@ -76,14 +79,7 @@ namespace SupportTools_Visio.Application
         {
             Int64 startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.LOG_CATEGORY);
 
-            containerRegistry.Register<IEditTextViewModel, EditTextViewModel>();
-            containerRegistry.Register<EditText>();
-
-            containerRegistry.Register<EditParagraphViewModel>();
-            containerRegistry.Register<EditParagraph>();
-
-            containerRegistry.Register<EditControlRowsViewModel>();
-            containerRegistry.Register<EditControlRows>();
+            // Registers all types that are required by Prism to function with the container.
 
             base.RegisterRequiredTypes(containerRegistry);
 
@@ -93,6 +89,18 @@ namespace SupportTools_Visio.Application
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             Int64 startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.LOG_CATEGORY);
+
+            // Used to register types with the container that will be used by your application.
+
+            containerRegistry.Register<IMessageDialogService, MessageDialogService>();
+            containerRegistry.Register<IEditTextViewModel, EditTextViewModel>();
+            containerRegistry.Register<EditText>();
+
+            containerRegistry.Register<EditParagraphViewModel>();
+            containerRegistry.Register<EditParagraph>();
+
+            containerRegistry.Register<EditControlRowsViewModel>();
+            containerRegistry.Register<EditControlRows>();
 
             Log.APPLICATION_INITIALIZE("Exit", Common.LOG_CATEGORY, startTicks);
         }
@@ -144,12 +152,8 @@ namespace SupportTools_Visio.Application
         {
             Int64 startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.LOG_CATEGORY);
 
-            // TODO(crhodes)
-            // Figure out this next line
-
-            //regionAdapterMappings.RegisterMapping(typeof(StackPanel), (IRegionAdapter)typeof(StackPanelRegionAdapter));
-            //regionAdapterMappings.RegisterMapping(typeof(StackPanel), Container.TryResolve<StackPanelRegionAdapter>());
             base.ConfigureRegionAdapterMappings(regionAdapterMappings);
+            regionAdapterMappings.RegisterMapping(typeof(StackPanel), Container.Resolve<StackPanelRegionAdapter>());
 
             Log.APPLICATION_INITIALIZE("Exit", Common.LOG_CATEGORY, startTicks);
         }

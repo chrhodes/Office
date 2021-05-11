@@ -36,7 +36,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
         public wucTaskPane_TFS()
         {
-            long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_CATEGORY);
 
             //try
             //{
@@ -120,12 +120,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             //RunQueryCommand = new DelegateCommand(RunQuery);
 
-            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         private void LoadControlContents()
         {
-            long startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.LOG_APPNAME);
+            long startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.LOG_CATEGORY);
 
             try
             {
@@ -145,7 +145,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             ApplicationThemeHelper.ApplicationThemeName = "MetropolisLight";
 
-            Log.APPLICATION_INITIALIZE("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION_INITIALIZE("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         #endregion Constructors and Load

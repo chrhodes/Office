@@ -7,6 +7,8 @@ using System.Windows.Input;
 using Prism.Commands;
 using Prism.Events;
 
+using SupportTools_Visio.Presentation.Views;
+
 using VNC;
 using VNC.Core.Events;
 using VNC.Core.Mvvm;
@@ -33,6 +35,23 @@ namespace SupportTools_Visio.Presentation.ViewModels
             Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
+        public ViewAViewModel(
+            ViewA viewA,
+            IEventAggregator eventAggregator,
+            IMessageDialogService messageDialogService) : base(eventAggregator, messageDialogService)
+        {
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_CATEGORY);
+
+            View = viewA;
+            View.ViewModel = this;
+            // TODO(crhodes)
+            // Save constructor parameters here
+
+            InitializeViewModel();
+
+            Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
+        }
+
         private void InitializeViewModel()
         {
             Int64 startTicks = Log.VIEWMODEL("Enter", Common.LOG_CATEGORY);
@@ -42,7 +61,7 @@ namespace SupportTools_Visio.Presentation.ViewModels
             // TODO(crhodes)
             //
 
-            Message = "ViewModelC says hello";
+            Message = "ViewModelA says hello";
 
             Log.VIEWMODEL("Exit", Common.LOG_CATEGORY, startTicks);
         }

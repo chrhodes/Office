@@ -20,7 +20,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             IBuildServer buildServer,
             TeamProject teamProject)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             //var buildDefinitions = Server.BuildServer.QueryBuildAgents();
 
@@ -36,7 +36,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             //    insertAt.IncrementRows();
             //}
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         internal static void Add_BuildControllers(XlHlp.XlLocation insertAt,
@@ -44,7 +44,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             IBuildServer buildServer,
             TeamProject teamProject)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             var buildControllers = buildServer.QueryBuildControllers();
 
@@ -60,7 +60,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 insertAt.IncrementRows();
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         internal static void Add_BuildDefinitions(XlHlp.XlLocation insertAt,
@@ -68,7 +68,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             IBuildServer buildServer,
             TeamProject teamProject)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             try
             {
@@ -98,7 +98,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 insertAt.IncrementRows();
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         internal static void Add_BuildProcessTemplates(XlHlp.XlLocation insertAt,
@@ -106,7 +106,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             IBuildServer buildServer,
             TeamProject teamProject)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             var processTemplates = buildServer.QueryProcessTemplates(teamProject.Name);
 
@@ -122,7 +122,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 insertAt.IncrementRows();
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         internal static void Add_Builds(XlHlp.XlLocation insertAt,
@@ -130,7 +130,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             IBuildServer buildServer,
             TeamProject teamProject)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             var builds = buildServer.QueryBuilds(teamProject.Name);
 
@@ -147,7 +147,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 insertAt.IncrementRows();
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         internal static void Add_BuildServiceHosts(XlHlp.XlLocation insertAt,
@@ -155,7 +155,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             IBuildServer buildServer,
             TeamProject teamProject)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             var buildServiceHosts = buildServer.QueryBuildServiceHosts("*");
 
@@ -170,7 +170,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 insertAt.IncrementRows();
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         #endregion

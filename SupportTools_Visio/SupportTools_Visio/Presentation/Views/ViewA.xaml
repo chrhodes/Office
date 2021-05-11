@@ -9,7 +9,7 @@
     xmlns:vncmvvm="clr-namespace:VNC.Core.Mvvm;assembly=VNC.Core"
     xmlns:local="clr-namespace:SupportTools_Visio.Presentation.Views"
     
-    prism:ViewModelLocator.AutoWireViewModel="True"
+    prism:ViewModelLocator.AutoWireViewModel="False"
     mc:Ignorable="d"
     d:DesignHeight="100" d:DesignWidth="200"
 >
@@ -19,7 +19,6 @@
             <TextBlock Text="ViewA" />
             <TextBlock Text="{Binding Message}" />
         </StackPanel>
-
     </Grid>
     
 </vncmvvm:ViewBase>

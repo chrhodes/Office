@@ -18,14 +18,14 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
     {
         internal static void InsertItemDelay(Options_AZDO_TFS options)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             if (options.ItemDelaySeconds > 0)
             {
                 Thread.Sleep(Convert.ToInt16(options.ItemDelaySeconds * 1000));
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         internal static void DisplayLoopUpdates(long startTicks, Options_AZDO_TFS options, int totalItems, int itemCount)
@@ -38,26 +38,26 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
         internal static void ProcessLoopDelay(Options_AZDO_TFS options)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             if (options.EnableDelays && options.LoopDelaySeconds > 0)
             {
                 Thread.Sleep(options.LoopDelaySeconds * 1000);
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         internal static void ProcessItemDelay(Options_AZDO_TFS options)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             if (options.EnableDelays && options.ItemDelaySeconds > 0)
             {
                 Thread.Sleep(Convert.ToInt16(options.ItemDelaySeconds * 1000));
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         // TODO(crhodes)
@@ -70,7 +70,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
         private static string GetWorkItemTypesFilter(Options_AZDO_TFS options)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             string filter;
 
@@ -83,7 +83,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 filter = "AND ([System.WorkItemType] in " + String.Join(",", options.WorkItemTypes);
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return filter;
         }
@@ -91,7 +91,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
         private static string GetTeamProjectsFilter(Options_AZDO_TFS options)
         {
 
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
             string filter;
 
             if (options.TeamProjects.Count == 1)
@@ -103,7 +103,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 filter = "AND ([System.TeamProject] in " + String.Join(",", options.TeamProjects);
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return filter;
         }
@@ -112,7 +112,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             string tokenizedQuery,
             Options_AZDO_TFS options)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             string query = tokenizedQuery;
 
@@ -133,7 +133,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             // Have moved to startDate and endDate.  No one should be using GoBackDays, but check in Excel Template file (query).
             //query = query.Replace("@goBackDays", options.GoBackDays.ToString());
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return query;
         }
@@ -143,7 +143,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             Project project)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             string query = tokenizedQuery;
 
@@ -165,7 +165,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             //query = query.Replace("@goBackDays", options.GoBackDays.ToString());
 
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
             return query;
         }
 
@@ -173,7 +173,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             List<TeamFoundationIdentity> globalGroups,
             Dictionary<IdentityDescriptor, TeamFoundationIdentity> globalIdentities)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             TeamFoundationIdentity[] identities;
 
@@ -208,14 +208,14 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 SortIdentities(identities, globalGroups, globalIdentities);
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         internal static void SortIdentities(TeamFoundationIdentity[] identitiesToAdd,
             List<TeamFoundationIdentity> _Groups,
             Dictionary<IdentityDescriptor, TeamFoundationIdentity> _Identities)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             foreach (TeamFoundationIdentity identity in identitiesToAdd)
             {
@@ -227,7 +227,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 }
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
     }
 }

@@ -65,16 +65,16 @@ namespace ModuleA
         // 01
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            long startTicks = Log.Trace("Enter", Common.LOG_CATEGORY, 0);
+            long startTicks = Log.MODULE_INITIALIZE("Enter", Common.LOG_CATEGORY, 0);
 
 
-            Log.Trace("Exit", Common.LOG_CATEGORY, 0, startTicks);
+            Log.MODULE_INITIALIZE("Exit", Common.LOG_CATEGORY, 0, startTicks);
         }
 
         // 02
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            long startTicks = Log.Trace("Enter", Common.LOG_CATEGORY, 0);
+            long startTicks = Log.MODULE_INITIALIZE("Enter", Common.LOG_CATEGORY, 0);
 
             var regionManager = containerProvider.Resolve<IRegionManager>();
 
@@ -100,7 +100,7 @@ namespace ModuleA
 
             regionManager.RegisterViewWithRegion(RegionNames.ContentRegionA, typeof(ContentView));
 
-            Log.Trace("Exit", Common.LOG_CATEGORY, 0, startTicks);
+            Log.MODULE_INITIALIZE("Exit", Common.LOG_CATEGORY, 0, startTicks);
         }
     }
 }

@@ -8,7 +8,7 @@
     d:DesignHeight="300"
     d:DesignWidth="300">
     <Grid Background="LightGray">
-        <TextBlock Text="ModuleA Content - Loaded in ConfigureModuleCatalog - Referenced by VNCExplore_LearnPrism.  In bin folder." 
+        <TextBlock Text="ContentView" 
                    VerticalAlignment="Center" HorizontalAlignment="Center" 
                   TextWrapping="Wrap" TextAlignment="Center"
                    FontSize="28" />

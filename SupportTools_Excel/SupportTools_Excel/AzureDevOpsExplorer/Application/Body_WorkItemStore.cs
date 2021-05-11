@@ -30,7 +30,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             ICommonStructureService commonStructureService,
             Project project)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             if (project.AreaRootNodes.Count == 0)
             {
@@ -41,7 +41,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 insertAt = AddChildNodes(insertAt, options, commonStructureService, project.AreaRootNodes, project.Name, 0);
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }
@@ -51,7 +51,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             Microsoft.TeamFoundation.WorkItemTracking.Client.Project project)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             XlHlp.DisplayInWatchWindow("Begin");
 
@@ -98,7 +98,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 XlHlp.DisplayInWatchWindow("Loop", startTicks);
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         internal static XlHlp.XlLocation Add_TP_Iterations(XlHlp.XlLocation insertAt,
@@ -106,7 +106,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             ICommonStructureService commonStructureService,
             Project project)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             if (project.IterationRootNodes.Count == 0)
             {
@@ -117,7 +117,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 insertAt = AddChildNodes(insertAt, options, commonStructureService, project.IterationRootNodes, project.Name, 0);
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }
@@ -128,7 +128,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             WorkItemStore workItemStore,
             int workItemID)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             insertAt.ClearOffsets();
             int count = 0;
@@ -159,7 +159,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 throw ex;
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         internal static void Add_TP_WorkItem_Links(
@@ -168,7 +168,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             WorkItemStore workItemStore,
             int workItemID)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             insertAt.ClearOffsets();
             int count = 0;
@@ -238,7 +238,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         internal static void Add_TP_WorkItem_WorkItemLinks(
@@ -248,7 +248,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             WorkItem workItem,
             int recursionLevel = 0)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             long startTicks2 = 0;
 
@@ -504,7 +504,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 XlHlp.DisplayInWatchWindow(insertAt, startTicks2, "End");
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         internal static void Add_TP_WorkItemDetails(
@@ -512,7 +512,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             WorkItemCollection queryResults)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             int itemCount = 0;
             int totalItems = queryResults.Count;
@@ -747,7 +747,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 throw ex;
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         internal static void Add_TP_WorkItemFields(
@@ -755,7 +755,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             Project project)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             foreach (WorkItemType wit in project.WorkItemTypes.Cast<WorkItemType>().OrderBy(nnn => nnn.Name))
             {
@@ -851,7 +851,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 }
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         internal static void Add_TP_WorkItemTypes(
@@ -863,7 +863,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             out DateTime maxLastChangedDate,
             out DateTime maxLastRevisedDate)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             XlHlp.DisplayInWatchWindow("Begin");
 
@@ -991,7 +991,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 XlHlp.DisplayInWatchWindow("Loop", startTicks);
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         internal static void Add_TP_WorkItemActivity(
@@ -1003,7 +1003,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             out DateTime maxLastChangedDate,
             out DateTime maxLastRevisedDate)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             XlHlp.DisplayInWatchWindow("Begin");
 
@@ -1131,14 +1131,14 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 XlHlp.DisplayInWatchWindow("Loop", startTicks);
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         internal static void Get_TP_WorkItemTypesXML(
             Options_AZDO_TFS options,
             Project project)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             foreach (WorkItemType wit in project.WorkItemTypes.Cast<WorkItemType>().OrderBy(nnn => nnn.Name))
             {
@@ -1160,7 +1160,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 XlHlp.DisplayInWatchWindow("Loop", startTicks);
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         //internal static void Add_WorkItemDetails(
@@ -1179,7 +1179,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             string projectName,
             int offsetLevel)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             insertAt.UpdateOffsets();
 
@@ -1234,7 +1234,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 insertAt.DecrementColumns();
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }
@@ -1243,7 +1243,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Dictionary<WorkItemType, List<ControlFieldMap>> allMappings,
             WorkItemType workItemType)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             List<ControlFieldMap> currentMappings;
 
@@ -1452,7 +1452,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return newMappings;
         }
@@ -1471,7 +1471,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
         private static List<Transition> GetTransitions(Dictionary<WorkItemType, List<Transition>> allTransitions,
             WorkItemType workItemType)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             List<Transition> currentTransitions;
             Boolean supportsExport = true;
@@ -1598,7 +1598,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return newTransitions;
         }
@@ -1636,7 +1636,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             int recursionLevel,
             List<WorkItem> typeofWI, string workItemType)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             int totalItems = typeofWI.Count;
 
@@ -1658,7 +1658,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 }
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         //private string PrintMappings(List<FieldMap> mappings)

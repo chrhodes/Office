@@ -36,7 +36,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Domain
             Options_AZDO_TFS options,
             string projectName = null)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             Query = QueryWithTokens;
 
@@ -82,7 +82,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Domain
                 Query += GetWorkItemTypesFilter(options);
             }
 
-            Log.APPLICATION($"Exit ({Query})", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION($"Exit ({Query})", Common.LOG_CATEGORY, startTicks);
         }
 
         private string GetFieldsToRetrieve(Options_AZDO_TFS options)
@@ -104,7 +104,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Domain
 
         private string GetWorkItemTypesFilter(Options_AZDO_TFS options)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             StringBuilder filter = new StringBuilder();
 
@@ -132,7 +132,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Domain
                 filter.Append(')');
             }
 
-            Log.APPLICATION($"Exit ({filter})", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION($"Exit ({filter})", Common.LOG_CATEGORY, startTicks);
 
             return filter.ToString();
 
@@ -140,7 +140,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Domain
 
         private string GetTeamProjectsFilter(Options_AZDO_TFS options)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             StringBuilder filter = new StringBuilder();
 
@@ -169,7 +169,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Domain
                 filter.Append(')');
             }
 
-            Log.APPLICATION($"Exit ({filter})", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION($"Exit ({filter})", Common.LOG_CATEGORY, startTicks);
 
             return filter.ToString();
         }

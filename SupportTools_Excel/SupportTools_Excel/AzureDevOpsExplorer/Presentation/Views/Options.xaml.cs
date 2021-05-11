@@ -32,7 +32,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
             InitializeView();
 
-            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         // View First.  View is passed ViewModel through Injection
@@ -49,7 +49,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
 
             InitializeView();
 
-            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         private void InitializeView()
@@ -67,7 +67,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views
             miscOptions.IsCollapsed = true;
             excelOutputOptions.IsCollapsed = true;
 
-            Log.VIEW("Exit", Common.LOG_APPNAME, startTicks);
+            Log.VIEW("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         #endregion

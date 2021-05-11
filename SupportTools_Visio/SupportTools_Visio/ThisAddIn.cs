@@ -23,17 +23,8 @@ namespace SupportTools_Visio
         private static Prism.Unity.PrismApplication _prismApplication;
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
-        {
-            // HACK(crhodes)
-            // If don't delay a bit here, the SignalR logging infrastructure does not initialize quickly enough
-            // and the first few log messages are missed.
-            // NB.  All are properly recored in the log file.
-
-            Int64 startTicks = Log.CONSTRUCTOR("Initialize SignalR", Common.LOG_CATEGORY);
-
-            Thread.Sleep(150);
-            
-            startTicks = Log.APPLICATION_START("Enter", Common.LOG_CATEGORY, startTicks);
+        {  
+            Int64 startTicks = Log.APPLICATION_START("Enter", Common.LOG_CATEGORY);
 
             try
             {

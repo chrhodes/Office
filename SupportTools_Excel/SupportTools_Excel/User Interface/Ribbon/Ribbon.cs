@@ -24,12 +24,12 @@ namespace SupportTools_Excel
         public Ribbon()
            : base(Globals.Factory.GetRibbonFactory())
         {
-            Log.Info("SignalR Startup Message - Sleeping for 1000ms so SignalR can load", Common.LOG_APPNAME);
+            Log.Info("SignalR Startup Message - Sleeping for 1000ms so SignalR can load", Common.LOG_CATEGORY);
             // HACK(crhodes)
             // See if this helps logging first few messages
             Thread.Sleep(250);
 
-            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_CATEGORY);
 
             InitializeComponent();
 
@@ -40,14 +40,14 @@ namespace SupportTools_Excel
             //var bootstrapper = new Application.Bootstrapper();
             //bootstrapper.Run();
 
-            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         #region Event Handlers
 
         private void btnExplore_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             var frm = new User_Interface.Forms.frmExploreHost();
             frm.Show();
@@ -57,7 +57,7 @@ namespace SupportTools_Excel
 
         private void btnLoadTPHost_ActiveDirectory_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             var frm = new User_Interface.Forms.frmTaskPaneHost_ActiveDirectory();
             frm.Show();
@@ -67,7 +67,7 @@ namespace SupportTools_Excel
 
         private void btnLoadSMOHost_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             var frm = new User_Interface.Forms.frmSMOHost();
             frm.Show();
@@ -77,7 +77,7 @@ namespace SupportTools_Excel
 
         private void btnSMO_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             if (Common.TaskPaneSMO == null)
             {
@@ -113,7 +113,7 @@ namespace SupportTools_Excel
 
         private void btnTPDevelopment_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             if (Common.TaskPaneDevelopment == null)
             {
@@ -135,7 +135,7 @@ namespace SupportTools_Excel
 
         private void ddTheme_SelectionChanged(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             // TODO(crhodes):
             // This doesn't work.  Try putting it in Support Tools
@@ -148,7 +148,7 @@ namespace SupportTools_Excel
 
         private void btnActiveDirectory_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             if (Common.TaskPaneActiveDirectory == null)
             {
@@ -185,7 +185,7 @@ namespace SupportTools_Excel
 
         private void btnAppUtilities_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             if (Common.TaskPaneAppUtilities == null)
             {
@@ -206,7 +206,7 @@ namespace SupportTools_Excel
 
         private void btnExcelUtilities_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             if (Common.TaskPaneUtilities == null)
             {
@@ -228,7 +228,7 @@ namespace SupportTools_Excel
 
         private void btnSharePoint_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             Common.TaskPaneSharePoint = VNCHlp.TaskPaneUtil.GetTaskPane(
                 () => new User_Interface.Task_Panes.TaskPane_SharePoint(), "SharePoint Utilities",
@@ -243,7 +243,7 @@ namespace SupportTools_Excel
 
         private void btnTFS_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             Common.TaskPaneTFS = VNCHlp.TaskPaneUtil.GetTaskPane(
                 () => new User_Interface.Task_Panes.TaskPane_TFS(), "TFS Utilities",
@@ -280,7 +280,7 @@ namespace SupportTools_Excel
 
         private void btnLoadADHost_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref ad_Host,
             "Active Directory Explorer",
@@ -296,7 +296,7 @@ namespace SupportTools_Excel
 
         private void btnLoadActiveDirectoryHostMVVM_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref ad_HostMVVM,
             "Active Directory Explorer (MVVM)",
@@ -312,7 +312,7 @@ namespace SupportTools_Excel
 
         private void btnLoadAZDOHost_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             DxThemedWindowHost.DisplayUserControlInHost(ref azdo_Host,
             "wucTaskPane_TFS",
@@ -343,7 +343,7 @@ namespace SupportTools_Excel
 
         private void btnLogParser_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             if (Common.TaskPaneLogParser == null)
             {
@@ -365,7 +365,7 @@ namespace SupportTools_Excel
 
         private void btnLTC_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             if (Common.TaskPaneLTC == null)
             {
@@ -387,7 +387,7 @@ namespace SupportTools_Excel
 
         private void btnMTreaty_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             if (Common.TaskPaneMTreaty == null)
             {
@@ -409,7 +409,7 @@ namespace SupportTools_Excel
 
         private void btnNetworkTraces_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             if (Common.TaskPaneNetworkTrace == null)
             {
@@ -431,7 +431,7 @@ namespace SupportTools_Excel
 
         private void btnSQLSMO_Click(object sender, RibbonControlEventArgs e)
         {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             if (Common.TaskPaneSQLSMO == null)
             {
@@ -842,7 +842,7 @@ namespace SupportTools_Excel
                 800, 600,
                 //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
-                Common.ApplicationBootstrapper.Container.TryResolve<Cat>());
+                (Cat)Common.ApplicationBootstrapper.Container.Resolve(typeof(Cat)));
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
@@ -858,7 +858,7 @@ namespace SupportTools_Excel
                 800, 600,
                 //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
-                Common.ApplicationBootstrapper.Container.TryResolve<Cat2>());
+                (Cat2)Common.ApplicationBootstrapper.Container.Resolve(typeof(Cat2)));
 
             // NOTE(crhodes)
             // Hum.  This is interesting.  Have not registered Cat2 in Bootstrapper but still Resolved!
@@ -877,7 +877,7 @@ namespace SupportTools_Excel
                 800, 600,
                 //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
-                Common.ApplicationBootstrapper.Container.TryResolve<Cat3>());
+                (Cat3)Common.ApplicationBootstrapper.Container.Resolve(typeof(Cat3)));
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
@@ -893,7 +893,7 @@ namespace SupportTools_Excel
                 800, 600,
                 //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
-                Common.ApplicationBootstrapper.Container.TryResolve<Cat3>());
+                (Cat3)Common.ApplicationBootstrapper.Container.Resolve(typeof(Cat3)));
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
@@ -909,7 +909,7 @@ namespace SupportTools_Excel
                 800, 600,
                 //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
-                Common.ApplicationBootstrapper.Container.TryResolve<CatViewModel>());
+                (CatViewModel)Common.ApplicationBootstrapper.Container.Resolve(typeof(CatViewModel)));
 
             // NOTE(crhodes)
             // Hum.  This works great but somewhat unexpectedly calls the CatViewModel(Cat view) constructor
@@ -930,7 +930,7 @@ namespace SupportTools_Excel
                 800, 600,
                 //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
                 DxThemedWindowHost.ShowWindowMode.Modeless,
-                Common.ApplicationBootstrapper.Container.TryResolve<CatXamlVM>());
+                (CatXamlVM)Common.ApplicationBootstrapper.Container.Resolve(typeof(CatXamlVM)));
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }

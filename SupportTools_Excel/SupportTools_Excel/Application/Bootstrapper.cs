@@ -1,8 +1,11 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 using ModuleA;
 
+using Prism;
+using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
 
@@ -17,13 +20,14 @@ using VNC.Core.Mvvm.Prism;
 
 namespace SupportTools_Excel.Application
 {
-    public class Bootstrapper : UnityBootstrapper
+    public class Bootstrapper : PrismBootstrapperBase
     {
         // Step 1a - Create the catalog of Modules
 
         protected override IModuleCatalog CreateModuleCatalog()
         {
             long startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.PROJECT_NAME);
+
             Log.APPLICATION_INITIALIZE("Exit", Common.PROJECT_NAME, startTicks);
 
             return new ConfigurationModuleCatalog();
@@ -32,48 +36,85 @@ namespace SupportTools_Excel.Application
         // Step 1b - Configure the catalog of modules
         // Modules are loaded at Startup and must be a project reference
 
-        protected override void ConfigureModuleCatalog()
+        protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            long startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.LOG_CATEGORY);
 
-            var moduleCatalog = (ModuleCatalog)ModuleCatalog;
             moduleCatalog.AddModule(typeof(ModuleAModule));
 
-            //moduleCatalog.AddModule(typeof(EditTextModule));
+            base.ConfigureModuleCatalog(moduleCatalog);
 
-            //Type moduleAType = typeof(ModuleAModule);
-
-            //moduleCatalog.AddModule(new ModuleInfo()
-            //{
-            //    ModuleName = moduleAType.Name,
-            //    ModuleType = moduleAType.AssemblyQualifiedName,
-            //    InitializationMode = InitializationMode.WhenAvailable
-            //    // InitializationMode = InitializationMode.OnDemand
-            //});
-
-            Log.APPLICATION_INITIALIZE("Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION_INITIALIZE("Exit", Common.LOG_CATEGORY, startTicks);
         }
+
+
+        //protected override void ConfigureModuleCatalog()
+        //{
+        //    long startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.PROJECT_NAME);
+
+        //    var moduleCatalog = (ModuleCatalog)ModuleCatalog;
+        //    moduleCatalog.AddModule(typeof(ModuleAModule));
+
+        //    //moduleCatalog.AddModule(typeof(EditTextModule));
+
+        //    //Type moduleAType = typeof(ModuleAModule);
+
+        //    //moduleCatalog.AddModule(new ModuleInfo()
+        //    //{
+        //    //    ModuleName = moduleAType.Name,
+        //    //    ModuleType = moduleAType.AssemblyQualifiedName,
+        //    //    InitializationMode = InitializationMode.WhenAvailable
+        //    //    // InitializationMode = InitializationMode.OnDemand
+        //    //});
+
+        //    Log.APPLICATION_INITIALIZE("Exit", Common.PROJECT_NAME, startTicks);
+        //}
 
         // Step 2 - Configure the container
 
-        protected override void ConfigureContainer()
+        protected override void RegisterRequiredTypes(IContainerRegistry containerRegistry)
         {
-            long startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.PROJECT_NAME);
-            //Container.RegisterType<IEditTextViewModel, EditTextViewModel>();
-            //Container.RegisterType<EditText>();
+            Int64 startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.LOG_CATEGORY);
 
-            Container.RegisterType<CatViewModel>();
-            Container.RegisterType<Cat>();
-            Container.RegisterType<Cat3>();
+            // Registers all types that are required by Prism to function with the container.
 
-            base.ConfigureContainer();
+            base.RegisterRequiredTypes(containerRegistry);
 
-
-            // Create a Singleton ShellService (DialogService)
-            //Container.RegisterType<IShellService, ShellService>(new ContainerControlledLifetimeManager());
-
-            Log.APPLICATION_INITIALIZE("Exit", Common.PROJECT_NAME, startTicks);
+            Log.APPLICATION_INITIALIZE("Exit", Common.LOG_CATEGORY, startTicks);
         }
+
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            Int64 startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.LOG_CATEGORY);
+
+            // Used to register types with the container that will be used by your application.
+
+            containerRegistry.Register<CatViewModel>();
+
+            containerRegistry.Register<Cat>();
+            containerRegistry.Register<Cat3>();
+
+            Log.APPLICATION_INITIALIZE("Exit", Common.LOG_CATEGORY, startTicks);
+        }
+
+        //protected override void ConfigureContainer()
+        //{
+        //    long startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.PROJECT_NAME);
+        //    //Container.RegisterType<IEditTextViewModel, EditTextViewModel>();
+        //    //Container.RegisterType<EditText>();
+
+        //    Container.RegisterType<CatViewModel>();
+        //    Container.RegisterType<Cat>();
+        //    Container.RegisterType<Cat3>();
+
+        //    base.ConfigureContainer();
+
+
+        //    // Create a Singleton ShellService (DialogService)
+        //    //Container.RegisterType<IShellService, ShellService>(new ContainerControlledLifetimeManager());
+
+        //    Log.APPLICATION_INITIALIZE("Exit", Common.PROJECT_NAME, startTicks);
+        //}
 
         // Step 3 - Configure the RegionAdapters if any custom ones have been created
 
@@ -98,17 +139,37 @@ namespace SupportTools_Excel.Application
 
         //    Application.Current.MainWindow.Show();
 
-        protected override RegionAdapterMappings ConfigureRegionAdapterMappings()
+        protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
         {
-            long startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.LOG_CATEGORY);
 
-            RegionAdapterMappings mappings = base.ConfigureRegionAdapterMappings();
+            base.ConfigureRegionAdapterMappings(regionAdapterMappings);
+            regionAdapterMappings.RegisterMapping(typeof(StackPanel), Container.Resolve<StackPanelRegionAdapter>());
 
-            mappings.RegisterMapping(typeof(StackPanel), Container.TryResolve<StackPanelRegionAdapter>());
-
-            Log.APPLICATION_INITIALIZE("Exit", Common.PROJECT_NAME, startTicks);
-
-            return mappings;
+            Log.APPLICATION_INITIALIZE("Exit", Common.LOG_CATEGORY, startTicks);
         }
+
+        //protected override RegionAdapterMappings ConfigureRegionAdapterMappings()
+        //{
+        //    long startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.PROJECT_NAME);
+
+        //    RegionAdapterMappings mappings = base.ConfigureRegionAdapterMappings();
+
+        //    mappings.RegisterMapping(typeof(StackPanel), Container.TryResolve<StackPanelRegionAdapter>());
+
+        //    Log.APPLICATION_INITIALIZE("Exit", Common.PROJECT_NAME, startTicks);
+
+        //    return mappings;
+        //}
+
+        protected override IContainerExtension CreateContainerExtension()
+        {
+            Int64 startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.LOG_CATEGORY);
+
+            Log.APPLICATION_INITIALIZE("Exit", Common.LOG_CATEGORY, startTicks);
+
+            return new UnityContainerExtension();
+        }
+
     }
 }

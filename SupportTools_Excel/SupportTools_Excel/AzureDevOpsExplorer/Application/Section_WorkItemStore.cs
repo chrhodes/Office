@@ -27,7 +27,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
         Project project,
         List<string> sectionsToDisplay)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             XlHlp.DisplayInWatchWindow(insertAt);
 
@@ -127,7 +127,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }
@@ -138,7 +138,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             WorkItemStore workItemStore,
             Project project = null)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -175,7 +175,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }
@@ -233,7 +233,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
         internal static void DisplayQueryInfo(XlHlp.XlLocation insertAt, Options_AZDO_TFS options)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             XlHlp.AddLabeledInfo(insertAt.AddRow(2), "Name", options.WorkItemQuerySpec.Name);
 
@@ -241,7 +241,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
             XlHlp.AddLabeledInfo(insertAt.AddRow(2), "Query", options.WorkItemQuerySpec.Query);
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         internal static XlHlp.XlLocation Add_TP_AreaCheck(
@@ -249,7 +249,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Project project,
             string areasToCheck)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -299,7 +299,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }
@@ -310,7 +310,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             ICommonStructureService commonStructureService,
             Project project)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -350,7 +350,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }
@@ -360,7 +360,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             Project project)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -394,7 +394,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }
@@ -405,7 +405,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             ICommonStructureService commonStructureService,
             Project project)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -445,7 +445,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }
@@ -472,7 +472,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             Project project)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -510,7 +510,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }
@@ -521,7 +521,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             WorkItemStore workItemStore,
             Project project)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -573,7 +573,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }
@@ -584,7 +584,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             WorkItemStore workItemStore,
             Project project)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             WorkItemCollection queryResults;
@@ -628,7 +628,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }
@@ -638,7 +638,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             Project project)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -676,7 +676,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }
@@ -687,7 +687,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             WorkItemStore workItemStore,
             Project project)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -734,7 +734,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }
@@ -745,7 +745,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             WorkItemStore workItemStore,
             Project project)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -792,7 +792,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }
@@ -860,7 +860,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             WorkItem workItem,
             WorkItemActionRequest request)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             StringBuilder sb = new StringBuilder();
@@ -989,7 +989,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }
@@ -1000,7 +1000,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             WorkItem workItem,
             WorkItemActionRequest request)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -1079,7 +1079,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }
@@ -1089,7 +1089,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             Options_AZDO_TFS options,
             WorkItem workItem)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -1224,7 +1224,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }
@@ -1235,7 +1235,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             WorkItemStore workItemStore,
             int workItemID)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -1273,7 +1273,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }
@@ -1284,7 +1284,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             WorkItemStore workItemStore,
             WorkItem workItem)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             try
@@ -1323,7 +1323,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }
@@ -1332,7 +1332,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             XlHlp.XlLocation insertAt,
             QueryFolder queryFolder)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
             XlHlp.DisplayInWatchWindow(insertAt);
 
             insertAt.ClearOffsets();
@@ -1371,7 +1371,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
 
             XlHlp.DisplayInWatchWindow("End", startTicks);
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }

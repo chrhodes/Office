@@ -126,6 +126,7 @@ namespace SupportTools_Visio
         public static bool DisplayChattyEvents = false;
 
         public static IEventAggregator EventAggregator = new EventAggregator();
+        public static Application.Bootstrapper ApplicationBootstrapper;
 
         //public static Microsoft.Office.Tools.CustomTaskPane TaskPaneConfig;
 

@@ -32,7 +32,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
             //InitializeRows();
 
-            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         // ViewModel First
@@ -55,7 +55,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
             //View = view;
 
-            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         #endregion

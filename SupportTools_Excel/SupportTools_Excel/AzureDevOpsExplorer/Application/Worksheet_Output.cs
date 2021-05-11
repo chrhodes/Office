@@ -32,7 +32,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
         internal static void CreateWS_All_TPC_LastChangeset(Options_AZDO_TFS options,
             VersionControlServer versionControlServer)
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             try
             {
@@ -83,13 +83,13 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 MessageBox.Show(ex.ToString());
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         internal static XlHlp.XlLocation CreateNewWorksheet(string sheetName,
             Options_AZDO_TFS options, [CallerMemberName] string callerName = "")
         {
-            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
             string safeSheetName = XlHlp.SafeSheetName(sheetName);
             Worksheet ws = XlHlp.NewWorksheet(safeSheetName, beforeSheetName: "FIRST");
@@ -133,7 +133,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 }
             }
 
-            Log.APPLICATION("Exit", Common.LOG_APPNAME, startTicks);
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
         }

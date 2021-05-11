@@ -31,7 +31,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
     public partial class wucExplore : UserControl
     {
         //private static int CLASS_BASE_ERRORNUMBER = ErrorNumbers.APPERROR;
-        private const string LOG_APPNAME = Common.LOG_APPNAME;
+        private const string LOG_APPNAME = Common.LOG_CATEGORY;
 
         #region Constructors
 

@@ -720,6 +720,7 @@
     <Compile Include="ErrorNumbers.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="IAddStuffViewModel.cs" />
+    <Compile Include="Modules\SupportTools_VisioModule.cs" />
     <Compile Include="Modules\EditTextModule.cs" />
     <Compile Include="Domain\Cat.cs" />
     <Compile Include="Domain\ShapeSheet\NewButton.cs" />

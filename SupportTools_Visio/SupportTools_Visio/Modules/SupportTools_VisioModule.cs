@@ -6,18 +6,18 @@ using Unity;
 
 using VNC;
 
-using SupportTools_Visio.Infrastructure;
-using SupportTools_Visio.Presentation.Views;
-
 namespace SupportTools_Visio.Modules
 {
-    public class EditTextModule : IModule
+    public class SupportTools_VisioModule : IModule
     {
         // 01
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             long startTicks = Log.MODULE_INITIALIZE("Enter", Common.LOG_CATEGORY, 0);
 
+            //containerRegistry.RegisterSingleton<IViewAViewModel, ViewAViewModel>();
+            ////containerRegistry.Register<IViewA, ViewA>();
+            //containerRegistry.RegisterSingleton<ViewA>();
 
             Log.MODULE_INITIALIZE("Exit", Common.LOG_CATEGORY, 0, startTicks);
         }
@@ -49,11 +49,11 @@ namespace SupportTools_Visio.Modules
             //region.Add(containerProvider.Resolve<ToolBarView>());
             //region.Add(containerProvider.Resolve<ToolBarView>());
 
-            regionManager.RegisterViewWithRegion(RegionNames.EditTextRegion, typeof(EditText));
+            //regionManager.RegisterViewWithRegion(RegionNames.EditTextRegion, typeof(EditText));
 
-            regionManager.RegisterViewWithRegion(RegionNames.EditControlPointsRegion, typeof(EditControlPoints));
+            //regionManager.RegisterViewWithRegion(RegionNames.EditControlPointsRegion, typeof(EditControlPoints));
 
-            regionManager.RegisterViewWithRegion(RegionNames.EditParagraphRegion, typeof(EditParagraph));
+            //regionManager.RegisterViewWithRegion(RegionNames.EditParagraphRegion, typeof(EditParagraph));
 
             Log.MODULE_INITIALIZE("Exit", Common.LOG_CATEGORY, 0, startTicks);
         }

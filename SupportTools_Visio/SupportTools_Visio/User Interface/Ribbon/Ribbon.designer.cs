@@ -126,6 +126,8 @@
             this.rgMVVMExamples = this.Factory.CreateRibbonGroup();
             this.btnVNC_MVVM_V1 = this.Factory.CreateRibbonButton();
             this.btnVNC_MVVM_VM1 = this.Factory.CreateRibbonButton();
+            this.btnVNC_MVVM_V2 = this.Factory.CreateRibbonButton();
+            this.btnVNC_MVVM_VM2 = this.Factory.CreateRibbonButton();
             this.tabShapeSheet = this.Factory.CreateRibbonTab();
             this.rgSSDocumentObjectSections = this.Factory.CreateRibbonGroup();
             this.btnDocumentProperties = this.Factory.CreateRibbonButton();
@@ -876,6 +878,8 @@
             // 
             this.rgMVVMExamples.Items.Add(this.btnVNC_MVVM_V1);
             this.rgMVVMExamples.Items.Add(this.btnVNC_MVVM_VM1);
+            this.rgMVVMExamples.Items.Add(this.btnVNC_MVVM_V2);
+            this.rgMVVMExamples.Items.Add(this.btnVNC_MVVM_VM2);
             this.rgMVVMExamples.Label = "MVVM Examples";
             this.rgMVVMExamples.Name = "rgMVVMExamples";
             // 
@@ -892,6 +896,18 @@
             this.btnVNC_MVVM_VM1.Label = "VNC MVVM VM1";
             this.btnVNC_MVVM_VM1.Name = "btnVNC_MVVM_VM1";
             this.btnVNC_MVVM_VM1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnVNC_MVVM_VM1_Click);
+            // 
+            // btnVNC_MVVM_V2
+            // 
+            this.btnVNC_MVVM_V2.Label = "VNC MVVM V2 (DI)";
+            this.btnVNC_MVVM_V2.Name = "btnVNC_MVVM_V2";
+            this.btnVNC_MVVM_V2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnVNC_MVVM_V2_Click);
+            // 
+            // btnVNC_MVVM_VM2
+            // 
+            this.btnVNC_MVVM_VM2.Label = "VNC MVVM VM2 (DI)";
+            this.btnVNC_MVVM_VM2.Name = "btnVNC_MVVM_VM2";
+            this.btnVNC_MVVM_VM2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnVNC_MVVM_VM2_Click);
             // 
             // tabShapeSheet
             // 
@@ -1675,6 +1691,8 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnAddDefaultLayers_Page;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnRemoveLayers_Page;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnEditControlPoints;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnVNC_MVVM_V2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnVNC_MVVM_VM2;
     }
 
     partial class ThisRibbonCollection

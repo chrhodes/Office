@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
-using System.Windows.Interactivity;
 
 using DevExpress.Xpf.Grid;
+
+using Microsoft.Xaml.Behaviors;
 
 namespace SupportTools_Excel.User_Interface
 {
