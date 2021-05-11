@@ -16,7 +16,7 @@ namespace VNC.AddinHelper.User_Interface.Forms
 
             if (Common.EnableLogging)
             {
-                Log.Trace(outputLine, Common.PROJECT_NAME);
+                Log.Trace(outputLine, Common.LOG_CATEGORY);
             }
         }
 

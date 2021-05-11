@@ -10,8 +10,6 @@ namespace SupportTools_Visio.Actions
 {
     class Visio_Application
     {
-
-
         #region Main Function Routines
 
         public static void DisplayInfo()

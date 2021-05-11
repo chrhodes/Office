@@ -15,7 +15,7 @@ namespace SupportTools_Visio.Presentation.ViewModels
     {
         public StylePropertiesViewModel() : base()
         {
-            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_CATEGORY);
 
             UpdateButtonContent = "Update StyleProperties for selected shapes";
             // TODO(crhodes)
@@ -27,7 +27,7 @@ namespace SupportTools_Visio.Presentation.ViewModels
 
         public override void OnUpdateSettingsExecute()
         {
-            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
+            Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
             int undoScope = Globals.ThisAddIn.Application.BeginUndoScope("UpdateStyleProperties");
@@ -43,12 +43,12 @@ namespace SupportTools_Visio.Presentation.ViewModels
 
             Globals.ThisAddIn.Application.EndUndoScope(undoScope, true);
 
-            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
+            Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY);
         }
 
         public override void OnLoadCurrentSettingsExecute()
         {
-            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
+            Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             Visio.Application app = Globals.ThisAddIn.Application;
 
@@ -60,7 +60,7 @@ namespace SupportTools_Visio.Presentation.ViewModels
                 OnPropertyChanged("StyleProperties");
             }
 
-            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
+            Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace VNC.AddinHelper
         {
             MOT.CustomTaskPane ctp = default(MOT.CustomTaskPane);
 
-            //PLLog.Trace3("Enter", Common.PROJECT_NAME);
+            //PLLog.Trace3("Enter", Common.LOG_CATEGORY);
 
             string key = string.Format("{0}({1})", taskPaneName, Hwnd);
 
@@ -40,7 +40,7 @@ namespace VNC.AddinHelper
                 //ctp.Visible = true;
             }
 
-            //PLLog.Trace3("Exit", System.Data.Common.PROJECT_NAME);
+            //PLLog.Trace3("Exit", System.Data.Common.LOG_CATEGORY);
             return ctp;
         }
 
@@ -48,7 +48,7 @@ namespace VNC.AddinHelper
         //{
         //    MOT.CustomTaskPane ctp = default(MOT.CustomTaskPane);
 
-        //    //PLLog.Trace3("Enter", Common.PROJECT_NAME);
+        //    //PLLog.Trace3("Enter", Common.LOG_CATEGORY);
 
         //    string key = string.Format("{0}({1})", name, Hwnd);
 
@@ -63,7 +63,7 @@ namespace VNC.AddinHelper
         //        //ctp.Visible = true;
         //    }
 
-        //    //PLLog.Trace3("Exit", System.Data.Common.PROJECT_NAME);
+        //    //PLLog.Trace3("Exit", System.Data.Common.LOG_CATEGORY);
         //    return ctp;
         //}
 
@@ -71,23 +71,23 @@ namespace VNC.AddinHelper
         {
             MOT.CustomTaskPane ctp = default(MOT.CustomTaskPane);
 
-            //PLLog.Trace3("Enter", Common.PROJECT_NAME);
+            //PLLog.Trace3("Enter", Common.LOG_CATEGORY);
 
             ctp = customTaskPanes.Add(taskPane, name);
             ctp.DockPosition = Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionRight;
             ctp.Visible = true;
 
-            //PLLog.Trace3("Exit", System.Data.Common.PROJECT_NAME);
+            //PLLog.Trace3("Exit", System.Data.Common.LOG_CATEGORY);
 	        return ctp;
         }
 
         public static void RemoveTaskPane(MOT.CustomTaskPane taskPane, MOT.CustomTaskPaneCollection customTaskPanes)
         {
-            //PLLog.Trace3("Enter", System.Data.Common.PROJECT_NAME);
+            //PLLog.Trace3("Enter", System.Data.Common.LOG_CATEGORY);
 
 	        customTaskPanes.Remove(taskPane);
 
-            //PLLog.Trace3("Exit", System.Data.Common.PROJECT_NAME);
+            //PLLog.Trace3("Exit", System.Data.Common.LOG_CATEGORY);
         }
 
     }

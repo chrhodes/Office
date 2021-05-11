@@ -8,8 +8,8 @@
     xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
     xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
     
-    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
     
     xmlns:local="clr-namespace:SupportTools_Visio.Presentation.ViewModels"
     mc:Ignorable="d" 

@@ -24,7 +24,7 @@ namespace SupportTools_Visio.Presentation.ViewModels
 
         public DuplicatePageViewModel()
         {
-            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.LOG_CATEGORY);
 
             // TODO(crhodes)
             // Decide if we want defaults
@@ -32,7 +32,7 @@ namespace SupportTools_Visio.Presentation.ViewModels
 
             InitializeViewModel();
 
-            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         // ViewModel First
@@ -40,11 +40,11 @@ namespace SupportTools_Visio.Presentation.ViewModels
 
         public DuplicatePageViewModel(DuplicatePage view) : base(view)
         {
-            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.LOG_CATEGORY);
 
             InitializeViewModel();
 
-            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         private void InitializeViewModel()
@@ -240,7 +240,7 @@ namespace SupportTools_Visio.Presentation.ViewModels
 
         public void OnSavePageExecute()
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
+            Log.Trace("Enter", Common.LOG_CATEGORY);
             // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
 
             int undoScope = Globals.ThisAddIn.Application.BeginUndoScope("OnSavePageExecute");
@@ -261,7 +261,7 @@ namespace SupportTools_Visio.Presentation.ViewModels
             // End Cut Four
 
             Globals.ThisAddIn.Application.EndUndoScope(undoScope, true);
-            Log.Trace("Exit", Common.PROJECT_NAME);
+            Log.Trace("Exit", Common.LOG_CATEGORY);
         }
 
         public bool OnSavePageCanExecute()

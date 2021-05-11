@@ -20,30 +20,30 @@ namespace SupportTools_Visio.Presentation.Views
 
         public EditText(EditTextViewModel viewModel)
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
+            Log.Trace("Enter", Common.LOG_CATEGORY);
             InitializeComponent();
             _viewModel = viewModel;
             DataContext = _viewModel;
             //LoadControlContents();
-            Log.Trace("Exit", Common.PROJECT_NAME);
+            Log.Trace("Exit", Common.LOG_CATEGORY);
         }
 
         //private void UserControl_Loaded(object sender, RoutedEventArgs e)
         //{
-        //    Log.Trace("Enter", Common.PROJECT_NAME);
+        //    Log.Trace("Enter", Common.LOG_CATEGORY);
         //    //VNC.Log.Trace("", Common.LOG_APPNAME, 0);
         //    //VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
         //    //    System.Reflection.MethodInfo.GetCurrentMethod().Name));
-        //    Log.Trace("Exit", Common.PROJECT_NAME);
+        //    Log.Trace("Exit", Common.LOG_CATEGORY);
         //}
 
         //private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         //{
-        //    Log.Trace("Enter", Common.PROJECT_NAME);
+        //    Log.Trace("Enter", Common.LOG_CATEGORY);
         //    //VNC.Log.Trace("", Common.LOG_APPNAME, 0);
         //    //VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
         //    //    System.Reflection.MethodInfo.GetCurrentMethod().Name));
-        //    Log.Trace("Exit", Common.PROJECT_NAME);
+        //    Log.Trace("Exit", Common.LOG_CATEGORY);
         //}
 
         #endregion
@@ -114,7 +114,7 @@ namespace SupportTools_Visio.Presentation.Views
 
         //private void btnDoSomething_Click(object sender, RoutedEventArgs e)
         //{
-        //    Log.Trace("Enter", Common.PROJECT_NAME);
+        //    Log.Trace("Enter", Common.LOG_CATEGORY);
         //    //VNC.Log.Trace("", Common.LOG_APPNAME, 0);
         //    // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
 

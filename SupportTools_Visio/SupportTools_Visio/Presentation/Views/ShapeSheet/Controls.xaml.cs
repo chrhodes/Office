@@ -10,9 +10,9 @@ namespace SupportTools_Visio.Presentation.Views
 
         public Controls()
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
+            Log.Trace("Enter", Common.LOG_CATEGORY);
             InitializeComponent();
-            Log.Trace("Exit", Common.PROJECT_NAME);
+            Log.Trace("Exit", Common.LOG_CATEGORY);
         }
 
         #endregion

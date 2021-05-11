@@ -188,7 +188,7 @@ namespace SupportTools_Visio.Events
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.PROJECT_NAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -874,7 +874,7 @@ namespace SupportTools_Visio.Events
 
         private void RouteShapeSheet_QueueMarkerEvent(Visio.Application app, int sequenceNum, string[] context)
         {
-            VNC.Log.Debug("", Common.LOG_APPNAME, 0);
+            VNC.Log.Debug("", Common.LOG_CATEGORY, 0);
 
             VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
                 System.Reflection.MethodInfo.GetCurrentMethod().Name));
@@ -1079,7 +1079,7 @@ namespace SupportTools_Visio.Events
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.PROJECT_NAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
     }

@@ -7,7 +7,7 @@ namespace VNC.AddinHelper
     public class Common
     {
         public const string TAG_PREFIX = "VNC";
-        public const string PROJECT_NAME = "AddInHelper";
+        public const string LOG_CATEGORY = "AddInHelper";
 
         public static Boolean HasAppEvents = true;  // Custom Header and Footer need this enabled.
         public static Boolean DisplayEvents = false;

@@ -13,28 +13,28 @@ namespace SupportTools_Visio.Presentation.Views
 
         public EditControlPoints()
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
+            Log.Trace("Enter", Common.LOG_CATEGORY);
             InitializeComponent();
             LoadControlContents();
-            Log.Trace("Exit", Common.PROJECT_NAME);
+            Log.Trace("Exit", Common.LOG_CATEGORY);
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
+            Log.Trace("Enter", Common.LOG_CATEGORY);
             //VNC.Log.Trace("", Common.LOG_APPNAME, 0);
             //VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
             //    System.Reflection.MethodInfo.GetCurrentMethod().Name));
-            Log.Trace("Exit", Common.PROJECT_NAME);
+            Log.Trace("Exit", Common.LOG_CATEGORY);
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
+            Log.Trace("Enter", Common.LOG_CATEGORY);
             //VNC.Log.Trace("", Common.LOG_APPNAME, 0);
             //VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
             //    System.Reflection.MethodInfo.GetCurrentMethod().Name));
-            Log.Trace("Exit", Common.PROJECT_NAME);
+            Log.Trace("Exit", Common.LOG_CATEGORY);
         }
 
         #endregion
@@ -43,7 +43,7 @@ namespace SupportTools_Visio.Presentation.Views
 
         private void btnAddConnectionPoints_Click(object sender, RoutedEventArgs e)
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
+            Log.Trace("Enter", Common.LOG_CATEGORY);
             //VNC.Log.Trace("", Common.LOG_APPNAME, 0);
             // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
 
@@ -56,7 +56,7 @@ namespace SupportTools_Visio.Presentation.Views
 
         private void btnClearConnectionPoints_Click(object sender, RoutedEventArgs e)
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
+            Log.Trace("Enter", Common.LOG_CATEGORY);
             string tag = ((Button)sender).Tag.ToString();
 
             SupportTools_Visio.Actions.Visio_Shape.ClearConnectionPoints(tag);

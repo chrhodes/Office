@@ -169,8 +169,8 @@
     <Reference Include="CalcBinding, Version=2.5.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CalcBinding.2.5.2\lib\net45\CalcBinding.dll</HintPath>
     </Reference>
-    <Reference Include="CommonServiceLocator, Version=2.0.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\CommonServiceLocator.2.0.5\lib\net47\CommonServiceLocator.dll</HintPath>
+    <Reference Include="CommonServiceLocator, Version=2.0.6.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.6\lib\net48\CommonServiceLocator.dll</HintPath>
     </Reference>
     <Reference Include="Crc32C.NET, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Crc32C.NET.1.0.5.0\lib\net20\Crc32C.NET.dll</HintPath>
@@ -359,6 +359,9 @@
     <Reference Include="Microsoft.Win32.SystemEvents, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.SystemEvents.5.0.0\lib\net461\Microsoft.Win32.SystemEvents.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.31\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -370,14 +373,14 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="Prism, Version=7.2.0.1422, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Core.7.2.0.1422\lib\net45\Prism.dll</HintPath>
+    <Reference Include="Prism, Version=8.0.0.1909, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.8.0.0.1909\lib\net47\Prism.dll</HintPath>
     </Reference>
-    <Reference Include="Prism.Unity.Wpf, Version=7.2.0.1422, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Unity.7.2.0.1422\lib\net45\Prism.Unity.Wpf.dll</HintPath>
+    <Reference Include="Prism.Unity.Wpf, Version=8.0.0.1909, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Unity.8.0.0.1909\lib\net48\Prism.Unity.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="Prism.Wpf, Version=7.2.0.1422, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Wpf.7.2.0.1422\lib\net45\Prism.Wpf.dll</HintPath>
+    <Reference Include="Prism.Wpf, Version=8.0.0.1909, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Wpf.8.0.0.1909\lib\net48\Prism.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Remotion, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
       <HintPath>..\packages\LinqToExcel.1.11.0\lib\Remotion.dll</HintPath>
@@ -590,9 +593,6 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Wpf.7.2.0.1422\lib\net45\System.Windows.Interactivity.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -623,7 +623,7 @@
       <HintPath>..\packages\VNC.Core.1.0.0\lib\net48\VNC.Core.dll</HintPath>
     </Reference>
     <Reference Include="VNC.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6621de8a79b51ca3, processorArchitecture=MSIL">
-      <HintPath>..\packages\VNC.Logging.1.0.0\lib\net48\VNC.Logging.dll</HintPath>
+      <HintPath>..\packages\VNC.Logging.1.0.1\lib\net48\VNC.Logging.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
@@ -726,12 +726,8 @@
     <Compile Include="Presentation\Converters\SelectedItemsConverter.cs" />
     <Compile Include="Presentation\ModelWrappers\ShapeSheet\Page\PagePropertiesWrapper.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\ObjectViewModel.cs" />
-    <Compile Include="Presentation\Views\Cat.xaml.cs">
-      <DependentUpon>Cat.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Presentation\ViewModels\ShapeSheet\CatViewModel.cs" />
     <Compile Include="Presentation\ModelWrappers\CatWrapper.cs" />
-    <Compile Include="Presentation\ViewModels\Interfaces\ICatViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\IViewAViewModel.cs" />
     <Compile Include="Presentation\ModelWrappers\ShapeSheet\ActionRowWrapper.cs" />
     <Compile Include="Presentation\ModelWrappers\ShapeSheet\ActionTagRowWrapper.cs" />
     <Compile Include="Presentation\ModelWrappers\ShapeSheet\AdditionalEffectPropertiesWrapper.cs" />
@@ -786,6 +782,7 @@
     <Compile Include="Presentation\ViewModels\ShapeSheet\LineGradientStopRowViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\RowsViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\ShapeSheetSectionBase.cs" />
+    <Compile Include="Presentation\ViewModels\ViewAViewModel.cs" />
     <Compile Include="Presentation\Views\EditText.xaml.cs" />
     <Compile Include="Presentation\Views\PrismRegionTest.xaml.cs" />
     <Compile Include="Domain\DuplicatePage.cs" />
@@ -925,6 +922,7 @@
     <Compile Include="Presentation\Views\ShapeSheet\UserDefinedCells.xaml.cs">
       <DependentUpon>UserDefinedCells.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\Views\ViewA.xaml.cs" />
     <Compile Include="ShapeSheetActions.cs" />
     <Compile Include="Actions\Class1.cs" />
     <Compile Include="Actions\Visio_PageFormatting.cs" />
@@ -997,6 +995,18 @@
     </Compile>
     <Compile Include="User Interface\Help.cs" />
     <Compile Include="User Interface\PreserveColumnOrderBehavior.cs" />
+    <Compile Include="User Interface\Ribbon\Ribbon_ShapeSheet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="User Interface\Ribbon\Ribbon_UILauchApproaches.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="User Interface\Ribbon\Ribbon_CustomUI.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="User Interface\Ribbon\Ribbon_SupportTools.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="User Interface\Ribbon\Ribbon.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1145,10 +1155,6 @@
     <None Include="Resources\Images\Stencil Info 64x64.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Presentation\Views\Cat.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Presentation\Views\EditText.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1338,6 +1344,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\Views\ShapeSheet\UserDefinedCells.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\ViewA.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

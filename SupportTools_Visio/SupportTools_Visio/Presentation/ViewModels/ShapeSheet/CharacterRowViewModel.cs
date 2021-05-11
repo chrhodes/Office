@@ -13,20 +13,20 @@ namespace SupportTools_Visio.Presentation.ViewModels
     { 
         public CharacterRowViewModel()
         {
-            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_CATEGORY);
 
             // TODO(crhodes)
             // Decide if we want defaults
             //CharacterRowViewModel = new CharacterRowWrapper(new Domain.CharacterRowViewModel());
 
-            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         public CharacterRowWrapper CharacterRow { get; set; }
 
         public override void OnUpdateSettingsExecute()
         {
-            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
+            Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
             int undoScope = Globals.ThisAddIn.Application.BeginUndoScope("UpdateControlRow");
@@ -46,12 +46,12 @@ namespace SupportTools_Visio.Presentation.ViewModels
 
             Globals.ThisAddIn.Application.EndUndoScope(undoScope, true);
 
-            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
+            Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY);
         }
 
         public override void OnLoadCurrentSettingsExecute()
         {
-            Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
+            Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             Visio.Application app = Globals.ThisAddIn.Application;
 
@@ -65,7 +65,7 @@ namespace SupportTools_Visio.Presentation.ViewModels
                 OnPropertyChanged("CharacterRow");
             }
 
-            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME);
+            Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY);
         }
     }
 }

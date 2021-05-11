@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Security.Principal;
+using System.Threading;
 using System.Windows.Forms;
 
 using DevExpress.Xpf.Core;
@@ -23,12 +24,19 @@ namespace SupportTools_Visio
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
-            Log.APPLICATION_START("Enter", Common.PROJECT_NAME);
+            // HACK(crhodes)
+            // If don't delay a bit here, the SignalR logging infrastructure does not initialize quickly enough
+            // and the first few log messages are missed.
+            // NB.  All are properly recored in the log file.
+
+            Int64 startTicks = Log.CONSTRUCTOR("Initialize SignalR", Common.LOG_CATEGORY);
+
+            Thread.Sleep(150);
+            
+            startTicks = Log.APPLICATION_START("Enter", Common.LOG_CATEGORY, startTicks);
 
             try
             {
-
-
                 Globals.Ribbons.Ribbon.chkDisplayEvents.Checked = Common.DisplayEvents;
                 Globals.Ribbons.Ribbon.chkEnableAppEvents.Checked = Common.HasAppEvents;
 
@@ -49,16 +57,17 @@ namespace SupportTools_Visio
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.PROJECT_NAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
                 throw (ex);
             }
 
-            Log.APPLICATION_START("Exit", Common.PROJECT_NAME);
+            Log.APPLICATION_START("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
         {
-            Log.APPLICATION_END("Enter", Common.PROJECT_NAME);  
+            Int64 startTicks = Log.APPLICATION_END("Enter", Common.LOG_CATEGORY);
+
             try
             {
 
@@ -75,15 +84,16 @@ namespace SupportTools_Visio
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.PROJECT_NAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
                 throw (ex);
             }
-            Log.APPLICATION_END("Exit", Common.PROJECT_NAME);
+            Log.APPLICATION_END("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         void InitializeWPFApplication()
         {
-            Log.APPLICATION_INITIALIZE("Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.LOG_CATEGORY);
+
             Common.CurrentUser = new WindowsPrincipal(WindowsIdentity.GetCurrent());
 
             CreateXamlApplication();
@@ -169,7 +179,8 @@ namespace SupportTools_Visio
                 MessageBox.Show(ex.ToString());
                 MessageBox.Show(ex.InnerException.ToString());
             }
-            Log.APPLICATION_INITIALIZE("Exit", Common.PROJECT_NAME);
+
+            Log.APPLICATION_INITIALIZE("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         /// <summary>
@@ -181,7 +192,7 @@ namespace SupportTools_Visio
 
         private static void CreateXamlApplication()
         {
-            Log.APPLICATION_INITIALIZE("Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.LOG_CATEGORY);
 
             Common.DeveloperMode = true;
             Common.WriteToDebugWindow("CreateXamlApplication()");
@@ -228,12 +239,12 @@ namespace SupportTools_Visio
                 Common.DeveloperMode = false;
             }
 
-            Log.APPLICATION_INITIALIZE("Exit", Common.PROJECT_NAME);
+            Log.APPLICATION_INITIALIZE("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         private void UnLoadXamlApplicationResources()
         {
-            Log.APPLICATION_END("Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.APPLICATION_END("Enter", Common.LOG_CATEGORY);
 
             try
             {
@@ -255,7 +266,7 @@ namespace SupportTools_Visio
                 Common.DeveloperMode = false;
             }
 
-            Log.APPLICATION_END("Exit", Common.PROJECT_NAME);
+            Log.APPLICATION_END("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         #region VSTO generated code

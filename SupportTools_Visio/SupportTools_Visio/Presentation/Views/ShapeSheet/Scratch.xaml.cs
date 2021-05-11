@@ -11,11 +11,11 @@ namespace SupportTools_Visio.Presentation.Views
 
         public Scratch()
         {
-            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.PROJECT_NAME);
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_CATEGORY);
 
             InitializeComponent();
 
-            Log.CONSTRUCTOR("Exit", Common.PROJECT_NAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         #endregion

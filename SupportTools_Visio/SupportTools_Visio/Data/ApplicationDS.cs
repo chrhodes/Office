@@ -13,13 +13,13 @@ namespace SupportTools_Visio.Data
         public void LoadApplicationDataSetFromDB(Data.ApplicationDS applicationDS)
         {
 #if TRACE
-            long startTicksTotal = Log.Trace("Start", Common.LOG_APPNAME, CLASS_BASE_ERRORNUMBER + 3);
+            long startTicksTotal = Log.Trace("Start", Common.LOG_CATEGORY, CLASS_BASE_ERRORNUMBER + 3);
 #endif
             try
             {
                 long startTicks = 0;
 
-                Log.Info("Clearing ApplicationDataSet...", Common.LOG_APPNAME);
+                Log.Info("Clearing ApplicationDataSet...", Common.LOG_CATEGORY);
                 applicationDS.Clear();
                 Common.DataFullyLoaded = false;
 
@@ -35,12 +35,12 @@ namespace SupportTools_Visio.Data
             }
             catch (Exception ex)
             {
-                Log.Error(string.Format("ConnectionString:>{0}<", Config.SmartsDBConnection), Common.LOG_APPNAME, CLASS_BASE_ERRORNUMBER + 60);
-                Log.Error(ex, Common.LOG_APPNAME, CLASS_BASE_ERRORNUMBER + 61);
+                Log.Error(string.Format("ConnectionString:>{0}<", Config.SmartsDBConnection), Common.LOG_CATEGORY, CLASS_BASE_ERRORNUMBER + 60);
+                Log.Error(ex, Common.LOG_CATEGORY, CLASS_BASE_ERRORNUMBER + 61);
             }
 
 #if TRACE
-            Log.Trace("End", Common.LOG_APPNAME, CLASS_BASE_ERRORNUMBER + 62, startTicksTotal);
+            Log.Trace("End", Common.LOG_CATEGORY, CLASS_BASE_ERRORNUMBER + 62, startTicksTotal);
 #endif
         }
 

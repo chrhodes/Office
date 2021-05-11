@@ -78,7 +78,7 @@ namespace SupportTools_Visio.Presentation.ViewModels
 
         public void OnUpdateSettingsExecute()
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
+            Log.Trace("Enter", Common.LOG_CATEGORY);
             // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
 
             int undoScope = Globals.ThisAddIn.Application.BeginUndoScope("UpdateParagraphSection");
@@ -97,7 +97,7 @@ namespace SupportTools_Visio.Presentation.ViewModels
             }
 
             Globals.ThisAddIn.Application.EndUndoScope(undoScope, true);
-            Log.Trace("Exit", Common.PROJECT_NAME);
+            Log.Trace("Exit", Common.LOG_CATEGORY);
         }
 
         public Boolean OnUpdateSettingsCanExecute()

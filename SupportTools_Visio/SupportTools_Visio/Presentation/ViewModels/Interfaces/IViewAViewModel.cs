@@ -2,7 +2,7 @@
 
 namespace SupportTools_Visio.Presentation.ViewModels
 {
-    public interface ICatViewModel : IViewModel
+    public interface IViewAViewModel : IViewModel
     {
         // TODO(crhodes)
         // Add items here that the CatViewModel must support

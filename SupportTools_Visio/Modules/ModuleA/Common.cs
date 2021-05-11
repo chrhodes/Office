@@ -2,7 +2,6 @@
 {
     class Common
     {
-        public const string PROJECT_NAME = "ModuleA";
-        public const string LOG_APPNAME = "Modules";
+        public const string LOG_CATEGORY = "Modules";
     }
 }

@@ -12,11 +12,11 @@ namespace SupportTools_Visio.Presentation.Views
 
         public GeometryRow(GeometryRowViewModel viewModel)
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
+            Log.Trace("Enter", Common.LOG_CATEGORY);
             InitializeComponent();
             //_viewModel = viewModel;
             //DataContext = _viewModel;
-            Log.Trace("Exit", Common.PROJECT_NAME);
+            Log.Trace("Exit", Common.LOG_CATEGORY);
         }
 
         #endregion

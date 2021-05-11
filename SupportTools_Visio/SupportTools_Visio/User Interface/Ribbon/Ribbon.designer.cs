@@ -47,6 +47,8 @@
             this.tabSupportTools = this.Factory.CreateRibbonTab();
             this.rgDocumentActions = this.Factory.CreateRibbonGroup();
             this.btnGetApplicationInfo = this.Factory.CreateRibbonButton();
+            this.btnGetDocumentInfo = this.Factory.CreateRibbonButton();
+            this.btnGetStencilInfo = this.Factory.CreateRibbonButton();
             this.btnAddTableOfContents = this.Factory.CreateRibbonButton();
             this.btnAddHeader = this.Factory.CreateRibbonButton();
             this.btnAddFooter = this.Factory.CreateRibbonButton();
@@ -60,8 +62,6 @@
             this.btnAutoSizePagesOff = this.Factory.CreateRibbonButton();
             this.btnUpdatePageNameShapes = this.Factory.CreateRibbonButton();
             this.btnAddNavigationLinks = this.Factory.CreateRibbonButton();
-            this.btnGetStencilInfo = this.Factory.CreateRibbonButton();
-            this.btnGetDocumentInfo = this.Factory.CreateRibbonButton();
             this.btnPrintPages = this.Factory.CreateRibbonButton();
             this.btnMovePages = this.Factory.CreateRibbonButton();
             this.btnDeletePages = this.Factory.CreateRibbonButton();
@@ -70,13 +70,9 @@
             this.btnGetPageInfo = this.Factory.CreateRibbonButton();
             this.btnUpdatePageNameShapesPage = this.Factory.CreateRibbonButton();
             this.btnAddNavLinks = this.Factory.CreateRibbonButton();
-            this.btnAddDefaultLayers_Page = this.Factory.CreateRibbonButton();
-            this.btnRemoveLayers_Page = this.Factory.CreateRibbonButton();
             this.btnPrintPage = this.Factory.CreateRibbonButton();
             this.btnSavePage = this.Factory.CreateRibbonButton();
             this.btnSyncPageNamesPage = this.Factory.CreateRibbonButton();
-            this.btnXMLPagesCommands = this.Factory.CreateRibbonButton();
-            this.button1 = this.Factory.CreateRibbonButton();
             this.btnAutoSizePageOn = this.Factory.CreateRibbonButton();
             this.btnAutoSizePageOff = this.Factory.CreateRibbonButton();
             this.btnDuplicatePage = this.Factory.CreateRibbonButton();
@@ -89,6 +85,8 @@
             this.btnLayerManager = this.Factory.CreateRibbonButton();
             this.btnLockBackground = this.Factory.CreateRibbonButton();
             this.btnUnlockBackground = this.Factory.CreateRibbonButton();
+            this.btnAddDefaultLayers_Page = this.Factory.CreateRibbonButton();
+            this.btnRemoveLayers_Page = this.Factory.CreateRibbonButton();
             this.rgShapeActions = this.Factory.CreateRibbonGroup();
             this.btnGetShapeInfo = this.Factory.CreateRibbonButton();
             this.btnAddTextControl = this.Factory.CreateRibbonButton();
@@ -102,7 +100,7 @@
             this.btn1PtMargins = this.Factory.CreateRibbonButton();
             this.btn2PtMargins = this.Factory.CreateRibbonButton();
             this.btnMoveToBackgroundLayer = this.Factory.CreateRibbonButton();
-            this.grpDebug = this.Factory.CreateRibbonGroup();
+            this.rgDebug = this.Factory.CreateRibbonGroup();
             this.btnDebugWindow = this.Factory.CreateRibbonButton();
             this.btnWatchWindow = this.Factory.CreateRibbonButton();
             this.chkEnableAppEvents = this.Factory.CreateRibbonCheckBox();
@@ -112,48 +110,37 @@
             this.btnAddInInfo = this.Factory.CreateRibbonButton();
             this.btnDeveloperMode = this.Factory.CreateRibbonButton();
             this.tabUILaunch = this.Factory.CreateRibbonTab();
-            this.grpUILaunch = this.Factory.CreateRibbonGroup();
+            this.rgUILaunch = this.Factory.CreateRibbonGroup();
             this.btnThemedWindowHost = this.Factory.CreateRibbonButton();
             this.btnThemedWindowHostModal = this.Factory.CreateRibbonButton();
             this.btnWindowHostLocal = this.Factory.CreateRibbonButton();
             this.btnWindowHostVNC = this.Factory.CreateRibbonButton();
             this.btnDxWindowHost = this.Factory.CreateRibbonButton();
-            this.grpWPFUI = this.Factory.CreateRibbonGroup();
+            this.rgWPFUI = this.Factory.CreateRibbonGroup();
             this.btnLaunchCylon = this.Factory.CreateRibbonButton();
             this.btnLaunchCylon2 = this.Factory.CreateRibbonButton();
             this.btnDxDockLayoutManager = this.Factory.CreateRibbonButton();
             this.btnDxLayoutControl = this.Factory.CreateRibbonButton();
             this.btnDxDockLayoutControl = this.Factory.CreateRibbonButton();
-            this.btnEditControlPoints = this.Factory.CreateRibbonButton();
             this.btnPrismRegionTest = this.Factory.CreateRibbonButton();
-            this.grpMVVMExamples = this.Factory.CreateRibbonGroup();
+            this.rgMVVMExamples = this.Factory.CreateRibbonGroup();
             this.btnVNC_MVVM_V1 = this.Factory.CreateRibbonButton();
             this.btnVNC_MVVM_VM1 = this.Factory.CreateRibbonButton();
-            this.rgSMARTS = this.Factory.CreateRibbonGroup();
-            this.btnRetrive = this.Factory.CreateRibbonButton();
-            this.btnWebPage = this.Factory.CreateRibbonButton();
-            this.btnValidate = this.Factory.CreateRibbonButton();
-            this.btnReleatedProcess = this.Factory.CreateRibbonButton();
-            this.btnRelatedSystem = this.Factory.CreateRibbonButton();
-            this.btnRelatedIntfrastructure = this.Factory.CreateRibbonButton();
-            this.btnNavigateUp = this.Factory.CreateRibbonButton();
-            this.btnNavigateDown = this.Factory.CreateRibbonButton();
-            this.btnHilight = this.Factory.CreateRibbonButton();
             this.tabShapeSheet = this.Factory.CreateRibbonTab();
-            this.grpSSDocumentObjectSections = this.Factory.CreateRibbonGroup();
+            this.rgSSDocumentObjectSections = this.Factory.CreateRibbonGroup();
             this.btnDocumentProperties = this.Factory.CreateRibbonButton();
-            this.grpSSDocumentRowSections = this.Factory.CreateRibbonGroup();
+            this.rgSSDocumentRowSections = this.Factory.CreateRibbonGroup();
             this.btnDocumentHyperlinks = this.Factory.CreateRibbonButton();
             this.btnDocumentScratch = this.Factory.CreateRibbonButton();
             this.btnDocumentShapeData = this.Factory.CreateRibbonButton();
             this.btnDocumentUserDefinedCells = this.Factory.CreateRibbonButton();
-            this.grpSSPageObjectSections = this.Factory.CreateRibbonGroup();
+            this.rgSSPageObjectSections = this.Factory.CreateRibbonGroup();
             this.btnPageLayout = this.Factory.CreateRibbonButton();
             this.btnPageProperties = this.Factory.CreateRibbonButton();
             this.btnPrintProperties = this.Factory.CreateRibbonButton();
             this.btnRulerAndGrid = this.Factory.CreateRibbonButton();
             this.btnPageThemeProperties = this.Factory.CreateRibbonButton();
-            this.grpSSPPageRowSections = this.Factory.CreateRibbonGroup();
+            this.rgSSPPageRowSections = this.Factory.CreateRibbonGroup();
             this.btnLayers = this.Factory.CreateRibbonButton();
             this.btnPageActions = this.Factory.CreateRibbonButton();
             this.btnPageActionTags = this.Factory.CreateRibbonButton();
@@ -161,7 +148,7 @@
             this.btnPageScratch = this.Factory.CreateRibbonButton();
             this.btnPageShapeData = this.Factory.CreateRibbonButton();
             this.btnPageUserDefinedCells = this.Factory.CreateRibbonButton();
-            this.grpSSShapeObjectSections = this.Factory.CreateRibbonGroup();
+            this.rgSSShapeObjectSections = this.Factory.CreateRibbonGroup();
             this.btn1DEndpoints = this.Factory.CreateRibbonButton();
             this.btn3DRotationProperties = this.Factory.CreateRibbonButton();
             this.btnAdditionalEffectProperties = this.Factory.CreateRibbonButton();
@@ -183,7 +170,7 @@
             this.btnTextBlockFormat = this.Factory.CreateRibbonButton();
             this.btnTextTransform = this.Factory.CreateRibbonButton();
             this.btnThemeProperties = this.Factory.CreateRibbonButton();
-            this.grpSSShapeRowSections = this.Factory.CreateRibbonGroup();
+            this.rgSSShapeRowSections = this.Factory.CreateRibbonGroup();
             this.btnActions = this.Factory.CreateRibbonButton();
             this.btnActionTags = this.Factory.CreateRibbonButton();
             this.btnCharacter = this.Factory.CreateRibbonButton();
@@ -197,33 +184,48 @@
             this.btnShapeShapeData = this.Factory.CreateRibbonButton();
             this.btnTabs = this.Factory.CreateRibbonButton();
             this.btnShapeUserDefinedCells = this.Factory.CreateRibbonButton();
-            this.grpCustomUI = this.Factory.CreateRibbonGroup();
+            this.tabCustomUI = this.Factory.CreateRibbonTab();
+            this.group1 = this.Factory.CreateRibbonGroup();
+            this.button4 = this.Factory.CreateRibbonButton();
             this.btnEditControlRows = this.Factory.CreateRibbonButton();
             this.btnEditParagraph = this.Factory.CreateRibbonButton();
             this.btnEditText = this.Factory.CreateRibbonButton();
+            this.btnEditControlPoints = this.Factory.CreateRibbonButton();
+            this.rgSMARTS = this.Factory.CreateRibbonGroup();
+            this.btnRetrive = this.Factory.CreateRibbonButton();
+            this.btnWebPage = this.Factory.CreateRibbonButton();
+            this.btnValidate = this.Factory.CreateRibbonButton();
+            this.btnReleatedProcess = this.Factory.CreateRibbonButton();
+            this.btnRelatedSystem = this.Factory.CreateRibbonButton();
+            this.btnRelatedIntfrastructure = this.Factory.CreateRibbonButton();
+            this.btnNavigateUp = this.Factory.CreateRibbonButton();
+            this.btnNavigateDown = this.Factory.CreateRibbonButton();
+            this.btnHilight = this.Factory.CreateRibbonButton();
             this.button2 = this.Factory.CreateRibbonButton();
             this.button3 = this.Factory.CreateRibbonButton();
+            this.btnXMLPagesCommands = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.tabSupportTools.SuspendLayout();
             this.rgDocumentActions.SuspendLayout();
             this.rgPageActions.SuspendLayout();
             this.rgLayerActions.SuspendLayout();
             this.rgShapeActions.SuspendLayout();
-            this.grpDebug.SuspendLayout();
+            this.rgDebug.SuspendLayout();
             this.grpHelp.SuspendLayout();
             this.tabUILaunch.SuspendLayout();
-            this.grpUILaunch.SuspendLayout();
-            this.grpWPFUI.SuspendLayout();
-            this.grpMVVMExamples.SuspendLayout();
-            this.rgSMARTS.SuspendLayout();
+            this.rgUILaunch.SuspendLayout();
+            this.rgWPFUI.SuspendLayout();
+            this.rgMVVMExamples.SuspendLayout();
             this.tabShapeSheet.SuspendLayout();
-            this.grpSSDocumentObjectSections.SuspendLayout();
-            this.grpSSDocumentRowSections.SuspendLayout();
-            this.grpSSPageObjectSections.SuspendLayout();
-            this.grpSSPPageRowSections.SuspendLayout();
-            this.grpSSShapeObjectSections.SuspendLayout();
-            this.grpSSShapeRowSections.SuspendLayout();
-            this.grpCustomUI.SuspendLayout();
+            this.rgSSDocumentObjectSections.SuspendLayout();
+            this.rgSSDocumentRowSections.SuspendLayout();
+            this.rgSSPageObjectSections.SuspendLayout();
+            this.rgSSPPageRowSections.SuspendLayout();
+            this.rgSSShapeObjectSections.SuspendLayout();
+            this.rgSSShapeRowSections.SuspendLayout();
+            this.tabCustomUI.SuspendLayout();
+            this.group1.SuspendLayout();
+            this.rgSMARTS.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab1
@@ -238,7 +240,7 @@
             this.tabSupportTools.Groups.Add(this.rgPageActions);
             this.tabSupportTools.Groups.Add(this.rgLayerActions);
             this.tabSupportTools.Groups.Add(this.rgShapeActions);
-            this.tabSupportTools.Groups.Add(this.grpDebug);
+            this.tabSupportTools.Groups.Add(this.rgDebug);
             this.tabSupportTools.Groups.Add(this.grpHelp);
             this.tabSupportTools.Label = "Support Tools";
             this.tabSupportTools.Name = "tabSupportTools";
@@ -247,6 +249,8 @@
             // 
             this.rgDocumentActions.DialogLauncher = ribbonDialogLauncherImpl1;
             this.rgDocumentActions.Items.Add(this.btnGetApplicationInfo);
+            this.rgDocumentActions.Items.Add(this.btnGetDocumentInfo);
+            this.rgDocumentActions.Items.Add(this.btnGetStencilInfo);
             this.rgDocumentActions.Items.Add(this.btnAddTableOfContents);
             this.rgDocumentActions.Items.Add(this.btnAddHeader);
             this.rgDocumentActions.Items.Add(this.btnAddFooter);
@@ -260,8 +264,6 @@
             this.rgDocumentActions.Items.Add(this.btnAutoSizePagesOff);
             this.rgDocumentActions.Items.Add(this.btnUpdatePageNameShapes);
             this.rgDocumentActions.Items.Add(this.btnAddNavigationLinks);
-            this.rgDocumentActions.Items.Add(this.btnGetStencilInfo);
-            this.rgDocumentActions.Items.Add(this.btnGetDocumentInfo);
             this.rgDocumentActions.Items.Add(this.btnPrintPages);
             this.rgDocumentActions.Items.Add(this.btnMovePages);
             this.rgDocumentActions.Items.Add(this.btnDeletePages);
@@ -271,13 +273,33 @@
             // 
             // btnGetApplicationInfo
             // 
-            this.btnGetApplicationInfo.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.btnGetApplicationInfo.Image = global::SupportTools_Visio.Properties.Resources.Application_Info_64x64;
-            this.btnGetApplicationInfo.Label = "Appliction Info";
+            this.btnGetApplicationInfo.Label = "Application Info";
             this.btnGetApplicationInfo.Name = "btnGetApplicationInfo";
             this.btnGetApplicationInfo.ScreenTip = "Get Application Info";
             this.btnGetApplicationInfo.ShowImage = true;
             this.btnGetApplicationInfo.SuperTip = "Get Informtation from Application Object";
+            this.btnGetApplicationInfo.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnGetApplicationInfo_Click);
+            // 
+            // btnGetDocumentInfo
+            // 
+            this.btnGetDocumentInfo.Image = global::SupportTools_Visio.Properties.Resources.Document_Info_64x64;
+            this.btnGetDocumentInfo.Label = "Document Info";
+            this.btnGetDocumentInfo.Name = "btnGetDocumentInfo";
+            this.btnGetDocumentInfo.ScreenTip = "Get Document Info";
+            this.btnGetDocumentInfo.ShowImage = true;
+            this.btnGetDocumentInfo.SuperTip = "Get Information from Document Object";
+            this.btnGetDocumentInfo.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnGetDocumentInfo_Click);
+            // 
+            // btnGetStencilInfo
+            // 
+            this.btnGetStencilInfo.Image = global::SupportTools_Visio.Properties.Resources.Stencil_Info_64x64;
+            this.btnGetStencilInfo.Label = "Stencil Info";
+            this.btnGetStencilInfo.Name = "btnGetStencilInfo";
+            this.btnGetStencilInfo.ScreenTip = "Get Stencil Info";
+            this.btnGetStencilInfo.ShowImage = true;
+            this.btnGetStencilInfo.SuperTip = "Get Information from Stencil Object";
+            this.btnGetStencilInfo.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnGetStencilInfo_Click);
             // 
             // btnAddTableOfContents
             // 
@@ -355,7 +377,6 @@
             // 
             // btnUpdatePageNameShapes
             // 
-            this.btnUpdatePageNameShapes.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.btnUpdatePageNameShapes.Image = global::SupportTools_Visio.Properties.Resources.Update_Name_Shapes64x64;
             this.btnUpdatePageNameShapes.Label = "Update Shapes";
             this.btnUpdatePageNameShapes.Name = "btnUpdatePageNameShapes";
@@ -366,36 +387,13 @@
             // 
             // btnAddNavigationLinks
             // 
-            this.btnAddNavigationLinks.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.btnAddNavigationLinks.Image = global::SupportTools_Visio.Properties.Resources.Navigation_Links_64x64;
-            this.btnAddNavigationLinks.Label = "Nav Links";
+            this.btnAddNavigationLinks.Label = "Update Nav Links";
             this.btnAddNavigationLinks.Name = "btnAddNavigationLinks";
             this.btnAddNavigationLinks.ScreenTip = "Add Navigation Links";
             this.btnAddNavigationLinks.ShowImage = true;
             this.btnAddNavigationLinks.SuperTip = "Add Navigation Links from Navigation Links Background Page";
             this.btnAddNavigationLinks.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnAddNavigationLinks_Click);
-            // 
-            // btnGetStencilInfo
-            // 
-            this.btnGetStencilInfo.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.btnGetStencilInfo.Image = global::SupportTools_Visio.Properties.Resources.Stencil_Info_64x64;
-            this.btnGetStencilInfo.Label = "Stencil Info";
-            this.btnGetStencilInfo.Name = "btnGetStencilInfo";
-            this.btnGetStencilInfo.ScreenTip = "Get Stencil Info";
-            this.btnGetStencilInfo.ShowImage = true;
-            this.btnGetStencilInfo.SuperTip = "Get Information from Stencil Object";
-            this.btnGetStencilInfo.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnGetStencilInfo_Click);
-            // 
-            // btnGetDocumentInfo
-            // 
-            this.btnGetDocumentInfo.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.btnGetDocumentInfo.Image = global::SupportTools_Visio.Properties.Resources.Document_Info_64x64;
-            this.btnGetDocumentInfo.Label = "Document Info";
-            this.btnGetDocumentInfo.Name = "btnGetDocumentInfo";
-            this.btnGetDocumentInfo.ScreenTip = "Get Document Info";
-            this.btnGetDocumentInfo.ShowImage = true;
-            this.btnGetDocumentInfo.SuperTip = "Get Information from Document Object";
-            this.btnGetDocumentInfo.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnGetDocumentInfo_Click);
             // 
             // btnPrintPages
             // 
@@ -416,7 +414,7 @@
             this.btnDeletePages.Label = "Delete Pages";
             this.btnDeletePages.Name = "btnDeletePages";
             this.btnDeletePages.SuperTip = "Delete all Pages listed on current Page to Another Document";
-            this.btnDeletePages.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDeletePages_Click_1);
+            this.btnDeletePages.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDeletePages_Click);
             // 
             // btnSavePages
             // 
@@ -430,13 +428,9 @@
             this.rgPageActions.Items.Add(this.btnGetPageInfo);
             this.rgPageActions.Items.Add(this.btnUpdatePageNameShapesPage);
             this.rgPageActions.Items.Add(this.btnAddNavLinks);
-            this.rgPageActions.Items.Add(this.btnAddDefaultLayers_Page);
-            this.rgPageActions.Items.Add(this.btnRemoveLayers_Page);
             this.rgPageActions.Items.Add(this.btnPrintPage);
             this.rgPageActions.Items.Add(this.btnSavePage);
             this.rgPageActions.Items.Add(this.btnSyncPageNamesPage);
-            this.rgPageActions.Items.Add(this.btnXMLPagesCommands);
-            this.rgPageActions.Items.Add(this.button1);
             this.rgPageActions.Items.Add(this.btnAutoSizePageOn);
             this.rgPageActions.Items.Add(this.btnAutoSizePageOff);
             this.rgPageActions.Items.Add(this.btnDuplicatePage);
@@ -445,7 +439,6 @@
             // 
             // btnGetPageInfo
             // 
-            this.btnGetPageInfo.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.btnGetPageInfo.Image = global::SupportTools_Visio.Properties.Resources.Page_Info_64x64;
             this.btnGetPageInfo.Label = "Page Info";
             this.btnGetPageInfo.Name = "btnGetPageInfo";
@@ -456,7 +449,6 @@
             // 
             // btnUpdatePageNameShapesPage
             // 
-            this.btnUpdatePageNameShapesPage.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.btnUpdatePageNameShapesPage.Image = global::SupportTools_Visio.Properties.Resources.Update_Name_Shapes64x64;
             this.btnUpdatePageNameShapesPage.Label = "Update Shapes";
             this.btnUpdatePageNameShapesPage.Name = "btnUpdatePageNameShapesPage";
@@ -467,26 +459,13 @@
             // 
             // btnAddNavLinks
             // 
-            this.btnAddNavLinks.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.btnAddNavLinks.Image = global::SupportTools_Visio.Properties.Resources.Navigation_Links_32x32;
+            this.btnAddNavLinks.Image = global::SupportTools_Visio.Properties.Resources.Navigation_Links_64x64;
             this.btnAddNavLinks.Label = "Nav Links";
             this.btnAddNavLinks.Name = "btnAddNavLinks";
             this.btnAddNavLinks.ScreenTip = "Add Navigation Links";
             this.btnAddNavLinks.ShowImage = true;
             this.btnAddNavLinks.SuperTip = "Add Navigation Links from Navigation Links Background Page";
             this.btnAddNavLinks.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnAddNavLinks_Click);
-            // 
-            // btnAddDefaultLayers_Page
-            // 
-            this.btnAddDefaultLayers_Page.Label = "Add DefaultLayers";
-            this.btnAddDefaultLayers_Page.Name = "btnAddDefaultLayers_Page";
-            this.btnAddDefaultLayers_Page.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnAddDefaultLayers_Page_Click);
-            // 
-            // btnRemoveLayers_Page
-            // 
-            this.btnRemoveLayers_Page.Label = "Remove Layers";
-            this.btnRemoveLayers_Page.Name = "btnRemoveLayers_Page";
-            this.btnRemoveLayers_Page.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnRemoveLayers_Page_Click);
             // 
             // btnPrintPage
             // 
@@ -505,16 +484,6 @@
             this.btnSyncPageNamesPage.Label = "Sync Name(U)";
             this.btnSyncPageNamesPage.Name = "btnSyncPageNamesPage";
             this.btnSyncPageNamesPage.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnSyncPageNamesPage_Click);
-            // 
-            // btnXMLPagesCommands
-            // 
-            this.btnXMLPagesCommands.Label = "XML Pages Commands";
-            this.btnXMLPagesCommands.Name = "btnXMLPagesCommands";
-            // 
-            // button1
-            // 
-            this.button1.Label = "";
-            this.button1.Name = "button1";
             // 
             // btnAutoSizePageOn
             // 
@@ -545,6 +514,8 @@
             this.rgLayerActions.Items.Add(this.btnLayerManager);
             this.rgLayerActions.Items.Add(this.btnLockBackground);
             this.rgLayerActions.Items.Add(this.btnUnlockBackground);
+            this.rgLayerActions.Items.Add(this.btnAddDefaultLayers_Page);
+            this.rgLayerActions.Items.Add(this.btnRemoveLayers_Page);
             this.rgLayerActions.Label = "Layer Actions";
             this.rgLayerActions.Name = "rgLayerActions";
             // 
@@ -614,6 +585,17 @@
             this.btnUnlockBackground.ScreenTip = "Unlock Background Layer";
             this.btnUnlockBackground.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnUnlockBackground_Click);
             // 
+            // btnAddDefaultLayers_Page
+            // 
+            this.btnAddDefaultLayers_Page.Label = "Add DefaultLayers";
+            this.btnAddDefaultLayers_Page.Name = "btnAddDefaultLayers_Page";
+            // 
+            // btnRemoveLayers_Page
+            // 
+            this.btnRemoveLayers_Page.Label = "Remove Layers";
+            this.btnRemoveLayers_Page.Name = "btnRemoveLayers_Page";
+            this.btnRemoveLayers_Page.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnRemoveLayers_Page_Click);
+            // 
             // rgShapeActions
             // 
             this.rgShapeActions.Items.Add(this.btnGetShapeInfo);
@@ -633,7 +615,6 @@
             // 
             // btnGetShapeInfo
             // 
-            this.btnGetShapeInfo.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.btnGetShapeInfo.Image = global::SupportTools_Visio.Properties.Resources.Shape_Info_64x64;
             this.btnGetShapeInfo.Label = "Shape Info";
             this.btnGetShapeInfo.Name = "btnGetShapeInfo";
@@ -721,16 +702,16 @@
             this.btnMoveToBackgroundLayer.ScreenTip = "Move Shape to Backgroud Layer";
             this.btnMoveToBackgroundLayer.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnMoveToBackgroundLayer_Click);
             // 
-            // grpDebug
+            // rgDebug
             // 
-            this.grpDebug.Items.Add(this.btnDebugWindow);
-            this.grpDebug.Items.Add(this.btnWatchWindow);
-            this.grpDebug.Items.Add(this.chkEnableAppEvents);
-            this.grpDebug.Items.Add(this.chkDisplayEvents);
-            this.grpDebug.Items.Add(this.chkDisplayChattyEvents);
-            this.grpDebug.Label = "Debug";
-            this.grpDebug.Name = "grpDebug";
-            this.grpDebug.Visible = false;
+            this.rgDebug.Items.Add(this.btnDebugWindow);
+            this.rgDebug.Items.Add(this.btnWatchWindow);
+            this.rgDebug.Items.Add(this.chkEnableAppEvents);
+            this.rgDebug.Items.Add(this.chkDisplayEvents);
+            this.rgDebug.Items.Add(this.chkDisplayChattyEvents);
+            this.rgDebug.Label = "Debug";
+            this.rgDebug.Name = "rgDebug";
+            this.rgDebug.Visible = false;
             // 
             // btnDebugWindow
             // 
@@ -789,22 +770,21 @@
             // 
             // tabUILaunch
             // 
-            this.tabUILaunch.Groups.Add(this.grpUILaunch);
-            this.tabUILaunch.Groups.Add(this.grpWPFUI);
-            this.tabUILaunch.Groups.Add(this.grpMVVMExamples);
-            this.tabUILaunch.Groups.Add(this.rgSMARTS);
+            this.tabUILaunch.Groups.Add(this.rgUILaunch);
+            this.tabUILaunch.Groups.Add(this.rgWPFUI);
+            this.tabUILaunch.Groups.Add(this.rgMVVMExamples);
             this.tabUILaunch.Label = "UI Launch Approaches";
             this.tabUILaunch.Name = "tabUILaunch";
             // 
-            // grpUILaunch
+            // rgUILaunch
             // 
-            this.grpUILaunch.Items.Add(this.btnThemedWindowHost);
-            this.grpUILaunch.Items.Add(this.btnThemedWindowHostModal);
-            this.grpUILaunch.Items.Add(this.btnWindowHostLocal);
-            this.grpUILaunch.Items.Add(this.btnWindowHostVNC);
-            this.grpUILaunch.Items.Add(this.btnDxWindowHost);
-            this.grpUILaunch.Label = "UI Launch";
-            this.grpUILaunch.Name = "grpUILaunch";
+            this.rgUILaunch.Items.Add(this.btnThemedWindowHost);
+            this.rgUILaunch.Items.Add(this.btnThemedWindowHostModal);
+            this.rgUILaunch.Items.Add(this.btnWindowHostLocal);
+            this.rgUILaunch.Items.Add(this.btnWindowHostVNC);
+            this.rgUILaunch.Items.Add(this.btnDxWindowHost);
+            this.rgUILaunch.Label = "UI Launch";
+            this.rgUILaunch.Name = "rgUILaunch";
             // 
             // btnThemedWindowHost
             // 
@@ -842,17 +822,16 @@
             this.btnDxWindowHost.SuperTip = "Super TIp";
             this.btnDxWindowHost.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDxWindowHost_Click);
             // 
-            // grpWPFUI
+            // rgWPFUI
             // 
-            this.grpWPFUI.Items.Add(this.btnLaunchCylon);
-            this.grpWPFUI.Items.Add(this.btnLaunchCylon2);
-            this.grpWPFUI.Items.Add(this.btnDxDockLayoutManager);
-            this.grpWPFUI.Items.Add(this.btnDxLayoutControl);
-            this.grpWPFUI.Items.Add(this.btnDxDockLayoutControl);
-            this.grpWPFUI.Items.Add(this.btnEditControlPoints);
-            this.grpWPFUI.Items.Add(this.btnPrismRegionTest);
-            this.grpWPFUI.Label = "WPF UI";
-            this.grpWPFUI.Name = "grpWPFUI";
+            this.rgWPFUI.Items.Add(this.btnLaunchCylon);
+            this.rgWPFUI.Items.Add(this.btnLaunchCylon2);
+            this.rgWPFUI.Items.Add(this.btnDxDockLayoutManager);
+            this.rgWPFUI.Items.Add(this.btnDxLayoutControl);
+            this.rgWPFUI.Items.Add(this.btnDxDockLayoutControl);
+            this.rgWPFUI.Items.Add(this.btnPrismRegionTest);
+            this.rgWPFUI.Label = "WPF UI";
+            this.rgWPFUI.Name = "rgWPFUI";
             // 
             // btnLaunchCylon
             // 
@@ -885,14 +864,6 @@
             this.btnDxDockLayoutControl.Name = "btnDxDockLayoutControl";
             this.btnDxDockLayoutControl.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDxDockLayoutControl_Click);
             // 
-            // btnEditControlPoints
-            // 
-            this.btnEditControlPoints.Label = "EditControlPoints";
-            this.btnEditControlPoints.Name = "btnEditControlPoints";
-            this.btnEditControlPoints.ScreenTip = "EditControlPoints";
-            this.btnEditControlPoints.SuperTip = "Launch the Super Duper Edit Control Points";
-            this.btnEditControlPoints.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnEditControlPoints_Click);
-            // 
             // btnPrismRegionTest
             // 
             this.btnPrismRegionTest.Label = "Prism Region Test";
@@ -901,12 +872,12 @@
             this.btnPrismRegionTest.SuperTip = "Calls ShowUserControl";
             this.btnPrismRegionTest.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPrismRegionTest_Click);
             // 
-            // grpMVVMExamples
+            // rgMVVMExamples
             // 
-            this.grpMVVMExamples.Items.Add(this.btnVNC_MVVM_V1);
-            this.grpMVVMExamples.Items.Add(this.btnVNC_MVVM_VM1);
-            this.grpMVVMExamples.Label = "MVVM Examples";
-            this.grpMVVMExamples.Name = "grpMVVMExamples";
+            this.rgMVVMExamples.Items.Add(this.btnVNC_MVVM_V1);
+            this.rgMVVMExamples.Items.Add(this.btnVNC_MVVM_VM1);
+            this.rgMVVMExamples.Label = "MVVM Examples";
+            this.rgMVVMExamples.Name = "rgMVVMExamples";
             // 
             // btnVNC_MVVM_V1
             // 
@@ -922,91 +893,22 @@
             this.btnVNC_MVVM_VM1.Name = "btnVNC_MVVM_VM1";
             this.btnVNC_MVVM_VM1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnVNC_MVVM_VM1_Click);
             // 
-            // rgSMARTS
-            // 
-            this.rgSMARTS.Items.Add(this.btnRetrive);
-            this.rgSMARTS.Items.Add(this.btnWebPage);
-            this.rgSMARTS.Items.Add(this.btnValidate);
-            this.rgSMARTS.Items.Add(this.btnReleatedProcess);
-            this.rgSMARTS.Items.Add(this.btnRelatedSystem);
-            this.rgSMARTS.Items.Add(this.btnRelatedIntfrastructure);
-            this.rgSMARTS.Items.Add(this.btnNavigateUp);
-            this.rgSMARTS.Items.Add(this.btnNavigateDown);
-            this.rgSMARTS.Items.Add(this.btnHilight);
-            this.rgSMARTS.Label = "SMARTS";
-            this.rgSMARTS.Name = "rgSMARTS";
-            // 
-            // btnRetrive
-            // 
-            this.btnRetrive.Label = "Retrive";
-            this.btnRetrive.Name = "btnRetrive";
-            this.btnRetrive.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnRetrive_Click);
-            // 
-            // btnWebPage
-            // 
-            this.btnWebPage.Label = "WebPage";
-            this.btnWebPage.Name = "btnWebPage";
-            this.btnWebPage.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnWebPage_Click);
-            // 
-            // btnValidate
-            // 
-            this.btnValidate.Label = "Validate";
-            this.btnValidate.Name = "btnValidate";
-            this.btnValidate.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnValidate_Click);
-            // 
-            // btnReleatedProcess
-            // 
-            this.btnReleatedProcess.Label = "Related Process";
-            this.btnReleatedProcess.Name = "btnReleatedProcess";
-            this.btnReleatedProcess.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnRelatedProcess_Click);
-            // 
-            // btnRelatedSystem
-            // 
-            this.btnRelatedSystem.Label = "Related System";
-            this.btnRelatedSystem.Name = "btnRelatedSystem";
-            this.btnRelatedSystem.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnRelatedSystem_Click);
-            // 
-            // btnRelatedIntfrastructure
-            // 
-            this.btnRelatedIntfrastructure.Label = "Related Infrastructure";
-            this.btnRelatedIntfrastructure.Name = "btnRelatedIntfrastructure";
-            this.btnRelatedIntfrastructure.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnRelatedIntfrastructure_Click);
-            // 
-            // btnNavigateUp
-            // 
-            this.btnNavigateUp.Label = "Navigate Up";
-            this.btnNavigateUp.Name = "btnNavigateUp";
-            this.btnNavigateUp.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnNavigateUp_Click);
-            // 
-            // btnNavigateDown
-            // 
-            this.btnNavigateDown.Label = "Navigate Down";
-            this.btnNavigateDown.Name = "btnNavigateDown";
-            this.btnNavigateDown.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnNavigateDown_Click);
-            // 
-            // btnHilight
-            // 
-            this.btnHilight.Label = "Hilight";
-            this.btnHilight.Name = "btnHilight";
-            this.btnHilight.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnHilight_Click);
-            // 
             // tabShapeSheet
             // 
-            this.tabShapeSheet.Groups.Add(this.grpSSDocumentObjectSections);
-            this.tabShapeSheet.Groups.Add(this.grpSSDocumentRowSections);
-            this.tabShapeSheet.Groups.Add(this.grpSSPageObjectSections);
-            this.tabShapeSheet.Groups.Add(this.grpSSPPageRowSections);
-            this.tabShapeSheet.Groups.Add(this.grpSSShapeObjectSections);
-            this.tabShapeSheet.Groups.Add(this.grpSSShapeRowSections);
-            this.tabShapeSheet.Groups.Add(this.grpCustomUI);
+            this.tabShapeSheet.Groups.Add(this.rgSSDocumentObjectSections);
+            this.tabShapeSheet.Groups.Add(this.rgSSDocumentRowSections);
+            this.tabShapeSheet.Groups.Add(this.rgSSPageObjectSections);
+            this.tabShapeSheet.Groups.Add(this.rgSSPPageRowSections);
+            this.tabShapeSheet.Groups.Add(this.rgSSShapeObjectSections);
+            this.tabShapeSheet.Groups.Add(this.rgSSShapeRowSections);
             this.tabShapeSheet.Label = "ShapeSheet";
             this.tabShapeSheet.Name = "tabShapeSheet";
             // 
-            // grpSSDocumentObjectSections
+            // rgSSDocumentObjectSections
             // 
-            this.grpSSDocumentObjectSections.Items.Add(this.btnDocumentProperties);
-            this.grpSSDocumentObjectSections.Label = "Document (Object)";
-            this.grpSSDocumentObjectSections.Name = "grpSSDocumentObjectSections";
+            this.rgSSDocumentObjectSections.Items.Add(this.btnDocumentProperties);
+            this.rgSSDocumentObjectSections.Label = "Document (Object)";
+            this.rgSSDocumentObjectSections.Name = "rgSSDocumentObjectSections";
             // 
             // btnDocumentProperties
             // 
@@ -1014,14 +916,14 @@
             this.btnDocumentProperties.Name = "btnDocumentProperties";
             this.btnDocumentProperties.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDocumentProperties_Click);
             // 
-            // grpSSDocumentRowSections
+            // rgSSDocumentRowSections
             // 
-            this.grpSSDocumentRowSections.Items.Add(this.btnDocumentHyperlinks);
-            this.grpSSDocumentRowSections.Items.Add(this.btnDocumentScratch);
-            this.grpSSDocumentRowSections.Items.Add(this.btnDocumentShapeData);
-            this.grpSSDocumentRowSections.Items.Add(this.btnDocumentUserDefinedCells);
-            this.grpSSDocumentRowSections.Label = "Document (Rows)";
-            this.grpSSDocumentRowSections.Name = "grpSSDocumentRowSections";
+            this.rgSSDocumentRowSections.Items.Add(this.btnDocumentHyperlinks);
+            this.rgSSDocumentRowSections.Items.Add(this.btnDocumentScratch);
+            this.rgSSDocumentRowSections.Items.Add(this.btnDocumentShapeData);
+            this.rgSSDocumentRowSections.Items.Add(this.btnDocumentUserDefinedCells);
+            this.rgSSDocumentRowSections.Label = "Document (Rows)";
+            this.rgSSDocumentRowSections.Name = "rgSSDocumentRowSections";
             // 
             // btnDocumentHyperlinks
             // 
@@ -1047,15 +949,15 @@
             this.btnDocumentUserDefinedCells.Name = "btnDocumentUserDefinedCells";
             this.btnDocumentUserDefinedCells.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDocumentUserDefinedCells_Click);
             // 
-            // grpSSPageObjectSections
+            // rgSSPageObjectSections
             // 
-            this.grpSSPageObjectSections.Items.Add(this.btnPageLayout);
-            this.grpSSPageObjectSections.Items.Add(this.btnPageProperties);
-            this.grpSSPageObjectSections.Items.Add(this.btnPrintProperties);
-            this.grpSSPageObjectSections.Items.Add(this.btnRulerAndGrid);
-            this.grpSSPageObjectSections.Items.Add(this.btnPageThemeProperties);
-            this.grpSSPageObjectSections.Label = "Page (Object)";
-            this.grpSSPageObjectSections.Name = "grpSSPageObjectSections";
+            this.rgSSPageObjectSections.Items.Add(this.btnPageLayout);
+            this.rgSSPageObjectSections.Items.Add(this.btnPageProperties);
+            this.rgSSPageObjectSections.Items.Add(this.btnPrintProperties);
+            this.rgSSPageObjectSections.Items.Add(this.btnRulerAndGrid);
+            this.rgSSPageObjectSections.Items.Add(this.btnPageThemeProperties);
+            this.rgSSPageObjectSections.Label = "Page (Object)";
+            this.rgSSPageObjectSections.Name = "rgSSPageObjectSections";
             // 
             // btnPageLayout
             // 
@@ -1087,17 +989,17 @@
             this.btnPageThemeProperties.Name = "btnPageThemeProperties";
             this.btnPageThemeProperties.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageThemeProperties_Click);
             // 
-            // grpSSPPageRowSections
+            // rgSSPPageRowSections
             // 
-            this.grpSSPPageRowSections.Items.Add(this.btnLayers);
-            this.grpSSPPageRowSections.Items.Add(this.btnPageActions);
-            this.grpSSPPageRowSections.Items.Add(this.btnPageActionTags);
-            this.grpSSPPageRowSections.Items.Add(this.btnPageHyperlinks);
-            this.grpSSPPageRowSections.Items.Add(this.btnPageScratch);
-            this.grpSSPPageRowSections.Items.Add(this.btnPageShapeData);
-            this.grpSSPPageRowSections.Items.Add(this.btnPageUserDefinedCells);
-            this.grpSSPPageRowSections.Label = "Page (Rows)";
-            this.grpSSPPageRowSections.Name = "grpSSPPageRowSections";
+            this.rgSSPPageRowSections.Items.Add(this.btnLayers);
+            this.rgSSPPageRowSections.Items.Add(this.btnPageActions);
+            this.rgSSPPageRowSections.Items.Add(this.btnPageActionTags);
+            this.rgSSPPageRowSections.Items.Add(this.btnPageHyperlinks);
+            this.rgSSPPageRowSections.Items.Add(this.btnPageScratch);
+            this.rgSSPPageRowSections.Items.Add(this.btnPageShapeData);
+            this.rgSSPPageRowSections.Items.Add(this.btnPageUserDefinedCells);
+            this.rgSSPPageRowSections.Label = "Page (Rows)";
+            this.rgSSPPageRowSections.Name = "rgSSPPageRowSections";
             // 
             // btnLayers
             // 
@@ -1141,31 +1043,31 @@
             this.btnPageUserDefinedCells.Name = "btnPageUserDefinedCells";
             this.btnPageUserDefinedCells.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPageUserDefinedCells_Click);
             // 
-            // grpSSShapeObjectSections
+            // rgSSShapeObjectSections
             // 
-            this.grpSSShapeObjectSections.Items.Add(this.btn1DEndpoints);
-            this.grpSSShapeObjectSections.Items.Add(this.btn3DRotationProperties);
-            this.grpSSShapeObjectSections.Items.Add(this.btnAdditionalEffectProperties);
-            this.grpSSShapeObjectSections.Items.Add(this.btnBevelProperties);
-            this.grpSSShapeObjectSections.Items.Add(this.btnChangeShapeBehavior);
-            this.grpSSShapeObjectSections.Items.Add(this.btnEvents);
-            this.grpSSShapeObjectSections.Items.Add(this.btnFillFormat);
-            this.grpSSShapeObjectSections.Items.Add(this.btnGlueInfo);
-            this.grpSSShapeObjectSections.Items.Add(this.btnGradientProperties);
-            this.grpSSShapeObjectSections.Items.Add(this.btnGroupProperties);
-            this.grpSSShapeObjectSections.Items.Add(this.btnImageProperties);
-            this.grpSSShapeObjectSections.Items.Add(this.btnLayerMembership);
-            this.grpSSShapeObjectSections.Items.Add(this.btnLineFormat);
-            this.grpSSShapeObjectSections.Items.Add(this.btnMiscelleaneous);
-            this.grpSSShapeObjectSections.Items.Add(this.btnProtection);
-            this.grpSSShapeObjectSections.Items.Add(this.btnQuickStyle);
-            this.grpSSShapeObjectSections.Items.Add(this.btnShapeLayout);
-            this.grpSSShapeObjectSections.Items.Add(this.btnShapeTransform);
-            this.grpSSShapeObjectSections.Items.Add(this.btnTextBlockFormat);
-            this.grpSSShapeObjectSections.Items.Add(this.btnTextTransform);
-            this.grpSSShapeObjectSections.Items.Add(this.btnThemeProperties);
-            this.grpSSShapeObjectSections.Label = "Shape (Object)";
-            this.grpSSShapeObjectSections.Name = "grpSSShapeObjectSections";
+            this.rgSSShapeObjectSections.Items.Add(this.btn1DEndpoints);
+            this.rgSSShapeObjectSections.Items.Add(this.btn3DRotationProperties);
+            this.rgSSShapeObjectSections.Items.Add(this.btnAdditionalEffectProperties);
+            this.rgSSShapeObjectSections.Items.Add(this.btnBevelProperties);
+            this.rgSSShapeObjectSections.Items.Add(this.btnChangeShapeBehavior);
+            this.rgSSShapeObjectSections.Items.Add(this.btnEvents);
+            this.rgSSShapeObjectSections.Items.Add(this.btnFillFormat);
+            this.rgSSShapeObjectSections.Items.Add(this.btnGlueInfo);
+            this.rgSSShapeObjectSections.Items.Add(this.btnGradientProperties);
+            this.rgSSShapeObjectSections.Items.Add(this.btnGroupProperties);
+            this.rgSSShapeObjectSections.Items.Add(this.btnImageProperties);
+            this.rgSSShapeObjectSections.Items.Add(this.btnLayerMembership);
+            this.rgSSShapeObjectSections.Items.Add(this.btnLineFormat);
+            this.rgSSShapeObjectSections.Items.Add(this.btnMiscelleaneous);
+            this.rgSSShapeObjectSections.Items.Add(this.btnProtection);
+            this.rgSSShapeObjectSections.Items.Add(this.btnQuickStyle);
+            this.rgSSShapeObjectSections.Items.Add(this.btnShapeLayout);
+            this.rgSSShapeObjectSections.Items.Add(this.btnShapeTransform);
+            this.rgSSShapeObjectSections.Items.Add(this.btnTextBlockFormat);
+            this.rgSSShapeObjectSections.Items.Add(this.btnTextTransform);
+            this.rgSSShapeObjectSections.Items.Add(this.btnThemeProperties);
+            this.rgSSShapeObjectSections.Label = "Shape (Object)";
+            this.rgSSShapeObjectSections.Name = "rgSSShapeObjectSections";
             // 
             // btn1DEndpoints
             // 
@@ -1329,23 +1231,23 @@
             this.btnThemeProperties.SuperTip = "Launch the Super Duper Edit Text UI";
             this.btnThemeProperties.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnShapeThemeProperties_Click);
             // 
-            // grpSSShapeRowSections
+            // rgSSShapeRowSections
             // 
-            this.grpSSShapeRowSections.Items.Add(this.btnActions);
-            this.grpSSShapeRowSections.Items.Add(this.btnActionTags);
-            this.grpSSShapeRowSections.Items.Add(this.btnCharacter);
-            this.grpSSShapeRowSections.Items.Add(this.btnConnectionPoints);
-            this.grpSSShapeRowSections.Items.Add(this.btnControls);
-            this.grpSSShapeRowSections.Items.Add(this.btnGeometry);
-            this.grpSSShapeRowSections.Items.Add(this.btnGradientStops);
-            this.grpSSShapeRowSections.Items.Add(this.btnParagraph);
-            this.grpSSShapeRowSections.Items.Add(this.btnShapeHyperlinks);
-            this.grpSSShapeRowSections.Items.Add(this.btnShapeScratch);
-            this.grpSSShapeRowSections.Items.Add(this.btnShapeShapeData);
-            this.grpSSShapeRowSections.Items.Add(this.btnTabs);
-            this.grpSSShapeRowSections.Items.Add(this.btnShapeUserDefinedCells);
-            this.grpSSShapeRowSections.Label = "Shape (Rows)";
-            this.grpSSShapeRowSections.Name = "grpSSShapeRowSections";
+            this.rgSSShapeRowSections.Items.Add(this.btnActions);
+            this.rgSSShapeRowSections.Items.Add(this.btnActionTags);
+            this.rgSSShapeRowSections.Items.Add(this.btnCharacter);
+            this.rgSSShapeRowSections.Items.Add(this.btnConnectionPoints);
+            this.rgSSShapeRowSections.Items.Add(this.btnControls);
+            this.rgSSShapeRowSections.Items.Add(this.btnGeometry);
+            this.rgSSShapeRowSections.Items.Add(this.btnGradientStops);
+            this.rgSSShapeRowSections.Items.Add(this.btnParagraph);
+            this.rgSSShapeRowSections.Items.Add(this.btnShapeHyperlinks);
+            this.rgSSShapeRowSections.Items.Add(this.btnShapeScratch);
+            this.rgSSShapeRowSections.Items.Add(this.btnShapeShapeData);
+            this.rgSSShapeRowSections.Items.Add(this.btnTabs);
+            this.rgSSShapeRowSections.Items.Add(this.btnShapeUserDefinedCells);
+            this.rgSSShapeRowSections.Label = "Shape (Rows)";
+            this.rgSSShapeRowSections.Name = "rgSSShapeRowSections";
             // 
             // btnActions
             // 
@@ -1425,13 +1327,27 @@
             this.btnShapeUserDefinedCells.Name = "btnShapeUserDefinedCells";
             this.btnShapeUserDefinedCells.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnShapeUserDefinedCells_Click);
             // 
-            // grpCustomUI
+            // tabCustomUI
             // 
-            this.grpCustomUI.Items.Add(this.btnEditControlRows);
-            this.grpCustomUI.Items.Add(this.btnEditParagraph);
-            this.grpCustomUI.Items.Add(this.btnEditText);
-            this.grpCustomUI.Label = "Custom UI";
-            this.grpCustomUI.Name = "grpCustomUI";
+            this.tabCustomUI.Groups.Add(this.group1);
+            this.tabCustomUI.Groups.Add(this.rgSMARTS);
+            this.tabCustomUI.Label = "Custom UI";
+            this.tabCustomUI.Name = "tabCustomUI";
+            // 
+            // group1
+            // 
+            this.group1.Items.Add(this.button4);
+            this.group1.Items.Add(this.btnEditControlRows);
+            this.group1.Items.Add(this.btnEditParagraph);
+            this.group1.Items.Add(this.btnEditText);
+            this.group1.Items.Add(this.btnEditControlPoints);
+            this.group1.Label = "group1";
+            this.group1.Name = "group1";
+            // 
+            // button4
+            // 
+            this.button4.Label = "XML Pages Commands";
+            this.button4.Name = "button4";
             // 
             // btnEditControlRows
             // 
@@ -1439,7 +1355,6 @@
             this.btnEditControlRows.Name = "btnEditControlRows";
             this.btnEditControlRows.ScreenTip = "Edit Text";
             this.btnEditControlRows.SuperTip = "Launch the Super Duper Edit Text UI";
-            this.btnEditControlRows.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnEditControlRows_Click);
             // 
             // btnEditParagraph
             // 
@@ -1447,7 +1362,6 @@
             this.btnEditParagraph.Name = "btnEditParagraph";
             this.btnEditParagraph.ScreenTip = "Edit Text";
             this.btnEditParagraph.SuperTip = "Launch the Super Duper Edit Text UI";
-            this.btnEditParagraph.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnEditParagraph_Click);
             // 
             // btnEditText
             // 
@@ -1455,7 +1369,72 @@
             this.btnEditText.Name = "btnEditText";
             this.btnEditText.ScreenTip = "Edit Text";
             this.btnEditText.SuperTip = "Launch the Super Duper Edit Text UI";
-            this.btnEditText.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnEditText_Click);
+            // 
+            // btnEditControlPoints
+            // 
+            this.btnEditControlPoints.Label = "EditControlPoints";
+            this.btnEditControlPoints.Name = "btnEditControlPoints";
+            this.btnEditControlPoints.ScreenTip = "EditControlPoints";
+            this.btnEditControlPoints.SuperTip = "Launch the Super Duper Edit Control Points";
+            // 
+            // rgSMARTS
+            // 
+            this.rgSMARTS.Items.Add(this.btnRetrive);
+            this.rgSMARTS.Items.Add(this.btnWebPage);
+            this.rgSMARTS.Items.Add(this.btnValidate);
+            this.rgSMARTS.Items.Add(this.btnReleatedProcess);
+            this.rgSMARTS.Items.Add(this.btnRelatedSystem);
+            this.rgSMARTS.Items.Add(this.btnRelatedIntfrastructure);
+            this.rgSMARTS.Items.Add(this.btnNavigateUp);
+            this.rgSMARTS.Items.Add(this.btnNavigateDown);
+            this.rgSMARTS.Items.Add(this.btnHilight);
+            this.rgSMARTS.Label = "SMARTS";
+            this.rgSMARTS.Name = "rgSMARTS";
+            // 
+            // btnRetrive
+            // 
+            this.btnRetrive.Label = "Retrive";
+            this.btnRetrive.Name = "btnRetrive";
+            // 
+            // btnWebPage
+            // 
+            this.btnWebPage.Label = "WebPage";
+            this.btnWebPage.Name = "btnWebPage";
+            // 
+            // btnValidate
+            // 
+            this.btnValidate.Label = "Validate";
+            this.btnValidate.Name = "btnValidate";
+            // 
+            // btnReleatedProcess
+            // 
+            this.btnReleatedProcess.Label = "Related Process";
+            this.btnReleatedProcess.Name = "btnReleatedProcess";
+            // 
+            // btnRelatedSystem
+            // 
+            this.btnRelatedSystem.Label = "Related System";
+            this.btnRelatedSystem.Name = "btnRelatedSystem";
+            // 
+            // btnRelatedIntfrastructure
+            // 
+            this.btnRelatedIntfrastructure.Label = "Related Infrastructure";
+            this.btnRelatedIntfrastructure.Name = "btnRelatedIntfrastructure";
+            // 
+            // btnNavigateUp
+            // 
+            this.btnNavigateUp.Label = "Navigate Up";
+            this.btnNavigateUp.Name = "btnNavigateUp";
+            // 
+            // btnNavigateDown
+            // 
+            this.btnNavigateDown.Label = "Navigate Down";
+            this.btnNavigateDown.Name = "btnNavigateDown";
+            // 
+            // btnHilight
+            // 
+            this.btnHilight.Label = "Hilight";
+            this.btnHilight.Name = "btnHilight";
             // 
             // button2
             // 
@@ -1470,14 +1449,20 @@
             this.button3.Name = "button3";
             this.button3.ScreenTip = "Launch WPF Command Cockpit";
             // 
+            // btnXMLPagesCommands
+            // 
+            this.btnXMLPagesCommands.Label = "XML Pages Commands";
+            this.btnXMLPagesCommands.Name = "btnXMLPagesCommands";
+            // 
             // Ribbon
             // 
             this.Name = "Ribbon";
             this.RibbonType = "Microsoft.Visio.Drawing";
             this.Tabs.Add(this.tab1);
             this.Tabs.Add(this.tabSupportTools);
-            this.Tabs.Add(this.tabUILaunch);
             this.Tabs.Add(this.tabShapeSheet);
+            this.Tabs.Add(this.tabCustomUI);
+            this.Tabs.Add(this.tabUILaunch);
             this.Load += new Microsoft.Office.Tools.Ribbon.RibbonUIEventHandler(this.Ribbon_Load);
             this.tab1.ResumeLayout(false);
             this.tab1.PerformLayout();
@@ -1491,36 +1476,38 @@
             this.rgLayerActions.PerformLayout();
             this.rgShapeActions.ResumeLayout(false);
             this.rgShapeActions.PerformLayout();
-            this.grpDebug.ResumeLayout(false);
-            this.grpDebug.PerformLayout();
+            this.rgDebug.ResumeLayout(false);
+            this.rgDebug.PerformLayout();
             this.grpHelp.ResumeLayout(false);
             this.grpHelp.PerformLayout();
             this.tabUILaunch.ResumeLayout(false);
             this.tabUILaunch.PerformLayout();
-            this.grpUILaunch.ResumeLayout(false);
-            this.grpUILaunch.PerformLayout();
-            this.grpWPFUI.ResumeLayout(false);
-            this.grpWPFUI.PerformLayout();
-            this.grpMVVMExamples.ResumeLayout(false);
-            this.grpMVVMExamples.PerformLayout();
-            this.rgSMARTS.ResumeLayout(false);
-            this.rgSMARTS.PerformLayout();
+            this.rgUILaunch.ResumeLayout(false);
+            this.rgUILaunch.PerformLayout();
+            this.rgWPFUI.ResumeLayout(false);
+            this.rgWPFUI.PerformLayout();
+            this.rgMVVMExamples.ResumeLayout(false);
+            this.rgMVVMExamples.PerformLayout();
             this.tabShapeSheet.ResumeLayout(false);
             this.tabShapeSheet.PerformLayout();
-            this.grpSSDocumentObjectSections.ResumeLayout(false);
-            this.grpSSDocumentObjectSections.PerformLayout();
-            this.grpSSDocumentRowSections.ResumeLayout(false);
-            this.grpSSDocumentRowSections.PerformLayout();
-            this.grpSSPageObjectSections.ResumeLayout(false);
-            this.grpSSPageObjectSections.PerformLayout();
-            this.grpSSPPageRowSections.ResumeLayout(false);
-            this.grpSSPPageRowSections.PerformLayout();
-            this.grpSSShapeObjectSections.ResumeLayout(false);
-            this.grpSSShapeObjectSections.PerformLayout();
-            this.grpSSShapeRowSections.ResumeLayout(false);
-            this.grpSSShapeRowSections.PerformLayout();
-            this.grpCustomUI.ResumeLayout(false);
-            this.grpCustomUI.PerformLayout();
+            this.rgSSDocumentObjectSections.ResumeLayout(false);
+            this.rgSSDocumentObjectSections.PerformLayout();
+            this.rgSSDocumentRowSections.ResumeLayout(false);
+            this.rgSSDocumentRowSections.PerformLayout();
+            this.rgSSPageObjectSections.ResumeLayout(false);
+            this.rgSSPageObjectSections.PerformLayout();
+            this.rgSSPPageRowSections.ResumeLayout(false);
+            this.rgSSPPageRowSections.PerformLayout();
+            this.rgSSShapeObjectSections.ResumeLayout(false);
+            this.rgSSShapeObjectSections.PerformLayout();
+            this.rgSSShapeRowSections.ResumeLayout(false);
+            this.rgSSShapeRowSections.PerformLayout();
+            this.tabCustomUI.ResumeLayout(false);
+            this.tabCustomUI.PerformLayout();
+            this.group1.ResumeLayout(false);
+            this.group1.PerformLayout();
+            this.rgSMARTS.ResumeLayout(false);
+            this.rgSMARTS.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1529,7 +1516,7 @@
 
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
         private Microsoft.Office.Tools.Ribbon.RibbonTab tabSupportTools;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpDebug;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup rgDebug;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDebugWindow;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnWatchWindow;
         internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox chkEnableAppEvents;
@@ -1555,7 +1542,6 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup rgShapeActions;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnAddNavLinks;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnAddHyperLink;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnAddDefaultLayers_Page;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnPrintPage;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnSavePage;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup rgLayerActions;
@@ -1574,11 +1560,8 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnSortAllPages;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDisplayPageNames;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnSyncPageNames;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton button1;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnSyncPageNamesPage;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnRemoveLayers_Page;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnUpdatePageNameShapesPage;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnXMLPagesCommands;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn1PtMargins;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn2PtMargins;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnMoveToBackgroundLayer;
@@ -1595,35 +1578,21 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDeletePages;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnSavePages;
         private Microsoft.Office.Tools.Ribbon.RibbonTab tabUILaunch;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpUILaunch;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup rgUILaunch;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnWindowHostLocal;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button2;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button3;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpWPFUI;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup rgWPFUI;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnLaunchCylon;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnEditControlPoints;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup rgSMARTS;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnRetrive;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnWebPage;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnValidate;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnReleatedProcess;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnRelatedSystem;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnRelatedIntfrastructure;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnNavigateUp;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnNavigateDown;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnHilight;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnThemedWindowHost;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnLaunchCylon2;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnPrismRegionTest;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnEditText;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDxWindowHost;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnWindowHostVNC;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDxDockLayoutManager;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnThemedWindowHostModal;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDxLayoutControl;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDxDockLayoutControl;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnEditParagraph;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnEditControlRows;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnShapeTransform;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnProtection;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnMiscelleaneous;
@@ -1641,19 +1610,18 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnQuickStyle;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnChangeShapeBehavior;
         private Microsoft.Office.Tools.Ribbon.RibbonTab tabShapeSheet;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpSSShapeObjectSections;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup rgSSShapeObjectSections;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn3DRotationProperties;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpSSShapeRowSections;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup rgSSShapeRowSections;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn1DEndpoints;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpCustomUI;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnShapeUserDefinedCells;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnLayerMembership;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnGroupProperties;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnTextTransform;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpSSDocumentRowSections;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpSSDocumentObjectSections;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpSSPPageRowSections;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpSSPageObjectSections;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup rgSSDocumentRowSections;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup rgSSDocumentObjectSections;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup rgSSPPageRowSections;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup rgSSPageObjectSections;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDocumentUserDefinedCells;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDocumentHyperlinks;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnPageUserDefinedCells;
@@ -1683,10 +1651,30 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnPageActions;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnPageActionTags;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnPageThemeProperties;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpMVVMExamples;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup rgMVVMExamples;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnVNC_MVVM_V1;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnVNC_MVVM_VM1;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDuplicatePage;
+        internal Microsoft.Office.Tools.Ribbon.RibbonTab tabCustomUI;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button4;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnXMLPagesCommands;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnEditControlRows;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnEditParagraph;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnEditText;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup rgSMARTS;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnRetrive;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnWebPage;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnValidate;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnReleatedProcess;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnRelatedSystem;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnRelatedIntfrastructure;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnNavigateUp;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnNavigateDown;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnHilight;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnAddDefaultLayers_Page;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnRemoveLayers_Page;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnEditControlPoints;
     }
 
     partial class ThisRibbonCollection

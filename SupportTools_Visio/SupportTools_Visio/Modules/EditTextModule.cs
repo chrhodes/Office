@@ -16,16 +16,16 @@ namespace SupportTools_Visio.Modules
         // 01
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            long startTicks = Log.Trace("Enter", Common.LOG_APPNAME, 0);
+            long startTicks = Log.Trace("Enter", Common.LOG_CATEGORY, 0);
 
 
-            Log.Trace("Exit", Common.LOG_APPNAME, 0, startTicks);
+            Log.Trace("Exit", Common.LOG_CATEGORY, 0, startTicks);
         }
 
         // 02
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            long startTicks = Log.Trace("Enter", Common.LOG_APPNAME, 0);
+            long startTicks = Log.Trace("Enter", Common.LOG_CATEGORY, 0);
 
             var regionManager = containerProvider.Resolve<IRegionManager>();
 
@@ -55,7 +55,7 @@ namespace SupportTools_Visio.Modules
 
             regionManager.RegisterViewWithRegion(RegionNames.EditParagraphRegion, typeof(EditParagraph));
 
-            Log.Trace("Exit", Common.LOG_APPNAME, 0, startTicks);
+            Log.Trace("Exit", Common.LOG_CATEGORY, 0, startTicks);
         }
     }
 }

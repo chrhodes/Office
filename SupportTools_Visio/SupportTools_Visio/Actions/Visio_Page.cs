@@ -31,7 +31,7 @@ namespace SupportTools_Visio.Actions
 
         public static void AddDefaultLayers()
         {
-            VNC.Log.Trace("", Common.LOG_APPNAME, 0);
+            VNC.Log.Trace("", Common.LOG_CATEGORY, 0);
 
             VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
                 System.Reflection.MethodInfo.GetCurrentMethod().Name));
@@ -89,7 +89,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
 
             return layer;
@@ -97,7 +97,7 @@ namespace SupportTools_Visio.Actions
 
         public static void AutoSizePageOn()
         {
-            VNC.Log.Trace("", Common.LOG_APPNAME, 0);
+            VNC.Log.Trace("", Common.LOG_CATEGORY, 0);
 
             VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
                 System.Reflection.MethodInfo.GetCurrentMethod().Name));
@@ -111,7 +111,7 @@ namespace SupportTools_Visio.Actions
 
         public static void AutoSizePageOff()
         {
-            VNC.Log.Trace("", Common.LOG_APPNAME, 0);
+            VNC.Log.Trace("", Common.LOG_CATEGORY, 0);
 
             VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
                 System.Reflection.MethodInfo.GetCurrentMethod().Name));
@@ -192,7 +192,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
                 // No navigation Links Page perhaps
             }
         }
@@ -246,7 +246,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
                 // No navigation Links Page perhaps
             }
         }
@@ -551,7 +551,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -779,7 +779,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -826,7 +826,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -867,7 +867,7 @@ namespace SupportTools_Visio.Actions
             {
                 // TODO(crhodes):
                 // Decide if what to show this to user.  Layer maybe locked.
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -911,7 +911,7 @@ namespace SupportTools_Visio.Actions
             {
                 // TODO(crhodes):
                 // Decide if what to show this to user.  Layer maybe locked.
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
 
             VisioHelper.DisplayInWatchWindow("Exit");
@@ -1006,7 +1006,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
 
             // From Macro Recorder
@@ -1059,7 +1059,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
 
             }
             finally
@@ -1282,7 +1282,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, Common.LOG_APPNAME);
+                    Log.Error(ex, Common.LOG_CATEGORY);
                 }
             }
         }
@@ -1408,7 +1408,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, Common.LOG_APPNAME);
+                    Log.Error(ex, Common.LOG_CATEGORY);
                 }
             }
         }
@@ -1447,7 +1447,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, Common.LOG_APPNAME);
+                    Log.Error(ex, Common.LOG_CATEGORY);
                 }
             }
         }
@@ -1563,7 +1563,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 

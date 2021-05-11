@@ -21,7 +21,7 @@ namespace SupportTools_Visio.Presentation.Views
 
         public DuplicatePage()
         {
-            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.LOG_CATEGORY);
 
             InitializeComponent();
 
@@ -34,12 +34,12 @@ namespace SupportTools_Visio.Presentation.Views
 
             InitializeView();
 
-            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         public DuplicatePage(IDuplicatePageViewModel viewModel)
         {
-            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.LOG_CATEGORY);
 
             InitializeComponent();
 
@@ -47,7 +47,7 @@ namespace SupportTools_Visio.Presentation.Views
 
             InitializeView();
 
-            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         private void InitializeView()

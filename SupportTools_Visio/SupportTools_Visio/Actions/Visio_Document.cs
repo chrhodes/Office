@@ -241,7 +241,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
 
             }
 
@@ -275,7 +275,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, Common.LOG_APPNAME);
+                    Log.Error(ex, Common.LOG_CATEGORY);
                 }
             }
         }
@@ -396,7 +396,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -435,7 +435,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, Common.LOG_APPNAME);
+                    Log.Error(ex, Common.LOG_CATEGORY);
                 }
             }
         }
@@ -475,7 +475,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -496,7 +496,7 @@ namespace SupportTools_Visio.Actions
         public static void RenamePages(string searchExpression, string replacementExpression,
             RegexOptions regexOptions = RegexOptions.None)
         {
-            VNC.Log.Trace("", Common.LOG_APPNAME, 0);
+            VNC.Log.Trace("", Common.LOG_CATEGORY, 0);
 
             VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
                 System.Reflection.MethodInfo.GetCurrentMethod().Name));
@@ -518,7 +518,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, Common.LOG_APPNAME);
+                    Log.Error(ex, Common.LOG_CATEGORY);
                 }
             }
         }
@@ -541,7 +541,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, Common.LOG_APPNAME);
+                    Log.Error(ex, Common.LOG_CATEGORY);
                 }
             }
         }
@@ -597,7 +597,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -727,7 +727,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
 
             System.Diagnostics.Debug.WriteLine(string.Format("Shapes on Page: {0}", page.Shapes.Count));

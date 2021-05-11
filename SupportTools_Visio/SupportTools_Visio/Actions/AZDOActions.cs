@@ -99,8 +99,8 @@ namespace SupportTools_Visio.Actions
 
 
             if (relatedLinkCount > 250)
-                MessageBox.Show($"Great than 250 Links ({relatedLinkCount}), removing Test Cases");
             {
+                MessageBox.Show($"Great than 250 Links ({relatedLinkCount}), removing Test Cases");
                 wiql.Query += " AND Target.[System.WorkItemType] <> 'Test Case'";
             }
 

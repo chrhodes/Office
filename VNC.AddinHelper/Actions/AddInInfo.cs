@@ -22,7 +22,7 @@ namespace VNC.AddinHelper
 
         #region "Private Constants and Variables"
 
-        private const string _MODULE_NAME = Common.PROJECT_NAME + "AddInInfo";
+        private const string _MODULE_NAME = Common.LOG_CATEGORY + "AddInInfo";
         private const string _NAME = "AddInInfo";
         private const string _BITMAP_NAME = "AddinInfo.bmp";
         private const string _CAPTION = "AddInInfo";

@@ -20,8 +20,8 @@
 
 		public static void DisplayInWatchWindow(string outputLine)
 		{
-            Log.APPLICATION($"{outputLine}", Common.PROJECT_NAME);
-			Common.WriteToWatchWindow(string.Format("{0}", outputLine));
+            Log.APPLICATION($"{outputLine}", Common.LOG_CATEGORY);
+			Common.WriteToWatchWindow($"{outputLine}");
 		}
 	}
 }

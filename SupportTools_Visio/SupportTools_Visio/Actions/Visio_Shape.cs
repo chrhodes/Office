@@ -82,7 +82,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, Common.LOG_APPNAME);
+                    Log.Error(ex, Common.LOG_CATEGORY);
                 }
             }
 
@@ -127,7 +127,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -289,7 +289,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -376,7 +376,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -550,7 +550,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -569,7 +569,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
                 
             if (backgroundLayer == null)
@@ -673,7 +673,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -705,7 +705,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -952,7 +952,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -1016,7 +1016,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
 
         }
@@ -1085,7 +1085,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -1170,7 +1170,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -1199,7 +1199,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -1223,7 +1223,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -1279,7 +1279,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -1335,7 +1335,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -1386,7 +1386,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -1420,7 +1420,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -1465,7 +1465,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -1479,7 +1479,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, Common.LOG_APPNAME);
+                    Log.Error(ex, Common.LOG_CATEGORY);
                 }
             }
         }
@@ -1498,7 +1498,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, Common.LOG_APPNAME);
+                    Log.Error(ex, Common.LOG_CATEGORY);
                 }
             }
         }
@@ -1515,7 +1515,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, Common.LOG_APPNAME);
+                    Log.Error(ex, Common.LOG_CATEGORY);
                 }
             }
         }
@@ -1532,7 +1532,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, Common.LOG_APPNAME);
+                    Log.Error(ex, Common.LOG_CATEGORY);
                 }
             }
         }
@@ -1555,7 +1555,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, Common.LOG_APPNAME);
+                    Log.Error(ex, Common.LOG_CATEGORY);
                 }
             }
         }
@@ -1578,7 +1578,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, Common.LOG_APPNAME);
+                    Log.Error(ex, Common.LOG_CATEGORY);
                 }
             }
         }
@@ -1599,7 +1599,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, Common.LOG_APPNAME);
+                    Log.Error(ex, Common.LOG_CATEGORY);
                 }
             }
         }
@@ -1614,7 +1614,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, Common.LOG_APPNAME);
+                    Log.Error(ex, Common.LOG_CATEGORY);
                 }
             }
         }
@@ -2786,7 +2786,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -2814,7 +2814,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -2847,7 +2847,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
         public static void Set_BevelPropertiesWrapper_Section(Shape shape, BevelProperties bevelProperties)
@@ -2873,7 +2873,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -2891,7 +2891,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -2933,7 +2933,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -2955,7 +2955,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -2989,7 +2989,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -3005,7 +3005,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -3030,7 +3030,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -3060,7 +3060,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -3078,7 +3078,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -3120,7 +3120,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -3148,7 +3148,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -3177,7 +3177,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -3216,7 +3216,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -3239,7 +3239,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -3263,7 +3263,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -3294,7 +3294,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -3318,7 +3318,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -3339,7 +3339,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -3361,7 +3361,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -3382,7 +3382,7 @@ namespace SupportTools_Visio.Actions
             }
             catch (Exception ex)
             {
-                Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 

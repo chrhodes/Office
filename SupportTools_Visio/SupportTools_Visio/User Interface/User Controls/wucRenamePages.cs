@@ -20,14 +20,14 @@ namespace SupportTools_Visio.User_Interface.User_Controls
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            VNC.Log.Trace("", Common.LOG_APPNAME, 0);
+            VNC.Log.Trace("", Common.LOG_CATEGORY, 0);
             VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
                 System.Reflection.MethodInfo.GetCurrentMethod().Name));
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
-            VNC.Log.Trace("", Common.LOG_APPNAME, 0);
+            VNC.Log.Trace("", Common.LOG_CATEGORY, 0);
             VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
                 System.Reflection.MethodInfo.GetCurrentMethod().Name));
         }
@@ -38,7 +38,7 @@ namespace SupportTools_Visio.User_Interface.User_Controls
 
         private void btnExecuteCommand_Click(object sender, RoutedEventArgs e)
         {
-            VNC.Log.Trace("", Common.LOG_APPNAME, 0);
+            VNC.Log.Trace("", Common.LOG_CATEGORY, 0);
             // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
 
             int undoScope = Globals.ThisAddIn.Application.BeginUndoScope("ParseCommand");
