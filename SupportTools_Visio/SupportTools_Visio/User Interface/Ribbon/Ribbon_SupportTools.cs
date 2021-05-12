@@ -179,8 +179,8 @@ namespace SupportTools_Visio
         {
             Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
-            var frm = new User_Interface.Forms.frmMovePages();
-            frm.Show();
+            //var frm = new User_Interface.Forms.frmMovePages();
+            //frm.Show();
 
             Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
         }
@@ -207,8 +207,8 @@ namespace SupportTools_Visio
         {
             Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
-            var frm = new User_Interface.Forms.frmRenamePages();
-            frm.Show();
+            //var frm = new User_Interface.Forms.frmRenamePages();
+            //frm.Show();
 
             Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
         }
