@@ -1040,41 +1040,6 @@ namespace SupportTools_Visio.Events
 
                     #endregion
 
-                    case "DrillDown":
-                        ShapeSheetActions.DrillDown(app, doc, page, shape, shapeu);
-                        break;
-
-                    case "DrillUp":
-                        ShapeSheetActions.DrillUp(app, doc, page, shape, shapeu);
-                        break;
-
-                    case "EditVisio":
-                        ShapeSheetActions.EditVisio(app, doc, page, shape, shapeu);
-                        break;
-
-                    case "Properties":
-                        ShapeSheetActions.Properties(app, doc, page, shape, shapeu);
-                        break;
-
-                    case "RelatedProcess":
-                        ShapeSheetActions.RelatedProcess(app, doc, page, shape, shapeu);
-                        break;
-
-                    case "RelatedSystem":
-                        ShapeSheetActions.RelatedSystem(app, doc, page, shape, shapeu);
-                        break;
-
-                    case "RelatedInfrastructure":
-                        ShapeSheetActions.RelatedInfrastructure(app, doc, page, shape, shapeu);
-                        break;
-
-                    case "Retrieve":
-                        ShapeSheetActions.Retrieve(app, doc, page, shape, shapeu);
-                        break;
-
-                    case "Validate":
-                        ShapeSheetActions.Validate(app, doc, page, shape, shapeu);
-                        break;
                 }
             }
             catch (Exception ex)

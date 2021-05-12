@@ -924,7 +924,6 @@
       <DependentUpon>UserDefinedCells.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Views\ViewA.xaml.cs" />
-    <Compile Include="ShapeSheetActions.cs" />
     <Compile Include="Actions\Class1.cs" />
     <Compile Include="Actions\Visio_PageFormatting.cs" />
     <Compile Include="Common.cs" />
@@ -934,66 +933,6 @@
     </Compile>
     <Compile Include="User Interface\CustomFormat.cs" />
     <Compile Include="User Interface\DisplayOptions.cs" />
-    <Compile Include="User Interface\Forms\frmEditVisio.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="User Interface\Forms\frmEditVisio.Designer.cs">
-      <DependentUpon>frmEditVisio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User Interface\Forms\frmRelateShape.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="User Interface\Forms\frmRelateShape.Designer.cs">
-      <DependentUpon>frmRelateShape.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User Interface\Forms\frmRelateShapes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="User Interface\Forms\frmRelateShapes.Designer.cs">
-      <DependentUpon>frmRelateShapes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User Interface\Forms\frmMovePages.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="User Interface\Forms\frmMovePages.Designer.cs">
-      <DependentUpon>frmMovePages.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User Interface\Forms\frmRetrieveShape.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="User Interface\Forms\frmRetrieveShape.Designer.cs">
-      <DependentUpon>frmRetrieveShape.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User Interface\Forms\frmShapeEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="User Interface\Forms\frmShapeEditor.Designer.cs">
-      <DependentUpon>frmShapeEditor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User Interface\Forms\frmValidate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="User Interface\Forms\frmValidate.Designer.cs">
-      <DependentUpon>frmValidate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User Interface\Forms\frmRenamePages.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="User Interface\Forms\frmRenamePages.Designer.cs">
-      <DependentUpon>frmRenamePages.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User Interface\Forms\frmWPFUserInterface.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="User Interface\Forms\frmWPFUserInterface.Designer.cs">
-      <DependentUpon>frmWPFUserInterface.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User Interface\Forms\frmXMLCommands.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="User Interface\Forms\frmXMLCommands.Designer.cs">
-      <DependentUpon>frmXMLCommands.cs</DependentUpon>
-    </Compile>
     <Compile Include="User Interface\Help.cs" />
     <Compile Include="User Interface\PreserveColumnOrderBehavior.cs" />
     <Compile Include="User Interface\Ribbon\Ribbon_ShapeSheet.cs">
@@ -1014,42 +953,18 @@
     <Compile Include="User Interface\Ribbon\Ribbon.designer.cs">
       <DependentUpon>Ribbon.cs</DependentUpon>
     </Compile>
-    <Compile Include="User Interface\Task Panes\TaskPane_AppUtil.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="User Interface\Task Panes\TaskPane_AppUtil.designer.cs">
-      <DependentUpon>TaskPane_AppUtil.cs</DependentUpon>
-    </Compile>
     <Compile Include="User Interface\IRefresh.cs" />
     <Compile Include="User Interface\ToolBoxResources.cs" />
     <Compile Include="User Interface\UnboundColumns.cs" />
     <Compile Include="User Interface\User Controls\wucMovePages.cs">
       <DependentUpon>wucMovePages.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User Interface\User Controls\wucEditShape.cs">
-      <DependentUpon>wucEditShape.xaml</DependentUpon>
-    </Compile>
     <Compile Include="User Interface\User Controls\RowDetailContainerControl.cs" />
-    <Compile Include="User Interface\User Controls\wucEditVisio.xaml.cs">
-      <DependentUpon>wucEditVisio.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="User Interface\User Controls\wucRelateShape.xaml.cs">
-      <DependentUpon>wucRelateShape.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="User Interface\User Controls\wucRelateShapes.xaml.cs">
-      <DependentUpon>wucRelateShapes.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="User Interface\User Controls\wucRetrieveShape.xaml.cs">
-      <DependentUpon>wucRetrieveShape.xaml</DependentUpon>
-    </Compile>
     <Compile Include="User Interface\User Controls\wucRenamePages.cs">
       <DependentUpon>wucRenamePages.xaml</DependentUpon>
     </Compile>
     <Compile Include="User Interface\User Controls\wucVisioCommand_Picker.xaml.cs">
       <DependentUpon>wucVisioCommand_Picker.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="User Interface\User Controls\wucValidate.xaml.cs">
-      <DependentUpon>wucValidate.xaml</DependentUpon>
     </Compile>
     <Compile Include="User Interface\User Controls\wucVisioCommands.cs">
       <DependentUpon>wucVisioCommands.xaml</DependentUpon>
@@ -1065,29 +980,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="User Interface\Forms\frmEditVisio.resx">
-      <DependentUpon>frmEditVisio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User Interface\Forms\frmRelateShape.resx">
-      <DependentUpon>frmRelateShape.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User Interface\Forms\frmRelateShapes.resx">
-      <DependentUpon>frmRelateShapes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User Interface\Forms\frmRetrieveShape.resx">
-      <DependentUpon>frmRetrieveShape.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User Interface\Forms\frmShapeEditor.resx">
-      <DependentUpon>frmShapeEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User Interface\Forms\frmValidate.resx">
-      <DependentUpon>frmValidate.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="User Interface\Ribbon\Ribbon.resx">
       <DependentUpon>Ribbon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User Interface\Task Panes\TaskPane_AppUtil.resx">
-      <DependentUpon>TaskPane_AppUtil.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
@@ -1416,10 +1310,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="User Interface\User Controls\wucEditShape.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="User Interface\User Controls\wucRenamePages.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1428,27 +1318,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="User Interface\User Controls\wucEditVisio.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="User Interface\User Controls\wucRelateShape.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="User Interface\User Controls\wucRelateShapes.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="User Interface\User Controls\wucRetrieveShape.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="User Interface\User Controls\wucVisioCommand_Picker.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="User Interface\User Controls\wucValidate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1456,7 +1326,6 @@
   <ItemGroup>
     <Folder Include="Fakes\" />
     <Folder Include="Presentation\ModelWrappers\ShapeSheet\Shape\" />
-    <Folder Include="User Interface\Windows\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\cut-16x16.png" />

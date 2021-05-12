@@ -46,7 +46,7 @@ namespace SupportTools_Visio
         {
         }
 
-        #endregion Event Handlers
+        #endregion
 
     }
 }

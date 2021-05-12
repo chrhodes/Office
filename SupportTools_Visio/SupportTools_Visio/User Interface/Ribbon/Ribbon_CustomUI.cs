@@ -1,5 +1,8 @@
-﻿using Microsoft.Office.Tools.Ribbon;
+﻿using System;
 
+using Microsoft.Office.Tools.Ribbon;
+
+using VNC;
 using VNC.Core.Presentation;
 using VNC.WPF.Presentation.Dx.Views;
 
@@ -11,15 +14,33 @@ namespace SupportTools_Visio
 
         #region WPF Events - Custom
 
+        private void btnXMLPagesCommands_Click(object sender, RibbonControlEventArgs e)
+        {
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
+
+            Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
+        }
+
+        private void btnCommandCockpit_Click(object sender, RibbonControlEventArgs e)
+        {
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
+
+            Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
+        }
+
         public static DxThemedWindowHost editControlRowsHost = null;
 
         private void btnEditControlRows_Click(object sender, RibbonControlEventArgs e)
         {
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
+
             DxThemedWindowHost.DisplayUserControlInHost(ref editControlRowsHost,
                 "Edit Control Rows",
                 Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
                 ShowWindowMode.Modal_ShowDialog,
                 new Presentation.Views.EditControlRows(new Presentation.ViewModels.EditControlRowsViewModel()));
+
+            Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         public static DxThemedWindowHost editParagraphHost = null;
@@ -27,11 +48,15 @@ namespace SupportTools_Visio
         //public static VNC.Core.Xaml.Presentation.WindowHost editControlPointsHost = null;
         private void btnEditParagraph_Click(object sender, RibbonControlEventArgs e)
         {
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
+
             DxThemedWindowHost.DisplayUserControlInHost(ref editParagraphHost,
                 "Edit Paragraph",
                 300, 600,
                 ShowWindowMode.Modeless_Show,
                 new Presentation.Views.EditParagraph(new Presentation.ViewModels.EditParagraphViewModel()));
+
+            Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         private Presentation.Views.EditControlPoints editControlPointsUC = null;
@@ -45,78 +70,31 @@ namespace SupportTools_Visio
 
         private void btnEditControlPoints_Click(object sender, RibbonControlEventArgs e)
         {
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
+
             DxThemedWindowHost.DisplayUserControlInHost(ref editControlPointsHost,
                 "Edit Shape Control Points Text",
                 Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
                 ShowWindowMode.Modeless_Show,
                 new Presentation.Views.EditControlPoints());
+
+            Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         private void btnEditText_Click(object sender, RibbonControlEventArgs e)
         {
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
+
             DxThemedWindowHost.DisplayUserControlInHost(ref editTextHost,
                 "Edit Text",
                 Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
                 ShowWindowMode.Modeless_Show,
                 new Presentation.Views.EditText(new Presentation.ViewModels.EditTextViewModel()));
+
+            Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
         #endregion
-
-        #region SMARTS Events
-
-        private void btnHilight_Click(object sender, RibbonControlEventArgs e)
-        {
-            var frm = new User_Interface.Forms.frmEditVisio();
-            frm.Show();
-        }
-
-        private void btnNavigateDown_Click(object sender, RibbonControlEventArgs e)
-        {
-            System.Windows.Forms.MessageBox.Show("TODO: Navigate Down");
-        }
-
-        private void btnNavigateUp_Click(object sender, RibbonControlEventArgs e)
-        {
-            System.Windows.Forms.MessageBox.Show("TODO: Navigate Up");
-        }
-
-        private void btnRelatedIntfrastructure_Click(object sender, RibbonControlEventArgs e)
-        {
-            var frm = new User_Interface.Forms.frmRelateShape();
-            frm.Show();
-        }
-
-        private void btnRelatedProcess_Click(object sender, RibbonControlEventArgs e)
-        {
-            var frm = new User_Interface.Forms.frmRelateShape();
-            frm.Show();
-        }
-
-        private void btnRelatedSystem_Click(object sender, RibbonControlEventArgs e)
-        {
-            var frm = new User_Interface.Forms.frmRelateShape();
-            frm.Show();
-        }
-
-        private void btnRetrive_Click(object sender, RibbonControlEventArgs e)
-        {
-            var frm = new User_Interface.Forms.frmRetrieveShape();
-            frm.Show();
-        }
-
-        private void btnValidate_Click(object sender, RibbonControlEventArgs e)
-        {
-            var frm = new User_Interface.Forms.frmRetrieveShape();
-            frm.Show();
-        }
-
-        private void btnWebPage_Click(object sender, RibbonControlEventArgs e)
-        {
-            System.Windows.Forms.MessageBox.Show("TODO: Navigate to Web Page");
-        }
-
-        #endregion SMARTS Events
 
         #endregion Event Handlers
     }
