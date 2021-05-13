@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{9964
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleA", "Modules\ModuleA\ModuleA.csproj", "{3D9A8549-A7A8-4DF9-829E-AEAE7ECACACA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupportTools_Visio.Infrastructure", "SupportTools_Visio.Infrastructure\SupportTools_Visio.Infrastructure.csproj", "{BB1193EC-4836-4850-A4C4-0CD639EC39F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupportTools_Visio.Core", "SupportTools_Visio.Infrastructure\SupportTools_Visio.Core.csproj", "{BB1193EC-4836-4850-A4C4-0CD639EC39F5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{E1476731-0359-401D-B204-2B87D5B0AADC}"
 EndProject
@@ -229,7 +229,7 @@ Global
 		{1A02AFBE-C49B-49F3-8126-F346872B2BB6} = {21D67098-2181-4E9C-AC42-B75D18C8391C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {B53995B5-300E-4344-9884-E3A482ED16D2}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45
+		SolutionGuid = {B53995B5-300E-4344-9884-E3A482ED16D2}
 	EndGlobalSection
 EndGlobal

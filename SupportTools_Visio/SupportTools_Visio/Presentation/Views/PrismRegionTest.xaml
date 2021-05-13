@@ -10,7 +10,7 @@
     xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking"
     xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
     
-    xmlns:infra="clr-namespace:SupportTools_Visio.Infrastructure;assembly=SupportTools_Visio.Infrastructure"
+    xmlns:infra="clr-namespace:SupportTools_Visio.Core;assembly=SupportTools_Visio.Core"
     xmlns:prism="http://prismlibrary.com/"
 
     mc:Ignorable="d"

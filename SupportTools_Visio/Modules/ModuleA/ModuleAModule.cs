@@ -6,7 +6,7 @@ using Unity;
 
 using VNC;
 
-using SupportTools_Visio.Infrastructure;
+using SupportTools_Visio.Core;
 
 namespace ModuleA
 {

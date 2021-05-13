@@ -1,112 +1,173 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Input;
 using System.Xml.Linq;
-using SupportTools_Visio.Domain;
-using ExcelHlp = VNC.AddinHelper.Excel;
-using LTE = LinqToExcel;
+
+using Prism.Commands;
+using Prism.Events;
+
+using SupportTools_Visio.Core;
+
+using VNC;
+using VNC.Core.Mvvm;
+using VNC.Core.Services;
+
 using Visio = Microsoft.Office.Interop.Visio;
 using VisioHlp = VNC.AddinHelper.Visio;
-using XL = Microsoft.Office.Interop.Excel;
 
-namespace SupportTools_Visio.User_Interface.User_Controls
+namespace SupportTools_Visio.Presentation.ViewModels
 {
-    /// <summary>
-    /// Interaction logic for VisioCommands.xaml
-    /// </summary>
-    public partial class wucVisioCommands : UserControl
+
+    public class CommandCockpitViewModel : EventViewModelBase, ICommandCockpitViewModel, IInstanceCountVM
     {
-        public class TestData
+
+        #region Constructors, Initialization, and Load
+
+        public CommandCockpitViewModel(
+            IEventAggregator eventAggregator,
+            IMessageDialogService messageDialogService) : base(eventAggregator, messageDialogService)
         {
-            public string Col1 { get; set; }
-            public string Col2 { get; set; }
-            public string Col3 { get; set; }
-            public string Col4 { get; set; }
-            public string Col5 { get; set; }
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_CATEGORY);
+
+            // TODO(crhodes)
+            // Save constructor parameters here
+
+            InitializeViewModel();
+
+            Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
         }
+
+        private void InitializeViewModel()
+        {
+            Int64 startTicks = Log.VIEWMODEL("Enter", Common.LOG_CATEGORY);
+
+            InstanceCountVM++;
+
+            // TODO(crhodes)
+            //
+
+            SayHelloCommand = new DelegateCommand(
+                SayHello, SayHelloCanExecute);
+
+            ExecuteCommand = new DelegateCommand(
+                Execute, ExecuteCanExecute);
+
+            Message = "CommandCockpitViewModel says hello";
+
+            Log.VIEWMODEL("Exit", Common.LOG_CATEGORY, startTicks);
+        }
+
+        #endregion
+
+        #region Enums
+
+
+        #endregion
+
+        #region Structures
+
+
+        #endregion
+
+        #region Fields and Properties
+
+        public ICommand SayHelloCommand { get; private set; }
+
+        private string _message;
+
+        public string Message
+        {
+            get => _message;
+            set
+            {
+                if (_message == value)
+                    return;
+                _message = value;
+                OnPropertyChanged();
+            }
+        }
+
+        #endregion
 
         #region Event Handlers
-
-        private void btnExecuteCommand_Click(object sender, RoutedEventArgs e)
-        {       
-            ParseCommand( XElement.Parse(teCommandElements.Text));
-        }
-
-        private void btnFive_Click(object sender, RoutedEventArgs e)
-        {
-            UseLinqToExcel();
-        }
-
-        private void btnFour_Click(object sender, RoutedEventArgs e)
-        {
-            LoadExcelTable();
-        }
-
-        private void btnThree_Click(object sender, RoutedEventArgs e)
-        {
-            UseExcelCataReader();
-        }
-
-        private void btnTwo_Click(object sender, RoutedEventArgs e)
-        {
-            LoadExcelFile();
-        }
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Hello there");
-        }
-
-        private void visioCommand_Picker_ControlChanged()
-        {
-            //var command = visioCommand_Picker.Command;
-            //teCommandElements.Text = command.ToString();
-            //ParseCommand(command);
-        }
 
 
 
         #endregion
 
-        #region Constructors and Load
+        #region Public Methods
 
-        public wucVisioCommands()
-        {
-            InitializeComponent();
-            LoadControlContents();
-        }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
+        #endregion
 
-        }
+        #region Protected Methods
 
-        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         #endregion
 
         #region Private Methods
 
-        private void LoadControlContents()
+        #region Execute Command
+
+        public DelegateCommand ExecuteCommand { get; set; }
+        public string ExecuteContent { get; set; } = "Execute";
+        public string ExecuteToolTip { get; set; } = "Execute ToolTip";
+
+        // Can get fancy and use Resources
+        //public string ExecuteContent { get; set; } = "ViewName_ExecuteContent";
+        //public string ExecuteToolTip { get; set; } = "ViewName_ExecuteContentToolTip";
+
+        // Put these in Resource File
+        //    <system:String x:Key="ViewName_ExecuteContent">Execute</system:String>
+        //    <system:String x:Key="ViewName_ExecuteContentToolTip">Execute ToolTip</system:String>  
+
+        public void Execute()
         {
-            try
-            {
-                //visioCommand_Picker.PopulateControlFromFile(Common.cCONFIG_FILE);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            // TODO(crhodes)
+            // Do something amazing.
+            Message = "Cool, you called Execute";
+            Common.EventAggregator.GetEvent<ExecuteEvent>().Publish();
+
+            ParseCommand(XElement.Parse(teCommandElements.Text));
+
+            // Start Cut Four
+
+            // Put this in places that listen for event
+            //Common.EventAggregator.GetEvent<ExecuteEvent>().Subscribe(Execute);
+
+            // End Cut Four
+
         }
+
+        public bool ExecuteCanExecute()
+        {
+            // TODO(crhodes)
+            // Add any before button is enabled logic.
+            return true;
+        }
+
+        #endregion
+
+        private void SayHello()
+        {
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
+
+            Message = "Hello";
+
+            Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
+        }
+
+        private bool SayHelloCanExecute()
+        {
+            return true;
+        }
+
+        #endregion
 
         #region XML Commands
 
-        private void ParseCommand(System.Xml.Linq.XElement commandElement)
+        private void ParseCommand(XElement commandElement)
         {
             // Wrap a big, OMG, what have I done ???, undo around the whole thing !!!
 
@@ -187,11 +248,11 @@ namespace SupportTools_Visio.User_Interface.User_Controls
                     case "Layers":
                         foreach (Visio.Page page in doc.Pages)
                         {
-                            ProcessCommand_Layers(page, element.Elements());                           
+                            ProcessCommand_Layers(page, element.Elements());
                         }
 
                         break;
-                        
+
                     default:
                         VisioHlp.DisplayInWatchWindow(string.Format("Element >{0}< not supported", element.Name.LocalName));
                         break;
@@ -215,7 +276,7 @@ namespace SupportTools_Visio.User_Interface.User_Controls
             {
                 foreach (Visio.Page page in doc.Pages)
                 {
-                    ProcessCommand_Layers(page, documentElement.Element("Layers").Elements());                    
+                    ProcessCommand_Layers(page, documentElement.Element("Layers").Elements());
                 }
             }
 
@@ -238,7 +299,7 @@ namespace SupportTools_Visio.User_Interface.User_Controls
             {
                 foreach (Visio.Page page in doc.Pages)
                 {
-                    ProcessCommand_Layers(page, activeDocumentElement.Element("Layers").Elements());                  
+                    ProcessCommand_Layers(page, activeDocumentElement.Element("Layers").Elements());
                 }
             }
 
@@ -355,7 +416,7 @@ namespace SupportTools_Visio.User_Interface.User_Controls
 
                 Visio.Document doc = app.ActiveDocument;
 
-                Visio.Page newPage = Actions.Visio_Page.CreatePage(newPageName, backgroundPageName, short.Parse(isBackground));
+                Visio.Page newPage = SupportTools_Visio.Actions.Visio_Page.CreatePage(newPageName, backgroundPageName, short.Parse(isBackground));
             }
             catch (Exception ex)
             {
@@ -525,7 +586,7 @@ namespace SupportTools_Visio.User_Interface.User_Controls
                 string layerSnap = addElement.Attribute("IsSnap") != null ? addElement.Attribute("IsSnap").Value : "1";
                 string layerGlue = addElement.Attribute("IsGlue") != null ? addElement.Attribute("IsGlue").Value : "1";
 
-                Actions.Visio_Page.AddLayer(page, layerName, layerVisible, layerPrint, layerActive, layerLock, layerSnap, layerGlue);
+                SupportTools_Visio.Actions.Visio_Page.AddLayer(page, layerName, layerVisible, layerPrint, layerActive, layerLock, layerSnap, layerGlue);
 
             }
             catch (Exception ex)
@@ -544,7 +605,7 @@ namespace SupportTools_Visio.User_Interface.User_Controls
                 string layerName = deleteElement.Attribute("Name").Value;
                 string deleteShapes = deleteElement.Attribute("DeleteShapes").Value;
 
-                Actions.Visio_Page.DeleteLayer(page, layerName, short.Parse(deleteShapes));
+                SupportTools_Visio.Actions.Visio_Page.DeleteLayer(page, layerName, short.Parse(deleteShapes));
             }
             catch (Exception ex)
             {
@@ -571,7 +632,7 @@ namespace SupportTools_Visio.User_Interface.User_Controls
         }
 
         #endregion
-      
+
         #region Commands - Shapes
 
         /// <summary>
@@ -763,7 +824,7 @@ namespace SupportTools_Visio.User_Interface.User_Controls
                 string beginGroup = addActionsElement.Attribute("BeginGroup").Value;
                 string flyoutChild = addActionsElement.Attribute("FlyoutChild").Value;
 
-                Actions.Visio_Shape.Populate_Actions_Section(shape, rowName, action, menu, tagName, buttonFace, sortKey, isChecked, disabled, readOnly, invisible, beginGroup, flyoutChild);
+                SupportTools_Visio.Actions.Visio_Shape.Populate_Actions_Section(shape, rowName, action, menu, tagName, buttonFace, sortKey, isChecked, disabled, readOnly, invisible, beginGroup, flyoutChild);
             }
             catch (Exception ex)
             {
@@ -783,7 +844,7 @@ namespace SupportTools_Visio.User_Interface.User_Controls
                 string address = string.Empty;
                 string subAddress = string.Empty;
 
-                if (addHyperlinksElement.Attribute("Name") != null ) rowName = addHyperlinksElement.Attribute("Name").Value;
+                if (addHyperlinksElement.Attribute("Name") != null) rowName = addHyperlinksElement.Attribute("Name").Value;
                 if (addHyperlinksElement.Attribute("Address") != null) address = addHyperlinksElement.Attribute("Address").Value;
                 if (addHyperlinksElement.Attribute("SubAddress") != null) subAddress = addHyperlinksElement.Attribute("SubAddress").Value;
 
@@ -809,7 +870,7 @@ namespace SupportTools_Visio.User_Interface.User_Controls
                 if (addHyperlinksElement.Attribute("Invisible") != null) invisible = addHyperlinksElement.Attribute("Invisible").Value;
 
 
-                Actions.Visio_Shape.Populate_Hyperlinks_Section(shape, rowName, description, address, subAddress, extraInfo, frame, sortKey, newWindow, default1, invisible);
+                SupportTools_Visio.Actions.Visio_Shape.Populate_Hyperlinks_Section(shape, rowName, description, address, subAddress, extraInfo, frame, sortKey, newWindow, default1, invisible);
             }
             catch (Exception ex)
             {
@@ -837,7 +898,7 @@ namespace SupportTools_Visio.User_Interface.User_Controls
                 string canGlue = addControlsRowElement.Attribute("CanGlue").Value;
                 string tip = addControlsRowElement.Attribute("Tip").Value;
 
-                Actions.Visio_Shape.Populate_Controls_Section(shape, rowName, X, Y, XDynamics, YDynamics, XBehavior, YBehavior, canGlue, tip);
+                SupportTools_Visio.Actions.Visio_Shape.Populate_Controls_Section(shape, rowName, X, Y, XDynamics, YDynamics, XBehavior, YBehavior, canGlue, tip);
             }
             catch (Exception ex)
             {
@@ -852,7 +913,7 @@ namespace SupportTools_Visio.User_Interface.User_Controls
 
             try
             {
-                TextBlockFormat textBlockFormat = new TextBlockFormat();
+                Domain.TextBlockFormat textBlockFormat = new Domain.TextBlockFormat();
 
                 textBlockFormat.LeftMargin = setTextBlockFormatElement.Attribute("LeftMargin").Value;
                 textBlockFormat.TopMargin = setTextBlockFormatElement.Attribute("TopMargin").Value;
@@ -864,7 +925,7 @@ namespace SupportTools_Visio.User_Interface.User_Controls
                 textBlockFormat.TextBkgndTrans = setTextBlockFormatElement.Attribute("TextBkgndTrans").Value;
                 textBlockFormat.DefaultTabStop = setTextBlockFormatElement.Attribute("DefaultTabStop").Value;
 
-                Actions.Visio_Shape.Set_TextBlockFormat_Section(shape, textBlockFormat);
+                SupportTools_Visio.Actions.Visio_Shape.Set_TextBlockFormat_Section(shape, textBlockFormat);
             }
             catch (Exception ex)
             {
@@ -888,7 +949,7 @@ namespace SupportTools_Visio.User_Interface.User_Controls
                 string angle = setTextTransformElement.Attribute("Angle").Value;
 
 
-                Actions.Visio_Shape.Set_TextTransform_Section(shape, width, height, pinX, pinY, locPinX, locPinY, angle);
+                SupportTools_Visio.Actions.Visio_Shape.Set_TextTransform_Section(shape, width, height, pinX, pinY, locPinX, locPinY, angle);
             }
             catch (Exception ex)
             {
@@ -958,9 +1019,9 @@ namespace SupportTools_Visio.User_Interface.User_Controls
                 //string shapeShdwShow = setFillFormatElement.Attribute("ShapeShdwShow").Value;
 
 
-                Actions.Visio_Shape.Set_FillFormat_SectionOld(shape, 
-                    fillForegnd, fillForegndTrans, fillBkgnd, fillBkgndTrans, fillPattern, 
-                    shdwForegnd, shdwForegndTrans, shdwPattern, shapeShdwOffsetX, shapeShdwOffsetY, 
+                SupportTools_Visio.Actions.Visio_Shape.Set_FillFormat_SectionOld(shape,
+                    fillForegnd, fillForegndTrans, fillBkgnd, fillBkgndTrans, fillPattern,
+                    shdwForegnd, shdwForegndTrans, shdwPattern, shapeShdwOffsetX, shapeShdwOffsetY,
                     shapeShdwType, shapeShdwObliqueAngle, shapeShdwScaleFactor, shapeShdwBlur, shapeShdwShow);
             }
             catch (Exception ex)
@@ -987,7 +1048,7 @@ namespace SupportTools_Visio.User_Interface.User_Controls
                 string angle = GetAttributeValueOrNull(shapeTransformElement.Attribute("Angle"));
                 string resizeMode = GetAttributeValueOrNull(shapeTransformElement.Attribute("Angle"));
 
-                Actions.Visio_Shape.Set_ShapeTransform_Section(shape, width, height, pinX, pinY, flipX, flipY, locPinX, locPinY, angle, resizeMode);
+                SupportTools_Visio.Actions.Visio_Shape.Set_ShapeTransform_Section(shape, width, height, pinX, pinY, flipX, flipY, locPinX, locPinY, angle, resizeMode);
             }
             catch (Exception ex)
             {
@@ -1035,7 +1096,7 @@ namespace SupportTools_Visio.User_Interface.User_Controls
 
                 default:
                     VisioHlp.DisplayInWatchWindow(string.Format("Unrecognized VisPropType >{0}<", value));
-                    
+
                     break;
             }
 
@@ -1097,11 +1158,11 @@ namespace SupportTools_Visio.User_Interface.User_Controls
 
                 if (prompt != null || sortKey != null)
                 {
-                    Actions.Visio_Shape.Add_Prop_Row(shape, row, label, type, format, value, prompt, sortKey);
+                    SupportTools_Visio.Actions.Visio_Shape.Add_Prop_Row(shape, row, label, type, format, value, prompt, sortKey);
                 }
                 else
                 {
-                    Actions.Visio_Shape.Add_Prop_Row(shape, row, label, type, format, value);
+                    SupportTools_Visio.Actions.Visio_Shape.Add_Prop_Row(shape, row, label, type, format, value);
                 }
             }
             catch (Exception ex)
@@ -1133,171 +1194,35 @@ namespace SupportTools_Visio.User_Interface.User_Controls
 
                 if (promptAttribute != null)
                 {
-                    Actions.Visio_Shape.Add_User_Row(shape, row, value, promptAttribute.Value);                    
+                    SupportTools_Visio.Actions.Visio_Shape.Add_User_Row(shape, row, value, promptAttribute.Value);
                 }
                 else
                 {
-                    Actions.Visio_Shape.Add_User_Row(shape, row, value);                    
+                    SupportTools_Visio.Actions.Visio_Shape.Add_User_Row(shape, row, value);
                 }
             }
             catch (Exception ex)
             {
                 VisioHlp.DisplayInWatchWindow(ex.ToString());
             }
-        }        
+        }
+
+        #endregion
 
         #endregion
 
         #endregion
 
-        #endregion
+        #region IInstanceCount
 
-        private void LoadExcelFile()
+        private static int _instanceCountVM;
+
+        public int InstanceCountVM
         {
-            XL.Application xlApp = new XL.Application();
-
-            XL.Workbook wb = xlApp.Workbooks.Open(@"B:\Publish\SupportTools_Visio\TestData.xlsx");
-            XL.Worksheet ws = wb.Sheets[1];
-            XL.Range rng = ws.UsedRange;
-
-            int rows = rng.Rows.Count;
-            int cols = rng.Columns.Count;
-
-            for (int i = 1; i <= rows; i++)
-            {
-                for (int j = 1; j <= cols; j++)
-                {
-                    VisioHlp.DisplayInWatchWindow(rng.Cells[i, j].Value2.ToString());
-                }
-            }
-
-            wb.Close();
-        }
-
-        private void LoadExcelTable()
-        {
-            string workBookName = @"B:\Publish\SupportTools_Visio\TestData.xlsx";
-            string workSheetName = "Sheet2";
-            string tableName = "tbl_Data";
-            XL.Application xlApp = new XL.Application();
-
-            XL.Workbook wb = xlApp.Workbooks.Open(workBookName);
-            XL.Worksheet ws = wb.Sheets[workSheetName];
-            XL.ListObject lo = ws.ListObjects[tableName];
-            XL.ListColumns listColumns = lo.ListColumns;
-            XL.ListRows listRows = lo.ListRows;
-
-            VisioHlp.DisplayInWatchWindow(string.Format("{0}\n", tableName));
-
-            foreach (XL.ListColumn col in listColumns)
-            {
-                VisioHlp.DisplayInWatchWindow(col.Name);
-            }
-
-            tableName = "tbl_Data2";
-
-            lo = ws.ListObjects[tableName];
-            listColumns = lo.ListColumns;
-            listRows = lo.ListRows;
-
-            VisioHlp.DisplayInWatchWindow(string.Format("{0}\n", tableName));
-
-            foreach (XL.ListColumn col in listColumns)
-            {
-                VisioHlp.DisplayInWatchWindow(col.Name);
-            }
-
-            foreach (XL.ListRow row in listRows)
-            {
-                VisioHlp.DisplayInWatchWindow(row.ToString());
-            }
-            wb.Close();
-        }
-
-        private void UseExcelCataReader()
-        {
-            string path = @"B:\Publish\SupportTools_Visio\TestData.xlsx";
-
-            var excelData = new ExcelHlp.XlData(path);
-            var sheets = excelData.GetWorkSheetNames();
-
-            foreach (var sheet in sheets)
-            {
-                VisioHlp.DisplayInWatchWindow(sheet);
-            }
-
-            VisioHlp.DisplayInWatchWindow("Has Header Row\n");
-
-            var info = excelData.GetData("Sheet1");
-
-            foreach (var row in info)
-            {
-                VisioHlp.DisplayInWatchWindow("NewRow\n");
-
-                for (int i = 0; i <= row.ItemArray.GetUpperBound(0); i++)
-                {
-                    VisioHlp.DisplayInWatchWindow(row[i].ToString());
-                }
-            }
-
-            VisioHlp.DisplayInWatchWindow("Has No Header Row\n");
-
-            info = excelData.GetData("Sheet1", false);
-
-            foreach (var row in info)
-            {
-                VisioHlp.DisplayInWatchWindow("NewRow\n");
-
-                for (int i = 0; i <= row.ItemArray.GetUpperBound(0); i++)
-                {
-                    VisioHlp.DisplayInWatchWindow(row[i].ToString());
-                }
-            }
-
-            List<TestData> testData = new List<TestData>();
-
-            info = excelData.GetData("Sheet1");
-
-            foreach (var row in info)
-            {
-                var testDataRow = new TestData()
-                {
-                    Col1 = row["Col1"].ToString(),
-                    Col2 = row["Col2"].ToString(),
-                    Col3 = row["Col3"].ToString(),
-                    Col4 = row["Col4"].ToString(),
-                    Col5 = row["Col5"].ToString()
-                };
-
-                testData.Add(testDataRow);
-            }
-
-            foreach (var item in testData)
-            {
-                VisioHlp.DisplayInWatchWindow(
-                    string.Format("Col1:{0} Col2:{1} Col3:{2} Col4:{3} Col5:{4}", item.Col1, item.Col2, item.Col3, item.Col4, item.Col5)
-                    );
-            }
-        }
-
-        private void UseLinqToExcel()
-        {
-            string path = @"B:\Publish\SupportTools_Visio\TestData.xlsx";
-            var excel = new LTE.ExcelQueryFactory(path);
-
-            var stuff = from c in excel.Worksheet<TestData>()
-                        select c;
-
-            foreach (var item in stuff)
-            {
-                VisioHlp.DisplayInWatchWindow(
-                    string.Format("Col1:{0} Col2:{1} Col3:{2} Col4:{3} Col5:{4}", item.Col1, item.Col2, item.Col3, item.Col4, item.Col5)
-                    );
-            }
+            get => _instanceCountVM;
+            set => _instanceCountVM = value;
         }
 
         #endregion
-
-
     }
 }

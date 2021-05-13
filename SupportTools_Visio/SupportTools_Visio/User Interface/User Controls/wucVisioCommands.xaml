@@ -22,16 +22,16 @@
                         <dxe:CheckedComboBoxStyleSettings />
                     </dxe:ComboBoxEdit.StyleSettings>
                 </dxe:ComboBoxEdit>
-            </dxlc:LayoutItem>            
+            </dxlc:LayoutItem>
             <dxlc:LayoutItem>
-                <Button x:Name="button" Content="Button" Click="button_Click"/>                
+                <Button x:Name="button" Content="Button" Click="button_Click"/>
             </dxlc:LayoutItem>
             <dxlc:LayoutItem>
                 <Button x:Name="btnTwo" Content="Read Excel Raw" Click="btnTwo_Click"/>
             </dxlc:LayoutItem>
             <dxlc:LayoutItem>
                 <Button x:Name="btnFour" Content="Read Excel Table" Click="btnFour_Click"/>
-            </dxlc:LayoutItem>            
+            </dxlc:LayoutItem>
             <dxlc:LayoutItem>
                 <Button x:Name="btnThree" Content="Read Excel with ExcelDataReader" Click="btnThree_Click"/>
             </dxlc:LayoutItem>
@@ -40,7 +40,7 @@
             </dxlc:LayoutItem>
             <dxlc:LayoutItem Label="Select Sections to Add" 
                              LabelPosition="Top">
-                <local:wucVisioCommand_Picker x:Name="visioCommand_Picker" ControlChanged="visioCommand_Picker_ControlChanged" />
+                <!--<local:wucVisioCommand_Picker x:Name="visioCommand_Picker" ControlChanged="visioCommand_Picker_ControlChanged" />-->
 
             </dxlc:LayoutItem>
             <dxlc:LayoutItem>
@@ -49,7 +49,7 @@
 
             <dxlc:LayoutItem>
                 <Button x:Name="btnExecuteCommand" Content="Execute Command" Click="btnExecuteCommand_Click"/>
-            </dxlc:LayoutItem>
+            </dxlc:LayoutItem> >
         </dxlc:LayoutControl>
     </Grid>
 </UserControl>

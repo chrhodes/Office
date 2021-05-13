@@ -1,38 +1,52 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
 
 using dxe = DevExpress.Xpf.Editors;
 
-using VisioHelper = VNC.AddinHelper.Visio;
+using VNC;
+using VNC.Core.Mvvm;
 
-namespace SupportTools_Visio.User_Interface.User_Controls
+namespace SupportTools_Visio.Presentation.Views
 {
-    public partial class wucRenamePages : UserControl
+    public partial class RenamePage : ViewBase, IInstanceCountV
     {
         #region Constructors and Load
 
-        public wucRenamePages()
+        public RenamePage()
         {
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_CATEGORY);
+
+            InstanceCountV++;
             InitializeComponent();
-            LoadControlContents();
+
+            Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        public RenamePage(ViewModels.IRenamePageViewModel viewModel)
         {
-            VNC.Log.Trace("", Common.LOG_CATEGORY, 0);
-            VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
-                System.Reflection.MethodInfo.GetCurrentMethod().Name));
+            Int64 startTicks = Log.CONSTRUCTOR($"Enter viewModel({viewModel.GetType()}", Common.LOG_CATEGORY);
+
+            InstanceCountV++;
+            InitializeComponent();
+
+            ViewModel = viewModel;
+
+            Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
-        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        #region IInstanceCount
+
+        private static int _instanceCountV;
+
+        public int InstanceCountV
         {
-            VNC.Log.Trace("", Common.LOG_CATEGORY, 0);
-            VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
-                System.Reflection.MethodInfo.GetCurrentMethod().Name));
+            get => _instanceCountV;
+            set => _instanceCountV = value;
         }
 
         #endregion
+
+#endregion
 
         #region Event Handlers
 
@@ -43,7 +57,7 @@ namespace SupportTools_Visio.User_Interface.User_Controls
 
             int undoScope = Globals.ThisAddIn.Application.BeginUndoScope("ParseCommand");
 
-            Actions.Visio_Document.RenamePages(teSearchExpression.Text, teReplacementExpression.Text);
+            SupportTools_Visio.Actions.Visio_Document.RenamePages(teSearchExpression.Text, teReplacementExpression.Text);
 
             Globals.ThisAddIn.Application.EndUndoScope(undoScope, true);
         }

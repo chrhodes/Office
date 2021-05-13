@@ -16,20 +16,17 @@ using VNC.Core.Services;
 
 namespace SupportTools_Visio.Presentation.ViewModels
 {
-    public class ViewAViewModel : EventViewModelBase, IViewAViewModel, IInstanceCountVM
+    public class ViewBViewModel : EventViewModelBase, IViewBViewModel, IInstanceCountVM
     {
 
         #region Constructors, Initialization, and Load
 
-        public ViewAViewModel(
-            ViewA viewA,
+        public ViewBViewModel(
             IEventAggregator eventAggregator,
             IMessageDialogService messageDialogService) : base(eventAggregator, messageDialogService)
         {
             Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_CATEGORY);
 
-            View = viewA;
-            View.ViewModel = this;
             // TODO(crhodes)
             // Save constructor parameters here
 
@@ -47,7 +44,7 @@ namespace SupportTools_Visio.Presentation.ViewModels
             // TODO(crhodes)
             //
 
-            Message = "ViewModelA says hello";
+            Message = "ViewBViewModel says hello";
 
             Log.VIEWMODEL("Exit", Common.LOG_CATEGORY, startTicks);
         }

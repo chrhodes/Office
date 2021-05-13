@@ -125,20 +125,6 @@ namespace SupportTools_Visio
             Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
-        private void btnDuplicatePage_Click(object sender, RibbonControlEventArgs e)
-        {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
-
-            DxThemedWindowHost.DisplayUserControlInHost(ref duplicatePage_Host,
-            "Duplicate Page",
-            600, 450,
-            //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            ShowWindowMode.Modeless_Show,
-            new Presentation.Views.DuplicatePage(new Presentation.ViewModels.DuplicatePageViewModel()));
-
-            Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
-        }
-
         private void btnGetApplicationInfo_Click(object sender, RibbonControlEventArgs e)
         {
             Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
@@ -175,16 +161,6 @@ namespace SupportTools_Visio
             Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
-        private void btnMovePages_Click(object sender, RibbonControlEventArgs e)
-        {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
-
-            //var frm = new User_Interface.Forms.frmMovePages();
-            //frm.Show();
-
-            Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
-        }
-
         private void btnPrintPages_Click(object sender, RibbonControlEventArgs e)
         {
             Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
@@ -199,16 +175,6 @@ namespace SupportTools_Visio
             Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
             Actions.Visio_Document.RemoveLayers();
-
-            Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
-        }
-
-        private void btnRenamePages_Click(object sender, RibbonControlEventArgs e)
-        {
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
-
-            //var frm = new User_Interface.Forms.frmRenamePages();
-            //frm.Show();
 
             Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
         }

@@ -725,7 +725,19 @@
     <Compile Include="Domain\Cat.cs" />
     <Compile Include="Domain\ShapeSheet\NewButton.cs" />
     <Compile Include="Presentation\Converters\SelectedItemsConverter.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ILinqToExcelViewModel.cs" />
+    <Compile Include="Presentation\Views\LinqToExcel.xaml.cs" />
+    <Compile Include="Presentation\ViewModels\LinqToExcelViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\IViewBViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\ICommandCockpitViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ViewBViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\CommandCockpitViewModel.cs" />
+    <Compile Include="Presentation\Views\ViewB.xaml.cs" />
+    <Compile Include="Presentation\Views\CommandCockpit.xaml.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\IMovePageViewModel.cs" />
     <Compile Include="Presentation\ModelWrappers\ShapeSheet\Page\PagePropertiesWrapper.cs" />
+    <Compile Include="Presentation\Views\MovePage.xaml.cs" />
+    <Compile Include="Presentation\ViewModels\MovePageViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ShapeSheet\ObjectViewModel.cs" />
     <Compile Include="Presentation\ModelWrappers\CatWrapper.cs" />
     <Compile Include="Presentation\ViewModels\Interfaces\IViewAViewModel.cs" />
@@ -785,6 +797,7 @@
     <Compile Include="Presentation\ViewModels\ShapeSheet\ShapeSheetSectionBase.cs" />
     <Compile Include="Presentation\ViewModels\ViewAViewModel.cs" />
     <Compile Include="Presentation\Views\EditText.xaml.cs" />
+    <Compile Include="Presentation\Views\IRenamePageViewModel.cs" />
     <Compile Include="Presentation\Views\PrismRegionTest.xaml.cs" />
     <Compile Include="Domain\DuplicatePage.cs" />
     <Compile Include="Presentation\Views\DuplicatePage.xaml.cs">
@@ -923,6 +936,8 @@
     <Compile Include="Presentation\Views\ShapeSheet\UserDefinedCells.xaml.cs">
       <DependentUpon>UserDefinedCells.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\Views\RenamePage.xaml.cs" />
+    <Compile Include="Presentation\ViewModels\RenamePageViewModel.cs" />
     <Compile Include="Presentation\Views\ViewA.xaml.cs" />
     <Compile Include="Actions\Class1.cs" />
     <Compile Include="Actions\Visio_PageFormatting.cs" />
@@ -956,14 +971,8 @@
     <Compile Include="User Interface\IRefresh.cs" />
     <Compile Include="User Interface\ToolBoxResources.cs" />
     <Compile Include="User Interface\UnboundColumns.cs" />
-    <Compile Include="User Interface\User Controls\wucMovePages.cs">
-      <DependentUpon>wucMovePages.xaml</DependentUpon>
-    </Compile>
     <Compile Include="User Interface\User Controls\RowDetailContainerControl.cs" />
-    <Compile Include="User Interface\User Controls\wucRenamePages.cs">
-      <DependentUpon>wucRenamePages.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="User Interface\User Controls\wucVisioCommand_Picker.xaml.cs">
+    <Compile Include="Presentation\Views\wucVisioCommand_Picker.xaml.cs">
       <DependentUpon>wucVisioCommand_Picker.xaml</DependentUpon>
     </Compile>
     <Compile Include="User Interface\User Controls\wucVisioCommands.cs">
@@ -1050,6 +1059,22 @@
     <None Include="Resources\Images\Stencil Info 64x64.gif" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Presentation\Views\LinqToExcel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ViewB.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\CommandCockpit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\MovePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Presentation\Views\EditText.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1242,6 +1267,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Presentation\Views\RenamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Presentation\Views\ViewA.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1306,19 +1335,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="User Interface\User Controls\wucMovePages.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="User Interface\User Controls\wucRenamePages.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="User Interface\User Controls\wucVisioCommands.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="User Interface\User Controls\wucVisioCommand_Picker.xaml">
+    <Page Include="Presentation\Views\wucVisioCommand_Picker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1385,9 +1406,9 @@
       <Project>{3d9a8549-a7a8-4df9-829e-aeae7ecacaca}</Project>
       <Name>ModuleA</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SupportTools_Visio.Infrastructure\SupportTools_Visio.Infrastructure.csproj">
+    <ProjectReference Include="..\SupportTools_Visio.Infrastructure\SupportTools_Visio.Core.csproj">
       <Project>{bb1193ec-4836-4850-a4c4-0cd639ec39f5}</Project>
-      <Name>SupportTools_Visio.Infrastructure</Name>
+      <Name>SupportTools_Visio.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

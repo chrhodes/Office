@@ -7,9 +7,9 @@
     <ProjectGuid>{BB1193EC-4836-4850-A4C4-0CD639EC39F5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SupportTools_Visio.Infrastructure</RootNamespace>
-    <AssemblyName>SupportTools_Visio.Infrastructure</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <RootNamespace>SupportTools_Visio.Core</RootNamespace>
+    <AssemblyName>SupportTools_Visio.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />

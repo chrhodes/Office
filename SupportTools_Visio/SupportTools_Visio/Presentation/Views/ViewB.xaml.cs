@@ -6,14 +6,26 @@ using VNC.Core.Mvvm;
 
 namespace SupportTools_Visio.Presentation.Views
 {
-    public partial class ViewA : ViewBase, IInstanceCountV
+    public partial class ViewB : ViewBase, IInstanceCountV
     {
-        public ViewA()
+        public ViewB()
         {
             Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_CATEGORY);
 
             InstanceCountV++;
             InitializeComponent();
+
+            Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
+        }
+
+        public ViewB(ViewModels.IViewBViewModel viewModel)
+        {
+            Int64 startTicks = Log.CONSTRUCTOR($"Enter viewModel({viewModel.GetType()}", Common.LOG_CATEGORY);
+
+            InstanceCountV++;
+            InitializeComponent();
+
+            ViewModel = viewModel;
 
             Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
         }

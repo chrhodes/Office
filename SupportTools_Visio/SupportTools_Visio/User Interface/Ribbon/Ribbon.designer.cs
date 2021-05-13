@@ -57,13 +57,11 @@
             this.btnSortAllPages = this.Factory.CreateRibbonButton();
             this.btnDisplayPageNames = this.Factory.CreateRibbonButton();
             this.btnSyncPageNames = this.Factory.CreateRibbonButton();
-            this.btnRenamePages = this.Factory.CreateRibbonButton();
             this.btnAutoSizePagesOn = this.Factory.CreateRibbonButton();
             this.btnAutoSizePagesOff = this.Factory.CreateRibbonButton();
             this.btnUpdatePageNameShapes = this.Factory.CreateRibbonButton();
             this.btnAddNavigationLinks = this.Factory.CreateRibbonButton();
             this.btnPrintPages = this.Factory.CreateRibbonButton();
-            this.btnMovePages = this.Factory.CreateRibbonButton();
             this.btnDeletePages = this.Factory.CreateRibbonButton();
             this.btnSavePages = this.Factory.CreateRibbonButton();
             this.rgPageActions = this.Factory.CreateRibbonGroup();
@@ -75,7 +73,6 @@
             this.btnSyncPageNamesPage = this.Factory.CreateRibbonButton();
             this.btnAutoSizePageOn = this.Factory.CreateRibbonButton();
             this.btnAutoSizePageOff = this.Factory.CreateRibbonButton();
-            this.btnDuplicatePage = this.Factory.CreateRibbonButton();
             this.rgLayerActions = this.Factory.CreateRibbonGroup();
             this.btnPageOn = this.Factory.CreateRibbonButton();
             this.btnPageOff = this.Factory.CreateRibbonButton();
@@ -169,12 +166,15 @@
             this.btnShapeUserDefinedCells = this.Factory.CreateRibbonButton();
             this.tabCustomUI = this.Factory.CreateRibbonTab();
             this.rgCustomUI = this.Factory.CreateRibbonGroup();
-            this.btnXMLPagesCommands = this.Factory.CreateRibbonButton();
+            this.btnCommandCockpit = this.Factory.CreateRibbonButton();
+            this.btnLinq2Excel = this.Factory.CreateRibbonButton();
             this.btnEditControlRows = this.Factory.CreateRibbonButton();
             this.btnEditParagraph = this.Factory.CreateRibbonButton();
             this.btnEditText = this.Factory.CreateRibbonButton();
             this.btnEditControlPoints = this.Factory.CreateRibbonButton();
-            this.btnCommandCockpit = this.Factory.CreateRibbonButton();
+            this.btnRenamePages = this.Factory.CreateRibbonButton();
+            this.btnDuplicatePage = this.Factory.CreateRibbonButton();
+            this.btnMovePages = this.Factory.CreateRibbonButton();
             this.tabUILaunch = this.Factory.CreateRibbonTab();
             this.rgUILaunch = this.Factory.CreateRibbonGroup();
             this.btnThemedWindowHost = this.Factory.CreateRibbonButton();
@@ -190,10 +190,10 @@
             this.btnDxDockLayoutControl = this.Factory.CreateRibbonButton();
             this.btnPrismRegionTest = this.Factory.CreateRibbonButton();
             this.rgMVVMExamples = this.Factory.CreateRibbonGroup();
-            this.btnVNC_MVVM_V1 = this.Factory.CreateRibbonButton();
-            this.btnVNC_MVVM_VM1 = this.Factory.CreateRibbonButton();
+            this.btnVNC_MVVM_VAVM1st = this.Factory.CreateRibbonButton();
             this.btnVNC_MVVM_V2 = this.Factory.CreateRibbonButton();
-            this.btnVNC_MVVM_VM2 = this.Factory.CreateRibbonButton();
+            this.btnVNC_MVVM_VAVM1stDI = this.Factory.CreateRibbonButton();
+            this.btnVNC_MVVM_VB1 = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.tabSupportTools.SuspendLayout();
             this.rgDocumentActions.SuspendLayout();
@@ -248,13 +248,11 @@
             this.rgDocumentActions.Items.Add(this.btnSortAllPages);
             this.rgDocumentActions.Items.Add(this.btnDisplayPageNames);
             this.rgDocumentActions.Items.Add(this.btnSyncPageNames);
-            this.rgDocumentActions.Items.Add(this.btnRenamePages);
             this.rgDocumentActions.Items.Add(this.btnAutoSizePagesOn);
             this.rgDocumentActions.Items.Add(this.btnAutoSizePagesOff);
             this.rgDocumentActions.Items.Add(this.btnUpdatePageNameShapes);
             this.rgDocumentActions.Items.Add(this.btnAddNavigationLinks);
             this.rgDocumentActions.Items.Add(this.btnPrintPages);
-            this.rgDocumentActions.Items.Add(this.btnMovePages);
             this.rgDocumentActions.Items.Add(this.btnDeletePages);
             this.rgDocumentActions.Items.Add(this.btnSavePages);
             this.rgDocumentActions.Label = "Document Actions";
@@ -343,13 +341,6 @@
             this.btnSyncPageNames.Name = "btnSyncPageNames";
             this.btnSyncPageNames.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnSyncPageNames_Click);
             // 
-            // btnRenamePages
-            // 
-            this.btnRenamePages.Label = "Rename Pages";
-            this.btnRenamePages.Name = "btnRenamePages";
-            this.btnRenamePages.SuperTip = "Rename Pages using RegEx";
-            this.btnRenamePages.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnRenamePages_Click);
-            // 
             // btnAutoSizePagesOn
             // 
             this.btnAutoSizePagesOn.Label = "AutoSize On";
@@ -391,13 +382,6 @@
             this.btnPrintPages.SuperTip = "Print all Pages listed on current Page";
             this.btnPrintPages.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnPrintPages_Click);
             // 
-            // btnMovePages
-            // 
-            this.btnMovePages.Label = "Move Pages";
-            this.btnMovePages.Name = "btnMovePages";
-            this.btnMovePages.SuperTip = "Move all Pages listed on current Page to Another Document";
-            this.btnMovePages.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnMovePages_Click);
-            // 
             // btnDeletePages
             // 
             this.btnDeletePages.Label = "Delete Pages";
@@ -422,7 +406,6 @@
             this.rgPageActions.Items.Add(this.btnSyncPageNamesPage);
             this.rgPageActions.Items.Add(this.btnAutoSizePageOn);
             this.rgPageActions.Items.Add(this.btnAutoSizePageOff);
-            this.rgPageActions.Items.Add(this.btnDuplicatePage);
             this.rgPageActions.Label = "Page Actions";
             this.rgPageActions.Name = "rgPageActions";
             // 
@@ -485,13 +468,6 @@
             this.btnAutoSizePageOff.Label = "AutoSize Page Off";
             this.btnAutoSizePageOff.Name = "btnAutoSizePageOff";
             this.btnAutoSizePageOff.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnAutoSizePageOff_Click);
-            // 
-            // btnDuplicatePage
-            // 
-            this.btnDuplicatePage.Label = "Duplicate Page";
-            this.btnDuplicatePage.Name = "btnDuplicatePage";
-            this.btnDuplicatePage.SuperTip = "Duplicate Page";
-            this.btnDuplicatePage.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDuplicatePage_Click);
             // 
             // rgLayerActions
             // 
@@ -1199,20 +1175,29 @@
             // 
             // rgCustomUI
             // 
-            this.rgCustomUI.Items.Add(this.btnXMLPagesCommands);
+            this.rgCustomUI.Items.Add(this.btnCommandCockpit);
+            this.rgCustomUI.Items.Add(this.btnLinq2Excel);
             this.rgCustomUI.Items.Add(this.btnEditControlRows);
             this.rgCustomUI.Items.Add(this.btnEditParagraph);
             this.rgCustomUI.Items.Add(this.btnEditText);
             this.rgCustomUI.Items.Add(this.btnEditControlPoints);
-            this.rgCustomUI.Items.Add(this.btnCommandCockpit);
+            this.rgCustomUI.Items.Add(this.btnRenamePages);
+            this.rgCustomUI.Items.Add(this.btnDuplicatePage);
+            this.rgCustomUI.Items.Add(this.btnMovePages);
             this.rgCustomUI.Label = "Custom UI";
             this.rgCustomUI.Name = "rgCustomUI";
             // 
-            // btnXMLPagesCommands
+            // btnCommandCockpit
             // 
-            this.btnXMLPagesCommands.Label = "XML Pages Commands";
-            this.btnXMLPagesCommands.Name = "btnXMLPagesCommands";
-            this.btnXMLPagesCommands.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnXMLPagesCommands_Click);
+            this.btnCommandCockpit.Label = "Command Cockpit";
+            this.btnCommandCockpit.Name = "btnCommandCockpit";
+            this.btnCommandCockpit.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnCommandCockpit_Click);
+            // 
+            // btnLinq2Excel
+            // 
+            this.btnLinq2Excel.Label = "Linq to Excel";
+            this.btnLinq2Excel.Name = "btnLinq2Excel";
+            this.btnLinq2Excel.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnLinqToExcel_Click);
             // 
             // btnEditControlRows
             // 
@@ -1246,11 +1231,26 @@
             this.btnEditControlPoints.SuperTip = "Launch the Super Duper Edit Control Points";
             this.btnEditControlPoints.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnEditControlPoints_Click);
             // 
-            // btnCommandCockpit
+            // btnRenamePages
             // 
-            this.btnCommandCockpit.Label = "Command Cockpit";
-            this.btnCommandCockpit.Name = "btnCommandCockpit";
-            this.btnCommandCockpit.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnCommandCockpit_Click);
+            this.btnRenamePages.Label = "Rename Pages";
+            this.btnRenamePages.Name = "btnRenamePages";
+            this.btnRenamePages.SuperTip = "Rename Pages using RegEx";
+            this.btnRenamePages.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnRenamePages_Click);
+            // 
+            // btnDuplicatePage
+            // 
+            this.btnDuplicatePage.Label = "Duplicate Page";
+            this.btnDuplicatePage.Name = "btnDuplicatePage";
+            this.btnDuplicatePage.SuperTip = "Duplicate Page";
+            this.btnDuplicatePage.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDuplicatePage_Click);
+            // 
+            // btnMovePages
+            // 
+            this.btnMovePages.Label = "Move Pages";
+            this.btnMovePages.Name = "btnMovePages";
+            this.btnMovePages.SuperTip = "Move all Pages listed on current Page to Another Document";
+            this.btnMovePages.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnMovePages_Click);
             // 
             // tabUILaunch
             // 
@@ -1358,38 +1358,38 @@
             // 
             // rgMVVMExamples
             // 
-            this.rgMVVMExamples.Items.Add(this.btnVNC_MVVM_V1);
-            this.rgMVVMExamples.Items.Add(this.btnVNC_MVVM_VM1);
+            this.rgMVVMExamples.Items.Add(this.btnVNC_MVVM_VAVM1st);
             this.rgMVVMExamples.Items.Add(this.btnVNC_MVVM_V2);
-            this.rgMVVMExamples.Items.Add(this.btnVNC_MVVM_VM2);
+            this.rgMVVMExamples.Items.Add(this.btnVNC_MVVM_VAVM1stDI);
+            this.rgMVVMExamples.Items.Add(this.btnVNC_MVVM_VB1);
             this.rgMVVMExamples.Label = "MVVM Examples";
             this.rgMVVMExamples.Name = "rgMVVMExamples";
             // 
-            // btnVNC_MVVM_V1
+            // btnVNC_MVVM_VAVM1st
             // 
-            this.btnVNC_MVVM_V1.Label = "VNC MVVM V1";
-            this.btnVNC_MVVM_V1.Name = "btnVNC_MVVM_V1";
-            this.btnVNC_MVVM_V1.ScreenTip = "Cat ScreenTip";
-            this.btnVNC_MVVM_V1.SuperTip = "Cat SuperTip";
-            this.btnVNC_MVVM_V1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnVNC_MVVM_V1_Click);
-            // 
-            // btnVNC_MVVM_VM1
-            // 
-            this.btnVNC_MVVM_VM1.Label = "VNC MVVM VM1";
-            this.btnVNC_MVVM_VM1.Name = "btnVNC_MVVM_VM1";
-            this.btnVNC_MVVM_VM1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnVNC_MVVM_VM1_Click);
+            this.btnVNC_MVVM_VAVM1st.Label = "VNC MVVM VAVM 1st";
+            this.btnVNC_MVVM_VAVM1st.Name = "btnVNC_MVVM_VAVM1st";
+            this.btnVNC_MVVM_VAVM1st.SuperTip = "ViewModel First by Hand";
+            this.btnVNC_MVVM_VAVM1st.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnVNC_MVVM_VAVM1st_Click);
             // 
             // btnVNC_MVVM_V2
             // 
-            this.btnVNC_MVVM_V2.Label = "VNC MVVM V2 (DI)";
+            this.btnVNC_MVVM_V2.Label = "VNC MVVM VA1st (DI)";
             this.btnVNC_MVVM_V2.Name = "btnVNC_MVVM_V2";
-            this.btnVNC_MVVM_V2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnVNC_MVVM_V2_Click);
+            this.btnVNC_MVVM_V2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnVNC_MVVM_VA1st_Click);
             // 
-            // btnVNC_MVVM_VM2
+            // btnVNC_MVVM_VAVM1stDI
             // 
-            this.btnVNC_MVVM_VM2.Label = "VNC MVVM VM2 (DI)";
-            this.btnVNC_MVVM_VM2.Name = "btnVNC_MVVM_VM2";
-            this.btnVNC_MVVM_VM2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnVNC_MVVM_VM2_Click);
+            this.btnVNC_MVVM_VAVM1stDI.Label = "VNC MVVM VAVM 1st (DI)";
+            this.btnVNC_MVVM_VAVM1stDI.Name = "btnVNC_MVVM_VAVM1stDI";
+            this.btnVNC_MVVM_VAVM1stDI.SuperTip = "ViewAViewModel 1st using DI";
+            this.btnVNC_MVVM_VAVM1stDI.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnVNC_MVVM_VAVM1stDI_Click);
+            // 
+            // btnVNC_MVVM_VB1
+            // 
+            this.btnVNC_MVVM_VB1.Label = "VNC MVVM VB1st (DI)";
+            this.btnVNC_MVVM_VB1.Name = "btnVNC_MVVM_VB1";
+            this.btnVNC_MVVM_VB1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnVNC_MVVM_VB1_Click);
             // 
             // Ribbon
             // 
@@ -1503,13 +1503,11 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnLockBackground;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnUnlockBackground;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnAddHeader;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnRenamePages;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnAutoSizePagesOn;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnAutoSizePagesOff;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnAutoSizePageOn;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnAutoSizePageOff;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnPrintPages;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnMovePages;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDeletePages;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnSavePages;
         private Microsoft.Office.Tools.Ribbon.RibbonTab tabUILaunch;
@@ -1585,12 +1583,10 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnPageActionTags;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnPageThemeProperties;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup rgMVVMExamples;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnVNC_MVVM_V1;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnVNC_MVVM_VM1;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDuplicatePage;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnVNC_MVVM_VAVM1st;
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tabCustomUI;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup rgCustomUI;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnXMLPagesCommands;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnLinq2Excel;
 
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnEditControlRows;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnEditParagraph;
@@ -1599,8 +1595,12 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnRemoveLayers_Page;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnEditControlPoints;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnVNC_MVVM_V2;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnVNC_MVVM_VM2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnVNC_MVVM_VAVM1stDI;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnCommandCockpit;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnRenamePages;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDuplicatePage;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnMovePages;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnVNC_MVVM_VB1;
     }
 
     partial class ThisRibbonCollection

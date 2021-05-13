@@ -1,4 +1,4 @@
-﻿namespace SupportTools_Visio.Infrastructure
+﻿namespace SupportTools_Visio.Core
 {
     public static class GlobalCommands
     {

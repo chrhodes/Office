@@ -14,7 +14,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     mc:Ignorable="d" >
 
-
+    <!-- This is used to make the design experience better -->
+    <Style x:Key="vncDesignStyle" TargetType="UserControl">
+        <Setter Property="Background" Value="White" />
+    </Style>
+    
     <Style x:Key="FixedLayoutPanel" >
         <Setter Property="dxdo:LayoutPanel.AllowClose" Value="False" />
         <Setter Property="dxdo:LayoutPanel.AllowHide" Value="False" />

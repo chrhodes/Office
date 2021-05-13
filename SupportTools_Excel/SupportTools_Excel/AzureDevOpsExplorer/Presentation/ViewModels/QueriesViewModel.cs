@@ -218,7 +218,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
             set;
         }
 
-         private List<WorkItemQueryWrapper> _workItemQueries;
+        private List<WorkItemQueryWrapper> _workItemQueries;
         public List<WorkItemQueryWrapper> WorkItemQueries
         {
             get => _workItemQueries;

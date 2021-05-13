@@ -2,7 +2,7 @@
 
 using Prism.Commands;
 
-using SupportTools_Visio.Infrastructure;
+using SupportTools_Visio.Core;
 using SupportTools_Visio.Presentation.Views;
 
 using System;

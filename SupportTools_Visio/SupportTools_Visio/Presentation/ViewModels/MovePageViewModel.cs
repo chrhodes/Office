@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 using Prism.Commands;
@@ -10,25 +7,38 @@ using Prism.Events;
 using SupportTools_Visio.Presentation.Views;
 
 using VNC;
-using VNC.Core.Events;
 using VNC.Core.Mvvm;
 using VNC.Core.Services;
 
 namespace SupportTools_Visio.Presentation.ViewModels
 {
-    public class ViewAViewModel : EventViewModelBase, IViewAViewModel, IInstanceCountVM
+    public class MovePageViewModel : EventViewModelBase, IMovePageViewModel, IInstanceCountVM
     {
 
         #region Constructors, Initialization, and Load
 
-        public ViewAViewModel(
-            ViewA viewA,
+        public MovePageViewModel(
             IEventAggregator eventAggregator,
             IMessageDialogService messageDialogService) : base(eventAggregator, messageDialogService)
         {
             Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_CATEGORY);
 
-            View = viewA;
+            // TODO(crhodes)
+            // Save constructor parameters here
+
+            InitializeViewModel();
+
+            Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
+        }
+
+        public MovePageViewModel(
+            MovePage view,
+            IEventAggregator eventAggregator,
+            IMessageDialogService messageDialogService) : base(eventAggregator, messageDialogService)
+        {
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_CATEGORY);
+
+            View = view;
             View.ViewModel = this;
             // TODO(crhodes)
             // Save constructor parameters here
@@ -47,7 +57,10 @@ namespace SupportTools_Visio.Presentation.ViewModels
             // TODO(crhodes)
             //
 
-            Message = "ViewModelA says hello";
+            SayHelloCommand = new DelegateCommand(
+                SayHello, SayHelloCanExecute);
+
+            Message = "MovePageViewModel says hello";
 
             Log.VIEWMODEL("Exit", Common.LOG_CATEGORY, startTicks);
         }
@@ -66,6 +79,8 @@ namespace SupportTools_Visio.Presentation.ViewModels
 
         #region Fields and Properties
 
+        public ICommand SayHelloCommand { get; private set; }
+
         private string _message;
 
         public string Message
@@ -80,51 +95,10 @@ namespace SupportTools_Visio.Presentation.ViewModels
             }
         }
 
-        private string _messageA;
-
-        public string MessageA
-        {
-            get => _messageA;
-            set
-            {
-                if (_messageA == value)
-                    return;
-                _messageA = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private string _messageB;
-
-        public string MessageB
-        {
-            get => _messageB;
-            set
-            {
-                if (_messageB == value)
-                    return;
-                _messageB = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private string _messageC;
-
-        public string MessageC
-        {
-            get => _messageC;
-            set
-            {
-                if (_messageC == value)
-                    return;
-                _messageC = value;
-                OnPropertyChanged();
-            }
-        }
-
         #endregion
 
         #region Event Handlers
+
 
 
         #endregion
@@ -141,6 +115,19 @@ namespace SupportTools_Visio.Presentation.ViewModels
 
         #region Private Methods
 
+        private bool SayHelloCanExecute()
+        {
+            return true;
+        }
+
+        private void SayHello()
+        {
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
+
+            Message = "Hello";
+
+            Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
+        }
 
         #endregion
 

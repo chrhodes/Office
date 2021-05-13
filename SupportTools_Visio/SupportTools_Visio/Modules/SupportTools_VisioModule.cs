@@ -2,6 +2,8 @@
 using Prism.Modularity;
 using Prism.Regions;
 
+using SupportTools_Visio.Presentation.ViewModels;
+
 using Unity;
 
 using VNC;
@@ -15,7 +17,8 @@ namespace SupportTools_Visio.Modules
         {
             long startTicks = Log.MODULE_INITIALIZE("Enter", Common.LOG_CATEGORY, 0);
 
-            //containerRegistry.RegisterSingleton<IViewAViewModel, ViewAViewModel>();
+            //containerRegistry.Register<IViewAViewModel, ViewAViewModel>();
+            containerRegistry.Register<IViewBViewModel, ViewBViewModel>();
             ////containerRegistry.Register<IViewA, ViewA>();
             //containerRegistry.RegisterSingleton<ViewA>();
 

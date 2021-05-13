@@ -2,7 +2,7 @@
 
 using VNC;
 using VNC.Core.Mvvm;
-using SupportTools_Visio.Infrastructure;
+using SupportTools_Visio.Core;
 using SupportTools_Visio.Presentation.ViewModels;
 
 namespace SupportTools_Visio.Presentation.Views

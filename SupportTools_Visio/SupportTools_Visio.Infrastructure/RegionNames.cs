@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SupportTools_Visio.Infrastructure
+﻿namespace SupportTools_Visio.Core
 {
     public static class RegionNames
     {

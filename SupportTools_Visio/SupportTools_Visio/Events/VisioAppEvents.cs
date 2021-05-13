@@ -6,7 +6,7 @@ using System.Text;
 using Visio=Microsoft.Office.Interop.Visio;
 using VisioHelper = VNC.AddinHelper.Visio;
 using VNC;
-using SupportTools_Visio.Infrastructure;
+using SupportTools_Visio.Core;
 
 namespace SupportTools_Visio.Events
 {
