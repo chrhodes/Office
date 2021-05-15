@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+
 using System.Windows.Input;
+using System.Xml;
 using System.Xml.Linq;
+
+using Microsoft.Win32;
 
 using Prism.Commands;
 using Prism.Events;
@@ -47,17 +52,65 @@ namespace SupportTools_Visio.Presentation.ViewModels
             // TODO(crhodes)
             //
 
+            PopulateControlsFromXmlFile(Common.cCONFIG_FILE);
+
             SayHelloCommand = new DelegateCommand(
                 SayHello, SayHelloCanExecute);
 
             ExecuteCommand = new DelegateCommand(
                 Execute, ExecuteCanExecute);
 
+            ReloadXmlCommand = new DelegateCommand(
+                ReloadXml, ReloadXmlCanExecute);
+
             Message = "CommandCockpitViewModel says hello";
 
             Log.VIEWMODEL("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
+        private void PopulateControlsFromXmlFile(string fileNameAndPath)
+        {
+            long startTicks = Log.VIEWMODEL("Enter", Common.LOG_CATEGORY);
+
+            VisioCommands = new ObservableCollection<XElement>();
+            //SolutionFiles = new ObservableCollection<XElement>();
+            //ProjectFiles = new ObservableCollection<XElement>();
+            //SourceFiles = new ObservableCollection<XElement>();
+
+            //FilesDemoCS = new ObservableCollection<string>();
+            //FilesDemoVB = new ObservableCollection<string>();
+
+            //SelectedSolutionFiles = new ObservableCollection<XElement>();
+            //SelectedProjectFiles = new ObservableCollection<XElement>();
+            //SelectedSourceFiles = new ObservableCollection<XElement>();
+
+            XmlTextReader xtr = new XmlTextReader(fileNameAndPath);
+
+            XDocument xDocument = XDocument.Load(xtr, LoadOptions.PreserveWhitespace);
+
+            var commmandCockput = xDocument.Descendants("CommandCockpit");
+
+            foreach (var command in commmandCockput.Elements("Command"))
+            {
+                VisioCommands.Add(command);
+            }
+
+            //foreach (var file in xDocument.Descendants("DemoFiles")
+            //    .Elements("File")
+            //    .Where(df => df.Attribute("Language").Value == "CS"))
+            //{
+            //    FilesDemoCS.Add(file.Attribute("FullPath").Value);
+            //}
+
+            //foreach (var file in xDocument.Descendants("DemoFiles")
+            //    .Elements("File")
+            //    .Where(df => df.Attribute("Language").Value == "VB"))
+            //{
+            //    FilesDemoVB.Add(file.Attribute("FullPath").Value);
+            //}
+
+            Log.VIEWMODEL("Exit", Common.LOG_CATEGORY, startTicks);
+        }
         #endregion
 
         #region Enums
@@ -71,6 +124,39 @@ namespace SupportTools_Visio.Presentation.ViewModels
         #endregion
 
         #region Fields and Properties
+
+        public ObservableCollection<XElement> VisioCommands { get; set; }
+
+        private XElement _selectedCommand;
+
+        public XElement SelectedCommand
+        {
+            get => _selectedCommand;
+            set
+            {
+                if (_selectedCommand == value)
+                    return;
+                _selectedCommand = value;
+
+                //SolutionFiles.Clear();
+                ////ProjectFiles.Clear();
+                ////SourceFiles.Clear();
+
+                //SelectedSolutionFiles.Clear();
+                //SelectedProjectFiles.Clear();
+                //SelectedSourceFiles.Clear();
+
+                //Repository = _selectedBranch.Attribute("Repository").Value;
+                //Branch = _selectedBranch.Attribute("Name").Value;
+                //RepositoryPath = $"{_selectedBranch.Attribute("RepositoryPath").Value}";
+
+                //var solutions = _selectedBranch.Elements("Solution");
+
+                //SolutionFiles.AddRange(solutions);
+
+                OnPropertyChanged();
+            }
+        }
 
         public ICommand SayHelloCommand { get; private set; }
 
@@ -108,6 +194,60 @@ namespace SupportTools_Visio.Presentation.ViewModels
 
         #region Private Methods
 
+        #region Commands
+
+        #region ReloadXml Command
+
+        public DelegateCommand ReloadXmlCommand { get; set; }
+        public string ReloadXmlContent { get; set; } = "...";
+        public string ReloadXmlToolTip { get; set; } = "ReloadXml ToolTip";
+
+        // Can get fancy and use Resources
+        //public string ReloadXmlContent { get; set; } = "ViewName_ReloadXmlContent";
+        //public string ReloadXmlToolTip { get; set; } = "ViewName_ReloadXmlContentToolTip";
+
+        // Put these in Resource File
+        //    <system:String x:Key="ViewName_ReloadXmlContent">ReloadXml</system:String>
+        //    <system:String x:Key="ViewName_ReloadXmlContentToolTip">ReloadXml ToolTip</system:String>  
+
+        public void ReloadXml()
+        {
+            // TODO(crhodes)
+            // Do something amazing.
+            Message = "Cool, you called ReloadXml";
+
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
+            openFileDialog1.FileName = "";
+
+            if (true == openFileDialog1.ShowDialog())
+            {
+                string fileName = openFileDialog1.FileName;
+
+                PopulateControlsFromXmlFile(fileName);
+            }
+            //Common.EventAggregator.GetEvent<ReloadXmlEvent>().Publish();
+
+            // Start Cut Four - Put this in places that listen for event
+
+            //Common.EventAggregator.GetEvent<ReloadXmlEvent>().Subscribe(ReloadXml);
+
+            // End Cut Four
+
+        }
+
+        public bool ReloadXmlCanExecute()
+        {
+            // TODO(crhodes)
+            // Add any before button is enabled logic.
+            return true;
+        }
+
+        #endregion
+
+        #endregion
+
         #region Execute Command
 
         public DelegateCommand ExecuteCommand { get; set; }
@@ -127,9 +267,9 @@ namespace SupportTools_Visio.Presentation.ViewModels
             // TODO(crhodes)
             // Do something amazing.
             Message = "Cool, you called Execute";
-            Common.EventAggregator.GetEvent<ExecuteEvent>().Publish();
+            //Common.EventAggregator.GetEvent<ExecuteEvent>().Publish();
 
-            ParseCommand(XElement.Parse(teCommandElements.Text));
+            ParseCommand(SelectedCommand);
 
             // Start Cut Four
 
@@ -137,7 +277,6 @@ namespace SupportTools_Visio.Presentation.ViewModels
             //Common.EventAggregator.GetEvent<ExecuteEvent>().Subscribe(Execute);
 
             // End Cut Four
-
         }
 
         public bool ExecuteCanExecute()
@@ -153,7 +292,7 @@ namespace SupportTools_Visio.Presentation.ViewModels
         {
             Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
-            Message = "Hello";
+            Message = $"Hello from {this.GetType()}";
 
             Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
         }
@@ -384,6 +523,9 @@ namespace SupportTools_Visio.Presentation.ViewModels
                 string pageName = pageElement.Attribute("Name") != null ? pageElement.Attribute("Name").Value : "";
                 string backgroundPageName = pageElement.Attribute("BackgroundPageName") != null ? pageElement.Attribute("BackgroundPageName").Value : "";
                 string isBackground = pageElement.Attribute("IsBackground") != null ? pageElement.Attribute("IsBackground").Value : "0";
+
+                // TODO(crhodes)
+                // Need more logic here to handle if page doesn't exist.
 
                 if ("" != backgroundPageName)
                 {

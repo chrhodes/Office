@@ -259,7 +259,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
             }
         }
 
-
         #endregion
 
         #region Commands

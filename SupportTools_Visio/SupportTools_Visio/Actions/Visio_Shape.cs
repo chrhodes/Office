@@ -2714,11 +2714,11 @@ namespace SupportTools_Visio.Actions
 
                 shapeDataRow.Name = row.NameU;
 
-                shapeDataRow.Label = row[(short)VisCellIndices.visCustPropsLabel].FormulaU;
+                shapeDataRow.Label = row[(short)VisCellIndices.visCustPropsLabel].ResultStrU[VisUnitCodes.visUnitsString];
                 shapeDataRow.Prompt = row[(short)VisCellIndices.visCustPropsPrompt].FormulaU;
                 shapeDataRow.Type = row[(short)VisCellIndices.visCustPropsType].FormulaU;
                 shapeDataRow.Format = row[(short)VisCellIndices.visCustPropsFormat].FormulaU;
-                shapeDataRow.Value = row[(short)VisCellIndices.visCustPropsValue].FormulaU;
+                shapeDataRow.Value = row[(short)VisCellIndices.visCustPropsValue].ResultStrU[VisUnitCodes.visUnitsString];
                 shapeDataRow.SortKey = row[(short)VisCellIndices.visCustPropsSortKey].FormulaU;
                 shapeDataRow.Invisible = row[(short)VisCellIndices.visCustPropsInvis].FormulaU;
                 shapeDataRow.Ask = row[(short)VisCellIndices.visCustPropsAsk].FormulaU;

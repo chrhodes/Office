@@ -1,7 +1,8 @@
-﻿namespace SupportTools_Visio.Domain
+﻿using System.Xml.Linq;
+
+namespace SupportTools_Visio.Domain
 {
     public class ShapeDataRow
-
     {
         public string Name { get; set; }
         public string Label { get; set; }
@@ -14,5 +15,24 @@
         public string Ask { get; set; }
         public string LangID { get; set; }
         public string Calendar { get; set; }
+
+        public XElement ToXElement()
+        {
+            var shapeDataRow = new XElement("AddPropRow");
+
+            shapeDataRow.SetAttributeValue("Calendar", Calendar);
+            shapeDataRow.SetAttributeValue("LangID", LangID);
+            shapeDataRow.SetAttributeValue("Ask", Ask);
+            shapeDataRow.SetAttributeValue("Invisible", Invisible);
+            shapeDataRow.SetAttributeValue("SortKey", SortKey);
+            shapeDataRow.SetAttributeValue("Value", Value);
+            shapeDataRow.SetAttributeValue("Format", Format);
+            shapeDataRow.SetAttributeValue("Type", Type);
+            shapeDataRow.SetAttributeValue("Prompt", Prompt);
+            shapeDataRow.SetAttributeValue("Label", Label);
+            shapeDataRow.SetAttributeValue("Row", Name);
+
+            return shapeDataRow;
+        }
     }
 }

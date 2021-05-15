@@ -724,14 +724,21 @@
     <Compile Include="Modules\EditTextModule.cs" />
     <Compile Include="Domain\Cat.cs" />
     <Compile Include="Domain\ShapeSheet\NewButton.cs" />
+    <Compile Include="Presentation\Converters\XElementToStringConverter.cs" />
     <Compile Include="Presentation\Converters\SelectedItemsConverter.cs" />
+    <Compile Include="Presentation\Converters\SelectedItemsToListOfStringConverter.cs" />
+    <Compile Include="Presentation\Converters\SelectedItemsToVisioCommandWrapperConverter.cs" />
     <Compile Include="Presentation\ViewModels\Interfaces\ILinqToExcelViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Interfaces\IViewCViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ViewCViewModel.cs" />
     <Compile Include="Presentation\Views\LinqToExcel.xaml.cs" />
     <Compile Include="Presentation\ViewModels\LinqToExcelViewModel.cs" />
     <Compile Include="Presentation\ViewModels\Interfaces\IViewBViewModel.cs" />
     <Compile Include="Presentation\ViewModels\Interfaces\ICommandCockpitViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ViewBViewModel.cs" />
     <Compile Include="Presentation\ViewModels\CommandCockpitViewModel.cs" />
+    <Compile Include="Presentation\Views\ViewC2.xaml.cs" />
+    <Compile Include="Presentation\Views\ViewC1.xaml.cs" />
     <Compile Include="Presentation\Views\ViewB.xaml.cs" />
     <Compile Include="Presentation\Views\CommandCockpit.xaml.cs" />
     <Compile Include="Presentation\ViewModels\Interfaces\IMovePageViewModel.cs" />
@@ -1062,6 +1069,14 @@
     <Page Include="Presentation\Views\LinqToExcel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ViewC2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\ViewC1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Presentation\Views\ViewB.xaml">
       <Generator>MSBuild:Compile</Generator>

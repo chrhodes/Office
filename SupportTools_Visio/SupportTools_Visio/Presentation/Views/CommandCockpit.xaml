@@ -13,6 +13,7 @@
     xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
     xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
 
+    xmlns:localc="clr-namespace:SupportTools_Visio.Presentation.Converters"
     xmlns:views="clr-namespace:SupportTools_Visio.Presentation.Views"
     xmlns:viewModels="clr-namespace:SupportTools_Visio.Presentation.ViewModels"
 
@@ -28,35 +29,61 @@
             <Setter Property="Background" Value="White" />
         </Style>
     </d:DesignerProperties.DesignStyle>
-    
-    <UserControl.Resources>
 
+    <UserControl.Resources>
+        <localc:SelectedItemsToListOfStringConverter x:Key="SelectedItemsToListOfStringConverter" />
+        <localc:SelectedItemsConverter x:Key="SelectedItemsConverter" />
+        <localc:XElementToStringConverter x:Key="XElementToStringConverter" />
+        <localc:SelectedItemsToVisioCommandWrapperConverter x:Key="SelectedItemsToVisioCommandWrapperConverter" />
+
+        <!--<DataTemplate x:Key="dataTemplateCommand">
+            <StackPanel>
+                <Label Content="{Binding XPath=@Name}" />
+            </StackPanel>
+        </DataTemplate>-->
+
+        <DataTemplate x:Key="dataTemplateCommand">
+            <Border BorderThickness="1" BorderBrush="Coral" >
+                <Grid>
+                <StackPanel Orientation="Horizontal" Margin="2" >
+                    <Border BorderBrush="White" BorderThickness="1" Padding="3">
+                        <Label Content="{Binding Path=Attribute[Name].Value}" MinWidth="150" />
+                    </Border>
+                    <Border Background="#FF636363" BorderBrush="Red" BorderThickness="1" Padding="3" >
+                        <Label Content="{Binding Path=Attribute[Description].Value}"  />
+                    </Border>
+                </StackPanel>
+                </Grid>
+            </Border>
+        </DataTemplate>
     </UserControl.Resources>
-    
+
+    <!--<UserControl.DataContext>
+        <localvm:QueriesViewModel />
+    </UserControl.DataContext>-->
+
     <dxlc:LayoutControl x:Name="layoutItems" Orientation="Vertical" Margin="4,20,-4,-20">
         <dxlc:LayoutItem             
                 Label="Welcome to the evolving Commands Editor" 
                 LabelPosition="Top"/>
 
-        <dxlc:LayoutItem Label="Select Sections to Add" 
+        <!--<dxlc:LayoutItem Label="Select Sections to Add" 
                          LabelPosition="Top">
             
         <views:wucVisioCommand_Picker x:Name="visioCommand_Picker" 
                                       ControlChanged="visioCommand_Picker_ControlChanged"/>
 
-        </dxlc:LayoutItem>
-        
+        </dxlc:LayoutItem>-->
 
-        <dxlc:LayoutItem Label="Select Command"
-         	LabelPosition="Top">
-            <dxe:ComboBoxEdit x:Name="cbeCommand"
-        		ItemsSource="{Binding Command}"
-                ItemTemplate="{StaticResource dataTemplateCommand}"                                     
+        <dxlc:LayoutGroup View="GroupBox" Orientation="Horizontal" Header="Select Command" VerticalAlignment="Top"  >
+            <dxe:ComboBoxEdit x:Name="cbeVisioCommands" HorizontalContentAlignment="Stretch"
+        		ItemsSource="{Binding VisioCommands}"
+                ItemTemplate="{StaticResource dataTemplateCommand}"                              
                 EditValue="{Binding
                 	Path=SelectedCommand,
                     Mode=TwoWay,
                     UpdateSourceTrigger=PropertyChanged,
-                    Converter={StaticResource SelectedItemsConverter} }"
+                    Converter={StaticResource XElementToStringConverter} }"
         >
                 <dxe:ComboBoxEdit.StyleSettings>
                     <!--<dxe:CheckedTokenComboBoxStyleSettings/>-->
@@ -65,40 +92,56 @@
                     <!--<dxe:RadioTokenComboBoxStyleSettings/>-->
                     <!--<dxe:TokenComboBoxStyleSettings/>-->       
                 </dxe:ComboBoxEdit.StyleSettings>
-                <dxe:ComboBoxEditItem Content="Red" />
+                <!--<dxe:ComboBoxEditItem Content="Red" />
                 <dxe:ComboBoxEditItem Content="Green" />
-                <dxe:ComboBoxEditItem Content="Blue" />
+                <dxe:ComboBoxEditItem Content="Blue" />-->
             </dxe:ComboBoxEdit>
+          
+            <dxlc:LayoutItem HorizontalAlignment="Right">
+                <Button 
+            		Command="{Binding ReloadXmlCommand }"
+            		Content="{Binding ReloadXmlContent, FallbackValue='...' }"
+            		ToolTip="{Binding ReloadXmlToolTip, FallbackValue='ReloadXml ToolTip' }" />
+            </dxlc:LayoutItem>
+ 
+        </dxlc:LayoutGroup>
+
+        <!--<dxlc:LayoutItem Label="Select Command"
+         	LabelPosition="Top">
+            <dxe:ComboBoxEdit x:Name="cbeVisioCommands"
+        		ItemsSource="{Binding VisioCommands}"
+                ItemTemplate="{StaticResource dataTemplateCommand}"                                     
+                EditValue="{Binding
+                	Path=SelectedCommand,
+                    Mode=TwoWay,
+                    UpdateSourceTrigger=PropertyChanged,
+                    Converter={StaticResource SelectedItemsConverter} }"
+        >
+                <dxe:ComboBoxEdit.StyleSettings>
+                    --><!--<dxe:CheckedTokenComboBoxStyleSettings/>-->
+                    <!--<dxe:CheckedComboBoxStyleSettings/>--><!--
+                    <dxe:RadioComboBoxStyleSettings/>
+                    --><!--<dxe:RadioTokenComboBoxStyleSettings/>-->
+                    <!--<dxe:TokenComboBoxStyleSettings/>--><!--
+                </dxe:ComboBoxEdit.StyleSettings>
+                --><!--<dxe:ComboBoxEditItem Content="Red" />
+                <dxe:ComboBoxEditItem Content="Green" />
+                <dxe:ComboBoxEditItem Content="Blue" />--><!--
+            </dxe:ComboBoxEdit>
+        </dxlc:LayoutItem>-->
+
+        <dxlc:LayoutItem>
+            <dxe:TextEdit Text="{Binding SelectedCommand.Description}"/>
         </dxlc:LayoutItem>
-        
-        
-        // >>> Start Cut One - Put this in ViewModel
-        
-        // >>> Start Cut Two - Put this in Properties
-        
-                private List<CommandWrapper> _command;
-                public List<CommandWrapper> Command
-                {
-                    get => _command;
-                    set
-                    {
-                        if (_command == value)
-                            return;
-                        _command = value;
-                        OnPropertyChanged();
-                    }
-                }
-        
-        // <<< End Cut Two
-        
-        
-        // <<< End Cut One
-        
-        
         
         <dxlc:LayoutItem>
-            <dxe:TextEdit x:Name="teCommandElements" />
+            <dxe:TextEdit Text="{Binding SelectedCommand, 
+                Converter={StaticResource XElementToStringConverter}}"/>
         </dxlc:LayoutItem>
+
+        <!--<dxlc:LayoutItem>
+            <dxe:TextEdit Text="{Binding SelectedCommand, Converter={StaticResource SelectedItemConverter}}"/>
+        </dxlc:LayoutItem>-->
 
         <dxlc:LayoutItem>
             <Button 

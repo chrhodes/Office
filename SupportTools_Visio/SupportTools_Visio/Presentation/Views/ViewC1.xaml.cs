@@ -6,22 +6,19 @@ using VNC.Core.Mvvm;
 
 namespace SupportTools_Visio.Presentation.Views
 {
-    public partial class CommandCockpit : ViewBase, IInstanceCountV
+    public partial class ViewC1 : ViewBase, IInstanceCountV
     {
-
-        public CommandCockpit()
+        public ViewC1()
         {
             Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_CATEGORY);
 
             InstanceCountV++;
             InitializeComponent();
 
-            //LoadControlContents();
-
             Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
-        public CommandCockpit(ViewModels.ICommandCockpitViewModel viewModel)
+        public ViewC1(ViewModels.IViewCViewModel viewModel)
         {
             Int64 startTicks = Log.CONSTRUCTOR($"Enter viewModel({viewModel.GetType()}", Common.LOG_CATEGORY);
 
@@ -29,8 +26,6 @@ namespace SupportTools_Visio.Presentation.Views
             InitializeComponent();
 
             ViewModel = viewModel;
-
-            //LoadControlContents();
 
             Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
         }
@@ -46,30 +41,6 @@ namespace SupportTools_Visio.Presentation.Views
         }
 
         #endregion
-
-        #region Private Methods
-
-        //private void LoadControlContents()
-        //{
-        //    try
-        //    {
-        //        visioCommand_Picker.PopulateControlFromFile(Common.cCONFIG_FILE);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.ToString());
-        //    }
-        //}
-
-        #endregion
-
-        //public void visioCommand_Picker_ControlChanged()
-        //{
-        //    //var command = visioCommand_Picker.Command;
-        //    //teCommandElements.Text = command.ToString();
-        //    //ParseCommand(command);
-        //}
-
 
     }
 }

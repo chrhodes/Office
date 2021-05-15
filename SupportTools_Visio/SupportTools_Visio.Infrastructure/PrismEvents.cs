@@ -11,5 +11,6 @@ namespace SupportTools_Visio.Core
     public class UseExcelDataReaderEvent : PubSubEvent { }
     public class LoadExcelFileEvent : PubSubEvent { }
     public class ExecuteEvent : PubSubEvent { }
+    public class ReloadXmlEvent : PubSubEvent { }
 
 }

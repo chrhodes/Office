@@ -193,7 +193,9 @@
             this.btnVNC_MVVM_VAVM1st = this.Factory.CreateRibbonButton();
             this.btnVNC_MVVM_V2 = this.Factory.CreateRibbonButton();
             this.btnVNC_MVVM_VAVM1stDI = this.Factory.CreateRibbonButton();
-            this.btnVNC_MVVM_VB1 = this.Factory.CreateRibbonButton();
+            this.btnVNC_MVVM_VB_1st = this.Factory.CreateRibbonButton();
+            this.btnVNC_MVVM_VC1_1st = this.Factory.CreateRibbonButton();
+            this.btnVNC_MVVM_VC2_1st = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.tabSupportTools.SuspendLayout();
             this.rgDocumentActions.SuspendLayout();
@@ -1361,7 +1363,9 @@
             this.rgMVVMExamples.Items.Add(this.btnVNC_MVVM_VAVM1st);
             this.rgMVVMExamples.Items.Add(this.btnVNC_MVVM_V2);
             this.rgMVVMExamples.Items.Add(this.btnVNC_MVVM_VAVM1stDI);
-            this.rgMVVMExamples.Items.Add(this.btnVNC_MVVM_VB1);
+            this.rgMVVMExamples.Items.Add(this.btnVNC_MVVM_VB_1st);
+            this.rgMVVMExamples.Items.Add(this.btnVNC_MVVM_VC1_1st);
+            this.rgMVVMExamples.Items.Add(this.btnVNC_MVVM_VC2_1st);
             this.rgMVVMExamples.Label = "MVVM Examples";
             this.rgMVVMExamples.Name = "rgMVVMExamples";
             // 
@@ -1385,11 +1389,28 @@
             this.btnVNC_MVVM_VAVM1stDI.SuperTip = "ViewAViewModel 1st using DI";
             this.btnVNC_MVVM_VAVM1stDI.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnVNC_MVVM_VAVM1stDI_Click);
             // 
-            // btnVNC_MVVM_VB1
+            // btnVNC_MVVM_VB_1st
             // 
-            this.btnVNC_MVVM_VB1.Label = "VNC MVVM VB1st (DI)";
-            this.btnVNC_MVVM_VB1.Name = "btnVNC_MVVM_VB1";
-            this.btnVNC_MVVM_VB1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnVNC_MVVM_VB1_Click);
+            this.btnVNC_MVVM_VB_1st.Label = "VNC MVVM VB 1st (DI)";
+            this.btnVNC_MVVM_VB_1st.Name = "btnVNC_MVVM_VB_1st";
+            this.btnVNC_MVVM_VB_1st.SuperTip = "ViewB has a parameterless constructor and one that takes a ViewModel and ViewMode" +
+    "l is registed with DI";
+            this.btnVNC_MVVM_VB_1st.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnVNC_MVVM_VB_Click);
+            // 
+            // btnVNC_MVVM_VC1_1st
+            // 
+            this.btnVNC_MVVM_VC1_1st.Label = "VNC MVVM VC1 1st (DI)";
+            this.btnVNC_MVVM_VC1_1st.Name = "btnVNC_MVVM_VC1_1st";
+            this.btnVNC_MVVM_VC1_1st.SuperTip = "ViewC has parameterless and parameterized(ViewModel) constructors and is not regi" +
+    "stered with DI";
+            this.btnVNC_MVVM_VC1_1st.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnVNC_MVVM_VC1_1st_Click);
+            // 
+            // btnVNC_MVVM_VC2_1st
+            // 
+            this.btnVNC_MVVM_VC2_1st.Label = "VNC MVVM VC2 1st (DI)";
+            this.btnVNC_MVVM_VC2_1st.Name = "btnVNC_MVVM_VC2_1st";
+            this.btnVNC_MVVM_VC2_1st.SuperTip = "ViewC2 has no parameterless constructor and is not Registered with DI";
+            this.btnVNC_MVVM_VC2_1st.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnVNC_MVVM_VC2_1st_Click);
             // 
             // Ribbon
             // 
@@ -1600,7 +1621,9 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnRenamePages;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDuplicatePage;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnMovePages;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnVNC_MVVM_VB1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnVNC_MVVM_VB_1st;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnVNC_MVVM_VC1_1st;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnVNC_MVVM_VC2_1st;
     }
 
     partial class ThisRibbonCollection

@@ -48,7 +48,14 @@ d:DesignWidth="300" >
 
                 <Button Content="{Binding UpdateButtonContent}" 
                         Command="{Binding UpdateSettings}"/>
-
+                
+                <dxlc:LayoutItem>
+                    <Button 
+                		Command="{Binding ExportSettings }"
+                		Content="{Binding ExportSettingsContent, FallbackValue='ExportSettings' }"
+                		ToolTip="{Binding ExportSettingsToolTip, FallbackValue='ExportSettings ToolTip' }" />
+                </dxlc:LayoutItem>
+                
             </dxlc:LayoutGroup>
 
         </dxlc:LayoutGroup>

@@ -24,7 +24,7 @@
 
             <dxlc:LayoutGroup.DataContext>
                 <XmlDataProvider x:Name="comboBox"
-                             XPath="//Visio_Config/ShapeEditorDialog/Command"
+                             XPath="//Visio_Config/CommandCockpit/Command"
                              IsAsynchronous="False"
                              IsInitialLoadEnabled="True" />
                 <!--<XmlDataProvider x:Name="comboBox" 

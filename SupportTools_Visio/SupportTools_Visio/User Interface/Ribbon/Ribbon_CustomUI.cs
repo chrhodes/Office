@@ -27,6 +27,7 @@ namespace SupportTools_Visio
                 "Command Cockpit (XML Commands)",
                 Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
                 ShowWindowMode.Modeless_Show,
+                //(CommandCockpitViewModel)Common.ApplicationBootstrapper.Container.Resolve(typeof(CommandCockpitViewModel))
                 (CommandCockpit)Common.ApplicationBootstrapper.Container.Resolve(typeof(CommandCockpit))
             );
 
@@ -98,8 +99,6 @@ namespace SupportTools_Visio
             Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
-
-
         public static DxThemedWindowHost editControlRowsHost = null;
 
         private void btnEditControlRows_Click(object sender, RibbonControlEventArgs e)
@@ -110,7 +109,7 @@ namespace SupportTools_Visio
                 "Edit Control Rows",
                 Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
                 ShowWindowMode.Modeless_Show,
-                new Presentation.Views.EditControlRows(new Presentation.ViewModels.EditControlRowsViewModel()));
+                new Presentation.Views.EditControlRows(new EditControlRowsViewModel()));
 
             Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
         }
@@ -126,14 +125,14 @@ namespace SupportTools_Visio
                 "Edit Paragraph",
                 300, 600,
                 ShowWindowMode.Modeless_Show,
-                new Presentation.Views.EditParagraph(new Presentation.ViewModels.EditParagraphViewModel()));
+                new Presentation.Views.EditParagraph(new EditParagraphViewModel()));
 
             Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
-        private Presentation.Views.EditControlPoints editControlPointsUC = null;
+        private EditControlPoints editControlPointsUC = null;
 
-        public static VNC.WPF.Presentation.Dx.Views.DxThemedWindowHost editTextHost = null;
+        public static DxThemedWindowHost editTextHost = null;
 
         // static VNC.Core.Xaml.Presentation.WindowHost editTextHost = null;
         private Presentation.Views.EditText editTextUC = null;
@@ -148,7 +147,7 @@ namespace SupportTools_Visio
                 "Edit Shape Control Points Text",
                 Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
                 ShowWindowMode.Modeless_Show,
-                new Presentation.Views.EditControlPoints());
+                new EditControlPoints());
 
             Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
         }
@@ -161,7 +160,7 @@ namespace SupportTools_Visio
                 "Edit Text",
                 Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
                 ShowWindowMode.Modeless_Show,
-                new Presentation.Views.EditText(new Presentation.ViewModels.EditTextViewModel()));
+                new EditText(new EditTextViewModel()));
 
             Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
         }

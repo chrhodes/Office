@@ -15,6 +15,7 @@ namespace SupportTools_Visio.Presentation.ViewModels
     {
         public DelegateCommand UpdateSettings { get; protected set; }
         public DelegateCommand LoadCurrentSettings { get; protected set; }
+        public DelegateCommand ExportSettings { get; protected set; }
 
         public DelegateCommand Refresh { get; protected set; }
 
@@ -24,6 +25,7 @@ namespace SupportTools_Visio.Presentation.ViewModels
 
             UpdateSettings = new DelegateCommand(OnUpdateSettingsExecute, OnUpdateSettingsCanExecute);
             LoadCurrentSettings = new DelegateCommand(OnLoadCurrentSettingsExecute, OnLoadCurrentSettingsCanExecute);
+            ExportSettings = new DelegateCommand(ExportSettingsExecute, ExportSettingsCanExecute);
 
             Common.EventAggregator.GetEvent<SelectionChangedEvent>().Subscribe(OnRefresh);
 
@@ -77,6 +79,21 @@ namespace SupportTools_Visio.Presentation.ViewModels
             }
         }
 
+
+        string _exportSettingsContent = "Export Rows from Shape";
+        public string ExportSettingsContent
+        {
+            get
+            {
+                return _exportSettingsContent;
+            }
+            set
+            {
+                _exportSettingsContent = value;
+                OnPropertyChanged();
+            }
+        }
+
         int _selectedShapeCount;
         public int SelectedShapeCount
         {
@@ -89,16 +106,6 @@ namespace SupportTools_Visio.Presentation.ViewModels
                 OnPropertyChanged();
                 //LoadCurrentSettings.RaiseCanExecuteChanged();
             }
-        }
-
-        public virtual void OnUpdateSettingsExecute()
-        {
-            Message = "OnLoadCurrentSettingsExecute Called";
-        }
-
-        public virtual Boolean OnUpdateSettingsCanExecute()
-        {
-            return true;
         }
 
         public virtual void OnLoadCurrentSettingsExecute()
@@ -160,6 +167,26 @@ namespace SupportTools_Visio.Presentation.ViewModels
 
                 return false;
             }
+        }
+
+        public virtual void OnUpdateSettingsExecute()
+        {
+            Message = "OnLoadCurrentSettingsExecute Called";
+        }
+
+        public virtual Boolean OnUpdateSettingsCanExecute()
+        {
+            return true;
+        }
+
+        public virtual void ExportSettingsExecute()
+        {
+            Message = "ExportSettingsExecute Called";
+        }
+
+        public virtual Boolean ExportSettingsCanExecute()
+        {
+            return true;
         }
     }
 }

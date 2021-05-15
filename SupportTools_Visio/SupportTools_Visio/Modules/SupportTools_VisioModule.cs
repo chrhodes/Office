@@ -19,8 +19,8 @@ namespace SupportTools_Visio.Modules
 
             //containerRegistry.Register<IViewAViewModel, ViewAViewModel>();
             containerRegistry.Register<IViewBViewModel, ViewBViewModel>();
+            containerRegistry.Register<ICommandCockpitViewModel, CommandCockpitViewModel>();
             ////containerRegistry.Register<IViewA, ViewA>();
-            //containerRegistry.RegisterSingleton<ViewA>();
 
             Log.MODULE_INITIALIZE("Exit", Common.LOG_CATEGORY, 0, startTicks);
         }
