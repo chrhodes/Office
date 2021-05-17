@@ -84,15 +84,22 @@ namespace SupportTools_Visio.Presentation.ViewModels
             //SelectedProjectFiles = new ObservableCollection<XElement>();
             //SelectedSourceFiles = new ObservableCollection<XElement>();
 
-            XmlTextReader xtr = new XmlTextReader(fileNameAndPath);
-
-            XDocument xDocument = XDocument.Load(xtr, LoadOptions.PreserveWhitespace);
-
-            var commmandCockput = xDocument.Descendants("CommandCockpit");
-
-            foreach (var command in commmandCockput.Elements("Command"))
+            try
             {
-                VisioCommands.Add(command);
+                XmlTextReader xtr = new XmlTextReader(fileNameAndPath);
+
+                XDocument xDocument = XDocument.Load(xtr, LoadOptions.PreserveWhitespace);
+
+                var commmandCockput = xDocument.Descendants("CommandCockpit");
+
+                foreach (var command in commmandCockput.Elements("Command"))
+                {
+                    VisioCommands.Add(command);
+                }
+            }
+            catch (Exception ex)
+            {
+                
             }
 
             //foreach (var file in xDocument.Descendants("DemoFiles")

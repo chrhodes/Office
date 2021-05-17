@@ -2855,6 +2855,7 @@ namespace SupportTools_Visio.Actions
                 Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
+        
         public static void Set_BevelPropertiesWrapper_Section(Shape shape, BevelProperties bevelProperties)
         {
             try
@@ -2899,8 +2900,6 @@ namespace SupportTools_Visio.Actions
                 Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
-
-
 
         public static void Set_FillFormat_Section(Shape shape, FillFormat fillFormat)
         {
