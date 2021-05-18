@@ -43,6 +43,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNC.WPF.Presentation.Dx", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNC.AssemblyHelper", "..\..\vnc\VNC.AssemblyHelper\VNC.AssembyHelper\VNC.AssemblyHelper.csproj", "{1A02AFBE-C49B-49F3-8126-F346872B2BB6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNC.CodeAnalysis", "..\..\VNC\VNC.CodeAnalysis\VNC.CodeAnalysis\VNC.CodeAnalysis.csproj", "{CDA536FC-450E-4E1C-AF0C-F795FF461524}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|Any CPU = All|Any CPU
@@ -214,6 +216,24 @@ Global
 		{1A02AFBE-C49B-49F3-8126-F346872B2BB6}.Release|x64.Build.0 = Release|Any CPU
 		{1A02AFBE-C49B-49F3-8126-F346872B2BB6}.Release|x86.ActiveCfg = Release|Any CPU
 		{1A02AFBE-C49B-49F3-8126-F346872B2BB6}.Release|x86.Build.0 = Release|Any CPU
+		{CDA536FC-450E-4E1C-AF0C-F795FF461524}.All|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDA536FC-450E-4E1C-AF0C-F795FF461524}.All|Any CPU.Build.0 = Debug|Any CPU
+		{CDA536FC-450E-4E1C-AF0C-F795FF461524}.All|x64.ActiveCfg = Debug|Any CPU
+		{CDA536FC-450E-4E1C-AF0C-F795FF461524}.All|x64.Build.0 = Debug|Any CPU
+		{CDA536FC-450E-4E1C-AF0C-F795FF461524}.All|x86.ActiveCfg = Debug|Any CPU
+		{CDA536FC-450E-4E1C-AF0C-F795FF461524}.All|x86.Build.0 = Debug|Any CPU
+		{CDA536FC-450E-4E1C-AF0C-F795FF461524}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDA536FC-450E-4E1C-AF0C-F795FF461524}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDA536FC-450E-4E1C-AF0C-F795FF461524}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CDA536FC-450E-4E1C-AF0C-F795FF461524}.Debug|x64.Build.0 = Debug|Any CPU
+		{CDA536FC-450E-4E1C-AF0C-F795FF461524}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CDA536FC-450E-4E1C-AF0C-F795FF461524}.Debug|x86.Build.0 = Debug|Any CPU
+		{CDA536FC-450E-4E1C-AF0C-F795FF461524}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDA536FC-450E-4E1C-AF0C-F795FF461524}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDA536FC-450E-4E1C-AF0C-F795FF461524}.Release|x64.ActiveCfg = Release|Any CPU
+		{CDA536FC-450E-4E1C-AF0C-F795FF461524}.Release|x64.Build.0 = Release|Any CPU
+		{CDA536FC-450E-4E1C-AF0C-F795FF461524}.Release|x86.ActiveCfg = Release|Any CPU
+		{CDA536FC-450E-4E1C-AF0C-F795FF461524}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -227,9 +247,10 @@ Global
 		{21E368BE-7C86-42CF-AAB7-123070FDC5AD} = {426A2E67-D0F5-4D62-B6E2-A0F1E7B02D6D}
 		{EF9950A0-BF0E-4046-827C-F4186D15E286} = {426A2E67-D0F5-4D62-B6E2-A0F1E7B02D6D}
 		{1A02AFBE-C49B-49F3-8126-F346872B2BB6} = {21D67098-2181-4E9C-AC42-B75D18C8391C}
+		{CDA536FC-450E-4E1C-AF0C-F795FF461524} = {21D67098-2181-4E9C-AC42-B75D18C8391C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45
 		SolutionGuid = {B53995B5-300E-4344-9884-E3A482ED16D2}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal

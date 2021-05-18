@@ -83,8 +83,8 @@
                 	Path=SelectedCommand,
                     Mode=TwoWay,
                     UpdateSourceTrigger=PropertyChanged,
-                    Converter={StaticResource XElementToStringConverter} }"
-        >
+                    Converter={StaticResource XElementToStringConverter}, 
+                    ConverterParameter='Name'}" >
                 <dxe:ComboBoxEdit.StyleSettings>
                     <!--<dxe:CheckedTokenComboBoxStyleSettings/>-->
                     <!--<dxe:CheckedComboBoxStyleSettings/>-->
@@ -130,12 +130,27 @@
             </dxe:ComboBoxEdit>
         </dxlc:LayoutItem>-->
 
+        <!-- NOTE(crhodes)
+         THis Works 
+        -->
         <dxlc:LayoutItem>
-            <dxe:TextEdit Text="{Binding SelectedCommand.Description}"/>
+            <dxe:TextEdit Text="{Binding SelectedCommand.Attribute[Description].Value}"/>
         </dxlc:LayoutItem>
         
+        <!-- NOTE(crhodes)
+         THis Works
+        -->
         <dxlc:LayoutItem>
             <dxe:TextEdit Text="{Binding SelectedCommand, 
+                Converter={StaticResource XElementToStringConverter},
+                ConverterParameter='Description'}"/>
+        </dxlc:LayoutItem>
+
+        <!-- NOTE(crhodes)
+         With no parameters, this returns entire element as string
+        -->
+        <dxlc:LayoutItem>
+            <dxe:TextEdit Text="{Binding SelectedCommand,
                 Converter={StaticResource XElementToStringConverter}}"/>
         </dxlc:LayoutItem>
 

@@ -1212,34 +1212,42 @@ namespace SupportTools_Visio.Presentation.ViewModels
             switch (value)
             {
                 case "VisCellVals.visPropTypeBool":
+                case "3":
                     visPropType = (short)Visio.VisCellVals.visPropTypeBool;
                     break;
 
                 case "VisCellVals.visPropTypeCurrency":
+                case "7":
                     visPropType = (short)Visio.VisCellVals.visPropTypeCurrency;
                     break;
 
                 case "VisCellVals.visPropTypeDate":
+                case "5":
                     visPropType = (short)Visio.VisCellVals.visPropTypeDate;
                     break;
 
                 case "VisCellVals.visPropTypeDuration":
+                case "6":
                     visPropType = (short)Visio.VisCellVals.visPropTypeDuration;
                     break;
 
                 case "VisCellVals.visPropTypeListFix":
+                case "1":
                     visPropType = (short)Visio.VisCellVals.visPropTypeListFix;
                     break;
 
                 case "VisCellVals.visPropTypeListVar":
+                case "4":
                     visPropType = (short)Visio.VisCellVals.visPropTypeListVar;
                     break;
 
                 case "VisCellVals.visPropTypeNumber":
+                case "2":
                     visPropType = (short)Visio.VisCellVals.visPropTypeNumber;
                     break;
 
                 case "VisCellVals.visPropTypeString":
+                case "0":
                     visPropType = (short)Visio.VisCellVals.visPropTypeString;
                     break;
 

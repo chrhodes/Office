@@ -124,12 +124,12 @@
     	        ToolTip="tooltip" />
         </dxlc:LayoutItem>
     
-    <dxlc:LayoutItem Label="Export3" LabelPosition="Top">
-        <dxe:TextEdit Text="{Binding ExportedElement, Mode=TwoWay,
-                Converter={StaticResource XElementToStringConverter}
-                , ConverterParameter='Name'}"
-    	        ToolTip="tooltip" />
-    </dxlc:LayoutItem>
+        <!--<dxlc:LayoutItem Label="Export3" LabelPosition="Top">
+            <dxe:TextEdit Text="{Binding ExportedElement, Mode=TwoWay,
+                    Converter={StaticResource XElementToStringConverter}
+                    , ConverterParameter='Name'}"
+    	            ToolTip="tooltip" />
+        </dxlc:LayoutItem>-->
         
     </dxlc:LayoutControl>
 </UserControl>

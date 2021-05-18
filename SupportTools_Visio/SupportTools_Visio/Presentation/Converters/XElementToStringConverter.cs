@@ -20,7 +20,13 @@ namespace SupportTools_Visio.Presentation.Converters
             if (value != null)
             {
                 XElement e = (XElement)value;
+
+                if (parameter != null)
+                {
+                    return $"{e.Attribute((string)parameter).Value}";
+                }
                 //return $"{e.Attribute("Name").Value}";
+
                 return e.ToString();
             }
             else

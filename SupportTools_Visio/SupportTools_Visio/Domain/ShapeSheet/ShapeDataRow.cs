@@ -20,17 +20,29 @@ namespace SupportTools_Visio.Domain
         {
             var shapeDataRow = new XElement("AddPropRow");
 
-            shapeDataRow.SetAttributeValue("Calendar", Calendar);
-            shapeDataRow.SetAttributeValue("LangID", LangID);
-            shapeDataRow.SetAttributeValue("Ask", Ask);
-            shapeDataRow.SetAttributeValue("Invisible", Invisible);
-            shapeDataRow.SetAttributeValue("SortKey", SortKey);
-            shapeDataRow.SetAttributeValue("Value", Value);
-            shapeDataRow.SetAttributeValue("Format", Format);
-            shapeDataRow.SetAttributeValue("Type", Type);
-            shapeDataRow.SetAttributeValue("Prompt", Prompt);
-            shapeDataRow.SetAttributeValue("Label", Label);
             shapeDataRow.SetAttributeValue("Row", Name);
+            shapeDataRow.SetAttributeValue("Label", Label);
+            shapeDataRow.SetAttributeValue("Prompt", Prompt);
+            shapeDataRow.SetAttributeValue("Type", Type);
+            shapeDataRow.SetAttributeValue("Format", Format);
+            shapeDataRow.SetAttributeValue("Value", Value);
+            shapeDataRow.SetAttributeValue("SortKey", SortKey);
+            shapeDataRow.SetAttributeValue("Invisible", Invisible);
+            shapeDataRow.SetAttributeValue("Ask", Ask);
+            shapeDataRow.SetAttributeValue("LangID", LangID);
+            shapeDataRow.SetAttributeValue("Calendar", Calendar);
+
+            //shapeDataRow.SetAttributeValue("Calendar", Calendar);
+            //shapeDataRow.SetAttributeValue("LangID", LangID);
+            //shapeDataRow.SetAttributeValue("Ask", Ask);
+            //shapeDataRow.SetAttributeValue("Invisible", Invisible);
+            //shapeDataRow.SetAttributeValue("SortKey", SortKey);
+            //shapeDataRow.SetAttributeValue("Value", Value);
+            //shapeDataRow.SetAttributeValue("Format", Format);
+            //shapeDataRow.SetAttributeValue("Type", Type);
+            //shapeDataRow.SetAttributeValue("Prompt", Prompt);
+            //shapeDataRow.SetAttributeValue("Label", Label);
+            //shapeDataRow.SetAttributeValue("Row", Name);
 
             return shapeDataRow;
         }

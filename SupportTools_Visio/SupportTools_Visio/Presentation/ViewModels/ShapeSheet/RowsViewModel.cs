@@ -340,10 +340,24 @@ namespace SupportTools_Visio.Presentation.ViewModels
                 //Rows.Add((TRowWrapper)Activator.CreateInstance(typeof(TRowWrapper), row));
             }
 
-            var context = new XElement("Shape");
-            context.Add(shapeSheet);
+            //var context = new XElement("Command");
+            //context.Add(new XAttribute("Name", "NewCommand"));
+            //context.Add(new XAttribute("Description", "NewCommand from Export"));
+            //context.Add(new XElement("Shapes"));
+            //context.Element("Shapes").Add(new XElement("Shape"));
+
+            var context = new XElement("Command"
+                   , new XAttribute("Name", "NewCommand")
+                   , new XAttribute("Description", "NewCommand from Export")
+                   , new XElement("Shapes"
+                        , new XElement("Shape", shapeSheet))
+                   );
+
+            //context.Element("Shape").Add(shapeSheet);
+
+            //var context = new XElement("Shape");
+            //context.Add(shapeSheet);
             ExportedElement = context;
-            //ExportedElement = shapeSheet;
         }
     }
 }
