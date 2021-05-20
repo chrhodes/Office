@@ -169,7 +169,7 @@
                     <dxlc:LayoutItem HorizontalAlignment="Left">
                         <dxe:CheckEdit Content="Show All Node Levels"
                                        IsChecked="{Binding Options.ShowAllNodeLevels}"
-                                       ToolTip="Show all Area and Iteration Nodes.  Default is top level only"/>
+                                       ToolTip="Show all Area and Iteration Nodes.  Unchecked is top level only"/>
                     </dxlc:LayoutItem>
                     
                     <dxlc:LayoutGroup 

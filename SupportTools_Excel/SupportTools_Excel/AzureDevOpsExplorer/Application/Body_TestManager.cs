@@ -395,7 +395,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             string query = String.Format(
                 "SELECT *"
                 + " FROM TestResult"
-                + " WHERE [DateCreated] > '1/1/2020'");
+                + " WHERE [DateCreated] > '1/1/2021'");
 
             ITestCaseResultCollection testCaseResults = testManagementTeamProject.TestResults.Query(query);
             int totalItems = testCaseResults.Count;
@@ -415,7 +415,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{testResult.Attachments.Count}");
 
                 // ITestResult
-
                 XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{testResult.CollectorsEnabled.Count}");
                 XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{testResult.Comment}");
                 XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{testResult.DateCreated}");
@@ -451,6 +450,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             string query = String.Format(
                 "SELECT *"
                 + " FROM TestRun");
+                //+ " WHERE [DateCreated] > '1/1/2021'");
 
             IEnumerable<ITestRun> testRuns = testManagementTeamProject.TestRuns.Query(query);
             int totalItems = testRuns.Count();

@@ -554,6 +554,15 @@ namespace VNC.AddinHelper
                 ColumnsAdded += count;
                 //ColumnOffsetMax += count;
                 nextRange = nextRange.Offset[0, count];
+
+                if (nextRange.Column > ColumnOffsetMax)
+                {
+                    // TODO(crhodes)
+                    // Should we bump ColumnOffsetMax
+                    // Investigting Category Node issue
+                    var foo = 1;
+                    ColumnOffsetMax = nextRange.Column;
+                }
             }
 
             public void IncrementRows(int count = 1)

@@ -64,6 +64,24 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
             Log.VIEWMODEL("Exit", Common.PROJECT_NAME, startTicks);
         }
+
+        private void InitializeOptions()
+        {
+            long startTicks = Log.VIEWMODEL("Enter", Common.PROJECT_NAME);
+
+            Options = new Options_AZDO_TFSWrapper(new Options_AZDO_TFS());
+
+            Options.GoBackDays = 30;
+            Options.StartDate = DateTime.Now - TimeSpan.FromDays(Options.GoBackDays);
+            Options.EndDate = DateTime.Now;
+
+            Options.ShowAllNodeLevels = true;
+
+            //Options.ShowWorkItemFieldData = true;
+
+            Log.VIEWMODEL("Exit", Common.PROJECT_NAME, startTicks);
+        }
+
         private void InitializeTeamProjects()
         {
             long startTicks = Log.VIEWMODEL("Enter", Common.PROJECT_NAME);
@@ -240,20 +258,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         #endregion Commands
 
-        private void InitializeOptions()
-        {
-            long startTicks = Log.VIEWMODEL("Enter", Common.PROJECT_NAME);
 
-            Options = new Options_AZDO_TFSWrapper(new Options_AZDO_TFS());
-
-            Options.GoBackDays = 30;
-            Options.StartDate = DateTime.Now - TimeSpan.FromDays(Options.GoBackDays);
-            Options.EndDate = DateTime.Now;
-
-            //Options.ShowWorkItemFieldData = true;
-
-            Log.VIEWMODEL("Exit", Common.PROJECT_NAME, startTicks);
-        }
 
         public Options_AZDO_TFS GetOptions()
         {

@@ -38,7 +38,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
             else
             {
-                insertAt = AddChildNodes(insertAt, options, commonStructureService, project.AreaRootNodes, project.Name, 0);
+                insertAt = AddCategoryNodes(insertAt, options, commonStructureService, project.AreaRootNodes, project.Name);
             }
 
             Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
@@ -114,7 +114,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
             else
             {
-                insertAt = AddChildNodes(insertAt, options, commonStructureService, project.IterationRootNodes, project.Name, 0);
+                insertAt = AddCategoryNodes(insertAt, options, commonStructureService, project.IterationRootNodes, project.Name);
             }
 
             Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
@@ -1171,13 +1171,12 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
         //    // Loop across Team Projects and get last change or maybe go back days
         //}
 
-        internal static XlHlp.XlLocation AddChildNodes(
+        internal static XlHlp.XlLocation AddCategoryNodes(
             XlHlp.XlLocation insertAt,
             Options_AZDO_TFS options,
             ICommonStructureService commonStructureService,
             NodeCollection childNodes,
-            string projectName,
-            int offsetLevel)
+            string projectName)
         {
             Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
 
@@ -1190,6 +1189,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 Range startofRowRange = insertAt.workSheet.Cells[insertAt.RowCurrent, 1];
 
                 XlHlp.AddContentToCell(startofRowRange, $"{ projectName }");
+
                 insertAt.IncrementColumns();
 
                 if (item.IsAreaNode)
@@ -1201,9 +1201,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                     if (options.ShowAllNodeLevels && item.HasChildNodes)
                     {
-                        //insertAt.IncrementColumns();
-                        insertAt = AddChildNodes(insertAt, options, commonStructureService, item.ChildNodes, projectName, offsetLevel + 1);
-                        //insertAt.DecrementColumns();
+                        insertAt = AddCategoryNodes(insertAt, options, commonStructureService, item.ChildNodes, projectName);
                     }
                 }
 
@@ -1219,20 +1217,24 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                         days = ((DateTime)nodeInfo.FinishDate).Subtract((DateTime)nodeInfo.StartDate).TotalDays.ToString();
                     }
 
-                    string iterationinfo = $"{item.Name}< (id: {item.Id}) - {days,3} days ({startdate} to {finishdate})";
+                    string iterationinfo = $"{item.Name, -40} (id: {item.Id}) - {days,3} days ({startdate} to {finishdate})";
 
                     XlHlp.AddContentToCell(insertAt.AddRowX(), iterationinfo);
 
                     if (options.ShowAllNodeLevels && item.HasChildNodes)
                     {
-                        insertAt.IncrementColumns();
-                        insertAt = AddChildNodes(insertAt, options, commonStructureService, item.ChildNodes, projectName, 0);
-                        insertAt.DecrementColumns();
+                        insertAt = AddCategoryNodes(insertAt, options, commonStructureService, item.ChildNodes, projectName);
                     }
                 }
 
                 insertAt.DecrementColumns();
             }
+
+            // NOTE(crhodes)
+            // This "fixes" the off by one error on the tables that get produced.
+            // It is a HACK but does work.
+            // Someday go figure out what is not being done above.  Maybe AddCategoryNodes should call Add OffsetColumn
+            insertAt.UpdateOffsets();
 
             Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
