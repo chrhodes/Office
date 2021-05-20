@@ -119,8 +119,7 @@
 
         <dxlc:LayoutItem Label="Export2" LabelPosition="Top">
             <dxe:TextEdit Text="{Binding ExportedElement, Mode=TwoWay,
-                Converter={StaticResource XElementToStringConverter}
-                , ConverterParameter=1}"
+                Converter={StaticResource XElementToStringConverter}}"
     	        ToolTip="tooltip" />
         </dxlc:LayoutItem>
     
