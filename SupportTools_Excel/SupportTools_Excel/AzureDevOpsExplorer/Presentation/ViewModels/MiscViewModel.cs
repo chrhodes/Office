@@ -1,6 +1,6 @@
 ﻿using Prism.Commands;
 using SupportTools_Excel.AzureDevOpsExplorer.Presentation.Views;
-using SupportTools_Excel.Infrastructure.Presentation.ViewModels;
+using SupportTools_Excel.Core.Presentation.ViewModels;
 
 using VNC;
 using VNC.Core.Mvvm;

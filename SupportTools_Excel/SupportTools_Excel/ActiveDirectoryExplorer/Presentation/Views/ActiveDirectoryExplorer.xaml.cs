@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using SupportTools_Excel.ActiveDirectoryExplorer.Presentation.ViewModels;
-using SupportTools_Excel.Infrastructure.Presentation.ViewModels;
+using SupportTools_Excel.Core.Presentation.ViewModels;
 using SupportTools_Excel.Presentation.ViewModels;
 
 using VNC;

@@ -66,6 +66,7 @@
             this.btnLoadAZDOHost = this.Factory.CreateRibbonButton();
             this.grpMVVM = this.Factory.CreateRibbonGroup();
             this.btnLoadActiveDirectoryHostMVVM = this.Factory.CreateRibbonButton();
+            this.btnExplorePivotStuff = this.Factory.CreateRibbonButton();
             this.grpHelp = this.Factory.CreateRibbonGroup();
             this.btnAddInInfo = this.Factory.CreateRibbonButton();
             this.btnDeveloperMode = this.Factory.CreateRibbonButton();
@@ -301,6 +302,7 @@
             // grpMVVM
             // 
             this.grpMVVM.Items.Add(this.btnLoadActiveDirectoryHostMVVM);
+            this.grpMVVM.Items.Add(this.btnExplorePivotStuff);
             this.grpMVVM.Label = "WPF Host (MVVM)";
             this.grpMVVM.Name = "grpMVVM";
             // 
@@ -309,6 +311,12 @@
             this.btnLoadActiveDirectoryHostMVVM.Label = "Active Directory";
             this.btnLoadActiveDirectoryHostMVVM.Name = "btnLoadActiveDirectoryHostMVVM";
             this.btnLoadActiveDirectoryHostMVVM.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnLoadActiveDirectoryHostMVVM_Click);
+            // 
+            // btnExplorePivotStuff
+            // 
+            this.btnExplorePivotStuff.Label = "Explore Pivot Stuff";
+            this.btnExplorePivotStuff.Name = "btnExplorePivotStuff";
+            this.btnExplorePivotStuff.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnExplorePivotStuff_Click);
             // 
             // grpHelp
             // 
@@ -742,6 +750,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnVNC_MVVM_V1_DI3;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnVNC_MVVM_V1_DI4;
         internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox chkEnableTraceLogging;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnExplorePivotStuff;
     }
 
     partial class ThisRibbonCollection

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-using SupportTools_Excel.Infrastructure.Presentation.ViewModels;
+using SupportTools_Excel.Core.Presentation.ViewModels;
 
 using VNC;
 using VNC.Core.Mvvm;

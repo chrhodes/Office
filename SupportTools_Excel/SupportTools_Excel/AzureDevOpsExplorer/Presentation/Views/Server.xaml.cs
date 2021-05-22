@@ -13,7 +13,7 @@ using Microsoft.TeamFoundation.VersionControl.Client;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
 
 using SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels;
-using SupportTools_Excel.Infrastructure.Presentation.ViewModels;
+using SupportTools_Excel.Core.Presentation.ViewModels;
 
 using VNC;
 using VNC.Core.Mvvm;

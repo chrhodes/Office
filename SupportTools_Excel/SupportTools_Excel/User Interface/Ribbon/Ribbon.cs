@@ -8,6 +8,7 @@ using SupportTools_Excel.Presentation.ViewModels;
 using SupportTools_Excel.Presentation.Views;
 
 using VNC;
+using VNC.Core.Presentation;
 using VNC.WPF.Presentation.Dx.Views;
 using VNC.WPF.Presentation.Views;
 
@@ -24,7 +25,7 @@ namespace SupportTools_Excel
         public Ribbon()
            : base(Globals.Factory.GetRibbonFactory())
         {
-            Log.Info("SignalR Startup Message - Sleeping for 1000ms so SignalR can load", Common.LOG_CATEGORY);
+            Log.Info("SignalR Startup Message - Sleeping for 250ms so SignalR can load", Common.LOG_CATEGORY);
             // HACK(crhodes)
             // See if this helps logging first few messages
             Thread.Sleep(250);
@@ -286,7 +287,7 @@ namespace SupportTools_Excel
             "Active Directory Explorer",
             600, 900,
             //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
+            ShowWindowMode.Modeless_Show,
             new User_Interface.User_Controls.wucTaskPane_ActiveDirectory());
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
@@ -302,7 +303,7 @@ namespace SupportTools_Excel
             "Active Directory Explorer (MVVM)",
             600, 900,
             //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
+            ShowWindowMode.Modeless_Show,
             new ActiveDirectoryExplorer.Presentation.Views.ActiveDirectoryExplorer());
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
@@ -318,7 +319,7 @@ namespace SupportTools_Excel
             "wucTaskPane_TFS",
             600, 900,
             //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
+            ShowWindowMode.Modeless_Show,
             new User_Interface.User_Controls.wucTaskPane_TFS());
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
@@ -545,12 +546,6 @@ namespace SupportTools_Excel
 
         #region UI Launch Events
 
-        enum ShowWindowMode
-        {
-            Modeless_Show,
-            Modal_ShowDialog
-        }
-
         private DxThemedWindowHost themedWindowHost = null;
 
         private void btnThemedWindowHostModeless_Click(object sender, RibbonControlEventArgs e)
@@ -561,7 +556,7 @@ namespace SupportTools_Excel
             DxThemedWindowHost.DisplayUserControlInHost(ref themedWindowHost,
                 "ThemedWindowHost (ModeLess)",
                 Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-                DxThemedWindowHost.ShowWindowMode.Modeless);
+                ShowWindowMode.Modeless_Show);
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
@@ -573,7 +568,7 @@ namespace SupportTools_Excel
             DxThemedWindowHost.DisplayUserControlInHost(ref themedWindowHost,
                 "ThemedWindowHost (Modal)",
                 Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-                DxThemedWindowHost.ShowWindowMode.Modal);
+                ShowWindowMode.Modal_ShowDialog);
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
@@ -587,12 +582,12 @@ namespace SupportTools_Excel
             WindowHost.DisplayUserControlInHost(ref windowHostLocal,
                 "WindowHost (local) Test",
                 Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-                WindowHost.ShowWindowMode.Modeless_Show);
+                ShowWindowMode.Modeless_Show);
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
-        public static VNC.Core.Xaml.Presentation.WindowHost windowHostVNC = null;
+        public static WindowHost windowHostVNC = null;
 
         private void btnWindowHostVNC_Click(object sender, RibbonControlEventArgs e)
         {
@@ -610,8 +605,8 @@ namespace SupportTools_Excel
             if (host is null)
             {
                 host = new DxThemedWindowHost();
-                host.Height = Common.DEFAULT_WINDOW_SMALL_HEIGHT;
-                host.Width = Common.DEFAULT_WINDOW_SMALL_WIDTH;
+                host.Height = Common.DEFAULT_WINDOW_HEIGHT_SMALL;
+                host.Width = Common.DEFAULT_WINDOW_WIDTH_SMALL;
                 host.Title = title;
             }
 
@@ -633,16 +628,16 @@ namespace SupportTools_Excel
             host.Title = $"{host.GetType()} loadtime: {Log.GetDuration(startTicks, endTicks)}";
         }
 
-        private DxDXWindowHost dxWindowHost = null;
+        private DxWindowHost dxWindowHost = null;
 
         private void btnDxWindowHost_Click(object sender, RibbonControlEventArgs e)
         {
             long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
-            DxDXWindowHost.DisplayUserControlInHost(ref dxWindowHost,
+            DxWindowHost.DisplayUserControlInHost(ref dxWindowHost,
                 "DxWindowHost Test",
                 Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-                DxDXWindowHost.ShowWindowMode.Modeless_Show);
+                ShowWindowMode.Modeless_Show);
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
@@ -659,14 +654,14 @@ namespace SupportTools_Excel
 
             WindowHost.DisplayUserControlInHost(ref cylonHost,
                 "I am a Cylon loaded by name",
-                Common.DEFAULT_WINDOW_SMALL_WIDTH, Common.DEFAULT_WINDOW_SMALL_HEIGHT,
-                WindowHost.ShowWindowMode.Modeless_Show,
+                Common.DEFAULT_WINDOW_WIDTH_SMALL, Common.DEFAULT_WINDOW_HEIGHT_SMALL,
+                ShowWindowMode.Modeless_Show,
                 "VNC.WPF.Presentation.Views.CylonEyeBall, VNC.WPF.Presentation");
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
-        public static VNC.Core.Xaml.Presentation.WindowHost cylonHost2 = null;
+        public static WindowHost cylonHost2 = null;
 
         private void btnLaunchCylonn2_Click(object sender, RibbonControlEventArgs e)
         {
@@ -674,8 +669,8 @@ namespace SupportTools_Excel
 
             WindowHost.DisplayUserControlInHost(ref cylonHost,
                 "I am a Cylon loaded by type",
-                Common.DEFAULT_WINDOW_SMALL_WIDTH, Common.DEFAULT_WINDOW_SMALL_HEIGHT,
-                WindowHost.ShowWindowMode.Modeless_Show,
+                Common.DEFAULT_WINDOW_WIDTH_SMALL, Common.DEFAULT_WINDOW_HEIGHT_SMALL,
+                ShowWindowMode.Modeless_Show,
                 new CylonEyeBall());
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
@@ -708,7 +703,7 @@ namespace SupportTools_Excel
 
             DxThemedWindowHost.DisplayUserControlInHost(ref prismRegionTestHost,
                 "Prism Region Test 2", 600, 400,
-                DxThemedWindowHost.ShowWindowMode.Modeless,
+                ShowWindowMode.Modeless_Show,
                 PrismRegionTest);
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
@@ -723,7 +718,7 @@ namespace SupportTools_Excel
             DxThemedWindowHost.DisplayUserControlInHost(ref dxLayoutControlHost,
                 "DxLayoutControl Test",
                 Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-                DxThemedWindowHost.ShowWindowMode.Modeless,
+                ShowWindowMode.Modeless_Show,
                 new DxLayoutControl());
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
@@ -738,7 +733,7 @@ namespace SupportTools_Excel
             DxThemedWindowHost.DisplayUserControlInHost(ref dxDockLayoutControlHost,
                 "DxDockLayoutControl Test",
                 Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-                DxThemedWindowHost.ShowWindowMode.Modeless,
+                ShowWindowMode.Modeless_Show,
                 new DxDockLayoutControl());
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
@@ -753,7 +748,7 @@ namespace SupportTools_Excel
             DxThemedWindowHost.DisplayUserControlInHost(ref dxDockLayoutManagerControlHost,
                 "DxDocLayoutManagerControl Test",
                 Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-                DxThemedWindowHost.ShowWindowMode.Modeless,
+                ShowWindowMode.Modeless_Show,
                 new DxDockLayoutManagerControl());
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
@@ -773,7 +768,7 @@ namespace SupportTools_Excel
             "MVVM View First (View is passed ViewModel)",
             600, 450,
             //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
+            ShowWindowMode.Modeless_Show,
             new Cat(new CatViewModel()));
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
@@ -789,7 +784,7 @@ namespace SupportTools_Excel
             "MVVM ViewModel First (ViewModel is passed View)",
             600, 450,
             //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modeless,
+            ShowWindowMode.Modeless_Show,
             new CatViewModel(new Cat()));
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
@@ -805,7 +800,7 @@ namespace SupportTools_Excel
             "MVVM View First (View is passed ViewModel) Modal",
             600, 450,
             //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modal,
+            ShowWindowMode.Modal_ShowDialog,
             new Cat(new CatViewModel()));
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
@@ -821,7 +816,7 @@ namespace SupportTools_Excel
             "MVVM ViewModel First (ViewModel is passed View) Modal",
             800, 600,
             //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            DxThemedWindowHost.ShowWindowMode.Modal,
+            ShowWindowMode.Modal_ShowDialog,
             new CatViewModel(new Cat()));
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
@@ -841,7 +836,7 @@ namespace SupportTools_Excel
                 "MVVM View First (Cat) using Dependency Injection",
                 800, 600,
                 //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-                DxThemedWindowHost.ShowWindowMode.Modeless,
+                ShowWindowMode.Modeless_Show,
                 (Cat)Common.ApplicationBootstrapper.Container.Resolve(typeof(Cat)));
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
@@ -857,7 +852,7 @@ namespace SupportTools_Excel
                 "MVVM View First (Cat2) using Dependency Injection",
                 800, 600,
                 //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-                DxThemedWindowHost.ShowWindowMode.Modeless,
+                ShowWindowMode.Modeless_Show,
                 (Cat2)Common.ApplicationBootstrapper.Container.Resolve(typeof(Cat2)));
 
             // NOTE(crhodes)
@@ -876,7 +871,7 @@ namespace SupportTools_Excel
                 "MVVM View First (Cat3) using Dependency Injection",
                 800, 600,
                 //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-                DxThemedWindowHost.ShowWindowMode.Modeless,
+                ShowWindowMode.Modeless_Show,
                 (Cat3)Common.ApplicationBootstrapper.Container.Resolve(typeof(Cat3)));
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
@@ -892,7 +887,7 @@ namespace SupportTools_Excel
                 "MVVM View First (Cat3) using Dependency Injection",
                 800, 600,
                 //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-                DxThemedWindowHost.ShowWindowMode.Modeless,
+                ShowWindowMode.Modeless_Show,
                 (Cat3)Common.ApplicationBootstrapper.Container.Resolve(typeof(Cat3)));
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
@@ -908,7 +903,7 @@ namespace SupportTools_Excel
                 "MVVM ViewModel First (CatViewModel) using Dependency Injection",
                 800, 600,
                 //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-                DxThemedWindowHost.ShowWindowMode.Modeless,
+                ShowWindowMode.Modeless_Show,
                 (CatViewModel)Common.ApplicationBootstrapper.Container.Resolve(typeof(CatViewModel)));
 
             // NOTE(crhodes)
@@ -929,7 +924,7 @@ namespace SupportTools_Excel
                 "MVVM View First (CatXamlVM) using Dependency Injection",
                 800, 600,
                 //Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-                DxThemedWindowHost.ShowWindowMode.Modeless,
+                ShowWindowMode.Modeless_Show,
                 (CatXamlVM)Common.ApplicationBootstrapper.Container.Resolve(typeof(CatXamlVM)));
 
             Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
@@ -937,5 +932,16 @@ namespace SupportTools_Excel
 
         #endregion
 
+        public static DxThemedWindowHost vncExplorePivotStuffHost = null;
+
+        private void btnExplorePivotStuff_Click(object sender, RibbonControlEventArgs e)
+        {
+            DxThemedWindowHost.DisplayUserControlInHost(ref vncExplorePivotStuffHost,
+                "MVVM ViewC1 First C1 has C1() nd C1(ViewModel) constructors. No DI Registrations",
+                Common.DEFAULT_WINDOW_WIDTH_SMALL, Common.DEFAULT_WINDOW_HEIGHT_SMALL,
+                ShowWindowMode.Modeless_Show,
+                (ExplorePivotStuff)Common.ApplicationBootstrapper.Container.Resolve(typeof(ExplorePivotStuff))
+            );
+        }
     }
 }

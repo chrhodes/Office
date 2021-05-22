@@ -374,7 +374,8 @@ namespace SupportTools_Visio
         {
             // NOTE(crhodes)
             // This does wire View to ViewModel
-            // C1 has C1() nd C1(ViewModel) constructors. No DI Registrations
+            // C1 has C1() no C1(ViewModel) constructors. No DI Registrations
+            // NB.  AutoWireViewModel=false
 
             DxThemedWindowHost.DisplayUserControlInHost(ref vncMVVM_VC1_Host,
                 "MVVM ViewC1 First C1 has C1() nd C1(ViewModel) constructors. No DI Registrations",

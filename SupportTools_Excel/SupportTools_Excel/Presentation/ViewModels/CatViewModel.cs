@@ -1,6 +1,6 @@
 ﻿using Prism.Commands;
 
-using SupportTools_Excel.Infrastructure.Presentation.ViewModels;
+using SupportTools_Excel.Core.Presentation.ViewModels;
 using SupportTools_Excel.Presentation.ModelWrappers;
 using SupportTools_Excel.Presentation.Views;
 

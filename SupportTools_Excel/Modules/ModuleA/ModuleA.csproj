@@ -141,9 +141,9 @@
     <Folder Include="Resources\Xaml\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SupportTools_Excel.Infrastructure\SupportTools_Excel.Infrastructure.csproj">
+    <ProjectReference Include="..\..\SupportTools_Excel.Infrastructure\SupportTools_Excel.Core.csproj">
       <Project>{bb1193ec-4836-4850-a4c4-0cd639ec39f5}</Project>
-      <Name>SupportTools_Excel.Infrastructure</Name>
+      <Name>SupportTools_Excel.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

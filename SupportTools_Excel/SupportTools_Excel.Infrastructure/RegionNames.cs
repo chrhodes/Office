@@ -1,4 +1,4 @@
-﻿namespace SupportTools_Excel.Infrastructure
+﻿namespace SupportTools_Excel.Core
 {
     public static class RegionNames
     {

@@ -3,7 +3,7 @@
 using VNC;
 using VNC.Core.Mvvm;
 using SupportTools_Excel.Presentation.ViewModels;
-using SupportTools_Excel.Infrastructure.Presentation.ViewModels;
+using SupportTools_Excel.Core.Presentation.ViewModels;
 
 namespace SupportTools_Excel.Presentation.Views
 {

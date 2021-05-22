@@ -7,7 +7,7 @@ using SupportTools_Excel.Presentation.ModelWrappers;
 using SupportTools_Excel.Presentation.Views;
 using System;
 using Prism.Events;
-using SupportTools_Excel.Infrastructure.Presentation.ViewModels;
+using SupportTools_Excel.Core.Presentation.ViewModels;
 using SupportTools_Excel.ActiveDirectoryExplorer.Presentation.Views;
 using System.DirectoryServices;
 

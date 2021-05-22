@@ -16,15 +16,14 @@ d:DesignWidth="300" >
     <!--<dxlc:LayoutControl x:Name="layoutControl" 
                         Orientation="Vertical" 
                         Background="White" >-->
-    <dxlc:LayoutGroup x:Name="layoutControl" 
-                        Orientation="Vertical" >
+    <dxlc:LayoutGroup Orientation="Vertical" >
 
         <dxlc:LayoutGroup Header="Configuration"
 	        View="GroupBox" Orientation="Vertical" 
-	        VerticalAlignment="Top" HorizontalAlignment="Stretch"
+	        VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
 	        IsCollapsible="True"  IsCollapsed="False" >
 
-            <local:SelectedShapesInfo />
+            <local:SelectedShapesInfo VerticalAlignment="Top"/>
 
             <dxlc:LayoutGroup 
                 View="Group"  Orientation="Vertical" 

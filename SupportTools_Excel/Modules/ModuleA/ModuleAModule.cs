@@ -6,7 +6,7 @@ using Unity;
 
 using VNC;
 
-using SupportTools_Excel.Infrastructure;
+using SupportTools_Excel.Core;
 
 namespace ModuleA
 {

@@ -156,7 +156,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show(ex.ToString());
             }
 
             Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
@@ -744,7 +744,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show(ex.ToString());
             }
 
             Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);

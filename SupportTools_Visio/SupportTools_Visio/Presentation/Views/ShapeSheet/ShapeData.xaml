@@ -29,7 +29,7 @@
                 EnableSmartColumnsGeneration="True"
                 ItemsSource="{Binding Rows}"
                 SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                Height="300">
+                MinHeight="300">
                 <dxg:GridControl.View>
                     <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True"/>
                 </dxg:GridControl.View>
@@ -131,4 +131,5 @@
         </dxlc:LayoutItem>-->
         
     </dxlc:LayoutControl>
+    
 </UserControl>

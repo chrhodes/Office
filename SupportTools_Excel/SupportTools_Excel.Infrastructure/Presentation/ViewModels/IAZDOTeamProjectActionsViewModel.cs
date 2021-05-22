@@ -1,6 +1,6 @@
 ﻿using VNC.Core.Mvvm;
 
-namespace SupportTools_Excel.Infrastructure.Presentation.ViewModels
+namespace SupportTools_Excel.Core.Presentation.ViewModels
 {
     public interface IAZDOTeamProjectActionsViewModel : IViewModel
     {

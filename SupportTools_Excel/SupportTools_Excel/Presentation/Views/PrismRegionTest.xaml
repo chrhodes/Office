@@ -9,7 +9,7 @@
     xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking"
     xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
     
-    xmlns:infra="clr-namespace:SupportTools_Excel.Infrastructure;assembly=SupportTools_Excel.Infrastructure"
+    xmlns:infra="clr-namespace:SupportTools_Excel.Core;assembly=SupportTools_Excel.Core"
     xmlns:prism="http://prismlibrary.com/"
 
     mc:Ignorable="d"
