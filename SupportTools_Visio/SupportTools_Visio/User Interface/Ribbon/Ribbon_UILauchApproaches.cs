@@ -297,12 +297,16 @@ namespace SupportTools_Visio
 
         public static DxThemedWindowHost vncMVVM_VAVM1st_Host = null;
 
+
         private void btnVNC_MVVM_VAVM1st_Click(object sender, RibbonControlEventArgs e)
         {
             Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 
+            // NOTE(crhodes)
+            // Wire things up ourselves - ViewModel First - with a little help for DI.
+
             DxThemedWindowHost.DisplayUserControlInHost(ref vncMVVM_VAVM1st_Host,
-                "MVVM ViewAViewModel First (ViewModel is passed new ViewA)",
+                "MVVM ViewAViewModel First (ViewModel is passed new ViewA) - By Hand",
                 Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
                 ShowWindowMode.Modeless_Show,
                 new ViewAViewModel(
@@ -315,24 +319,17 @@ namespace SupportTools_Visio
             Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
-        //++ NOTE(crhodes)
-        //++ Use Container to Resolve View and/or ViewModel for us
-        // If try to Register in SupportTools_VisioModule, get StackOverflow
-        // Go learn why some day.
-
         public static DxThemedWindowHost vncMVVM_VA_Host = null;
 
         private void btnVNC_MVVM_VA1st_Click(object sender, RibbonControlEventArgs e)
         {
             // NOTE(crhodes)
             // This does not wire View to ViewModel
-            // Because we HAVE NOT
-            // Registered ViewAViewModel in SupportTools_VisioModules
-            // NB.  ViewAViewModel has a constructor that takes a view.
-            // If we do register, a Stack Overflow occurs
+            // Because we HAVE NOT Registered ViewAViewModel in SupportTools_VisioModules
+            // Parameterless ViewA() constructor is called.
 
             DxThemedWindowHost.DisplayUserControlInHost(ref vncMVVM_VA_Host,
-                "MVVM ViewA First (View is passed new ViewModel) DI Resolve",
+                "MVVM ViewA First - No Registrations - DI Resolve",
                 Common.DEFAULT_WINDOW_WIDTH_SMALL, Common.DEFAULT_WINDOW_HEIGHT_SMALL,
                 ShowWindowMode.Modeless_Show,
                 (ViewA)Common.ApplicationBootstrapper.Container.Resolve(typeof(ViewA))
@@ -344,7 +341,7 @@ namespace SupportTools_Visio
         private void btnVNC_MVVM_VAVM1stDI_Click(object sender, RibbonControlEventArgs e)
         {
             DxThemedWindowHost.DisplayUserControlInHost(ref vncMVVM_VAVMDI_Host,
-                "MVVM ViewAViewModel First (ViewModel is passed new View) DI Resolve",
+                "MVVM ViewAViewModel First (ViewModel is passed new View) - DI Resolve",
                 Common.DEFAULT_WINDOW_WIDTH_SMALL, Common.DEFAULT_WINDOW_HEIGHT_SMALL,
                 ShowWindowMode.Modeless_Show,
                 (ViewAViewModel)Common.ApplicationBootstrapper.Container.Resolve(typeof(ViewAViewModel))

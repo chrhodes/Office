@@ -11,22 +11,22 @@ namespace SupportTools_Excel.Presentation.Views
     public partial class ExplorePivotStuff : ViewBase, IExplorePivotStuff, IInstanceCountV
     {
 
-        //public ExplorePivotStuff()
-        //{
-        //    Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_CATEGORY);
+        public ExplorePivotStuff()
+        {
+            Int64 startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_CATEGORY);
 
-        //    InstanceCountV++;
-        //    InitializeComponent();
+            InstanceCountV++;
+            InitializeComponent();
 
-        //    // If View First with ViewModel in Xaml
-        //    // Expose ViewModel
-        //    ViewModel = (IExplorePivotStuffViewModel)DataContext;
+            // If View First with ViewModel in Xaml
+            // Expose ViewModel
+            ViewModel = (IExplorePivotStuffViewModel)DataContext;
 
-        //    // Can create directly
-        //    // ViewModel = CatViewModel();
+            // Can create directly
+            // ViewModel = CatViewModel();
 
-        //    Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
-        //}
+            Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
+        }
 
         public ExplorePivotStuff(IExplorePivotStuffViewModel viewModel)
         {

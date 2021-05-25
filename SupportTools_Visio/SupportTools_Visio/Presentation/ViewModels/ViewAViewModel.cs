@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
-using Prism.Commands;
 using Prism.Events;
 
 using SupportTools_Visio.Presentation.Views;
 
 using VNC;
-using VNC.Core.Events;
 using VNC.Core.Mvvm;
 using VNC.Core.Services;
 

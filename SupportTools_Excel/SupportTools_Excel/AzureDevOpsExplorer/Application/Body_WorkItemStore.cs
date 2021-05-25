@@ -530,7 +530,15 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
 
                     XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Id }");
                     XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Type.Name }");
-                    XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Title }");
+
+                    try
+                    {
+                        XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.Title }");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
 
                     XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.CreatedBy }");
                     XlHlp.AddOffsetContentToCell(insertAt.AddOffsetColumn(), $"{ workItem.CreatedDate }");

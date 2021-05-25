@@ -65,7 +65,20 @@
             <TextBlock Text="{Binding Message}" />
             <Button Content="Say Hello"
                     Command="{Binding SayHelloCommand}" />
-        </StackPanel>
+            <dxlc:LayoutItem>
+                <Button 
+            		Command="{Binding AddPivotTablesCommand }"
+            		Content="{Binding AddPivotTablesContent, FallbackValue='AddPivotTables' }"
+            		ToolTip="{Binding AddPivotTablesToolTip, FallbackValue='AddPivotTables ToolTip' }" />
+            </dxlc:LayoutItem>
+                <dxlc:LayoutItem>
+                    <Button 
+            		Command="{Binding AddCountColumnsCommand }"
+            		Content="{Binding AddCountColumnsContent, FallbackValue='AddCountColumns' }"
+            		ToolTip="{Binding AddCountColumnsToolTip, FallbackValue='AddCountColumns ToolTip' }" />
+                </dxlc:LayoutItem>
+
+            </StackPanel>
         
         <!-- This is useful for debugging V VM constructor issues -->
 

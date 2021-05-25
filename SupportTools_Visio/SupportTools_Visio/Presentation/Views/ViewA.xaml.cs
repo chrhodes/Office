@@ -18,6 +18,18 @@ namespace SupportTools_Visio.Presentation.Views
             Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
         }
 
+        //public ViewA(ViewModels.IViewAViewModel viewModel)
+        //{
+        //    Int64 startTicks = Log.CONSTRUCTOR($"Enter viewModel({viewModel.GetType()}", Common.LOG_CATEGORY);
+
+        //    InstanceCountV++;
+        //    InitializeComponent();
+
+        //    ViewModel = viewModel;
+
+        //    Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
+        //}
+
         #region IInstanceCount
 
         private static int _instanceCountV;

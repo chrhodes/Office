@@ -10,6 +10,8 @@ using Prism.Modularity;
 using Prism.Regions;
 
 using Prism.Unity;
+
+using SupportTools_Excel.Modules;
 using SupportTools_Excel.Presentation.ViewModels;
 using SupportTools_Excel.Presentation.Views;
 
@@ -17,6 +19,7 @@ using Unity;
 
 using VNC;
 using VNC.Core.Mvvm.Prism;
+using VNC.Core.Services;
 
 namespace SupportTools_Excel.Application
 {
@@ -43,6 +46,8 @@ namespace SupportTools_Excel.Application
             moduleCatalog.AddModule(typeof(ModuleAModule));
 
             base.ConfigureModuleCatalog(moduleCatalog);
+
+            moduleCatalog.AddModule(typeof(SupportTools_ExcelModule));
 
             Log.APPLICATION_INITIALIZE("Exit", Common.LOG_CATEGORY, startTicks);
         }
@@ -88,6 +93,7 @@ namespace SupportTools_Excel.Application
             Int64 startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.LOG_CATEGORY);
 
             // Used to register types with the container that will be used by your application.
+            containerRegistry.Register<IMessageDialogService, MessageDialogService>();
 
             containerRegistry.Register<CatViewModel>();
 

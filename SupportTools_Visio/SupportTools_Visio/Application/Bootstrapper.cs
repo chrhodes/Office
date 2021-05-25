@@ -32,6 +32,7 @@ namespace SupportTools_Visio.Application
             Int64 startTicks = Log.APPLICATION_INITIALIZE("Enter", Common.LOG_CATEGORY);
 
             Log.APPLICATION_INITIALIZE("Exit", Common.LOG_CATEGORY, startTicks);
+
             return new ConfigurationModuleCatalog();
         }
 
