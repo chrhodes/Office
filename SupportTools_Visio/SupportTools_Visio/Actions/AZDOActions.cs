@@ -257,6 +257,106 @@ namespace SupportTools_Visio.Actions
             VisioHelper.DisplayInWatchWindow($"{activeShapeWorkItemInfo}");
         }
 
+        internal static async void AddLinkedWorkItems2(Visio.Application app, string doc, string page, string shape, string shapeu, string[] vs)
+        {
+            VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
+                MethodBase.GetCurrentMethod().Name));
+
+            // NOTE(crhodes)
+            // Can launch a UI here.  Or earlier.
+
+            //DxThemedWindowHost.DisplayUserControlInHost(ref addLinkedWorkItemsHost,
+            //    "Edit Shape Control Points Text",
+            //    Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
+            //    DxThemedWindowHost.ShowWindowMode.Modeless,
+            //    new Presentation.Views.EditControlPoints());
+
+            Visio.Page activePage = app.ActivePage;
+            Visio.Shape activeShape = app.ActivePage.Shapes[shape];
+
+            WorkItemInfoShape activeShapeWorkItemInfo = new WorkItemInfoShape(activeShape);
+
+            int id;
+
+            if (int.TryParse(activeShapeWorkItemInfo.ID, out id))
+            {
+            }
+            else
+            {
+                MessageBox.Show($"Cannot parse ({activeShapeWorkItemInfo.ID}) as WorkItemID");
+                return;
+            }
+
+            int relatedLinkCount;
+
+            if (int.TryParse(activeShapeWorkItemInfo.RelatedLinkCount, out relatedLinkCount))
+            {
+            }
+            else
+            {
+                MessageBox.Show($"Cannot parse ({activeShapeWorkItemInfo.RelatedLinkCount}) as RelatedLinkCount");
+                return;
+            }
+
+            var result = await QueryWorkItemLinks(activeShapeWorkItemInfo.Organization, id, relatedLinkCount);
+
+            if (result.Count > 0)
+            {
+                Point initialPosition = GetPosition(activeShape);
+                Point insertionPoint = initialPosition;
+
+                string stencilName = "Azure DevOps.vssx";
+                string shapeName = "WI 2";
+                //string shapeName = "WI & Info";
+                Visio.Document linkStencil;
+                Visio.Master linkMaster = null;
+
+                try
+                {
+                    linkStencil = app.Documents[stencilName];
+
+                    try
+                    {
+                        linkMaster = linkStencil.Masters[shapeName];
+                    }
+                    catch (Exception ex)
+                    {
+                        VisioHelper.DisplayInWatchWindow(string.Format("  Cannot find Master named:>{0}<", shapeName));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    VisioHelper.DisplayInWatchWindow(string.Format("  Cannot find open Stencil named:>{0}<", stencilName));
+                }
+
+                // TODO(crhodes)
+                // Figure out how to get size of shape from master.
+                // HACK(crhodes)
+                // .25 is for Link counts
+
+                WorkItemOffsets workItemOffsets = new WorkItemOffsets(initialPosition, activeShapeWorkItemInfo.Height, 0.25, 0.05);
+
+                foreach (var linkedWorkItem in result)
+                {
+                    // NOTE(crhodes)
+                    // This includes the current shape.  Do not add it.
+                    // May always be first one.  Maybe loop counter
+                    if (linkedWorkItem.Id == id)
+                    {
+                        continue;
+                    }
+
+                    VisioHelper.DisplayInWatchWindow($"{linkedWorkItem.Id} {linkedWorkItem.Fields["System.Title"]}");
+
+                    insertionPoint = CalculateInsertionPoint(initialPosition, insertionPoint, linkedWorkItem, activeShapeWorkItemInfo, workItemOffsets);
+
+                    AddNewLinkedWorkItemShape2(linkMaster, activePage, linkedWorkItem, insertionPoint, activeShapeWorkItemInfo);
+                }
+            }
+
+            VisioHelper.DisplayInWatchWindow($"{activeShapeWorkItemInfo}");
+        }
+
         internal static async void GetWorkItemInfo(Visio.Application app, string doc, string page, string shape, string shapeu, string[] vs)
         {
             VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
@@ -312,6 +412,78 @@ namespace SupportTools_Visio.Actions
             activeShape.CellsU["Prop.ExternalLinks"].FormulaU = externalLinkCount.ToString().WrapInDblQuotes();
             activeShape.CellsU["Prop.RemoteLinks"].FormulaU = remoteLinkCount.ToString().WrapInDblQuotes();
             activeShape.CellsU["Prop.HyperLinks"].FormulaU = hyperLinkCount.ToString().WrapInDblQuotes();
+
+            VisioHelper.DisplayInWatchWindow($"{workItemInfoShape}");
+        }
+
+        internal static async void GetWorkItemInfo2(Visio.Application app, string doc, string page, string shape, string shapeu, string[] vs)
+        {
+            VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
+                MethodBase.GetCurrentMethod().Name));
+
+            Visio.Page activePage = app.ActivePage;
+            Visio.Shape activeShape = app.ActivePage.Shapes[shape];
+
+            WorkItemInfoShape workItemInfoShape = new WorkItemInfoShape(activeShape);
+
+            int id = 0;
+
+            if (!int.TryParse(workItemInfoShape.ID, out id))
+            {
+                MessageBox.Show($"Invalid WorkItem ID: ({workItemInfoShape.ID})");
+                return;
+            }
+
+            var result = await QueryWorkItemInfo(workItemInfoShape.Organization, int.Parse(workItemInfoShape.ID));
+
+            var workItem = result[0];
+
+            var teamProject = workItem.Fields["System.TeamProject"];
+            var workItemType = workItem.Fields["System.WorkItemType"];
+
+            var title = workItem.Fields["System.Title"];
+            var state = workItem.Fields["System.State"];
+
+            var createdBy = ((IdentityRef)workItem.Fields["System.CreatedBy"]).DisplayName;
+            var createdDate = workItem.Fields["System.CreatedDate"];
+            var changedBy = ((IdentityRef)workItem.Fields["System.ChangedBy"]).DisplayName;
+            var changedDate = workItem.Fields["System.ChangedDate"];
+
+            var relatedLinkCount = workItem.Fields["System.RelatedLinkCount"];
+            var externalLinkCount = workItem.Fields["System.ExternalLinkCount"];
+            var remoteLinkCount = workItem.Fields["System.RemoteLinkCount"];
+            var hyperLinkCount = workItem.Fields["System.HyperLinkCount"];
+
+            // Map the properties to the corresponding Prop Data fields on the generic shape
+
+            activeShape.CellsU["Prop.TextUpper2"].FormulaU = createdBy.WrapInDblQuotes();
+            activeShape.CellsU["Prop.TextUpper1"].FormulaU = createdDate.ToString().WrapInDblQuotes();
+
+            activeShape.CellsU["Prop.TextHeader1"].FormulaU = id.ToString().WrapInDblQuotes();
+            activeShape.CellsU["Prop.TextHeader2"].FormulaU = teamProject.ToString().WrapInDblQuotes();
+
+            activeShape.CellsU["Prop.WorkItemType"].FormulaU = workItemType.ToString().WrapInDblQuotes();
+
+            //activeShape.CellsU["Prop.TextFooter2"].FormulaU = state.ToString().WrapInDblQuotes();
+            activeShape.CellsU["Prop.TextFooter1"].FormulaU = state.ToString().WrapInDblQuotes();
+
+            activeShape.CellsU["Prop.TextLower1"].FormulaU = changedBy.WrapInDblQuotes();
+            activeShape.CellsU["Prop.TextLower2"].FormulaU = changedDate.ToString().WrapInDblQuotes();
+
+            // Add the custom Prop Data fields
+
+            activeShape.CellsU["Prop.Title"].FormulaU = title.ToString().Replace("\"", "\"\"").WrapInDblQuotes();
+
+            activeShape.CellsU["Prop.ExternalLink"].FormulaU = $"http://dev.azure.com/{workItemInfoShape.Organization}/{teamProject}/_workitems/edit/{id}/".WrapInDblQuotes();
+
+            activeShape.CellsU["Prop.RelatedLinks"].FormulaU = relatedLinkCount.ToString().WrapInDblQuotes();
+            activeShape.CellsU["Prop.ExternalLinks"].FormulaU = externalLinkCount.ToString().WrapInDblQuotes();
+            activeShape.CellsU["Prop.RemoteLinks"].FormulaU = remoteLinkCount.ToString().WrapInDblQuotes();
+            activeShape.CellsU["Prop.HyperLinks"].FormulaU = hyperLinkCount.ToString().WrapInDblQuotes();
+
+            // Most likely PageName
+
+            activeShape.CellsU["Prop.PageName"].FormulaU = $"{workItemType} {id}".WrapInDblQuotes();
 
             VisioHelper.DisplayInWatchWindow($"{workItemInfoShape}");
         }
@@ -378,6 +550,92 @@ namespace SupportTools_Visio.Actions
                     catch (Exception ex)
                     {
                         VisioHelper.DisplayInWatchWindow($"{linkedWorkItem.Id}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    VisioHelper.DisplayInWatchWindow(string.Format("  Cannot find Master named:>{0}<", shapeName));
+                }
+            }
+            catch (Exception ex)
+            {
+                VisioHelper.DisplayInWatchWindow(string.Format("  Cannot find open Stencil named:>{0}<", stencilName));
+            }
+        }
+
+        private static void AddNewLinkedWorkItemShape2(Visio.Master linkMaster, Visio.Page page, WorkItem workItem, 
+            Point insertionPoint, WorkItemInfoShape relatedShape)
+        {
+            string stencilName = "Azure DevOps.vssx";
+            string shapeName = "WI 2";
+            //string shapeName = "WI & Info";
+
+            try
+            {
+                //Visio.Document linkStencil = app.Documents[stencilName];
+
+                try
+                {
+                    //Visio.Master linkMaster = linkStencil.Masters[shapeName];
+
+                    Visio.Shape activeShape = page.Drop(linkMaster, insertionPoint.X, insertionPoint.Y);
+
+                    try
+                    {
+                        var id = workItem.Fields["System.Id"];
+
+                        var teamProject = workItem.Fields["System.TeamProject"];
+                        var workItemType = workItem.Fields["System.WorkItemType"];
+
+                        var title = workItem.Fields["System.Title"];
+                        var state = workItem.Fields["System.State"];
+
+                        var createdBy = ((IdentityRef)workItem.Fields["System.CreatedBy"]).DisplayName;
+                        var createdDate = workItem.Fields["System.CreatedDate"];
+                        var changedBy = ((IdentityRef)workItem.Fields["System.ChangedBy"]).DisplayName;
+                        var changedDate = workItem.Fields["System.ChangedDate"];
+
+                        var relatedLinkCount = workItem.Fields["System.RelatedLinkCount"];
+                        var externalLinkCount = workItem.Fields["System.ExternalLinkCount"];
+                        var remoteLinkCount = workItem.Fields["System.RemoteLinkCount"];
+                        var hyperLinkCount = workItem.Fields["System.HyperLinkCount"];
+
+                        // Map the properties to the corresponding Prop Data fields on the generic shape
+
+                        activeShape.CellsU["Prop.TextUpper2"].FormulaU = createdBy.WrapInDblQuotes();
+                        activeShape.CellsU["Prop.TextUpper1"].FormulaU = createdDate.ToString().WrapInDblQuotes();
+
+                        activeShape.CellsU["Prop.TextHeader1"].FormulaU = id.ToString().WrapInDblQuotes();
+                        activeShape.CellsU["Prop.TextHeader2"].FormulaU = teamProject.ToString().WrapInDblQuotes();
+
+                        activeShape.CellsU["Prop.WorkItemType"].FormulaU = workItemType.ToString().WrapInDblQuotes();
+
+                        //activeShape.CellsU["Prop.TextFooter2"].FormulaU = state.ToString().WrapInDblQuotes();
+                        activeShape.CellsU["Prop.TextFooter1"].FormulaU = state.ToString().WrapInDblQuotes();
+
+                        activeShape.CellsU["Prop.TextLower1"].FormulaU = changedBy.WrapInDblQuotes();
+                        activeShape.CellsU["Prop.TextLower2"].FormulaU = changedDate.ToString().WrapInDblQuotes();
+
+                        // Add the custom Prop Data fields
+
+                        activeShape.CellsU["Prop.Title"].FormulaU = title.ToString().Replace("\"", "\"\"").WrapInDblQuotes();
+
+                        activeShape.CellsU["Prop.RelatedLinks"].FormulaU = relatedLinkCount.ToString().WrapInDblQuotes();
+                        activeShape.CellsU["Prop.ExternalLinks"].FormulaU = externalLinkCount.ToString().WrapInDblQuotes();
+                        activeShape.CellsU["Prop.RemoteLinks"].FormulaU = remoteLinkCount.ToString().WrapInDblQuotes();
+                        activeShape.CellsU["Prop.HyperLinks"].FormulaU = hyperLinkCount.ToString().WrapInDblQuotes();
+
+                        activeShape.CellsU["Prop.Organization"].FormulaU = relatedShape.Organization.WrapInDblQuotes();
+
+                        activeShape.CellsU["Prop.ExternalLink"].FormulaU = $"http://dev.azure.com/{relatedShape.Organization}/{relatedShape.TeamProject}/_workitems/edit/{id}/".WrapInDblQuotes();
+
+                        // Most likely PageName
+
+                        activeShape.CellsU["Prop.PageName"].FormulaU = $"{workItemType} {id}".WrapInDblQuotes();
+                    }
+                    catch (Exception ex)
+                    {
+                        VisioHelper.DisplayInWatchWindow($"{workItem.Id}");
                     }
                 }
                 catch (Exception ex)

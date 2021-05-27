@@ -15,8 +15,19 @@ namespace SupportTools_Visio.Actions
             // Make this reflect on properties and loop across.
 
             Organization = Helper.GetShapePropertyAsString(activeShape, "Organization");
-            TeamProject = Helper.GetShapePropertyAsString(activeShape, "TeamProject");
+            //TeamProject = Helper.GetShapePropertyAsString(activeShape, "TeamProject");
+
             ID = Helper.GetShapePropertyAsString(activeShape, "ID");
+            // TODO(crhodes)
+            // Maybe just use Helper (see infra)
+            WorkItemType = activeShape.CellsU["Prop.PageName"].ResultStr[Visio.VisUnitCodes.visUnitsString];
+            RelatedLinkCount = activeShape.CellsU["Prop.RelatedLinks"].ResultStr[Visio.VisUnitCodes.visUnitsString];
+
+            if (ID == "")
+            {
+                ID = Helper.GetShapePropertyAsString(activeShape, "TextHeader1");
+                WorkItemType = activeShape.CellsU["Prop.WorkItemType"].ResultStr[Visio.VisUnitCodes.visUnitsString];
+            }
 
             PinX = activeShape.CellsU["PinX"].ResultIU;
             PinY = activeShape.CellsU["PinY"].ResultIU;
@@ -24,14 +35,8 @@ namespace SupportTools_Visio.Actions
             Height= activeShape.CellsU["Height"].ResultIU;
             Width = activeShape.CellsU["Width"].ResultIU;
 
-            // TODO(crhodes)
-            // Maybe just use Helper (see infra)
-            WorkItemType = activeShape.CellsU["Prop.PageName"].ResultStr[Visio.VisUnitCodes.visUnitsString];
-
             // // TODO(crhodes)
             // Why not get everything?
-
-            RelatedLinkCount = activeShape.CellsU["Prop.RelatedLinks"].ResultStr[Visio.VisUnitCodes.visUnitsString];
 
             //Namespace = Helper.GetShapePropertyAsString(activeShape, "Namespace");
             //Version = Helper.GetShapePropertyAsString(activeShape, "Version");
