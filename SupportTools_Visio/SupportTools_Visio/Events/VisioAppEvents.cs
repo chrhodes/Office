@@ -937,6 +937,10 @@ namespace SupportTools_Visio.Events
                         Actions.AZDOActions.AddLinkedWorkItems2(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
                         break;
 
+                    case "QueryWorkItems":
+                        Actions.AZDOActions.QueryWorkItems(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
+                        break;
+
                     #endregion
 
                     #region RoslynActions

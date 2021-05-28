@@ -11,23 +11,28 @@ namespace SupportTools_Visio.Actions
 
         public WorkItemInfoShape(Visio.Shape activeShape)
         {
-            // TODO(crhodes)
-            // Make this reflect on properties and loop across.
+            // NOTE(crhodes)
+            // These Four Properties are used by the Actions that can be performed.
+            // Populate them from the activeShape
+            //
+            // This has a little logic to handle the differences between WI 1.0 and WI 2.0
 
             Organization = Helper.GetShapePropertyAsString(activeShape, "Organization");
-            //TeamProject = Helper.GetShapePropertyAsString(activeShape, "TeamProject");
 
             ID = Helper.GetShapePropertyAsString(activeShape, "ID");
-            // TODO(crhodes)
-            // Maybe just use Helper (see infra)
-            WorkItemType = activeShape.CellsU["Prop.PageName"].ResultStr[Visio.VisUnitCodes.visUnitsString];
+
+            WorkItemType = activeShape.CellsU["Prop.WorkItemType"].ResultStr[Visio.VisUnitCodes.visUnitsString];
+
             RelatedLinkCount = activeShape.CellsU["Prop.RelatedLinks"].ResultStr[Visio.VisUnitCodes.visUnitsString];
 
-            if (ID == "")
+            // NB. WI 1.0 used PageName for WorkItemType.  We can remove this f we stop supported WI 1.0
+
+            if (WorkItemType == "")
             {
-                ID = Helper.GetShapePropertyAsString(activeShape, "TextHeader1");
-                WorkItemType = activeShape.CellsU["Prop.WorkItemType"].ResultStr[Visio.VisUnitCodes.visUnitsString];
+                WorkItemType = activeShape.CellsU["Prop.PageName"].ResultStr[Visio.VisUnitCodes.visUnitsString];
             }
+
+            // This helps with position output relative to the activeShape
 
             PinX = activeShape.CellsU["PinX"].ResultIU;
             PinY = activeShape.CellsU["PinY"].ResultIU;
@@ -35,19 +40,8 @@ namespace SupportTools_Visio.Actions
             Height= activeShape.CellsU["Height"].ResultIU;
             Width = activeShape.CellsU["Width"].ResultIU;
 
-            // // TODO(crhodes)
-            // Why not get everything?
-
-            //Namespace = Helper.GetShapePropertyAsString(activeShape, "Namespace");
-            //Version = Helper.GetShapePropertyAsString(activeShape, "Version");
-            //Color = Helper.GetShapePropertyAsString(activeShape, "Color");
-            //Color2 = Helper.GetShapePropertyAsString(activeShape, "Color2");
-            //GroupName = Helper.GetShapePropertyAsString(activeShape, "GroupName");
-            //SourceName = Helper.GetShapePropertyAsString(activeShape, "SourceName");
-            //RootPath = Helper.GetShapePropertyAsString(activeShape, "RootPath");
-            //AssemblyFileName = Helper.GetShapePropertyAsString(activeShape, "AssemblyFileName");
-            //SourceFileName = Helper.GetShapePropertyAsString(activeShape, "SourceFileName");
-            //ApplicationName = Helper.GetShapePropertyAsString(activeShape, "ApplicationName");
+            // All the other properties are populated when getting fields from the WorkItem
+            // identified by Organization and ID
         }
 
         #endregion

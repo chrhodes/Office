@@ -13,6 +13,7 @@ using Microsoft.VisualStudio.Services.WebApi;
 
 using SupportTools_Visio.Domain;
 
+using VNC;
 using VNC.Core;
 
 using Visio = Microsoft.Office.Interop.Visio;
@@ -436,6 +437,12 @@ namespace SupportTools_Visio.Actions
 
             var result = await QueryWorkItemInfo(workItemInfoShape.Organization, int.Parse(workItemInfoShape.ID));
 
+            if (result.Count == 0)
+            {
+                MessageBox.Show($"Cannot find WorkItem ID: ({workItemInfoShape.ID})");
+                return;
+            }
+
             var workItem = result[0];
 
             var teamProject = workItem.Fields["System.TeamProject"];
@@ -459,7 +466,7 @@ namespace SupportTools_Visio.Actions
             activeShape.CellsU["Prop.TextUpper2"].FormulaU = createdBy.WrapInDblQuotes();
             activeShape.CellsU["Prop.TextUpper1"].FormulaU = createdDate.ToString().WrapInDblQuotes();
 
-            activeShape.CellsU["Prop.TextHeader1"].FormulaU = id.ToString().WrapInDblQuotes();
+            activeShape.CellsU["Prop.ID"].FormulaU = id.ToString().WrapInDblQuotes();   // Was TextHeader1
             activeShape.CellsU["Prop.TextHeader2"].FormulaU = teamProject.ToString().WrapInDblQuotes();
 
             activeShape.CellsU["Prop.WorkItemType"].FormulaU = workItemType.ToString().WrapInDblQuotes();
@@ -605,7 +612,7 @@ namespace SupportTools_Visio.Actions
                         activeShape.CellsU["Prop.TextUpper2"].FormulaU = createdBy.WrapInDblQuotes();
                         activeShape.CellsU["Prop.TextUpper1"].FormulaU = createdDate.ToString().WrapInDblQuotes();
 
-                        activeShape.CellsU["Prop.TextHeader1"].FormulaU = id.ToString().WrapInDblQuotes();
+                        activeShape.CellsU["Prop.ID"].FormulaU = id.ToString().WrapInDblQuotes(); // Was Prop.TextHeader1
                         activeShape.CellsU["Prop.TextHeader2"].FormulaU = teamProject.ToString().WrapInDblQuotes();
 
                         activeShape.CellsU["Prop.WorkItemType"].FormulaU = workItemType.ToString().WrapInDblQuotes();
@@ -989,7 +996,7 @@ namespace SupportTools_Visio.Actions
                             }
                             else
                             {
-                                workItemOffsets.Release.IncrementHorizontal(width, OffsetDirection.Up);
+                                workItemOffsets.Release.DecrementHorizontal(width, OffsetDirection.Up);
                                 newInsertionPoint.X = workItemOffsets.Release.X;
                                 newInsertionPoint.Y = workItemOffsets.Release.Y;
                             }
@@ -1414,6 +1421,76 @@ namespace SupportTools_Visio.Actions
             Point currentPosition = new Point(x, y);
 
             return currentPosition;
+        }
+        public static async void QueryWorkItems(Visio.Application app, string doc, string page, string shape, string shapeu, string[] array)
+        {
+            Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
+
+            Visio.Page activePage = app.ActivePage;
+            Visio.Shape activeShape = app.ActivePage.Shapes[shape];
+
+            WorkItemInfoShape workItemInfoShape = new WorkItemInfoShape(activeShape);
+
+            int id = 0;
+
+            if (!int.TryParse(workItemInfoShape.ID, out id))
+            {
+                MessageBox.Show($"Invalid WorkItem ID: ({workItemInfoShape.ID})");
+                return;
+            }
+
+            var result = await QueryWorkItemInfo(workItemInfoShape.Organization, int.Parse(workItemInfoShape.ID));
+
+            var workItem = result[0];
+
+            var teamProject = workItem.Fields["System.TeamProject"];
+            var workItemType = workItem.Fields["System.WorkItemType"];
+
+            var title = workItem.Fields["System.Title"];
+            var state = workItem.Fields["System.State"];
+
+            var createdBy = ((IdentityRef)workItem.Fields["System.CreatedBy"]).DisplayName;
+            var createdDate = workItem.Fields["System.CreatedDate"];
+            var changedBy = ((IdentityRef)workItem.Fields["System.ChangedBy"]).DisplayName;
+            var changedDate = workItem.Fields["System.ChangedDate"];
+
+            var relatedLinkCount = workItem.Fields["System.RelatedLinkCount"];
+            var externalLinkCount = workItem.Fields["System.ExternalLinkCount"];
+            var remoteLinkCount = workItem.Fields["System.RemoteLinkCount"];
+            var hyperLinkCount = workItem.Fields["System.HyperLinkCount"];
+
+            // Map the properties to the corresponding Prop Data fields on the generic shape
+
+            activeShape.CellsU["Prop.TextUpper2"].FormulaU = createdBy.WrapInDblQuotes();
+            activeShape.CellsU["Prop.TextUpper1"].FormulaU = createdDate.ToString().WrapInDblQuotes();
+
+            activeShape.CellsU["Prop.TextHeader1"].FormulaU = id.ToString().WrapInDblQuotes();
+            activeShape.CellsU["Prop.TextHeader2"].FormulaU = teamProject.ToString().WrapInDblQuotes();
+
+            activeShape.CellsU["Prop.WorkItemType"].FormulaU = workItemType.ToString().WrapInDblQuotes();
+
+            //activeShape.CellsU["Prop.TextFooter2"].FormulaU = state.ToString().WrapInDblQuotes();
+            activeShape.CellsU["Prop.TextFooter1"].FormulaU = state.ToString().WrapInDblQuotes();
+
+            activeShape.CellsU["Prop.TextLower1"].FormulaU = changedBy.WrapInDblQuotes();
+            activeShape.CellsU["Prop.TextLower2"].FormulaU = changedDate.ToString().WrapInDblQuotes();
+
+            // Add the custom Prop Data fields
+
+            activeShape.CellsU["Prop.Title"].FormulaU = title.ToString().Replace("\"", "\"\"").WrapInDblQuotes();
+
+            activeShape.CellsU["Prop.ExternalLink"].FormulaU = $"http://dev.azure.com/{workItemInfoShape.Organization}/{teamProject}/_workitems/edit/{id}/".WrapInDblQuotes();
+
+            activeShape.CellsU["Prop.RelatedLinks"].FormulaU = relatedLinkCount.ToString().WrapInDblQuotes();
+            activeShape.CellsU["Prop.ExternalLinks"].FormulaU = externalLinkCount.ToString().WrapInDblQuotes();
+            activeShape.CellsU["Prop.RemoteLinks"].FormulaU = remoteLinkCount.ToString().WrapInDblQuotes();
+            activeShape.CellsU["Prop.HyperLinks"].FormulaU = hyperLinkCount.ToString().WrapInDblQuotes();
+
+            // Most likely PageName
+
+            activeShape.CellsU["Prop.PageName"].FormulaU = $"{workItemType} {id}".WrapInDblQuotes();
+
+            Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
     }
 }
