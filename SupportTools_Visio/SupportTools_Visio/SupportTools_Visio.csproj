@@ -646,11 +646,13 @@
   -->
   <ItemGroup>
     <Compile Include="Domain\OffsetDirection.cs" />
+    <Compile Include="Domain\ShapeInfo.cs" />
     <Compile Include="Domain\WorkItemOffset.cs" />
     <Compile Include="Domain\WorkItemOffsets.cs" />
     <Compile Include="Domain\ShapeSheet\PageProperties.cs" />
     <Compile Include="Domain\ShapeType.cs" />
-    <Compile Include="Domain\WorkItemInfoShape.cs" />
+    <Compile Include="Domain\WorkItemQueryShapeInfo.cs" />
+    <Compile Include="Domain\WorkItemShapeInfo.cs" />
     <Compile Include="Domain\FileInfoShape.cs" />
     <Compile Include="Domain\MethodInfoShape.cs" />
     <Compile Include="Domain\ClassInfoShape.cs" />
@@ -1403,6 +1405,10 @@
     <Resource Include="Resources\Images\WatchWindow.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\vnc\VNC.AZDO1\VNC.AZDO1.csproj">
+      <Project>{be606ca6-7fbe-4002-94a6-b65f2e59bb32}</Project>
+      <Name>VNC.AZDO1</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\VNC\VNC.CodeAnalysis\VNC.CodeAnalysis\VNC.CodeAnalysis.csproj">
       <Project>{cda536fc-450e-4e1c-af0c-f795ff461524}</Project>
       <Name>VNC.CodeAnalysis</Name>
