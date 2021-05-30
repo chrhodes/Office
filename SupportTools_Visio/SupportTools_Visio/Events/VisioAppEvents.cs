@@ -922,7 +922,7 @@ namespace SupportTools_Visio.Events
                     #region AZDOActions
 
                     case "GetWorkItemInfo":
-                        Actions.AZDOActions.GetWorkItemInfo(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
+                        Actions.AZDOActions.GetWorkItemInfo1(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
                         break;
 
                     case "GetWorkItemInfo2":
