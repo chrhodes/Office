@@ -19,7 +19,7 @@ namespace SupportTools_Visio.Actions
     {
         public static VNC.WPF.Presentation.Dx.Views.DxThemedWindowHost addLinkedWorkItemsHost = null;
 
-        internal static async void AddLinkedWorkItems(Visio.Application app, string doc, string page, string shape, string shapeu, string[] vs)
+        internal static async void AddLinkedWorkItems1(Visio.Application app, string doc, string page, string shape, string shapeu, string[] vs)
         {
             VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
                 MethodBase.GetCurrentMethod().Name));
@@ -35,8 +35,37 @@ namespace SupportTools_Visio.Actions
 
             Visio.Page activePage = app.ActivePage;
             Visio.Shape activeShape = app.ActivePage.Shapes[shape];
+            var version = WorkItemShapeInfo.WorkItemShapeVersion.V1;
 
-            WorkItemShapeInfo activeShapeWorkItemInfo = new WorkItemShapeInfo(activeShape);
+            AddLinkedWorkItems(app, activePage, activeShape, "WI 1", version);
+            
+
+        }
+        
+        internal static async void AddLinkedWorkItems2(Visio.Application app, string doc, string page, string shape, string shapeu, string[] vs)
+        {
+            VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
+                MethodBase.GetCurrentMethod().Name));
+
+            // NOTE(crhodes)
+            // Can launch a UI here.  Or earlier.
+
+            //DxThemedWindowHost.DisplayUserControlInHost(ref addLinkedWorkItemsHost,
+            //    "Edit Shape Control Points Text",
+            //    Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
+            //    DxThemedWindowHost.ShowWindowMode.Modeless,
+            //    new Presentation.Views.EditControlPoints());
+
+            Visio.Page activePage = app.ActivePage;
+            Visio.Shape activeShape = app.ActivePage.Shapes[shape];
+            var version = WorkItemShapeInfo.WorkItemShapeVersion.V2;
+
+            AddLinkedWorkItems(app, activePage, activeShape, "WI 2", version);
+        }
+
+        internal static async void AddLinkedWorkItems(Visio.Application app, Visio.Page page, Visio.Shape shape, string shapeName, WorkItemShapeInfo.WorkItemShapeVersion version)
+        {
+            WorkItemShapeInfo activeShapeWorkItemInfo = new WorkItemShapeInfo(shape);
 
             int id;
 
@@ -59,17 +88,16 @@ namespace SupportTools_Visio.Actions
                 MessageBox.Show($"Cannot parse ({activeShapeWorkItemInfo.RelatedLinkCount}) as RelatedLinkCount");
                 return;
             }
- 
+
             var result = await VNC.AZDO1.Helper.QueryWorkItemLinks(activeShapeWorkItemInfo.Organization, id, relatedLinkCount);
 
             if (result.Count > 0)
             {
-                Point initialPosition = GetPosition(activeShape);
+                Point initialPosition = GetPosition(shape);
                 Point insertionPoint = initialPosition;
 
                 string stencilName = "Azure DevOps.vssx";
-                string shapeName = "WI";
-                //string shapeName = "WI & Info";
+
                 Visio.Document linkStencil;
                 Visio.Master linkMaster = null;
 
@@ -112,107 +140,7 @@ namespace SupportTools_Visio.Actions
 
                     insertionPoint = CalculateInsertionPointLinkedWorkItems(initialPosition, insertionPoint, linkedWorkItem, activeShapeWorkItemInfo, workItemOffsets);
 
-                    AddNewLinkedWorkItemShape(activePage, linkMaster, linkedWorkItem, insertionPoint, activeShapeWorkItemInfo);
-                }
-            }
-
-            VisioHelper.DisplayInWatchWindow($"{activeShapeWorkItemInfo}");
-        }
-
-        internal static async void AddLinkedWorkItems2(Visio.Application app, string doc, string page, string shape, string shapeu, string[] vs)
-        {
-            VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
-                MethodBase.GetCurrentMethod().Name));
-
-            // NOTE(crhodes)
-            // Can launch a UI here.  Or earlier.
-
-            //DxThemedWindowHost.DisplayUserControlInHost(ref addLinkedWorkItemsHost,
-            //    "Edit Shape Control Points Text",
-            //    Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
-            //    DxThemedWindowHost.ShowWindowMode.Modeless,
-            //    new Presentation.Views.EditControlPoints());
-
-            Visio.Page activePage = app.ActivePage;
-            Visio.Shape activeShape = app.ActivePage.Shapes[shape];
-
-            WorkItemShapeInfo activeShapeWorkItemInfo = new WorkItemShapeInfo(activeShape);
-
-            int id;
-
-            if (int.TryParse(activeShapeWorkItemInfo.ID, out id))
-            {
-            }
-            else
-            {
-                MessageBox.Show($"Cannot parse ({activeShapeWorkItemInfo.ID}) as WorkItemID");
-                return;
-            }
-
-            int relatedLinkCount;
-
-            if (int.TryParse(activeShapeWorkItemInfo.RelatedLinkCount, out relatedLinkCount))
-            {
-            }
-            else
-            {
-                MessageBox.Show($"Cannot parse ({activeShapeWorkItemInfo.RelatedLinkCount}) as RelatedLinkCount");
-                return;
-            }
-
-            var result = await VNC.AZDO1.Helper.QueryWorkItemLinks(activeShapeWorkItemInfo.Organization, id, relatedLinkCount);
-
-            if (result.Count > 0)
-            {
-                Point initialPosition = GetPosition(activeShape);
-                Point insertionPoint = initialPosition;
-
-                string stencilName = "Azure DevOps.vssx";
-                string shapeName = "WI 2";
-                //string shapeName = "WI & Info";
-                Visio.Document linkStencil;
-                Visio.Master linkMaster = null;
-
-                try
-                {
-                    linkStencil = app.Documents[stencilName];
-
-                    try
-                    {
-                        linkMaster = linkStencil.Masters[shapeName];
-                    }
-                    catch (Exception ex)
-                    {
-                        VisioHelper.DisplayInWatchWindow(string.Format("  Cannot find Master named:>{0}<", shapeName));
-                    }
-                }
-                catch (Exception ex)
-                {
-                    VisioHelper.DisplayInWatchWindow(string.Format("  Cannot find open Stencil named:>{0}<", stencilName));
-                }
-
-                // TODO(crhodes)
-                // Figure out how to get size of shape from master.
-                // HACK(crhodes)
-                // .25 is for Link counts
-
-                WorkItemOffsets workItemOffsets = new WorkItemOffsets(initialPosition, activeShapeWorkItemInfo.Height, 0.25, 0.05);
-
-                foreach (var linkedWorkItem in result)
-                {
-                    // NOTE(crhodes)
-                    // This includes the current shape.  Do not add it.
-                    // May always be first one.  Maybe loop counter
-                    if (linkedWorkItem.Id == id)
-                    {
-                        continue;
-                    }
-
-                    VisioHelper.DisplayInWatchWindow($"{linkedWorkItem.Id} {linkedWorkItem.Fields["System.Title"]}");
-
-                    insertionPoint = CalculateInsertionPointLinkedWorkItems(initialPosition, insertionPoint, linkedWorkItem, activeShapeWorkItemInfo, workItemOffsets);
-
-                    AddNewLinkedWorkItemShape2(linkMaster, activePage, linkedWorkItem, insertionPoint, activeShapeWorkItemInfo);
+                    AddNewLinkedWorkItemShape(page, linkMaster, linkedWorkItem, insertionPoint, activeShapeWorkItemInfo, version);
                 }
             }
 
@@ -224,32 +152,9 @@ namespace SupportTools_Visio.Actions
             VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
                 MethodBase.GetCurrentMethod().Name));
 
-            Visio.Page activePage = app.ActivePage;
             Visio.Shape activeShape = app.ActivePage.Shapes[shape];
 
-            WorkItemShapeInfo workItemShapeInfo = new WorkItemShapeInfo(activeShape);
-
-            int id = 0;
-
-            if ( !int.TryParse(workItemShapeInfo.ID, out id))
-            {
-                MessageBox.Show($"Invalid WorkItem ID: ({workItemShapeInfo.ID})");
-                return;
-            }
-            
-            var result = await VNC.AZDO1.Helper.QueryWorkItemInfoById(workItemShapeInfo.Organization, id);
-
-            if (result.Count == 0)
-            {
-                MessageBox.Show($"Cannot find WorkItem ID: ({workItemShapeInfo.ID})");
-                return;
-            }
-
-            workItemShapeInfo.InitializeFromWorkItem(result[0]);
-
-            workItemShapeInfo.PopulateShapeDataFromInfo(activeShape, WorkItemShapeInfo.WorkItemShapeVersion.V1);
-
-            VisioHelper.DisplayInWatchWindow($"{workItemShapeInfo}");
+            GetWorkItemInfo(activeShape, WorkItemShapeInfo.WorkItemShapeVersion.V1);
         }
 
         internal static async void GetWorkItemInfo2(Visio.Application app, string doc, string page, string shape, string shapeu, string[] vs)
@@ -257,10 +162,15 @@ namespace SupportTools_Visio.Actions
             VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
                 MethodBase.GetCurrentMethod().Name));
 
-            Visio.Page activePage = app.ActivePage;
             Visio.Shape activeShape = app.ActivePage.Shapes[shape];
 
-            WorkItemShapeInfo workItemInfoShape = new WorkItemShapeInfo(activeShape);
+            GetWorkItemInfo(activeShape, WorkItemShapeInfo.WorkItemShapeVersion.V2);
+        }
+
+        internal static async void GetWorkItemInfo(Visio.Shape shape, WorkItemShapeInfo.WorkItemShapeVersion version)
+        {
+
+            WorkItemShapeInfo workItemInfoShape = new WorkItemShapeInfo(shape);
 
             int id = 0;
 
@@ -280,38 +190,22 @@ namespace SupportTools_Visio.Actions
 
             workItemInfoShape.InitializeFromWorkItem(result[0]);
 
-            workItemInfoShape.PopulateShapeDataFromInfo(activeShape, WorkItemShapeInfo.WorkItemShapeVersion.V2);
+            workItemInfoShape.PopulateShapeDataFromInfo(shape, version);
 
             VisioHelper.DisplayInWatchWindow($"{workItemInfoShape}");
         }
 
         private static void AddNewLinkedWorkItemShape(Visio.Page page, Visio.Master linkMaster,
-            WorkItem workItem, Point insertionPoint, 
-            WorkItemShapeInfo relatedShape)
+            WorkItem workItem, Point insertionPoint,
+            WorkItemShapeInfo relatedShape, 
+            WorkItemShapeInfo.WorkItemShapeVersion version)
         {
             try
             {
                 Visio.Shape newWorkItemShape = page.Drop(linkMaster, insertionPoint.X, insertionPoint.Y);
                 WorkItemShapeInfo workItemShapeInfo = new WorkItemShapeInfo(newWorkItemShape);
                 workItemShapeInfo.InitializeFromWorkItem(workItem);
-                workItemShapeInfo.PopulateShapeDataFromInfo(newWorkItemShape, WorkItemShapeInfo.WorkItemShapeVersion.V2);
-            }
-            catch (Exception ex)
-            {
-                VisioHelper.DisplayInWatchWindow($"{workItem.Id} - {ex}");
-            }
-        }
-
-        private static void AddNewLinkedWorkItemShape2(Visio.Master linkMaster, Visio.Page page, 
-            WorkItem workItem, Point insertionPoint, 
-            WorkItemShapeInfo relatedShape)
-        {
-            try
-            {
-                Visio.Shape newWorkItemShape = page.Drop(linkMaster, insertionPoint.X, insertionPoint.Y);
-                WorkItemShapeInfo workItemShapeInfo = new WorkItemShapeInfo(newWorkItemShape);
-                workItemShapeInfo.InitializeFromWorkItem(workItem);
-                workItemShapeInfo.PopulateShapeDataFromInfo(newWorkItemShape, WorkItemShapeInfo.WorkItemShapeVersion.V2);
+                workItemShapeInfo.PopulateShapeDataFromInfo(newWorkItemShape, version);
             }
             catch (Exception ex)
             {

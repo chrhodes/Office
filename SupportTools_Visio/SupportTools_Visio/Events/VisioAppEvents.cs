@@ -930,7 +930,7 @@ namespace SupportTools_Visio.Events
                         break;
 
                     case "AddLinkedWorkItems":
-                        Actions.AZDOActions.AddLinkedWorkItems(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
+                        Actions.AZDOActions.AddLinkedWorkItems1(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
                         break;
 
                     case "AddLinkedWorkItems2":
