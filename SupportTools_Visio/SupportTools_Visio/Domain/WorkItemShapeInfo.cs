@@ -31,11 +31,12 @@ namespace SupportTools_Visio.Actions
         {
             // NOTE(crhodes)
             // These Four Properties are used by the Actions that can be performed.
-            // Populate them from the activeShape
+            // Populate them from the activeShape which could be a WorkItemInfo or a QueryInfo shape.
             //
             // This has a little logic to handle the differences between WI 1.0 and WI 2.0
 
             Organization = Helper.GetShapePropertyAsString(shape, "Organization");
+            TeamProject = Helper.GetShapePropertyAsString(shape, "TeamProject");
 
             ID = Helper.GetShapePropertyAsString(shape, "ID");
 
@@ -56,6 +57,9 @@ namespace SupportTools_Visio.Actions
                     WorkItemType = shape.CellsU["Prop.PageName"].ResultStr[Visio.VisUnitCodes.visUnitsString];
                 }
             }
+
+            // TODO(crhodes)
+            // See if we really need to get this in constructor.
 
             if (shape.CellExistsU["Prop.RelatedLinks", 0] != 0)
             {

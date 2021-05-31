@@ -10,6 +10,8 @@ namespace SupportTools_Visio.Domain
 
         public WorkItemOffset Feature;
 
+        public WorkItemOffset QueryResult;
+
         public WorkItemOffset Release;
 
         public WorkItemOffset Requirement;
@@ -35,6 +37,8 @@ namespace SupportTools_Visio.Domain
             TestCase = new WorkItemOffset(initialOffset, height, padX, padY);
             UserNeeds = new WorkItemOffset(initialOffset, height, padX, padY);
             UserStory = new WorkItemOffset(initialOffset, height, padX, padY);
+
+            QueryResult = new WorkItemOffset(initialOffset, height, padX, padY);
 
             Unknown = new WorkItemOffset(initialOffset, 0.0);
         }
