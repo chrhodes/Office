@@ -646,6 +646,7 @@
   -->
   <ItemGroup>
     <Compile Include="Domain\OffsetDirection.cs" />
+    <Compile Include="Domain\QueryWorkItemInfoShape.cs" />
     <Compile Include="Domain\ShapeInfo.cs" />
     <Compile Include="Domain\WorkItemOffset.cs" />
     <Compile Include="Domain\WorkItemOffsets.cs" />

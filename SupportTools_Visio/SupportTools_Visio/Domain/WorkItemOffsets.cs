@@ -40,7 +40,7 @@ namespace SupportTools_Visio.Domain
 
             QueryResult = new WorkItemOffset(initialOffset, height, padX, padY);
 
-            Unknown = new WorkItemOffset(initialOffset, 0.0);
+            Unknown = new WorkItemOffset(initialOffset, 0.0, padX, padY);
         }
     }
 }
