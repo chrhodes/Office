@@ -10,9 +10,15 @@ namespace SupportTools_Visio.Domain
 
         public WorkItemOffset Feature;
 
+        public WorkItemOffset Issue;
+
+        public WorkItemOffset ProductionIssue;
+
         public WorkItemOffset QueryResult;
 
         public WorkItemOffset Release;
+
+        public WorkItemOffset Request;
 
         public WorkItemOffset Requirement;
 
@@ -31,7 +37,10 @@ namespace SupportTools_Visio.Domain
             Bug = new WorkItemOffset(initialOffset, height, padX, padY);
             Epic = new WorkItemOffset(initialOffset, height, padX, padY);
             Feature = new WorkItemOffset(initialOffset, height, padX, padY);
+            Issue = new WorkItemOffset(initialOffset, height, padX, padY);
+            ProductionIssue = new WorkItemOffset(initialOffset, height, padX, padY);
             Release = new WorkItemOffset(initialOffset, height, padX, padY);
+            Request = new WorkItemOffset(initialOffset, height, padX, padY);
             Requirement = new WorkItemOffset(initialOffset, height, padX, padY);
             Task = new WorkItemOffset(initialOffset, height, padX, padY);
             TestCase = new WorkItemOffset(initialOffset, height, padX, padY);

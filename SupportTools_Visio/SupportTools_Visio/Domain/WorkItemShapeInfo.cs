@@ -44,10 +44,15 @@ namespace SupportTools_Visio.Actions
 
                 // NB. WI 1.0 used PageName for WorkItemType.  We can remove this if we stop supported WI 1.0
 
-                if (WorkItemType == "")
-                {
-                    WorkItemType = shape.CellsU["Prop.PageName"].ResultStr[Visio.VisUnitCodes.visUnitsString];
-                }
+                //if (WorkItemType == "")
+                //{
+                //    WorkItemType = shape.CellsU["Prop.PageName"].ResultStr[Visio.VisUnitCodes.visUnitsString];
+                //}
+            }
+
+            if (shape.CellExistsU["Prop.State", 0] != 0)
+            {
+                State = shape.CellsU["Prop.State"].ResultStr[Visio.VisUnitCodes.visUnitsString];
             }
 
             // TODO(crhodes)
@@ -118,6 +123,7 @@ namespace SupportTools_Visio.Actions
         public string ExternalLinkCount { get; set; }
         public string RemoteLinkCount { get; set; }
         public string HyperLinkCount { get; set; }
+        public string RelatedBugs { get; set; }
 
         #endregion Enums, Fields, Properties, Structures
 
@@ -188,6 +194,8 @@ namespace SupportTools_Visio.Actions
                 // Most likely PageName
 
                 shape.CellsU["Prop.PageName"].FormulaU = $"{WorkItemType} {ID}".WrapInDblQuotes();
+
+                shape.CellsU["Prop.RelatedBugs"].FormulaU = RelatedBugs.WrapInDblQuotes();
             }
 
             // These didn't change

@@ -174,33 +174,39 @@ namespace SupportTools_Visio.Actions
 
         internal static async void GetWorkItemInfo(Visio.Shape shape, WorkItemShapeInfo.WorkItemShapeVersion version)
         {
-
-            WorkItemShapeInfo workItemInfoShape = new WorkItemShapeInfo(shape);
+            WorkItemShapeInfo shapeInfo = new WorkItemShapeInfo(shape);
 
             int id = 0;
 
-            if (!int.TryParse(workItemInfoShape.ID, out id))
+            if (!int.TryParse(shapeInfo.ID, out id))
             {
-                MessageBox.Show($"Invalid WorkItem ID: ({workItemInfoShape.ID})");
+                MessageBox.Show($"Invalid WorkItem ID: ({shapeInfo.ID})");
                 return;
             }
 
-            var result = await VNC.AZDO1.Helper.QueryWorkItemInfoById(workItemInfoShape.Organization, id);
+            var result = await VNC.AZDO1.Helper.QueryWorkItemInfoById(shapeInfo.Organization, id);
 
             if (result.Count == 0)
             {
-                MessageBox.Show($"Cannot find WorkItem ID: ({workItemInfoShape.ID})");
+                MessageBox.Show($"Cannot find WorkItem ID: ({shapeInfo.ID})");
                 return;
             }
 
-            workItemInfoShape.InitializeFromWorkItem(result[0]);
+            shapeInfo.InitializeFromWorkItem(result[0]);
 
-            workItemInfoShape.PopulateShapeDataFromInfo(shape, version);
+            // NOTE(crhodes)
+            // Go add the bugs
 
-            VisioHelper.DisplayInWatchWindow($"{workItemInfoShape}");
+            int bugs = await VNC.AZDO1.Helper.QueryRelatedBugsById(shapeInfo.Organization, int.Parse(shapeInfo.ID));
+
+            shapeInfo.RelatedBugs = bugs.ToString();
+
+            shapeInfo.PopulateShapeDataFromInfo(shape, version);
+
+            VisioHelper.DisplayInWatchWindow($"{shapeInfo}");
         }
 
-        private static void AddNewWorkItemShapeToPage(Visio.Page page, Visio.Master linkMaster,
+        private static async void AddNewWorkItemShapeToPage(Visio.Page page, Visio.Master linkMaster,
             WorkItem workItem, Point insertionPoint,
             WorkItemShapeInfo relatedShape, 
             WorkItemShapeInfo.WorkItemShapeVersion version)
@@ -208,9 +214,14 @@ namespace SupportTools_Visio.Actions
             try
             {
                 Visio.Shape newWorkItemShape = page.Drop(linkMaster, insertionPoint.X, insertionPoint.Y);
-                WorkItemShapeInfo workItemShapeInfo = new WorkItemShapeInfo(newWorkItemShape);
-                workItemShapeInfo.InitializeFromWorkItem(workItem);
-                workItemShapeInfo.PopulateShapeDataFromInfo(newWorkItemShape, version);
+                WorkItemShapeInfo shapeInfo = new WorkItemShapeInfo(newWorkItemShape);
+                shapeInfo.InitializeFromWorkItem(workItem);
+
+                int bugs = await VNC.AZDO1.Helper.QueryRelatedBugsById(shapeInfo.Organization, int.Parse(shapeInfo.ID));
+
+                shapeInfo.RelatedBugs = bugs.ToString();
+
+                shapeInfo.PopulateShapeDataFromInfo(newWorkItemShape, version);
             }
             catch (Exception ex)
             {
@@ -537,7 +548,7 @@ namespace SupportTools_Visio.Actions
                             }
                             else
                             {
-                                workItemOffsets.Release.IncrementHorizontal(width, OffsetDirection.Up);
+                                workItemOffsets.Release.DecrementHorizontal(width, OffsetDirection.Down);
                                 newInsertionPoint.X = workItemOffsets.Release.X;
                                 newInsertionPoint.Y = workItemOffsets.Release.Y;
                             }
@@ -563,6 +574,95 @@ namespace SupportTools_Visio.Actions
                                 newInsertionPoint.Y = workItemOffsets.Release.Y;
                             }
 
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                    break;
+
+                case "Request":
+                    switch (shapeWorkItemType)
+                    {
+                        case "Bug":
+                            workItemOffsets.Request.DecrementHorizontal(width, OffsetDirection.Down);
+                            newInsertionPoint.X = workItemOffsets.Request.X;
+                            newInsertionPoint.Y = workItemOffsets.Request.Y;
+                            break;
+
+                        case "Epic":
+                            workItemOffsets.Request.DecrementHorizontal(width, OffsetDirection.Down);
+                            newInsertionPoint.X = workItemOffsets.Request.X;
+                            newInsertionPoint.Y = workItemOffsets.Request.Y;
+                            break;
+
+                        case "Feature":
+                            workItemOffsets.Request.DecrementHorizontal(width, OffsetDirection.Down);
+                            newInsertionPoint.X = workItemOffsets.Request.X;
+                            newInsertionPoint.Y = workItemOffsets.Request.Y;
+                            break;
+
+                        case "Release":
+                            if (workItemOffsets.UserStory.Count > 0)
+                            {
+                                workItemOffsets.UserStory.IncrementHorizontal(width, OffsetDirection.Down);
+                                newInsertionPoint.X = workItemOffsets.UserStory.X;
+                                newInsertionPoint.Y = workItemOffsets.UserStory.Y;
+                            }
+                            else
+                            {
+                                workItemOffsets.Request.DecrementHorizontal(width, OffsetDirection.Down);
+                                newInsertionPoint.X = workItemOffsets.Request.X;
+                                newInsertionPoint.Y = workItemOffsets.Request.Y;
+                            }
+
+                            break;
+
+                        case "Requirement":
+                            workItemOffsets.Request.DecrementHorizontal(width, OffsetDirection.Down);
+                            newInsertionPoint.X = workItemOffsets.Request.X;
+                            newInsertionPoint.Y = workItemOffsets.Request.Y;
+                            break;
+
+                        case "Task":
+                            if (workItemOffsets.UserStory.Count > 0)
+                            {
+                                workItemOffsets.UserStory.DecrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.UserStory.X;
+                                newInsertionPoint.Y = workItemOffsets.UserStory.Y;
+                            }
+                            else if (workItemOffsets.Requirement.Count > 0)
+                            {
+                                workItemOffsets.Requirement.DecrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.Requirement.X;
+                                newInsertionPoint.Y = workItemOffsets.Requirement.Y;
+                            }
+                            else
+                            {
+                                workItemOffsets.Request.DecrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.Request.X;
+                                newInsertionPoint.Y = workItemOffsets.Request.Y;                                
+                            }
+
+                            break;
+
+                        case "Test Case":
+                                workItemOffsets.Request.DecrementHorizontal(width, OffsetDirection.Down);
+                                newInsertionPoint.X = workItemOffsets.Request.X;
+                                newInsertionPoint.Y = workItemOffsets.Request.Y;
+                            break;
+
+                        case "User Needs":
+                            workItemOffsets.Request.IncrementHorizontal(width, OffsetDirection.Down);
+                            newInsertionPoint.X = workItemOffsets.Request.X;
+                            newInsertionPoint.Y = workItemOffsets.Request.Y;
+                            break;
+
+                        case "User Story":
+                            workItemOffsets.Request.IncrementHorizontal(width, OffsetDirection.Down);
+                            newInsertionPoint.X = workItemOffsets.Request.X;
+                            newInsertionPoint.Y = workItemOffsets.Request.Y;
                             break;
 
                         default:
@@ -676,6 +776,12 @@ namespace SupportTools_Visio.Actions
 
                         case "Release":
                             workItemOffsets.Task.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.Task.X;
+                            newInsertionPoint.Y = workItemOffsets.Task.Y;
+                            break;
+
+                        case "Request":
+                            workItemOffsets.Task.IncrementHorizontal(width, OffsetDirection.Down);
                             newInsertionPoint.X = workItemOffsets.Task.X;
                             newInsertionPoint.Y = workItemOffsets.Task.Y;
                             break;
@@ -929,6 +1035,12 @@ namespace SupportTools_Visio.Actions
                             newInsertionPoint.Y = workItemOffsets.UserStory.Y;
                             break;
 
+                        case "Request":
+                            workItemOffsets.UserStory.DecrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.UserStory.X;
+                            newInsertionPoint.Y = workItemOffsets.UserStory.Y;
+                            break;
+
                         case "Requirement":
                             workItemOffsets.UserStory.IncrementHorizontal(width);
                             newInsertionPoint.X = workItemOffsets.UserStory.X;
@@ -936,9 +1048,37 @@ namespace SupportTools_Visio.Actions
                             break;
 
                         case "Task":
-                            workItemOffsets.UserStory.DecrementHorizontal(width, OffsetDirection.Up);
-                            newInsertionPoint.X = workItemOffsets.UserStory.X;
-                            newInsertionPoint.Y = workItemOffsets.UserStory.Y;
+                            if (workItemOffsets.Requirement.Count > 0)
+                            {
+                                workItemOffsets.Requirement.DecrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.Requirement.X;
+                                newInsertionPoint.Y = workItemOffsets.Requirement.Y;
+                            }
+                            else if (workItemOffsets.Request.Count > 0)
+                            {
+                                workItemOffsets.Request.DecrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.Request.X;
+                                newInsertionPoint.Y = workItemOffsets.Request.Y;
+                            }
+                            else if (workItemOffsets.ProductionIssue.Count > 0)
+                            {
+                                workItemOffsets.ProductionIssue.DecrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.ProductionIssue.X;
+                                newInsertionPoint.Y = workItemOffsets.ProductionIssue.Y;
+                            }
+                            else if (workItemOffsets.Issue.Count > 0)
+                            {
+                                workItemOffsets.Issue.DecrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.Issue.X;
+                                newInsertionPoint.Y = workItemOffsets.Issue.Y;
+                            }
+                            else
+                            {
+                                workItemOffsets.UserStory.DecrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.UserStory.X;
+                                newInsertionPoint.Y = workItemOffsets.UserStory.Y;
+                            }
+
                             break;
 
                         case "Test Case":
@@ -1200,6 +1340,8 @@ namespace SupportTools_Visio.Actions
             else
             {
                 result = await VNC.AZDO1.Helper.QueryWorkItemInfoById(shapeInfo.Organization, int.Parse(shapeInfo.ID));
+
+                int bugs = await VNC.AZDO1.Helper.QueryRelatedBugsById(shapeInfo.Organization, int.Parse(shapeInfo.ID));
             }
 
             return result;
@@ -1217,6 +1359,8 @@ namespace SupportTools_Visio.Actions
             IList<WorkItem> result = null;
 
             string teamProject = shapeInfo.TeamProject;
+            string workItemType = shapeInfo.WorkItemType;
+            string state = shapeInfo.State;
 
             if (!IsValidTeamProject(shapeInfo.Organization, teamProject))
             {
@@ -1226,7 +1370,14 @@ namespace SupportTools_Visio.Actions
             {
                 try
                 {
-                    result = await VNC.AZDO1.Helper.QueryWorkItemInfoByTeam(shapeInfo.Organization, teamProject);
+                    if (!string.IsNullOrEmpty(shapeInfo.WorkItemType))
+                    {
+                        result = await VNC.AZDO1.Helper.QueryWorkItemInfoByTeamAndWorkItemType(shapeInfo.Organization, teamProject, workItemType, state);
+                    }
+                    else
+                    {
+                        result = await VNC.AZDO1.Helper.QueryWorkItemInfoByTeam(shapeInfo.Organization, teamProject, state);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -1258,7 +1409,7 @@ namespace SupportTools_Visio.Actions
 
             if (! string.IsNullOrEmpty(shapeInfo.TeamProject))
             {
-                result = await GetInfoByTeamProject(shapeInfo);
+                result = await GetInfoByTeamProject(shapeInfo);  
             }
             else if (!string.IsNullOrEmpty(shapeInfo.ID))
             {
