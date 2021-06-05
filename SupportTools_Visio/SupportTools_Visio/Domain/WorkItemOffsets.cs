@@ -26,6 +26,10 @@ namespace SupportTools_Visio.Domain
 
         public WorkItemOffset TestCase;
 
+        public WorkItemOffset TestPlan;
+
+        public WorkItemOffset TestSuite;
+
         public WorkItemOffset Unknown;
 
         public WorkItemOffset UserNeeds;
@@ -44,6 +48,8 @@ namespace SupportTools_Visio.Domain
             Requirement = new WorkItemOffset(initialOffset, height, padX, padY);
             Task = new WorkItemOffset(initialOffset, height, padX, padY);
             TestCase = new WorkItemOffset(initialOffset, height, padX, padY);
+            TestPlan = new WorkItemOffset(initialOffset, height, padX, padY);
+            TestSuite = new WorkItemOffset(initialOffset, height, padX, padY);
             UserNeeds = new WorkItemOffset(initialOffset, height, padX, padY);
             UserStory = new WorkItemOffset(initialOffset, height, padX, padY);
 

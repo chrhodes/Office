@@ -554,6 +554,12 @@ namespace SupportTools_Visio.Actions
                             }
                             break;
 
+                        case "Test Suite":
+                            workItemOffsets.Release.DecrementHorizontal(width, OffsetDirection.Down);
+                            newInsertionPoint.X = workItemOffsets.Release.X;
+                            newInsertionPoint.Y = workItemOffsets.Release.Y;
+                            break;
+
                         case "User Needs":
                             workItemOffsets.Release.DecrementHorizontal(width, OffsetDirection.Up);
                             newInsertionPoint.X = workItemOffsets.Release.X;
@@ -775,9 +781,19 @@ namespace SupportTools_Visio.Actions
                             break;
 
                         case "Release":
-                            workItemOffsets.Task.IncrementHorizontal(width);
-                            newInsertionPoint.X = workItemOffsets.Task.X;
-                            newInsertionPoint.Y = workItemOffsets.Task.Y;
+                            if (workItemOffsets.UserStory.Count > 0)
+                            {
+                                workItemOffsets.UserStory.IncrementHorizontal(width, OffsetDirection.Down);
+                                newInsertionPoint.X = workItemOffsets.UserStory.X;
+                                newInsertionPoint.Y = workItemOffsets.UserStory.Y;
+                            }
+                            else
+                            {
+                                workItemOffsets.Task.IncrementHorizontal(width, OffsetDirection.Down);
+                                newInsertionPoint.X = workItemOffsets.Task.X;
+                                newInsertionPoint.Y = workItemOffsets.Task.Y;
+                            }
+
                             break;
 
                         case "Request":
@@ -866,9 +882,25 @@ namespace SupportTools_Visio.Actions
                             break;
 
                         case "Release":
-                            workItemOffsets.TestCase.IncrementHorizontal(width, OffsetDirection.Up);
-                            newInsertionPoint.X = workItemOffsets.TestCase.X;
-                            newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            if (workItemOffsets.TestPlan.Count > 0)
+                            {
+                                workItemOffsets.TestPlan.IncrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.TestPlan.X;
+                                newInsertionPoint.Y = workItemOffsets.TestPlan.Y;
+                            }
+                            else if (workItemOffsets.TestSuite.Count > 0)
+                            {
+                                workItemOffsets.TestSuite.IncrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.TestSuite.X;
+                                newInsertionPoint.Y = workItemOffsets.TestSuite.Y;
+                            }
+                            else
+                            {
+                                workItemOffsets.TestCase.IncrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.TestCase.X;
+                                newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            }
+
                             break;
 
                         case "Requirement":
@@ -907,6 +939,213 @@ namespace SupportTools_Visio.Actions
 
                     break;
 
+                case "Test Plan":
+                    switch (shapeWorkItemType)
+                    {
+                        case "Bug":
+                            if (workItemOffsets.Release.Count > 0)
+                            {
+                                workItemOffsets.Release.IncrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.Release.X;
+                                newInsertionPoint.Y = workItemOffsets.Release.Y;
+                            }
+                            else if (workItemOffsets.UserStory.Count > 0)
+                            {
+                                workItemOffsets.UserStory.IncrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.UserStory.X;
+                                newInsertionPoint.Y = workItemOffsets.UserStory.Y;
+                            }
+                            else if (workItemOffsets.TestCase.Count > 0)
+                            {
+                                workItemOffsets.TestCase.IncrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.TestCase.X;
+                                newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            }
+                            else
+                            {
+                                workItemOffsets.Unknown.IncrementHorizontal(width);
+                                newInsertionPoint.X = workItemOffsets.Unknown.X;
+                                newInsertionPoint.Y = workItemOffsets.Unknown.Y;
+                            }
+                            //workItemOffsets.TestCase.IncrementHorizontal(width, OffsetDirection.Up);
+                            break;
+
+                        case "Epic":
+                            workItemOffsets.TestCase.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.TestCase.X;
+                            newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            break;
+
+                        case "Feature":
+                            workItemOffsets.TestCase.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.TestCase.X;
+                            newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            break;
+
+                        case "Release":
+                            if (workItemOffsets.TestCase.Count > 0)
+                            {
+                                workItemOffsets.TestCase.IncrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.TestCase.X;
+                                newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            }
+                            else if (workItemOffsets.TestSuite.Count > 0)
+                            {
+                                workItemOffsets.TestSuite.IncrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.TestSuite.X;
+                                newInsertionPoint.Y = workItemOffsets.TestSuite.Y;
+                            }
+                            else
+                            {
+                                workItemOffsets.TestPlan.IncrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.TestPlan.X;
+                                newInsertionPoint.Y = workItemOffsets.TestPlan.Y;
+                            }
+
+                            break;
+
+                        case "Requirement":
+                            workItemOffsets.TestCase.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.TestCase.X;
+                            newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            break;
+
+                        case "Task":
+                            workItemOffsets.TestCase.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.TestCase.X;
+                            newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            break;
+
+                        case "Test Case":
+                            workItemOffsets.TestCase.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.TestCase.X;
+                            newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            break;
+
+                        case "User Needs":
+                            workItemOffsets.TestCase.IncrementHorizontal(width, OffsetDirection.Up);
+                            newInsertionPoint.X = workItemOffsets.TestCase.X;
+                            newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            break;
+
+                        case "User Story":
+                            workItemOffsets.TestCase.IncrementHorizontal(width, OffsetDirection.Up);
+                            newInsertionPoint.X = workItemOffsets.TestCase.X;
+                            newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                    break;
+
+                case "Test Suite":
+                    switch (shapeWorkItemType)
+                    {
+                        case "Bug":
+                            if (workItemOffsets.Release.Count > 0)
+                            {
+                                workItemOffsets.Release.IncrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.Release.X;
+                                newInsertionPoint.Y = workItemOffsets.Release.Y;
+                            }
+                            else if (workItemOffsets.UserStory.Count > 0)
+                            {
+                                workItemOffsets.UserStory.IncrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.UserStory.X;
+                                newInsertionPoint.Y = workItemOffsets.UserStory.Y;
+                            }
+                            else if (workItemOffsets.TestCase.Count > 0)
+                            {
+                                workItemOffsets.TestCase.IncrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.TestCase.X;
+                                newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            }
+                            else
+                            {
+                                workItemOffsets.Unknown.IncrementHorizontal(width);
+                                newInsertionPoint.X = workItemOffsets.Unknown.X;
+                                newInsertionPoint.Y = workItemOffsets.Unknown.Y;
+                            }
+                            //workItemOffsets.TestCase.IncrementHorizontal(width, OffsetDirection.Up);
+                            break;
+
+                        case "Epic":
+                            workItemOffsets.TestCase.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.TestCase.X;
+                            newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            break;
+
+                        case "Feature":
+                            workItemOffsets.TestCase.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.TestCase.X;
+                            newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            break;
+
+                        case "Release":
+                            if (workItemOffsets.TestCase.Count > 0)
+                            {
+                                workItemOffsets.TestCase.IncrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.TestCase.X;
+                                newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            }
+                            else if (workItemOffsets.TestPlan.Count > 0)
+                            {
+                                workItemOffsets.TestPlan.IncrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.TestPlan.X;
+                                newInsertionPoint.Y = workItemOffsets.TestPlan.Y;
+                            }
+                            else
+                            {
+                                workItemOffsets.TestSuite.IncrementHorizontal(width, OffsetDirection.Up);
+                                newInsertionPoint.X = workItemOffsets.TestSuite.X;
+                                newInsertionPoint.Y = workItemOffsets.TestSuite.Y;
+                            }
+
+                            break;
+
+                        case "Requirement":
+                            workItemOffsets.TestCase.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.TestCase.X;
+                            newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            break;
+
+                        case "Task":
+                            workItemOffsets.TestCase.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.TestCase.X;
+                            newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            break;
+
+                        case "Test Case":
+                            workItemOffsets.TestCase.IncrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.TestCase.X;
+                            newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            break;
+
+                        case "Test Suite":
+                            workItemOffsets.TestSuite.DecrementHorizontal(width);
+                            newInsertionPoint.X = workItemOffsets.TestSuite.X;
+                            newInsertionPoint.Y = workItemOffsets.TestSuite.Y;
+                            break;
+
+                        case "User Needs":
+                            workItemOffsets.TestCase.IncrementHorizontal(width, OffsetDirection.Up);
+                            newInsertionPoint.X = workItemOffsets.TestCase.X;
+                            newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            break;
+
+                        case "User Story":
+                            workItemOffsets.TestCase.IncrementHorizontal(width, OffsetDirection.Up);
+                            newInsertionPoint.X = workItemOffsets.TestCase.X;
+                            newInsertionPoint.Y = workItemOffsets.TestCase.Y;
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                    break;
                 case "User Needs":
                     switch (shapeWorkItemType)
                     {
