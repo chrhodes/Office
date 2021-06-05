@@ -453,8 +453,6 @@ namespace SupportTools_Visio.Actions
             string delimiter = null;
             string backgroundPageName = null;
 
-
-
             if (args.Count() != 3)
             {
                 VisioHelper.DisplayInWatchWindow(string.Format("Incorrect Argument Count, expected 3.  Check ShapeSheet"));
@@ -527,7 +525,11 @@ namespace SupportTools_Visio.Actions
                         {
                              Visio.Master linkMaster = linkStencil.Masters[shapeName];
 
-                            Visio.Shape returnLinkShape = newPage.Drop(linkMaster, 4.0, 4.0);
+                            // Add return link in upper left corner.  Assume 11x8.5
+
+                            // TODO(crhodes)
+                            // Get Page Size and drop in upper left
+                            Visio.Shape returnLinkShape = newPage.Drop(linkMaster, 1.0, 8.0);
 
                             returnLinkShape.CellsU["Prop.PageName"].FormulaU = activePage.Name.WrapInDblQuotes();
                             returnLinkShape.CellsU["Prop.HyperLink"].FormulaU = activePage.Name.WrapInDblQuotes();
@@ -543,11 +545,21 @@ namespace SupportTools_Visio.Actions
                     }
                 }
 
-                // Add a header.  May want to pick the stencil and shape for config file.   Or add a property to Shape.
+                // Add a header.  May want to pick the stencil and shape for config file.
+                // Or add a property to Shape.
 
                 Visio.Master headerMaster = app.Documents[@"Page Shapes.vssx"].Masters[@"18pt Header"];
 
                 newPage.Drop(headerMaster, 5.5, 8.0625);
+
+                // NOTE(crhodes)
+                // Add the shape that triggered the event.  User can delete if doesn't want.
+                // More and more often I go back and copy it, traverse the link, and drop it.
+                // Drop in middle of page for now assuming 11x8.5
+
+                // TODO(crhodes)
+                // Get Page Size and drop in center
+                newPage.Drop(activeShape,5.5,4.25);
             }
             catch (Exception ex)
             {
