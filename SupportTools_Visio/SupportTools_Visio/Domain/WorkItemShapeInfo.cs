@@ -125,6 +125,10 @@ namespace SupportTools_Visio.Actions
         public string HyperLinkCount { get; set; }
         public string RelatedBugs { get; set; }
 
+        public string AreaPath { get; set; }
+        public string IterationPath { get; set; }
+
+
         #endregion Enums, Fields, Properties, Structures
 
         #region Main Methods
@@ -154,6 +158,9 @@ namespace SupportTools_Visio.Actions
             ExternalLinkCount = workItem.Fields["System.ExternalLinkCount"].ToString();
             RemoteLinkCount = workItem.Fields["System.RemoteLinkCount"].ToString();
             HyperLinkCount = workItem.Fields["System.HyperLinkCount"].ToString();
+
+            AreaPath = workItem.Fields["System.AreaPath"].ToString();
+            IterationPath = workItem.Fields["System.IterationPath"].ToString();
         }
 
         public void PopulateShapeDataFromInfo(Visio.Shape shape, WorkItemShapeVersion shapeVersion)
@@ -212,6 +219,9 @@ namespace SupportTools_Visio.Actions
 
             shape.CellsU["Prop.ExternalLink"].FormulaU =
                 $"http://dev.azure.com/{Organization}/{TeamProject}/_workitems/edit/{ID}/".WrapInDblQuotes();
+
+            shape.CellsU["Prop.AreaPath"].FormulaU = AreaPath.WrapInDblQuotes();
+            shape.CellsU["Prop.IterationPath"].FormulaU = IterationPath.WrapInDblQuotes();
         }
 
         public override string ToString()

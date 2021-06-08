@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 
+using Microsoft.Office.Interop.Visio;
 using Microsoft.TeamFoundation.WorkItemTracking.WebApi.Models;
 using Microsoft.VisualStudio.Services.WebApi;
 
@@ -60,9 +61,10 @@ namespace SupportTools_Visio.Actions
 
             Visio.Page activePage = app.ActivePage;
             Visio.Shape activeShape = app.ActivePage.Shapes[shape];
+            string targetShapeName = activeShape.CellsU["Prop.WIShapeName"].ResultStrU[VisUnitCodes.visUnitsString];
             var version = WorkItemShapeInfo.WorkItemShapeVersion.V2;
 
-            AddLinkedWorkItems(app, activePage, activeShape, "WI 2", version);
+            AddLinkedWorkItems(app, activePage, activeShape, targetShapeName, version);
         }
 
         internal static async void AddLinkedWorkItems(Visio.Application app, Visio.Page page, Visio.Shape shape, 
@@ -1666,7 +1668,7 @@ namespace SupportTools_Visio.Actions
 
                 Visio.Document linkStencil;
                 Visio.Master linkMaster = null;
-                string shapeName = "WI 2";
+                string targetShapeName = activeShape.CellsU["Prop.WIShapeName"].ResultStrU[VisUnitCodes.visUnitsString];
                 var version = WorkItemShapeInfo.WorkItemShapeVersion.V2;
 
                 try
@@ -1675,11 +1677,11 @@ namespace SupportTools_Visio.Actions
 
                     try
                     {
-                        linkMaster = linkStencil.Masters[shapeName];
+                        linkMaster = linkStencil.Masters[targetShapeName];
                     }
                     catch (Exception ex)
                     {
-                        VisioHelper.DisplayInWatchWindow(string.Format("  Cannot find Master named:>{0}<", shapeName));
+                        VisioHelper.DisplayInWatchWindow(string.Format("  Cannot find Master named:>{0}<", targetShapeName));
                     }
                 }
                 catch (Exception ex)
@@ -1755,7 +1757,9 @@ namespace SupportTools_Visio.Actions
                 Point insertionPoint = initialPosition;
 
                 string stencilName = "Azure DevOps.vssx";
-                string shapeName = "WI 2";
+
+                string targetShapeName = activeShape.CellsU["Prop.WIShapeName"].ResultStrU[VisUnitCodes.visUnitsString];
+                //string shapeName = "WI 2";
 
                 Visio.Document linkStencil;
                 Visio.Master linkMaster = null;
@@ -1766,11 +1770,11 @@ namespace SupportTools_Visio.Actions
 
                     try
                     {
-                        linkMaster = linkStencil.Masters[shapeName];
+                        linkMaster = linkStencil.Masters[targetShapeName];
                     }
                     catch (Exception ex)
                     {
-                        VisioHelper.DisplayInWatchWindow(string.Format("  Cannot find Master named:>{0}<", shapeName));
+                        VisioHelper.DisplayInWatchWindow(string.Format("  Cannot find Master named:>{0}<", targetShapeName));
                     }
                 }
                 catch (Exception ex)
