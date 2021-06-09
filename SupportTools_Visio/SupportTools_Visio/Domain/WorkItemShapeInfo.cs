@@ -63,6 +63,9 @@ namespace SupportTools_Visio.Actions
                 RelatedLinkCount = shape.CellsU["Prop.RelatedLinks"].ResultStr[Visio.VisUnitCodes.visUnitsString];
             }
 
+            AreaPath = Helper.GetShapePropertyAsString(shape, "AreaPath");
+            IterationPath = Helper.GetShapePropertyAsString(shape, "IterationPath");
+
             //// NB. WI 1.0 used PageName for WorkItemType.  We can remove this if we stop supported WI 1.0
 
             //if (WorkItemType == "")

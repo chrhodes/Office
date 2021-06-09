@@ -1602,6 +1602,8 @@ namespace SupportTools_Visio.Actions
             string teamProject = shapeInfo.TeamProject;
             string workItemType = shapeInfo.WorkItemType;
             string state = shapeInfo.State;
+            string areaPath = shapeInfo.AreaPath;
+            string iterationPath = shapeInfo.IterationPath;
 
             if (!IsValidTeamProject(shapeInfo.Organization, teamProject))
             {
@@ -1611,14 +1613,14 @@ namespace SupportTools_Visio.Actions
             {
                 try
                 {
-                    if (!string.IsNullOrEmpty(shapeInfo.WorkItemType))
-                    {
-                        result = await VNC.AZDO1.Helper.QueryWorkItemInfoByTeamAndWorkItemType(shapeInfo.Organization, teamProject, workItemType, state);
-                    }
-                    else
-                    {
-                        result = await VNC.AZDO1.Helper.QueryWorkItemInfoByTeam(shapeInfo.Organization, teamProject, state);
-                    }
+                    //if (!string.IsNullOrEmpty(shapeInfo.WorkItemType))
+                    //{
+                    //    result = await VNC.AZDO1.Helper.QueryWorkItemInfoByTeamAndWorkItemType(shapeInfo.Organization, teamProject, workItemType, state);
+                    //}
+                    //else
+                    //{
+                        result = await VNC.AZDO1.Helper.QueryWorkItemInfoByTeam(shapeInfo.Organization, teamProject, workItemType, state, areaPath, iterationPath);
+                    //}
                 }
                 catch (Exception ex)
                 {
@@ -1650,7 +1652,7 @@ namespace SupportTools_Visio.Actions
 
             if (! string.IsNullOrEmpty(shapeInfo.TeamProject))
             {
-                result = await GetInfoByTeamProject(shapeInfo);  
+                result = await GetInfoByTeamProject(shapeInfo);
             }
             else if (!string.IsNullOrEmpty(shapeInfo.ID))
             {
