@@ -131,6 +131,14 @@ namespace SupportTools_Visio.Actions
         public string AreaPath { get; set; }
         public string IterationPath { get; set; }
 
+        // Work Item Type Specific Fields
+
+        // Bug
+
+        public string FieldIssue { get; set; }
+
+        // User Story
+
 
         #endregion Enums, Fields, Properties, Structures
 
@@ -164,6 +172,20 @@ namespace SupportTools_Visio.Actions
 
             AreaPath = workItem.Fields["System.AreaPath"].ToString();
             IterationPath = workItem.Fields["System.IterationPath"].ToString();
+
+            switch (WorkItemType)
+            {
+                case "Bug":
+                    FieldIssue = workItem.Fields["Cardinal.Defect.FieldIssue"].ToString();
+                    break;
+
+                case "User Story":
+
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         public void PopulateShapeDataFromInfo(Visio.Shape shape, WorkItemShapeVersion shapeVersion)
@@ -225,6 +247,20 @@ namespace SupportTools_Visio.Actions
 
             shape.CellsU["Prop.AreaPath"].FormulaU = AreaPath.WrapInDblQuotes();
             shape.CellsU["Prop.IterationPath"].FormulaU = IterationPath.WrapInDblQuotes();
+
+            switch (WorkItemType)
+            {
+                case "Bug":
+                    shape.CellsU["Prop.FieldIssue"].FormulaU = FieldIssue.WrapInDblQuotes();
+                    break;
+
+                case "User Story":
+
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         public override string ToString()
