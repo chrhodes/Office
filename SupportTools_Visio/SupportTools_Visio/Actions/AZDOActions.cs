@@ -1654,7 +1654,7 @@ namespace SupportTools_Visio.Actions
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Invalid TeamProject: ({teamProject})");
+                    MessageBox.Show($"Error TeamProject: ({teamProject} ex:{ex})");
                 }
             }
 
@@ -1703,6 +1703,7 @@ namespace SupportTools_Visio.Actions
                 string targetShapeName = activeShape.CellsU["Prop.WIShapeName"].ResultStrU[VisUnitCodes.visUnitsString];
                 var version = WorkItemShapeInfo.WorkItemShapeVersion.V2;
 
+                //Application.Documents.OpenEx "Page Shapes.vssx", visOpenRO + visOpenDocked
                 try
                 {
                     linkStencil = app.Documents[stencilName];
