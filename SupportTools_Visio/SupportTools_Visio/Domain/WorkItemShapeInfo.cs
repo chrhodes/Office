@@ -139,6 +139,7 @@ namespace SupportTools_Visio.Actions
 
         // User Story
 
+        public string TaskType { get; set; }
 
         #endregion Enums, Fields, Properties, Structures
 
@@ -176,10 +177,21 @@ namespace SupportTools_Visio.Actions
             switch (WorkItemType)
             {
                 case "Bug":
+                    var fieldsB = workItem.Fields;
+
                     FieldIssue = workItem.Fields["Cardinal.Defect.FieldIssue"].ToString();
                     break;
 
                 case "User Story":
+                    var fieldsUS = workItem.Fields;
+
+                    // NOTE(crhodes)
+                    // If there is no value the field will not be returned.
+
+                    if (fieldsUS.ContainsKey("Microsoft.VSTS.CMMI.TaskType"))
+                    {
+                        TaskType = workItem.Fields["Microsoft.VSTS.CMMI.TaskType"].ToString();
+                    }
 
                     break;
 
@@ -255,7 +267,7 @@ namespace SupportTools_Visio.Actions
                     break;
 
                 case "User Story":
-
+                    shape.CellsU["Prop.TaskType"].FormulaU = TaskType.WrapInDblQuotes();
                     break;
 
                 default:
