@@ -75,32 +75,33 @@ namespace SupportTools_Visio.Actions
             Visio.Document linkStencil;
             Visio.Master linkMaster = null;
 
-            if (app.Documents)
-            {
-                
-            }
-            try
-            {
-                linkStencil = app.Documents[stencilName];
+            //if (app.Documents)
+            //{
 
-                try
-                {
-                    linkMaster = linkStencil.Masters[shapeName];
-                }
-                catch (Exception ex)
-                {
-                    VisioHelper.DisplayInWatchWindow(string.Format("  Cannot find Master named:>{0}<", shapeName));
-                }
-            }
-            catch (Exception ex)
-            {
-                // Stencil may not be open.  Try opening it
+            //}
+            //try
+            //{
+            //    linkStencil = app.Documents[stencilName];
 
-                app.Documents.OpenEx( pageShapesStencil, visOpenRO + visOpenDocked
+            //    try
+            //    {
+            //        linkMaster = linkStencil.Masters[shapeName];
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        VisioHelper.DisplayInWatchWindow(string.Format("  Cannot find Master named:>{0}<", shapeName));
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    // Stencil may not be open.  Try opening it
 
-                VisioHelper.DisplayInWatchWindow(string.Format("  Cannot find open Stencil named:>{0}<", stencilName));
-            }
+            //    app.Documents.OpenEx( pageShapesStencil, visOpenRO + visOpenDocked
 
+            //    VisioHelper.DisplayInWatchWindow(string.Format("  Cannot find open Stencil named:>{0}<", stencilName));
+            //}
+
+            result = true;
             return result;
         }
 
