@@ -69,39 +69,9 @@ namespace SupportTools_Visio.Actions
         {
             bool result = false;
 
-            string azureDevOpsStencil = "Azure DevOps.vssx";
-            string pageShapesStencil = "Page Shapes.vssx";
+            result = VisioHelper.LoadStencil(app, "Azure DevOps.vssx");
+            result = VisioHelper.LoadStencil(app, "Page Shapes.vssx");
 
-            Visio.Document linkStencil;
-            Visio.Master linkMaster = null;
-
-            //if (app.Documents)
-            //{
-
-            //}
-            //try
-            //{
-            //    linkStencil = app.Documents[stencilName];
-
-            //    try
-            //    {
-            //        linkMaster = linkStencil.Masters[shapeName];
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        VisioHelper.DisplayInWatchWindow(string.Format("  Cannot find Master named:>{0}<", shapeName));
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    // Stencil may not be open.  Try opening it
-
-            //    app.Documents.OpenEx( pageShapesStencil, visOpenRO + visOpenDocked
-
-            //    VisioHelper.DisplayInWatchWindow(string.Format("  Cannot find open Stencil named:>{0}<", stencilName));
-            //}
-
-            result = true;
             return result;
         }
 
@@ -110,7 +80,7 @@ namespace SupportTools_Visio.Actions
         {
             if (!VerifyRequiredStencils(app))
             {
-                MessageBox.Show($"Cannot locate or open required Stencils, aborting.  Review Log for details");
+               
                 return;
             }
 

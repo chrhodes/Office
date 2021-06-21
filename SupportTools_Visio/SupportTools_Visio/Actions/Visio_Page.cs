@@ -548,6 +548,7 @@ namespace SupportTools_Visio.Actions
                 // Add a header.  May want to pick the stencil and shape for config file.
                 // Or add a property to Shape.
 
+                VisioHelper.LoadStencil(app, "Page Shapes.vssx");
                 Visio.Master headerMaster = app.Documents[@"Page Shapes.vssx"].Masters[@"18pt Header"];
 
                 newPage.Drop(headerMaster, 5.5, 8.0625);
