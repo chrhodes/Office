@@ -108,7 +108,7 @@ namespace SupportTools_Visio.Actions
                 return;
             }
 
-            var result = await VNC.AZDO1.Helper.QueryWorkItemLinks(activeShapeWorkItemInfo.Organization, id, relatedLinkCount);
+            var result = await VNC.AZDO.Helper.QueryWorkItemLinks(activeShapeWorkItemInfo.Organization, id, relatedLinkCount);
 
             if (result.Count > 0)
             {
@@ -200,7 +200,7 @@ namespace SupportTools_Visio.Actions
                 return;
             }
 
-            var result = await VNC.AZDO1.Helper.QueryWorkItemInfoById(shapeInfo.Organization, id);
+            var result = await VNC.AZDO.Helper.QueryWorkItemInfoById(shapeInfo.Organization, id);
 
             if (result.Count == 0)
             {
@@ -213,7 +213,7 @@ namespace SupportTools_Visio.Actions
             // NOTE(crhodes)
             // Go add the bugs
 
-            int bugs = await VNC.AZDO1.Helper.QueryRelatedBugsById(shapeInfo.Organization, int.Parse(shapeInfo.ID));
+            int bugs = await VNC.AZDO.Helper.QueryRelatedBugsById(shapeInfo.Organization, int.Parse(shapeInfo.ID));
 
             shapeInfo.RelatedBugs = bugs.ToString();
 
@@ -233,9 +233,32 @@ namespace SupportTools_Visio.Actions
                 WorkItemShapeInfo shapeInfo = new WorkItemShapeInfo(newWorkItemShape);
                 shapeInfo.InitializeFromWorkItem(workItem);
 
-                int bugs = await VNC.AZDO1.Helper.QueryRelatedBugsById(shapeInfo.Organization, int.Parse(shapeInfo.ID));
+                int bugs = await VNC.AZDO.Helper.QueryRelatedBugsById(shapeInfo.Organization, int.Parse(shapeInfo.ID));
 
                 shapeInfo.RelatedBugs = bugs.ToString();
+
+                shapeInfo.PopulateShapeDataFromInfo(newWorkItemShape, version);
+            }
+            catch (Exception ex)
+            {
+                VisioHelper.DisplayInWatchWindow($"{workItem.Id} - {ex}");
+            }
+        }
+
+        private static async void AddNewWorkItemRevisionShapeToPage(Visio.Page page, Visio.Master linkMaster,
+            WorkItem workItem, Point insertionPoint,
+            WorkItemShapeInfo relatedShape,
+            WorkItemShapeInfo.WorkItemShapeVersion version)
+        {
+            try
+            {
+                Visio.Shape newWorkItemShape = page.Drop(linkMaster, insertionPoint.X, insertionPoint.Y);
+                WorkItemShapeInfo shapeInfo = new WorkItemShapeInfo(newWorkItemShape);
+                shapeInfo.InitializeFromWorkItemRevision(workItem, int.Parse(relatedShape.ID));
+
+                //int bugs = await VNC.AZDO.Helper.QueryRelatedBugsById(shapeInfo.Organization, int.Parse(shapeInfo.ID));
+
+                //shapeInfo.RelatedBugs = bugs.ToString();
 
                 shapeInfo.PopulateShapeDataFromInfo(newWorkItemShape, version);
             }
@@ -269,9 +292,9 @@ namespace SupportTools_Visio.Actions
             }
             else
             {
-                result = await VNC.AZDO1.Helper.QueryWorkItemInfoById(shapeInfo.Organization, int.Parse(shapeInfo.ID));
+                result = await VNC.AZDO.Helper.QueryWorkItemInfoById(shapeInfo.Organization, int.Parse(shapeInfo.ID));
 
-                int bugs = await VNC.AZDO1.Helper.QueryRelatedBugsById(shapeInfo.Organization, int.Parse(shapeInfo.ID));
+                int bugs = await VNC.AZDO.Helper.QueryRelatedBugsById(shapeInfo.Organization, int.Parse(shapeInfo.ID));
             }
 
             return result;
@@ -302,7 +325,7 @@ namespace SupportTools_Visio.Actions
             {
                 try
                 {
-                     result = await VNC.AZDO1.Helper.QueryWorkItemInfoByTeam(
+                     result = await VNC.AZDO.Helper.QueryWorkItemInfoByTeam(
                          shapeInfo.Organization, teamProject, workItemType, state, areaPath, iterationPath);
                 }
                 catch (Exception ex)
@@ -442,7 +465,7 @@ namespace SupportTools_Visio.Actions
                 return;
             }
 
-            var result = await VNC.AZDO1.Helper.QueryWorkItemLinks(activeShapeWorkItemInfo.Organization, id, relatedLinkCount);
+            var result = await VNC.AZDO.Helper.QueryWorkItemLinks(activeShapeWorkItemInfo.Organization, id, relatedLinkCount);
 
             if (result.Count > 0)
             {
@@ -503,6 +526,118 @@ namespace SupportTools_Visio.Actions
             }
 
             VisioHelper.DisplayInWatchWindow($"{activeShapeWorkItemInfo}");
+        }
+
+        public static async void GetWorkItemRevisions(Visio.Application app, string doc, string page, string shape, string shapeu, string[] array)
+        {
+            VisioHelper.DisplayInWatchWindow(string.Format("{0}()",
+                MethodBase.GetCurrentMethod().Name));
+
+            // NOTE(crhodes)
+            // Can launch a UI here.  Or earlier.
+
+            //DxThemedWindowHost.DisplayUserControlInHost(ref addLinkedWorkItemsHost,
+            //    "Edit Shape Control Points Text",
+            //    Common.DEFAULT_WINDOW_WIDTH, Common.DEFAULT_WINDOW_HEIGHT,
+            //    DxThemedWindowHost.ShowWindowMode.Modeless,
+            //    new Presentation.Views.EditControlPoints());
+
+            Visio.Page activePage = app.ActivePage;
+            Visio.Shape activeShape = app.ActivePage.Shapes[shape];
+            string targetShapeName = activeShape.CellsU["Prop.WIShapeName"].ResultStrU[VisUnitCodes.visUnitsString];
+            var version = WorkItemShapeInfo.WorkItemShapeVersion.V2;
+
+            //AddLinkedWorkItems(app, activePage, activeShape, targetShapeName, version);
+
+            if (!VerifyRequiredStencils(app))
+            {
+                return;
+            }
+
+            WorkItemShapeInfo activeShapeWorkItemInfo = new WorkItemShapeInfo(activeShape);
+
+            int id;
+
+            if (int.TryParse(activeShapeWorkItemInfo.ID, out id))
+            {
+            }
+            else
+            {
+                MessageBox.Show($"Cannot parse ({activeShapeWorkItemInfo.ID}) as WorkItemID");
+                return;
+            }
+
+            //int relatedLinkCount;
+
+            //if (int.TryParse(activeShapeWorkItemInfo.RelatedLinkCount, out relatedLinkCount))
+            //{
+            //}
+            //else
+            //{
+            //    MessageBox.Show($"Cannot parse ({activeShapeWorkItemInfo.RelatedLinkCount}) as RelatedLinkCount");
+            //    return;
+            //}
+
+            //var result = await VNC.AZDO.Helper.QueryWorkItemLinks(activeShapeWorkItemInfo.Organization, id, relatedLinkCount);
+
+            var result = await VNC.AZDO.Helper.QueryWorkItemRevisionsById(activeShapeWorkItemInfo.Organization, id);
+
+            if (result.Count > 0)
+            {
+                Point initialPosition = GetPosition(activeShape);
+                Point insertionPoint = initialPosition;
+
+                string stencilName = "Azure DevOps.vssx";
+
+                Visio.Document linkStencil;
+                Visio.Master linkMaster = null;
+
+                try
+                {
+                    linkStencil = app.Documents[stencilName];
+
+                    try
+                    {
+                        linkMaster = linkStencil.Masters[targetShapeName];
+                    }
+                    catch (Exception ex)
+                    {
+                        VisioHelper.DisplayInWatchWindow(string.Format("  Cannot find Master named:>{0}<", targetShapeName));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    VisioHelper.DisplayInWatchWindow(string.Format("  Cannot find open Stencil named:>{0}<", stencilName));
+                }
+
+                // TODO(crhodes)
+                // Figure out how to get size of shape from master.
+                // HACK(crhodes)
+                // .25 is for Link counts
+
+                double height = version == WorkItemShapeInfo.WorkItemShapeVersion.V1 ? 0.375 : 0.475;
+
+                WorkItemOffsets workItemOffsets = new WorkItemOffsets(initialPosition, height: height, padX: 0.25, padY: 0.05);
+
+                foreach (var linkedWorkItem in result)
+                {
+                    //// NOTE(crhodes)
+                    //// This includes the current shape.  Do not add it.
+                    //// May always be first one.  Maybe loop counter
+                    //if (linkedWorkItem.Id == id)
+                    //{
+                    //    continue;
+                    //}
+
+                    VisioHelper.DisplayInWatchWindow($"{linkedWorkItem.Id} {linkedWorkItem.Fields["System.Title"]}");
+
+                    insertionPoint = AZDOPageLayout.CalculateInsertionPointLinkedWorkItems(initialPosition, linkedWorkItem, activeShapeWorkItemInfo, workItemOffsets);
+
+                    AddNewWorkItemRevisionShapeToPage(activePage, linkMaster, linkedWorkItem, insertionPoint, activeShapeWorkItemInfo, version);
+                }
+            }
+
+            //var result = await VNC.AZDO.Helper.QueryWorkItemRevisionsById(shapeInfo.Organization, id);
         }
     }
 }

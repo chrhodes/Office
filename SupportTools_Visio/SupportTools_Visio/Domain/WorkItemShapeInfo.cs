@@ -145,10 +145,80 @@ namespace SupportTools_Visio.Actions
 
         #region Main Methods
 
+        public void InitializeFromWorkItemRevision(WorkItem workItem, int id)
+        {
+            Url = workItem.Url;
+            Organization = VNC.AZDO.Helper.GetOrganizationNameFromUrl(Url);
+
+            ID = id.ToString();
+
+            TeamProject = (string)workItem.Fields["System.TeamProject"];
+            WorkItemType = (string)workItem.Fields["System.WorkItemType"];
+
+            // NOTE(crhodes)
+            // Handle special characters
+            Title = workItem.Fields["System.Title"].ToString().Replace("\"", "\"\"");
+
+            State = workItem.Fields["System.State"].ToString();
+
+            CreatedBy = ((IdentityRef)workItem.Fields["System.CreatedBy"]).DisplayName;
+            CreatedDate = workItem.Fields["System.CreatedDate"].ToString();
+            ChangedBy = ((IdentityRef)workItem.Fields["System.ChangedBy"]).DisplayName;
+            ChangedDate = workItem.Fields["System.ChangedDate"].ToString();
+
+            if (workItem.Fields.ContainsKey("System.RelatedLinkCount"))
+            {
+                RelatedLinkCount = workItem.Fields["System.RelatedLinkCount"].ToString();
+            }
+
+            if (workItem.Fields.ContainsKey("System.ExternalLinkCount"))
+            {
+                ExternalLinkCount = workItem.Fields["System.ExternalLinkCount"].ToString();
+            }
+
+            if (workItem.Fields.ContainsKey("System.RemoteLinkCount"))
+            {
+                RemoteLinkCount = workItem.Fields["System.RemoteLinkCount"].ToString();
+            }
+
+            if (workItem.Fields.ContainsKey("System.HyperLinkCount"))
+            {
+                HyperLinkCount = workItem.Fields["System.HyperLinkCount"].ToString();
+            }
+
+            AreaPath = workItem.Fields["System.AreaPath"].ToString();
+            IterationPath = workItem.Fields["System.IterationPath"].ToString();
+
+            //switch (WorkItemType)
+            //{
+            //    case "Bug":
+            //        var fieldsB = workItem.Fields;
+
+            //        FieldIssue = workItem.Fields["Cardinal.Defect.FieldIssue"].ToString();
+            //        break;
+
+            //    case "User Story":
+            //        var fieldsUS = workItem.Fields;
+
+            //        // NOTE(crhodes)
+            //        // If there is no value the field will not be returned.
+
+            //        if (fieldsUS.ContainsKey("Microsoft.VSTS.CMMI.TaskType"))
+            //        {
+            //            TaskType = workItem.Fields["Microsoft.VSTS.CMMI.TaskType"].ToString();
+            //        }
+
+            //        break;
+
+            //    default:
+            //        break;
+            //}
+        }
+
         public void InitializeFromWorkItem(WorkItem workItem)
         {
             Url = workItem.Url;
-            Organization = VNC.AZDO1.Helper.GetOrganizationNameFromUrl(Url);
+            Organization = VNC.AZDO.Helper.GetOrganizationNameFromUrl(Url);
 
             ID = workItem.Fields["System.Id"].ToString();
 

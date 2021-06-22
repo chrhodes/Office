@@ -929,6 +929,10 @@ namespace SupportTools_Visio.Events
                         Actions.AZDOActions.GetWorkItemInfo2(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
                         break;
 
+                    case "GetWorkItemRevisions":
+                        Actions.AZDOActions.GetWorkItemRevisions(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
+                        break;
+
                     case "AddLinkedWorkItems":
                         Actions.AZDOActions.AddLinkedWorkItems1(app, doc, page, shape, shapeu, actionArgs.Skip(1).ToArray());
                         break;

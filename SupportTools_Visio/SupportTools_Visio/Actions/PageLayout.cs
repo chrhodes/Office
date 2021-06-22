@@ -1,20 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 
-using Microsoft.Office.Interop.Visio;
 using Microsoft.TeamFoundation.WorkItemTracking.WebApi.Models;
-using Microsoft.VisualStudio.Services.WebApi;
 
 using SupportTools_Visio.Domain;
-
-using VNC;
-using VNC.Core;
-
-using Visio = Microsoft.Office.Interop.Visio;
-using VisioHelper = VNC.AddinHelper.Visio;
 
 namespace SupportTools_Visio.Actions
 {
