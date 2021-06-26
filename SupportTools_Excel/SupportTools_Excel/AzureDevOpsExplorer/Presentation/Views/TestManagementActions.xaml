@@ -127,7 +127,7 @@
                 <dxlc:LayoutItem Label="Select TestCase Sections" LabelPosition="Top">
                     <dxe:ComboBoxEdit 
                             EditValue="{ Binding
-                                Path=TestSuiteRequest.TestSections,
+                                Path=TestCaseRequest.TestSections,
                                 Mode=TwoWay,
                                 UpdateSourceTrigger=PropertyChanged,
                                 Converter={StaticResource SelectedItemsConverter} }" >

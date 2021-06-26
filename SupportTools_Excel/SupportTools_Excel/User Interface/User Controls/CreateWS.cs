@@ -1361,6 +1361,11 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             ITestSuiteBase testSuite = testManagementTeamProject.TestSuites.Find(testSuiteId);
 
+            if (testSuite is null)
+            {
+                MessageBox.Show($"Cannot find TestSuite: {testSuiteId}");
+            }
+
             ITestCaseCollection testCaseCollection = testSuite.AllTestCases;
 
             XlHlp.XlLocation insertAt = CreateNewWorksheet($"TestSuiteInfo_{testSuiteId}", options);

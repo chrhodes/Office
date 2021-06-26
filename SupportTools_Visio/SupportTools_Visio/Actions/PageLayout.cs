@@ -330,20 +330,26 @@ namespace SupportTools_Visio.Actions
                         case "Test Case":
                             if (workItemOffsets.UserStory.Count > 0)
                             {
-                                workItemOffsets.UserStory.DecrementHorizontal(width, OffsetDirection.Down);
+                                workItemOffsets.UserStory.DecrementHorizontal(width, OffsetDirection.Left);
                                 newInsertionPoint.X = workItemOffsets.UserStory.X;
                                 newInsertionPoint.Y = workItemOffsets.UserStory.Y;
                             }
                             else
                             {
-                                workItemOffsets.Release.DecrementHorizontal(width, OffsetDirection.Down);
+                                workItemOffsets.Release.DecrementHorizontal(width, OffsetDirection.Left);
                                 newInsertionPoint.X = workItemOffsets.Release.X;
                                 newInsertionPoint.Y = workItemOffsets.Release.Y;
                             }
                             break;
 
+                        case "Test Plan":
+                            workItemOffsets.Release.DecrementHorizontal(width, OffsetDirection.Left);
+                            newInsertionPoint.X = workItemOffsets.Release.X;
+                            newInsertionPoint.Y = workItemOffsets.Release.Y;
+                            break;
+
                         case "Test Suite":
-                            workItemOffsets.Release.DecrementHorizontal(width, OffsetDirection.Down);
+                            workItemOffsets.Release.DecrementHorizontal(width, OffsetDirection.Left);
                             newInsertionPoint.X = workItemOffsets.Release.X;
                             newInsertionPoint.Y = workItemOffsets.Release.Y;
                             break;

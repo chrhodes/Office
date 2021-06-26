@@ -73,14 +73,31 @@ namespace SupportTools_Visio.Domain
         {
             if (Count % columns == 0)
             {
-                if (offsetDirection == OffsetDirection.Up)
+                switch (offsetDirection)
                 {
-                    _y += RowOffset + PadY;
+                    case OffsetDirection.Up:
+                        _y += RowOffset + PadY;
+                        break;
+
+                    case OffsetDirection.Down:
+                        _y -= RowOffset + PadY;
+                        break;
+
+                    case OffsetDirection.Left:
+                        break;
+
+                    case OffsetDirection.Right:
+                        break;
                 }
-                else
-                {
-                    _y -= RowOffset + PadY;
-                }
+
+                //if (offsetDirection == OffsetDirection.Up)
+                //{
+                //    _y += RowOffset + PadY;
+                //}
+                //else
+                //{
+                //    _y -= RowOffset + PadY;
+                //}
 
                 _x = _xInitial;
             }
@@ -109,14 +126,31 @@ namespace SupportTools_Visio.Domain
         {
             if (Count % columns == 0)
             {
-                if (offsetDirection == OffsetDirection.Up)
+                switch (offsetDirection)
                 {
-                    _y += RowOffset + PadY;
+                    case OffsetDirection.Up:
+                        _y += RowOffset + PadY;
+                        break;
+
+                    case OffsetDirection.Down:
+                        _y -= RowOffset + PadY;
+                        break;
+
+                    case OffsetDirection.Left:
+                        break;
+
+                    case OffsetDirection.Right:
+                        break;
                 }
-                else
-                {
-                    _y -= RowOffset + PadY;
-                }
+
+                //if (offsetDirection == OffsetDirection.Up)
+                //{
+                //    _y += RowOffset + PadY;
+                //}
+                //else
+                //{
+                //    _y -= RowOffset + PadY;
+                //}
 
                 _x = _xInitial;
             }
