@@ -95,7 +95,11 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         public void OnGetTPInfoExecute()
         {
+            long startTicks = Log.EVENT("Enter", Common.PROJECT_NAME);
+
             Common.EventAggregator.GetEvent<GetTeamProjectInfoEvent>().Publish(TeamProjectActionRequest.Model);
+
+            Log.EVENT("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         public bool OnGetTPInfoCanExecute()
@@ -115,10 +119,14 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Presentation.ViewModels
 
         public void OnGetTPXMLExecute()
         {
+            long startTicks = Log.EVENT("Enter", Common.PROJECT_NAME);
+
             // TODO(crhodes)
             // May not need request
 
             Common.EventAggregator.GetEvent<GetTeamProjectXMLEvent>().Publish(TeamProjectActionRequest.Model);
+
+            Log.EVENT("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         public bool OnGetTPXMLCanExecute()

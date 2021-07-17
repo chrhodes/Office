@@ -1006,9 +1006,6 @@
     <Reference Include="VNC.SPHelper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\VNC.SPHelper.1.0.0\lib\net48\VNC.SPHelper.dll</HintPath>
     </Reference>
-    <Reference Include="VNC.TFSHelper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\VNC.TFSHelper.1.0.0\lib\net48\VNC.TFSHelper.dll</HintPath>
-    </Reference>
     <Reference Include="VNC.WPF.Presentation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\VNC.WPF.Presentation.1.0.0\lib\net48\VNC.WPF.Presentation.dll</HintPath>
     </Reference>
@@ -2057,6 +2054,10 @@
     <WCFMetadataStorage Include="Service References\SalesforceSR\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\VNC\VNC.TFSHelper\VNC.TFSHelper\VNC.TFSHelper.csproj">
+      <Project>{006b334f-c558-49c7-a5bc-71c59a1a9105}</Project>
+      <Name>VNC.TFSHelper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\VNC.AddinHelper\VNC.AddinHelper.csproj">
       <Project>{dcd47414-b5df-490a-a72b-cd66c68c9973}</Project>
       <Name>VNC.AddinHelper</Name>

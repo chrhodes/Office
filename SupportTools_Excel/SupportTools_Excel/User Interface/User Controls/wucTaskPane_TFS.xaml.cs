@@ -155,8 +155,10 @@ namespace SupportTools_Excel.User_Interface.User_Controls
         #region AZDOTestManagementActions
 
         private void AddTestPlanPivotSummary()
-        { 
-        
+        {
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
+
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void TestPlanIdDoubleClick(TestPlanRequestWrapper request)
@@ -176,7 +178,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
         private static void ProcessDoubleClick(TestPlanRequestWrapper request)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow("Begin");
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             string selectedCell = (string)Globals.ThisAddIn.Application.ActiveCell.Value.ToString();
 
@@ -207,12 +209,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             request.TestID = selectedCellsText.ToString();
 
-            XlHlp.DisplayInWatchWindow("End", startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private static void ProcessDoubleClick(TestSuiteRequestWrapper request)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow("Begin");
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             string selectedCell = (string)Globals.ThisAddIn.Application.ActiveCell.Value.ToString();
 
@@ -243,12 +245,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             request.TestID = selectedCellsText.ToString();
 
-            XlHlp.DisplayInWatchWindow("End", startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private static void ProcessDoubleClick(TestCaseRequestWrapper request)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow("Begin");
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             string selectedCell = (string)Globals.ThisAddIn.Application.ActiveCell.Value.ToString();
 
@@ -279,12 +281,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             request.TestID = selectedCellsText.ToString();
 
-            XlHlp.DisplayInWatchWindow("End", startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private static void ProcessDoubleClick(WorkItemActionRequestWrapper request)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow("Begin");
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             string selectedCell = (string)Globals.ThisAddIn.Application.ActiveCell.Value.ToString();
 
@@ -318,7 +320,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
             request.WorkItemID =  selectedCellsText.ToString();
 
-            XlHlp.DisplayInWatchWindow("End", startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         //private static void ProcessDoubleClick(TextEdit textEdit)
@@ -359,7 +361,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
         private void GetTestPlanInfo(TestPlanRequest request)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow("Begin");
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -390,12 +392,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 RequestHandlers.SpeedUpEnd();
             }
 
-            XlHlp.DisplayInWatchWindow("End", startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void GetTestSuiteInfo(TestSuiteRequest request)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow("Begin");
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -426,12 +428,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 RequestHandlers.SpeedUpEnd();
             }
 
-            XlHlp.DisplayInWatchWindow("End", startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void GetTestCaseInfo(TestCaseRequest request)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow("Begin");
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -462,7 +464,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 RequestHandlers.SpeedUpEnd();
             }
 
-            XlHlp.DisplayInWatchWindow("End", startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion
@@ -471,16 +473,16 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
         private void WorkItemIDDoubleClick(WorkItemActionRequestWrapper request)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow("Begin");
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             ProcessDoubleClick(request);
 
-            XlHlp.DisplayInWatchWindow("End", startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void GetWorkItemInfo(WorkItemActionRequest request)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow("Begin");
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -513,11 +515,13 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 RequestHandlers.SpeedUpEnd();
             }
 
-            XlHlp.DisplayInWatchWindow("End", startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         void AddPivotSummary(WorkItemActionRequest request)
         {
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
+
             Workbook wb = Globals.ThisAddIn.Application.ActiveWorkbook;
             Worksheet ws = Globals.ThisAddIn.Application.ActiveSheet;
             Microsoft.Office.Interop.Excel.Range activeCell = Globals.ThisAddIn.Application.ActiveCell;
@@ -604,6 +608,8 @@ namespace SupportTools_Excel.User_Interface.User_Controls
             //End With
 
             insertAt.workSheet.Select();
+
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         //void RunQuery(WorkItemQuery workItemQuery)
@@ -678,12 +684,16 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
         void EnableMainUI(Visibility visibility)
         {
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
+
             lgMainGroup.Visibility = visibility;
+
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void GetConfigurationServerInfo(wucTFSProvider_Picker serverProvider)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow("Begin");
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             try
             {
@@ -700,13 +710,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 RequestHandlers.SpeedUpEnd();
             }
 
-            XlHlp.DisplayInWatchWindow("End", startTicks);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void GetTeamProjectInfo(TeamProjectActionRequest request)
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
-            long startTicks = XlHlp.DisplayInWatchWindow("Begin");
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             Options_AZDO_TFS options = GetOptions();
 
@@ -755,14 +764,12 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 RequestHandlers.SpeedUpEnd();
             }
 
-            XlHlp.DisplayInWatchWindow("End", startTicks);
-            Log.Trace("Exit", Common.PROJECT_NAME);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void GetTeamProjectXML(TeamProjectActionRequest request)
         {
-            Log.Trace("Enter", Common.PROJECT_NAME);
-            long startTicks = XlHlp.DisplayInWatchWindow("Begin");
+            long startTicks = Log.EVENT_HANDLER("Enter", Common.PROJECT_NAME);
 
             Options_AZDO_TFS options = GetOptions();
 
@@ -804,8 +811,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                 RequestHandlers.SpeedUpEnd();
             }
 
-            XlHlp.DisplayInWatchWindow("End", startTicks);
-            Log.Trace("Exit", Common.PROJECT_NAME);
+            Log.EVENT_HANDLER("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         #endregion
@@ -941,9 +947,9 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
                 //ReadOnlyCollection<CatalogNode> projectCollectionNodes = VNCTFS.Helper.Get_TeamProjectCollectionNodes(AzureDevOpsExplorer.Presentation.Views.Server.ConfigurationServer);
 
-                var tpc = AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.CatalogNode;
+                var tpcCatalogNode = AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection.CatalogNode;
 
-                CreateWS_TPC_Info(tpc, AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection, false, options);
+                CreateWS_TPC_Info(tpcCatalogNode, AzureDevOpsExplorer.Presentation.Views.Server.TfsTeamProjectCollection, false, options);
             }
             catch (Exception ex)
             {
@@ -1117,7 +1123,7 @@ namespace SupportTools_Excel.User_Interface.User_Controls
         private XlHlp.XlLocation CreateNewWorksheet(string sheetName,
             Options_AZDO_TFS options, [CallerMemberName] string callerName = "")
         {
-            long startTicks = XlHlp.DisplayInWatchWindow($"Begin: sheetName: {sheetName}");
+            Int64 startTicks = Log.APPLICATION($"Begin: sheetName: {sheetName}", Common.PROJECT_NAME);
 
             string safeSheetName = XlHlp.SafeSheetName(sheetName);
             Worksheet ws = XlHlp.NewWorksheet(safeSheetName, beforeSheetName: "FIRST");
@@ -1142,16 +1148,20 @@ namespace SupportTools_Excel.User_Interface.User_Controls
 
                     if (System.Windows.Forms.DialogResult.Cancel == saveFileDialog.ShowDialog())
                     {
+                        Log.APPLICATION("Exit", Common.PROJECT_NAME, startTicks);
                         return insertAt;
                     }
                     else
                     {
                         strOutputFile = saveFileDialog.FileName;
                     }
+
                     if (string.IsNullOrEmpty(strOutputFile))
                     {
+                        Log.APPLICATION("Exit", Common.PROJECT_NAME, startTicks);
                         return insertAt;
                     }
+
                     Globals.ThisAddIn.Application.ActiveWorkbook.SaveAs(strOutputFile);
                 }
                 catch (Exception ex)
@@ -1159,6 +1169,8 @@ namespace SupportTools_Excel.User_Interface.User_Controls
                     MessageBox.Show(ex.Message);
                 }
             }
+
+            Log.APPLICATION("Exit", Common.PROJECT_NAME, startTicks);
 
             return insertAt;
         }

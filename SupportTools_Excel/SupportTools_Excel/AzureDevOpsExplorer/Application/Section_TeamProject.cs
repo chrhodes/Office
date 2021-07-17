@@ -8,6 +8,8 @@ using Microsoft.TeamFoundation.Framework.Client;
 using Microsoft.TeamFoundation.Framework.Common;
 using Microsoft.TeamFoundation.VersionControl.Client;
 
+using VNC;
+
 using XlHlp = VNC.AddinHelper.Excel;
 
 namespace SupportTools_Excel.AzureDevOpsExplorer.Application
@@ -28,7 +30,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             TeamProject teamProject,
             List<string> sectionsToDisplay)
         {
-            long startTicks = XlHlp.DisplayInWatchWindow(insertAt);
+            long startTicks = Log.APPLICATION("Enter", Common.PROJECT_NAME);
 
             if (sectionsToDisplay.Count != 0)
             {
@@ -59,7 +61,7 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 }
             }
 
-            XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
+            Log.APPLICATION("Exit", Common.PROJECT_NAME, startTicks);
 
             return insertAt;
         }

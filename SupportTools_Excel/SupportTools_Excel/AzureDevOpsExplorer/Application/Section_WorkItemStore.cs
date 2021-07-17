@@ -250,7 +250,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
             string areasToCheck)
         {
             Int64 startTicks = Log.APPLICATION("Enter", Common.LOG_CATEGORY);
-            XlHlp.DisplayInWatchWindow(insertAt);
 
             try
             {
@@ -298,7 +297,6 @@ namespace SupportTools_Excel.AzureDevOpsExplorer.Application
                 MessageBox.Show(ex.ToString());
             }
 
-            XlHlp.DisplayInWatchWindow(insertAt, startTicks, "End");
             Log.APPLICATION("Exit", Common.LOG_CATEGORY, startTicks);
 
             return insertAt;
